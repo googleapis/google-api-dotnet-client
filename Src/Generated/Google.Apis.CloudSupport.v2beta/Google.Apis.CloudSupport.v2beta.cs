@@ -1661,6 +1661,10 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
 
+        /// <summary>The ID of the project associated with the case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
         /// <summary>The severity of this case. Deprecated. Use priority instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }

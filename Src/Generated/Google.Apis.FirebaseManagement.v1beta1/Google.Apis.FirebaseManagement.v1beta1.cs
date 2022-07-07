@@ -1068,6 +1068,71 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     });
                 }
             }
+
+            /// <summary>Removes the specified AndroidApp from the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the AndroidApp, in the format: projects/
+            /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+            /// Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to
+            /// the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
+            /// PROJECT_IDENTIFIER and APP_ID values.
+            /// </param>
+            public virtual RemoveRequest Remove(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAndroidAppRequest body, string name)
+            {
+                return new RemoveRequest(service, body, name);
+            }
+
+            /// <summary>Removes the specified AndroidApp from the project.</summary>
+            public class RemoveRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Remove request.</summary>
+                public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAndroidAppRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the AndroidApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource
+                /// from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID
+                /// Refer to the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details
+                /// about PROJECT_IDENTIFIER and APP_ID values.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAndroidAppRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "remove";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:remove";
+
+                /// <summary>Initializes Remove parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/androidApps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the AvailableLocations resource.</summary>
@@ -1707,6 +1772,71 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     });
                 }
             }
+
+            /// <summary>Removes the specified IosApp from the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID
+            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be
+            /// used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
+            /// [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.
+            /// </param>
+            public virtual RemoveRequest Remove(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveIosAppRequest body, string name)
+            {
+                return new RemoveRequest(service, body, name);
+            }
+
+            /// <summary>Removes the specified IosApp from the project.</summary>
+            public class RemoveRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Remove request.</summary>
+                public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.RemoveIosAppRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the IosApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to
+                /// the IosApp [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
+                /// and APP_ID values.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.RemoveIosAppRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "remove";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:remove";
+
+                /// <summary>Initializes Remove parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/iosApps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the WebApps resource.</summary>
@@ -2093,6 +2223,71 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Removes the specified WebApp from the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID
+            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be
+            /// used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp
+            /// [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.
+            /// </param>
+            public virtual RemoveRequest Remove(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveWebAppRequest body, string name)
+            {
+                return new RemoveRequest(service, body, name);
+            }
+
+            /// <summary>Removes the specified WebApp from the project.</summary>
+            public class RemoveRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Remove request.</summary>
+                public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.RemoveWebAppRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the WebApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to
+                /// the WebApp [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
+                /// and APP_ID values.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.RemoveWebAppRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "remove";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:remove";
+
+                /// <summary>Initializes Remove parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/webApps/[^/]+$",
                     });
                 }
             }
@@ -3056,8 +3251,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class DefaultResources : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The default Firebase Hosting site name, in the format: PROJECT_ID Though rare, your `projectId` might
-        /// already be used as the name for an existing Hosting site in another project (learn more about creating
+        /// Output only. The default Firebase Hosting site name, in the format: PROJECT_ID Though rare, your `projectId`
+        /// might already be used as the name for an existing Hosting site in another project (learn more about creating
         /// non-default, [additional sites](https://firebase.google.com/docs/hosting/multisites)). In these cases, your
         /// `projectId` is appended with a hyphen then five alphanumeric characters to create your default Hosting site
         /// name. For example, if your `projectId` is `myproject123`, your default Hosting site name might be:
@@ -3067,28 +3262,28 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string HostingSite { get; set; }
 
         /// <summary>
-        /// The ID of the Project's default GCP resource location. The location is one of the available [GCP resource
-        /// locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the default GCP
-        /// resource location has not been finalized yet. To set a Project's default GCP resource location, call
-        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
-        /// Project.
+        /// Output only. The ID of the Project's default GCP resource location. The location is one of the available
+        /// [GCP resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set a Project's default GCP resource location,
+        /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
+        /// the Project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
         /// <summary>
-        /// The default Firebase Realtime Database instance name, in the format: PROJECT_ID Though rare, your
-        /// `projectId` might already be used as the name for an existing Realtime Database instance in another project
-        /// (learn more about [database sharding](https://firebase.google.com/docs/database/usage/sharding)). In these
-        /// cases, your `projectId` is appended with a hyphen then five alphanumeric characters to create your default
-        /// Realtime Database instance name. For example, if your `projectId` is `myproject123`, your default database
-        /// instance name might be: `myproject123-a5c16`
+        /// Output only. The default Firebase Realtime Database instance name, in the format: PROJECT_ID Though rare,
+        /// your `projectId` might already be used as the name for an existing Realtime Database instance in another
+        /// project (learn more about [database sharding](https://firebase.google.com/docs/database/usage/sharding)). In
+        /// these cases, your `projectId` is appended with a hyphen then five alphanumeric characters to create your
+        /// default Realtime Database instance name. For example, if your `projectId` is `myproject123`, your default
+        /// database instance name might be: `myproject123-a5c16`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeDatabaseInstance")]
         public virtual string RealtimeDatabaseInstance { get; set; }
 
         /// <summary>
-        /// The default Cloud Storage for Firebase storage bucket, in the format: PROJECT_ID.appspot.com
+        /// Output only. The default Cloud Storage for Firebase storage bucket, in the format: PROJECT_ID.appspot.com
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual string StorageBucket { get; set; }
@@ -3124,6 +3319,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>A high-level summary of an App.</summary>
     public class FirebaseAppInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have
+        /// restrictions that are valid for the associated Firebase App. Cannot be set to an empty value in update
+        /// requests. If left unset on create requests, an existing valid API Key will be chosen, or if no valid API
+        /// Keys exist, one will be provisioned for you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyId")]
+        public virtual string ApiKeyId { get; set; }
+
         /// <summary>
         /// Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier
         /// should be treated as an opaque token, as the data format is not specified.
@@ -3190,7 +3394,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. A user-assigned unique identifier for the Project. This identifier may appear in URLs or names
+        /// Output only. A user-assigned unique identifier for the Project. This identifier may appear in URLs or names
         /// for some Firebase resources associated with the Project, but it should generally be treated as a convenience
         /// alias to reference the Project.
         /// </summary>
@@ -3198,13 +3402,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Immutable. The globally unique, Google-assigned canonical identifier for the Project. Use this identifier
+        /// Output only. The globally unique, Google-assigned canonical identifier for the Project. Use this identifier
         /// when configuring integrations and/or making API calls to Firebase or third-party services.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; }
 
-        /// <summary>The default Firebase resources associated with the Project.</summary>
+        /// <summary>Output only. The default Firebase resources associated with the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual DefaultResources Resources { get; set; }
 
@@ -3540,6 +3744,69 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    public class RemoveAndroidAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true, and the App is not found, the request will succeed but no action will be taken on the
+        /// server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Checksum provided in the AndroidApp entity, which if provided ensures the client has an up-to-date value
+        /// before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>If set to true, only validate the request and do not delete the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    public class RemoveIosAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true, and the App is not found, the request will succeed but no action will be taken on the
+        /// server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Checksum provided in the IosApp entity, which if provided ensures the client has an up-to-date value before
+        /// proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>If set to true, only validate the request and do not delete the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    public class RemoveWebAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true, and the App is not found, the request will succeed but no action will be taken on the
+        /// server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Checksum provided in the WebApp entity, which if provided ensures the client has an up-to-date value before
+        /// proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>If set to true, only validate the request and do not delete the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
     public class SearchFirebaseAppsResponse : Google.Apis.Requests.IDirectResponseSchema

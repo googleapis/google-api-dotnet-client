@@ -3678,7 +3678,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
         public virtual ConfigManagementPolicyControllerMonitoring Monitoring { get; set; }
 
-        /// <summary>Enable users to try out mutation for PolicyController.</summary>
+        /// <summary>
+        /// Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment
+        /// will be deployed to the cluster.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
         public virtual System.Nullable<bool> MutationEnabled { get; set; }
 
@@ -4679,7 +4682,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipState Identityservice { get; set; }
 
-        /// <summary>Metering-specific spec.</summary>
+        /// <summary>Metering-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metering")]
         public virtual MeteringMembershipState Metering { get; set; }
 

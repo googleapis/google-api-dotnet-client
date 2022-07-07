@@ -1427,6 +1427,23 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A description of what time period or moment in time the product or service is being delivered over.
+    /// </summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The end time of the service period. Time is exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Required. The start time of the service period. Time is inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Subscription resource managed by 3P Partners.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1563,7 +1580,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Individual line item definition of a subscription. Next id: 6</summary>
+    /// <summary>Individual line item definition of a subscription. Next id: 8</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Description of this line item.</summary>
@@ -1586,6 +1603,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemPromotionSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec> LineItemPromotionSpecs { get; set; }
 
+        /// <summary>Output only. Details only set for a ONE_TIME recurrence line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeRecurrenceDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails OneTimeRecurrenceDetails { get; set; }
+
         /// <summary>
         /// Required. Product resource name that identifies one the line item The format is
         /// 'partners/{partner_id}/products/{product_id}'.
@@ -1593,9 +1614,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual string Product { get; set; }
 
+        /// <summary>Output only. The recurrence type of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrenceType")]
+        public virtual string RecurrenceType { get; set; }
+
         /// <summary>Output only. The state of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a ONE_TIME recurrence line item.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The service period of the ONE_TIME line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePeriod")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod ServicePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

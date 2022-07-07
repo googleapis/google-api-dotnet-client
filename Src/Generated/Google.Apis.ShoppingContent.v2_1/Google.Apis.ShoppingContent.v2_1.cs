@@ -22751,10 +22751,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Dimensions according to which metrics are segmented in the response. Values of product dimensions, e.g., offer
-    /// id, reflect the state of a product at the time of the corresponding event, e.g., impression or order. Segment
-    /// fields cannot be selected in queries without also selecting at least one metric field. Values are only set for
-    /// dimensions requested explicitly in the request's search query.
+    /// Dimensions according to which metrics are segmented in the response. Values of product dimensions, such as
+    /// `offer_id`, reflect the state of a product at the time of the corresponding event, for example, impression or
+    /// order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are
+    /// only set for dimensions requested explicitly in the request's search query.
     /// </summary>
     public class Segments : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22803,7 +22803,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string CategoryL5 { get; set; }
 
         /// <summary>
-        /// Currency in which price metrics are represented, e.g., if you select `ordered_item_sales_micros`, the
+        /// Currency in which price metrics are represented, for example, if you select `ordered_item_sales_micros`, the
         /// returned value will be represented by this currency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
@@ -22884,7 +22884,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
         public virtual string ProductTypeL5 { get; set; }
 
-        /// <summary>Program to which metrics apply, e.g., Free Product Listing.</summary>
+        /// <summary>Program to which metrics apply, for example, Free Product Listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("program")]
         public virtual string Program { get; set; }
 

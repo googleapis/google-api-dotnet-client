@@ -3691,6 +3691,85 @@ namespace Google.Apis.SQLAdmin.v1
             }
         }
 
+        /// <summary>Retrieves a resource containing information about a user.</summary>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Database instance ID. This does not include the project ID.</param>
+        /// <param name="name">
+        /// User of the instance. If the database user has a host, this is specified as {username}@{host} else as
+        /// {username}.
+        /// </param>
+        public virtual GetRequest Get(string project, string instance, string name)
+        {
+            return new GetRequest(service, project, instance, name);
+        }
+
+        /// <summary>Retrieves a resource containing information about a user.</summary>
+        public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.User>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, string name) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Database instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>
+            /// User of the instance. If the database user has a host, this is specified as {username}@{host} else as
+            /// {username}.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/users/{name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Creates a new user in a Cloud SQL instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
@@ -6344,6 +6423,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>A Cloud SQL user resource.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Dual password status for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dualPasswordType")]
+        public virtual string DualPasswordType { get; set; }
+
         /// <summary>This field is deprecated and will be removed from a future version of the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -6411,6 +6494,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>If true, failed login attempts check will be enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFailedAttemptsCheck")]
         public virtual System.Nullable<bool> EnableFailedAttemptsCheck { get; set; }
+
+        /// <summary>
+        /// If true, the user must specify the current password before changing the password. This flag is supported
+        /// only for MySQL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePasswordVerification")]
+        public virtual System.Nullable<bool> EnablePasswordVerification { get; set; }
 
         /// <summary>Expiration duration after password is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordExpirationDuration")]

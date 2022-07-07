@@ -6362,7 +6362,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one
         /// region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a
         /// Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match
-        /// the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+        /// the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6739,7 +6739,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual RuntimeEnvironment Environment { get; set; }
 
-        /// <summary>Required. The job name to use for the created job.</summary>
+        /// <summary>
+        /// Required. The job name to use for the created job. The name must match the regular expression
+        /// `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; }
 
