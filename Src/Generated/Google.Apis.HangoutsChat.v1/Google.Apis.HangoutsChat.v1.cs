@@ -1521,8 +1521,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The field paths to be updated, comma separated if there are multiple. Currently supported
-                /// field paths: * text * cards * attachment
+                /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
+                /// paths: - text - cards (Requires [service account
+                /// authentication](/chat/api/guides/auth/service-accounts).) - attachment
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }

@@ -3986,7 +3986,7 @@ namespace Google.Apis.Datastream.v1alpha1.Data
     /// </summary>
     public class VpcPeeringConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.</summary>
+        /// <summary>Required. A free subnet for peering. (CIDR of /29)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
         public virtual string Subnet { get; set; }
 

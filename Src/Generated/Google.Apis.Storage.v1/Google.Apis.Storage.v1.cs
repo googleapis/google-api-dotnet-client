@@ -8118,7 +8118,12 @@ namespace Google.Apis.Storage.v1.Data
             set => TimeStorageClassUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>The modification time of the object metadata in RFC 3339 format.</summary>
+        /// <summary>
+        /// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and
+        /// then updated whenever any metadata of the object changes. This includes changes made by a requester, such as
+        /// modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as
+        /// changing the storage class based on an Object Lifecycle Configuration.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string UpdatedRaw { get; set; }
 

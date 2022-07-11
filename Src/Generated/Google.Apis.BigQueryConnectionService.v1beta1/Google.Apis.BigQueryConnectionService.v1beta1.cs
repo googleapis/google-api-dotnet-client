@@ -1050,6 +1050,14 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; }
 
+        /// <summary>
+        /// Output only. The account ID of the service used for the purpose of this connection. When the connection is
+        /// used in the context of an operation in BigQuery, this service account will serve as identity being used for
+        /// connecting to the CloudSQL instance specified in this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
+        public virtual string ServiceAccountId { get; set; }
+
         /// <summary>Type of the Cloud SQL database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
