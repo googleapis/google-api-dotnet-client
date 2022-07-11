@@ -652,9 +652,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the added place IDs are not immediately
-                        /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
+                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -673,9 +673,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the added place IDs are not immediately
-                        /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
+                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class AddFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -731,9 +731,10 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// last update timestamps of each inventory field. This process is asynchronous and does not
                         /// require the Product to exist before updating inventory information. If the request is valid,
                         /// the update will be enqueued and processed downstream. As a consequence, when a response is
-                        /// returned, updates are not immediately manifested in the Product queried by GetProduct or
-                        /// ListProducts. Local inventory information can only be modified using this method.
-                        /// CreateProduct and UpdateProduct has no effect on local inventories. This feature is only
+                        /// returned, updates are not immediately manifested in the Product queried by
+                        /// ProductService.GetProduct or ProductService.ListProducts. Local inventory information can
+                        /// only be modified using this method. ProductService.CreateProduct and
+                        /// ProductService.UpdateProduct has no effect on local inventories. This feature is only
                         /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
                         /// Console before using this feature.
                         /// </summary>
@@ -754,9 +755,10 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// last update timestamps of each inventory field. This process is asynchronous and does not
                         /// require the Product to exist before updating inventory information. If the request is valid,
                         /// the update will be enqueued and processed downstream. As a consequence, when a response is
-                        /// returned, updates are not immediately manifested in the Product queried by GetProduct or
-                        /// ListProducts. Local inventory information can only be modified using this method.
-                        /// CreateProduct and UpdateProduct has no effect on local inventories. This feature is only
+                        /// returned, updates are not immediately manifested in the Product queried by
+                        /// ProductService.GetProduct or ProductService.ListProducts. Local inventory information can
+                        /// only be modified using this method. ProductService.CreateProduct and
+                        /// ProductService.UpdateProduct has no effect on local inventories. This feature is only
                         /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
                         /// Console before using this feature.
                         /// </summary>
@@ -1305,9 +1307,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the removed place IDs are not immediately
-                        /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
+                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1326,9 +1328,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the removed place IDs are not immediately
-                        /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
+                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class RemoveFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1383,10 +1385,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// Remove local inventory information for a Product at a list of places at a removal timestamp.
                         /// This process is asynchronous. If the request is valid, the removal will be enqueued and
                         /// processed downstream. As a consequence, when a response is returned, removals are not
-                        /// immediately manifested in the Product queried by GetProduct or ListProducts. Local inventory
-                        /// information can only be removed using this method. CreateProduct and UpdateProduct has no
-                        /// effect on local inventories. This feature is only available for users who have Retail Search
-                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
+                        /// immediately manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. Local inventory information can only be removed using this
+                        /// method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local
+                        /// inventories. This feature is only available for users who have Retail Search enabled. Please
+                        /// enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1404,10 +1407,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// Remove local inventory information for a Product at a list of places at a removal timestamp.
                         /// This process is asynchronous. If the request is valid, the removal will be enqueued and
                         /// processed downstream. As a consequence, when a response is returned, removals are not
-                        /// immediately manifested in the Product queried by GetProduct or ListProducts. Local inventory
-                        /// information can only be removed using this method. CreateProduct and UpdateProduct has no
-                        /// effect on local inventories. This feature is only available for users who have Retail Search
-                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
+                        /// immediately manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. Local inventory information can only be removed using this
+                        /// method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local
+                        /// inventories. This feature is only available for users who have Retail Search enabled. Please
+                        /// enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class RemoveLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1463,18 +1467,19 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// each inventory field. This process is asynchronous and does not require the Product to exist
                         /// before updating fulfillment information. If the request is valid, the update will be
                         /// enqueued and processed downstream. As a consequence, when a response is returned, updates
-                        /// are not immediately manifested in the Product queried by GetProduct or ListProducts. When
-                        /// inventory is updated with CreateProduct and UpdateProduct, the specified inventory field
-                        /// value(s) will overwrite any existing value(s) while ignoring the last update time for this
-                        /// field. Furthermore, the last update time for the specified inventory fields will be
-                        /// overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory
-                        /// fields are set in CreateProductRequest.product, then any pre-existing inventory information
-                        /// for this product will be used. If no inventory fields are set in
-                        /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
-                        /// Pre-existing inventory information can only be updated with SetInventory,
-                        /// ProductService.AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// are not immediately manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. When inventory is updated with ProductService.CreateProduct and
+                        /// ProductService.UpdateProduct, the specified inventory field value(s) will overwrite any
+                        /// existing value(s) while ignoring the last update time for this field. Furthermore, the last
+                        /// update time for the specified inventory fields will be overwritten to the time of the
+                        /// ProductService.CreateProduct or ProductService.UpdateProduct request. If no inventory fields
+                        /// are set in CreateProductRequest.product, then any pre-existing inventory information for
+                        /// this product will be used. If no inventory fields are set in SetInventoryRequest.set_mask,
+                        /// then any existing inventory information will be preserved. Pre-existing inventory
+                        /// information can only be updated with ProductService.SetInventory,
+                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. This
+                        /// feature is only available for users who have Retail Search enabled. Please enable Retail
+                        /// Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -1491,18 +1496,19 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// each inventory field. This process is asynchronous and does not require the Product to exist
                         /// before updating fulfillment information. If the request is valid, the update will be
                         /// enqueued and processed downstream. As a consequence, when a response is returned, updates
-                        /// are not immediately manifested in the Product queried by GetProduct or ListProducts. When
-                        /// inventory is updated with CreateProduct and UpdateProduct, the specified inventory field
-                        /// value(s) will overwrite any existing value(s) while ignoring the last update time for this
-                        /// field. Furthermore, the last update time for the specified inventory fields will be
-                        /// overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory
-                        /// fields are set in CreateProductRequest.product, then any pre-existing inventory information
-                        /// for this product will be used. If no inventory fields are set in
-                        /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
-                        /// Pre-existing inventory information can only be updated with SetInventory,
-                        /// ProductService.AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// are not immediately manifested in the Product queried by ProductService.GetProduct or
+                        /// ProductService.ListProducts. When inventory is updated with ProductService.CreateProduct and
+                        /// ProductService.UpdateProduct, the specified inventory field value(s) will overwrite any
+                        /// existing value(s) while ignoring the last update time for this field. Furthermore, the last
+                        /// update time for the specified inventory fields will be overwritten to the time of the
+                        /// ProductService.CreateProduct or ProductService.UpdateProduct request. If no inventory fields
+                        /// are set in CreateProductRequest.product, then any pre-existing inventory information for
+                        /// this product will be used. If no inventory fields are set in SetInventoryRequest.set_mask,
+                        /// then any existing inventory information will be preserved. Pre-existing inventory
+                        /// information can only be updated with ProductService.SetInventory,
+                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. This
+                        /// feature is only available for users who have Retail Search enabled. Please enable Retail
+                        /// Search on Cloud Console before using this feature.
                         /// </summary>
                         public class SetInventoryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -3436,11 +3442,12 @@ namespace Google.Apis.CloudRetail.v2beta
                     public virtual string DeviceType { get; set; }
 
                     /// <summary>
-                    /// The language filters applied to the output suggestions. If set, it should contain the language
-                    /// of the query. If not set, suggestions are returned without considering language restrictions.
-                    /// This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags
-                    /// for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of language
-                    /// codes is 3.
+                    /// Note that this field applies for `user-data` dataset only. For requests with `cloud-retail`
+                    /// dataset, setting this field has no effect. The language filters applied to the output
+                    /// suggestions. If set, it should contain the language of the query. If not set, suggestions are
+                    /// returned without considering language restrictions. This is the BCP-47 language code, such as
+                    /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
+                    /// Languages](https://tools.ietf.org/html/bcp47). The maximum number of language codes is 3.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
@@ -4800,7 +4807,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the RemoveFulfillmentPlaces operation. Currently empty because there is no
-    /// meaningful metadata populated from the RemoveFulfillmentPlaces method.
+    /// meaningful metadata populated from the ProductService.RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4810,7 +4817,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response
-    /// populated from the RemoveFulfillmentPlaces method.
+    /// populated from the ProductService.RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4820,7 +4827,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the RemoveLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the RemoveLocalInventories method.
+    /// meaningful metadata populated from the ProductService.RemoveLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2RemoveLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4829,8 +4836,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Response of the RemoveLocalInventories API. Currently empty because there is no meaningful response populated
-    /// from the RemoveLocalInventories method.
+    /// Response of the ProductService.RemoveLocalInventories API. Currently empty because there is no meaningful
+    /// response populated from the ProductService.RemoveLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2RemoveLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4840,7 +4847,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the SetInventory operation. Currently empty because there is no meaningful
-    /// metadata populated from the SetInventory method.
+    /// metadata populated from the ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2SetInventoryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4850,7 +4857,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Response of the SetInventoryRequest. Currently empty because there is no meaningful response populated from the
-    /// SetInventory method.
+    /// ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2SetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5184,7 +5191,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the RemoveFulfillmentPlaces operation. Currently empty because there is no
-    /// meaningful metadata populated from the RemoveFulfillmentPlaces method.
+    /// meaningful metadata populated from the ProductService.RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5194,7 +5201,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response
-    /// populated from the RemoveFulfillmentPlaces method.
+    /// populated from the ProductService.RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5204,7 +5211,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the RemoveLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the RemoveLocalInventories method.
+    /// meaningful metadata populated from the ProductService.RemoveLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5213,8 +5220,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Response of the RemoveLocalInventories API. Currently empty because there is no meaningful response populated
-    /// from the RemoveLocalInventories method.
+    /// Response of the ProductService.RemoveLocalInventories API. Currently empty because there is no meaningful
+    /// response populated from the ProductService.RemoveLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5224,7 +5231,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the SetInventory operation. Currently empty because there is no meaningful
-    /// metadata populated from the SetInventory method.
+    /// metadata populated from the ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2alphaSetInventoryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5234,7 +5241,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Response of the SetInventoryRequest. Currently empty because there is no meaningful response populated from the
-    /// SetInventory method.
+    /// ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2alphaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5714,10 +5721,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>Catalog level autocomplete config for customers to customize autocomplete feature's settings.</summary>
     public class GoogleCloudRetailV2betaCompletionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The input config for the import of the source data that contains the autocomplete allowlist
-        /// phrases uploaded by the customer.
-        /// </summary>
+        /// <summary>Output only. The source data for the latest import of the autocomplete allowlist phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowlistInputConfig")]
         public virtual GoogleCloudRetailV2betaCompletionDataInputConfig AllowlistInputConfig { get; set; }
 
@@ -5729,10 +5733,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoLearning")]
         public virtual System.Nullable<bool> AutoLearning { get; set; }
 
-        /// <summary>
-        /// Output only. The input config for the import of the source data that contains the / autocomplete denylist
-        /// phrases uploaded by the customer.
-        /// </summary>
+        /// <summary>Output only. The source data for the latest import of the autocomplete denylist phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denylistInputConfig")]
         public virtual GoogleCloudRetailV2betaCompletionDataInputConfig DenylistInputConfig { get; set; }
 
@@ -5787,8 +5788,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The input config for the import of the source data that contains the autocomplete phrases
-        /// uploaded by the customer.
+        /// Output only. The source data for the latest import of the autocomplete suggestion phrases.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionsInputConfig")]
         public virtual GoogleCloudRetailV2betaCompletionDataInputConfig SuggestionsInputConfig { get; set; }
@@ -7386,7 +7386,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the RemoveFulfillmentPlaces operation. Currently empty because there is no
-    /// meaningful metadata populated from the RemoveFulfillmentPlaces method.
+    /// meaningful metadata populated from the ProductService.RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7394,7 +7394,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for RemoveFulfillmentPlaces method.</summary>
+    /// <summary>Request message for ProductService.RemoveFulfillmentPlaces method.</summary>
     public class GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7437,7 +7437,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response
-    /// populated from the RemoveFulfillmentPlaces method.
+    /// populated from the ProductService.RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7447,7 +7447,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the RemoveLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the RemoveLocalInventories method.
+    /// meaningful metadata populated from the ProductService.RemoveLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2betaRemoveLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7455,7 +7455,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for RemoveLocalInventories method.</summary>
+    /// <summary>Request message for ProductService.RemoveLocalInventories method.</summary>
     public class GoogleCloudRetailV2betaRemoveLocalInventoriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7485,8 +7485,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Response of the RemoveLocalInventories API. Currently empty because there is no meaningful response populated
-    /// from the RemoveLocalInventories method.
+    /// Response of the ProductService.RemoveLocalInventories API. Currently empty because there is no meaningful
+    /// response populated from the ProductService.RemoveLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2betaRemoveLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8073,12 +8073,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string Key { get; set; }
 
         /// <summary>
-        /// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by
-        /// Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending.
-        /// Only applies to textual facets. If not set, textual values are sorted in [natural
-        /// order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given
-        /// by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by
-        /// FacetSpec.FacetKey.restricted_values.
+        /// The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means
+        /// order by SearchResponse.Facet.values.count descending. * "value desc", which means order by
+        /// SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are
+        /// sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted
+        /// in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given
+        /// by FacetSpec.FacetKey.restricted_values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -8096,11 +8096,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// The query that is used to compute facet for the given facet key. When provided, it will override the default
         /// behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter
         /// for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is
-        /// specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of
-        /// results that matches the query. For example, you can set a customized facet for "shipToStore", where
-        /// FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND
-        /// shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store
-        /// "123".
+        /// specified. In the response, SearchResponse.Facet.values.value will be always "1" and
+        /// SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can
+        /// set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query
+        /// is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products
+        /// that are both in stock and ship to store "123".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -8517,7 +8517,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata related to the progress of the SetInventory operation. Currently empty because there is no meaningful
-    /// metadata populated from the SetInventory method.
+    /// metadata populated from the ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2betaSetInventoryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8525,7 +8525,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for SetInventory method.</summary>
+    /// <summary>Request message for ProductService.SetInventory method.</summary>
     public class GoogleCloudRetailV2betaSetInventoryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8555,7 +8555,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// SetInventoryRequest.inventory.fulfillment_info.place_ids The last update time is recorded for the following
         /// inventory fields: * Product.price_info * Product.availability * Product.available_quantity *
         /// Product.fulfillment_info If a full overwrite of inventory information while ignoring timestamps is needed,
-        /// UpdateProduct should be invoked instead.
+        /// ProductService.UpdateProduct should be invoked instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual GoogleCloudRetailV2betaProduct Inventory { get; set; }
@@ -8581,7 +8581,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Response of the SetInventoryRequest. Currently empty because there is no meaningful response populated from the
-    /// SetInventory method.
+    /// ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2betaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {

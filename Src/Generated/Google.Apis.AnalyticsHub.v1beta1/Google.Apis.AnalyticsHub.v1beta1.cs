@@ -2366,7 +2366,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response when you subscribe to a listing. Empty for now.</summary>
+    /// <summary>Message for response when you subscribe to a listing.</summary>
     public class SubscribeListingResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
