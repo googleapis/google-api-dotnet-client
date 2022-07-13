@@ -47,6 +47,12 @@ build_site() {
   
   $DOCFX metadata -f --disableGitFeatures $json
   $DOCFX build --disableGitFeatures $json
+  
+  if [ ! -d $directory/obj/api ]
+  then
+    echo 'No metadata generated! Looks like docfx is broken...'
+    exit 1
+  fi
 
   sed -i "1s/^/baseUrl: https:\/\/googleapis.dev\/dotnet\/$package\/$version\/\n/" $directory/obj/site/xrefmap.yml
 }
