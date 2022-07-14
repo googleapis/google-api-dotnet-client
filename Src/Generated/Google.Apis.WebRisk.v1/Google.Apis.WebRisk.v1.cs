@@ -359,9 +359,9 @@ namespace Google.Apis.WebRisk.v1
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
 
-                /// <summary>High Recall Social Engineering list targeting any platform.</summary>
-                [Google.Apis.Util.StringValueAttribute("HIGH_RECALL")]
-                HIGHRECALL = 4,
+                /// <summary>Extended Coverage Social Engineering list targeting any platform.</summary>
+                [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING_EXTENDED_COVERAGE")]
+                SOCIALENGINEERINGEXTENDEDCOVERAGE = 5,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -995,9 +995,9 @@ namespace Google.Apis.WebRisk.v1
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
 
-                /// <summary>High Recall Social Engineering list targeting any platform.</summary>
-                [Google.Apis.Util.StringValueAttribute("HIGH_RECALL")]
-                HIGHRECALL = 4,
+                /// <summary>Extended Coverage Social Engineering list targeting any platform.</summary>
+                [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING_EXTENDED_COVERAGE")]
+                SOCIALENGINEERINGEXTENDEDCOVERAGE = 5,
             }
 
             /// <summary>
@@ -1137,9 +1137,9 @@ namespace Google.Apis.WebRisk.v1
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
 
-                /// <summary>High Recall Social Engineering list targeting any platform.</summary>
-                [Google.Apis.Util.StringValueAttribute("HIGH_RECALL")]
-                HIGHRECALL = 4,
+                /// <summary>Extended Coverage Social Engineering list targeting any platform.</summary>
+                [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING_EXTENDED_COVERAGE")]
+                SOCIALENGINEERINGEXTENDEDCOVERAGE = 5,
             }
 
             /// <summary>Required. The URI to be checked for matches.</summary>

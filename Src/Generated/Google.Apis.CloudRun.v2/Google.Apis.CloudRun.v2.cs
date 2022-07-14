@@ -2665,6 +2665,13 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2VolumeMount> VolumeMounts { get; set; }
 
+        /// <summary>
+        /// Container's working directory. If not specified, the container runtime's default will be used, which might
+        /// be configured in the container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
+        public virtual string WorkingDir { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3469,7 +3476,7 @@ namespace Google.Apis.CloudRun.v2.Data
     {
         /// <summary>
         /// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and
-        /// 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes *
+        /// 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes *
         /// Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of
         /// the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading
         /// zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r),

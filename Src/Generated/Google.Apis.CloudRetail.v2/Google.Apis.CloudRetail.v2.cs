@@ -4131,7 +4131,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>The previous PredictResponse.next_page_token.</summary>
+        /// <summary>This field is not used for now, please leave it unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 

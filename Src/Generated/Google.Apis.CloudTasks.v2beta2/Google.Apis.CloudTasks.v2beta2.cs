@@ -1065,6 +1065,73 @@ namespace Google.Apis.CloudTasks.v2beta2
                 }
 
                 /// <summary>
+                /// Creates and buffers a new task without the need to explicitly define a Task message. The queue must
+                /// be an http queue (i.e., must have HTTP target). This method is used for a simplified application of
+                /// Cloud Tasks queues in buffer and rate limitting HTTP requests.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                /// The queue must already exist.
+                /// </param>
+                public virtual BufferRequest Buffer(Google.Apis.CloudTasks.v2beta2.Data.BufferQueueRequest body, string name)
+                {
+                    return new BufferRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Creates and buffers a new task without the need to explicitly define a Task message. The queue must
+                /// be an http queue (i.e., must have HTTP target). This method is used for a simplified application of
+                /// Cloud Tasks queues in buffer and rate limitting HTTP requests.
+                /// </summary>
+                public class BufferRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.BufferQueueResponse>
+                {
+                    /// <summary>Constructs a new Buffer request.</summary>
+                    public BufferRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.BufferQueueRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The queue name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudTasks.v2beta2.Data.BufferQueueRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "buffer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta2/{+name}:buffer";
+
+                    /// <summary>Initializes Buffer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After
                 /// a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not.
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
@@ -2314,6 +2381,35 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for BufferQueue.</summary>
+    public class BufferQueueRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Body of the HTTP request. The body can take any generic value. The value will be written to the HttpRequest
+        /// of the [Task].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual HttpBody Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BufferQueue.</summary>
+    public class BufferQueueResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the created task. For example:
+        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. TASK_ID is randomly generated and
+        /// is unique within the queue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual string Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for canceling a lease using CancelLease.</summary>
     public class CancelLeaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2455,6 +2551,182 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a header message. A header can have a key and a value.</summary>
+    public class Header : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wraps the Header object.</summary>
+    public class HeaderOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>header embodying a key and a value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual Header Header { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http
+    /// method, headers, body and authorization for the http task.
+    /// </summary>
+    public class HttpRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error
+        /// to set body on a task with an incompatible HttpMethod.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        /// <summary>
+        /// HTTP request headers. This map contains the header field names and values. Headers can be set when running
+        /// the task is created or task is created. These headers represent a subset of the headers that will accompany
+        /// the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers
+        /// that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be
+        /// treated as service header. Service headers define properties of the task and are predefined in CloudTask. *
+        /// Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be
+        /// computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google
+        /// use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly
+        /// set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to
+        /// `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to
+        /// RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
+
+        /// <summary>The HTTP method to use for the request. The default is POST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated
+        /// and attached as an `Authorization` header in the HTTP request. This type of authorization should generally
+        /// only be used when calling Google APIs hosted on *.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthToken")]
+        public virtual OAuthToken OauthToken { get; set; }
+
+        /// <summary>
+        /// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be
+        /// generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be
+        /// used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token
+        /// yourself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
+        public virtual OidcToken OidcToken { get; set; }
+
+        /// <summary>
+        /// Required. The full url path that the request will be sent to. This string must begin with either "http://"
+        /// or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will
+        /// encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after
+        /// encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The
+        /// redirect is not counted as a separate attempt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the
+    /// target.
+    /// </summary>
+    public class HttpTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// HTTP target headers. This map contains the header field names and values. Headers will be set when running
+        /// the task is created and/or task is created. These headers represent a subset of the headers that will
+        /// accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of
+        /// headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will
+        /// be treated as service header. Service headers define properties of the task and are predefined in CloudTask.
+        /// * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will
+        /// be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google
+        /// use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly
+        /// set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to
+        /// `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to
+        /// RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+        /// Queue-level headers to override headers of all the tasks in the queue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerOverrides")]
+        public virtual System.Collections.Generic.IList<HeaderOverride> HeaderOverrides { get; set; }
+
+        /// <summary>
+        /// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that
+        /// if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated
+        /// and attached as an `Authorization` header in the HTTP request. This type of authorization should generally
+        /// only be used when calling Google APIs hosted on *.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthToken")]
+        public virtual OAuthToken OauthToken { get; set; }
+
+        /// <summary>
+        /// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be
+        /// generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be
+        /// used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token
+        /// yourself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
+        public virtual OidcToken OidcToken { get; set; }
+
+        /// <summary>Uri override. When specified modifies the execution Uri for all the tasks in the queue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriOverride")]
+        public virtual UriOverride UriOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2606,6 +2878,57 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains information needed for generating an [OAuth
+    /// token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally
+    /// only be used when calling Google APIs hosted on *.googleapis.com.
+    /// </summary>
+    public class OAuthToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// OAuth scope to be used for generating OAuth access token. If not specified,
+        /// "https://www.googleapis.com/auth/cloud-platform" will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth
+        /// token. The service account must be within the same project as the queue. The caller must have
+        /// iam.serviceAccounts.actAs permission for the service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information needed for generating an [OpenID Connect
+    /// token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used
+    /// for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+    /// </summary>
+    public class OidcToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>
+        /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC
+        /// token. The service account must be within the same project as the queue. The caller must have
+        /// iam.serviceAccounts.actAs permission for the service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PauseQueue.</summary>
     public class PauseQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2728,6 +3051,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpTarget")]
         public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; }
+
+        /// <summary>An http_target is used to override the target values for HTTP tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpTarget")]
+        public virtual HttpTarget HttpTarget { get; set; }
 
         /// <summary>
         /// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue
@@ -3091,6 +3418,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
+        /// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
+        public virtual HttpRequest HttpRequest { get; set; }
+
+        /// <summary>
         /// Optionally caller-specified in CreateTask. The task name. The task name must have the following format:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters
         /// ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying
@@ -3187,6 +3520,45 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden
+    /// depending on the configured values.
+    /// </summary>
+    public class UriOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is
+        /// "https://www.google.com", and host is set to "example.net", the overridden Uri will be
+        /// "https://example.net".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance,
+        /// for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<long> Port { get; set; }
+
+        /// <summary>Uri Query. Will replace the query part of the task uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Scheme override. When specified, the Uri scheme is replaced by the provided value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

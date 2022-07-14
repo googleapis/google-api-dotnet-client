@@ -5576,9 +5576,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
         /// pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
         /// CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-loaded CatalogAttributes. Only
-        /// CatalogAttributes that are not in use by products can be deleted. CatalogAttributes that are in use by
-        /// products cannot be deleted; however, their configuration properties will reset to default values upon
-        /// removal request. After catalog changes, it takes about 10 minutes for this field to update.
+        /// pre-loaded CatalogAttributes that are neither in use by products nor predefined can be deleted.
+        /// CatalogAttributes that are either in use by products or are predefined cannot be deleted; however, their
+        /// configuration properties will reset to default values upon removal request. After catalog changes, it takes
+        /// about 10 minutes for this field to update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inUse")]
         public virtual System.Nullable<bool> InUse { get; set; }
@@ -6602,7 +6603,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>The previous PredictResponse.next_page_token.</summary>
+        /// <summary>This field is not used for now, please leave it unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
