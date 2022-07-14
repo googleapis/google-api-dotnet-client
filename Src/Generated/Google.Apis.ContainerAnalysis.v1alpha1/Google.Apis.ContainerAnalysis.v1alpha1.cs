@@ -3331,6 +3331,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Describes the CIS benchmark version that is applicable to a given OS and os version.</summary>
     public class ComplianceVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benchmarkDocument")]
+        public virtual string BenchmarkDocument { get; set; }
+
         /// <summary>The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }

@@ -1205,6 +1205,25 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud SQL configuration.</summary>
+    public class CloudSQLConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Peering service used for peering with the Cloud SQL project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The name of network in Cloud SQL umbrella project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("umbrellaNetwork")]
+        public virtual string UmbrellaNetwork { get; set; }
+
+        /// <summary>The project number of Cloud SQL umbrella project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("umbrellaProject")]
+        public virtual System.Nullable<long> UmbrellaProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a private connection resource. A private connection is implemented as a VPC Network Peering
     /// connection between a service producer's VPC network and a service consumer's VPC network.
@@ -1250,6 +1269,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>Configuration information for a private service access connection.</summary>
     public class ConsumerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Represents one or multiple Cloud SQL configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudsqlConfigs")]
+        public virtual System.Collections.Generic.IList<CloudSQLConfig> CloudsqlConfigs { get; set; }
+
         /// <summary>Export custom routes flag value for peering from consumer to producer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerExportCustomRoutes")]
         public virtual System.Nullable<bool> ConsumerExportCustomRoutes { get; set; }

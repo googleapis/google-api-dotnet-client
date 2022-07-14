@@ -2485,9 +2485,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ApkSha256Hash { get; set; }
 
         /// <summary>
-        /// Package names of all packages that are associated with the particular user id. In most cases, this will be a
-        /// single package name, the package that has been assigned that user id. If multiple application share a uid
-        /// then all packages sharing uid will be included.
+        /// Package names of all packages that are associated with the particular user ID. In most cases, this will be a
+        /// single package name, the package that has been assigned that user ID. If multiple application share a UID
+        /// then all packages sharing UID will be included.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageNames")]
         public virtual System.Collections.Generic.IList<string> PackageNames { get; set; }
@@ -3700,8 +3700,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string AllowPersonalUsage { get; set; }
 
         /// <summary>
-        /// The length of time the enrollment token is valid, ranging from 1 minute to 90 days. If not specified, the
-        /// default duration is 1 hour.
+        /// The length of time the enrollment token is valid, ranging from 1 minute to Durations.MAX_VALUE
+        /// (https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
+        /// approximately 10,000 years. If not specified, the default duration is 1 hour. Please note that if requested
+        /// duration causes the resulting expiration_timestamp to exceed Timestamps.MAX_VALUE
+        /// (https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Timestamps.html#MAX_VALUE),
+        /// then expiration_timestamp is coerced to Timestamps.MAX_VALUE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
@@ -5975,7 +5979,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual CertValidationFailureEvent CertValidationFailureEvent { get; set; }
 
         /// <summary>
-        /// A TCP connect event was initiated through the standard network stack. Part of NETWORK_LOGS.
+        /// A TCP connect event was initiated through the standard network stack. Part of NETWORK_ACTIVITY_LOGS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectEvent")]
         public virtual ConnectEvent ConnectEvent { get; set; }
@@ -5988,7 +5992,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual CryptoSelfTestCompletedEvent CryptoSelfTestCompletedEvent { get; set; }
 
         /// <summary>
-        /// A DNS lookup event was initiated through the standard network stack. Part of NETWORK_LOGS.
+        /// A DNS lookup event was initiated through the standard network stack. Part of NETWORK_ACTIVITY_LOGS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsEvent")]
         public virtual DnsEvent DnsEvent { get; set; }
@@ -6095,7 +6099,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual RemoteLockEvent RemoteLockEvent { get; set; }
 
         /// <summary>
-        /// The work profile or company-owned device failed to wipe when when requested. This could be user initiated or
+        /// The work profile or company-owned device failed to wipe when requested. This could be user initiated or
         /// admin initiated e.g. delete was received. Part of SECURITY_LOGS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wipeFailureEvent")]
@@ -6266,8 +6270,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
-    /// The work profile or company-owned device failed to wipe when when requested. This could be user initiated or
-    /// admin initiated e.g. delete was received. Intentionally empty.
+    /// The work profile or company-owned device failed to wipe when requested. This could be user initiated or admin
+    /// initiated e.g. delete was received. Intentionally empty.
     /// </summary>
     public class WipeFailureEvent : Google.Apis.Requests.IDirectResponseSchema
     {

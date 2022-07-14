@@ -463,6 +463,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -552,6 +558,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -678,6 +692,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -773,6 +793,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -1785,6 +1813,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -1851,6 +1885,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -1926,6 +1968,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -1988,6 +2036,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -2122,6 +2178,12 @@ namespace Google.Apis.Drive.v3
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("ignoreDefaultVisibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
+
+            /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
 
             /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
@@ -2581,6 +2643,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -2621,6 +2689,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -2798,6 +2874,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -2901,6 +2983,14 @@ namespace Google.Apis.Drive.v3
                     DefaultValue = "false",
                     Pattern = null,
                 });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
                 {
                     Name = "includePermissionsForView",
@@ -2984,6 +3074,131 @@ namespace Google.Apis.Drive.v3
             }
         }
 
+        /// <summary>Lists the labels on a file.</summary>
+        /// <param name="fileId">The ID of the file.</param>
+        public virtual ListLabelsRequest ListLabels(string fileId)
+        {
+            return new ListLabelsRequest(service, fileId);
+        }
+
+        /// <summary>Lists the labels on a file.</summary>
+        public class ListLabelsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.LabelList>
+        {
+            /// <summary>Constructs a new ListLabels request.</summary>
+            public ListLabelsRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
+            {
+                FileId = fileId;
+                InitParameters();
+            }
+
+            /// <summary>The ID of the file.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>The maximum number of labels to return per page. When not set, this defaults to 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>
+            /// The token for continuing a previous list request on the next page. This should be set to the value of
+            /// 'nextPageToken' from the previous response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listLabels";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/listLabels";
+
+            /// <summary>Initializes ListLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Modifies the set of labels on a file.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">The ID of the file for which the labels are modified.</param>
+        public virtual ModifyLabelsRequest ModifyLabels(Google.Apis.Drive.v3.Data.ModifyLabelsRequest body, string fileId)
+        {
+            return new ModifyLabelsRequest(service, body, fileId);
+        }
+
+        /// <summary>Modifies the set of labels on a file.</summary>
+        public class ModifyLabelsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ModifyLabelsResponse>
+        {
+            /// <summary>Constructs a new ModifyLabels request.</summary>
+            public ModifyLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.ModifyLabelsRequest body, string fileId) : base(service)
+            {
+                FileId = fileId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The ID of the file for which the labels are modified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.ModifyLabelsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "modifyLabels";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/modifyLabels";
+
+            /// <summary>Initializes ModifyLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
         /// you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This
@@ -3024,6 +3239,12 @@ namespace Google.Apis.Drive.v3
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
+            /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
 
             /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
@@ -3100,6 +3321,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -3251,6 +3480,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -3349,6 +3584,12 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
             /// <summary>
+            /// A comma-separated list of IDs of labels to include in the labelInfo part of the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeLabels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IncludeLabels { get; set; }
+
+            /// <summary>
             /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
@@ -3395,6 +3636,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeLabels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeLabels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
@@ -6157,6 +6406,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>An overview of the labels on the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelInfo")]
+        public virtual LabelInfoData LabelInfo { get; set; }
+
         /// <summary>The last user to modify the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
         public virtual User LastModifyingUser { get; set; }
@@ -6515,6 +6768,10 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContentRestriction")]
             public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; }
 
+            /// <summary>Whether the current user can modify the labels on this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canModifyLabels")]
+            public virtual System.Nullable<bool> CanModifyLabels { get; set; }
+
             /// <summary>
             /// Whether the current user can move children of this folder outside of the shared drive. This is false
             /// when the item is not a folder. Only populated for items in shared drives.
@@ -6575,6 +6832,10 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadDrive")]
             public virtual System.Nullable<bool> CanReadDrive { get; set; }
+
+            /// <summary>Whether the current user can read the labels on this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canReadLabels")]
+            public virtual System.Nullable<bool> CanReadLabels { get; set; }
 
             /// <summary>
             /// Whether the current user can read the revisions resource of this file. For a shared drive item, whether
@@ -6767,6 +7028,17 @@ namespace Google.Apis.Drive.v3.Data
             }
         }
 
+        /// <summary>An overview of the labels on the file.</summary>
+        public class LabelInfoData
+        {
+            /// <summary>
+            /// The set of labels on the file as requested by the label IDs in the includeLabels parameter. By default,
+            /// no labels are returned.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+            public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
+        }
+
         /// <summary>Contains details about the link URLs that clients are using to refer to this item.</summary>
         public class LinkShareMetadataData
         {
@@ -6867,6 +7139,197 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The type of file that can be created with these IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a label and its fields.</summary>
+    public class Label : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A map of the label's fields keyed by the field ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IDictionary<string, LabelField> Fields { get; set; }
+
+        /// <summary>The ID of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>This is always drive#label</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The revision ID of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a label field.</summary>
+    public class LabelField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only present if valueType is dateString. RFC 3339 formatted date: YYYY-MM-DD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateString")]
+        public virtual System.Collections.Generic.IList<string> DateString { get; set; }
+
+        /// <summary>The identifier of this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Only present if valueType is integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integer")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Integer { get; set; }
+
+        /// <summary>This is always drive#labelField.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Only present if valueType is selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selection")]
+        public virtual System.Collections.Generic.IList<string> Selection { get; set; }
+
+        /// <summary>Only present if valueType is text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>Only present if valueType is user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual System.Collections.Generic.IList<User> User { get; set; }
+
+        /// <summary>
+        /// The field type. While new values may be supported in the future, the following are currently allowed:   -
+        /// dateString  - integer  - selection  - text  - user
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A modification to a label's field.</summary>
+    public class LabelFieldModification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the Field to be modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual string FieldId { get; set; }
+
+        /// <summary>This is always drive#labelFieldModification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Replaces a dateString field with these new values. The values must be strings in the RFC 3339 full-date
+        /// format: YYYY-MM-DD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setDateValues")]
+        public virtual System.Collections.Generic.IList<string> SetDateValues { get; set; }
+
+        /// <summary>Replaces an integer field with these new values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setIntegerValues")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SetIntegerValues { get; set; }
+
+        /// <summary>Replaces a selection field with these new values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setSelectionValues")]
+        public virtual System.Collections.Generic.IList<string> SetSelectionValues { get; set; }
+
+        /// <summary>Replaces a text field with these new values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setTextValues")]
+        public virtual System.Collections.Generic.IList<string> SetTextValues { get; set; }
+
+        /// <summary>Replaces a user field with these new values. The values must be valid email addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setUserValues")]
+        public virtual System.Collections.Generic.IList<string> SetUserValues { get; set; }
+
+        /// <summary>Unsets the values for this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsetValues")]
+        public virtual System.Nullable<bool> UnsetValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of labels.</summary>
+    public class LabelList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always drive#labelList</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The list of labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
+
+        /// <summary>
+        /// The page token for the next page of labels. This field will be absent if the end of the list has been
+        /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
+        /// from the first page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A modification to a label on a file. A LabelModification can be used to apply a label to a file, update an
+    /// existing label on a file, or remove a label from a file.
+    /// </summary>
+    public class LabelModification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of modifications to this label's fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldModifications")]
+        public virtual System.Collections.Generic.IList<LabelFieldModification> FieldModifications { get; set; }
+
+        /// <summary>This is always drive#labelModification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ID of the label to modify.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        /// <summary>If true, the label will be removed from the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeLabel")]
+        public virtual System.Nullable<bool> RemoveLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A request to modify the set of labels on a file. This request may contain many modifications that will either
+    /// all succeed or all fail transactionally.
+    /// </summary>
+    public class ModifyLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always drive#modifyLabelsRequest</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The list of modifications to apply to the labels on the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelModifications")]
+        public virtual System.Collections.Generic.IList<LabelModification> LabelModifications { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response to a ModifyLabels request. This contains only those labels which were added or updated by the request.
+    /// </summary>
+    public class ModifyLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always drive#modifyLabelsResponse</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The list of labels which were added or updated by the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modifiedLabels")]
+        public virtual System.Collections.Generic.IList<Label> ModifiedLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

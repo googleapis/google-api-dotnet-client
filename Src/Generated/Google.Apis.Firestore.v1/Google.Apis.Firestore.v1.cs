@@ -2582,12 +2582,6 @@ namespace Google.Apis.Firestore.v1
                 [Google.Apis.Util.RequestParameterAttribute("databaseId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DatabaseId { get; set; }
 
-                /// <summary>
-                /// If set, validate the request and preview the response, but do not actually create the database.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database Body { get; set; }
 
@@ -2618,14 +2612,6 @@ namespace Google.Apis.Firestore.v1
                     RequestParameters.Add("databaseId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "databaseId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "validateOnly",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

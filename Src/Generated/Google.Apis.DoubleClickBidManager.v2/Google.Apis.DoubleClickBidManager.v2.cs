@@ -293,7 +293,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
                 this.service = service;
             }
 
-            /// <summary>Retrieves a stored report.</summary>
+            /// <summary>Retrieves a report.</summary>
             /// <param name="queryId">Required. ID of the query the report is associated with.</param>
             /// <param name="reportId">Required. ID of the report to retrieve.</param>
             public virtual GetRequest Get(long queryId, long reportId)
@@ -301,7 +301,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
                 return new GetRequest(service, queryId, reportId);
             }
 
-            /// <summary>Retrieves a stored report.</summary>
+            /// <summary>Retrieves a report.</summary>
             public class GetRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v2.Data.Report>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -352,14 +352,14 @@ namespace Google.Apis.DoubleClickBidManager.v2
                 }
             }
 
-            /// <summary>Lists reports.</summary>
-            /// <param name="queryId">Required. Query ID with which the reports are associated.</param>
+            /// <summary>Lists reports associated with a query.</summary>
+            /// <param name="queryId">Required. ID of the query with which the reports are associated.</param>
             public virtual ListRequest List(long queryId)
             {
                 return new ListRequest(service, queryId);
             }
 
-            /// <summary>Lists reports.</summary>
+            /// <summary>Lists reports associated with a query.</summary>
             public class ListRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v2.Data.ListReportsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -369,14 +369,14 @@ namespace Google.Apis.DoubleClickBidManager.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Query ID with which the reports are associated.</summary>
+                /// <summary>Required. ID of the query with which the reports are associated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long QueryId { get; private set; }
 
                 /// <summary>
                 /// Name of a field used to order results. The default sorting order is ascending. To specify descending
                 /// order for a field, append a " desc" suffix. For example "key.reportId desc". Sorting is only
-                /// supported for the following fields: * key.reportId
+                /// supported for the following fields: * `key.reportId`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -482,14 +482,14 @@ namespace Google.Apis.DoubleClickBidManager.v2
             }
         }
 
-        /// <summary>Deletes a stored query as well as the associated stored reports.</summary>
-        /// <param name="queryId">Required. Query ID to delete.</param>
+        /// <summary>Deletes a query as well as the associated reports.</summary>
+        /// <param name="queryId">Required. ID of query to delete.</param>
         public virtual DeleteRequest Delete(long queryId)
         {
             return new DeleteRequest(service, queryId);
         }
 
-        /// <summary>Deletes a stored query as well as the associated stored reports.</summary>
+        /// <summary>Deletes a query as well as the associated reports.</summary>
         public class DeleteRequest : DoubleClickBidManagerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -499,7 +499,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
                 InitParameters();
             }
 
-            /// <summary>Required. Query ID to delete.</summary>
+            /// <summary>Required. ID of query to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
 
@@ -527,14 +527,14 @@ namespace Google.Apis.DoubleClickBidManager.v2
             }
         }
 
-        /// <summary>Retrieves a stored query.</summary>
-        /// <param name="queryId">Required. Query ID to retrieve.</param>
+        /// <summary>Retrieves a query.</summary>
+        /// <param name="queryId">Required. ID of query to retrieve.</param>
         public virtual GetRequest Get(long queryId)
         {
             return new GetRequest(service, queryId);
         }
 
-        /// <summary>Retrieves a stored query.</summary>
+        /// <summary>Retrieves a query.</summary>
         public class GetRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v2.Data.Query>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
                 InitParameters();
             }
 
-            /// <summary>Required. Query ID to retrieve.</summary>
+            /// <summary>Required. ID of query to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
 
@@ -572,13 +572,13 @@ namespace Google.Apis.DoubleClickBidManager.v2
             }
         }
 
-        /// <summary>Retrieves stored queries.</summary>
+        /// <summary>Lists queries created by the current user.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Retrieves stored queries.</summary>
+        /// <summary>Lists queries created by the current user.</summary>
         public class ListRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v2.Data.ListQueriesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -590,7 +590,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
             /// <summary>
             /// Name of a field used to order results. The default sorting order is ascending. To specify descending
             /// order for a field, append a " desc" suffix. For example "metadata.title desc". Sorting is only supported
-            /// for the following fields: * queryId * metadata.title
+            /// for the following fields: * `queryId` * `metadata.title`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -650,7 +650,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
 
         /// <summary>Runs a stored query to generate a report.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="queryId">Required. Query ID to run.</param>
+        /// <param name="queryId">Required. ID of query to run.</param>
         public virtual RunRequest Run(Google.Apis.DoubleClickBidManager.v2.Data.RunQueryRequest body, long queryId)
         {
             return new RunRequest(service, body, queryId);
@@ -667,7 +667,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
                 InitParameters();
             }
 
-            /// <summary>Required. Query ID to run.</summary>
+            /// <summary>Required. ID of query to run.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
 
@@ -835,17 +835,16 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a list of queries.</summary>
     public class ListQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page of queries. If this field is omitted,
+        /// A token, which can be sent as page_token to retrieve the next page of queries. If this field is omitted,
         /// there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Retrieved queries.</summary>
+        /// <summary>The list of queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<Query> Queries { get; set; }
 
@@ -853,11 +852,10 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a list of reports.</summary>
     public class ListReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page of reports. If this field is omitted,
+        /// A token, which can be sent as page_token to retrieve the next page of reports. If this field is omitted,
         /// there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -908,7 +906,10 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual Options Options { get; set; }
 
-        /// <summary>Report type.</summary>
+        /// <summary>
+        /// The type of the report. The type of the report will dictate what dimesions, filters, and metrics can be
+        /// used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -927,9 +928,7 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
 
-        /// <summary>
-        /// Indicates the position of the path the filter should match to (first, last, or any event in path).
-        /// </summary>
+        /// <summary>The position of the path the filter should match to (first, last, or any event in path).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathMatchPosition")]
         public virtual string PathMatchPosition { get; set; }
 
@@ -952,18 +951,18 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Dimension Filter on path events.</summary>
+    /// <summary>Dimension filter on path events.</summary>
     public class PathQueryOptionsFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Dimension the filter is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>Indicates how the filter should be matched to the value.</summary>
+        /// <summary>Match logic of the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
         public virtual string Match { get; set; }
 
-        /// <summary>Value to filter on.</summary>
+        /// <summary>Values to filter on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
@@ -986,7 +985,10 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
         public virtual System.Nullable<long> QueryId { get; set; }
 
-        /// <summary>Information on how often and when to run a query.</summary>
+        /// <summary>
+        /// Information on how often and when to run a query. If `ONE_TIME` is set to the frequency field, the query
+        /// will only be run at the time of creation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual QuerySchedule Schedule { get; set; }
 
@@ -997,7 +999,9 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
     /// <summary>Query metadata.</summary>
     public class QueryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Range of report data.</summary>
+        /// <summary>
+        /// Range of report data. All reports will be based on the same time zone as used by the advertiser.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRange")]
         public virtual DataRange DataRange { get; set; }
 
@@ -1011,7 +1015,7 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
 
         /// <summary>
         /// List of email addresses which are sent email notifications when the report is finished. Separate from
-        /// `sendNotification`.
+        /// send_notification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareEmailAddress")]
         public virtual System.Collections.Generic.IList<string> ShareEmailAddress { get; set; }
@@ -1024,7 +1028,7 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information on how frequently and when to run a query.</summary>
+    /// <summary>Information on when and how frequently to run a query.</summary>
     public class QuerySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Date to periodically run the query until. Not applicable to `ONE_TIME` frequency.</summary>

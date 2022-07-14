@@ -1593,7 +1593,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Represents the Compliance Status of this workload</summary>
     public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Count of active Violations in the Workload.</summary>
+        /// <summary>Count of active Violations in the Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
         public virtual System.Nullable<int> ActiveViolationCount { get; set; }
 

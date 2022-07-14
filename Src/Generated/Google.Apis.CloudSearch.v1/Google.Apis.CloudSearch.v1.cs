@@ -6858,6 +6858,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessOptions")]
         public virtual FreshnessOptions FreshnessOptions { get; set; }
 
+        /// <summary>
+        /// Operators that can be used to filter suggestions. For Suggest API, only operators mentioned here will be
+        /// honored in the FilterOptions. Only TEXT and ENUM operators are supported. NOTE: "objecttype", "type" and
+        /// "mimetype" are already supported. This property is to configure schema specific operators. Even though this
+        /// is an array, only one operator can be specified. This is an array for future extensibility. Operators
+        /// mapping to multiple properties within the same object are not supported. If the operator spans across
+        /// different object types, this option has to be set once for each object definition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionFilteringOperators")]
+        public virtual System.Collections.Generic.IList<string> SuggestionFilteringOperators { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

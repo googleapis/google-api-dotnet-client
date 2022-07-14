@@ -668,6 +668,184 @@ namespace Google.Apis.ChromeManagement.v1
                 this.service = service;
             }
 
+            /// <summary>
+            /// Generate report of the number of devices expiring in each month of the selected time frame. Devices are
+            /// grouped by auto update expiration date and model. Further information can be found
+            /// [here](https://support.google.com/chrome/a/answer/10564947).
+            /// </summary>
+            /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
+            public virtual CountChromeDevicesReachingAutoExpirationDateRequest CountChromeDevicesReachingAutoExpirationDate(string customer)
+            {
+                return new CountChromeDevicesReachingAutoExpirationDateRequest(service, customer);
+            }
+
+            /// <summary>
+            /// Generate report of the number of devices expiring in each month of the selected time frame. Devices are
+            /// grouped by auto update expiration date and model. Further information can be found
+            /// [here](https://support.google.com/chrome/a/answer/10564947).
+            /// </summary>
+            public class CountChromeDevicesReachingAutoExpirationDateRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse>
+            {
+                /// <summary>Constructs a new CountChromeDevicesReachingAutoExpirationDate request.</summary>
+                public CountChromeDevicesReachingAutoExpirationDateRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The customer ID or "my_customer" prefixed with "customers/".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If included returns all
+                /// devices that have already expired and devices with auto expiration date equal to or earlier than the
+                /// maximum date.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("maxAueDate", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MaxAueDate { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If included returns all
+                /// devices that have already expired and devices with auto expiration date equal to or later than the
+                /// minimum date.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("minAueDate", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MinAueDate { get; set; }
+
+                /// <summary>
+                /// Optional. The organizational unit ID, if omitted, will return data for all organizational units.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeDevicesReachingAutoExpirationDate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countChromeDevicesReachingAutoExpirationDate";
+
+                /// <summary>Initializes CountChromeDevicesReachingAutoExpirationDate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("maxAueDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxAueDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("minAueDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "minAueDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Counts of ChromeOS devices that have not synced policies or have lacked user activity in the past 28
+            /// days, are out of date, or are not complaint. Further information can be found here
+            /// https://support.google.com/chrome/a/answer/10564947
+            /// </summary>
+            /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
+            public virtual CountChromeDevicesThatNeedAttentionRequest CountChromeDevicesThatNeedAttention(string customer)
+            {
+                return new CountChromeDevicesThatNeedAttentionRequest(service, customer);
+            }
+
+            /// <summary>
+            /// Counts of ChromeOS devices that have not synced policies or have lacked user activity in the past 28
+            /// days, are out of date, or are not complaint. Further information can be found here
+            /// https://support.google.com/chrome/a/answer/10564947
+            /// </summary>
+            public class CountChromeDevicesThatNeedAttentionRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse>
+            {
+                /// <summary>Constructs a new CountChromeDevicesThatNeedAttention request.</summary>
+                public CountChromeDevicesThatNeedAttentionRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The customer ID or "my_customer" prefixed with "customers/".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Optional. The ID of the organizational unit. If omitted, all data will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Required. Mask of the fields that should be populated in the returned report.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadMask { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeDevicesThatNeedAttention";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countChromeDevicesThatNeedAttention";
+
+                /// <summary>Initializes CountChromeDevicesThatNeedAttention parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Generate report of installed Chrome versions.</summary>
             /// <param name="customer">
             /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
@@ -1692,6 +1870,47 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response containing a list of devices expiring in each month of a selected time frame. Counts are grouped by
+    /// model and Auto Update Expiration date.
+    /// </summary>
+    public class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of reports sorted by auto update expiration date in ascending order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceAueCountReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceAueCountReport> DeviceAueCountReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing counts for devices that need attention.</summary>
+    public class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of ChromeOS devices have not synced policies in the past 28 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noRecentPolicySyncCount")]
+        public virtual System.Nullable<long> NoRecentPolicySyncCount { get; set; }
+
+        /// <summary>Number of ChromeOS devices that have not seen any user activity in the past 28 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noRecentUserActivityCount")]
+        public virtual System.Nullable<long> NoRecentUserActivityCount { get; set; }
+
+        /// <summary>Number of devices whose OS version is not compliant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersionNotCompliantCount")]
+        public virtual System.Nullable<long> OsVersionNotCompliantCount { get; set; }
+
+        /// <summary>Number of devices that are pending an OS update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingUpdate")]
+        public virtual System.Nullable<long> PendingUpdate { get; set; }
+
+        /// <summary>Number of devices that are unable to apply a policy due to an OS version mismatch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsupportedPolicyCount")]
+        public virtual System.Nullable<long> UnsupportedPolicyCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing requested browser versions details and counts.</summary>
     public class GoogleChromeManagementV1CountChromeVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1810,6 +2029,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The name of the machine within its local network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machine")]
         public virtual string Machine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Report for CountChromeDevicesPerAueDateResponse, contains the count of devices of a specific model and auto
+    /// update expiration range.
+    /// </summary>
+    public class GoogleChromeManagementV1DeviceAueCountReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enum value of month corresponding to the auto update expiration date in UTC time zone. If the device is
+        /// already expired, this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aueMonth")]
+        public virtual string AueMonth { get; set; }
+
+        /// <summary>
+        /// Int value of year corresponding to the Auto Update Expiration date in UTC time zone. If the device is
+        /// already expired, this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aueYear")]
+        public virtual System.Nullable<long> AueYear { get; set; }
+
+        /// <summary>Count of devices of this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Boolean value for whether or not the device has already expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expired")]
+        public virtual System.Nullable<bool> Expired { get; set; }
+
+        /// <summary>Public model name of the devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2193,7 +2448,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lanIpAddress")]
         public virtual string LanIpAddress { get; set; }
 
-        /// <summary>Output only. Receiving bit rate measured in megabytes per second.</summary>
+        /// <summary>Output only. Receiving bit rate measured in Megabits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receivingBitRateMbps")]
         public virtual System.Nullable<long> ReceivingBitRateMbps { get; set; }
 
@@ -2209,7 +2464,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signalStrengthDbm")]
         public virtual System.Nullable<int> SignalStrengthDbm { get; set; }
 
-        /// <summary>Output only. Transmission bit rate measured in megabytes per second.</summary>
+        /// <summary>Output only. Transmission bit rate measured in Megabits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transmissionBitRateMbps")]
         public virtual System.Nullable<long> TransmissionBitRateMbps { get; set; }
 

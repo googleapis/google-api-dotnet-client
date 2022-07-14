@@ -375,6 +375,7 @@ namespace Google.Apis.Document.v1
             {
                 this.service = service;
                 Operations = new OperationsResource(service);
+                ProcessorTypes = new ProcessorTypesResource(service);
                 Processors = new ProcessorsResource(service);
             }
 
@@ -582,6 +583,102 @@ namespace Google.Apis.Document.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ProcessorTypes resource.</summary>
+            public virtual ProcessorTypesResource ProcessorTypes { get; }
+
+            /// <summary>The "processorTypes" collection of methods.</summary>
+            public class ProcessorTypesResource
+            {
+                private const string Resource = "processorTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProcessorTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the processor types that exist.</summary>
+                /// <param name="parent">
+                /// Required. The location of processor type to list. The available processor types may depend on the
+                /// allow-listing on projects. Format: `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists the processor types that exist.</summary>
+                public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ListProcessorTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location of processor type to list. The available processor types may depend on
+                    /// the allow-listing on projects. Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of processor types to return. If unspecified, at most 100 processor types
+                    /// will be returned. The maximum value is 500; values above 500 will be coerced to 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Used to retrieve the next page of results, empty if at the end of the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/processorTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2883,6 +2980,37 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encodes the detailed information of a barcode.</summary>
+    public class GoogleCloudDocumentaiV1Barcode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93:
+        /// Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type.
+        /// EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type.
+        /// AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
+        public virtual string RawValue { get; set; }
+
+        /// <summary>
+        /// Value format describes the format of the value that a barcode encodes. The supported formats are:
+        /// CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number.
+        /// PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO:
+        /// Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueFormat")]
+        public virtual string ValueFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The common config to specify a set of documents used as input.</summary>
     public class GoogleCloudDocumentaiV1BatchDocumentsInputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3360,6 +3488,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentPageBlock> Blocks { get; set; }
 
+        /// <summary>A list of detected barcodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedBarcodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode> DetectedBarcodes { get; set; }
+
         /// <summary>A list of detected languages together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> DetectedLanguages { get; set; }
@@ -3495,6 +3627,21 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The history of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1DocumentProvenance Provenance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detected barcode.</summary>
+    public class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed barcode information of the DetectedBarcode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("barcode")]
+        public virtual GoogleCloudDocumentaiV1Barcode Barcode { get; set; }
+
+        /// <summary>Layout for DetectedBarcode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual GoogleCloudDocumentaiV1DocumentPageLayout Layout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4050,6 +4197,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentSplitter")]
         public virtual System.Nullable<bool> DocumentSplitter { get; set; }
 
+        /// <summary>If set, all the nested entities must be prefixed with the parents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixedNamingOnProperties")]
+        public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4288,6 +4439,21 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>A message providing more details about the human review state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for list processor types.</summary>
+    public class GoogleCloudDocumentaiV1ListProcessorTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to the next page, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The processor types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1ProcessorType> ProcessorTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4726,6 +4892,37 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encodes the detailed information of a barcode.</summary>
+    public class GoogleCloudDocumentaiV1beta1Barcode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93:
+        /// Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type.
+        /// EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type.
+        /// AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
+        public virtual string RawValue { get; set; }
+
+        /// <summary>
+        /// Value format describes the format of the value that a barcode encodes. The supported formats are:
+        /// CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number.
+        /// PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO:
+        /// Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueFormat")]
+        public virtual string ValueFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response to an batch document processing request. This is returned in the LRO Operation after the operation is
     /// complete.
@@ -4993,6 +5190,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageBlock> Blocks { get; set; }
 
+        /// <summary>A list of detected barcodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedBarcodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode> DetectedBarcodes { get; set; }
+
         /// <summary>A list of detected languages together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage> DetectedLanguages { get; set; }
@@ -5128,6 +5329,21 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The history of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detected barcode.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed barcode information of the DetectedBarcode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("barcode")]
+        public virtual GoogleCloudDocumentaiV1beta1Barcode Barcode { get; set; }
+
+        /// <summary>Layout for DetectedBarcode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5854,6 +6070,37 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encodes the detailed information of a barcode.</summary>
+    public class GoogleCloudDocumentaiV1beta2Barcode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93:
+        /// Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type.
+        /// EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type.
+        /// AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
+        public virtual string RawValue { get; set; }
+
+        /// <summary>
+        /// Value format describes the format of the value that a barcode encodes. The supported formats are:
+        /// CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number.
+        /// PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO:
+        /// Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueFormat")]
+        public virtual string ValueFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response to an batch document processing request. This is returned in the LRO Operation after the operation is
     /// complete.
@@ -6154,6 +6401,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageBlock> Blocks { get; set; }
 
+        /// <summary>A list of detected barcodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedBarcodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode> DetectedBarcodes { get; set; }
+
         /// <summary>A list of detected languages together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage> DetectedLanguages { get; set; }
@@ -6289,6 +6540,21 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The history of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detected barcode.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed barcode information of the DetectedBarcode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("barcode")]
+        public virtual GoogleCloudDocumentaiV1beta2Barcode Barcode { get; set; }
+
+        /// <summary>Layout for DetectedBarcode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7650,10 +7916,10 @@ namespace Google.Apis.Document.v1.Data
     /// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal
     /// service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations
     /// (roads, towns, mountains). In typical usage an address would be created via user input or from importing
-    /// existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address
-    /// widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for
-    /// input or editing of fields outside countries where that field is used. For more guidance on how to use this
-    /// schema, please see: https://support.google.com/business/answer/6397478
+    /// existing data, depending on the type of process. Advice on address input / editing: - Use an
+    /// internationalization-ready address widget such as https://github.com/google/libaddressinput) - Users should not
+    /// be presented with UI elements for input or editing of fields outside countries where that field is used. For
+    /// more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
     /// </summary>
     public class GoogleTypePostalAddress : Google.Apis.Requests.IDirectResponseSchema
     {

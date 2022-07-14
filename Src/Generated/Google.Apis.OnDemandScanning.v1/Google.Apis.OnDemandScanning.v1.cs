@@ -846,6 +846,19 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single
+    /// resource.
+    /// </summary>
+    public class AnalysisCompleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
+        public virtual System.Collections.Generic.IList<string> AnalysisType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AnalyzePackagesMetadata contains metadata for an active scan of a container image.</summary>
     public class AnalyzePackagesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1321,6 +1334,15 @@ namespace Google.Apis.OnDemandScanning.v1.Data
     /// <summary>Provides information about the analysis status of a discovered resource.</summary>
     public class DiscoveryOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisCompleted")]
+        public virtual AnalysisCompleted AnalysisCompleted { get; set; }
+
+        /// <summary>
+        /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisError")]
+        public virtual System.Collections.Generic.IList<Status> AnalysisError { get; set; }
+
         /// <summary>The status of discovery for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatus")]
         public virtual string AnalysisStatus { get; set; }

@@ -1427,6 +1427,15 @@ namespace Google.Apis.MyBusinessAccountManagement.v1.Data
     public class Admin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Immutable. The name of the Account resource that this Admin refers to. Used when calling CreateAccountAdmin
+        /// or CreateLocationAdmin to invite UserGroups or LocationGroups as admins, respectively. If both this field
+        /// and `admin` are set on `CREATE` requests, this field takes precedence and the email address in `admin` will
+        /// be ignored. Format: `accounts/{account}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual string Account { get; set; }
+
+        /// <summary>
         /// Optional. The name of the admin. When making the initial invitation, this is the invitee's email address. On
         /// `GET` calls, the user's email address is returned if the invitation is still pending. Otherwise, it contains
         /// the user's first and last names. This field is only needed to be set during admin creation.

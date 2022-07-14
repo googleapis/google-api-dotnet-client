@@ -3493,8 +3493,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string FallbackText { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the message was last updated. If the message was never updated, this field
-        /// matches `create_time`.
+        /// Output only. The time at which the message was last edited by a user. If the message has never been edited,
+        /// this field is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual object LastUpdateTime { get; set; }
