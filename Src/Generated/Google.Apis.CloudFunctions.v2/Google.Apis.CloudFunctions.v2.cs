@@ -299,6 +299,7 @@ namespace Google.Apis.CloudFunctions.v2
                 this.service = service;
                 Functions = new FunctionsResource(service);
                 Operations = new OperationsResource(service);
+                Runtimes = new RuntimesResource(service);
             }
 
             /// <summary>Gets the Functions resource.</summary>
@@ -316,6 +317,330 @@ namespace Google.Apis.CloudFunctions.v2
                 public FunctionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new function. If a function with the given name already exists in the specified project,
+                /// the long running operation will return `ALREADY_EXISTS` error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location in which the function should be created, specified in the format
+                /// `projects/*/locations/*`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudFunctions.v2.Data.Function body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new function. If a function with the given name already exists in the specified project,
+                /// the long running operation will return `ALREADY_EXISTS` error.
+                /// </summary>
+                public class CreateRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.Function body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location in which the function should be created, specified in the
+                    /// format `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The ID to use for the function, which will become the final component of the function's resource
+                    /// name. This value should be 4-63 characters, and valid characters are /a-z-/.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("functionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FunctionId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.Function Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/functions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("functionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "functionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a function with the given name from the specified project. If the given function is used by
+                /// some trigger, the trigger will be updated to remove this function.
+                /// </summary>
+                /// <param name="name">Required. The name of the function which should be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a function with the given name from the specified project. If the given function is used by
+                /// some trigger, the trigger will be updated to remove this function.
+                /// </summary>
+                public class DeleteRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the function which should be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a signed URL for downloading deployed function source code. The URL is only valid for a
+                /// limited period and should be used within 30 minutes of generation. For more information about the
+                /// signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of function for which source code Google Cloud Storage signed URL should be
+                /// generated.
+                /// </param>
+                public virtual GenerateDownloadUrlRequest GenerateDownloadUrl(Google.Apis.CloudFunctions.v2.Data.GenerateDownloadUrlRequest body, string name)
+                {
+                    return new GenerateDownloadUrlRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Returns a signed URL for downloading deployed function source code. The URL is only valid for a
+                /// limited period and should be used within 30 minutes of generation. For more information about the
+                /// signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls
+                /// </summary>
+                public class GenerateDownloadUrlRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.GenerateDownloadUrlResponse>
+                {
+                    /// <summary>Constructs a new GenerateDownloadUrl request.</summary>
+                    public GenerateDownloadUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.GenerateDownloadUrlRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of function for which source code Google Cloud Storage signed URL should be
+                    /// generated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.GenerateDownloadUrlRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateDownloadUrl";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:generateDownloadUrl";
+
+                    /// <summary>Initializes GenerateDownloadUrl parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a signed URL for uploading a function source code. For more information about the signed URL
+                /// usage see: https://cloud.google.com/storage/docs/access-control/signed-urls. Once the function
+                /// source code upload is complete, the used signed URL should be provided in CreateFunction or
+                /// UpdateFunction request as a reference to the function source code. When uploading source code to the
+                /// generated signed URL, please follow these restrictions: * Source file type should be a zip file. *
+                /// No credentials should be attached - the signed URLs provide access to the target bucket using
+                /// internal service identity; if credentials were attached, the identity from the credentials would be
+                /// used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT
+                /// request, these two headers need to be specified: * `content-type: application/zip` And this header
+                /// SHOULD NOT be specified: * `Authorization: Bearer YOUR_TOKEN`
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location in which the Google Cloud Storage signed URL should be generated,
+                /// specified in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual GenerateUploadUrlRequest GenerateUploadUrl(Google.Apis.CloudFunctions.v2.Data.GenerateUploadUrlRequest body, string parent)
+                {
+                    return new GenerateUploadUrlRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Returns a signed URL for uploading a function source code. For more information about the signed URL
+                /// usage see: https://cloud.google.com/storage/docs/access-control/signed-urls. Once the function
+                /// source code upload is complete, the used signed URL should be provided in CreateFunction or
+                /// UpdateFunction request as a reference to the function source code. When uploading source code to the
+                /// generated signed URL, please follow these restrictions: * Source file type should be a zip file. *
+                /// No credentials should be attached - the signed URLs provide access to the target bucket using
+                /// internal service identity; if credentials were attached, the identity from the credentials would be
+                /// used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT
+                /// request, these two headers need to be specified: * `content-type: application/zip` And this header
+                /// SHOULD NOT be specified: * `Authorization: Bearer YOUR_TOKEN`
+                /// </summary>
+                public class GenerateUploadUrlRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.GenerateUploadUrlResponse>
+                {
+                    /// <summary>Constructs a new GenerateUploadUrl request.</summary>
+                    public GenerateUploadUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.GenerateUploadUrlRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location in which the Google Cloud Storage signed URL should be
+                    /// generated, specified in the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.GenerateUploadUrlRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateUploadUrl";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/functions:generateUploadUrl";
+
+                    /// <summary>Initializes GenerateUploadUrl parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns a function with the given name from the requested project.</summary>
+                /// <param name="name">Required. The name of the function which details should be obtained.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Returns a function with the given name from the requested project.</summary>
+                public class GetRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Function>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the function which details should be obtained.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>
@@ -390,6 +715,194 @@ namespace Google.Apis.CloudFunctions.v2
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns a list of functions that belong to the requested project.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the function should be listed, specified in the format
+                /// `projects/*/locations/*` If you want to list functions in all locations, use "-" in place of a
+                /// location. When listing functions in all locations, if one or more location(s) are unreachable, the
+                /// response will contain functions from all reachable locations along with the names of any unreachable
+                /// locations.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Returns a list of functions that belong to the requested project.</summary>
+                public class ListRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.ListFunctionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the function should be listed, specified in the
+                    /// format `projects/*/locations/*` If you want to list functions in all locations, use "-" in place
+                    /// of a location. When listing functions in all locations, if one or more location(s) are
+                    /// unreachable, the response will contain functions from all reachable locations along with the
+                    /// names of any unreachable locations.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The filter for Functions that match the filter expression, following the syntax outlined in
+                    /// https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The sorting order of the resources returned. Value should be a comma separated list of fields.
+                    /// The default sorting oder is ascending. See https://google.aip.dev/132#ordering.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Maximum number of functions to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListFunctionsResponse`; indicates that this is a continuation of
+                    /// a prior `ListFunctions` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/functions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates existing function.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// A user-defined name of the function. Function names must be unique globally and match pattern
+                /// `projects/*/locations/*/functions/*`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudFunctions.v2.Data.Function body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates existing function.</summary>
+                public class PatchRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.Function body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// A user-defined name of the function. Function names must be unique globally and match pattern
+                    /// `projects/*/locations/*/functions/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The list of fields to be updated. If no field mask is provided, all provided fields in the
+                    /// request will be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.Function Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -714,6 +1227,90 @@ namespace Google.Apis.CloudFunctions.v2
                 }
             }
 
+            /// <summary>Gets the Runtimes resource.</summary>
+            public virtual RuntimesResource Runtimes { get; }
+
+            /// <summary>The "runtimes" collection of methods.</summary>
+            public class RuntimesResource
+            {
+                private const string Resource = "runtimes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RuntimesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Returns a list of runtimes that are supported for the requested project.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the runtimes should be listed, specified in the format
+                /// `projects/*/locations/*`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Returns a list of runtimes that are supported for the requested project.</summary>
+                public class ListRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.ListRuntimesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the runtimes should be listed, specified in the
+                    /// format `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The filter for Runtimes that match the filter expression, following the syntax outlined in
+                    /// https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/runtimes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -907,6 +1504,153 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the Build step of the function that builds a container from the given source.</summary>
+    public class BuildConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The Cloud Build name of the latest successful deployment of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual string Build { get; set; }
+
+        /// <summary>
+        /// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption
+        /// key. This is the repository to which the function docker image will be pushed after it is built by Cloud
+        /// Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region.
+        /// It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project
+        /// repositories are not supported. Cross-location repositories are not supported. Repository format must be
+        /// 'DOCKER'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerRepository")]
+        public virtual string DockerRepository { get; set; }
+
+        /// <summary>
+        /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name
+        /// suffix, if not specified. For backward compatibility, if function with given name is not found, then the
+        /// system will try to use function named "function". For Node.js this is name of a function exported by the
+        /// module specified in `source_location`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
+        public virtual string EntryPoint { get; set; }
+
+        /// <summary>User-provided build-time environment variables for the function</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
+
+        /// <summary>
+        /// The runtime in which to run the function. Required when deploying a new function, optional when updating an
+        /// existing function. For a complete list of possible choices, see the [`gcloud` command
+        /// reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual string Runtime { get; set; }
+
+        /// <summary>The location of the function source code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual Source Source { get; set; }
+
+        /// <summary>Output only. A permanent fixed identifier for source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenance")]
+        public virtual SourceProvenance SourceProvenance { get; set; }
+
+        /// <summary>
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this
+        /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are
+        /// the project id and region respectively where the worker pool is defined and {workerPool} is the short name
+        /// of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service
+        /// Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers
+        /// Builder (roles/cloudbuild.customworkers.builder) in the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filters events based on exact matches on the CloudEvents attributes.</summary>
+    public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of a CloudEvents attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
+        public virtual string Attribute { get; set; }
+
+        /// <summary>
+        /// Optional. The operator used for matching the events with the value of the filter. If not specified, only
+        /// events that have an exact key-value pair specified in the filter are matched. The only allowed value is
+        /// `match-path-pattern`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
+        /// <summary>Required. The value for the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes EventTrigger, used to request events to be sent from another service.</summary>
+    public class EventTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the channel associated with the trigger in
+        /// `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive
+        /// events from Eventarc SaaS partners.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>Criteria used to filter events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
+        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
+
+        /// <summary>
+        /// Required. The type of event to observe. For example: `google.cloud.audit.log.v1.written` or
+        /// `google.cloud.pubsub.topic.v1.messagePublished`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the
+        /// event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type
+        /// `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function
+        /// deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
+
+        /// <summary>Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
+        public virtual string RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The email of the trigger's service account. The service account must have permission to invoke
+        /// Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default
+        /// service account: `{project_number}-compute@developer.gserviceaccount.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the Eventarc trigger. The format of this field is
+        /// `projects/{project}/locations/{region}/triggers/{trigger}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; }
+
+        /// <summary>
+        /// The region that the trigger will be in. The trigger will only receive events originating in this region. It
+        /// can be the same region as the function, a different region or multi-region, or the global region. If not
+        /// provided, defaults to the same region as the function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerRegion")]
+        public virtual string TriggerRegion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -946,6 +1690,211 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes a Cloud Function that contains user computation executed in response to an event. It encapsulates
+    /// function and trigger configurations.
+    /// </summary>
+    public class Function : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes the Build step of the function that builds a container from the given source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
+        public virtual BuildConfig BuildConfig { get; set; }
+
+        /// <summary>User-provided description of a function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Describe whether the function is gen1 or gen2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>
+        /// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in
+        /// another service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTrigger")]
+        public virtual EventTrigger EventTrigger { get; set; }
+
+        /// <summary>Labels associated with this Cloud Function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// A user-defined name of the function. Function names must be unique globally and match pattern
+        /// `projects/*/locations/*/functions/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfig")]
+        public virtual ServiceConfig ServiceConfig { get; set; }
+
+        /// <summary>Output only. State of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. State Messages for this Cloud Function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2StateMessage> StateMessages { get; set; }
+
+        /// <summary>Output only. The last update timestamp of a Cloud Function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request of `GenerateDownloadUrl` method.</summary>
+    public class GenerateDownloadUrlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of `GenerateDownloadUrl` method.</summary>
+    public class GenerateDownloadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The generated Google Cloud Storage signed URL that should be used for function source code download.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
+        public virtual string DownloadUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request of `GenerateSourceUploadUrl` method.</summary>
+    public class GenerateUploadUrlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of `GenerateSourceUploadUrl` method.</summary>
+    public class GenerateUploadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The location of the source code in the upload bucket. Once the archive is uploaded using the `upload_url`
+        /// use this field to set the `function.build_config.source.storage_source` during CreateFunction and
+        /// UpdateFunction. Generation defaults to 0, as Cloud Storage provides a new generation only upon uploading a
+        /// new object or version of an object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
+        public virtual StorageSource StorageSource { get; set; }
+
+        /// <summary>
+        /// The generated Google Cloud Storage signed URL that should be used for a function source code upload. The
+        /// uploaded file should be a zip archive which contains a function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
+        public virtual string UploadUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleCloudFunctionsV2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
+        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The original request that started the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
+        public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
+
+        /// <summary>Mechanism for reporting in-progress stages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2Stage> Stages { get; set; }
+
+        /// <summary>Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each Stage of the deployment process</summary>
+    public class GoogleCloudFunctionsV2Stage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Message describing the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Link to the current Stage resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>Current state of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>State messages from the current Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2StateMessage> StateMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Informational messages about the state of the Cloud Function or Operation.</summary>
+    public class GoogleCloudFunctionsV2StateMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Severity of the state message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>One-word CamelCase type of the state message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1145,6 +2094,30 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `ListFunctions` method.</summary>
+    public class ListFunctionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The functions that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functions")]
+        public virtual System.Collections.Generic.IList<Function> Functions { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Locations that could not be reached. The response does not include any functions from these locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1170,6 +2143,17 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ListRuntimes` method.</summary>
+    public class ListRuntimesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The runtimes that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimes")]
+        public virtual System.Collections.Generic.IList<Runtime> Runtimes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1372,6 +2356,272 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
+    public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by
+        /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
+        public virtual string BranchName { get; set; }
+
+        /// <summary>Explicit commit SHA to build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
+
+        /// <summary>
+        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
+        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld
+        /// (no leading slash allowed)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; }
+
+        /// <summary>
+        /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is
+        /// assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the Cloud Source Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
+        public virtual string RepoName { get; set; }
+
+        /// <summary>
+        /// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2
+        /// and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
+        public virtual string TagName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a runtime and any special information (e.g., deprecation status) related to it.</summary>
+    public class Runtime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user facing name, eg 'Go 1.13', 'Node.js 12', etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The environment for the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The name of the runtime, e.g., 'go113', 'nodejs12', etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The stage of life this runtime is in, e.g., BETA, GA, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stage")]
+        public virtual string Stage { get; set; }
+
+        /// <summary>Warning messages, e.g., a deprecation warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from
+    /// secret manager and expose it as an environment variable.
+    /// </summary>
+    public class SecretEnvVar : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Project identifier (preferably project number but can also be the project ID) of the project that contains
+        /// the secret. If not set, it is assumed that the secret is in the same project as the function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the secret in secret manager (not the full resource name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>
+        /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version
+        /// for secret environment variables as any updates to the secret value is not reflected until new instances
+        /// start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a single version.</summary>
+    public class SecretVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Relative path of the file under the mount path where the secret value for this version will be fetched and
+        /// made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount
+        /// the secret value file at `/etc/secrets/secret_foo`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with
+        /// secret volumes as secret value changes are reflected immediately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret
+    /// manager and make it available as files mounted at the requested paths within the application container.
+    /// </summary>
+    public class SecretVolume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The path within the container to mount the secret volume. For example, setting the mount_path as
+        /// `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will
+        /// also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
+        public virtual string MountPath { get; set; }
+
+        /// <summary>
+        /// Project identifier (preferably project number but can also be the project ID) of the project that contains
+        /// the secret. If not set, it is assumed that the secret is in the same project as the function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the secret in secret manager (not the full resource name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>
+        /// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made
+        /// available in a file named after the secret under the mount point.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<SecretVersion> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).</summary>
+    public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to
+        /// true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any.
+        /// On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allTrafficOnLatestRevision")]
+        public virtual System.Nullable<bool> AllTrafficOnLatestRevision { get; set; }
+
+        /// <summary>
+        /// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no
+        /// unit is supplied the value is interpreted as bytes. See
+        /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        /// a full description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMemory")]
+        public virtual string AvailableMemory { get; set; }
+
+        /// <summary>Environment variables that shall be available during function execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
+
+        /// <summary>The ingress settings for the function, controlling what traffic can reach it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressSettings")]
+        public virtual string IngressSettings { get; set; }
+
+        /// <summary>
+        /// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such
+        /// as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the
+        /// specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to
+        /// factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max
+        /// Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
+        public virtual System.Nullable<int> MaxInstanceCount { get; set; }
+
+        /// <summary>
+        /// The limit on the minimum number of function instances that may coexist at a given time. Function instances
+        /// are kept in idle state for a short period after they finished executing the request to reduce cold start
+        /// time for subsequent requests. Setting a minimum instance count will ensure that the given number of
+        /// instances are kept running in idle state always. This can help with cold start times when jump in incoming
+        /// request count occurs after the idle instance would have been stopped in the default case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
+        public virtual System.Nullable<int> MinInstanceCount { get; set; }
+
+        /// <summary>Output only. The name of service revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>Secret environment variables configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnvironmentVariables")]
+        public virtual System.Collections.Generic.IList<SecretEnvVar> SecretEnvironmentVariables { get; set; }
+
+        /// <summary>Secret volumes configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVolumes")]
+        public virtual System.Collections.Generic.IList<SecretVolume> SecretVolumes { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the service associated with a Function. The format of this field is
+        /// `projects/{project}/locations/{region}/services/{service}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>
+        /// The email of the service's service account. If empty, defaults to
+        /// `{project_number}-compute@developer.gserviceaccount.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// The function execution timeout. Execution is considered failed and can be terminated if the function is not
+        /// completed at the end of the timeout period. Defaults to 60 seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
+        public virtual System.Nullable<int> TimeoutSeconds { get; set; }
+
+        /// <summary>Output only. URI of the Service deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>
+        /// The Serverless VPC Access connector that this cloud function can connect to. The format of this field is
+        /// `projects/*/locations/*/connectors/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcConnector")]
+        public virtual string VpcConnector { get; set; }
+
+        /// <summary>The egress settings for the connector, controlling what traffic is diverted through it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcConnectorEgressSettings")]
+        public virtual string VpcConnectorEgressSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1389,6 +2639,38 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The location of the function source code.</summary>
+    public class Source : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If provided, get the source from this location in a Cloud Source Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
+        public virtual RepoSource RepoSource { get; set; }
+
+        /// <summary>If provided, get the source from this location in Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
+        public virtual StorageSource StorageSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
+    /// </summary>
+    public class SourceProvenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
+        public virtual RepoSource ResolvedRepoSource { get; set; }
+
+        /// <summary>A copy of the build's `source.storage_source`, if exists, with any generations resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
+        public virtual StorageSource ResolvedStorageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1418,6 +2700,34 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in an archive file in Google Cloud Storage.</summary>
+    public class StorageSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google Cloud Storage bucket containing the source (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`)
+        /// containing source to build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

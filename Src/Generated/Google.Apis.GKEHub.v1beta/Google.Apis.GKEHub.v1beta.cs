@@ -3255,6 +3255,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
         public virtual PolicyControllerMonitoringConfig Monitoring { get; set; }
 
+        /// <summary>Enables the ability to mutate resources using Policy Controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
+        public virtual System.Nullable<bool> MutationEnabled { get; set; }
+
         /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
         /// being evaluated.
