@@ -3839,17 +3839,19 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Insert cuepoints in a broadcast</summary>
-        public virtual InsertCuepointRequest InsertCuepoint()
+        /// <param name="body">The body of the request.</param>
+        public virtual InsertCuepointRequest InsertCuepoint(Google.Apis.YouTube.v3.Data.Cuepoint body)
         {
-            return new InsertCuepointRequest(service);
+            return new InsertCuepointRequest(service, body);
         }
 
         /// <summary>Insert cuepoints in a broadcast</summary>
         public class InsertCuepointRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.Cuepoint>
         {
             /// <summary>Constructs a new InsertCuepoint request.</summary>
-            public InsertCuepointRequest(Google.Apis.Services.IClientService service) : base(service)
+            public InsertCuepointRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Cuepoint body) : base(service)
             {
+                Body = body;
                 InitParameters();
             }
 
@@ -3893,43 +3895,11 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
 
-            [Google.Apis.Util.RequestParameterAttribute("resource.cueType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ResourceCueTypeEnum> ResourceCueType { get; set; }
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.YouTube.v3.Data.Cuepoint Body { get; set; }
 
-            public enum ResourceCueTypeEnum
-            {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("cueTypeUnspecified")]
-                CueTypeUnspecified = 0,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("cueTypeAd")]
-                CueTypeAd = 1,
-            }
-
-            /// <summary>The duration of this cuepoint.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource.durationSecs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> ResourceDurationSecs { get; set; }
-
-            [Google.Apis.Util.RequestParameterAttribute("resource.etag", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ResourceEtag { get; set; }
-
-            /// <summary>The identifier for cuepoint resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource.id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ResourceId { get; set; }
-
-            /// <summary>
-            /// The time when the cuepoint should be inserted by offset to the broadcast actual start time.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource.insertionOffsetTimeMs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> ResourceInsertionOffsetTimeMs { get; set; }
-
-            /// <summary>
-            /// The wall clock time at which the cuepoint should be inserted. Only one of insertion_offset_time_ms and
-            /// walltime_ms may be set at a time.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource.walltimeMs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> ResourceWalltimeMs { get; set; }
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "insertCuepoint";
@@ -3971,54 +3941,6 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
                 {
                     Name = "part",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("resource.cueType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource.cueType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("resource.durationSecs", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource.durationSecs",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("resource.etag", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource.etag",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("resource.id", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource.id",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("resource.insertionOffsetTimeMs", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource.insertionOffsetTimeMs",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("resource.walltimeMs", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource.walltimeMs",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

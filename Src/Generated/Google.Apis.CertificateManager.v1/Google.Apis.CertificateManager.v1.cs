@@ -2807,39 +2807,6 @@ namespace Google.Apis.CertificateManager.v1.Data
     }
 
     /// <summary>
-    /// ResourcesCount represents the resource that stores aggregated project's info in the given location, e.g.: total
-    /// number of certificates assigned to the project.
-    /// </summary>
-    public class ResourcesCount : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The count of certificates.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
-        public virtual System.Nullable<ulong> Certificates { get; set; }
-
-        /// <summary>
-        /// Required. Input only. The time of the computation. The field is input only, used in Create and Update calls.
-        /// For Update call, new values of selected resources are set if their compute_time is younger than the
-        /// persisted ones, e.g.: If you support 3 types of resources: A, B and C, and you have: 'A' resource count
-        /// computed at timestamp = 3 'B' resource count computed at timestamp = 10 'C' resource count computed at
-        /// timestamp = 5 And you're going to update all of them with compute_time = 8, only 'A' and 'C' will be
-        /// updated, as 'B' already has fresher data. For Get call a ResourcesCount instance contains the freshest
-        /// values for every type.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computeTime")]
-        public virtual object ComputeTime { get; set; }
-
-        /// <summary>
-        /// The singleton resource of the resources count. Must be in the format
-        /// `projects/*/locations/*/resourcesCounts/single`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such
     /// certificates before they expire remains the user's responsibility.
     /// </summary>

@@ -2564,7 +2564,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Required. List of host names to match. Matched against the ":authority" header in http requests. At least
         /// one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix
-        /// match (example // *.myorg.com") or a presence(any) match "*".
+        /// match (example "*.myorg.com") or a presence (any) match "*".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
         public virtual System.Collections.Generic.IList<string> Hosts { get; set; }
@@ -2673,7 +2673,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class GoogleCloudNetworksecurityV1beta1GrpcEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+        /// Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUri")]
         public virtual string TargetUri { get; set; }
@@ -2899,7 +2899,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specification of HTTP header match atrributes.</summary>
+    /// <summary>Specification of HTTP header match attributes.</summary>
     public class HttpHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3229,8 +3229,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer
-        /// can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, //
-        /// */service-account") or a presence match "*". Authorization based on the principal name without certificate
+        /// can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example,
+        /// "*/service-account") or a presence match "*". Authorization based on the principal name without certificate
         /// validation (configured by ServerTlsPolicy resource) is considered insecure.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
