@@ -159,4 +159,13 @@ namespace Google.Apis.Auth.Tests.OAuth2
                     Encoding.UTF8)
             });
     }
+
+    /// <summary>
+    /// Throws an  <see cref="HttpRequestException"/> when attempting to fetch the token.
+    /// </summary>
+    internal class ResponseExceptionOnFetchingTokenMessageHandler : CountableMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken) =>
+            throw new HttpRequestException("Couldn't reach server.");
+    }
 }

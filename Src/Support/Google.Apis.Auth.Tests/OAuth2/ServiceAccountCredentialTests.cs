@@ -408,6 +408,46 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal("a", token);
         }
 
+        [Fact]
+        public async Task AccessToken_ExceptionRetry_NoDefaultRetry()
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var handler = new ResponseExceptionOnFetchingTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                // Let's force access token fetching
+                UseJwtAccessWithScopes = false,
+                Scopes = new[] { "scope1", "scope2" },
+                Clock = clock,
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+
+            await Assert.ThrowsAsync<HttpRequestException>(() => cred.GetAccessTokenForRequestAsync("uri0"));
+            Assert.Equal(1, handler.Calls);
+        }
+
+        [Fact]
+        public async Task AccessToken_ExceptionRetry_ConfiguredRetry()
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var handler = new ResponseExceptionOnFetchingTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                // Let's force access token fetching
+                UseJwtAccessWithScopes = false,
+                Scopes = new[] { "scope1", "scope2" },
+                Clock = clock,
+                HttpClientFactory = new MockHttpClientFactory(handler),
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.UnsuccessfulResponse503
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+
+            await Assert.ThrowsAsync<HttpRequestException>(() => cred.GetAccessTokenForRequestAsync("uri0"));
+            // Exceptions are retried 3 times by default.
+            Assert.Equal(3, handler.Calls);
+        }
+
         private class DummyAccessMethod : IAccessMethod
         {
             public string GetAccessToken(HttpRequestMessage request) => throw new NotImplementedException();
