@@ -8143,6 +8143,13 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>Information involved in an HTTP/HTTPS Uptime check request.</summary>
     public class HttpCheck : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If present, the check will only pass if the HTTP response status code is in this set of status codes. If
+        /// empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedResponseStatusCodes")]
+        public virtual System.Collections.Generic.IList<ResponseStatusCode> AcceptedResponseStatusCodes { get; set; }
+
         /// <summary>The authentication information. Optional when creating an HTTP check; defaults to empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authInfo")]
         public virtual BasicAuthentication AuthInfo { get; set; }
@@ -9589,6 +9596,23 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The resource type of the group members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+    /// </summary>
+    public class ResponseStatusCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A class of status codes to accept.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusClass")]
+        public virtual string StatusClass { get; set; }
+
+        /// <summary>A status code to accept.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusValue")]
+        public virtual System.Nullable<int> StatusValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

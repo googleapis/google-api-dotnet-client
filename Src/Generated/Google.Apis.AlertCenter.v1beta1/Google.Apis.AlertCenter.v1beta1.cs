@@ -1313,6 +1313,27 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual object UpdateTime { get; set; }
     }
 
+    /// <summary>
+    /// The explanation message associated with ApnsCertificationExpiring and ApnsCertificationExpired alerts.
+    /// </summary>
+    public class ApnsCertificateExpirationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apple ID used for the certificate, may be blank if admins did not enter it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appleId")]
+        public virtual string AppleId { get; set; }
+
+        /// <summary>The expiration date of the APNS Certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual object ExpirationTime { get; set; }
+
+        /// <summary>The UID for the certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Alerts from App Maker to notify admins to set up default SQL instance.</summary>
     public class AppMakerSqlSetupNotification : Google.Apis.Requests.IDirectResponseSchema
     {

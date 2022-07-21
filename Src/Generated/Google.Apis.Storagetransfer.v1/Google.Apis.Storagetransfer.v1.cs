@@ -1432,6 +1432,39 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An AwsS3CompatibleData resource.</summary>
+    public class AwsS3CompatibleData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the name of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        /// <summary>Required. Specifies the endpoint of the storage service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'.
+        /// This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Specifies the region to sign requests with. This can be left blank if requests should be signed with an
+        /// empty region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>A S3 compatible metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("s3Metadata")]
+        public virtual S3CompatibleMetadata S3Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is
     /// the S3 object's key name.
@@ -2041,6 +2074,43 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+    /// </summary>
+    public class S3CompatibleMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the authentication and authorization method used by the storage service. When not specified,
+        /// Transfer Service will attempt to determine right auth method to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authMethod")]
+        public virtual string AuthMethod { get; set; }
+
+        /// <summary>
+        /// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to
+        /// determine the right API to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listApi")]
+        public virtual string ListApi { get; set; }
+
+        /// <summary>
+        /// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol
+        /// NETWORK_PROTOCOL_HTTPS is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>
+        /// Specifies the API request model used to call the storage service. When not specified, the default value of
+        /// RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestModel")]
+        public virtual string RequestModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Transfers can be scheduled to recur or to run just once.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2436,7 +2506,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
         public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; }
 
-        /// <summary>Represents the selected metadata options for a transfer job. This feature is in Preview.</summary>
+        /// <summary>Represents the selected metadata options for a transfer job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataOptions")]
         public virtual MetadataOptions MetadataOptions { get; set; }
 
@@ -2462,6 +2532,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Configuration for running a transfer.</summary>
     public class TransferSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An AWS S3 compatible data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsS3CompatibleDataSource")]
+        public virtual AwsS3CompatibleData AwsS3CompatibleDataSource { get; set; }
+
         /// <summary>An AWS S3 data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3DataSource")]
         public virtual AwsS3Data AwsS3DataSource { get; set; }

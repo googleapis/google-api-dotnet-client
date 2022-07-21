@@ -1618,8 +1618,8 @@ namespace Google.Apis.CloudRetail.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
-                    /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
+                    /// `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or
+                    /// `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend
                     /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
                     /// Recommendations AI serving config or placement. Before you can request predictions from your
                     /// model, you must create at least one serving config or placement for it. For more information,
@@ -1645,11 +1645,11 @@ namespace Google.Apis.CloudRetail.v2
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
-                        /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
-                        /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
-                        /// Recommendations AI serving config or placement. Before you can request predictions from your
-                        /// model, you must create at least one serving config or placement for it. For more
+                        /// `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or
+                        /// `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We
+                        /// recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of
+                        /// the Recommendations AI serving config or placement. Before you can request predictions from
+                        /// your model, you must create at least one serving config or placement for it. For more
                         /// information, see [Managing serving configurations]
                         /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
                         /// configs can be seen at
@@ -1783,8 +1783,8 @@ namespace Google.Apis.CloudRetail.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
-                    /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
+                    /// `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or
+                    /// `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend
                     /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
                     /// Recommendations AI serving config or placement. Before you can request predictions from your
                     /// model, you must create at least one serving config or placement for it. For more information,
@@ -1810,11 +1810,11 @@ namespace Google.Apis.CloudRetail.v2
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
-                        /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
-                        /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
-                        /// Recommendations AI serving config or placement. Before you can request predictions from your
-                        /// model, you must create at least one serving config or placement for it. For more
+                        /// `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or
+                        /// `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We
+                        /// recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of
+                        /// the Recommendations AI serving config or placement. Before you can request predictions from
+                        /// your model, you must create at least one serving config or placement for it. For more
                         /// information, see [Managing serving configurations]
                         /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
                         /// configs can be seen at
@@ -3574,8 +3574,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>
         /// Custom attributes for the suggestion term. * For "user-data", the attributes are additional custom
         /// attributes ingested through BigQuery. * For "cloud-retail", the attributes are product attributes generated
-        /// by Cloud Retail. This is an experimental feature. Contact Retail Search support team if you are interested
-        /// in enabling it.
+        /// by Cloud Retail. It requires UserEvent.product_details is imported properly.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CustomAttribute> Attributes { get; set; }
@@ -4101,7 +4100,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// results, the API will return generic (unfiltered) popular products. If you only want results strictly
         /// matching the filters, set `strictFiltering` to True in `PredictRequest.params` to receive empty results
         /// instead. Note that the API will never return items with storageStatus of "EXPIRED" or "DELETED" regardless
-        /// of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute based
+        /// of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute-based
         /// expressions are expected instead of the above described tag-based syntax. Examples: * (colors: ANY("Red",
         /// "Blue")) AND NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR
         /// categories: ANY("Phones"))
@@ -4131,7 +4130,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>This field is not used for now, please leave it unset.</summary>
+        /// <summary>This field is not used for now, leave it unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
@@ -4148,8 +4147,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// and adjusts prediction results based on product price. * `diversityLevel`: String. Default empty. If set to
         /// be non-empty, then it needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity',
         /// 'high-diversity', 'auto-diversity'}. This gives request-level control and adjusts prediction results based
-        /// on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field will
-        /// be interpreteted according to the new, attribute-based syntax.
+        /// on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field is
+        /// interpreteted according to the new, attribute-based syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -5448,7 +5447,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// Contains the spell corrected query, if found. If the spell correction type is AUTOMATIC, then the search
-        /// results are based on corrected_query. Otherwise the original query will be used for search.
+        /// results are based on corrected_query. Otherwise the original query is used for search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("correctedQuery")]
         public virtual string CorrectedQuery { get; set; }
@@ -6034,6 +6033,20 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata associated with a create operation.</summary>
+    public class GoogleCloudRetailV2alphaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this create applies to. Format:
+        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2alphaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6211,6 +6224,179 @@ namespace Google.Apis.CloudRetail.v2.Data
     }
 
     /// <summary>
+    /// Metadata that describes the training and serving parameters of a Model. A Model can be associated with a
+    /// ServingConfig and then queried through the Predict api.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp the Recommendation Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The state of data requirements for this model: DATA_OK and DATA_ERROR. Recommendation model
+        /// cannot be trained if the data is in DATA_ERROR state. Recommendation model can have DATA_ERROR state even if
+        /// serving state is ACTIVE: models were trained successfully before, but cannot be refreshed because model no
+        /// longer has sufficient data for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the model. Should be human readable, used to display Recommendation Models in
+        /// the Retail Pantheon Dashboard. UTF-8 encoded string with limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. If RECOMMENDATIONS_FILTERING_ENABLED, recommendation filtering by attributes is enabled for the
+        /// model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringOption")]
+        public virtual string FilteringOption { get; set; }
+
+        /// <summary>Output only. The timestamp when the latest successful tune finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
+        public virtual object LastTuneTime { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id} catalog_id has
+        /// char limit of 50. recommendation_model_id has char limit of 40.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`,
+        /// `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of
+        /// recommendation: `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// `frequently-bought-together` =&amp;gt; `revenue_per_order`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>Optional. The page optimization config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageOptimizationConfig")]
+        public virtual GoogleCloudRetailV2alphaModelPageOptimizationConfig PageOptimizationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the
+        /// TuneModel method. Default value is PERIODIC_TUNING_ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicTuningState")]
+        public virtual string PeriodicTuningState { get; set; }
+
+        /// <summary>Output only. The serving state of the model: ACTIVE, NOT_ACTIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
+        public virtual string ServingState { get; set; }
+
+        /// <summary>
+        /// Optional. The training state that the model is in (e.g. TRAINING or PAUSED). Since part of the cost of
+        /// running the service is frequency of training - this can be used to determine when to train model in order to
+        /// control cost. If not specified: the default value for CreateModel method is TRAINING. the default value for
+        /// UpdateModel method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Output only. The tune operation associated with the model. Can be used to determine if there is an ongoing
+        /// tune for this recommendation. Empty field implies no tune is goig on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningOperation")]
+        public virtual string TuningOperation { get; set; }
+
+        /// <summary>
+        /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
+        /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, 'similar-items', 'buy-it-again',
+        /// `recently-viewed`(readonly value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp the Recommendation Model was last updated. E.g. if a Recommendation Model was paused
+        /// - this would be the time the pause was initiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which
+    /// serving configurations to consider for each panel. The purpose of this model is to optimize which ServingConfig
+    /// to show on which panels in way that optimizes the visitors shopping journey.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaModelPageOptimizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The type of UserEvent this page optimization is shown for. Each page has an associated event type
+        /// - this will be the corresponding event type for the page that the page optimization model is used on.
+        /// Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page
+        /// viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed *
+        /// `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type
+        /// `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageOptimizationEventType")]
+        public virtual string PageOptimizationEventType { get; set; }
+
+        /// <summary>Required. A list of panel configurations. Limit = 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel> Panels { get; set; }
+
+        /// <summary>
+        /// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels
+        /// at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restriction")]
+        public virtual string Restriction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.</summary>
+    public class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This has to be a valid ServingConfig identifier. e.g. for a ServingConfig with full name:
+        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config` this would be
+        /// 'my_candidate_config'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigId")]
+        public virtual string ServingConfigId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An individual panel with a list of ServingConfigs to consider for it.</summary>
+    public class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The candidates to consider on the panel. Limit = 10.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate> Candidates { get; set; }
+
+        /// <summary>
+        /// Required. The default candidate (in case the model fails at serving time, we can fall back to the default).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCandidate")]
+        public virtual GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate DefaultCandidate { get; set; }
+
+        /// <summary>Optional. The name to display for the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the Purge operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -6354,6 +6540,27 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2alphaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2alphaTuneModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this tune applies to. Format:
+        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2alphaTuneModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

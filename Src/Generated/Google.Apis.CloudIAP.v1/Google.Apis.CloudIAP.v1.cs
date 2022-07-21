@@ -1578,6 +1578,10 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generateTroubleshootingUri")]
         public virtual System.Nullable<bool> GenerateTroubleshootingUri { get; set; }
 
+        /// <summary>Whether to generate remediation token on access denied events to this application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationTokenGenerationEnabled")]
+        public virtual System.Nullable<bool> RemediationTokenGenerationEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1585,6 +1589,10 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Access related settings for IAP protected apps.</summary>
     public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Settings to configure and enable allowed domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedDomainsSettings")]
+        public virtual AllowedDomainsSettings AllowedDomainsSettings { get; set; }
+
         /// <summary>Configuration to allow cross-origin requests via IAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corsSettings")]
         public virtual CorsSettings CorsSettings { get; set; }
@@ -1606,6 +1614,24 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// <summary>Settings to configure reauthentication policies in IAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
         public virtual ReauthSettings ReauthSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for IAP allowed domains. Allows the customers to restrict access to the app by only allowing
+    /// requests from the listed trusted domains.
+    /// </summary>
+    public class AllowedDomainsSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of trusted domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
+
+        /// <summary>Configuration for customers to opt in for the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1727,9 +1753,9 @@ namespace Google.Apis.CloudIAP.v1.Data
     }
 
     /// <summary>
-    /// Configuration for RCTokens generated for service mesh workloads protected by IAP. RCTokens are IAP generated
-    /// JWTs that can be verified at the application. The RCToken is primarily used for service mesh deployments, and
-    /// can be scoped to a single mesh by configuring the audience field accordingly
+    /// Configuration for RCToken generated for service mesh workloads protected by IAP. RCToken are IAP generated JWTs
+    /// that can be verified at the application. The RCToken is primarily used for service mesh deployments, and can be
+    /// scoped to a single mesh by configuring the audience field accordingly.
     /// </summary>
     public class CsmSettings : Google.Apis.Requests.IDirectResponseSchema
     {

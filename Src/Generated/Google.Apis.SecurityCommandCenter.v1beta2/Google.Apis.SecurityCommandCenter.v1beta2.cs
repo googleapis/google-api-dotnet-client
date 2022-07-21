@@ -4711,6 +4711,50 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Conveys information about a Kubernetes access review (e.g. kubectl auth can-i ...) that was involved in a
+    /// finding.
+    /// </summary>
+    public class AccessReview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Group is the API Group of the Resource. "*" means all.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Name is the name of the resource being requested. Empty means all.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Namespace of the action being requested. Currently, there is no distinction between no namespace and all
+        /// namespaces. Both are represented by "" (empty).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
+
+        /// <summary>Resource is the optional resource type requested. "*" means all.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Subresource is the optional subresource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subresource")]
+        public virtual string Subresource { get; set; }
+
+        /// <summary>
+        /// Verb is a Kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy. "*" means
+        /// all.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>Version is the API Version of the Resource. "*" means all.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
     public class Compliance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4791,6 +4835,35 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>A list of contacts</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
         public virtual System.Collections.Generic.IList<Contact> Contacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container associated with the finding.</summary>
+    public class Container : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional container image id, when provided by the container runtime. Uniquely identifies the container image
+        /// launched using a container image digest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageId")]
+        public virtual string ImageId { get; set; }
+
+        /// <summary>Container labels, as provided by the container runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
+
+        /// <summary>Container name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Container image URI provided when configuring a pod/container. May identify a container image version using
+        /// mutable tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5140,11 +5213,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// Output only. Map containing the point of contacts for the given finding. The key represents the type of
         /// contact, while the value contains a list of all the contacts that pertain. Please refer to:
         /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories {
-        /// "security":[ { "contact":{ "email":"person1@company.com" } }, { "contact":{ "email":“person2@company.com” }
-        /// } ] }
+        /// "security": { "contacts": [ { "email": "person1@company.com" }, { "email": "person2@company.com" } ] }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
         public virtual System.Collections.Generic.IDictionary<string, ContactDetails> Contacts { get; set; }
+
+        /// <summary>
+        /// Containers associated with the finding. containers provides information for both Kubernetes and
+        /// non-Kubernetes containers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
 
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -5198,6 +5277,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>Kubernetes resources associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
+        public virtual Kubernetes Kubernetes { get; set; }
 
         /// <summary>
         /// MITRE ATT&amp;amp;CK tactics and techniques related to this finding. See: https://attack.mitre.org
@@ -5385,6 +5468,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Kubernetes RoleBinding or ClusterRoleBinding.</summary>
+    public class GoogleCloudSecuritycenterV1Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name for binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Namespace for binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
+
+        /// <summary>The Role or ClusterRole referenced by the binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual Role Role { get; set; }
+
+        /// <summary>Represents the subjects(s) bound to the role. Not always available for PATCH requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
+        public virtual System.Collections.Generic.IList<Subject> Subjects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5858,6 +5964,65 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Kubernetes related attributes.</summary>
+    public class Kubernetes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Provides information on any Kubernetes access reviews (i.e. privilege checks) relevant to the finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessReviews")]
+        public virtual System.Collections.Generic.IList<AccessReview> AccessReviews { get; set; }
+
+        /// <summary>
+        /// Provides Kubernetes role binding information for findings that involve RoleBindings or ClusterRoleBindings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1Binding> Bindings { get; set; }
+
+        /// <summary>
+        /// GKE Node Pools associated with the finding. This field will contain NodePool information for each Node, when
+        /// it is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
+        public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
+
+        /// <summary>Provides Kubernetes Node information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
+
+        /// <summary>
+        /// Kubernetes Pods associated with the finding. This field will contain Pod records for each container that is
+        /// owned by a Pod.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pods")]
+        public virtual System.Collections.Generic.IList<Pod> Pods { get; set; }
+
+        /// <summary>Provides Kubernetes role information for findings that involve Roles or ClusterRoles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<Role> Roles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Label represents a generic name=value label. Label has separate name and value fields to support filtering with
+    /// contains().
+    /// </summary>
+    public class Label : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Label name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Label value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A signature corresponding to memory page hashes.</summary>
     public class MemoryHashSignature : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5910,6 +6075,32 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Kubernetes Nodes associated with the finding.</summary>
+    public class Node : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full Resource name of the Compute Engine VM running the cluster node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides GKE Node Pool information.</summary>
+    public class NodePool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Kubernetes Node pool name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Nodes associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource capturing onboarding information for a given CRM resource.</summary>
     public class OnboardingState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5926,6 +6117,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingLevel")]
         public virtual string OnboardingLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Kubernetes Pod.</summary>
+    public class Pod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pod containers associated with this finding, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
+
+        /// <summary>Pod labels. For Kubernetes containers, these are applied to the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
+
+        /// <summary>Kubernetes Pod name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Kubernetes Pod namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6050,6 +6264,25 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Kubernetes Role or ClusterRole.</summary>
+    public class Role : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Role type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Role name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Role namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource capturing the settings for Security Center.</summary>
     public class SecurityCenterSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6057,7 +6290,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// The resource name of the project to send logs to. This project must be part of the organization this
         /// resource resides in. The format is `projects/{project_id}`. An empty value disables logging. This value is
         /// only referenced by services that support log sink. Please refer to the documentation for an updated list of
-        /// compatible services.
+        /// compatible services. This may only be specified for organization level onboarding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logSinkProject")]
         public virtual string LogSinkProject { get; set; }
@@ -6069,11 +6302,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Timestamp of when the customer organization was onboarded to SCC.</summary>
+        /// <summary>Output only. Timestamp of when the customer organization was onboarded to SCC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingTime")]
         public virtual object OnboardingTime { get; set; }
 
-        /// <summary>The organization level service account to be used for security center components.</summary>
+        /// <summary>
+        /// Output only. The organization level service account to be used for security center components.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgServiceAccount")]
         public virtual string OrgServiceAccount { get; set; }
 
@@ -6153,6 +6388,25 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Kubernetes Subject.</summary>
+    public class Subject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication type for subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Name for subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Namespace for subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

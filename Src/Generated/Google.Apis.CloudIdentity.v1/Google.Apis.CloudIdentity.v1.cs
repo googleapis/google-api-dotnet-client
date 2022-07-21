@@ -34,6 +34,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <param name="initializer">The service initializer.</param>
         public CloudIdentityService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Customers = new CustomersResource(this);
             Devices = new DevicesResource(this);
             Groups = new GroupsResource(this);
         }
@@ -90,6 +91,16 @@ namespace Google.Apis.CloudIdentity.v1
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
             /// <summary>
+            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
+            /// </summary>
+            public static string CloudIdentityUserinvitations = "https://www.googleapis.com/auth/cloud-identity.userinvitations";
+
+            /// <summary>
+            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
+            /// </summary>
+            public static string CloudIdentityUserinvitationsReadonly = "https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -123,11 +134,24 @@ namespace Google.Apis.CloudIdentity.v1
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
             /// <summary>
+            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
+            /// </summary>
+            public const string CloudIdentityUserinvitations = "https://www.googleapis.com/auth/cloud-identity.userinvitations";
+
+            /// <summary>
+            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
+            /// </summary>
+            public const string CloudIdentityUserinvitationsReadonly = "https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Customers resource.</summary>
+        public virtual CustomersResource Customers { get; }
 
         /// <summary>Gets the Devices resource.</summary>
         public virtual DevicesResource Devices { get; }
@@ -314,6 +338,412 @@ namespace Google.Apis.CloudIdentity.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "customers" collection of methods.</summary>
+    public class CustomersResource
+    {
+        private const string Resource = "customers";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public CustomersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Userinvitations = new UserinvitationsResource(service);
+        }
+
+        /// <summary>Gets the Userinvitations resource.</summary>
+        public virtual UserinvitationsResource Userinvitations { get; }
+
+        /// <summary>The "userinvitations" collection of methods.</summary>
+        public class UserinvitationsResource
+        {
+            private const string Resource = "userinvitations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public UserinvitationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Cancels a UserInvitation that was already sent.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. `UserInvitation` name in the format
+            /// `customers/{customer}/userinvitations/{user_email_address}`
+            /// </param>
+            public virtual CancelRequest Cancel(Google.Apis.CloudIdentity.v1.Data.CancelUserInvitationRequest body, string name)
+            {
+                return new CancelRequest(service, body, name);
+            }
+
+            /// <summary>Cancels a UserInvitation that was already sent.</summary>
+            public class CancelRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1.Data.CancelUserInvitationRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. `UserInvitation` name in the format
+                /// `customers/{customer}/userinvitations/{user_email_address}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1.Data.CancelUserInvitationRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:cancel";
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/userinvitations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves a UserInvitation resource. **Note:** New consumer accounts with the customer's verified domain
+            /// created within the previous 48 hours will not appear in the result. This delay also applies to
+            /// newly-verified domains.
+            /// </summary>
+            /// <param name="name">
+            /// Required. `UserInvitation` name in the format
+            /// `customers/{customer}/userinvitations/{user_email_address}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// Retrieves a UserInvitation resource. **Note:** New consumer accounts with the customer's verified domain
+            /// created within the previous 48 hours will not appear in the result. This delay also applies to
+            /// newly-verified domains.
+            /// </summary>
+            public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.UserInvitation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. `UserInvitation` name in the format
+                /// `customers/{customer}/userinvitations/{user_email_address}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/userinvitations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Verifies whether a user account is eligible to receive a UserInvitation (is an unmanaged account).
+            /// Eligibility is based on the following criteria: * the email address is a consumer account and it's the
+            /// primary email address of the account, and * the domain of the email address matches an existing verified
+            /// Google Workspace or Cloud Identity domain If both conditions are met, the user is eligible. **Note:**
+            /// This method is not supported for Workspace Essentials customers.
+            /// </summary>
+            /// <param name="name">
+            /// Required. `UserInvitation` name in the format
+            /// `customers/{customer}/userinvitations/{user_email_address}`
+            /// </param>
+            public virtual IsInvitableUserRequest IsInvitableUser(string name)
+            {
+                return new IsInvitableUserRequest(service, name);
+            }
+
+            /// <summary>
+            /// Verifies whether a user account is eligible to receive a UserInvitation (is an unmanaged account).
+            /// Eligibility is based on the following criteria: * the email address is a consumer account and it's the
+            /// primary email address of the account, and * the domain of the email address matches an existing verified
+            /// Google Workspace or Cloud Identity domain If both conditions are met, the user is eligible. **Note:**
+            /// This method is not supported for Workspace Essentials customers.
+            /// </summary>
+            public class IsInvitableUserRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.IsInvitableUserResponse>
+            {
+                /// <summary>Constructs a new IsInvitableUser request.</summary>
+                public IsInvitableUserRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. `UserInvitation` name in the format
+                /// `customers/{customer}/userinvitations/{user_email_address}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "isInvitableUser";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:isInvitableUser";
+
+                /// <summary>Initializes IsInvitableUser parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/userinvitations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves a list of UserInvitation resources. **Note:** New consumer accounts with the customer's
+            /// verified domain created within the previous 48 hours will not appear in the result. This delay also
+            /// applies to newly-verified domains.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The customer ID of the Google Workspace or Cloud Identity account the UserInvitation resources
+            /// are associated with.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Retrieves a list of UserInvitation resources. **Note:** New consumer accounts with the customer's
+            /// verified domain created within the previous 48 hours will not appear in the result. This delay also
+            /// applies to newly-verified domains.
+            /// </summary>
+            public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.ListUserInvitationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The customer ID of the Google Workspace or Cloud Identity account the UserInvitation
+                /// resources are associated with.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. A query string for filtering `UserInvitation` results by their current state, in the
+                /// format: `"state=='invited'"`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The sort order of the list results. You can sort the results in descending order based on
+                /// either email or last update timestamp but not both, using `order_by="email desc"`. Currently,
+                /// sorting is supported for `update_time asc`, `update_time desc`, `email asc`, and `email desc`. If
+                /// not specified, results will be returned based on `email asc` order.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of UserInvitation resources to return. If unspecified, at most 100
+                /// resources will be returned. The maximum value is 200; values above 200 will be set to 200.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListUserInvitations` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to `ListBooks` must
+                /// match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/userinvitations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Sends a UserInvitation to email. If the `UserInvitation` does not exist for this request and it is a
+            /// valid request, the request creates a `UserInvitation`. **Note:** The `get` and `list` methods have a
+            /// 48-hour delay where newly-created consumer accounts will not appear in the results. You can still send a
+            /// `UserInvitation` to those accounts if you know the unmanaged email address and IsInvitableUser==True.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. `UserInvitation` name in the format
+            /// `customers/{customer}/userinvitations/{user_email_address}`
+            /// </param>
+            public virtual SendRequest Send(Google.Apis.CloudIdentity.v1.Data.SendUserInvitationRequest body, string name)
+            {
+                return new SendRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Sends a UserInvitation to email. If the `UserInvitation` does not exist for this request and it is a
+            /// valid request, the request creates a `UserInvitation`. **Note:** The `get` and `list` methods have a
+            /// 48-hour delay where newly-created consumer accounts will not appear in the results. You can still send a
+            /// `UserInvitation` to those accounts if you know the unmanaged email address and IsInvitableUser==True.
+            /// </summary>
+            public class SendRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Send request.</summary>
+                public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1.Data.SendUserInvitationRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. `UserInvitation` name in the format
+                /// `customers/{customer}/userinvitations/{user_email_address}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1.Data.SendUserInvitationRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "send";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:send";
+
+                /// <summary>Initializes Send parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/userinvitations/[^/]+$",
+                    });
+                }
+            }
         }
     }
 
@@ -3330,6 +3760,13 @@ namespace Google.Apis.CloudIdentity.v1
 }
 namespace Google.Apis.CloudIdentity.v1.Data
 {
+    /// <summary>Request to cancel sent invitation for target email in UserInvitation.</summary>
+    public class CancelUserInvitationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for MembershipsService.CheckTransitiveMembership.</summary>
     public class CheckTransitiveMembershipResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4246,6 +4683,17 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for IsInvitableUser RPC.</summary>
+    public class IsInvitableUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Returns true if the email address is invitable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInvitableUser")]
+        public virtual System.Nullable<bool> IsInvitableUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListGroups operation.</summary>
     public class ListGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4275,6 +4723,25 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserInvitation listing request.</summary>
+    public class ListUserInvitationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token for the next page. If not empty, indicates that there may be more `UserInvitation` resources that
+        /// match the listing request; this value can be used in a subsequent ListUserInvitationsRequest to get
+        /// continued results with the current list call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of UserInvitation resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInvitations")]
+        public virtual System.Collections.Generic.IList<UserInvitation> UserInvitations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4628,6 +5095,13 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to send email for inviting target user corresponding to the UserInvitation.</summary>
+    public class SendUserInvitationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4699,6 +5173,34 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
         public virtual MembershipRole MembershipRole { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to
+    /// join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address
+    /// domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the
+    /// `UserInvitation`, the user account will become managed.
+    /// </summary>
+    public class UserInvitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of invitation emails sent to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mailsSentCount")]
+        public virtual System.Nullable<long> MailsSentCount { get; set; }
+
+        /// <summary>Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>State of the `UserInvitation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Time when the `UserInvitation` was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
