@@ -1844,8 +1844,8 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
 
         /// <summary>
         /// Required. Human-readable display name of the data exchange. The display name must contain only Unicode
-        /// letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-        /// Default value is an empty string. Max length: 63 bytes.
+        /// letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;amp;) and must not start
+        /// or end with spaces. Default value is an empty string. Max length: 63 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -2125,8 +2125,8 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
 
         /// <summary>
         /// Required. Human-readable display name of the listing. The display name must contain only Unicode letters,
-        /// numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is
-        /// an empty string. Max length: 63 bytes.
+        /// numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;amp;) and can't start or end with
+        /// spaces. Default value is an empty string. Max length: 63 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

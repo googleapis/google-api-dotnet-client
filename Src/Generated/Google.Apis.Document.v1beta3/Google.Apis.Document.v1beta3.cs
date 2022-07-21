@@ -2470,7 +2470,9 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
         public virtual string OutputGcsDestination { get; set; }
 
-        /// <summary>The status of the processing of the document.</summary>
+        /// <summary>
+        /// The error encountered while attempting to process the document. Empty if there are no errors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
@@ -5226,7 +5228,9 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
         public virtual string OutputGcsDestination { get; set; }
 
-        /// <summary>The status of the processing of the document.</summary>
+        /// <summary>
+        /// The error encountered while attempting to process the document. Empty if there are no errors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 

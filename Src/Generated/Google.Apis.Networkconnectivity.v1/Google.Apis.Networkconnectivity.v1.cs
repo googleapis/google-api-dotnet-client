@@ -338,7 +338,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         this.service = service;
                     }
 
-                    /// <summary>Creates a new hub in the specified project.</summary>
+                    /// <summary>Creates a new Network Connectivity Center hub in the specified project.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The parent resource.</param>
                     public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Hub body, string parent)
@@ -346,7 +346,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a new hub in the specified project.</summary>
+                    /// <summary>Creates a new Network Connectivity Center hub in the specified project.</summary>
                     public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -425,14 +425,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Deletes the specified hub.</summary>
+                    /// <summary>Deletes a Network Connectivity Center hub.</summary>
                     /// <param name="name">Required. The name of the hub to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified hub.</summary>
+                    /// <summary>Deletes a Network Connectivity Center hub.</summary>
                     public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -492,14 +492,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Gets details about the specified hub.</summary>
+                    /// <summary>Gets details about a Network Connectivity Center hub.</summary>
                     /// <param name="name">Required. The name of the hub resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets details about the specified hub.</summary>
+                    /// <summary>Gets details about a Network Connectivity Center hub.</summary>
                     public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Hub>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -618,14 +618,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Lists hubs in a given project.</summary>
+                    /// <summary>Lists the Network Connectivity Center hubs associated with a given project.</summary>
                     /// <param name="parent">Required. The parent resource's name.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists hubs in a given project.</summary>
+                    /// <summary>Lists the Network Connectivity Center hubs associated with a given project.</summary>
                     public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListHubsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -711,7 +711,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Updates the description and/or labels of the specified hub.</summary>
+                    /// <summary>Updates the description and/or labels of a Network Connectivity Center hub.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Immutable. The name of the hub. Hub names must be unique. They use the following form:
@@ -722,7 +722,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the description and/or labels of the specified hub.</summary>
+                    /// <summary>Updates the description and/or labels of a Network Connectivity Center hub.</summary>
                     public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -1489,7 +1489,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a spoke in the specified project and location.</summary>
+                /// <summary>Creates a Network Connectivity Center spoke.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource.</param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Spoke body, string parent)
@@ -1497,7 +1497,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a spoke in the specified project and location.</summary>
+                /// <summary>Creates a Network Connectivity Center spoke.</summary>
                 public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1576,14 +1576,14 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Deletes the specified spoke.</summary>
+                /// <summary>Deletes a Network Connectivity Center spoke.</summary>
                 /// <param name="name">Required. The name of the spoke to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the specified spoke.</summary>
+                /// <summary>Deletes a Network Connectivity Center spoke.</summary>
                 public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1643,14 +1643,14 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Gets details about the specified spoke.</summary>
+                /// <summary>Gets details about a Network Connectivity Center spoke.</summary>
                 /// <param name="name">Required. The name of the spoke resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets details about the specified spoke.</summary>
+                /// <summary>Gets details about a Network Connectivity Center spoke.</summary>
                 public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Spoke>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1768,14 +1768,14 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Lists the spokes in the specified project and location.</summary>
+                /// <summary>Lists the Network Connectivity Center spokes in a specified project and location.</summary>
                 /// <param name="parent">Required. The parent resource.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists the spokes in the specified project and location.</summary>
+                /// <summary>Lists the Network Connectivity Center spokes in a specified project and location.</summary>
                 public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListSpokesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1861,7 +1861,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Updates the parameters of the specified spoke.</summary>
+                /// <summary>Updates the parameters of a Network Connectivity Center spoke.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Immutable. The name of the spoke. Spoke names must be unique. They use the following form:
@@ -1872,7 +1872,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the parameters of the specified spoke.</summary>
+                /// <summary>Updates the parameters of a Network Connectivity Center spoke.</summary>
                 public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2486,9 +2486,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// A hub is a collection of spokes. A single hub can contain spokes from multiple regions. However, if any of a
-    /// hub's spokes use the data transfer feature, the resources associated with those spokes must all reside in the
-    /// same VPC network. Spokes that do not use data transfer can be associated with any VPC network in your project.
+    /// A Network Connectivity Center hub is a collection of spokes. A single hub can contain spokes from multiple
+    /// regions. However, if any of a hub's spokes use the data transfer feature, the resources associated with those
+    /// spokes must all reside in the same VPC network. Spokes that do not use data transfer can be associated with any
+    /// VPC network in your project.
     /// </summary>
     public class Hub : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2839,7 +2840,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+    /// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity
+    /// Center hub.
     /// </summary>
     public class RoutingVPC : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2883,9 +2885,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// A spoke represents a connection between your Google Cloud network resources and a non-Google-Cloud network. When
-    /// you create a spoke, you associate it with a hub. You must also identify a value for exactly one of the following
-    /// fields: * linked_vpn_tunnels * linked_interconnect_attachments * linked_router_appliance_instances
+    /// A Network Connectivity Center spoke represents a connection between your Google Cloud network resources and a
+    /// non-Google-Cloud network. When you create a spoke, you associate it with a hub. You must also identify a value
+    /// for exactly one of the following fields: * linked_vpn_tunnels * linked_interconnect_attachments *
+    /// linked_router_appliance_instances
     /// </summary>
     public class Spoke : Google.Apis.Requests.IDirectResponseSchema
     {

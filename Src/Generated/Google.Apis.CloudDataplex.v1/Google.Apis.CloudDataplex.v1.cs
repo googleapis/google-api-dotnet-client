@@ -344,7 +344,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Lists action resources in a lake.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -363,7 +363,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1719,7 +1719,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>Lists session resources in an environment.</summary>
                         /// <param name="parent">
                         /// Required. The resource name of the parent environment:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1738,7 +1738,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the parent environment:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1823,7 +1823,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Environment body, string parent)
                     {
@@ -1843,7 +1843,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1914,7 +1914,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the environment:
-                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}`
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -1936,7 +1936,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the environment:
-                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}`
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1968,7 +1968,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Get environment resource.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the environment:
-                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1987,7 +1987,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the environment:
-                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2098,7 +2098,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Lists environments under the given lake.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2117,7 +2117,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2463,8 +2463,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The resource name of the job:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                        /// /task/{task_id}/job/{job_id}`
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}/job/{job_id}.
                         /// </param>
                         public virtual CancelRequest Cancel(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelJobRequest body, string name)
                         {
@@ -2484,8 +2483,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the job:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                            /// /task/{task_id}/job/{job_id}`
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}/job/{job_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2523,8 +2521,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>Get job resource.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the job:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                        /// /tasks/{task_id}/jobs/{job_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -2543,8 +2540,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the job:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                            /// /tasks/{task_id}/jobs/{job_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2576,7 +2572,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>Lists Jobs under the given task.</summary>
                         /// <param name="parent">
                         /// Required. The resource name of the parent environment:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -2595,7 +2591,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the parent environment:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2661,7 +2657,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Task body, string parent)
                     {
@@ -2681,7 +2677,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2745,7 +2741,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Delete the task resource.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the task:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /task/{task_id}`
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -2764,7 +2760,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the task:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /task/{task_id}`
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2796,7 +2792,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Get task resource.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the task:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /tasks/{tasks_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{tasks_id}.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2815,7 +2811,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the task:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /tasks/{tasks_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{tasks_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2926,7 +2922,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Lists tasks under the given lake.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2945,7 +2941,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -3292,7 +3288,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>Lists action resources in a zone.</summary>
                         /// <param name="parent">
                         /// Required. The resource name of the parent zone:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -3311,7 +3307,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the parent zone:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3411,7 +3407,7 @@ namespace Google.Apis.CloudDataplex.v1
                             /// <summary>Lists action resources in an asset.</summary>
                             /// <param name="parent">
                             /// Required. The resource name of the parent asset:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
@@ -3430,7 +3426,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                                 /// <summary>
                                 /// Required. The resource name of the parent asset:
-                                /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}
+                                /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
@@ -3496,7 +3492,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The resource name of the parent zone:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}`
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Asset body, string parent)
                         {
@@ -3516,7 +3512,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the parent zone:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}`
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3588,8 +3584,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the asset:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                        /// /zones/{zone_id}/assets/{asset_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -3611,8 +3606,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the asset:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                            /// /zones/{zone_id}/assets/{asset_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3644,8 +3638,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>Retrieves an asset resource.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the asset:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                        /// /zones/{zone_id}/assets/{asset_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -3664,8 +3657,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the asset:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
-                            /// /zones/{zone_id}/assets/{asset_id}
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3778,7 +3770,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>Lists asset resources in a zone.</summary>
                         /// <param name="parent">
                         /// Required. The resource name of the parent zone:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}`
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -3797,7 +3789,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Required. The resource name of the parent zone:
-                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}`
+                            /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -4880,7 +4872,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Zone body, string parent)
                     {
@@ -4900,7 +4892,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -4974,7 +4966,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the zone:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}`
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -4996,7 +4988,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the zone:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}`
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -5028,7 +5020,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Retrieves a zone resource.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the zone:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -5047,7 +5039,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the zone:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id} /zones/{zone_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -5158,7 +5150,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Lists zone resources in a lake.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -5177,7 +5169,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent lake:
-                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -5579,7 +5571,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the lake:
-                /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -5600,7 +5592,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5632,7 +5624,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Retrieves a lake resource.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the lake:
-                /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -5651,7 +5643,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the lake:
-                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7536,13 +7528,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Output only. The relative resource name of the job, of the form:
-        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. . The number of times the job has been retried (excluding the initial attempt).
+        /// Output only. The number of times the job has been retried (excluding the initial attempt).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryCount")]
         public virtual System.Nullable<long> RetryCount { get; set; }
@@ -8319,6 +8311,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IDictionary<string, string> Args { get; set; }
 
+        /// <summary>
+        /// Optional. The Cloud KMS key to use for encryption, of the form:
+        /// projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
         /// <summary>Optional. The maximum duration after which the job execution is expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxJobExecutionLifetime")]
         public virtual object MaxJobExecutionLifetime { get; set; }
@@ -8398,6 +8397,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Container Image Runtime Configuration used with Batch execution.</summary>
     public class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Container image to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
         /// <summary>
         /// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar
         /// binaries. For example, gs://bucket-name/my/path/to/file.jar

@@ -863,7 +863,7 @@ namespace Google.Apis.Iam.v2beta.Data
         /// <summary>
         /// The identities that are prevented from using one or more permissions on Google Cloud resources. This field
         /// can contain the following values: * `principalSet://goog/public:all`: A special identifier that represents
-        /// any user who is on the internet, even if they do not have a Google Account or are not logged in. *
+        /// any principal that is on the internet, even if they do not have a Google Account or are not logged in. *
         /// `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google
         /// Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. *
         /// `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted

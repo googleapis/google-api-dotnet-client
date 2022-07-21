@@ -1486,7 +1486,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details related to ProcessingFailureReason#GPS_DATA_GAP.</summary>
+    /// <summary>
+    /// Details related to ProcessingFailureReason#GPS_DATA_GAP. If there are multiple GPS data gaps, only the one with
+    /// the largest duration is reported here.
+    /// </summary>
     public class GpsDataGapFailureDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The duration of the gap in GPS data that was found.</summary>
@@ -1523,7 +1526,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details related to ProcessingFailureReason#IMU_DATA_GAP.</summary>
+    /// <summary>
+    /// Details related to ProcessingFailureReason#IMU_DATA_GAP. If there are multiple IMU data gaps, only the one with
+    /// the largest duration is reported here.
+    /// </summary>
     public class ImuDataGapFailureDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The duration of the gap in IMU data that was found.</summary>
@@ -1669,7 +1675,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details related to ProcessingFailureReason#NOT_OUTDOORS.</summary>
+    /// <summary>
+    /// Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple indoor frames found, the first
+    /// frame is recorded here.
+    /// </summary>
     public class NotOutdoorsFailureDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Relative time (from the start of the video stream) when an indoor frame was found.</summary>

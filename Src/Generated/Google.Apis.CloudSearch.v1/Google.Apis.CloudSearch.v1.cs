@@ -5786,15 +5786,15 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class GSuitePrincipal : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This principal represents all users of the G Suite domain of the customer.</summary>
+        /// <summary>This principal represents all users of the Google Workspace domain of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteDomain")]
         public virtual System.Nullable<bool> GsuiteDomain { get; set; }
 
-        /// <summary>This principal references a G Suite group account</summary>
+        /// <summary>This principal references a Google Workspace group name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteGroupEmail")]
         public virtual string GsuiteGroupEmail { get; set; }
 
-        /// <summary>This principal references a G Suite user account</summary>
+        /// <summary>This principal references a Google Workspace user account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteUserEmail")]
         public virtual string GsuiteUserEmail { get; set; }
 
@@ -6102,8 +6102,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class IndexItemOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specifies if the index request should allow gsuite principals that do not exist or are deleted in the index
-        /// request.
+        /// Specifies if the index request should allow Google Workspace principals that do not exist or are deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowUnknownGsuitePrincipals")]
         public virtual System.Nullable<bool> AllowUnknownGsuitePrincipals { get; set; }
@@ -7066,7 +7065,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupResourceName")]
         public virtual string GroupResourceName { get; set; }
 
-        /// <summary>This principal is a GSuite user, group or domain.</summary>
+        /// <summary>This principal is a Google Workspace user, group or domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuitePrincipal")]
         public virtual GSuitePrincipal GsuitePrincipal { get; set; }
 

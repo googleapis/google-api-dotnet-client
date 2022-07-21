@@ -533,7 +533,7 @@
    }
   }
  },
- "revision": "20220630",
+ "revision": "20220719",
  "rootUrl": "https://streetviewpublish.googleapis.com/",
  "schemas": {
   "BatchDeletePhotosRequest": {
@@ -624,7 +624,7 @@
    "type": "object"
   },
   "GpsDataGapFailureDetails": {
-   "description": "Details related to ProcessingFailureReason#GPS_DATA_GAP.",
+   "description": "Details related to ProcessingFailureReason#GPS_DATA_GAP. If there are multiple GPS data gaps, only the one with the largest duration is reported here.",
    "id": "GpsDataGapFailureDetails",
    "properties": {
     "gapDuration": {
@@ -669,7 +669,7 @@
    "type": "object"
   },
   "ImuDataGapFailureDetails": {
-   "description": "Details related to ProcessingFailureReason#IMU_DATA_GAP.",
+   "description": "Details related to ProcessingFailureReason#IMU_DATA_GAP. If there are multiple IMU data gaps, only the one with the largest duration is reported here.",
    "id": "ImuDataGapFailureDetails",
    "properties": {
     "gapDuration": {
@@ -809,7 +809,7 @@
    "type": "object"
   },
   "NotOutdoorsFailureDetails": {
-   "description": "Details related to ProcessingFailureReason#NOT_OUTDOORS.",
+   "description": "Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple indoor frames found, the first frame is recorded here.",
    "id": "NotOutdoorsFailureDetails",
    "properties": {
     "time": {
@@ -1028,7 +1028,8 @@
       "INVALID_IMU",
       "IMU_DATA_GAP",
       "UNSUPPORTED_CAMERA",
-      "NOT_OUTDOORS"
+      "NOT_OUTDOORS",
+      "INSUFFICIENT_VIDEO_FRAMES"
      ],
      "enumDescriptions": [
       "The failure reason is unspecified, this is the default value.",
@@ -1049,7 +1050,8 @@
       "IMU (Accelerometer, Gyroscope, etc.) data are not valid. They may be missing required fields (x, y, z or time), may not be formatted correctly, or any other issue that prevents our systems from parsing it.",
       "IMU (Accelerometer, Gyroscope, etc.) data contain gaps greater than 0.1 seconds in duration.",
       "The camera is not supported.",
-      "Some frames were indoors, which is unsupported."
+      "Some frames were indoors, which is unsupported.",
+      "Not enough video frames."
      ],
      "readOnly": true,
      "type": "string"
