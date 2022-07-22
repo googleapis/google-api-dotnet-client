@@ -86,7 +86,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             return new GoogleCredential(new UserCredential(flow, "my.user.id", tokenResponse));
         }
 
-        private static ImpersonatedCredential CreateImpersonatedCredentialForBody(object body, bool serializeBody = true, HttpStatusCode status = HttpStatusCode.OK, Action<HttpRequestMessage> requestValidator = null)
+        private static ImpersonatedCredential CreateImpersonatedCredentialForBody(
+            object body, bool serializeBody = true, HttpStatusCode status = HttpStatusCode.OK, Action<HttpRequestMessage> requestValidator = null, string principal = "principal", string customTokenUrl = null)
         {
             var sourceCredential = CreateSourceCredential();
             var messageHandler = new FakeHttpMessageHandler(
@@ -94,23 +95,25 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 serializeBody ? NewtonsoftJsonSerializer.Instance.Serialize(body) : body.ToString(),
                 requestValidator);
 
-            return ImpersonatedCredential.Create(
-                sourceCredential,
-                new ImpersonatedCredential.Initializer("principal")
-                {
-                    Scopes = new string[] { "scope" },
-                    Clock = _clock,
-                    HttpClientFactory = new MockHttpClientFactory(messageHandler)
-                });
+            var initializer = customTokenUrl is null
+                ? new ImpersonatedCredential.Initializer(principal)
+                : new ImpersonatedCredential.Initializer(customTokenUrl, principal);
+            initializer.Scopes = new string[] { "scope" };
+            initializer.Clock = _clock;
+            initializer.HttpClientFactory = new MockHttpClientFactory(messageHandler);
+
+            return ImpersonatedCredential.Create(sourceCredential, initializer);
         }
 
         private static ImpersonatedCredential CreateImpersonatedCredentialWithIdTokenResponse() =>
             CreateImpersonatedCredentialForBody(new { token = OidcComputeSuccessMessageHandler.FirstCallToken });
 
-        private static ImpersonatedCredential CreateImpersonatedCredentialWithAccessTokenResponse(Action<HttpRequestMessage> requestValidator = null) =>
+        private static ImpersonatedCredential CreateImpersonatedCredentialWithAccessTokenResponse(Action<HttpRequestMessage> requestValidator = null, string principal = "principal", string customTokenUrl = null) =>
             CreateImpersonatedCredentialForBody(
                 new { accessToken = "access_token", expireTime = "2020-05-13T16:00:00.045123456Z" },
-                requestValidator: requestValidator);
+                requestValidator: requestValidator,
+                principal: principal,
+                customTokenUrl: customTokenUrl);
 
         // Use signedBlob = base64("principal") = "Zm9v"
         private static ImpersonatedCredential CreateImpersonatedCredentialWithSignBlobResponse() =>
@@ -205,6 +208,61 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var credential = CreateImpersonatedCredentialWithErrorResponse();
             var ex = await Assert.ThrowsAsync<HttpRequestException>(() => credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
             Assert.Equal("Response status code does not indicate success: 404 (Not Found).", ex.Message);
+        }
+
+        [Fact]
+        public async Task CreateWithCustomTokenUrl()
+        {
+            string customTokenUrl = "https://custom.token.url";
+            var impersonatedCredential = CreateImpersonatedCredentialWithAccessTokenResponse(customTokenUrl: customTokenUrl);
+
+            Assert.Equal(customTokenUrl, impersonatedCredential.TokenServerUrl);
+            Assert.Equal("principal", impersonatedCredential.TargetPrincipal);
+            Assert.True(impersonatedCredential.HasCustomTokenUrl);
+
+            var success = await impersonatedCredential.RequestAccessTokenAsync(default);
+            Assert.True(success);
+            Assert.Equal(3600, impersonatedCredential.Token.ExpiresInSeconds);
+            Assert.Equal("access_token", impersonatedCredential.Token.AccessToken);
+
+            await Assert.ThrowsAsync<InvalidOperationException>(() => impersonatedCredential.SignBlobAsync(new byte[] { }));
+            await Assert.ThrowsAsync<InvalidOperationException>(() => impersonatedCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience")));
+        }
+
+        [Fact]
+        public async Task CreateWithCustomTokenUrl_NullPrincipal()
+        {
+            string customTokenUrl = "https://custom.token.url";
+            var impersonatedCredential = CreateImpersonatedCredentialWithAccessTokenResponse(customTokenUrl: customTokenUrl, principal: null);
+
+            Assert.Equal(customTokenUrl, impersonatedCredential.TokenServerUrl);
+            Assert.Null(impersonatedCredential.TargetPrincipal);
+            Assert.True(impersonatedCredential.HasCustomTokenUrl);
+
+            var success = await impersonatedCredential.RequestAccessTokenAsync(default);
+            Assert.True(success);
+            Assert.Equal(3600, impersonatedCredential.Token.ExpiresInSeconds);
+            Assert.Equal("access_token", impersonatedCredential.Token.AccessToken);
+
+            await Assert.ThrowsAsync<InvalidOperationException>(() => impersonatedCredential.SignBlobAsync(new byte[] { }));
+            await Assert.ThrowsAsync<InvalidOperationException>(() => impersonatedCredential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience")));
+        }
+
+        [Fact]
+        public async Task CreateWithCustomTokenUrl_SameAsDefaultUrl()
+        {
+            string principal = "principal";
+            string customTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, principal);
+            var impersonatedCredential = CreateImpersonatedCredentialWithAccessTokenResponse(customTokenUrl: customTokenUrl);
+
+            Assert.Equal(customTokenUrl, impersonatedCredential.TokenServerUrl);
+            Assert.Equal(principal, impersonatedCredential.TargetPrincipal);
+            Assert.False(impersonatedCredential.HasCustomTokenUrl);
+
+            var success = await impersonatedCredential.RequestAccessTokenAsync(default);
+            Assert.True(success);
+            Assert.Equal(3600, impersonatedCredential.Token.ExpiresInSeconds);
+            Assert.Equal("access_token", impersonatedCredential.Token.AccessToken);
         }
     }
 }

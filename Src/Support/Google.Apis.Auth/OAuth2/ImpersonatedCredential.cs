@@ -39,6 +39,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>An initializer class for the impersonated credential. </summary>
         new public sealed class Initializer : ServiceCredential.Initializer
         {
+            private static readonly TimeSpan DefaultLifetime = TimeSpan.FromHours(1);
+
             /// <summary>
             /// Gets the service account to impersonate.
             /// </summary>
@@ -53,15 +55,44 @@ namespace Google.Apis.Auth.OAuth2
             /// Gets or sets for how long the delegated credential should be valid.
             /// Defaults to 1 hour or 3600 seconds.
             /// </summary>
-            public TimeSpan Lifetime { get; set; }
+            public TimeSpan Lifetime { get; set; } = DefaultLifetime;
+
+            /// <summary>
+            /// Indicates whether the credential has a custom access token URL instead of
+            /// the one built by using <see cref="GoogleAuthConsts.IamAccessTokenEndpointFormatString"/>
+            /// and the target principal.
+            /// </summary>
+            /// <remarks>
+            /// <para>This is useful for bundled or implicit impersonation scenarios in which the access token
+            /// URL may be specified on its own as part of the credential configuration. In those cases,
+            /// some <see cref="ImpersonatedCredential"/> operations are not supported, for instance operations from
+            /// <see cref="IBlobSigner"/> or <see cref="IOidcTokenProvider"/>.</para>
+            /// <para>Note that we keep this property internal as no <see cref="ImpersonatedCredential"/>
+            /// instance will be exposed that has been built with a custom token URL.</para>
+            /// </remarks>
+            internal bool HasCustomTokenUrl { get; }
 
             /// <summary>Constructs a new initializer.</summary>
-            /// <param name="targetPrincipal">The principal that will be impersonated. Must not be null.</param>
+            /// <param name="targetPrincipal">The principal that will be impersonated. Must not be null, as it will be used
+            /// to build the URL to obtaing the impersonated access token from.</param>
             public Initializer(string targetPrincipal)
-                : base(string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal.ThrowIfNull(nameof(targetPrincipal))))
-            {
+                : base(GetDefaultTokenUrl(targetPrincipal.ThrowIfNull(nameof(targetPrincipal)))) =>
                 TargetPrincipal = targetPrincipal;
-                Lifetime = TimeSpan.FromHours(1);
+
+            /// <summary>
+            /// Constructus a new initializer.
+            /// </summary>
+            /// <param name="customTokenUrl">The URL to obtain the impersonated access token from.</param>
+            /// <param name="maybeTargetPrincipal">The target principal, if known, that will be impersonated. May be null.</param>
+            /// <remarks>Because the <paramref name="customTokenUrl"/> is all that is needed for obtaining the impersonated
+            /// access token, <paramref name="maybeTargetPrincipal"/> is just informational when the
+            /// <see cref="Initializer(string, string)"/> constructor overload is used.</remarks>
+            internal Initializer(string customTokenUrl, string maybeTargetPrincipal)
+                : base(customTokenUrl.ThrowIfNullOrEmpty(nameof(customTokenUrl)))
+            {
+                TargetPrincipal = maybeTargetPrincipal;
+                HasCustomTokenUrl = maybeTargetPrincipal is null
+                    || GetDefaultTokenUrl(maybeTargetPrincipal) != customTokenUrl;
             }
 
             internal Initializer(ImpersonatedCredential other) : base(other)
@@ -69,6 +100,7 @@ namespace Google.Apis.Auth.OAuth2
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts;
                 Lifetime = other.Lifetime;
+                HasCustomTokenUrl = other.HasCustomTokenUrl;
             }
 
             internal Initializer(Initializer other) : base (other)
@@ -76,7 +108,11 @@ namespace Google.Apis.Auth.OAuth2
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
                 Lifetime = other.Lifetime;
+                HasCustomTokenUrl = other.HasCustomTokenUrl;
             }
+
+            private static string GetDefaultTokenUrl(string targetPrincipal) =>
+                string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal);
         }
 
         /// <summary>
@@ -107,6 +143,23 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => true;
 
+        /// <summary>
+        /// Indicates whether the credential has a custom access token URL instead of
+        /// the one built by using <see cref="GoogleAuthConsts.IamAccessTokenEndpointFormatString"/>
+        /// and the target principal.
+        /// </summary>
+        /// <remarks>
+        /// <para>This is useful for bundled or implicit impersonation scenarios in which the access token
+        /// URL may be specified on its own as part of the credential configuration. In those cases,
+        /// some <see cref="ImpersonatedCredential"/> operations are not supported, for instance operations from
+        /// <see cref="IBlobSigner"/> or <see cref="IOidcTokenProvider"/>.</para>
+        /// <para>Note that we keep this property internal as no <see cref="ImpersonatedCredential"/>
+        /// instance will be exposed that has been built with a custom token URL. We only build <see cref="ImpersonatedCredential"/>s
+        /// with custom token URLs when external account credentials are configured with bundled or implicit impersonation.
+        /// </para>
+        /// </remarks>
+        internal bool HasCustomTokenUrl { get; }
+
         internal static ImpersonatedCredential Create(GoogleCredential sourceCredential, Initializer initializer)
         {
             initializer.ThrowIfNull(nameof(initializer));
@@ -135,6 +188,7 @@ namespace Google.Apis.Auth.OAuth2
             // to be our own local copy. We can avoid copying these collections here.
             DelegateAccounts = initializer.DelegateAccounts;
             Lifetime = initializer.Lifetime;
+            HasCustomTokenUrl = initializer.HasCustomTokenUrl;
         }
 
         /// <inheritdoc/>
@@ -172,6 +226,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
         {
+            ThrowIfCustomTokenUrl();
             options.ThrowIfNull(nameof(options));
             // If at some point some properties are added to OidcToken that depend on the token having been fetched
             // then initialize the token here.
@@ -182,6 +237,7 @@ namespace Google.Apis.Auth.OAuth2
 
         private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions oidcTokenOptions, CancellationToken cancellationToken)
         {
+            ThrowIfCustomTokenUrl();
             var request = new ImpersonationOIdCTokenRequest
             {
                 DelegateAccounts = DelegateAccounts,
@@ -206,6 +262,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <exception cref="JsonException">When signing response is not a valid JSON.</exception>
         public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
         {
+            ThrowIfCustomTokenUrl();
             var request = new ImpersonationSignBlobRequest
             {
                 DelegateAccounts = DelegateAccounts,
@@ -217,6 +274,15 @@ namespace Google.Apis.Auth.OAuth2
                 .ConfigureAwait(false);
 
             return response.SignedBlob;
+        }
+
+        private void ThrowIfCustomTokenUrl()
+        {
+            if (HasCustomTokenUrl)
+            {
+                // We never expose an ImpersonatedCredential with a custom token URL, users will never see this.
+                throw new InvalidOperationException("Operation not supported when a custom access token URL has been specified.");
+            }
         }
     }
 }
