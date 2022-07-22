@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.OAuth2
         private const string CloudSDKConfigDirectoryWindows = "gcloud";
 
         /// <summary>Help link to the application default credentials feature.</summary>
-        private const string HelpPermalink = 
+        private const string HelpPermalink =
             "https://developers.google.com/accounts/docs/application-default-credentials";
 
         /// <summary>GCloud configuration directory on Linux/Mac, relative to $HOME.</summary>
@@ -102,7 +102,7 @@ namespace Google.Apis.Auth.OAuth2
                             CredentialEnvironmentVariable), e);
                 }
             }
-            
+
             // 2. Then try the well known file.
             credentialPath = GetWellKnownCredentialFilePath();
             if (!string.IsNullOrWhiteSpace(credentialPath))
@@ -283,7 +283,26 @@ namespace Google.Apis.Auth.OAuth2
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.Url))
             {
-                throw new NotImplementedException("Url-sourced credentials not yet supported.");
+                var initializer = new UrlSourcedExternalAccountCredential.Initializer(
+                    parameters.TokenUrl, parameters.Audience, parameters.SubjectTokenType, parameters.CredentialSourceConfig.Url)
+                {
+                    QuotaProject = parameters.QuotaProject,
+                    ServiceAccountImpersonationUrl = parameters.ServiceAccountImpersonationUrl,
+                    ClientId = parameters.ClientId,
+                    ClientSecret = parameters.ClientSecret,
+                    SubjectTokenJsonFieldName = parameters.CredentialSourceConfig.Format?.Type?.Equals("json", StringComparison.OrdinalIgnoreCase) == true
+                        ? parameters.CredentialSourceConfig.Format.SubjectTokenFieldName
+                        : null
+                };
+                if (parameters.CredentialSourceConfig.Headers is object)
+                {
+                    foreach (var header in parameters.CredentialSourceConfig.Headers)
+                    {
+                        initializer.Headers.Add(header);
+                    }
+                }
+
+                return new UrlSourcedExternalAccountCredential(initializer);
             }
             else
             {
@@ -298,7 +317,8 @@ namespace Google.Apis.Auth.OAuth2
         private string GetWellKnownCredentialFilePath()
         {
             var appData = GetEnvironmentVariable(AppdataEnvironmentVariable);
-            if (appData != null) {
+            if (appData != null)
+            {
                 return Path.Combine(appData, CloudSDKConfigDirectoryWindows, WellKnownCredentialsFile);
             }
             var unixHome = GetEnvironmentVariable(HomeEnvironmentVariable);
