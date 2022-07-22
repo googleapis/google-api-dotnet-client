@@ -168,4 +168,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken) =>
             throw new HttpRequestException("Couldn't reach server.");
     }
+
+    /// <summary>
+    /// Message handler that accepts a list of delegates to be used sequentially on incoming requests.
+    /// </summary>
+    internal class DelegatedMessageHandler : CountableMessageHandler
+    {
+        private Func<HttpRequestMessage, Task<HttpResponseMessage>>[] _delegates;
+
+        internal DelegatedMessageHandler(params Func<HttpRequestMessage, Task<HttpResponseMessage>>[] delegates) => _delegates = delegates;
+
+        protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
+            // At this point our call has already been counted.
+            _delegates[Calls - 1](request);
+    }
 }

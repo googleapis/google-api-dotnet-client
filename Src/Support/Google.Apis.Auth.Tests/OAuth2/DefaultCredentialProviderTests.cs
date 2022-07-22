@@ -102,6 +102,38 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 ""client_email"": ""CLIENT_EMAIL"",
 ""client_id"": ""CLIENT_ID"",
 ""type"": ""service_account""}";
+        private const string NoCredentialSourceExternalAccountCredentialFileContents = @"{
+""type"": ""external_account"",
+""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+""subject_token_type"": ""urn:ietf:params:oauth:token-type:jwt"",
+""token_url"": ""https://sts.googleapis.com/v1/token""}";
+        private const string DummyUrlSourcedExternalAccountCredentialFileContents = @"{
+""type"": ""external_account"",
+""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+""subject_token_type"": ""urn:ietf:params:oauth:token-type:jwt"",
+""token_url"": ""https://sts.googleapis.com/v1/token"",
+""credential_source"": {
+  ""headers"": {
+    ""Metadata"": ""True""
+  },
+  ""url"": ""http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""format"": {
+    ""type"": ""json"",
+    ""subject_token_field_name"": ""access_token""}}}";
+        private const string DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents = @"{
+""type"": ""external_account"",
+""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+""subject_token_type"": ""urn:ietf:params:oauth:token-type:jwt"",
+""service_account_impersonation_url"": ""https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/$EMAIL:generateAccessToken"",
+""token_url"": ""https://sts.googleapis.com/v1/token"",
+""credential_source"": {
+  ""headers"": {
+    ""Metadata"": ""True""
+  },
+  ""url"": ""http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""format"": {
+    ""type"": ""json"",
+    ""subject_token_field_name"": ""access_token""}}}";
 
         public DefaultCredentialProviderTests()
         {
@@ -124,7 +156,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
-            Assert.Same(credential, credential.CreateScoped(new [] { "SomeScope" }));
+            Assert.Same(credential, credential.CreateScoped(new[] { "SomeScope" }));
         }
 
         [Fact]
@@ -135,10 +167,10 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             credentialProvider.SetFileContents(WellKnownCredentialFilePath, DummyUserCredentialFileContents);
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
-            
+
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
-            Assert.Same(credential, credential.CreateScoped(new [] { "SomeScope" }));
+            Assert.Same(credential, credential.CreateScoped(new[] { "SomeScope" }));
         }
 
         [Fact]
@@ -195,6 +227,48 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
         #endregion
 
+        #region ExternalAccountCredential
+
+        [Fact]
+        public async Task GetDefaultCredential_ExternalAccountCredential_NoCredentialSource()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, NoCredentialSourceExternalAccountCredentialFileContents);
+
+            await Assert.ThrowsAsync<InvalidOperationException>(() => credentialProvider.GetDefaultCredentialAsync());
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, DummyUrlSourcedExternalAccountCredentialFileContents);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_Impersonated()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var impersonatedExternalCredential = Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
+            Assert.IsType<ImpersonatedCredential>(impersonatedExternalCredential.ImplicitlyImpersonated.Value);
+        }
+
+        #endregion
+
         #region Invalid Cases
 
         /// <summary> No credential files or environment variable specified - like a fresh developer's machine.</summary>
@@ -223,7 +297,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
         {
             // Setup fake environment variable.
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, WellKnownCredentialFilePath);
-            
+
             try
             {
                 var credential = await credentialProvider.GetDefaultCredentialAsync();
