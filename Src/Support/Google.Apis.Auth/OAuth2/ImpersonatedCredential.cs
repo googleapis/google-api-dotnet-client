@@ -155,7 +155,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <see cref="IBlobSigner"/> or <see cref="IOidcTokenProvider"/>.</para>
         /// <para>Note that we keep this property internal as no <see cref="ImpersonatedCredential"/>
         /// instance will be exposed that has been built with a custom token URL. We only build <see cref="ImpersonatedCredential"/>s
-        /// with custom token URLs when external account credentials are configured with bundled or implicit impersonation.
+        /// with custom token URLs when <see cref="ExternalAccountCredential"/>s are configured with bundled or implicit impersonation,
+        /// where <see cref="ExternalAccountCredential.ImplicitlyImpersonated"/> is only internal.
         /// </para>
         /// </remarks>
         internal bool HasCustomTokenUrl { get; }
@@ -168,9 +169,15 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new ArgumentOutOfRangeException(nameof(initializer.Lifetime), $"Must be greater or equal to {nameof(TimeSpan.Zero)}");
             }
-            if (!(sourceCredential.UnderlyingCredential is ServiceAccountCredential || sourceCredential.UnderlyingCredential is UserCredential))
+            if (!(sourceCredential.UnderlyingCredential is ServiceAccountCredential 
+                || sourceCredential.UnderlyingCredential is UserCredential
+                || sourceCredential.UnderlyingCredential is ExternalAccountCredential))
             {
-                throw new InvalidOperationException($"Only {nameof(ServiceAccountCredential)} and {nameof(UserCredential)} support impersonation.");
+                throw new InvalidOperationException($"Only {nameof(ServiceAccountCredential)}, {nameof(UserCredential)} and {nameof(ExternalAccountCredential)} support impersonation.");
+            }
+            if (sourceCredential.UnderlyingCredential is ExternalAccountCredential externalCred && externalCred.ServiceAccountImpersonationUrl is string)
+            {
+                throw new InvalidOperationException($"Only {nameof(ExternalAccountCredential)}s that have no impersonation conigured via service_account_impersonation_url support explicit impersonation.");
             }
 
             // We ourselves modify the client supplied initializer, so let's make a copy first.

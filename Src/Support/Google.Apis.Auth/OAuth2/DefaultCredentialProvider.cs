@@ -210,6 +210,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 JsonCredentialParameters.AuthorizedUserCredentialType => new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters)),
                 JsonCredentialParameters.ServiceAccountCredentialType => GoogleCredential.FromServiceAccountCredential(CreateServiceAccountCredentialFromParameters(credentialParameters)),
+                JsonCredentialParameters.ExternalAccountCredentialType => new GoogleCredential(CreateExternalCredentialFromParametes(credentialParameters)),
                 _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}."),
             };
 
@@ -258,6 +259,36 @@ namespace Google.Apis.Auth.OAuth2
                 KeyId = credentialParameters.PrivateKeyId
             };
             return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
+        }
+
+        /// <summary>
+        /// Creates an external account credential from JSON data.
+        /// </summary>
+        private static IGoogleCredential CreateExternalCredentialFromParametes(JsonCredentialParameters parameters)
+        {
+            if (parameters.Type != JsonCredentialParameters.ExternalAccountCredentialType || parameters.CredentialSourceConfig is null)
+            {
+                throw new InvalidOperationException("JSON data does not represent a valid external account credential.");
+            }
+
+            // Build the external credential of the correct type.
+            // The order in which these checks are performed is relevant, see https://google.aip.dev/auth/4117.
+            if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.EnvironmentId))
+            {
+                throw new NotImplementedException("AWS external credentials not yet supported.");
+            }
+            else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.File))
+            {
+                throw new NotImplementedException("File-sourced credentials not yet supported.");
+            }
+            else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.Url))
+            {
+                throw new NotImplementedException("Url-sourced credentials not yet supported.");
+            }
+            else
+            {
+                throw new InvalidOperationException("Unrecognized external credential configuration");
+            }
         }
 
         /// <summary> 

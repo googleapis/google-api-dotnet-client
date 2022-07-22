@@ -49,7 +49,7 @@ namespace Google.Apis.Auth.OAuth2
         bool HasExplicitScopes { get; }
 
         /// <summary>
-        /// Returns true if this credential accepts explicit scopes to be set
+        /// Returns true if this credential allows explicit scopes to be set
         /// via this library.
         /// Returns false otherwise.
         /// </summary>
