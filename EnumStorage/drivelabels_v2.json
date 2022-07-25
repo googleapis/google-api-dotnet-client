@@ -1,0 +1,26 @@
+{
+  "Google.Apis.DriveLabels.v2.DriveLabelsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DriveLabels.v2.DriveLabelsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.DriveLabels.v2.LabelsResource+GetRequest.ViewEnum": [
+    "LABEL_VIEW_BASIC",
+    "LABEL_VIEW_FULL"
+  ],
+  "Google.Apis.DriveLabels.v2.LabelsResource+ListRequest.MinimumRoleEnum": [
+    "LABEL_ROLE_UNSPECIFIED",
+    "READER",
+    "APPLIER",
+    "ORGANIZER",
+    "EDITOR"
+  ],
+  "Google.Apis.DriveLabels.v2.LabelsResource+ListRequest.ViewEnum": [
+    "LABEL_VIEW_BASIC",
+    "LABEL_VIEW_FULL"
+  ]
+}

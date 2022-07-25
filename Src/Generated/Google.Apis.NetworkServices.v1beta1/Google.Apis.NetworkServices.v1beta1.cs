@@ -1998,7 +1998,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// The value returned by the last `ListHttpRoutesResponse` Indicates that this is a continuation of
-                    /// a prior `ListRouters` call, and that the system should return the next page of data.
+                    /// a prior `ListHttpRoutes` call, and that the system should return the next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3676,7 +3676,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// The value returned by the last `ListTcpRoutesResponse` Indicates that this is a continuation of
-                    /// a prior `ListRouters` call, and that the system should return the next page of data.
+                    /// a prior `ListTcpRoutes` call, and that the system should return the next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4022,7 +4022,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// The value returned by the last `ListTlsRoutesResponse` Indicates that this is a continuation of
-                    /// a prior `ListRouters` call, and that the system should return the next page of data.
+                    /// a prior `ListTlsRoutes` call, and that the system should return the next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4559,8 +4559,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. One or more ports that the Gateway must receive traffic on. The proxy binds to the ports
-        /// specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// Required. One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to
+        /// the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type
+        /// 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Ports { get; set; }
@@ -4585,7 +4586,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serverTlsPolicy")]
         public virtual string ServerTlsPolicy { get; set; }
 
-        /// <summary>Immutable. The type of the customer managed gateway.</summary>
+        /// <summary>
+        /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is
+        /// returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -4813,7 +4817,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     public class GrpcRouteRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specifies the allowed number of retries. This number must be &amp;gt; 0. If not specpfied, default to 1.
+        /// Specifies the allowed number of retries. This number must be &amp;gt; 0. If not specified, default to 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numRetries")]
         public virtual System.Nullable<long> NumRetries { get; set; }

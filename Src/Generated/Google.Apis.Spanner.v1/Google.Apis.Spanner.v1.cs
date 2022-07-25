@@ -2200,6 +2200,81 @@ namespace Google.Apis.Spanner.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Returns permissions that the caller has on the specified database or backup resource. Attempting
+                    /// this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user
+                    /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
+                    /// returns an empty set of permissions. Calling this method on a backup that does not exist will
+                    /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                    /// instance.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
+                    /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
+                    /// resources.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that the caller has on the specified database or backup resource. Attempting
+                    /// this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user
+                    /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
+                    /// returns an empty set of permissions. Calling this method on a backup that does not exist will
+                    /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                    /// instance.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
+                        /// `projects//instances/` for instance resources and `projects//instances//databases/` for
+                        /// database resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/databaseRoles/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Operations resource.</summary>

@@ -3396,6 +3396,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual MysqlRdbms IncludeObjects { get; set; }
 
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the
+        /// system's default value will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
+        public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3672,6 +3679,17 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Oracle objects to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual OracleRdbms IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the
+        /// system's default value will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
+        public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
+
+        /// <summary>Stream large object values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamLargeObjects")]
+        public virtual StreamLargeObjects StreamLargeObjects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3955,6 +3973,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to stream large object values.</summary>
+    public class StreamLargeObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

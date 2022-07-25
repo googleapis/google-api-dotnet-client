@@ -358,7 +358,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Retrieve the details of a single VolumeBackup.</summary>
                         /// <param name="name">
                         /// Required. Full name of the VolumeBackup resource. Format:
-                        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*
+                        /// `projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -377,7 +377,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. Full name of the VolumeBackup resource. Format:
-                            /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*
+                            /// `projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -490,7 +490,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Lists the VolumeBackups for a given Backup.</summary>
                         /// <param name="parent">
                         /// Required. The Backup that contains the VolumeBackups to list. Format:
-                        /// projects/*/locations/*/backupPlans/*/backups/*
+                        /// `projects/*/locations/*/backupPlans/*/backups/*`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -509,7 +509,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. The Backup that contains the VolumeBackups to list. Format:
-                            /// projects/*/locations/*/backupPlans/*/backups/*
+                            /// `projects/*/locations/*/backupPlans/*/backups/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -739,7 +739,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The BackupPlan within which to create the Backup. Format:
-                    /// projects/*/locations/*/backupPlans/*
+                    /// `projects/*/locations/*/backupPlans/*`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.Backup body, string parent)
                     {
@@ -759,7 +759,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The BackupPlan within which to create the Backup. Format:
-                        /// projects/*/locations/*/backupPlans/*
+                        /// `projects/*/locations/*/backupPlans/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -813,7 +813,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>Deletes an existing Backup.</summary>
                     /// <param name="name">
-                    /// Required. Name of the Backup resource. Format: projects/*/locations/*/backupPlans/*/backups/*
+                    /// Required. Name of the Backup resource. Format: `projects/*/locations/*/backupPlans/*/backups/*`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -832,7 +832,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. Name of the Backup resource. Format:
-                        /// projects/*/locations/*/backupPlans/*/backups/*
+                        /// `projects/*/locations/*/backupPlans/*/backups/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -894,7 +894,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <summary>Retrieve the details of a single Backup.</summary>
                     /// <param name="name">
                     /// Required. Full name of the Backup resource. Format:
-                    /// projects/*/locations/*/backupPlans/*/backups/*
+                    /// `projects/*/locations/*/backupPlans/*/backups/*`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -913,7 +913,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. Full name of the Backup resource. Format:
-                        /// projects/*/locations/*/backupPlans/*/backups/*
+                        /// `projects/*/locations/*/backupPlans/*/backups/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1026,7 +1026,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <summary>Lists the Backups for a given BackupPlan.</summary>
                     /// <param name="parent">
                     /// Required. The BackupPlan that contains the Backups to list. Format:
-                    /// projects/*/locations/*/backupPlans/*
+                    /// `projects/*/locations/*/backupPlans/*`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1045,7 +1045,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The BackupPlan that contains the Backups to list. Format:
-                        /// projects/*/locations/*/backupPlans/*
+                        /// `projects/*/locations/*/backupPlans/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1135,7 +1135,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. The fully qualified name of the Backup.
-                    /// projects/*/locations/*/backupPlans/*/backups/*
+                    /// `projects/*/locations/*/backupPlans/*/backups/*`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.Backup body, string name)
                     {
@@ -1155,7 +1155,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Output only. The fully qualified name of the Backup.
-                        /// projects/*/locations/*/backupPlans/*/backups/*
+                        /// `projects/*/locations/*/backupPlans/*/backups/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1351,7 +1351,7 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Creates a new BackupPlan in a given location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The location within which to create the BackupPlan. Format: projects/*/locations/*
+                /// Required. The location within which to create the BackupPlan. Format: `projects/*/locations/*`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.BackupPlan body, string parent)
                 {
@@ -1370,7 +1370,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location within which to create the BackupPlan. Format: projects/*/locations/*
+                    /// Required. The location within which to create the BackupPlan. Format: `projects/*/locations/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1424,7 +1424,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Deletes an existing BackupPlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
+                /// Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/backupPlans/*`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1442,7 +1442,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
+                    /// Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/backupPlans/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1488,7 +1488,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Retrieve the details of a single BackupPlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
+                /// Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/backupPlans/*`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1506,7 +1506,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
+                    /// Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/backupPlans/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1617,7 +1617,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Lists BackupPlans in a given location.</summary>
                 /// <param name="parent">
-                /// Required. The location that contains the BackupPlans to list. Format: projects/*/locations/*
+                /// Required. The location that contains the BackupPlans to list. Format: `projects/*/locations/*`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1635,7 +1635,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location that contains the BackupPlans to list. Format: projects/*/locations/*
+                    /// Required. The location that contains the BackupPlans to list. Format: `projects/*/locations/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1724,7 +1724,8 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Update a BackupPlan.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
+                /// Output only. The full name of the BackupPlan resource. Format:
+                /// `projects/*/locations/*/backupPlans/*`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.BackupPlan body, string name)
                 {
@@ -1744,7 +1745,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>
                     /// Output only. The full name of the BackupPlan resource. Format:
-                    /// projects/*/locations/*/backupPlans/*
+                    /// `projects/*/locations/*/backupPlans/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2226,7 +2227,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Retrieve the details of a single VolumeRestore.</summary>
                         /// <param name="name">
                         /// Required. Full name of the VolumeRestore resource. Format:
-                        /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*
+                        /// `projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -2245,7 +2246,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. Full name of the VolumeRestore resource. Format:
-                            /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*
+                            /// `projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2358,7 +2359,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Lists the VolumeRestores for a given Restore.</summary>
                         /// <param name="parent">
                         /// Required. The Restore that contains the VolumeRestores to list. Format:
-                        /// projects/*/locations/*/restorePlans/*/restores/*
+                        /// `projects/*/locations/*/restorePlans/*/restores/*`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -2377,7 +2378,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. The Restore that contains the VolumeRestores to list. Format:
-                            /// projects/*/locations/*/restorePlans/*/restores/*
+                            /// `projects/*/locations/*/restorePlans/*/restores/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2607,7 +2608,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The RestorePlan within which to create the Restore. Format:
-                    /// projects/*/locations/*/restorePlans/*
+                    /// `projects/*/locations/*/restorePlans/*`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.Restore body, string parent)
                     {
@@ -2627,7 +2628,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The RestorePlan within which to create the Restore. Format:
-                        /// projects/*/locations/*/restorePlans/*
+                        /// `projects/*/locations/*/restorePlans/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2681,7 +2682,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>Deletes an existing Restore.</summary>
                     /// <param name="name">
-                    /// Required. Full name of the Restore Format: projects/*/locations/*/restorePlans/*/restores/*
+                    /// Required. Full name of the Restore Format: `projects/*/locations/*/restorePlans/*/restores/*`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -2699,7 +2700,8 @@ namespace Google.Apis.BackupforGKE.v1
                         }
 
                         /// <summary>
-                        /// Required. Full name of the Restore Format: projects/*/locations/*/restorePlans/*/restores/*
+                        /// Required. Full name of the Restore Format:
+                        /// `projects/*/locations/*/restorePlans/*/restores/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2760,7 +2762,8 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>Retrieves the details of a single Restore.</summary>
                     /// <param name="name">
-                    /// Required. Name of the restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+                    /// Required. Name of the restore resource. Format:
+                    /// `projects/*/locations/*/restorePlans/*/restores/*`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2779,7 +2782,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. Name of the restore resource. Format:
-                        /// projects/*/locations/*/restorePlans/*/restores/*
+                        /// `projects/*/locations/*/restorePlans/*/restores/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2892,7 +2895,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <summary>Lists the Restores for a given RestorePlan.</summary>
                     /// <param name="parent">
                     /// Required. The RestorePlan that contains the Restores to list. Format:
-                    /// projects/*/locations/*/restorePlans/*
+                    /// `projects/*/locations/*/restorePlans/*`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2911,7 +2914,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The RestorePlan that contains the Restores to list. Format:
-                        /// projects/*/locations/*/restorePlans/*
+                        /// `projects/*/locations/*/restorePlans/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -3001,7 +3004,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. The full name of the Restore resource. Format:
-                    /// projects/*/locations/*/restorePlans/*/restores/*
+                    /// `projects/*/locations/*/restorePlans/*/restores/*`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.Restore body, string name)
                     {
@@ -3021,7 +3024,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Output only. The full name of the Restore resource. Format:
-                        /// projects/*/locations/*/restorePlans/*/restores/*
+                        /// `projects/*/locations/*/restorePlans/*/restores/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3217,7 +3220,7 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Creates a new RestorePlan in a given location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The location within which to create the RestorePlan. Format: projects/*/locations/*
+                /// Required. The location within which to create the RestorePlan. Format: `projects/*/locations/*`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.RestorePlan body, string parent)
                 {
@@ -3236,7 +3239,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location within which to create the RestorePlan. Format: projects/*/locations/*
+                    /// Required. The location within which to create the RestorePlan. Format: `projects/*/locations/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3290,7 +3293,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Deletes an existing RestorePlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
+                /// Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/restorePlans/*`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3308,7 +3311,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
+                    /// Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/restorePlans/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3369,7 +3372,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Retrieve the details of a single RestorePlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
+                /// Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/restorePlans/*`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3387,7 +3390,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
+                    /// Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/restorePlans/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3498,7 +3501,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Lists RestorePlans in a given location.</summary>
                 /// <param name="parent">
-                /// Required. The location that contains the RestorePlans to list. Format: projects/*/locations/*
+                /// Required. The location that contains the RestorePlans to list. Format: `projects/*/locations/*`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3516,7 +3519,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location that contains the RestorePlans to list. Format: projects/*/locations/*
+                    /// Required. The location that contains the RestorePlans to list. Format: `projects/*/locations/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3606,7 +3609,7 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The full name of the RestorePlan resource. Format:
-                /// projects/*/locations/*/restorePlans/*.
+                /// `projects/*/locations/*/restorePlans/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.RestorePlan body, string name)
                 {
@@ -3626,7 +3629,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>
                     /// Output only. The full name of the RestorePlan resource. Format:
-                    /// projects/*/locations/*/restorePlans/*.
+                    /// `projects/*/locations/*/restorePlans/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4153,7 +4156,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<bool> Manual { get; set; }
 
         /// <summary>
-        /// Output only. The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
+        /// Output only. The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4169,8 +4172,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>
         /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &amp;gt;=
         /// 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &amp;gt;=
-        /// delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent
-        /// BackupPlan's backup_retain_days value.
+        /// delete_lock_days and &amp;lt;= 365. Once a Backup is created, this value may only be increased. Defaults to
+        /// the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainDays")]
         public virtual System.Nullable<int> RetainDays { get; set; }
@@ -4276,7 +4279,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Required. Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid
-        /// formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -4314,7 +4317,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
+        /// Output only. The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4402,8 +4405,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> BackupCrdVersions { get; set; }
 
         /// <summary>
-        /// The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* -
-        /// projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
+        /// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*`
+        /// - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -4449,7 +4452,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Defined a customer managed encryption key that will be used to encrypt Backup artifacts.</summary>
     public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*</summary>
+        /// <summary>Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpKmsEncryptionKey")]
         public virtual string GcpKmsEncryptionKey { get; set; }
 
@@ -4938,14 +4941,14 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>
         /// Required. Immutable. A reference to the Backup used as the source from which this Restore will restore. Note
         /// that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format:
-        /// projects/*/locations/*/backupPlans/*/backups/*.
+        /// `projects/*/locations/*/backupPlans/*/backups/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
         public virtual string Backup { get; set; }
 
         /// <summary>
         /// Output only. The target cluster into which this Restore will restore data. Valid formats: -
-        /// projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's
+        /// `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's
         /// cluster value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
@@ -4979,7 +4982,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+        /// Output only. The full name of the Restore resource. Format:
+        /// `projects/*/locations/*/restorePlans/*/restores/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5100,7 +5104,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     {
         /// <summary>
         /// Required. Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores
-        /// created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        /// created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
         public virtual string BackupPlan { get; set; }
@@ -5108,7 +5112,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>
         /// Required. Immutable. The target cluster into which Restores created via this RestorePlan will restore data.
         /// NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: -
-        /// projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -5137,7 +5141,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+        /// Output only. The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5173,11 +5177,12 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value
-        /// &amp;gt;= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its
-        /// age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will
-        /// NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups
-        /// created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be
-        /// &amp;gt;= backup_delete_lock_days. Default: 0 (no automatic deletion)
+        /// &amp;gt;= 0 and &amp;lt;= 365. If specified, a Backup created under this BackupPlan will be automatically
+        /// deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under
+        /// this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing
+        /// Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE:
+        /// backup_retain_days must be &amp;gt;= backup_delete_lock_days. If cron_schedule is defined, then this must be
+        /// &amp;lt;= 360 * the creation interval. Default: 0 (no automatic deletion)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetainDays")]
         public virtual System.Nullable<int> BackupRetainDays { get; set; }
@@ -5200,7 +5205,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
     {
         /// <summary>
         /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating
-        /// Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+        /// Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default
+        /// (empty): no automatic backup creation will occur.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
@@ -5353,7 +5359,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Output only. The full name of the VolumeBackup resource. Format:
-        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*.
+        /// `projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5420,7 +5426,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Output only. Full name of the VolumeRestore resource. Format:
-        /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*.
+        /// `projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5452,7 +5458,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Output only. The full name of the VolumeBackup from which the volume will be restored. Format:
-        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*.
+        /// `projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBackup")]
         public virtual string VolumeBackup { get; set; }

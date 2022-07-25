@@ -3692,6 +3692,13 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
+        /// <summary>
+        /// Output only. Name of the runtimeConfig resource. Format:
+        /// projects/{project}/locations/{location}/runtimeConfig
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>Output only. The endpoint of the connectors runtime ingress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeEndpoint")]
         public virtual string RuntimeEndpoint { get; set; }
