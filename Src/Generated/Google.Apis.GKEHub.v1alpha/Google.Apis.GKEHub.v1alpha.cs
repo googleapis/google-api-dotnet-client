@@ -1143,7 +1143,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 }
 
                 /// <summary>Creates a fleet.</summary>
-                public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Fleet>
+                public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
                     public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.Fleet body, string parent) : base(service)
@@ -1200,7 +1200,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 }
 
                 /// <summary>Removes a Fleet. There must be no memberships remaining in the Fleet.</summary>
-                public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Empty>
+                public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1388,7 +1388,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 }
 
                 /// <summary>Updates a fleet.</summary>
-                public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Fleet>
+                public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
                     public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.Fleet body, string name) : base(service)
@@ -4028,21 +4028,16 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique
-        /// within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the
-        /// name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492).
-        /// Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fleetName")]
-        public virtual string FleetName { get; set; }
-
-        /// <summary>
         /// Output only. The full, unique resource name of this fleet in the format of
         /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet
         /// resource, named "default".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the namespace resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual FleetLifecycleState State { get; set; }
 
         /// <summary>
         /// Output only. Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet
@@ -4054,6 +4049,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. When the Fleet was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>FleetLifecycleState describes the state of a Fleet resource.</summary>
+    public class FleetLifecycleState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current state of the Fleet resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4136,6 +4142,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("azureadConfig")]
         public virtual IdentityServiceAzureADConfig AzureadConfig { get; set; }
 
+        /// <summary>GoogleConfig specific configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleConfig")]
+        public virtual IdentityServiceGoogleConfig GoogleConfig { get; set; }
+
         /// <summary>Identifier for auth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4162,11 +4172,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Raw client secret will be passed to the GKE Hub CLH.</summary>
+        /// <summary>Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
-        /// <summary>Encrypted AzureAD client secrets</summary>
+        /// <summary>Output only. Encrypted AzureAD client secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]
         public virtual string EncryptedClientSecret { get; set; }
 
@@ -4180,6 +4190,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Google Plugin Auth flow.</summary>
+    public class IdentityServiceGoogleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disable automatic configuration of Google Plugin on supported platforms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disable")]
+        public virtual System.Nullable<bool> Disable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4806,6 +4827,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example:
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
         public virtual string ResourceLink { get; set; }

@@ -3379,9 +3379,25 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// </summary>
     public class FirebaseProject : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Set of user-defined annotations for the FirebaseProject as per
+        /// [AIP-128](https://google.aip.dev/128#annotations). These annotations are intended solely for developers and
+        /// client-side tools Firebase services will not mutate this annotation set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
         /// <summary>The user-assigned display name of the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// [AIP-154](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>
         /// The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the
@@ -3419,9 +3435,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Details of a Firebase App for iOS.</summary>

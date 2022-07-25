@@ -1497,8 +1497,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual object GapDuration { get; set; }
 
         /// <summary>Relative time (from the start of the video stream) when the gap started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gapTime")]
-        public virtual object GapTime { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("gapStartTime")]
+        public virtual object GapStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1537,8 +1537,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual object GapDuration { get; set; }
 
         /// <summary>Relative time (from the start of the video stream) when the gap started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gapTime")]
-        public virtual object GapTime { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("gapStartTime")]
+        public virtual object GapStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1682,8 +1682,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     public class NotOutdoorsFailureDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Relative time (from the start of the video stream) when an indoor frame was found.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -8759,7 +8759,10 @@ namespace Google.Apis.Dialogflow.v3.Data
 {
     /// <summary>
     /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level
-    /// overrides the settings exposed at higher level. Hierarchy:
+    /// overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the
+    /// playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the
+    /// agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other.
+    /// DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy:
     /// Agent-&amp;gt;Flow-&amp;gt;Page-&amp;gt;Fulfillment/Parameter.
     /// </summary>
     public class GoogleCloudDialogflowCxV3AdvancedSettings : Google.Apis.Requests.IDirectResponseSchema

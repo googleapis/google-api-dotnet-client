@@ -6050,6 +6050,14 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't
+                /// been, and isn't currently, supported. For more information about filtering, see [API
+                /// Filtering](https://aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of records to return in a single page. The server may return fewer
                 /// records than this. If unspecified, we use 10. The maximum is 100.
                 /// </summary>
@@ -6083,6 +6091,14 @@ namespace Google.Apis.Dialogflow.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -14396,6 +14412,14 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't
+                    /// been, and isn't currently, supported. For more information about filtering, see [API
+                    /// Filtering](https://aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of records to return in a single page. The server may return fewer
                     /// records than this. If unspecified, we use 10. The maximum is 100.
                     /// </summary>
@@ -14429,6 +14453,14 @@ namespace Google.Apis.Dialogflow.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -26708,7 +26740,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual GoogleCloudDialogflowV2EventInput Event__ { get; set; }
 
-        /// <summary>The natural language text to be processed.</summary>
+        /// <summary>
+        /// The natural language text to be processed. Text length must not exceed 256 character for virtual agent
+        /// interactions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowV2TextInput Text { get; set; }
 
@@ -27483,7 +27518,7 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
-        /// characters.
+        /// characters for virtual agent interactions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }

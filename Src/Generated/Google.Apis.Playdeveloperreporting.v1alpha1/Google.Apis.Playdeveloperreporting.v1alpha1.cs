@@ -824,33 +824,38 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.day", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeDay { get; set; }
 
                     /// <summary>
-                    /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the
-                    /// value "24:00:00" for scenarios like business closing time.
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.hours", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeHours { get; set; }
 
-                    /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeMinutes { get; set; }
 
-                    /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.month", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeMonth { get; set; }
 
-                    /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeNanos { get; set; }
 
                     /// <summary>
-                    /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the
-                    /// value 60 if it allows leap-seconds.
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeSeconds { get; set; }
@@ -877,33 +882,38 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     public virtual System.Nullable<int> IntervalEndTimeYear { get; set; }
 
                     /// <summary>
-                    /// Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.day", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeDay { get; set; }
 
                     /// <summary>
-                    /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the
-                    /// value "24:00:00" for scenarios like business closing time.
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.hours", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeHours { get; set; }
 
-                    /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeMinutes { get; set; }
 
-                    /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.month", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeMonth { get; set; }
 
-                    /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeNanos { get; set; }
 
                     /// <summary>
-                    /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the
-                    /// value 60 if it allows leap-seconds.
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeSeconds { get; set; }
@@ -1226,33 +1236,38 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.day", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeDay { get; set; }
 
                     /// <summary>
-                    /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the
-                    /// value "24:00:00" for scenarios like business closing time.
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.hours", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeHours { get; set; }
 
-                    /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeMinutes { get; set; }
 
-                    /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.month", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeMonth { get; set; }
 
-                    /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeNanos { get; set; }
 
                     /// <summary>
-                    /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the
-                    /// value 60 if it allows leap-seconds.
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeSeconds { get; set; }
@@ -1279,33 +1294,38 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     public virtual System.Nullable<int> IntervalEndTimeYear { get; set; }
 
                     /// <summary>
-                    /// Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.day", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeDay { get; set; }
 
                     /// <summary>
-                    /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the
-                    /// value "24:00:00" for scenarios like business closing time.
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.hours", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeHours { get; set; }
 
-                    /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeMinutes { get; set; }
 
-                    /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.month", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeMonth { get; set; }
 
-                    /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeNanos { get; set; }
 
                     /// <summary>
-                    /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the
-                    /// value 60 if it allows leap-seconds.
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeSeconds { get; set; }
@@ -2673,41 +2693,48 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular
     /// offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular
     /// time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The
-    /// date is relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is considered not to have a
-    /// specific year. month and day must have valid, non-zero values. This type may also be used to represent a
-    /// physical time if all the date and time fields are set and either case of the `time_offset` oneof is set.
-    /// Consider using `Timestamp` message for physical time instead. If your use case also would like to store the
-    /// user's timezone, that can be done in another field. This type is more flexible than some applications may want.
-    /// Make sure to document and validate your application's limitations.
+    /// date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered
+    /// not to have a specific year, month, or day respectively. This type may also be used to represent a physical time
+    /// if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using
+    /// `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone,
+    /// that can be done in another field. This type is more flexible than some applications may want. Make sure to
+    /// document and validate your application's limitations.
     /// </summary>
     public class GoogleTypeDateTime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+        /// <summary>
+        /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime
+        /// without a day.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>
-        /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
-        /// "24:00:00" for scenarios like business closing time.
+        /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may
+        /// choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+        /// <summary>
+        /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; }
 
-        /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
-        /// allows leap-seconds.
+        /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the
+        /// value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }

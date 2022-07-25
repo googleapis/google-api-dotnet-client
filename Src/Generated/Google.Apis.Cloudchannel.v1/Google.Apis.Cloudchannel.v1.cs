@@ -6117,6 +6117,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
         public virtual GoogleCloudChannelV1Constraints Constraints { get; set; }
 
+        /// <summary>The deal code of the offer to get a special promotion or discount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
+        public virtual string DealCode { get; set; }
+
         /// <summary>Output only. End of the Offer validity time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }

@@ -2718,11 +2718,11 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
-        /// <summary>The name of network in Cloud SQL umbrella project.</summary>
+        /// <summary>The name of the umbrella network in the Cloud SQL umbrella project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("umbrellaNetwork")]
         public virtual string UmbrellaNetwork { get; set; }
 
-        /// <summary>The project number of Cloud SQL umbrella project.</summary>
+        /// <summary>The project number of the Cloud SQL umbrella project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("umbrellaProject")]
         public virtual System.Nullable<long> UmbrellaProject { get; set; }
 

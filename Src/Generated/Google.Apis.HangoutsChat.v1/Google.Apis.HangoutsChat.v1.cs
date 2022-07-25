@@ -2372,7 +2372,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// cleared when the action is triggered. When `persist_values` is set to `false`, it is strongly recommended
         /// that the card use [LoadIndicator.SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
         /// for all actions, as this locks the UI to ensure no changes are made by the user while the action is being
-        /// processed.
+        /// processed. Not supported by Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
         public virtual System.Nullable<bool> PersistValues { get; set; }
@@ -2395,25 +2395,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the platform specific uri/intent to open for each client.</summary>
-    public class GoogleAppsCardV1AppUri : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An intent object to be opened in the corresponding android hosting app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("androidIntent")]
-        public virtual GoogleAppsCardV1Intent AndroidIntent { get; set; }
-
-        /// <summary>A companion uri string to be opened in the chat companion window. on the web.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("companionUri")]
-        public virtual string CompanionUri { get; set; }
-
-        /// <summary>A uri string to be opened in the corresponding iOS hosting app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosUri")]
-        public virtual string IosUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2511,7 +2492,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
 
-        /// <summary>The display style for `peekCardHeader`.</summary>
+        /// <summary>The `peekCardHeader` display style for. Not supported by Google Chat apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayStyle")]
         public virtual string DisplayStyle { get; set; }
 
@@ -2529,7 +2510,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate
-        /// forward between the homepage cards and the contextual cards.
+        /// forward between the homepage cards and the contextual cards. Not supported by Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
         public virtual GoogleAppsCardV1CardHeader PeekCardHeader { get; set; }
@@ -2714,21 +2695,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Extra data for an android intent. Valid keys are defined in the hosting app contract.</summary>
-    public class GoogleAppsCardV1ExtraData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A key for the intent extra data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>Value for the given extra data key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents a Grid widget that displays items in a configurable grid layout.</summary>
     public class GoogleAppsCardV1Grid : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2880,27 +2846,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Android intent.</summary>
-    public class GoogleAppsCardV1Intent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of extra data for the android intent. For example, for a calendar event edit intent, the event title
-        /// information can be passed as extra data.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extraData")]
-        public virtual System.Collections.Generic.IList<GoogleAppsCardV1ExtraData> ExtraData { get; set; }
-
-        /// <summary>
-        /// An android intent action string for the {@link android.content.Intent} object. For example: for the view
-        /// intent action type, a valid value will be android.content.Intent.ACTION_VIEW.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentAction")]
-        public virtual string IntentAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents the response to an `onClick` event.</summary>
     public class GoogleAppsCardV1OnClick : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2931,16 +2876,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Represents an `onClick` event that opens a hyperlink.</summary>
     public class GoogleAppsCardV1OpenLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Represents the platform specific uri/intent to open on each client. For example: A companion_url will open
-        /// in a companion window on the web. An iOS URL and android intent will open in the corresponding hosting apps.
-        /// If these platform specific URLs can't be handled correctly, i.e. if the companion isn't supported on web and
-        /// the hosting apps aren't available on the mobile platforms then the `uri` will open in a new browser window
-        /// on all the platforms.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appUri")]
-        public virtual GoogleAppsCardV1AppUri AppUri { get; set; }
-
         /// <summary>
         /// Whether the client forgets about a link after opening it, or observes it until the window closes. Not
         /// supported by Chat apps.
@@ -3146,7 +3081,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A paragraph of text that supports formatting. See [Text
-    /// formatting](workspace/add-ons/concepts/widgets#text_formatting") for details.
+    /// formatting](workspace/add-ons/concepts/widgets#text_formatting) for details.
     /// </summary>
     public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3446,6 +3381,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Resource name of the membership. Format: spaces/{space}/members/{member}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. User's role within a Chat space, which determines their permitted actions in the space.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
 
         /// <summary>Output only. State of the membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

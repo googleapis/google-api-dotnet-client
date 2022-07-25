@@ -7010,6 +7010,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The app restriction schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appRestrictionsSchema")]
+        public virtual AppRestrictionsSchema AppRestrictionsSchema { get; set; }
+
         /// <summary>The tracks visible to the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appTracks")]
         public virtual System.Collections.Generic.IList<TrackInfo> AppTracks { get; set; }
