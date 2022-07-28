@@ -2962,15 +2962,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// [`namespace`](../projects.apps#FirebaseAppInfo.FIELDS.namespace) *
             /// [`platform`](../projects.apps#FirebaseAppInfo.FIELDS.platform) We also support the following "virtual"
             /// fields (fields which are not actually part of the returned resource object, but can be queried as if
-            /// they are pre-populated with specific values): * `sha1_hash`: This field is considered to be a repeated
-            /// `string` field, populated with the list of all SHA-1 certificate fingerprints registered with the app.
-            /// This list is empty if the app is not an Android app. * `sha256_hash`: This field is considered to be a
-            /// repeated `string` field, populated with the list of all SHA-256 certificate fingerprints registered with
-            /// the app. This list is empty if the app is not an Android app. * `app_store_id`: This field is considered
-            /// to be a singular `string` field, populated with the Apple App Store ID registered with the app. This
-            /// field is empty if the app is not an iOS app. * `team_id`: This field is considered to be a singular
-            /// `string` field, populated with the Apple team ID registered with the app. This field is empty if the app
-            /// is not an iOS app.
+            /// they are pre-populated with specific values): * `sha1_hash` or `sha1_hashes`: This field is considered
+            /// to be a repeated `string` field, populated with the list of all SHA-1 certificate fingerprints
+            /// registered with the app. This list is empty if the app is not an Android app. * `sha256_hash` or
+            /// `sha256_hashes`: This field is considered to be a repeated `string` field, populated with the list of
+            /// all SHA-256 certificate fingerprints registered with the app. This list is empty if the app is not an
+            /// Android app. * `app_store_id`: This field is considered to be a singular `string` field, populated with
+            /// the Apple App Store ID registered with the app. This field is empty if the app is not an iOS app. *
+            /// `team_id`: This field is considered to be a singular `string` field, populated with the Apple team ID
+            /// registered with the app. This field is empty if the app is not an iOS app.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3220,6 +3220,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>The SHA1 certificate hashes for the AndroidApp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hashes")]
+        public virtual System.Collections.Generic.IList<string> Sha1Hashes { get; set; }
+
+        /// <summary>The SHA256 certificate hashes for the AndroidApp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hashes")]
+        public virtual System.Collections.Generic.IList<string> Sha256Hashes { get; set; }
 
         /// <summary>Output only. The lifecycle state of the App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

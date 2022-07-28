@@ -1440,6 +1440,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         public PropertiesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Audiences = new AudiencesResource(service);
             ConversionEvents = new ConversionEventsResource(service);
             CustomDimensions = new CustomDimensionsResource(service);
             CustomMetrics = new CustomMetricsResource(service);
@@ -1449,6 +1450,330 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             FirebaseLinks = new FirebaseLinksResource(service);
             GoogleAdsLinks = new GoogleAdsLinksResource(service);
             UserLinks = new UserLinksResource(service);
+        }
+
+        /// <summary>Gets the Audiences resource.</summary>
+        public virtual AudiencesResource Audiences { get; }
+
+        /// <summary>The "audiences" collection of methods.</summary>
+        public class AudiencesResource
+        {
+            private const string Resource = "audiences";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AudiencesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Archives an Audience on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. Example format: properties/1234/audiences/5678</param>
+            public virtual ArchiveRequest Archive(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaArchiveAudienceRequest body, string name)
+            {
+                return new ArchiveRequest(service, body, name);
+            }
+
+            /// <summary>Archives an Audience on a property.</summary>
+            public class ArchiveRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Archive request.</summary>
+                public ArchiveRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaArchiveAudienceRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234/audiences/5678</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaArchiveAudienceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "archive";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:archive";
+
+                /// <summary>Initializes Archive parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/audiences/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Creates an Audience.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates an Audience.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/audiences";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup for a single Audience.</summary>
+            /// <param name="name">
+            /// Required. The name of the Audience to get. Example format: properties/1234/audiences/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Lookup for a single Audience.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Audience to get. Example format: properties/1234/audiences/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/audiences/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists Audiences on a property.</summary>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists Audiences on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListAudiencesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListAudiences` call. Provide this to retrieve the subsequent
+                /// page. When paginating, all other parameters provided to `ListAudiences` must match the call that
+                /// provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/audiences";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates an Audience on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. The resource name for this Audience resource. Format:
+            /// properties/{propertyId}/audiences/{audienceId}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates an Audience on a property.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. The resource name for this Audience resource. Format:
+                /// properties/{propertyId}/audiences/{audienceId}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/audiences/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the ConversionEvents resource.</summary>
@@ -5783,6 +6108,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ArchiveAudience RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaArchiveAudienceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ArchiveCustomDimension RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5828,6 +6160,373 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingAttributionModel")]
         public virtual string ReportingAttributionModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource message representing a GA4 Audience.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudience : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. It is automatically set by GA to false if this is an NPA Audience and is excluded from ads
+        /// personalization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsPersonalizationEnabled")]
+        public virtual System.Nullable<bool> AdsPersonalizationEnabled { get; set; }
+
+        /// <summary>Required. The description of the Audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The display name of the Audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies an event to log when a user joins the Audience. If not set, no event is logged when a
+        /// user joins the Audience.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTrigger")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceEventTrigger EventTrigger { get; set; }
+
+        /// <summary>
+        /// Immutable. Specifies how long an exclusion lasts for users that meet the exclusion filter. It is applied to
+        /// all EXCLUDE filter clauses and is ignored when there is no EXCLUDE filter clause in the Audience.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionDurationMode")]
+        public virtual string ExclusionDurationMode { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. null Filter clauses that define the Audience. All clauses will be AND’ed together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterClauses")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAudienceFilterClause> FilterClauses { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The duration a user should stay in an Audience. It cannot be set to more than 540 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
+        public virtual System.Nullable<int> MembershipDurationDays { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for this Audience resource. Format:
+        /// properties/{propertyId}/audiences/{audienceId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific filter for a single dimension or metric.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether this filter needs dynamic evaluation or not. If set to true, users join the
+        /// Audience if they ever met the condition (static evaluation). If unset or set to false, user evaluation for
+        /// an Audience is dynamic; users are added to an Audience when they meet the conditions and then removed when
+        /// they no longer meet them. This can only be set when Audience scope is ACROSS_ALL_SESSIONS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("atAnyPointInTime")]
+        public virtual System.Nullable<bool> AtAnyPointInTime { get; set; }
+
+        /// <summary>A filter for numeric or date values between certain values on a dimension or metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("betweenFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter BetweenFilter { get; set; }
+
+        /// <summary>Required. Immutable. The dimension name or metric name to filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Optional. If set, specifies the time window for which to evaluate data in number of days. If not set, then
+        /// audience data is evaluated against lifetime data (i.e., infinite time window). For example, if set to 1 day,
+        /// only the current day's data is evaluated. The reference point is the current day when at_any_point_in_time
+        /// is unset or false. It can only be set when Audience scope is ACROSS_ALL_SESSIONS and cannot be greater than
+        /// 60 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inAnyNDayPeriod")]
+        public virtual System.Nullable<int> InAnyNDayPeriod { get; set; }
+
+        /// <summary>A filter for a string dimension that matches a particular list of options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inListFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter InListFilter { get; set; }
+
+        /// <summary>A filter for numeric or date values on a dimension or metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter NumericFilter { get; set; }
+
+        /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter StringFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for numeric or date values between certain values on a dimension or metric.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Begins with this number, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromValue")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue FromValue { get; set; }
+
+        /// <summary>Required. Ends with this number, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toValue")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue ToValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for a string dimension that matches a particular list of options.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, the match is case-sensitive. If false, the match is case-insensitive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
+
+        /// <summary>Required. The list of possible string values to match against. Must be non-empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for numeric or date values on a dimension or metric.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The operation applied to a numeric filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>Required. The numeric or date value to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>To represent a number.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, the match is case-sensitive. If false, the match is case-insensitive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
+
+        /// <summary>Required. The match type for the string filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>Required. The string value to be matched against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A filter that matches events of a single event name. If an event parameter is specified, only the subset of
+    /// events that match both the single event name and the parameter filter expressions match this event filter.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceEventFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The name of the event to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
+        public virtual string EventName { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, this filter matches events that match both the single event name and the parameter
+        /// filter expressions. AudienceEventFilter inside the parameter filter expression cannot be set (i.e., nested
+        /// event filters are not supported). This should be a single and_group of dimension_or_metric_filter or
+        /// not_expression; ANDs of ORs are not supported. Also, if it includes a filter for "eventCount", only that one
+        /// will be considered; all the other filters will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventParameterFilterExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceFilterExpression EventParameterFilterExpression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies an event to log when a user joins the Audience.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceEventTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The event name that will be logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
+        public virtual string EventName { get; set; }
+
+        /// <summary>Required. When to log the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logCondition")]
+        public virtual string LogCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A clause for defining either a simple or sequence filter. A filter can be inclusive (i.e., users satisfying the
+    /// filter clause are included in the Audience) or exclusive (i.e., users satisfying the filter clause are excluded
+    /// from the Audience).
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceFilterClause : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies whether this is an include or exclude filter clause.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clauseType")]
+        public virtual string ClauseType { get; set; }
+
+        /// <summary>Filters that must occur in a specific order for the user to be a member of the Audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sequenceFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceSequenceFilter SequenceFilter { get; set; }
+
+        /// <summary>A simple filter that a user must satisfy to be a member of the Audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simpleFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceSimpleFilter SimpleFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A logical expression of Audience dimension, metric, or event filters.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceFilterExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of expressions to be AND’ed together. It can only contain AudienceFilterExpressions with or_group.
+        /// This must be set for the top level AudienceFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("andGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList AndGroup { get; set; }
+
+        /// <summary>
+        /// A filter on a single dimension or metric. This cannot be set on the top level AudienceFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionOrMetricFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter DimensionOrMetricFilter { get; set; }
+
+        /// <summary>
+        /// Creates a filter that matches a specific event. This cannot be set on the top level
+        /// AudienceFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceEventFilter EventFilter { get; set; }
+
+        /// <summary>
+        /// A filter expression to be NOT'ed (i.e., inverted, complemented). It can only include a
+        /// dimension_or_metric_filter. This cannot be set on the top level AudienceFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceFilterExpression NotExpression { get; set; }
+
+        /// <summary>
+        /// A list of expressions to OR’ed together. It cannot contain AudienceFilterExpressions with and_group or
+        /// or_group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList OrGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Audience filter expressions.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of Audience filter expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpressions")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAudienceFilterExpression> FilterExpressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines filters that must occur in a specific order for the user to be a member of the Audience.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceSequenceFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. Specifies the scope for this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Optional. Defines the time period in which the whole sequence must occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sequenceMaximumDuration")]
+        public virtual object SequenceMaximumDuration { get; set; }
+
+        /// <summary>
+        /// Required. An ordered sequence of steps. A user must complete each step in order to join the sequence filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sequenceSteps")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep> SequenceSteps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A condition that must occur in the specified step order for this user to match the sequence.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When set, this step must be satisfied within the constraint_duration of the previous step (i.e.,
+        /// t[i] - t[i-1] &amp;lt;= constraint_duration). If not set, there is no duration requirement (the duration is
+        /// effectively unlimited). It is ignored for the first step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintDuration")]
+        public virtual object ConstraintDuration { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. A logical expression of Audience dimension, metric, or event filters in each step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceFilterExpression FilterExpression { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the event satisfying this step must be the very next event after the event satisfying the
+        /// last step. If unset or false, this step indirectly follows the prior step; for example, there may be events
+        /// between the prior step and this step. It is ignored for the first step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("immediatelyFollows")]
+        public virtual System.Nullable<bool> ImmediatelyFollows { get; set; }
+
+        /// <summary>Required. Immutable. Specifies the scope for this step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a simple filter that a user must satisfy to be a member of the Audience.</summary>
+    public class GoogleAnalyticsAdminV1alphaAudienceSimpleFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. A logical expression of Audience dimension, metric, or event filters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaAudienceFilterExpression FilterExpression { get; set; }
+
+        /// <summary>Required. Immutable. Specifies the scope for this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6746,6 +7445,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Results that were accessible to the caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccount> Accounts { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAudiences RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Audiences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAudience> Audiences { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no

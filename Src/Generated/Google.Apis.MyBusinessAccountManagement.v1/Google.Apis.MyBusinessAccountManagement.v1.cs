@@ -858,10 +858,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>
-            /// Optional. How many accounts to fetch per page. The minimum supported page_size is 2. The default and
-            /// maximum is 20.
-            /// </summary>
+            /// <summary>Optional. How many accounts to fetch per page. The default and maximum is 20.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1427,10 +1424,10 @@ namespace Google.Apis.MyBusinessAccountManagement.v1.Data
     public class Admin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The name of the Account resource that this Admin refers to. Used when calling CreateAccountAdmin
-        /// or CreateLocationAdmin to invite UserGroups or LocationGroups as admins, respectively. If both this field
-        /// and `admin` are set on `CREATE` requests, this field takes precedence and the email address in `admin` will
-        /// be ignored. Format: `accounts/{account}`.
+        /// Immutable. The name of the Account resource that this Admin refers to. Used when calling
+        /// locations.admins.create to invite a LocationGroup as an admin. If both this field and `admin` are set on
+        /// `CREATE` requests, this field takes precedence and the email address in `admin` will be ignored. Format:
+        /// `accounts/{account}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual string Account { get; set; }

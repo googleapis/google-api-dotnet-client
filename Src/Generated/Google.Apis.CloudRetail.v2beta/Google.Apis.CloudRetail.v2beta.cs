@@ -4924,6 +4924,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A BigQuery output result.</summary>
+    public class GoogleCloudRetailV2alphaBigQueryOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>The ID of a BigQuery Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2alphaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4985,6 +5000,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2alphaExportErrorsConfig ErrorsConfig { get; set; }
 
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2alphaOutputResult OutputResult { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5002,6 +5021,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2alphaExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2alphaOutputResult OutputResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5179,6 +5202,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("periodicTuningState")]
         public virtual string PeriodicTuningState { get; set; }
 
+        /// <summary>
+        /// Output only. The list of valid serving configs associated with the PageOptimizationConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigLists")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaModelServingConfigList> ServingConfigLists { get; set; }
+
         /// <summary>Output only. The serving state of the model: ACTIVE, NOT_ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
         public virtual string ServingState { get; set; }
@@ -5282,6 +5311,31 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>Optional. The name to display for the panel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an ordered combination of valid serving configs, which / may be used for PAGE_OPTIMIZATION
+    /// recommendations.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaModelServingConfigList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A set of valid serving configs that may be used for PAGE_OPTIMIZATION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
+        public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output result.</summary>
+    public class GoogleCloudRetailV2alphaOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Export result in BigQuery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBigQueryOutputResult> BigqueryResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5675,6 +5729,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genders")]
         public virtual System.Collections.Generic.IList<string> Genders { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A BigQuery output result.</summary>
+    public class GoogleCloudRetailV2betaBigQueryOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>The ID of a BigQuery Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6242,6 +6311,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2betaExportErrorsConfig ErrorsConfig { get; set; }
 
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2betaOutputResult OutputResult { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6259,6 +6332,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2betaExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2betaOutputResult OutputResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6759,6 +6836,17 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>Links between Merchant Center accounts and branches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaMerchantCenterLink> Links { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output result.</summary>
+    public class GoogleCloudRetailV2betaOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Export result in BigQuery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaBigQueryOutputResult> BigqueryResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

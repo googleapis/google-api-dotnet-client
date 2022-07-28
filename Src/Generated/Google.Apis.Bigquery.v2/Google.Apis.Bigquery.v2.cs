@@ -4717,6 +4717,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string NullMarker { get; set; }
 
         /// <summary>
+        /// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from
+        /// '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveAsciiControlCharacters")]
+        public virtual System.Nullable<bool> PreserveAsciiControlCharacters { get; set; }
+
+        /// <summary>
         /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to
         /// ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary
         /// state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the
@@ -5570,6 +5577,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual ParquetOptions ParquetOptions { get; set; }
 
         /// <summary>
+        /// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET,
+        /// ORC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceFileSchemaUri")]
+        public virtual string ReferenceFileSchemaUri { get; set; }
+
+        /// <summary>
         /// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for
         /// Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
         /// </summary>
@@ -6420,6 +6434,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; }
+
+        /// <summary>
+        /// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET,
+        /// ORC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceFileSchemaUri")]
+        public virtual string ReferenceFileSchemaUri { get; set; }
 
         /// <summary>
         /// [Optional] The schema for the destination table. The schema can be omitted if the destination table already
@@ -8026,7 +8047,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedRunnableUnits")]
         public virtual System.Nullable<long> EstimatedRunnableUnits { get; set; }
 
-        /// <summary>Total parallel units of work remaining for the active stages.</summary>
+        /// <summary>
+        /// Total units of work remaining for the query. This number can be revised (increased or decreased) while the
+        /// query is running.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingUnits")]
         public virtual System.Nullable<long> PendingUnits { get; set; }
 

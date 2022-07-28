@@ -3920,7 +3920,7 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name of the account. Format: accounts/pub-[0-9]+</summary>
+        /// <summary>Output only. Resource name of the account. Format: accounts/pub-[0-9]+</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3955,7 +3955,9 @@ namespace Google.Apis.Adsense.v2.Data
     /// </summary>
     public class AdClient : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of the ad client. Format: accounts/{account}/adclients/{adclient}</summary>
+        /// <summary>
+        /// Output only. Resource name of the ad client. Format: accounts/{account}/adclients/{adclient}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4018,7 +4020,7 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+        /// Output only. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4055,7 +4057,7 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>Resource name of the alert. Format: accounts/{account}/alerts/{alert}</summary>
+        /// <summary>Output only. Resource name of the alert. Format: accounts/{account}/alerts/{alert}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4110,7 +4112,7 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of the custom channel. Format:
+        /// Output only. Resource name of the custom channel. Format:
         /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4435,8 +4437,8 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual Date Date { get; set; }
 
         /// <summary>
-        /// Resource name of the payment. Format: - accounts/{account}/payments/unpaid for unpaid (current) AdSense
-        /// earnings. - accounts/{account}/payments/youtube-unpaid for unpaid (current) YouTube earnings. -
+        /// Output only. Resource name of the payment. Format: - accounts/{account}/payments/unpaid for unpaid (current)
+        /// AdSense earnings. - accounts/{account}/payments/youtube-unpaid for unpaid (current) YouTube earnings. -
         /// accounts/{account}/payments/yyyy-MM-dd for paid AdSense earnings. -
         /// accounts/{account}/payments/youtube-yyyy-MM-dd for paid YouTube earnings.
         /// </summary>
@@ -4514,7 +4516,7 @@ namespace Google.Apis.Adsense.v2.Data
     /// <summary>Representation of a saved report.</summary>
     public class SavedReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of the report. Format: accounts/{account}/reports/{report}</summary>
+        /// <summary>Output only. Resource name of the report. Format: accounts/{account}/reports/{report}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4540,7 +4542,7 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>Resource name of a site. Format: accounts/{account}/sites/{site}</summary>
+        /// <summary>Output only. Resource name of a site. Format: accounts/{account}/sites/{site}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4578,7 +4580,8 @@ namespace Google.Apis.Adsense.v2.Data
     public class UrlChannel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Resource name of the URL channel. Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
+        /// Output only. Resource name of the URL channel. Format:
+        /// accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

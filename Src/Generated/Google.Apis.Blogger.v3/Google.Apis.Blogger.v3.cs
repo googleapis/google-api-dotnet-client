@@ -3887,6 +3887,10 @@ namespace Google.Apis.Blogger.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
+        /// <summary>RFC 3339 date-time when this Page was trashed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
+        public virtual string Trashed { get; set; }
+
         /// <summary>RFC 3339 date-time when this Page was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string Updated { get; set; }
@@ -4050,6 +4054,10 @@ namespace Google.Apis.Blogger.v3.Data
         /// <summary>The title link URL, similar to atom's related link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleLink")]
         public virtual string TitleLink { get; set; }
+
+        /// <summary>RFC 3339 date-time when this Post was last trashed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
+        public virtual string Trashed { get; set; }
 
         /// <summary>RFC 3339 date-time when this Post was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
