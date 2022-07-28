@@ -3331,9 +3331,9 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Creates a new metric descriptor. The creation is executed asynchronously and callers may check the
-            /// returned operation to track its progress. User-created metric descriptors define custom metrics
-            /// (https://cloud.google.com/monitoring/custom-metrics).
+            /// Creates a new metric descriptor. The creation is executed asynchronously. User-created metric
+            /// descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics). The metric
+            /// descriptor is updated if it already exists, except that metric labels are never removed.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -3346,9 +3346,9 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Creates a new metric descriptor. The creation is executed asynchronously and callers may check the
-            /// returned operation to track its progress. User-created metric descriptors define custom metrics
-            /// (https://cloud.google.com/monitoring/custom-metrics).
+            /// Creates a new metric descriptor. The creation is executed asynchronously. User-created metric
+            /// descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics). The metric
+            /// descriptor is updated if it already exists, except that metric labels are never removed.
             /// </summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MetricDescriptor>
             {
@@ -10233,6 +10233,15 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
+
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The
+        /// field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
+        /// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and
+        /// dashes. Keys must begin with a letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

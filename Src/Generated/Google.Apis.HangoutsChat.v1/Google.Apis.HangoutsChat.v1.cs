@@ -1523,7 +1523,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
                 /// paths: - text - cards (Requires [service account
-                /// authentication](/chat/api/guides/auth/service-accounts).) - attachment
+                /// authentication](/chat/api/guides/auth/service-accounts).)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3582,16 +3582,38 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
+        /// <summary>Details about the space including description and rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceDetails")]
+        public virtual SpaceDetails SpaceDetails { get; set; }
+
         /// <summary>Output only. Whether messages are threaded in this space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
         public virtual System.Nullable<bool> Threaded { get; set; }
 
         /// <summary>
-        /// Output only. Deprecated: Use `single_user_bot_dm` or `space_type` (developer preview) instead. The type of a
+        /// Output only. Deprecated: Use `singleUserBotDm` or `spaceType` (developer preview) instead. The type of a
         /// space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the space including description and rules.</summary>
+    public class SpaceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A description of the space. It could describe the space's discussion topic, functional purpose, or
+        /// participants.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The space's rules, expectations, and etiquette.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guidelines")]
+        public virtual string Guidelines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6402,6 +6402,36 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+    /// </summary>
+    public class FreeInstanceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is
+        /// `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireBehavior")]
+        public virtual string ExpireBehavior { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp after which the instance will either be upgraded or scheduled for deletion after a
+        /// grace period. ExpireBehavior is used to choose between upgrading or scheduling the free instance for
+        /// deletion. This timestamp is set during the creation of a free instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Output only. If present, the timestamp at which the free instance was upgraded to a provisioned instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeTime")]
+        public virtual object UpgradeTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for GetDatabaseDdl.</summary>
     public class GetDatabaseDdlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6496,6 +6526,14 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpointUris")]
         public virtual System.Collections.Generic.IList<string> EndpointUris { get; set; }
 
+        /// <summary>Free instance metadata. Only populated for free instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeInstanceMetadata")]
+        public virtual FreeInstanceMetadata FreeInstanceMetadata { get; set; }
+
+        /// <summary>The `InstanceType` of the current instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
+        public virtual string InstanceType { get; set; }
+
         /// <summary>
         /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that
         /// reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter
@@ -6563,6 +6601,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The name of this instance configuration as it appears in UIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Describes whether free instances are available to be created in this instance config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeInstanceAvailability")]
+        public virtual string FreeInstanceAvailability { get; set; }
 
         /// <summary>
         /// Allowed values of the "default_leader" schema option for databases in instances that use this instance
@@ -7231,10 +7275,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// objects containing lists of strings. {"a": ["1"]}, {"a": ["2"]} =&amp;gt; {"a": ["12"]} For a more complete
         /// example, suppose a streaming SQL query is yielding a result set whose rows contain a single string field.
         /// The following `PartialResultSet`s might be yielded: { "metadata": { ... } "values": ["Hello", "W"]
-        /// "chunked_value": true "resume_token": "Af65..." } { "values": ["orl"] "chunked_value": true "resume_token":
-        /// "Bqp2..." } { "values": ["d"] "resume_token": "Zx1B..." } This sequence of `PartialResultSet`s encodes two
-        /// rows, one containing the field value `"Hello"`, and a second containing the field value `"World" = "W" +
-        /// "orl" + "d"`.
+        /// "chunked_value": true "resume_token": "Af65..." } { "values": ["orl"] "chunked_value": true } { "values":
+        /// ["d"] "resume_token": "Zx1B..." } This sequence of `PartialResultSet`s encodes two rows, one containing the
+        /// field value `"Hello"`, and a second containing the field value `"World" = "W" + "orl" + "d"`. Not all
+        /// `PartialResultSet`s contain a `resume_token`. Execution can only be resumed from a previously yielded
+        /// `resume_token`. For the above sequence of `PartialResultSet`s, resuming the query with `"resume_token":
+        /// "Af65..."` will yield results from the `PartialResultSet` with value `["orl"]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<object> Values { get; set; }

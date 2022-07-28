@@ -9278,6 +9278,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
         public virtual System.Collections.Generic.IList<ProcessSignature> Signatures { get; set; }
 
+        /// <summary>The list of URIs associated to the Findings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

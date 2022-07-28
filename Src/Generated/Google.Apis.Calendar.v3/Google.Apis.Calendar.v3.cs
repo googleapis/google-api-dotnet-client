@@ -2053,7 +2053,10 @@ namespace Google.Apis.Calendar.v3
             }
         }
 
-        /// <summary>Returns an event.</summary>
+        /// <summary>
+        /// Returns an event based on its Google Calendar ID. To retrieve an event using its iCalendar ID, call the
+        /// events.list method using the iCalUID parameter.
+        /// </summary>
         /// <param name="calendarId">
         /// Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the
         /// primary calendar of the currently logged in user, use the "primary" keyword.
@@ -2064,7 +2067,10 @@ namespace Google.Apis.Calendar.v3
             return new GetRequest(service, calendarId, eventId);
         }
 
-        /// <summary>Returns an event.</summary>
+        /// <summary>
+        /// Returns an event based on its Google Calendar ID. To retrieve an event using its iCalendar ID, call the
+        /// events.list method using the iCalUID parameter.
+        /// </summary>
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2645,7 +2651,10 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
-            /// <summary>Specifies event ID in the iCalendar format to be included in the response. Optional.</summary>
+            /// <summary>
+            /// Specifies an event ID in the iCalendar format to be provided in the response. Optional. Use this if you
+            /// want to search for an event by its iCalendar ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("iCalUID", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ICalUID { get; set; }
 
@@ -3582,7 +3591,10 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
-            /// <summary>Specifies event ID in the iCalendar format to be included in the response. Optional.</summary>
+            /// <summary>
+            /// Specifies an event ID in the iCalendar format to be provided in the response. Optional. Use this if you
+            /// want to search for an event by its iCalendar ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("iCalUID", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ICalUID { get; set; }
 
@@ -4959,10 +4971,11 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>
         /// Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring
-        /// systems and must be supplied when importing events via the import method. Note that the icalUID and the id
+        /// systems and must be supplied when importing events via the import method. Note that the iCalUID and the id
         /// are not identical and only one of them should be supplied at event creation time. One difference in their
         /// semantics is that in recurring events, all occurrences of one event have different ids while they all share
-        /// the same icalUIDs.
+        /// the same iCalUIDs. To retrieve an event using its iCalUID, call the events.list method using the iCalUID
+        /// parameter. To retrieve an event using its id, call the events.get method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iCalUID")]
         public virtual string ICalUID { get; set; }
