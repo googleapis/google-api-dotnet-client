@@ -8099,6 +8099,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1SessionEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSucceeded")]
+        public virtual System.Nullable<bool> EventSucceeded { get; set; }
+
         /// <summary>The log message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
@@ -8115,9 +8119,19 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>The information about the user that created the session.</summary>
+        /// <summary>The idle duration of a warm pooled session before it is assigned to user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unassignedDuration")]
+        public virtual object UnassignedDuration { get; set; }
+
+        /// <summary>
+        /// The information about the user that created the session. It will be the email address of the user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>If the session is a warm pooled session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warmPoolEnabled")]
+        public virtual System.Nullable<bool> WarmPoolEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8324,7 +8338,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a
-        /// project is provided, the executionspec.service_account must belong to this same project.
+        /// project is provided, the ExecutionSpec.service_account must belong to this project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }

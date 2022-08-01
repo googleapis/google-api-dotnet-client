@@ -2011,6 +2011,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Widgets for Chat apps to specify.</summary>
+    public class CardWithId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Card proto that allows Chat apps to specify UI elements and editable widgets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("card")]
+        public virtual GoogleAppsCardV1Card Card { get; set; }
+
+        /// <summary>
+        /// Required for `cardsV2` messages. Chat app-specified identifier for this widget. Scoped within a message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardId")]
+        public virtual string CardId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// JSON payload of error messages. If the Cloud Logging API is enabled, these error messages are logged to [Google
     /// Cloud Logging](https://cloud.google.com/logging/docs).
@@ -3421,6 +3438,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
         public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
+
+        /// <summary>
+        /// Richly formatted and interactive cards that display UI elements and editable widgets, such as: - Formatted
+        /// text - Buttons - Clickable images - Checkboxes - Radio buttons - Input widgets. Cards are usually displayed
+        /// below the text-body of a Chat message, but can situationally appear other places, such as
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique identifier among
+        /// cards in the same message and for identifying user input values. Currently supported widgets include: -
+        /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
+        public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
 
         /// <summary>Output only. The time at which the message was created in Google Chat server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]

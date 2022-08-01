@@ -395,6 +395,59 @@ namespace Google.Apis.Baremetalsolution.v2
                     this.service = service;
                 }
 
+                /// <summary>Create an Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent project and location.</param>
+                public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.Instance body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create an Instance.</summary>
+                public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.Instance body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent project and location.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.Instance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/instances";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Detach LUN from Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="instance">Required. Name of the instance.</param>
@@ -580,8 +633,8 @@ namespace Google.Apis.Baremetalsolution.v2
                 /// <summary>Update details of a single server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of this `Instance`. Resource names are schemeless URIs that follow
-                /// the conventions in https://cloud.google.com/apis/design/resource_names. Format:
+                /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the
+                /// conventions in https://cloud.google.com/apis/design/resource_names. Format:
                 /// `projects/{project}/locations/{location}/instances/{instance}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Baremetalsolution.v2.Data.Instance body, string name)
@@ -601,8 +654,8 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of this `Instance`. Resource names are schemeless URIs that
-                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. Format:
+                    /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow
+                    /// the conventions in https://cloud.google.com/apis/design/resource_names. Format:
                     /// `projects/{project}/locations/{location}/instances/{instance}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2303,6 +2356,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Output only. The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of
+        /// customer provided name. example like "10.0.0.0:/g123456789-nfs001"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsPath")]
+        public virtual string NfsPath { get; set; }
+
+        /// <summary>
         /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser
         /// (root) identity when using identity authentication.
         /// </summary>
@@ -2404,13 +2464,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hyperthreadingEnabled")]
         public virtual System.Nullable<bool> HyperthreadingEnabled { get; set; }
 
-        /// <summary>An identifier for the `Instance`, generated by the backend.</summary>
+        /// <summary>Output only. An identifier for the `Instance`, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// True if the interactive serial console feature is enabled for the instance, false otherwise. The default
-        /// value is false.
+        /// Output only. True if the interactive serial console feature is enabled for the instance, false otherwise.
+        /// The default value is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactiveSerialConsoleEnabled")]
         public virtual System.Nullable<bool> InteractiveSerialConsoleEnabled { get; set; }
@@ -2429,19 +2489,23 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2LogicalInterface> LogicalInterfaces { get; set; }
 
-        /// <summary>List of LUNs associated with this server.</summary>
+        /// <summary>Output only. Text field about info for logging in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loginInfo")]
+        public virtual string LoginInfo { get; set; }
+
+        /// <summary>Immutable. List of LUNs associated with this server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("luns")]
         public virtual System.Collections.Generic.IList<Lun> Luns { get; set; }
 
         /// <summary>
-        /// The server type. [Available server
+        /// Immutable. The server type. [Available server
         /// types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this `Instance`. Resource names are schemeless URIs that follow the
+        /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the
         /// conventions in https://cloud.google.com/apis/design/resource_names. Format:
         /// `projects/{project}/locations/{location}/instances/{instance}`
         /// </summary>
@@ -2455,7 +2519,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTemplate")]
         public virtual string NetworkTemplate { get; set; }
 
-        /// <summary>List of networks associated with this server.</summary>
+        /// <summary>Output only. List of networks associated with this server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<Network> Networks { get; set; }
 
@@ -2470,13 +2534,20 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
         public virtual string Pod { get; set; }
 
-        /// <summary>The state of the server.</summary>
+        /// <summary>Output only. The state of the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
         /// <summary>Output only. Update a time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in
+        /// Get/List responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2557,7 +2628,11 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableMachineCount")]
         public virtual System.Nullable<int> AvailableMachineCount { get; set; }
 
-        /// <summary>Instance type.</summary>
+        /// <summary>The gcp service of the provisioning quota.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpService")]
+        public virtual string GcpService { get; set; }
+
+        /// <summary>Instance type. Deprecated: use gcp_service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
 
@@ -3578,6 +3653,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Immutable. Pod name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
         public virtual string Pod { get; set; }
+
+        /// <summary>Output only. Storage protocol for the Volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
 
         /// <summary>
         /// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
