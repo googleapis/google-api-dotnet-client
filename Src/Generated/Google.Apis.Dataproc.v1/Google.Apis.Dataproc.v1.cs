@@ -8607,11 +8607,26 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ClusterUuid { get; set; }
 
         /// <summary>
+        /// Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning facilitates the removal of
+        /// cluster nodes without interrupting jobs in progress. The timeout specifies the amount of time to wait for
+        /// jobs finish before forcefully removing nodes. The default timeout is 0 for forceful decommissioning, and the
+        /// maximum timeout period is 1 day. (see JSON Mapping—Duration
+        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).graceful_decommission_timeout is
+        /// supported in Dataproc image versions 1.2+.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
+        public virtual object GracefulDecommissionTimeout { get; set; }
+
+        /// <summary>
         /// Optional. Node pools and corresponding repair action to be taken. All node pools should be unique in this
         /// request. i.e. Multiple entries for the same node pool id are not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
+
+        /// <summary>Optional. operation id of the parent operation sending the repair request</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentOperationId")]
+        public virtual string ParentOperationId { get; set; }
 
         /// <summary>
         /// Optional. A unique ID used to identify the request. If the server receives two RepairClusterRequests with

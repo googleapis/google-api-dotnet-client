@@ -2237,10 +2237,7 @@ namespace Google.Apis.Pubsub.v1
                 }
             }
 
-            /// <summary>
-            /// Pulls messages from the server. The server may return `UNAVAILABLE` if there are too many concurrent
-            /// pull requests pending for the given subscription.
-            /// </summary>
+            /// <summary>Pulls messages from the server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">
             /// Required. The subscription from which messages should be pulled. Format is
@@ -2251,10 +2248,7 @@ namespace Google.Apis.Pubsub.v1
                 return new PullRequest(service, body, subscription);
             }
 
-            /// <summary>
-            /// Pulls messages from the server. The server may return `UNAVAILABLE` if there are too many concurrent
-            /// pull requests pending for the given subscription.
-            /// </summary>
+            /// <summary>Pulls messages from the server.</summary>
             public class PullRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.PullResponse>
             {
                 /// <summary>Constructs a new Pull request.</summary>

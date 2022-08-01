@@ -39597,7 +39597,7 @@
    }
   }
  },
- "revision": "20220714",
+ "revision": "20220720",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -71166,7 +71166,7 @@
    "type": "object"
   },
   "Scheduling": {
-   "description": "Sets the scheduling options for an Instance. NextID: 21",
+   "description": "Sets the scheduling options for an Instance.",
    "id": "Scheduling",
    "properties": {
     "automaticRestart": {

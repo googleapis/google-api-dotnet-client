@@ -2670,6 +2670,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roleGrant")]
         public virtual RoleGrant RoleGrant { get; set; }
 
+        /// <summary>State of the config variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationRegex")]
         public virtual string ValidationRegex { get; set; }
