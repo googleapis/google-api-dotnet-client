@@ -862,11 +862,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             }
 
             /// <summary>
-            /// Returns the secret key related to the specified public key. You should use the legacy secret key only if
-            /// you are integrating with a 3rd party using the legacy reCAPTCHA instead of reCAPTCHA Enterprise.
+            /// Returns the secret key related to the specified public key. You must use the legacy secret key only in a
+            /// 3rd party integration with legacy reCAPTCHA.
             /// </summary>
             /// <param name="key">
-            /// Required. The public key name linked to the requested secret key , in the format
+            /// Required. The public key name linked to the requested secret key in the format
             /// "projects/{project}/keys/{key}".
             /// </param>
             public virtual RetrieveLegacySecretKeyRequest RetrieveLegacySecretKey(string key)
@@ -875,8 +875,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             }
 
             /// <summary>
-            /// Returns the secret key related to the specified public key. You should use the legacy secret key only if
-            /// you are integrating with a 3rd party using the legacy reCAPTCHA instead of reCAPTCHA Enterprise.
+            /// Returns the secret key related to the specified public key. You must use the legacy secret key only in a
+            /// 3rd party integration with legacy reCAPTCHA.
             /// </summary>
             public class RetrieveLegacySecretKeyRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>
             {
@@ -888,7 +888,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The public key name linked to the requested secret key , in the format
+                /// Required. The public key name linked to the requested secret key in the format
                 /// "projects/{project}/keys/{key}".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Path)]
@@ -939,8 +939,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Search group memberships related to a given account.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="project">
-            /// Required. The name of the project to search related account group memberships from, in the format
-            /// "projects/{project}".
+            /// Required. The name of the project to search related account group memberships from. Specify the project
+            /// name in the following format: "projects/{project}".
             /// </param>
             public virtual SearchRequest Search(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string project)
             {
@@ -959,8 +959,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project to search related account group memberships from, in the format
-                /// "projects/{project}".
+                /// Required. The name of the project to search related account group memberships from. Specify the
+                /// project name in the following format: "projects/{project}".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -1031,7 +1031,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     this.service = service;
                 }
 
-                /// <summary>Get the memberships in a group of related accounts.</summary>
+                /// <summary>Get memberships in a group of related accounts.</summary>
                 /// <param name="parent">
                 /// Required. The resource name for the related account group in the format
                 /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}`.
@@ -1041,7 +1041,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Get the memberships in a group of related accounts.</summary>
+                /// <summary>Get memberships in a group of related accounts.</summary>
                 public class ListRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1059,9 +1059,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of accounts to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 accounts will be returned. The maximum value is 1000; values
-                    /// above 1000 will be coerced to 1000.
+                    /// Optional. The maximum number of accounts to return. The service might return fewer than this
+                    /// value. If unspecified, at most 50 accounts are returned. The maximum value is 1000; values above
+                    /// 1000 are coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1143,9 +1143,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. The maximum number of groups to return. The service may return fewer than this value. If
-                /// unspecified, at most 50 groups will be returned. The maximum value is 1000; values above 1000 will
-                /// be coerced to 1000.
+                /// Optional. The maximum number of groups to return. The service might return fewer than this value. If
+                /// unspecified, at most 50 groups are returned. The maximum value is 1000; values above 1000 are
+                /// coerced to 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1202,7 +1202,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 }
 namespace Google.Apis.RecaptchaEnterprise.v1.Data
 {
-    /// <summary>Account Defender risk assessment.</summary>
+    /// <summary>Account defender risk assessment.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Labels for this request.</summary>
@@ -1239,10 +1239,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Annotation { get; set; }
 
         /// <summary>
-        /// Optional. Optional unique stable hashed user identifier to apply to the assessment. This is an alternative
-        /// to setting the hashed_account_id in CreateAssessment, for example when the account identifier is not yet
-        /// known in the initial request. It is recommended that the identifier is hashed using hmac-sha256 with stable
-        /// secret.
+        /// Optional. Unique stable hashed user identifier to apply to the assessment. This is an alternative to setting
+        /// the hashed_account_id in CreateAssessment, for example when the account identifier is not yet known in the
+        /// initial request. It is recommended that the identifier is hashed using hmac-sha256 with stable secret.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
@@ -1265,7 +1264,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>A recaptcha assessment resource.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Assessment returned by Account Defender when a hashed_account_id is provided.</summary>
+        /// <summary>Assessment returned by account defender when a hashed_account_id is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountDefenderAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment AccountDefenderAssessment { get; set; }
 
@@ -1281,8 +1280,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The private password leak verification field contains the parameters used to check for leaks privately
-        /// without sharing user credentials.
+        /// The private password leak verification field contains the parameters that are used to to check for leaks
+        /// privately without sharing user credentials.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePasswordLeakVerification")]
         public virtual GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification PrivatePasswordLeakVerification { get; set; }
@@ -1341,8 +1340,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ExpectedAction { get; set; }
 
         /// <summary>
-        /// Optional. Optional unique stable hashed user identifier for the request. The identifier should ideally be
-        /// hashed using sha256 with stable secret.
+        /// Optional. Unique stable hashed user identifier for the request. The identifier must be hashed using
+        /// hmac-sha256 with stable secret.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
@@ -1531,7 +1530,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     {
         /// <summary>
         /// Output only. List of prefixes of the encrypted potential password leaks that matched the given parameters.
-        /// They should be compared with the client-side decryption prefix of `reencrypted_user_credentials_hash`
+        /// They must be compared with the client-side decryption prefix of `reencrypted_user_credentials_hash`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedLeakMatchPrefixes")]
         public virtual System.Collections.Generic.IList<string> EncryptedLeakMatchPrefixes { get; set; }
@@ -1551,8 +1550,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string LookupHashPrefix { get; set; }
 
         /// <summary>
-        /// Output only. Corresponds to the re-encryption of the `encrypted_user_credentials_hash` field. Used to match
-        /// potential password leaks within `encrypted_leak_match_prefixes`.
+        /// Output only. Corresponds to the re-encryption of the `encrypted_user_credentials_hash` field. It is used to
+        /// match potential password leaks within `encrypted_leak_match_prefixes`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reencryptedUserCredentialsHash")]
         public virtual string ReencryptedUserCredentialsHash { get; set; }
@@ -1580,7 +1579,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     {
         /// <summary>
         /// The unique stable hashed user identifier of the member. The identifier corresponds to a `hashed_account_id`
-        /// provided in a previous CreateAssessment or AnnotateAssessment call.
+        /// provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
@@ -1597,8 +1596,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     }
 
     /// <summary>
-    /// Secret key used in legacy reCAPTCHA only. Should be used when integrating with a 3rd party which is still using
-    /// legacy reCAPTCHA.
+    /// Secret key is used only in legacy reCAPTCHA. It must be used in a 3rd party integration with legacy reCAPTCHA.
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1669,15 +1667,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     {
         /// <summary>
         /// Optional. The unique stable hashed user identifier we should search connections to. The identifier should
-        /// correspond to a `hashed_account_id` provided in a previous CreateAssessment or AnnotateAssessment call.
+        /// correspond to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
 
         /// <summary>
-        /// Optional. The maximum number of groups to return. The service may return fewer than this value. If
-        /// unspecified, at most 50 groups will be returned. The maximum value is 1000; values above 1000 will be
-        /// coerced to 1000.
+        /// Optional. The maximum number of groups to return. The service might return fewer than this value. If
+        /// unspecified, at most 50 groups are returned. The maximum value is 1000; values above 1000 are coerced to
+        /// 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }

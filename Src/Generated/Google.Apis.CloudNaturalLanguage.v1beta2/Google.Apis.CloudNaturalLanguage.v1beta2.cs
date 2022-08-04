@@ -943,7 +943,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
     /// <summary>
     /// All available features for sentiment, syntax, and semantic analysis. Setting each one to true will enable that
-    /// specific analysis for the input. Next ID: 10
+    /// specific analysis for the input. Next ID: 11
     /// </summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {

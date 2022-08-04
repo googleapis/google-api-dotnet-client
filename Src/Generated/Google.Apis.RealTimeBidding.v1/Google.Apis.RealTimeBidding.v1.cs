@@ -3471,7 +3471,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; }
 
         /// <summary>
-        /// Output only. The version of this creative. Version for a new creative is 1 and it increments during
+        /// Output only. The version of the creative. Version for a new creative is 1 and it increments during
         /// subsequent creative updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]

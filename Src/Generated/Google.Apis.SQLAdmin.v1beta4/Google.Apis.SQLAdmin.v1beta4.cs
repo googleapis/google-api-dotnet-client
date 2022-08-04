@@ -4189,8 +4189,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Status { get; set; }
 
         /// <summary>
-        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is
-        /// ignored, when specified for insert requests.
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to
+        /// "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4541,7 +4541,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicaNames")]
         public virtual System.Collections.Generic.IList<string> ReplicaNames { get; set; }
 
-        /// <summary>Initial root password. Use only on creation.</summary>
+        /// <summary>
+        /// Initial root password. Use only on creation. You must set root passwords before you can connect to
+        /// PostgreSQL instances.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
         public virtual string RootPassword { get; set; }
 
@@ -5911,6 +5914,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseReplicationEnabled")]
         public virtual System.Nullable<bool> DatabaseReplicationEnabled { get; set; }
+
+        /// <summary>Configuration to protect against accidental instance deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtectionEnabled")]
+        public virtual System.Nullable<bool> DeletionProtectionEnabled { get; set; }
 
         /// <summary>Deny maintenance periods</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]

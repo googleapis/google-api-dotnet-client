@@ -8163,20 +8163,22 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>
         /// Fully qualified name of the user-provided connection object which holds the authentication information to
-        /// send requests to the remote service.
-        /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// send requests to the remote service. Format:
+        /// ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connection")]
         public virtual string Connection { get; set; }
 
         /// <summary>
-        /// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        /// Endpoint of the user-provided remote service, e.g.
+        /// ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
 
         /// <summary>
-        /// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        /// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides
+        /// the number of rows in a batch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBatchingRows")]
         public virtual System.Nullable<long> MaxBatchingRows { get; set; }
