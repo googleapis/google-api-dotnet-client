@@ -11362,15 +11362,12 @@ namespace Google.Apis.DisplayVideo.v1
             /// implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator must
             /// be `CONTAINS (:)` or `EQUALS (=)`. * The operator must be `CONTAINS (:)` for the following field: -
             /// `displayName` * The operator must be `EQUALS (=)` for the following field: -
-            /// `customBiddingAlgorithmType` - `customBiddingAlgorithmState` * For `displayName`, the value is a string.
-            /// We return all custom bidding algorithms whose display_name contains such string. * For
-            /// `customBiddingAlgorithmType`, the value is a string. We return all algorithms whose
-            /// custom_bidding_algorithm_type is equal to the given type. * For `customBiddingAlgorithmState`, the value
-            /// is a string. We return all algorithms whose custom_bidding_algorithm_state is equal to the given type.
+            /// `customBiddingAlgorithmType` * For `displayName`, the value is a string. We return all custom bidding
+            /// algorithms whose display_name contains such string. * For `customBiddingAlgorithmType`, the value is a
+            /// string. We return all algorithms whose custom_bidding_algorithm_type is equal to the given type.
             /// Examples: * All custom bidding algorithms for which the display name contains "politics":
             /// `displayName:politics`. * All custom bidding algorithms for which the type is "SCRIPT_BASED":
-            /// `customBiddingAlgorithmType=SCRIPT_BASED` * All custom bidding algorithms for which the state is
-            /// "ENABLED": `customBiddingAlgorithmState=ENABLED` The length of this field should be no more than 500
+            /// `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should be no more than 500
             /// characters.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]

@@ -2452,8 +2452,8 @@ namespace Google.Apis.CloudResourceManager.v3
             /// name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL |
             /// Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label
             /// `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red
-            /// labels.size:big | The project's label `color` has the value `red` and its label `size` has the value
-            /// `big`.| ``` If no query is specified, the call will return projects for which the user has the
+            /// labels.size:big | The project's label `color` has the value `red` or its label `size` has the value
+            /// `big`. | ``` If no query is specified, the call will return projects for which the user has the
             /// `resourcemanager.projects.get` permission.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -3928,8 +3928,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have
-        /// permission to view it, this method will return `PERMISSION_DENIED`.
+        /// Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user
+        /// does not have permission to view it.
         /// </summary>
         /// <param name="name">Required. Resource name for TagValue to be fetched in the format `tagValues/456`.</param>
         public virtual GetRequest Get(string name)
@@ -3938,8 +3938,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have
-        /// permission to view it, this method will return `PERMISSION_DENIED`.
+        /// Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user
+        /// does not have permission to view it.
         /// </summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TagValue>
         {
@@ -4621,14 +4621,16 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual System.Nullable<bool> Inherited { get; set; }
 
         /// <summary>
-        /// The namespaced_name of the TagKey, in the format of `{organization_id}/{tag_key_short_name}`
+        /// The namespaced_name of the TagKey. Now only supported in the format of
+        /// `{organization_id}/{tag_key_short_name}`. Other formats will be supported when we add non-org parented tags.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagKey")]
         public virtual string NamespacedTagKey { get; set; }
 
         /// <summary>
-        /// Namespaced name of the TagValue. Must be in the format
-        /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}`.
+        /// Namespaced name of the TagValue. Now only supported in the format
+        /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}`. Other formats will be supported when we add
+        /// non-org parented tags.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagValue")]
         public virtual string NamespacedTagValue { get; set; }
@@ -5620,8 +5622,9 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Namespaced name of the TagValue. Must be in the format
-        /// `{organization_id}/{tag_key_short_name}/{short_name}`.
+        /// Output only. Namespaced name of the TagValue. Now only supported in the format
+        /// `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org
+        /// parented tags.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedName")]
         public virtual string NamespacedName { get; set; }

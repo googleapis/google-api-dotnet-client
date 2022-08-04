@@ -10309,6 +10309,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
         public virtual string FirmwareVersion { get; set; }
 
+        /// <summary>Date and time for the first time the device was enrolled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstEnrollmentTime")]
+        public virtual string FirstEnrollmentTime { get; set; }
+
         /// <summary>
         /// The type of resource. For the Chromeosdevices resource, the value is `admin#directory#chromeosdevice`.
         /// </summary>
@@ -10410,6 +10414,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitPath")]
         public virtual string OrgUnitPath { get; set; }
+
+        /// <summary>The status of the OS updates for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osUpdateStatus")]
+        public virtual OsUpdateStatus OsUpdateStatus { get; set; }
 
         /// <summary>The Chrome device's operating system version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
@@ -11204,7 +11212,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminCreated")]
         public virtual System.Nullable<bool> AdminCreated { get; set; }
 
-        /// <summary>Read-only. A list of a group's alias email addresses.</summary>
+        /// <summary>
+        /// Read-only. A list of a group's alias email addresses. To add, update, or remove a group's aliases, use the
+        /// `groups.aliases` methods. If edited in a group's POST or PUT request, the edit is ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
@@ -11255,7 +11266,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// Read-only. A list of the group's non-editable alias email addresses that are outside of the account's
         /// primary domain or subdomains. These are functioning email addresses used by the group. This is a read-only
         /// property returned in the API's response for a group. If edited in a group's POST or PUT request, the edit is
-        /// ignored by the API service.
+        /// ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonEditableAliases")]
         public virtual System.Collections.Generic.IList<string> NonEditableAliases { get; set; }
@@ -11781,6 +11792,41 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>List of organizational unit objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationUnits")]
         public virtual System.Collections.Generic.IList<OrgUnit> OrganizationUnits { get; set; }
+    }
+
+    /// <summary>Contains information regarding the current OS update status.</summary>
+    public class OsUpdateStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date and time of the last reboot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rebootTime")]
+        public virtual string RebootTime { get; set; }
+
+        /// <summary>The update state of an OS update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>New required platform version from the pending updated kiosk app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetKioskAppVersion")]
+        public virtual string TargetKioskAppVersion { get; set; }
+
+        /// <summary>
+        /// New platform version of the OS image being downloaded and applied. It is only set when update status is
+        /// UPDATE_STATUS_DOWNLOAD_IN_PROGRESS or UPDATE_STATUS_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for
+        /// UPDATE_STATUS_NEED_REBOOT for some edge cases, e.g. update engine is restarted without a reboot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetOsVersion")]
+        public virtual string TargetOsVersion { get; set; }
+
+        /// <summary>Date and time of the last update check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateCheckTime")]
+        public virtual string UpdateCheckTime { get; set; }
+
+        /// <summary>Date and time of the last successful OS update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Printer configuration.</summary>

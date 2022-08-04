@@ -2817,6 +2817,20 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
 }
 namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 {
+    /// <summary>
+    /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single
+    /// resource.
+    /// </summary>
+    public class AnalysisCompleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>type of analysis that were completed on a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
+        public virtual System.Collections.Generic.IList<string> AnalysisType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Artifact describes a build product.</summary>
     public class Artifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4477,6 +4491,16 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Provides information about the scan status of a discovered resource.</summary>
     public class Discovered : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of analysis that were completed for a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisCompleted")]
+        public virtual AnalysisCompleted AnalysisCompleted { get; set; }
+
+        /// <summary>
+        /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisError")]
+        public virtual System.Collections.Generic.IList<Status> AnalysisError { get; set; }
+
         /// <summary>The status of discovery for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatus")]
         public virtual string AnalysisStatus { get; set; }

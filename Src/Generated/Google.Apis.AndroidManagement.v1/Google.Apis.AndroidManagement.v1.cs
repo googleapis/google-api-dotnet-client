@@ -5725,7 +5725,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class SpecificNonComplianceContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional context for non-compliance related to Wi-Fi configuration. See ONC_WIFI_INVALID_VALUE.
+        /// Additional context for non-compliance related to Wi-Fi configuration. See ONC_WIFI_INVALID_VALUE and
+        /// ONC_WIFI_API_LEVEL
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oncWifiContext")]
         public virtual OncWifiContext OncWifiContext { get; set; }

@@ -1620,8 +1620,8 @@ namespace Google.Apis.CloudIAP.v1.Data
     }
 
     /// <summary>
-    /// Configuration for IAP allowed domains. Allows the customers to restrict access to the app by only allowing
-    /// requests from the listed trusted domains.
+    /// Configuration for IAP allowed domains. Lets you to restrict access to an app and allow access to only the
+    /// domains that you list.
     /// </summary>
     public class AllowedDomainsSettings : Google.Apis.Requests.IDirectResponseSchema
     {

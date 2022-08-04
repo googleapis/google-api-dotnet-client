@@ -5183,6 +5183,9 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryBackup")]
+        public virtual RRSetRoutingPolicyPrimaryBackupPolicy PrimaryBackup { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("wrr")]
         public virtual RRSetRoutingPolicyWrrPolicy Wrr { get; set; }
 
@@ -5193,6 +5196,16 @@ namespace Google.Apis.Dns.v1.Data
     /// <summary>Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.</summary>
     public class RRSetRoutingPolicyGeoPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to
+        /// the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the
+        /// current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we
+        /// won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even
+        /// though they're unhealthy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFencing")]
+        public virtual System.Nullable<bool> EnableFencing { get; set; }
+
         /// <summary>
         /// The primary geo routing configuration. If there are multiple items with the same location, an error is
         /// returned instead.
@@ -5210,6 +5223,13 @@ namespace Google.Apis.Dns.v1.Data
     /// <summary>ResourceRecordSet data for one geo location.</summary>
     public class RRSetRoutingPolicyGeoPolicyGeoPolicyItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be
+        /// specified along with rrdata within this item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckedTargets")]
+        public virtual RRSetRoutingPolicyHealthCheckTargets HealthCheckedTargets { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5234,6 +5254,88 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the
+    /// healthy endpoints will be included in the response.
+    /// </summary>
+    public class RRSetRoutingPolicyHealthCheckTargets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("internalLoadBalancers")]
+        public virtual System.Collections.Generic.IList<RRSetRoutingPolicyLoadBalancerTarget> InternalLoadBalancers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RRSetRoutingPolicyLoadBalancerTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The frontend IP address of the</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ipProtocol")]
+        public virtual string IpProtocol { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
+        public virtual string LoadBalancerType { get; set; }
+
+        /// <summary>The fully qualified url of the network on which the ILB is</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
+        public virtual string NetworkUrl { get; set; }
+
+        /// <summary>Load Balancer to health check. The configured port of the Load Balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual string Port { get; set; }
+
+        /// <summary>
+        /// present. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which
+        /// the ILB exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>The region for regional ILBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are
+    /// healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+    /// </summary>
+    public class RRSetRoutingPolicyPrimaryBackupPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state
+        /// is set to BACKUP, this policy essentially becomes a geo routing policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupGeoTargets")]
+        public virtual RRSetRoutingPolicyGeoPolicy BackupGeoTargets { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryTargets")]
+        public virtual RRSetRoutingPolicyHealthCheckTargets PrimaryTargets { get; set; }
+
+        /// <summary>
+        /// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic
+        /// to the backup targets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trickleTraffic")]
+        public virtual System.Nullable<double> TrickleTraffic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.</summary>
     public class RRSetRoutingPolicyWrrPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5250,6 +5352,15 @@ namespace Google.Apis.Dns.v1.Data
     /// <summary>A routing block which contains the routing information for one WRR item.</summary>
     public class RRSetRoutingPolicyWrrPolicyWrrPolicyItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be
+        /// omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket
+        /// (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata
+        /// or health_checked_targets can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckedTargets")]
+        public virtual RRSetRoutingPolicyHealthCheckTargets HealthCheckedTargets { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

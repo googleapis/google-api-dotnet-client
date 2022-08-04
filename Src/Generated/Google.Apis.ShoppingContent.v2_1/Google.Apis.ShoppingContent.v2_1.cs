@@ -15066,41 +15066,48 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular
     /// offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular
     /// time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The
-    /// date is relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is considered not to have a
-    /// specific year. month and day must have valid, non-zero values. This type may also be used to represent a
-    /// physical time if all the date and time fields are set and either case of the `time_offset` oneof is set.
-    /// Consider using `Timestamp` message for physical time instead. If your use case also would like to store the
-    /// user's timezone, that can be done in another field. This type is more flexible than some applications may want.
-    /// Make sure to document and validate your application's limitations.
+    /// date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered
+    /// not to have a specific year, month, or day respectively. This type may also be used to represent a physical time
+    /// if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using
+    /// `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone,
+    /// that can be done in another field. This type is more flexible than some applications may want. Make sure to
+    /// document and validate your application's limitations.
     /// </summary>
     public class DateTime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+        /// <summary>
+        /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime
+        /// without a day.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>
-        /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
-        /// "24:00:00" for scenarios like business closing time.
+        /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may
+        /// choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+        /// <summary>
+        /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; }
 
-        /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
-        /// allows leap-seconds.
+        /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the
+        /// value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
@@ -20761,6 +20768,156 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Product fields. Values are only set for fields requested explicitly in the request's search query.
+    /// </summary>
+    public class ProductView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregated destination status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregatedDestinationStatus")]
+        public virtual string AggregatedDestinationStatus { get; set; }
+
+        /// <summary>Availability of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual string Availability { get; set; }
+
+        /// <summary>Brand of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Channel of the product (online versus local).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>Condition of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The time the merchant created the product in timestamp seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; }
+
+        /// <summary>
+        /// Product price currency code (for example, ISO 4217). Absent if product price is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Expiration date for the product. Specified on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
+        public virtual Date ExpirationDate { get; set; }
+
+        /// <summary>GTIN of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual System.Collections.Generic.IList<string> Gtin { get; set; }
+
+        /// <summary>
+        /// The REST ID of the product, in the form of channel:contentLanguage:targetCountry:offerId. Content API
+        /// methods that operate on products take this as their productId parameter. Should always be included in the
+        /// SELECT clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Item group ID provided by the merchant for grouping variants together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
+        public virtual string ItemGroupId { get; set; }
+
+        /// <summary>List of item issues for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemIssues")]
+        public virtual System.Collections.Generic.IList<ProductViewItemIssue> ItemIssues { get; set; }
+
+        /// <summary>Language code of the product in BCP 47 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Merchant-provided id of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>
+        /// Product price specified as micros in the product currency. Absent in case the information about the price of
+        /// the product is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceMicros")]
+        public virtual System.Nullable<long> PriceMicros { get; set; }
+
+        /// <summary>The normalized shipping label specified in the feed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingLabel")]
+        public virtual string ShippingLabel { get; set; }
+
+        /// <summary>Title of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Item issue associated with the product.</summary>
+    public class ProductViewItemIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Item issue type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
+        public virtual ProductViewItemIssueItemIssueType IssueType { get; set; }
+
+        /// <summary>Item issue resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; }
+
+        /// <summary>Item issue severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual ProductViewItemIssueItemIssueSeverity Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue severity for all affected regions in a destination.</summary>
+    public class ProductViewItemIssueIssueSeverityPerDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of demoted countries in the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demotedCountries")]
+        public virtual System.Collections.Generic.IList<string> DemotedCountries { get; set; }
+
+        /// <summary>Issue destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>List of disapproved countries in the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Severity of an issue per destination in a region, and aggregated severity.</summary>
+    public class ProductViewItemIssueItemIssueSeverity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Severity of an issue aggregated for destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregatedSeverity")]
+        public virtual string AggregatedSeverity { get; set; }
+
+        /// <summary>Item issue severity for every destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityPerDestination")]
+        public virtual System.Collections.Generic.IList<ProductViewItemIssueIssueSeverityPerDestination> SeverityPerDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type of the item issue.</summary>
+    public class ProductViewItemIssueItemIssueType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Canonical attribute name for attribute-specific issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalAttribute")]
+        public virtual string CanonicalAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ProductWeight : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`" </summary>
@@ -21518,6 +21675,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual Metrics Metrics { get; set; }
+
+        /// <summary>
+        /// Product fields requested by the merchant in the query. Field values are only set if the merchant queries
+        /// `ProductView`. `product_view` field is available only to allowlisted users who can query the `ProductView`
+        /// table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productView")]
+        public virtual ProductView ProductView { get; set; }
 
         /// <summary>
         /// Segmentation dimensions requested by the merchant in the query. Dimension values are only set for dimensions
