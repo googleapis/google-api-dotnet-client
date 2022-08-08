@@ -39597,7 +39597,7 @@
    }
   }
  },
- "revision": "20220720",
+ "revision": "20220726",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -40665,6 +40665,28 @@
    },
    "type": "object"
   },
+  "AllocationResourceStatus": {
+   "description": "[Output Only] Contains output only fields.",
+   "id": "AllocationResourceStatus",
+   "properties": {
+    "specificSkuAllocation": {
+     "$ref": "AllocationResourceStatusSpecificSKUAllocation",
+     "description": "Allocation Properties of this reservation."
+    }
+   },
+   "type": "object"
+  },
+  "AllocationResourceStatusSpecificSKUAllocation": {
+   "description": "Contains Properties set for the reservation.",
+   "id": "AllocationResourceStatusSpecificSKUAllocation",
+   "properties": {
+    "sourceInstanceTemplateId": {
+     "description": "ID of the instance template used to populate reservation properties.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk": {
    "id": "AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk",
    "properties": {
@@ -40760,6 +40782,10 @@
     "instanceProperties": {
      "$ref": "AllocationSpecificSKUAllocationReservedInstanceProperties",
      "description": "The instance properties for the reservation."
+    },
+    "sourceInstanceTemplate": {
+     "description": "Specific URL of the instance template used in the reservation",
+     "type": "string"
     }
    },
    "type": "object"
@@ -47011,7 +47037,7 @@
      "type": "integer"
     },
     "securityProfileGroup": {
-     "description": "A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.",
+     "description": "A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.",
      "type": "string"
     },
     "targetResources": {
@@ -47842,6 +47868,20 @@
      "description": "Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.",
      "type": "string"
     },
+    "planningStatus": {
+     "description": "Planning state before being submitted for evaluation",
+     "enum": [
+      "DRAFT",
+      "PLANNING_STATUS_UNSPECIFIED",
+      "SUBMITTED"
+     ],
+     "enumDescriptions": [
+      "Future Reservation is being drafted.",
+      "",
+      "Future Reservation has been submitted for evaluation by GCP."
+     ],
+     "type": "string"
+    },
     "selfLink": {
      "description": "[Output Only] Server-defined fully-qualified URL for this resource.",
      "type": "string"
@@ -47880,6 +47920,10 @@
      "$ref": "AllocationSpecificSKUAllocationReservedInstanceProperties",
      "description": "Properties of the SKU instances being reserved."
     },
+    "sourceInstanceTemplate": {
+     "description": "The instance template that will be used to populate the ReservedInstanceProperties of the future reservation",
+     "type": "string"
+    },
     "totalCount": {
      "description": "Total number of instances for which capacity assurance is requested at a future time period.",
      "format": "int64",
@@ -47915,6 +47959,7 @@
       "CANCELLED",
       "COMMITTED",
       "DECLINED",
+      "DRAFTING",
       "FAILED",
       "FAILED_PARTIALLY_FULFILLED",
       "FULFILLED",
@@ -47928,6 +47973,7 @@
       "Future reservation is cancelled by the customer.",
       "Future reservation is committed by the customer.",
       "Future reservation is rejected by GCP.",
+      "Related status for PlanningStatus.Draft. Transitions to PENDING_APPROVAL upon user submitting FR.",
       "Future reservation failed. No additional reservations were provided.",
       "Future reservation is partially fulfilled. Additional reservations were provided but did not reach total_count reserved instance slots.",
       "Future reservation is fulfilled completely.",
@@ -47936,6 +47982,20 @@
       "Future reservation is being procured by GCP. Beyond this point, Future reservation is locked and no further modifications are allowed.",
       "Future reservation capacity is being provisioned. This state will be entered after start_time, while reservations are being created to provide total_count reserved instance slots. This state will not persist past start_time + 24h."
      ],
+     "type": "string"
+    },
+    "specificSkuProperties": {
+     "$ref": "FutureReservationStatusSpecificSKUProperties"
+    }
+   },
+   "type": "object"
+  },
+  "FutureReservationStatusSpecificSKUProperties": {
+   "description": "Properties to be set for the Future Reservation.",
+   "id": "FutureReservationStatusSpecificSKUProperties",
+   "properties": {
+    "sourceInstanceTemplateId": {
+     "description": "ID of the instance template used to populate the Future Reservation properties.",
      "type": "string"
     }
    },
@@ -67795,6 +67855,10 @@
      "description": "Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.",
      "type": "object"
     },
+    "resourceStatus": {
+     "$ref": "AllocationResourceStatus",
+     "description": "[Output Only] Status information for Reservation resource."
+    },
     "satisfiesPzs": {
      "description": "[Output Only] Reserved for future use.",
      "type": "boolean"
@@ -71773,6 +71837,10 @@
   "SecurityPolicyAdvancedOptionsConfig": {
    "id": "SecurityPolicyAdvancedOptionsConfig",
    "properties": {
+    "jsonCustomConfig": {
+     "$ref": "SecurityPolicyAdvancedOptionsConfigJsonCustomConfig",
+     "description": "Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD."
+    },
     "jsonParsing": {
      "enum": [
       "DISABLED",
@@ -71794,6 +71862,19 @@
       ""
      ],
      "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "SecurityPolicyAdvancedOptionsConfigJsonCustomConfig": {
+   "id": "SecurityPolicyAdvancedOptionsConfigJsonCustomConfig",
+   "properties": {
+    "contentTypes": {
+     "description": "A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type \"/\" subtype *[\";\" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
     }
    },
    "type": "object"

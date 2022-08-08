@@ -4160,7 +4160,10 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A subscription resource.</summary>
+    /// <summary>
+    /// A subscription resource. If none of `push_config` or `bigquery_config` is set, then the subscriber will pull and
+    /// ack messages using API methods. At most one of these fields may be set.
+    /// </summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4180,9 +4183,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either
-        /// `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull
-        /// and ack messages using API methods.
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConfig")]
         public virtual BigQueryConfig BigqueryConfig { get; set; }
@@ -4264,11 +4265,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or
-        /// `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages
-        /// using API methods.
-        /// </summary>
+        /// <summary>If push delivery is used with this subscription, this field is used to configure it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; }
 

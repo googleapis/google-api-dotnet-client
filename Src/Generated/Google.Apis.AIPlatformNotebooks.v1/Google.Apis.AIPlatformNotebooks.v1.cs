@@ -2952,7 +2952,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     /// 'gcr.io/deeplearning-platform-release/pytorch-gpu', 'tag': 'latest' }], } } Currently, only the
                     /// following fields can be updated: - software_config.kernels - software_config.post_startup_script
                     /// - software_config.custom_gpu_driver_path - software_config.idle_shutdown -
-                    /// software_config.idle_shutdown_timeout
+                    /// software_config.idle_shutdown_timeout - software_config.disable_terminal
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -5528,6 +5528,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customGpuDriverPath")]
         public virtual string CustomGpuDriverPath { get; set; }
+
+        /// <summary>Bool indicating whether JupyterLab terminal will be available or not. Default: False</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableTerminal")]
+        public virtual System.Nullable<bool> DisableTerminal { get; set; }
 
         /// <summary>Verifies core internal services are running. Default: True</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHealthMonitoring")]
