@@ -34,6 +34,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
         /// <param name="initializer">The service initializer.</param>
         public BeyondCorpService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
         }
 
@@ -81,6 +82,9 @@ namespace Google.Apis.BeyondCorp.v1alpha
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -267,6 +271,538 @@ namespace Google.Apis.BeyondCorp.v1alpha
         }
     }
 
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Insights = new InsightsResource(service);
+            }
+
+            /// <summary>Gets the Insights resource.</summary>
+            public virtual InsightsResource Insights { get; }
+
+            /// <summary>The "insights" collection of methods.</summary>
+            public class InsightsResource
+            {
+                private const string Resource = "insights";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InsightsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight based on the provided filters. Use the organization
+                /// level path for fetching at org level and project level path for fetching the insight value specific
+                /// to a particular project.
+                /// </summary>
+                /// <param name="insight">
+                /// Required. The resource name of the insight using the form:
+                /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`.
+                /// </param>
+                public virtual ConfiguredInsightRequest ConfiguredInsight(string insight)
+                {
+                    return new ConfiguredInsightRequest(service, insight);
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight based on the provided filters. Use the organization
+                /// level path for fetching at org level and project level path for fetching the insight value specific
+                /// to a particular project.
+                /// </summary>
+                public class ConfiguredInsightRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse>
+                {
+                    /// <summary>Constructs a new ConfiguredInsight request.</summary>
+                    public ConfiguredInsightRequest(Google.Apis.Services.IClientService service, string insight) : base(service)
+                    {
+                        Insight = insight;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the insight using the form:
+                    /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                    /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("insight", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Insight { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// get APIs in `BASIC` view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("aggregation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<AggregationEnum> Aggregation { get; set; }
+
+                    /// <summary>
+                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// get APIs in `BASIC` view.
+                    /// </summary>
+                    public enum AggregationEnum
+                    {
+                        /// <summary>Unspecified.</summary>
+                        [Google.Apis.Util.StringValueAttribute("AGGREGATION_UNSPECIFIED")]
+                        AGGREGATIONUNSPECIFIED = 0,
+
+                        /// <summary>Insight should be aggregated at hourly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("HOURLY")]
+                        HOURLY = 1,
+
+                        /// <summary>Insight should be aggregated at daily level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DAILY")]
+                        DAILY = 2,
+
+                        /// <summary>Insight should be aggregated at weekly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WEEKLY")]
+                        WEEKLY = 3,
+
+                        /// <summary>Insight should be aggregated at monthly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("MONTHLY")]
+                        MONTHLY = 4,
+
+                        /// <summary>
+                        /// Insight should be aggregated at the custom date range passed in as the start and end time in
+                        /// the request.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CUSTOM_DATE_RANGE")]
+                        CUSTOMDATERANGE = 5,
+                    }
+
+                    /// <summary>
+                    /// Optional. Filterable parameters to be added to the grouping clause. Available fields could be
+                    /// fetched by calling insight list and get APIs in `BASIC` view. `=` is the only comparison
+                    /// operator supported. `AND` is the only logical operator supported. Usage:
+                    /// field_filter="fieldName1=fieldVal1 AND fieldName2=fieldVal2". NOTE: Only `AND` conditions are
+                    /// allowed. NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message for the filtering
+                    /// the corresponding fields in this filter field. (These expressions are based on the filter
+                    /// language described at https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customGrouping.fieldFilter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CustomGroupingFieldFilter { get; set; }
+
+                    /// <summary>
+                    /// Required. Fields to be used for grouping. NOTE: Use the `filter_alias` from
+                    /// `Insight.Metadata.Field` message for declaring the fields to be grouped-by here.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customGrouping.groupFields", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> CustomGroupingGroupFields { get; set; }
+
+                    /// <summary>Required. Ending time for the duration for which insight is to be pulled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object EndTime { get; set; }
+
+                    /// <summary>
+                    /// Optional. Other filterable/configurable parameters as applicable to the selected insight.
+                    /// Available fields could be fetched by calling insight list and get APIs in `BASIC` view. `=` is
+                    /// the only comparison operator supported. `AND` is the only logical operator supported. Usage:
+                    /// field_filter="fieldName1=fieldVal1 AND fieldName2=fieldVal2". NOTE: Only `AND` conditions are
+                    /// allowed. NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message for the filtering
+                    /// the corresponding fields in this filter field. (These expressions are based on the filter
+                    /// language described at https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldFilter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldFilter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Group id of the available groupings for the insight. Available groupings could be
+                    /// fetched by calling insight list and get APIs in `BASIC` view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("group", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Group { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Used to fetch the page represented by the token. Fetches the first page when not set.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. Starting time for the duration for which insight is to be pulled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "configuredInsight";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+insight}:configuredInsight";
+
+                    /// <summary>Initializes ConfiguredInsight parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("insight", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "insight",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/insights/[^/]+$",
+                        });
+                        RequestParameters.Add("aggregation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("customGrouping.fieldFilter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customGrouping.fieldFilter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("customGrouping.groupFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customGrouping.groupFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldFilter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldFilter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("group", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "group",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight with default configuration. The default aggregation
+                /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
+                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
+                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
+                /// `BASIC` will only return the metadata for the insight.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the insight using the form:
+                /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight with default configuration. The default aggregation
+                /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
+                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
+                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
+                /// `BASIC` will only return the metadata for the insight.
+                /// </summary>
+                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the insight using the form:
+                    /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                    /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Metadata only or full data view.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Required. Metadata only or full data view.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSIGHT_VIEW_UNSPECIFIED")]
+                        INSIGHTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Include basic metadata about the insight, but not the insight data. This is the default
+                        /// value (for both ListInsights and GetInsight).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>Include everything.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/insights/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists for all the available insights that could be fetched from the system. Allows to filter using
+                /// category. Setting the `view` to `BASIC` will let you iterate over the list of insight metadatas.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of InsightMetadata using the form:
+                /// `organizations/{organization_id}/locations/{location}`
+                /// `projects/{project_id}/locations/{location_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists for all the available insights that could be fetched from the system. Allows to filter using
+                /// category. Setting the `view` to `BASIC` will let you iterate over the list of insight metadatas.
+                /// </summary>
+                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of InsightMetadata using the form:
+                    /// `organizations/{organization_id}/locations/{location}`
+                    /// `projects/{project_id}/locations/{location_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter expression to restrict the insights returned. Supported filter fields: * `type`
+                    /// * `category` * `subCategory` Examples: * "category = application AND type = count" * "category =
+                    /// application AND subCategory = iap" * "type = status" Allowed values: * type: [count, latency,
+                    /// status, list] * category: [application, device, request, security] * subCategory: [iap,
+                    /// webprotect] NOTE: Only equality based comparison is allowed. Only `AND` conjunction is allowed.
+                    /// NOTE: The 'AND' in the filter field needs to be in capital letters only. NOTE: Just filtering on
+                    /// `subCategory` is not allowed. It should be passed in with the parent `category` too. (These
+                    /// expressions are based on the filter language described at https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results. This is currently ignored.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default. NOTE: Default page size is 50.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. List only metadata or full data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Required. List only metadata or full data.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSIGHT_VIEW_UNSPECIFIED")]
+                        INSIGHTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Include basic metadata about the insight, but not the insight data. This is the default
+                        /// value (for both ListInsights and GetInsight).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>Include everything.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/insights";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -305,6 +841,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 ClientGateways = new ClientGatewaysResource(service);
                 Connections = new ConnectionsResource(service);
                 Connectors = new ConnectorsResource(service);
+                Insights = new InsightsResource(service);
                 Operations = new OperationsResource(service);
             }
 
@@ -1753,8 +2290,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 }
 
                 /// <summary>
-                /// Get instance config for a given AppConnector. An internal method called by a AppConnector to get its
-                /// container config.
+                /// Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to
+                /// get its container config.
                 /// </summary>
                 /// <param name="appConnector">
                 /// Required. BeyondCorp AppConnector name using the form:
@@ -1766,8 +2303,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 }
 
                 /// <summary>
-                /// Get instance config for a given AppConnector. An internal method called by a AppConnector to get its
-                /// container config.
+                /// Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to
+                /// get its container config.
                 /// </summary>
                 public class ResolveInstanceConfigRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse>
                 {
@@ -5462,8 +5999,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 }
 
                 /// <summary>
-                /// Get instance config for a given connector. An internal method called by a connector to get its
-                /// container config.
+                /// Gets instance configuration for a given connector. An internal method called by a connector to get
+                /// its container config.
                 /// </summary>
                 /// <param name="connector">
                 /// Required. BeyondCorp Connector name using the form:
@@ -5475,8 +6012,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 }
 
                 /// <summary>
-                /// Get instance config for a given connector. An internal method called by a connector to get its
-                /// container config.
+                /// Gets instance configuration for a given connector. An internal method called by a connector to get
+                /// its container config.
                 /// </summary>
                 public class ResolveInstanceConfigRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.ResolveInstanceConfigResponse>
                 {
@@ -5652,6 +6189,503 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/connectors/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Insights resource.</summary>
+            public virtual InsightsResource Insights { get; }
+
+            /// <summary>The "insights" collection of methods.</summary>
+            public class InsightsResource
+            {
+                private const string Resource = "insights";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InsightsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight based on the provided filters. Use the organization
+                /// level path for fetching at org level and project level path for fetching the insight value specific
+                /// to a particular project.
+                /// </summary>
+                /// <param name="insight">
+                /// Required. The resource name of the insight using the form:
+                /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`.
+                /// </param>
+                public virtual ConfiguredInsightRequest ConfiguredInsight(string insight)
+                {
+                    return new ConfiguredInsightRequest(service, insight);
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight based on the provided filters. Use the organization
+                /// level path for fetching at org level and project level path for fetching the insight value specific
+                /// to a particular project.
+                /// </summary>
+                public class ConfiguredInsightRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse>
+                {
+                    /// <summary>Constructs a new ConfiguredInsight request.</summary>
+                    public ConfiguredInsightRequest(Google.Apis.Services.IClientService service, string insight) : base(service)
+                    {
+                        Insight = insight;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the insight using the form:
+                    /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                    /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("insight", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Insight { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// get APIs in `BASIC` view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("aggregation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<AggregationEnum> Aggregation { get; set; }
+
+                    /// <summary>
+                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// get APIs in `BASIC` view.
+                    /// </summary>
+                    public enum AggregationEnum
+                    {
+                        /// <summary>Unspecified.</summary>
+                        [Google.Apis.Util.StringValueAttribute("AGGREGATION_UNSPECIFIED")]
+                        AGGREGATIONUNSPECIFIED = 0,
+
+                        /// <summary>Insight should be aggregated at hourly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("HOURLY")]
+                        HOURLY = 1,
+
+                        /// <summary>Insight should be aggregated at daily level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DAILY")]
+                        DAILY = 2,
+
+                        /// <summary>Insight should be aggregated at weekly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WEEKLY")]
+                        WEEKLY = 3,
+
+                        /// <summary>Insight should be aggregated at monthly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("MONTHLY")]
+                        MONTHLY = 4,
+
+                        /// <summary>
+                        /// Insight should be aggregated at the custom date range passed in as the start and end time in
+                        /// the request.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CUSTOM_DATE_RANGE")]
+                        CUSTOMDATERANGE = 5,
+                    }
+
+                    /// <summary>
+                    /// Optional. Filterable parameters to be added to the grouping clause. Available fields could be
+                    /// fetched by calling insight list and get APIs in `BASIC` view. `=` is the only comparison
+                    /// operator supported. `AND` is the only logical operator supported. Usage:
+                    /// field_filter="fieldName1=fieldVal1 AND fieldName2=fieldVal2". NOTE: Only `AND` conditions are
+                    /// allowed. NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message for the filtering
+                    /// the corresponding fields in this filter field. (These expressions are based on the filter
+                    /// language described at https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customGrouping.fieldFilter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CustomGroupingFieldFilter { get; set; }
+
+                    /// <summary>
+                    /// Required. Fields to be used for grouping. NOTE: Use the `filter_alias` from
+                    /// `Insight.Metadata.Field` message for declaring the fields to be grouped-by here.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customGrouping.groupFields", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> CustomGroupingGroupFields { get; set; }
+
+                    /// <summary>Required. Ending time for the duration for which insight is to be pulled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object EndTime { get; set; }
+
+                    /// <summary>
+                    /// Optional. Other filterable/configurable parameters as applicable to the selected insight.
+                    /// Available fields could be fetched by calling insight list and get APIs in `BASIC` view. `=` is
+                    /// the only comparison operator supported. `AND` is the only logical operator supported. Usage:
+                    /// field_filter="fieldName1=fieldVal1 AND fieldName2=fieldVal2". NOTE: Only `AND` conditions are
+                    /// allowed. NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message for the filtering
+                    /// the corresponding fields in this filter field. (These expressions are based on the filter
+                    /// language described at https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldFilter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldFilter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Group id of the available groupings for the insight. Available groupings could be
+                    /// fetched by calling insight list and get APIs in `BASIC` view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("group", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Group { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Used to fetch the page represented by the token. Fetches the first page when not set.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. Starting time for the duration for which insight is to be pulled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "configuredInsight";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+insight}:configuredInsight";
+
+                    /// <summary>Initializes ConfiguredInsight parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("insight", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "insight",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/insights/[^/]+$",
+                        });
+                        RequestParameters.Add("aggregation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("customGrouping.fieldFilter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customGrouping.fieldFilter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("customGrouping.groupFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customGrouping.groupFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldFilter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldFilter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("group", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "group",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight with default configuration. The default aggregation
+                /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
+                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
+                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
+                /// `BASIC` will only return the metadata for the insight.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the insight using the form:
+                /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the value for a selected particular insight with default configuration. The default aggregation
+                /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
+                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
+                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
+                /// `BASIC` will only return the metadata for the insight.
+                /// </summary>
+                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the insight using the form:
+                    /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}`
+                    /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Metadata only or full data view.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Required. Metadata only or full data view.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSIGHT_VIEW_UNSPECIFIED")]
+                        INSIGHTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Include basic metadata about the insight, but not the insight data. This is the default
+                        /// value (for both ListInsights and GetInsight).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>Include everything.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/insights/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists for all the available insights that could be fetched from the system. Allows to filter using
+                /// category. Setting the `view` to `BASIC` will let you iterate over the list of insight metadatas.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of InsightMetadata using the form:
+                /// `organizations/{organization_id}/locations/{location}`
+                /// `projects/{project_id}/locations/{location_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists for all the available insights that could be fetched from the system. Allows to filter using
+                /// category. Setting the `view` to `BASIC` will let you iterate over the list of insight metadatas.
+                /// </summary>
+                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of InsightMetadata using the form:
+                    /// `organizations/{organization_id}/locations/{location}`
+                    /// `projects/{project_id}/locations/{location_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter expression to restrict the insights returned. Supported filter fields: * `type`
+                    /// * `category` * `subCategory` Examples: * "category = application AND type = count" * "category =
+                    /// application AND subCategory = iap" * "type = status" Allowed values: * type: [count, latency,
+                    /// status, list] * category: [application, device, request, security] * subCategory: [iap,
+                    /// webprotect] NOTE: Only equality based comparison is allowed. Only `AND` conjunction is allowed.
+                    /// NOTE: The 'AND' in the filter field needs to be in capital letters only. NOTE: Just filtering on
+                    /// `subCategory` is not allowed. It should be passed in with the parent `category` too. (These
+                    /// expressions are based on the filter language described at https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results. This is currently ignored.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default. NOTE: Default page size is 50.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. List only metadata or full data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Required. List only metadata or full data.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSIGHT_VIEW_UNSPECIFIED")]
+                        INSIGHTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Include basic metadata about the insight, but not the insight data. This is the default
+                        /// value (for both ListInsights and GetInsight).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>Include everything.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/insights";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -6952,6 +7986,10 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingressPort")]
         public virtual System.Nullable<int> IngressPort { get; set; }
 
+        /// <summary>Output only. L7 private service connection for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l7psc")]
+        public virtual string L7psc { get; set; }
+
         /// <summary>Required. The type of hosting used by the gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -7589,6 +8627,251 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration that was applied to generate the result.</summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Aggregation type applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregation")]
+        public virtual string Aggregation { get; set; }
+
+        /// <summary>Output only. Customised grouping applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customGrouping")]
+        public virtual GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping CustomGrouping { get; set; }
+
+        /// <summary>Output only. Ending time for the duration for which insight was pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. Filters applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldFilter")]
+        public virtual string FieldFilter { get; set; }
+
+        /// <summary>Output only. Group id of the grouping applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Output only. Starting time for the duration for which insight was pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for the configured insight.</summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Applied insight config to generate the result data rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedConfig")]
+        public virtual GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig AppliedConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Next page token to be fetched. Set to empty or NULL if there are no more pages available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Output only. Result rows returned containing the required value(s) for configured insight.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Customised grouping option that allows setting the group_by fields and also the filters togather for a
+    /// configured insight request.
+    /// </summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filterable parameters to be added to the grouping clause. Available fields could be fetched by
+        /// calling insight list and get APIs in `BASIC` view. `=` is the only comparison operator supported. `AND` is
+        /// the only logical operator supported. Usage: field_filter="fieldName1=fieldVal1 AND fieldName2=fieldVal2".
+        /// NOTE: Only `AND` conditions are allowed. NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message
+        /// for the filtering the corresponding fields in this filter field. (These expressions are based on the filter
+        /// language described at https://google.aip.dev/160).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldFilter")]
+        public virtual string FieldFilter { get; set; }
+
+        /// <summary>
+        /// Required. Fields to be used for grouping. NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message
+        /// for declaring the fields to be grouped-by here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupFields")]
+        public virtual System.Collections.Generic.IList<string> GroupFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Insight object with configuration that was returned and actual list of records.</summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Applied insight config to generate the result data rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedConfig")]
+        public virtual GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig AppliedConfig { get; set; }
+
+        /// <summary>Output only. Metadata for the Insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata Metadata { get; set; }
+
+        /// <summary>
+        /// Output only. The insight resource name. e.g.
+        /// `organizations/{organization_id}/locations/{location_id}/insights/{insight_id}` OR
+        /// `projects/{project_id}/locations/{location_id}/insights/{insight_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Result rows returned containing the required value(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Insight filters, groupings and aggregations that can be applied for the insight. Examples: aggregations, groups,
+    /// field filters.
+    /// </summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of aggregation types available for insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
+        public virtual System.Collections.Generic.IList<string> Aggregations { get; set; }
+
+        /// <summary>Output only. Category of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. Common name of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. List of fields available for insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField> Fields { get; set; }
+
+        /// <summary>Output only. List of groupings available for insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<string> Groups { get; set; }
+
+        /// <summary>Output only. Sub-Category of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subCategory")]
+        public virtual string SubCategory { get; set; }
+
+        /// <summary>
+        /// Output only. Type of the insight. It is metadata describing whether the insight is a metric (e.g. count) or
+        /// a report (e.g. list, status).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Field metadata. Commonly understandable name and description for the field. Multiple such fields constitute the
+    /// Insight.
+    /// </summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Field name to be used in filter while requesting configured insight filtered on this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterAlias")]
+        public virtual string FilterAlias { get; set; }
+
+        /// <summary>Output only. Indicates whether the field can be used for filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterable")]
+        public virtual System.Nullable<bool> Filterable { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the field can be used for grouping in custom grouping request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupable")]
+        public virtual System.Nullable<bool> Groupable { get; set; }
+
+        /// <summary>Output only. Field id for which this is the metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for the list of insights.</summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of all insights.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight> Insights { get; set; }
+
+        /// <summary>
+        /// Output only. Next page token to be fetched. Set to empty or NULL if there are no more pages available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Row of the fetch response consisting of a set of entries.</summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Columns/entries/key-vals in the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldValues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal> FieldValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Column or key value pair from the request as part of key to use in query or a single pair of the fetch response.
+    /// </summary>
+    public class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Field name to be used in filter while requesting configured insight filtered on this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterAlias")]
+        public virtual string FilterAlias { get; set; }
+
+        /// <summary>Output only. Field id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. Value of the field in string format. Acceptable values are strings or numbers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

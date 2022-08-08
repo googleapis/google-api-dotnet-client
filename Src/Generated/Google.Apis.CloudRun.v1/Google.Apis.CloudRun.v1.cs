@@ -6981,7 +6981,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources,
         /// although some resources may allow a client to request the generation of an appropriate name automatically.
         /// Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More
-        /// info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+        /// info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a
+        /// namespaces.services.create request, name must contain fewer than 50 characters. +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

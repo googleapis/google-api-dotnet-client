@@ -1903,7 +1903,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location and project in which this service should be created. Format:
-                /// projects/{projectnumber}/locations/{location}
+                /// projects/{projectnumber}/locations/{location} Only lowercase, digits, and hyphens; must begin with
+                /// letter, and may not end with hyphen; must contain fewer than 50 characters.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string parent)
                 {
@@ -1923,7 +1924,8 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project in which this service should be created. Format:
-                    /// projects/{projectnumber}/locations/{location}
+                    /// projects/{projectnumber}/locations/{location} Only lowercase, digits, and hyphens; must begin
+                    /// with letter, and may not end with hyphen; must contain fewer than 50 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }

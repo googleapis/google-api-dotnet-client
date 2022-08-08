@@ -2095,9 +2095,7 @@ namespace Google.Apis.Baremetalsolution.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The list of fields to update. The only currently supported fields are:
-                    /// `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'snapshot_enabled'
-                    /// 'snapshot_reservation_detail.reserved_space_percent'
+                    /// The list of fields to update. The only currently supported fields are: 'labels'
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3612,6 +3610,12 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGrownSizeGib")]
         public virtual System.Nullable<long> AutoGrownSizeGib { get; set; }
+
+        /// <summary>
+        /// Output only. Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootVolume")]
+        public virtual System.Nullable<bool> BootVolume { get; set; }
 
         /// <summary>
         /// The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be

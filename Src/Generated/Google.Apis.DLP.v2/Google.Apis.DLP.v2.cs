@@ -296,7 +296,7 @@ namespace Google.Apis.DLP.v2
         }
 
         /// <summary>
-        /// Returns a list of the sensitive information types that the DLP API supports. See
+        /// Returns a list of the sensitive information types that DLP API supports. See
         /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
         /// </summary>
         public virtual ListRequest List()
@@ -305,7 +305,7 @@ namespace Google.Apis.DLP.v2
         }
 
         /// <summary>
-        /// Returns a list of the sensitive information types that the DLP API supports. See
+        /// Returns a list of the sensitive information types that DLP API supports. See
         /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
         /// </summary>
         public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
@@ -421,7 +421,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Returns a list of the sensitive information types that the DLP API supports. See
+            /// Returns a list of the sensitive information types that DLP API supports. See
             /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
             /// </summary>
             /// <param name="parent">
@@ -433,7 +433,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Returns a list of the sensitive information types that the DLP API supports. See
+            /// Returns a list of the sensitive information types that DLP API supports. See
             /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
@@ -555,7 +555,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+            /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
             /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -576,7 +576,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+            /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
             /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
@@ -802,15 +802,15 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
-                /// to time the template was created. - `update_time`: corresponds to time the template was last
-                /// updated. - `name`: corresponds to template's name. - `display_name`: corresponds to template's
-                /// display name.
+                /// to the time the template was created. - `update_time`: corresponds to the time the template was last
+                /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
+                /// template's display name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -963,8 +963,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images,
-            /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
+            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -984,8 +984,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images,
-            /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
+            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -1206,15 +1206,15 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
-                /// to time the template was created. - `update_time`: corresponds to time the template was last
-                /// updated. - `name`: corresponds to template's name. - `display_name`: corresponds to template's
-                /// display name.
+                /// to the time the template was created. - `update_time`: corresponds to the time the template was last
+                /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
+                /// template's display name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1386,7 +1386,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+                /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
                 /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1407,7 +1407,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+                /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
                 /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
@@ -1637,15 +1637,15 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
-                    /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
-                    /// corresponds to template's display name.
+                    /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
+                    /// the time the template was last updated. - `name`: corresponds to the template's name. -
+                    /// `display_name`: corresponds to the template's display name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1847,11 +1847,11 @@ namespace Google.Apis.DLP.v2
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
                     /// {value}`. * Supported fields/values for inspect jobs: - `state` -
                     /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
-                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the trigger that
-                    /// created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds
-                    /// to time the job finished. * Supported fields for risk analysis jobs: - `state` -
-                    /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. -
-                    /// 'start_time` - Corresponds to time the job finished. * The operator must be `=` or `!=`.
+                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The name of the trigger that created the
+                    /// job. - 'end_time` - Corresponds to the time the job finished. - 'start_time` - Corresponds to
+                    /// the time the job finished. * Supported fields for risk analysis jobs: - `state` -
+                    /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job finished. -
+                    /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`.
                     /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage =
                     /// cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
                     /// done OR state = canceled) * end_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this
@@ -1868,8 +1868,8 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the
-                    /// job ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`
+                    /// `create_time`: corresponds to the time the job was created. - `end_time`: corresponds to the
+                    /// time the job ended. - `name`: corresponds to the job's name. - `state`: corresponds to `state`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -1993,8 +1993,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
+                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2014,8 +2014,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
+                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -2238,15 +2238,15 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
-                    /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
-                    /// corresponds to template's display name.
+                    /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
+                    /// the time the template was last updated. - `name`: corresponds to the template's name. -
+                    /// `display_name`: corresponds to the template's display name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2644,10 +2644,10 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
                     /// This list is case-insensitive, default sorting order is ascending, redundant space characters
                     /// are insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to
-                    /// time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
-                    /// JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to
-                    /// JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
+                    /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds
+                    /// to the time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
+                    /// JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`: corresponds to
+                    /// the JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -3088,7 +3088,7 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the most recent version of the resource was created. -
+                    /// `create_time`: corresponds to the time the most recent version of the resource was created. -
                     /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
                     /// `display_name`: corresponds to info type's display name.
                     /// </summary>
@@ -3096,7 +3096,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3497,15 +3497,15 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
-                /// corresponds to time the most recent version of the resource was created. - `state`: corresponds to
-                /// the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds to
-                /// info type's display name.
+                /// corresponds to the time the most recent version of the resource was created. - `state`: corresponds
+                /// to the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds
+                /// to info type's display name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -3931,7 +3931,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+            /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
             /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -3952,7 +3952,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+            /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
             /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
@@ -4178,15 +4178,15 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
-                /// to time the template was created. - `update_time`: corresponds to time the template was last
-                /// updated. - `name`: corresponds to template's name. - `display_name`: corresponds to template's
-                /// display name.
+                /// to the time the template was created. - `update_time`: corresponds to the time the template was last
+                /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
+                /// template's display name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -4480,7 +4480,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
-            /// DlpJob result. The job will be cancelled if possible. See
+            /// DlpJob result. The job will be canceled if possible. See
             /// https://cloud.google.com/dlp/docs/inspecting-storage and
             /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
             /// </summary>
@@ -4492,7 +4492,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
-            /// DlpJob result. The job will be cancelled if possible. See
+            /// DlpJob result. The job will be canceled if possible. See
             /// https://cloud.google.com/dlp/docs/inspecting-storage and
             /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
             /// </summary>
@@ -4632,13 +4632,13 @@ namespace Google.Apis.DLP.v2
                 /// Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions
                 /// implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported
                 /// fields/values for inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED -
-                /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the
-                /// trigger that created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` -
-                /// Corresponds to time the job finished. * Supported fields for risk analysis jobs: - `state` -
-                /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - 'start_time`
-                /// - Corresponds to time the job finished. * The operator must be `=` or `!=`. Examples: *
-                /// inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The name of the trigger
+                /// that created the job. - 'end_time` - Corresponds to the time the job finished. - 'start_time` -
+                /// Corresponds to the time the job finished. * Supported fields for risk analysis jobs: - `state` -
+                /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job finished. -
+                /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`.
+                /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage
+                /// OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
                 /// canceled) * end_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this field should be no
                 /// more than 500 characters.
                 /// </summary>
@@ -4653,8 +4653,8 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc, end_time asc, create_time desc` Supported fields are: - `create_time`:
-                /// corresponds to time the job was created. - `end_time`: corresponds to time the job ended. - `name`:
-                /// corresponds to job's name. - `state`: corresponds to `state`
+                /// corresponds to the time the job was created. - `end_time`: corresponds to the time the job ended. -
+                /// `name`: corresponds to the job's name. - `state`: corresponds to `state`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -4875,8 +4875,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images,
-            /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
+            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -4896,8 +4896,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images,
-            /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
+            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -5118,15 +5118,15 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
-                /// to time the template was created. - `update_time`: corresponds to time the template was last
-                /// updated. - `name`: corresponds to template's name. - `display_name`: corresponds to template's
-                /// display name.
+                /// to the time the template was created. - `update_time`: corresponds to the time the template was last
+                /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
+                /// template's display name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -5586,10 +5586,10 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix. This
                 /// list is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                /// `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to time
-                /// the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the JobTrigger ran.
-                /// - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to JobTrigger's display
-                /// name. - `status`: corresponds to JobTrigger's status.
+                /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds to
+                /// the time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
+                /// JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`: corresponds to the
+                /// JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -6059,7 +6059,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+                /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
                 /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -6080,7 +6080,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
+                /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
                 /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
@@ -6310,15 +6310,15 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
-                    /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
-                    /// corresponds to template's display name.
+                    /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
+                    /// the time the template was last updated. - `name`: corresponds to the template's name. -
+                    /// `display_name`: corresponds to the template's display name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -6613,7 +6613,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
-                /// DlpJob result. The job will be cancelled if possible. See
+                /// DlpJob result. The job will be canceled if possible. See
                 /// https://cloud.google.com/dlp/docs/inspecting-storage and
                 /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
                 /// </summary>
@@ -6625,7 +6625,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
-                /// DlpJob result. The job will be cancelled if possible. See
+                /// DlpJob result. The job will be canceled if possible. See
                 /// https://cloud.google.com/dlp/docs/inspecting-storage and
                 /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
                 /// </summary>
@@ -6893,11 +6893,11 @@ namespace Google.Apis.DLP.v2
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
                     /// {value}`. * Supported fields/values for inspect jobs: - `state` -
                     /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
-                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the trigger that
-                    /// created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds
-                    /// to time the job finished. * Supported fields for risk analysis jobs: - `state` -
-                    /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. -
-                    /// 'start_time` - Corresponds to time the job finished. * The operator must be `=` or `!=`.
+                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The name of the trigger that created the
+                    /// job. - 'end_time` - Corresponds to the time the job finished. - 'start_time` - Corresponds to
+                    /// the time the job finished. * Supported fields for risk analysis jobs: - `state` -
+                    /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job finished. -
+                    /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`.
                     /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage =
                     /// cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
                     /// done OR state = canceled) * end_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this
@@ -6914,8 +6914,8 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the
-                    /// job ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`
+                    /// `create_time`: corresponds to the time the job was created. - `end_time`: corresponds to the
+                    /// time the job ended. - `name`: corresponds to the job's name. - `state`: corresponds to `state`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -7137,8 +7137,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
+                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -7158,8 +7158,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
+                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -7382,15 +7382,15 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
-                    /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
-                    /// corresponds to template's display name.
+                    /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
+                    /// the time the template was last updated. - `name`: corresponds to the template's name. -
+                    /// `display_name`: corresponds to the template's display name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -7918,10 +7918,10 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
                     /// This list is case-insensitive, default sorting order is ascending, redundant space characters
                     /// are insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to
-                    /// time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
-                    /// JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to
-                    /// JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
+                    /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds
+                    /// to the time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
+                    /// JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`: corresponds to
+                    /// the JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -8362,7 +8362,7 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case-insensitive, default sorting order is ascending, redundant space characters are
                     /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the most recent version of the resource was created. -
+                    /// `create_time`: corresponds to the time the most recent version of the resource was created. -
                     /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
                     /// `display_name`: corresponds to info type's display name.
                     /// </summary>
@@ -8370,7 +8370,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -8771,15 +8771,15 @@ namespace Google.Apis.DLP.v2
                 /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                 /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
                 /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
-                /// corresponds to time the most recent version of the resource was created. - `state`: corresponds to
-                /// the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds to
-                /// info type's display name.
+                /// corresponds to the time the most recent version of the resource was created. - `state`: corresponds
+                /// to the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds
+                /// to info type's display name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
+                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -8924,6 +8924,13 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2Action : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is
+        /// in the same location as the original data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentify")]
+        public virtual GooglePrivacyDlpV2Deidentify Deidentify { get; set; }
+
         /// <summary>Enable email notification for project owners and editors on job's completion/failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobNotificationEmails")]
         public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; }
@@ -9355,7 +9362,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options defining a file or a set of files within a Google Cloud Storage bucket.</summary>
+    /// <summary>Options defining a file or a set of files within a Cloud Storage bucket.</summary>
     public class GooglePrivacyDlpV2CloudStorageOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9528,7 +9535,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// A string representation of the full container name. Examples: - BigQuery: 'Project:DataSetId.TableId' -
-        /// Google Cloud Storage: 'gs://Bucket/folders/filename.txt'
+        /// Cloud Storage: 'gs://Bucket/folders/filename.txt'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullPath")]
         public virtual string FullPath { get; set; }
@@ -9541,32 +9548,32 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// The rest of the path after the root. Examples: - For BigQuery table `project_id:dataset_id.table_id`, the
-        /// relative path is `table_id` - Google Cloud Storage file `gs://bucket/folder/filename.txt`, the relative path
-        /// is `folder/filename.txt`
+        /// relative path is `table_id` - For Cloud Storage file `gs://bucket/folder/filename.txt`, the relative path is
+        /// `folder/filename.txt`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
         public virtual string RelativePath { get; set; }
 
         /// <summary>
         /// The root of the container. Examples: - For BigQuery table `project_id:dataset_id.table_id`, the root is
-        /// `dataset_id` - For Google Cloud Storage file `gs://bucket/folder/filename.txt`, the root is `gs://bucket`
+        /// `dataset_id` - For Cloud Storage file `gs://bucket/folder/filename.txt`, the root is `gs://bucket`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
         public virtual string RootPath { get; set; }
 
-        /// <summary>Container type, for example BigQuery or Google Cloud Storage.</summary>
+        /// <summary>Container type, for example BigQuery or Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Findings container modification timestamp, if applicable. For Google Cloud Storage contains last file
-        /// modification timestamp. For BigQuery table contains last_modified_time property. For Datastore - not
-        /// populated.
+        /// Findings container modification timestamp, if applicable. For Cloud Storage, this field contains the last
+        /// file modification timestamp. For a BigQuery table, this field contains the last_modified_time property. For
+        /// Datastore, this field isn't populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>Findings container version, if available ("generation" for Google Cloud Storage).</summary>
+        /// <summary>Findings container version, if available ("generation" for Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -9603,21 +9610,21 @@ namespace Google.Apis.DLP.v2.Data
         /// Name of the container where the finding is located. The top level name is the source file name or table
         /// name. Names of some common storage containers are formatted as follows: * BigQuery tables:
         /// `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` * Datastore namespace:
-        /// {namespace} Nested names could be absent if the embedded object has no string identifier (for an example an
+        /// {namespace} Nested names could be absent if the embedded object has no string identifier (for example, an
         /// image contained within a document).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
         public virtual string ContainerName { get; set; }
 
         /// <summary>
-        /// Findings container modification timestamp, if applicable. For Google Cloud Storage contains last file
-        /// modification timestamp. For BigQuery table contains last_modified_time property. For Datastore - not
-        /// populated.
+        /// Finding container modification timestamp, if applicable. For Cloud Storage, this field contains the last
+        /// file modification timestamp. For a BigQuery table, this field contains the last_modified_time property. For
+        /// Datastore, this field isn't populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerTimestamp")]
         public virtual object ContainerTimestamp { get; set; }
 
-        /// <summary>Findings container version, if available ("generation" for Google Cloud Storage).</summary>
+        /// <summary>Finding container version, if available ("generation" for Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
         public virtual string ContainerVersion { get; set; }
 
@@ -9777,7 +9784,7 @@ namespace Google.Apis.DLP.v2.Data
         /// decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context
         /// is set but: 1. there is no record present when transforming a given value or 2. the field is not present
         /// when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is
-        /// expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+        /// expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2FieldId Context { get; set; }
@@ -9874,7 +9881,7 @@ namespace Google.Apis.DLP.v2.Data
         /// won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context
         /// is set but: 1. there is no record present when transforming a given value or 1. the field is not present
         /// when transforming a given value, a default tweak will be used. Note that case (1) is expected when an
-        /// `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the
+        /// `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the
         /// referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in
         /// big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a
         /// string is encoded in UTF-8 format followed by a single byte of value 2
@@ -10083,8 +10090,8 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// The message that will be published to a Pub/Sub topic. To receive a message of protocol buffer schema type,
-    /// convert the message data to an object of this proto class.
+    /// Pub/Sub topic message for a DataProfileAction.PubSubNotification event. To receive a message of protocol buffer
+    /// schema type, convert the message data to an object of this proto class.
     /// https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-proto-messages
     /// </summary>
     public class GooglePrivacyDlpV2DataProfilePubSubMessage : Google.Apis.Requests.IDirectResponseSchema
@@ -10104,7 +10111,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Score is a summary of all elements in the data profile. A higher number means more risky.</summary>
+    /// <summary>Score is a summary of all elements in the data profile. A higher number means more risk.</summary>
     public class GooglePrivacyDlpV2DataRiskLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The score applied to the resource.</summary>
@@ -10203,6 +10210,54 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each
+    /// transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size
+    /// exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the
+    /// BigQuery insert API limit it will be truncated when written to the failure output table. The failure output
+    /// table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no
+    /// table is set, a table will be automatically created in the same project and dataset as the original table.
+    /// Compatible with: Inspect
+    /// </summary>
+    public class GooglePrivacyDlpV2Deidentify : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. User settable GCS bucket and folders to store de-identified files. This field must be set for
+        /// cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified
+        /// files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOutput")]
+        public virtual string CloudStorageOutput { get; set; }
+
+        /// <summary>
+        /// List of user-specified file type groups to transform. If specified, only the files with these filetypes will
+        /// be transformed. If empty, all supported files will be transformed. Supported types may be automatically
+        /// added over time. If a file type is set in this field that isn't supported by the Deidentify action then the
+        /// job will fail and will not be successfully created/started. Currently the only filetypes supported are:
+        /// IMAGES, TEXT_FILES, CSV, TSV.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileTypesToTransform")]
+        public virtual System.Collections.Generic.IList<string> FileTypesToTransform { get; set; }
+
+        /// <summary>
+        /// User specified deidentify templates and configs for structured, unstructured, and image files.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationConfig")]
+        public virtual GooglePrivacyDlpV2TransformationConfig TransformationConfig { get; set; }
+
+        /// <summary>
+        /// Config for storing transformation details. This is separate from the de-identified content, and contains
+        /// metadata about the successful transformations and/or failures that occurred while de-identifying. This needs
+        /// to be set in order for users to access information about the status of each transformation (see
+        /// TransformationDetails message for more information about what is noted).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationDetailsStorageConfig")]
+        public virtual GooglePrivacyDlpV2TransformationDetailsStorageConfig TransformationDetailsStorageConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration that controls how the data will change.</summary>
     public class GooglePrivacyDlpV2DeidentifyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10230,7 +10285,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to de-identify a list of items.</summary>
+    /// <summary>Request to de-identify a ContentItem.</summary>
     public class GooglePrivacyDlpV2DeidentifyContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10569,7 +10624,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>List of exclude infoTypes.</summary>
+    /// <summary>List of excluded infoTypes.</summary>
     public class GooglePrivacyDlpV2ExcludeInfoTypes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10628,7 +10683,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An expression, consisting or an operator and conditions.</summary>
+    /// <summary>An expression, consisting of an operator and conditions.</summary>
     public class GooglePrivacyDlpV2Expressions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Conditions to apply to the expression.</summary>
@@ -10790,7 +10845,9 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Configuration to control the number of findings returned for inspection. This is not used for de-identification
-    /// or data profiling.
+    /// or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause
+    /// unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in
+    /// RedactImage requests. Otherwise, Cloud DLP returns an error.
     /// </summary>
     public class GooglePrivacyDlpV2FindingLimits : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11151,6 +11208,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportedBy")]
         public virtual System.Collections.Generic.IList<string> SupportedBy { get; set; }
 
+        /// <summary>A list of available versions for the infotype.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2VersionDescription> Versions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11280,7 +11341,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>
-        /// Configuration to control the number of findings returned. This is not used for data profiling.
+        /// Configuration to control the number of findings returned. This is not used for data profiling. When
+        /// redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent
+        /// results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise,
+        /// Cloud DLP returns an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual GooglePrivacyDlpV2FindingLimits Limits { get; set; }
@@ -11878,8 +11942,8 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>
     /// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in
     /// the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the
-    /// specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries
-    /// that satisfy the size requirements.
+    /// specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that
+    /// satisfy the size requirements.
     /// </summary>
     public class GooglePrivacyDlpV2LargeCustomDictionaryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11892,9 +11956,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2CloudStorageFileSet CloudStorageFileSet { get; set; }
 
         /// <summary>
-        /// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by
-        /// project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid
-        /// and can no longer be used.
+        /// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project
+        /// owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can
+        /// no longer be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
         public virtual GooglePrivacyDlpV2CloudStoragePath OutputPath { get; set; }
@@ -12160,12 +12224,12 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one
-        /// will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific
-        /// timezone will be used for generating the date details. For Inspect, each column in an existing output table
-        /// must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output
-        /// table should be the output of a previous Risk analysis job run on the same source table, with the same
-        /// privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy
-        /// metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+        /// will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time
+        /// zone will be used for generating the date details. For Inspect, each column in an existing output table must
+        /// have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table
+        /// should be the output of a previous Risk analysis job run on the same source table, with the same privacy
+        /// metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric,
+        /// or use different sets of quasi-identifiers, cannot store their results in the same table.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
@@ -12424,8 +12488,8 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>
     /// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only
     /// available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command
-    /// Center. The action will publish count of finding instances and their info types. The summary of findings will be
-    /// persisted in CSCC and are governed by CSCC service-specific policy, see
+    /// Center. The action will publish the count of finding instances and their info types. The summary of findings
+    /// will be persisted in CSCC and are governed by CSCC service-specific policy, see
     /// https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible
     /// with: Inspect
     /// </summary>
@@ -12436,7 +12500,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field,
+    /// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field,
     /// `DlpJobName`, which is equal to the finished job's
     /// [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with:
     /// Inspect, Risk
@@ -12777,7 +12841,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Results of re-identifying a item.</summary>
+    /// <summary>Results of re-identifying an item.</summary>
     public class GooglePrivacyDlpV2ReidentifyContentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The re-identified item.</summary>
@@ -12924,7 +12988,7 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A
+        /// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A
         /// scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
         /// This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         /// </summary>
@@ -12980,7 +13044,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryOptions")]
         public virtual GooglePrivacyDlpV2BigQueryOptions BigQueryOptions { get; set; }
 
-        /// <summary>Google Cloud Storage options.</summary>
+        /// <summary>Cloud Storage options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
         public virtual GooglePrivacyDlpV2CloudStorageOptions CloudStorageOptions { get; set; }
 
@@ -13089,8 +13153,8 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType
         /// data that render it unusable. Only the five most recent errors will be displayed, with the most recent error
-        /// appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google
-        /// Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary
+        /// appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud
+        /// Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary
         /// becomes invalid. If any errors occur, fix the problem indicated by the error message and use the
         /// UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it,
         /// reusing the same `config` if it was not the source of the error.
@@ -13402,7 +13466,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting
-    /// Google Cloud Storage and BigQuery.
+    /// Cloud Storage and BigQuery.
     /// </summary>
     public class GooglePrivacyDlpV2TimespanConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13428,16 +13492,73 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore
-        /// and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given
+        /// and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given
         /// start and end times, the entire table will be scanned. If this value is specified, then rows are filtered
         /// based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are
         /// skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and
-        /// `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start
-        /// and end times. If an entity does not contain the provided timestamp property or contains empty or invalid
-        /// values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+        /// `DATETIME`. If your BigQuery table is [partitioned at ingestion
+        /// time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the
+        /// following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are
+        /// case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is
+        /// specified, then entities are filtered based on the given start and end times. If an entity does not contain
+        /// the provided timestamp property or contains empty or invalid values, then it is included. Valid data types
+        /// of the provided timestamp property are: `TIMESTAMP`. See the [known
+        /// issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampField")]
         public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// User specified templates and configs for how to deidentify structured, unstructures, and image files. User must
+    /// provide either a unstructured deidentify template or at least one redact image config.
+    /// </summary>
+    public class GooglePrivacyDlpV2TransformationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// De-identify template. If this template is specified, it will serve as the default de-identify template. This
+        /// template cannot contain `record_transformations` since it can be used for unstructured content such as
+        /// free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to
+        /// de-identify unstructured content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
+        public virtual string DeidentifyTemplate { get; set; }
+
+        /// <summary>
+        /// Image redact template. If this template is specified, it will serve as the de-identify template for images.
+        /// If this template is not set, all findings in the image will be redacted with a black box.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRedactTemplate")]
+        public virtual string ImageRedactTemplate { get; set; }
+
+        /// <summary>
+        /// Structured de-identify template. If this template is specified, it will serve as the de-identify template
+        /// for structured content such as delimited files and tables. If this template is not set but the
+        /// `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If
+        /// neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured
+        /// content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDeidentifyTemplate")]
+        public virtual string StructuredDeidentifyTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for storing transformation details.</summary>
+    public class GooglePrivacyDlpV2TransformationDetailsStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The BigQuery table in which to store the output. This may be an existing table or in a new table in an
+        /// existing dataset. If table_id is not set a new one will be generated for you with the following format:
+        /// dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating
+        /// the date details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13684,6 +13805,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A value contained in the field in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GooglePrivacyDlpV2Value Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about each available version for an infotype.</summary>
+    public class GooglePrivacyDlpV2VersionDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Name of the version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

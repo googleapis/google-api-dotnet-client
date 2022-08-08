@@ -2543,6 +2543,14 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class AuthorizationCodeLink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The client ID assigned to the GCP Connectors OAuth app for the connector data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Whether to enable PKCE for the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
+        public virtual System.Nullable<bool> EnablePkce { get; set; }
+
         /// <summary>The scopes for which the user will authorize GCP Connectors on the connector data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }

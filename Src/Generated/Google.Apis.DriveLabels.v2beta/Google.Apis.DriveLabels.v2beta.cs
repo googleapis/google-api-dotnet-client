@@ -1729,9 +1729,9 @@ namespace Google.Apis.DriveLabels.v2beta
         }
 
         /// <summary>
-        /// Get a Label by its resource name. Resource name may be any of: * `labels/{id}` - See to `labels/{id}@latest`
-        /// * `labels/{id}@latest` - Gets the latest revision of the Label. * `labels/{id}@published` - Gets the current
-        /// published revision of the Label. * `labels/{id}@{revision_id}` - Gets the Label at the specified revision
+        /// Get a label by its resource name. Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` *
+        /// `labels/{id}@latest` - Gets the latest revision of the label. * `labels/{id}@published` - Gets the current
+        /// published revision of the label. * `labels/{id}@{revision_id}` - Gets the label at the specified revision
         /// ID.
         /// </summary>
         /// <param name="name">
@@ -1744,9 +1744,9 @@ namespace Google.Apis.DriveLabels.v2beta
         }
 
         /// <summary>
-        /// Get a Label by its resource name. Resource name may be any of: * `labels/{id}` - See to `labels/{id}@latest`
-        /// * `labels/{id}@latest` - Gets the latest revision of the Label. * `labels/{id}@published` - Gets the current
-        /// published revision of the Label. * `labels/{id}@{revision_id}` - Gets the Label at the specified revision
+        /// Get a label by its resource name. Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` *
+        /// `labels/{id}@latest` - Gets the latest revision of the label. * `labels/{id}@published` - Gets the current
+        /// published revision of the label. * `labels/{id}@{revision_id}` - Gets the label at the specified revision
         /// ID.
         /// </summary>
         public class GetRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabel>
@@ -1766,24 +1766,24 @@ namespace Google.Apis.DriveLabels.v2beta
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// The BCP-47 language code to use for evaluating localized Field labels. When not specified, values in the
-            /// default configured language will be used.
+            /// The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the
+            /// default configured language are used.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
             /// <summary>
-            /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin
-            /// for the Label before allowing access.
+            /// Set to `true` in order to use the user's admin credentials. The server verifies that the user is an
+            /// admin for the label before allowing access.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
-            /// <summary>When specified, only certain Fields belonging to the indicated view will be returned.</summary>
+            /// <summary>When specified, only certain fields belonging to the indicated view are returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>When specified, only certain Fields belonging to the indicated view will be returned.</summary>
+            /// <summary>When specified, only certain fields belonging to the indicated view are returned.</summary>
             public enum ViewEnum
             {
                 /// <summary>Implies the field mask: `name,id,revision_id,label_type,properties.*`</summary>
@@ -1843,19 +1843,13 @@ namespace Google.Apis.DriveLabels.v2beta
             }
         }
 
-        /// <summary>
-        /// -------------------------------------------------------------------------- ## Label APIs
-        /// --------------------------------------------------------------- List Labels.
-        /// </summary>
+        /// <summary>List labels.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>
-        /// -------------------------------------------------------------------------- ## Label APIs
-        /// --------------------------------------------------------------- List Labels.
-        /// </summary>
+        /// <summary>List labels.</summary>
         public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaListLabelsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1866,7 +1860,7 @@ namespace Google.Apis.DriveLabels.v2beta
 
             /// <summary>
             /// The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the
-            /// default configured language will be used.
+            /// default configured language are used.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
@@ -1888,7 +1882,7 @@ namespace Google.Apis.DriveLabels.v2beta
                 [Google.Apis.Util.StringValueAttribute("LABEL_ROLE_UNSPECIFIED")]
                 LABELROLEUNSPECIFIED = 0,
 
-                /// <summary>A reader can read the Label and associated metadata applied to Drive items.</summary>
+                /// <summary>A reader can read the label and associated metadata applied to Drive items.</summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER = 1,
 
@@ -1900,21 +1894,20 @@ namespace Google.Apis.DriveLabels.v2beta
                 APPLIER = 2,
 
                 /// <summary>
-                /// An organizer is allowed to pin this label in shared drives they manage and add new appliers to the
-                /// label.
+                /// An organizer can pin this label in shared drives they manage and add new appliers to the label.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ORGANIZER")]
                 ORGANIZER = 3,
 
                 /// <summary>
-                /// Editors may make any updates including deleting the Label which will also delete associated Drive
+                /// Editors can make any update including deleting the label which also deletes the associated Drive
                 /// item metadata. Implies `APPLIER`.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
                 EDITOR = 4,
             }
 
-            /// <summary>Maximum number of Labels to return per page. Default: 50. Max: 200.</summary>
+            /// <summary>Maximum number of labels to return per page. Default: 50. Max: 200.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1924,10 +1917,10 @@ namespace Google.Apis.DriveLabels.v2beta
 
             /// <summary>
             /// Whether to include only published labels in the results. * When `true`, only the current published label
-            /// revisions will be returned. Disabled labels will be included. Returned Label resource names will
-            /// reference the published revision (`labels/{id}/{revision_id}`). * When `false`, the current label
-            /// revisions will be returned, which may not by published. Returned Label resource names will not reference
-            /// a specific revision (`labels/{id}`).
+            /// revisions are returned. Disabled labels are included. Returned label resource names reference the
+            /// published revision (`labels/{id}/{revision_id}`). * When `false`, the current label revisions are
+            /// returned, which might not be published. Returned label resource names don't reference a specific
+            /// revision (`labels/{id}`).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("publishedOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PublishedOnly { get; set; }
@@ -1939,11 +1932,11 @@ namespace Google.Apis.DriveLabels.v2beta
             [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
-            /// <summary>When specified, only certain fields belonging to the indicated view will be returned.</summary>
+            /// <summary>When specified, only certain fields belonging to the indicated view are returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>When specified, only certain fields belonging to the indicated view will be returned.</summary>
+            /// <summary>When specified, only certain fields belonging to the indicated view are returned.</summary>
             public enum ViewEnum
             {
                 /// <summary>Implies the field mask: `name,id,revision_id,label_type,properties.*`</summary>
@@ -2288,18 +2281,18 @@ namespace Google.Apis.DriveLabels.v2beta
 }
 namespace Google.Apis.DriveLabels.v2beta.Data
 {
-    /// <summary>The color derived from BadgeConfig and coerced to the nearest supported color.</summary>
+    /// <summary>The color derived from BadgeConfig and changed to the closest recommended supported color.</summary>
     public class GoogleAppsDriveLabelsV2betaBadgeColors : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Badge background which pairs with the foreground</summary>
+        /// <summary>Output only. Badge background that pairs with the foreground.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual GoogleTypeColor BackgroundColor { get; set; }
 
-        /// <summary>Output only. Badge foreground which pairs with the background</summary>
+        /// <summary>Output only. Badge foreground that pairs with the background.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual GoogleTypeColor ForegroundColor { get; set; }
 
-        /// <summary>Output only. Color that can be used for text without a background</summary>
+        /// <summary>Output only. Color that can be used for text without a background.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("soloColor")]
         public virtual GoogleTypeColor SoloColor { get; set; }
 
@@ -2311,15 +2304,15 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     public class GoogleAppsDriveLabelsV2betaBadgeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The color of the badge. When not specified, no badge will be rendered. This color will be coerced into the
-        /// closest recommended supported color.
+        /// The color of the badge. When not specified, no badge is rendered. The background, foreground, and solo
+        /// (light and dark mode) colors set here are changed in the Drive UI into the closest recommended supported
+        /// color.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual GoogleTypeColor Color { get; set; }
 
         /// <summary>
-        /// Override the default global priority of this badge. When set to 0, the default priority heuristic will be
-        /// used.
+        /// Override the default global priority of this badge. When set to 0, the default priority heuristic is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priorityOverride")]
         public virtual System.Nullable<long> PriorityOverride { get; set; }
@@ -3000,13 +2993,13 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     }
 
     /// <summary>
-    /// Defines a field which has a display name, data type, and other configuration options. This field defines the
-    /// kind of metadata that may be set on a Drive item.
+    /// Defines a field that has a display name, data type, and other configuration options. This field defines the kind
+    /// of metadata that may be set on a Drive item.
     /// </summary>
     public class GoogleAppsDriveLabelsV2betaField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The capabilities this user has on this Field and its value when the Label is applied on Drive
+        /// Output only. The capabilities this user has on this field and its value when the label is applied on Drive
         /// items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedCapabilities")]
@@ -3036,13 +3029,13 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabler")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Disabler { get; set; }
 
-        /// <summary>Output only. UI Display hints for rendering a Field.</summary>
+        /// <summary>Output only. UI display hints for rendering a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayHints")]
         public virtual GoogleAppsDriveLabelsV2betaFieldDisplayHints DisplayHints { get; set; }
 
         /// <summary>
-        /// Output only. The key of a field, unique within a Label or Library. This value is autogenerated, and will
-        /// match the form `([a-zA-Z0-9_])+
+        /// Output only. The key of a field, unique within a label or library. This value is autogenerated. Matches the
+        /// regex: `([a-zA-Z0-9])+`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -3051,7 +3044,7 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integerOptions")]
         public virtual GoogleAppsDriveLabelsV2betaFieldIntegerOptions IntegerOptions { get; set; }
 
-        /// <summary>Output only. The lifecycle of this Field.</summary>
+        /// <summary>Output only. The lifecycle of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
         public virtual GoogleAppsDriveLabelsV2betaLifecycle Lifecycle { get; set; }
 
@@ -3071,12 +3064,12 @@ namespace Google.Apis.DriveLabels.v2beta.Data
 
         /// <summary>
         /// Output only. The key to use when constructing Drive search queries to find files based on values defined for
-        /// this Field on files. For example: "`{query_key}` &amp;gt; 2001-01-01"
+        /// this field on files. For example, "`{query_key}` &amp;gt; 2001-01-01".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryKey")]
         public virtual string QueryKey { get; set; }
 
-        /// <summary>Output only. The capabilities this user has when editing this Field</summary>
+        /// <summary>Output only. The capabilities this user has when editing this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaCapabilities")]
         public virtual GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities SchemaCapabilities { get; set; }
 
@@ -3111,11 +3104,11 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canRead")]
         public virtual System.Nullable<bool> CanRead { get; set; }
 
-        /// <summary>Whether the user can search for drive items referencing this field.</summary>
+        /// <summary>Whether the user can search for Drive items referencing this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canSearch")]
         public virtual System.Nullable<bool> CanSearch { get; set; }
 
-        /// <summary>Whether the user can set this field on drive items.</summary>
+        /// <summary>Whether the user can set this field on Drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canWrite")]
         public virtual System.Nullable<bool> CanWrite { get; set; }
 
@@ -3126,12 +3119,12 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     /// <summary>Options for the date field type.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldDateOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. ICU Date format.</summary>
+        /// <summary>Output only. ICU date format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateFormat")]
         public virtual string DateFormat { get; set; }
 
         /// <summary>
-        /// Localized date formatting option. Field values will be rendered in this format according to their locale.
+        /// Localized date formatting option. Field values are rendered in this format according to their locale.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateFormatType")]
         public virtual string DateFormatType { get; set; }
@@ -3148,22 +3141,22 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>UI Display hints for rendering a Field.</summary>
+    /// <summary>UI display hints for rendering a field.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldDisplayHints : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the field should be shown in the UI as disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>This Field should be hidden in the search menu.</summary>
+        /// <summary>This field should be hidden in the search menu when searching for Drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenInSearch")]
         public virtual System.Nullable<bool> HiddenInSearch { get; set; }
 
-        /// <summary>Whether the Field should be shown as required in the UI.</summary>
+        /// <summary>Whether the field should be shown as required in the UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
 
-        /// <summary>This Field should be shown when applying values to a Drive item.</summary>
+        /// <summary>This field should be shown in the apply menu when applying values to a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shownInApply")]
         public virtual System.Nullable<bool> ShownInApply { get; set; }
 
@@ -3266,8 +3259,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Input only. Insert or move this Field to be ordered before the indicated Field. If empty, the Field will be
-        /// placed at the end of the list.
+        /// Input only. Insert or move this field before the indicated field. If empty, the field is placed at the end
+        /// of the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertBeforeField")]
         public virtual string InsertBeforeField { get; set; }
@@ -3280,24 +3273,24 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The capabilities related to this Field when editing the Field.</summary>
+    /// <summary>The capabilities related to this field when editing the field.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether the user can delete this Field. The user must have permissions and the Field must be deprecated.
+        /// Whether the user can delete this field. The user must have permission and the field must be deprecated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
         public virtual System.Nullable<bool> CanDelete { get; set; }
 
         /// <summary>
-        /// Whether the user can disable this Field. The user must have permissions and this Field must not already be
+        /// Whether the user can disable this field. The user must have permission and this field must not already be
         /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canDisable")]
         public virtual System.Nullable<bool> CanDisable { get; set; }
 
         /// <summary>
-        /// Whether the user can enable this Field. The user must have permissions and this Field must be disabled.
+        /// Whether the user can enable this field. The user must have permission and this field must be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canEnable")]
         public virtual System.Nullable<bool> CanEnable { get; set; }
@@ -3321,8 +3314,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice> Choices { get; set; }
 
         /// <summary>
-        /// When specified, indicates that this field support a list of values. Once the field is published, this cannot
-        /// be changed.
+        /// When specified, indicates this field supports a list of values. Once the field is published, this cannot be
+        /// changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listOptions")]
         public virtual GoogleAppsDriveLabelsV2betaFieldListOptions ListOptions { get; set; }
@@ -3331,63 +3324,63 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Selection field Choice.</summary>
+    /// <summary>Selection field choice.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The capabilities related to this Choice on applied metadata.</summary>
+        /// <summary>Output only. The capabilities related to this choice on applied metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedCapabilities")]
         public virtual GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities AppliedCapabilities { get; set; }
 
-        /// <summary>Output only. The time this Choice was created.</summary>
+        /// <summary>Output only. The time this choice was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. The user who created this Choice.</summary>
+        /// <summary>Output only. The user who created this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Creator { get; set; }
 
         /// <summary>
-        /// Output only. The time this Choice was disabled. This value has no meaning when the Choice is not disabled.
+        /// Output only. The time this choice was disabled. This value has no meaning when the choice is not disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
         public virtual object DisableTime { get; set; }
 
         /// <summary>
-        /// Output only. The user who disabled this Choice. This value has no meaning when the option is not disabled.
+        /// Output only. The user who disabled this choice. This value has no meaning when the option is not disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabler")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Disabler { get; set; }
 
-        /// <summary>Output only. UI Display hints for rendering a Choice.</summary>
+        /// <summary>Output only. UI display hints for rendering a choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayHints")]
         public virtual GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints DisplayHints { get; set; }
 
         /// <summary>
-        /// The unique value of the Choice. This ID will be autogenerated, and will match the form `([a-zA-Z0-9_])+`.
+        /// The unique value of the choice. This ID is autogenerated. Matches the regex: `([a-zA-Z0-9_])+`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Output only. Lifecycle of the Choice.</summary>
+        /// <summary>Output only. Lifecycle of the choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
         public virtual GoogleAppsDriveLabelsV2betaLifecycle Lifecycle { get; set; }
 
-        /// <summary>Output only. The LockStatus of this Choice.</summary>
+        /// <summary>Output only. The LockStatus of this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockStatus")]
         public virtual GoogleAppsDriveLabelsV2betaLockStatus LockStatus { get; set; }
 
-        /// <summary>Basic properties of the Choice.</summary>
+        /// <summary>Basic properties of the choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties Properties { get; set; }
 
         /// <summary>
-        /// Output only. The time this Choice was published. This value has no meaning when the Choice is not published.
+        /// Output only. The time this choice was published. This value has no meaning when the choice is not published.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
         public virtual object PublishTime { get; set; }
 
         /// <summary>
-        /// Output only. The user who published this Choice. This value has no meaning when the Choice is not published.
+        /// Output only. The user who published this choice. This value has no meaning when the choice is not published.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Publisher { get; set; }
@@ -3396,11 +3389,11 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaCapabilities")]
         public virtual GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities SchemaCapabilities { get; set; }
 
-        /// <summary>Output only. The time this Choice was updated last.</summary>
+        /// <summary>Output only. The time this choice was updated last.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>Output only. The user who updated this Choice last.</summary>
+        /// <summary>Output only. The user who updated this choice last.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updater")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Updater { get; set; }
 
@@ -3408,18 +3401,18 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The capabilities related to this Choice on applied metadata.</summary>
+    /// <summary>The capabilities related to this choice on applied metadata.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the user can read related applied metadata on items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canRead")]
         public virtual System.Nullable<bool> CanRead { get; set; }
 
-        /// <summary>Whether the user can use this Choice in search queries.</summary>
+        /// <summary>Whether the user can use this choice in search queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canSearch")]
         public virtual System.Nullable<bool> CanSearch { get; set; }
 
-        /// <summary>Whether the user can select this Choice on an item.</summary>
+        /// <summary>Whether the user can select this choice on an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canSelect")]
         public virtual System.Nullable<bool> CanSelect { get; set; }
 
@@ -3427,27 +3420,27 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>UI Display hints for rendering a Option.</summary>
+    /// <summary>UI display hints for rendering an option.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The colors to use for the badge. Coerced to Google Material colors based on the chosen
+        /// The colors to use for the badge. Changed to Google Material colors based on the chosen
         /// `properties.badge_config.color`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("badgeColors")]
         public virtual GoogleAppsDriveLabelsV2betaBadgeColors BadgeColors { get; set; }
 
         /// <summary>
-        /// The priority of this badge, used to compare and sort between multiple badges. A lower number means that the
-        /// badge should be shown first. When a badging configuration is not present, this will be 0. Otherwise, this
-        /// will be set to `BadgeConfig.priority_override` or the default heuristic which prefers creation date of the
-        /// Label, and field and option priority.
+        /// The priority of this badge. Used to compare and sort between multiple badges. A lower number means the badge
+        /// should be shown first. When a badging configuration is not present, this will be 0. Otherwise, this will be
+        /// set to `BadgeConfig.priority_override` or the default heuristic which prefers creation date of the label,
+        /// and field and option priority.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("badgePriority")]
         public virtual System.Nullable<long> BadgePriority { get; set; }
 
         /// <summary>
-        /// The dark-mode color to use for the badge. Coerced to Google Material colors based on the chosen
+        /// The dark-mode color to use for the badge. Changed to Google Material colors based on the chosen
         /// `properties.badge_config.color`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("darkBadgeColors")]
@@ -3457,11 +3450,11 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>This option should be hidden in the search menu.</summary>
+        /// <summary>This option should be hidden in the search menu when searching for Drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenInSearch")]
         public virtual System.Nullable<bool> HiddenInSearch { get; set; }
 
-        /// <summary>This option should be shown in the menu when applying values to a Drive item.</summary>
+        /// <summary>This option should be shown in the apply menu when applying values to a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shownInApply")]
         public virtual System.Nullable<bool> ShownInApply { get; set; }
 
@@ -3469,17 +3462,17 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Basic properties of the Choice.</summary>
+    /// <summary>Basic properties of the choice.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The badge configuration for this Choice. When set, the Label that owns this Choice will be considered a
-        /// "badged label".
+        /// The badge configuration for this choice. When set, the label that owns this choice is considered a "badged
+        /// label".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("badgeConfig")]
         public virtual GoogleAppsDriveLabelsV2betaBadgeConfig BadgeConfig { get; set; }
 
-        /// <summary>The description of this Label.</summary>
+        /// <summary>The description of this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3488,8 +3481,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Input only. Insert or move this Choice to be ordered before the indicated Choice. If empty, the Choice will
-        /// be placed at the end of the list.
+        /// Input only. Insert or move this choice before the indicated choice. If empty, the choice is placed at the
+        /// end of the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertBeforeChoice")]
         public virtual string InsertBeforeChoice { get; set; }
@@ -3498,22 +3491,22 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The capabilities related to this Choice when editing the Choice.</summary>
+    /// <summary>The capabilities related to this choice when editing the choice.</summary>
     public class GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the user can delete this Choice.</summary>
+        /// <summary>Whether the user can delete this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
         public virtual System.Nullable<bool> CanDelete { get; set; }
 
-        /// <summary>Whether the user can disable this Chioce.</summary>
+        /// <summary>Whether the user can disable this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canDisable")]
         public virtual System.Nullable<bool> CanDisable { get; set; }
 
-        /// <summary>Whether the user can enable this Choice.</summary>
+        /// <summary>Whether the user can enable this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canEnable")]
         public virtual System.Nullable<bool> CanEnable { get; set; }
 
-        /// <summary>Whether the user can update this Choice.</summary>
+        /// <summary>Whether the user can update this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canUpdate")]
         public virtual System.Nullable<bool> CanUpdate { get; set; }
 
@@ -3540,8 +3533,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     public class GoogleAppsDriveLabelsV2betaFieldUserOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// When specified, indicates that this field support a list of values. Once the field is published, this cannot
-        /// be changed.
+        /// When specified, indicates that this field supports a list of values. Once the field is published, this
+        /// cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listOptions")]
         public virtual GoogleAppsDriveLabelsV2betaFieldListOptions ListOptions { get; set; }
@@ -3566,8 +3559,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     }
 
     /// <summary>
-    /// A Label defines a taxonomy which may be applied to a Drive items in order to organize and search across Items.
-    /// Labels may be simple strings, or may contain Fields that describe additional metadata which can be further used
+    /// A label defines a taxonomy that can be applied to Drive items in order to organize and search across items.
+    /// Labels can be simple strings, or can contain fields that describe additional metadata that can be further used
     /// to organize and search Drive items.
     /// </summary>
     public class GoogleAppsDriveLabelsV2betaLabel : Google.Apis.Requests.IDirectResponseSchema
@@ -3576,7 +3569,7 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedCapabilities")]
         public virtual GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities AppliedCapabilities { get; set; }
 
-        /// <summary>Output only. Behavior of this Label when its applied to Drive items.</summary>
+        /// <summary>Output only. Behavior of this label when it's applied to Drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLabelPolicy")]
         public virtual GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy AppliedLabelPolicy { get; set; }
 
@@ -3600,22 +3593,22 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabler")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Disabler { get; set; }
 
-        /// <summary>Output only. UI Display hints for rendering the Label.</summary>
+        /// <summary>Output only. UI display hints for rendering the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayHints")]
         public virtual GoogleAppsDriveLabelsV2betaLabelDisplayHints DisplayHints { get; set; }
 
-        /// <summary>List of Fields in descending priority order.</summary>
+        /// <summary>List of fields in descending priority order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2betaField> Fields { get; set; }
 
         /// <summary>
-        /// Output only. Globally unique identifier of this Label. ID makes up part of the Label `name`, but unlike
+        /// Output only. Globally unique identifier of this label. ID makes up part of the label `name`, but unlike
         /// `name`, ID is consistent between revisions. Matches the regex: `([a-zA-Z0-9])+`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Required. The type of this label.</summary>
+        /// <summary>Required. The type of label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelType")]
         public virtual string LabelType { get; set; }
 
@@ -3637,13 +3630,13 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual GoogleAppsDriveLabelsV2betaLockStatus LockStatus { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the Label. Will be in the form of either: `labels/{id}` or
+        /// Output only. Resource name of the label. Will be in the form of either: `labels/{id}` or
         /// `labels/{id}@{revision_id}` depending on the request. See `id` and `revision_id` below.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The basic properties of the Label.</summary>
+        /// <summary>Required. The basic properties of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoogleAppsDriveLabelsV2betaLabelProperties Properties { get; set; }
 
@@ -3668,14 +3661,14 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual GoogleAppsDriveLabelsV2betaUserInfo RevisionCreator { get; set; }
 
         /// <summary>
-        /// Output only. Revision ID of the Label. Revision ID may be part of the Label `name` depending on the request
-        /// issued. A new revision is created whenever revisioned properties of a Label are changed. Matches the regex:
-        /// `([a-zA-Z0-9])+`
+        /// Output only. Revision ID of the label. Revision ID might be part of the label `name` depending on the
+        /// request issued. A new revision is created whenever revisioned properties of a label are changed. Matches the
+        /// regex: `([a-zA-Z0-9])+`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
-        /// <summary>Output only. The capabilities the user has on this Label.</summary>
+        /// <summary>Output only. The capabilities the user has on this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaCapabilities")]
         public virtual GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities SchemaCapabilities { get; set; }
 
@@ -3683,10 +3676,10 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The capabilities a user has on this Label's applied metadata.</summary>
+    /// <summary>The capabilities a user has on this label's applied metadata.</summary>
     public class GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the user can apply this Label to items.</summary>
+        /// <summary>Whether the user can apply this label to items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canApply")]
         public virtual System.Nullable<bool> CanApply { get; set; }
 
@@ -3694,7 +3687,7 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canRead")]
         public virtual System.Nullable<bool> CanRead { get; set; }
 
-        /// <summary>Whether the user can remove this Label from items.</summary>
+        /// <summary>Whether the user can remove this label from items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canRemove")]
         public virtual System.Nullable<bool> CanRemove { get; set; }
 
@@ -3702,11 +3695,11 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Behavior of this Label when its applied to Drive items.</summary>
+    /// <summary>Behavior of this label when it's applied to Drive items.</summary>
     public class GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Indicates how the applied Label, and Field values should be copied when a Drive item is copied.
+        /// Indicates how the applied label and field values should be copied when a Drive item is copied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyMode")]
         public virtual string CopyMode { get; set; }
@@ -3715,22 +3708,22 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>UI Display hints for rendering the Label.</summary>
+    /// <summary>UI display hints for rendering the label.</summary>
     public class GoogleAppsDriveLabelsV2betaLabelDisplayHints : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the Label should be shown in the UI as disabled.</summary>
+        /// <summary>Whether the label should be shown in the UI as disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>This Label should be hidden in the search menu when searching for Drive items.</summary>
+        /// <summary>This label should be hidden in the search menu when searching for Drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenInSearch")]
         public virtual System.Nullable<bool> HiddenInSearch { get; set; }
 
-        /// <summary>Order to display label in a list</summary>
+        /// <summary>Order to display label in a list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<long> Priority { get; set; }
 
-        /// <summary>This Label should be shown in the apply menu.</summary>
+        /// <summary>This label should be shown in the apply menu when applying values to a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shownInApply")]
         public virtual System.Nullable<bool> ShownInApply { get; set; }
 
@@ -3876,14 +3869,14 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Basic properties of the Label.</summary>
+    /// <summary>Basic properties of the label.</summary>
     public class GoogleAppsDriveLabelsV2betaLabelProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The description of this Label.</summary>
+        /// <summary>The description of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. Title of the Label.</summary>
+        /// <summary>Required. Title of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -3891,29 +3884,29 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The capabilities related to this Label when editing the Label.</summary>
+    /// <summary>The capabilities related to this label when editing the label.</summary>
     public class GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether the user can delete this Label. The user must have permission and the Label must be disabled.
+        /// Whether the user can delete this label. The user must have permission and the label must be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
         public virtual System.Nullable<bool> CanDelete { get; set; }
 
         /// <summary>
-        /// Whether the user can disable this Label. The user must have permission and this Label must not already be
+        /// Whether the user can disable this label. The user must have permission and this label must not already be
         /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canDisable")]
         public virtual System.Nullable<bool> CanDisable { get; set; }
 
         /// <summary>
-        /// Whether the user can enable this Label. The user must have permission and this Label must be disabled.
+        /// Whether the user can enable this label. The user must have permission and this label must be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canEnable")]
         public virtual System.Nullable<bool> CanEnable { get; set; }
 
-        /// <summary>Whether the user can change this Label.</summary>
+        /// <summary>Whether the user can change this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canUpdate")]
         public virtual System.Nullable<bool> CanUpdate { get; set; }
 
@@ -3922,14 +3915,14 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     }
 
     /// <summary>
-    /// The lifecycle state of an object, e.g. Label, Field, or Choice. The Lifecycle enforces the following
+    /// The lifecycle state of an object, such as label, field, or choice. The lifecycle enforces the following
     /// transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -&amp;gt; `PUBLISHED` *
     /// `UNPUBLISHED_DRAFT` -&amp;gt; (Deleted) * `PUBLISHED` -&amp;gt; `DISABLED` * `DISABLED` -&amp;gt; `PUBLISHED` *
-    /// `DISABLED` -&amp;gt; (Deleted) The published and disabled states have some distinct characteristics: * Published
-    /// - Some kinds of changes may be made to an object in this state, in which case `has_unpublished_changes` will be
-    /// true. Some kinds of changes are not permitted. Generally, any change that would invalidate or cause new
-    /// restrictions on existing metadata related to the Label will be rejected. * Disabled - When disabled, the
-    /// configured `DisabledPolicy` will take effect.
+    /// `DISABLED` -&amp;gt; (Deleted) The published and disabled states have some distinct characteristics: *
+    /// Published—Some kinds of changes might be made to an object in this state, in which case
+    /// `has_unpublished_changes` will be true. Also, some kinds of changes are not permitted. Generally, any change
+    /// that would invalidate or cause new restrictions on existing metadata related to the label are rejected. *
+    /// Disabled—When disabled, the configured `DisabledPolicy` takes effect.
     /// </summary>
     public class GoogleAppsDriveLabelsV2betaLifecycle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3955,17 +3948,17 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     public class GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to hide this disabled object in the search menu for Drive items. * When `false` the object will
-        /// generally be shown in the UI as disabled (but still permit searching) when searching for Drive items. * When
-        /// `true` the object will generally be hidden in the UI when searching for Drive items.
+        /// Whether to hide this disabled object in the search menu for Drive items. * When `false`, the object is
+        /// generally shown in the UI as disabled but it appears in the search results when searching for Drive items. *
+        /// When `true`, the object is generally hidden in the UI when searching for Drive items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideInSearch")]
         public virtual System.Nullable<bool> HideInSearch { get; set; }
 
         /// <summary>
-        /// Whether to show this disabled object in the apply menu on Drive items. * When `true` the object will
-        /// generally be shown in the UI as disabled and is unselectable. * When `false` the object will generally be
-        /// hidden in the UI.
+        /// Whether to show this disabled object in the apply menu on Drive items. * When `true`, the object is
+        /// generally shown in the UI as disabled and is unselectable. * When `false`, the object is generally hidden in
+        /// the UI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showInApply")]
         public virtual System.Nullable<bool> ShowInApply { get; set; }
@@ -4035,8 +4028,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     {
         /// <summary>
         /// Output only. Indicates whether this label component is the (direct) target of a LabelLock. A label component
-        /// may be implicitly locked even if it is not the direct target of a LabelLock, in which case this field will
-        /// be false.
+        /// can be implicitly locked even if it's not the direct target of a LabelLock, in which case this field is set
+        /// to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
@@ -4219,8 +4212,8 @@ namespace Google.Apis.DriveLabels.v2beta.Data
     public class GoogleAppsDriveLabelsV2betaUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The identifier for this user who can be used with the People API to get more information. e.g.
-        /// people/12345678
+        /// The identifier for this user that can be used with the People API to get more information. For example,
+        /// people/12345678.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
         public virtual string Person { get; set; }

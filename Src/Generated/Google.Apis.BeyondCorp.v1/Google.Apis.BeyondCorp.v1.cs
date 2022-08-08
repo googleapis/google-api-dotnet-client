@@ -1750,8 +1750,8 @@ namespace Google.Apis.BeyondCorp.v1
                 }
 
                 /// <summary>
-                /// Get instance config for a given AppConnector. An internal method called by a AppConnector to get its
-                /// container config.
+                /// Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to
+                /// get its container config.
                 /// </summary>
                 /// <param name="appConnector">
                 /// Required. BeyondCorp AppConnector name using the form:
@@ -1763,8 +1763,8 @@ namespace Google.Apis.BeyondCorp.v1
                 }
 
                 /// <summary>
-                /// Get instance config for a given AppConnector. An internal method called by a AppConnector to get its
-                /// container config.
+                /// Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to
+                /// get its container config.
                 /// </summary>
                 public class ResolveInstanceConfigRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1.Data.GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>
                 {
@@ -4729,6 +4729,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressPort")]
         public virtual System.Nullable<int> IngressPort { get; set; }
+
+        /// <summary>Output only. L7 private service connection for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l7psc")]
+        public virtual string L7psc { get; set; }
 
         /// <summary>Required. The type of hosting used by the gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
