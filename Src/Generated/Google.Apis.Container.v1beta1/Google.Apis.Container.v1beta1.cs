@@ -479,7 +479,7 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The name (project, location, cluster, node pool id) of the node pool to complete upgrade.
-                    /// Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+                    /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
                     /// </param>
                     public virtual CompleteUpgradeRequest CompleteUpgrade(Google.Apis.Container.v1beta1.Data.CompleteNodePoolUpgradeRequest body, string name)
                     {
@@ -501,7 +501,7 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// The name (project, location, cluster, node pool id) of the node pool to complete upgrade.
-                        /// Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+                        /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -6442,8 +6442,9 @@ namespace Google.Apis.Container.v1beta1.Data
         /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
         /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
         /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This
-        /// field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform
-        /// label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        /// field is deprecated, min_cpu_platform should be specified using
+        /// https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform
+        /// field pass "automatic" as field value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -6509,8 +6510,8 @@ namespace Google.Apis.Container.v1beta1.Data
     public class BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary
-        /// Authorization.
+        /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode.
+        /// If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -8234,7 +8235,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Whether the location is recomended for GKE cluster scheduling.</summary>
+        /// <summary>Whether the location is recommended for GKE cluster scheduling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommended")]
         public virtual System.Nullable<bool> Recommended { get; set; }
 
@@ -8825,7 +8826,7 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Subset of NodeConfig message that has defaults.</summary>
     public class NodeConfigDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GCFS (Google Container File System, a.k.a. Riptide) options.</summary>
+        /// <summary>GCFS (Google Container File System, also known as Riptide) options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
 

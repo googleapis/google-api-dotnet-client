@@ -1773,8 +1773,8 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be
         /// keeping updated during the process, please make sure there is no custom retention policy applied on the
         /// output bucket that may avoid file updating.
-        /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy) The naming format of translation
-        /// output files follows (for target language code [trg]): `translation_output`:
+        /// (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The naming format of translation output
+        /// files follows (for target language code [trg]): `translation_output`:
         /// gs://translation_output/a_b_c_[trg]_translation.[extension] `glossary_translation_output`:
         /// gs://translation_test/a_b_c_[trg]_glossary_translation.[extension] The output document will maintain the
         /// same file format as the input document. The naming format of error output files follows (for target language
@@ -1827,7 +1827,8 @@ namespace Google.Apis.Translate.v3beta1.Data
 
         /// <summary>
         /// Required. The BCP-47 language code of the input document if known, for example, "en-US" or "sr-Latn".
-        /// Supported language codes are listed in Language Support (https://cloud.google.com/translate/docs/languages).
+        /// Supported language codes are listed in [Language
+        /// Support](https://cloud.google.com/translate/docs/languages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
         public virtual string SourceLanguageCode { get; set; }
@@ -2153,8 +2154,8 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// second column is target text. The file must not contain headers. That is, the first row is data, not column
         /// names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term
         /// sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple
-        /// languages. The format is defined for Google Translation Toolkit and documented in [Use a
-        /// glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
+        /// languages. See documentation for more information -
+        /// [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GcsSource GcsSource { get; set; }
@@ -2369,23 +2370,23 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// input/output matching never changes. Callers should also expect all the content in input_file are processed
         /// and ready to be consumed (that is, no partial output file is written). Since index.csv will be keeping
         /// updated during the process, please make sure there is no custom retention policy applied on the output
-        /// bucket that may avoid file updating.
-        /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy) The format of translations_file
-        /// (for target language code 'trg') is: gs://translation_test/a_b_c_'trg'_translations.[extension] If the input
-        /// file extension is tsv, the output has the following columns: Column 1: ID of the request provided in the
-        /// input, if it's not provided in the input, then the input row number is used (0-based). Column 2: source
-        /// sentence. Column 3: translation without applying a glossary. Empty string if there is an error. Column 4
-        /// (only present if a glossary is provided in the request): translation after applying the glossary. Empty
-        /// string if there is an error applying the glossary. Could be same string as column 3 if there is no glossary
-        /// applied. If input file extension is a txt or html, the translation is directly written to the output file.
-        /// If glossary is requested, a separate glossary_translations_file has format of
-        /// gs://translation_test/a_b_c_'trg'_glossary_translations.[extension] The format of errors file (for target
-        /// language code 'trg') is: gs://translation_test/a_b_c_'trg'_errors.[extension] If the input file extension is
-        /// tsv, errors_file contains the following: Column 1: ID of the request provided in the input, if it's not
-        /// provided in the input, then the input row number is used (0-based). Column 2: source sentence. Column 3:
-        /// Error detail for the translation. Could be empty. Column 4 (only present if a glossary is provided in the
-        /// request): Error when applying the glossary. If the input file extension is txt or html, glossary_error_file
-        /// will be generated that contains error details. glossary_error_file has format of
+        /// bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy)
+        /// The format of translations_file (for target language code 'trg') is:
+        /// gs://translation_test/a_b_c_'trg'_translations.[extension] If the input file extension is tsv, the output
+        /// has the following columns: Column 1: ID of the request provided in the input, if it's not provided in the
+        /// input, then the input row number is used (0-based). Column 2: source sentence. Column 3: translation without
+        /// applying a glossary. Empty string if there is an error. Column 4 (only present if a glossary is provided in
+        /// the request): translation after applying the glossary. Empty string if there is an error applying the
+        /// glossary. Could be same string as column 3 if there is no glossary applied. If input file extension is a txt
+        /// or html, the translation is directly written to the output file. If glossary is requested, a separate
+        /// glossary_translations_file has format of gs://translation_test/a_b_c_'trg'_glossary_translations.[extension]
+        /// The format of errors file (for target language code 'trg') is:
+        /// gs://translation_test/a_b_c_'trg'_errors.[extension] If the input file extension is tsv, errors_file
+        /// contains the following: Column 1: ID of the request provided in the input, if it's not provided in the
+        /// input, then the input row number is used (0-based). Column 2: source sentence. Column 3: Error detail for
+        /// the translation. Could be empty. Column 4 (only present if a glossary is provided in the request): Error
+        /// when applying the glossary. If the input file extension is txt or html, glossary_error_file will be
+        /// generated that contains error details. glossary_error_file has format of
         /// gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]

@@ -1773,9 +1773,10 @@ namespace Google.Apis.Testing.v1.Data
     public class ManualSharding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical
-        /// devices are selected, the number of test_targets_for_shard must be &amp;gt;= 1 and &amp;lt;= 50. When no
-        /// physical devices are selected, the number must be &amp;gt;= 1 and &amp;lt;= 500.
+        /// Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You
+        /// must specify at least one shard if this field is present. When you select one or more physical devices, the
+        /// number of repeated test_targets_for_shard must be &amp;lt;= 50. When you select one or more ARM virtual
+        /// devices, it must be &amp;lt;= 50. When you select only x86 virtual devices, it must be &amp;lt;= 500.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; }
@@ -2405,16 +2406,18 @@ namespace Google.Apis.Testing.v1.Data
     }
 
     /// <summary>
-    /// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to
-    /// "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner
-    /// uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform
-    /// sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+    /// Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to
+    /// "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either
+    /// of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism
+    /// AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
     /// </summary>
     public class UniformSharding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Total number of shards. When any physical devices are selected, the number must be &amp;gt;= 1 and
-        /// &amp;lt;= 50. When no physical devices are selected, the number must be &amp;gt;= 1 and &amp;lt;= 500.
+        /// Required. The total number of shards to create. This must always be a positive number that is no greater
+        /// than the total number of test cases. When you select one or more physical devices, the number of shards must
+        /// be &amp;lt;= 50. When you select one or more ARM virtual devices, it must be &amp;lt;= 50. When you select
+        /// only x86 virtual devices, it must be &amp;lt;= 500.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
         public virtual System.Nullable<int> NumShards { get; set; }

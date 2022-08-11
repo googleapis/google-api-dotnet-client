@@ -7821,11 +7821,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -8068,6 +8071,44 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents database access information, such as queries. A database may be a sub-resource of an instance (as in
+    /// the case of CloudSQL instances or Cloud Spanner instances), or the database instance itself. Some database
+    /// resources may not have the full resource name populated because these resource types are not yet supported by
+    /// Cloud Asset Inventory (e.g. CloudSQL databases). In these cases only the display name will be provided.
+    /// </summary>
+    public class Database : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human readable name of the database the user connected to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The target usernames/roles/groups of a SQL privilege grant (not an IAM policy change).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantees")]
+        public virtual System.Collections.Generic.IList<string> Grantees { get; set; }
+
+        /// <summary>
+        /// The full resource name of the database the user connected to, if it is supported by CAI.
+        /// (https://google.aip.dev/122#full-resource-names)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The SQL statement associated with the relevant access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// The username used to connect to the DB. This may not necessarily be an IAM principal, and has no required
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
+        public virtual string UserName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Memory hash detection contributing to the binary family match.</summary>
     public class Detection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8297,6 +8338,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Database associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual Database Database { get; set; }
 
         /// <summary>Contains more detail about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]

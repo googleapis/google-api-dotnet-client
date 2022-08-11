@@ -14382,7 +14382,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Date on which the collection has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format:
-        /// Date, time, and offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        /// Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
         public virtual string CreationDate { get; set; }
@@ -14397,7 +14397,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601)
-        /// format: Date, time, and offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        /// format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateDate")]
         public virtual string LastUpdateDate { get; set; }
@@ -14413,7 +14413,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 
-        /// <summary>The status for the specified destination.</summary>
+        /// <summary>The status for the specified destination in the collections target country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -20036,6 +20036,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalSellerId")]
         public virtual string ExternalSellerId { get; set; }
+
+        /// <summary>Feed label for the item. Either `targetCountry` or `feedLabel` is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
 
         /// <summary>Target gender of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]

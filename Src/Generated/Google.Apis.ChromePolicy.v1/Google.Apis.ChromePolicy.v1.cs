@@ -312,7 +312,298 @@ namespace Google.Apis.ChromePolicy.v1
             public PoliciesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Groups = new GroupsResource(service);
                 Orgunits = new OrgunitsResource(service);
+            }
+
+            /// <summary>Gets the Groups resource.</summary>
+            public virtual GroupsResource Groups { get; }
+
+            /// <summary>The "groups" collection of methods.</summary>
+            public class GroupsResource
+            {
+                private const string Resource = "groups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Delete multiple policy values that are applied to a specific group. All targets must have the same
+                /// target format. That is to say that they must point to the same target resource and must have the
+                /// same keys specified in `additionalTargetKeyNames`, though the values for those keys may be
+                /// different. On failure the request will return the error details as part of the google.rpc.Status.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">
+                /// ID of the Google Workspace account or literal "my_customer" for the customer associated to the
+                /// request.
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest body, string customer)
+                {
+                    return new BatchDeleteRequest(service, body, customer);
+                }
+
+                /// <summary>
+                /// Delete multiple policy values that are applied to a specific group. All targets must have the same
+                /// target format. That is to say that they must point to the same target resource and must have the
+                /// same keys specified in `additionalTargetKeyNames`, though the values for those keys may be
+                /// different. On failure the request will return the error details as part of the google.rpc.Status.
+                /// </summary>
+                public class BatchDeleteRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// ID of the Google Workspace account or literal "my_customer" for the customer associated to the
+                    /// request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/groups:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modify multiple policy values that are applied to a specific group. All targets must have the same
+                /// target format. That is to say that they must point to the same target resource and must have the
+                /// same keys specified in `additionalTargetKeyNames`, though the values for those keys may be
+                /// different. On failure the request will return the error details as part of the google.rpc.Status.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">
+                /// ID of the Google Workspace account or literal "my_customer" for the customer associated to the
+                /// request.
+                /// </param>
+                public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyGroupPoliciesRequest body, string customer)
+                {
+                    return new BatchModifyRequest(service, body, customer);
+                }
+
+                /// <summary>
+                /// Modify multiple policy values that are applied to a specific group. All targets must have the same
+                /// target format. That is to say that they must point to the same target resource and must have the
+                /// same keys specified in `additionalTargetKeyNames`, though the values for those keys may be
+                /// different. On failure the request will return the error details as part of the google.rpc.Status.
+                /// </summary>
+                public class BatchModifyRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new BatchModify request.</summary>
+                    public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyGroupPoliciesRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// ID of the Google Workspace account or literal "my_customer" for the customer associated to the
+                    /// request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyGroupPoliciesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchModify";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/groups:batchModify";
+
+                    /// <summary>Initializes BatchModify parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieve a group priority ordering for an app. The target app must be supplied in
+                /// `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error
+                /// details as part of the google.rpc.Status.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">
+                /// Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to
+                /// the request.
+                /// </param>
+                public virtual ListGroupPriorityOrderingRequest ListGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingRequest body, string customer)
+                {
+                    return new ListGroupPriorityOrderingRequest(service, body, customer);
+                }
+
+                /// <summary>
+                /// Retrieve a group priority ordering for an app. The target app must be supplied in
+                /// `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error
+                /// details as part of the google.rpc.Status.
+                /// </summary>
+                public class ListGroupPriorityOrderingRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingResponse>
+                {
+                    /// <summary>Constructs a new ListGroupPriorityOrdering request.</summary>
+                    public ListGroupPriorityOrderingRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. ID of the Google Workspace account or literal "my_customer" for the customer
+                    /// associated to the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listGroupPriorityOrdering";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/groups:listGroupPriorityOrdering";
+
+                    /// <summary>Initializes ListGroupPriorityOrdering parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Update a group priority ordering for an app. The target app must be supplied in
+                /// `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error
+                /// details as part of the google.rpc.Status.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">
+                /// Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to
+                /// the request.
+                /// </param>
+                public virtual UpdateGroupPriorityOrderingRequest UpdateGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest body, string customer)
+                {
+                    return new UpdateGroupPriorityOrderingRequest(service, body, customer);
+                }
+
+                /// <summary>
+                /// Update a group priority ordering for an app. The target app must be supplied in
+                /// `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error
+                /// details as part of the google.rpc.Status.
+                /// </summary>
+                public class UpdateGroupPriorityOrderingRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new UpdateGroupPriorityOrdering request.</summary>
+                    public UpdateGroupPriorityOrderingRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. ID of the Google Workspace account or literal "my_customer" for the customer
+                    /// associated to the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateGroupPriorityOrdering";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/groups:updateGroupPriorityOrdering";
+
+                    /// <summary>Initializes UpdateGroupPriorityOrdering parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Orgunits resource.</summary>
@@ -927,6 +1218,23 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for specifying that multiple policy values will be deleted.</summary>
+    public class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of policies that will be deleted as defined by the `requests`. All requests in the list must follow
+        /// these restrictions: 1. All schemas in the list must have the same root namespace. 2. All
+        /// `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must
+        /// have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference
+        /// the same `policySchema` + ` policyTargetKey` pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1DeleteGroupPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Request message for specifying that multiple policy values inherit their value from their parents.
     /// </summary>
@@ -947,6 +1255,23 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for modifying multiple policy values for a specific group-based target.</summary>
+    public class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of policies to modify as defined by the `requests`. All requests in the list must follow these
+        /// restrictions: 1. All schemas in the list must have the same root namespace. 2. All
+        /// `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must
+        /// have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference
+        /// the same `policySchema` + ` policyTargetKey` pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1ModifyGroupPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for modifying multiple policy values for a specific target.</summary>
     public class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -960,6 +1285,24 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1ModifyOrgUnitPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request parameters for deleting the policy value of a specific group target.</summary>
+    public class GoogleChromePolicyV1DeleteGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully qualified name of the policy schema that is being inherited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to modify a policy. The target resource must point to a
+        /// Group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -986,6 +1329,45 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for listing the group priority ordering of an app.</summary>
+    public class GoogleChromePolicyV1ListGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The namespace of the policy type for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
+        public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to retrieve the group priority ordering. The target
+        /// resource must point to an app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing the group priority ordering of an app.</summary>
+    public class GoogleChromePolicyV1ListGroupPriorityOrderingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The group IDs, in priority ordering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
+        public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
+
+        /// <summary>Output only. The namespace of the policy type of the group IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
+        public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>
+        /// Output only. The target resource for which the group priority ordering has been retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing policy schemas that match a filter.</summary>
     public class GoogleChromePolicyV1ListPolicySchemasResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -996,6 +1378,32 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>The list of policy schemas that match the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policySchemas")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchema> PolicySchemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request parameters for modifying a policy value for a specific group target.</summary>
+    public class GoogleChromePolicyV1ModifyGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The key of the target for which we want to modify a policy. The target resource must point to a
+        /// Group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The new value for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyValue")]
+        public virtual GoogleChromePolicyV1PolicyValue PolicyValue { get; set; }
+
+        /// <summary>
+        /// Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value`
+        /// will be ignored (even if they have values). If a field is in this list it must have a value in
+        /// 'policy_value'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1070,7 +1478,8 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// Output only. The fully qualified name of the policy schema. This value is used to fill the field
-        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies
+        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
+        /// BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
         public virtual string SchemaName { get; set; }
@@ -1224,7 +1633,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// The target resource on which this policy is applied. The following resources are supported: * Organizational
-        /// Unit ("orgunits/{orgunit_id}")
+        /// Unit ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual string TargetResource { get; set; }
@@ -1324,6 +1733,28 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. The resolved value of the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GoogleChromePolicyV1PolicyValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for updating the group priority ordering of an app.</summary>
+    public class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The group IDs, in desired priority ordering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
+        public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
+
+        /// <summary>Required. The namespace of the policy type for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
+        public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to update the group priority ordering. The target resource
+        /// must point to an app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

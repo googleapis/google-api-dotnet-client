@@ -3696,6 +3696,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A notification that Robo detected a splash screen provided by app (vs. Android OS splash screen).
+    /// </summary>
+    public class DetectedAppSplashScreen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A warning that device ran out of memory</summary>
     public class DeviceOutOfMemory : Google.Apis.Requests.IDirectResponseSchema
     {

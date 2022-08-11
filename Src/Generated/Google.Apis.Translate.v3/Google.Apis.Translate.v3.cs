@@ -322,6 +322,309 @@ namespace Google.Apis.Translate.v3
                 public GlossariesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    GlossaryEntries = new GlossaryEntriesResource(service);
+                }
+
+                /// <summary>Gets the GlossaryEntries resource.</summary>
+                public virtual GlossaryEntriesResource GlossaryEntries { get; }
+
+                /// <summary>The "glossaryEntries" collection of methods.</summary>
+                public class GlossaryEntriesResource
+                {
+                    private const string Resource = "glossaryEntries";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GlossaryEntriesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a glossary entry.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the glossary to create the entry under.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Translate.v3.Data.GlossaryEntry body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a glossary entry.</summary>
+                    public class CreateRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.GlossaryEntry>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.GlossaryEntry body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The resource name of the glossary to create the entry under.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Translate.v3.Data.GlossaryEntry Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/glossaryEntries";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single entry from the glossary</summary>
+                    /// <param name="name">Required. The resource name of the glossary entry to delete</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a single entry from the glossary</summary>
+                    public class DeleteRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The resource name of the glossary entry to delete</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+/glossaryEntries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a single glossary entry by the given id.</summary>
+                    /// <param name="name">Required. The resource name of the glossary entry to get</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a single glossary entry by the given id.</summary>
+                    public class GetRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.GlossaryEntry>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The resource name of the glossary entry to get</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+/glossaryEntries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List the entries for the glossary.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent glossary resource name for listing the glossary's entries.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List the entries for the glossary.</summary>
+                    public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ListGlossaryEntriesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent glossary resource name for listing the glossary's entries.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. The server may return fewer glossary entries than requested.
+                        /// If unspecified, the server picks an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token identifying a page of results the server should return. Typically, this is
+                        /// the value of [ListGlossaryEntriesResponse.next_page_token] returned from the previous call.
+                        /// The first page is returned if `page_token`is empty or missing.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/glossaryEntries";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a glossary entry.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the entry. Format:
+                    /// "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Translate.v3.Data.GlossaryEntry body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a glossary entry.</summary>
+                    public class PatchRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.GlossaryEntry>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.GlossaryEntry body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the entry. Format:
+                        /// "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Translate.v3.Data.GlossaryEntry Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+/glossaryEntries/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -573,6 +876,85 @@ namespace Google.Apis.Translate.v3
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a glossary. A LRO is used since the update can be async if the glossary's entry file is
+                /// updated.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the glossary. Glossary names have the form
+                /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Translate.v3.Data.Glossary body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a glossary. A LRO is used since the update can be async if the glossary's entry file is
+                /// updated.
+                /// </summary>
+                public class PatchRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.Glossary body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the glossary. Glossary names have the form
+                    /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The list of fields to be updated. Currently only `display_name` and 'input_config'
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Translate.v3.Data.Glossary Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1775,8 +2157,8 @@ namespace Google.Apis.Translate.v3.Data
         /// processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be
         /// keeping updated during the process, please make sure there is no custom retention policy applied on the
         /// output bucket that may avoid file updating.
-        /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy) The naming format of translation
-        /// output files follows (for target language code [trg]): `translation_output`:
+        /// (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The naming format of translation output
+        /// files follows (for target language code [trg]): `translation_output`:
         /// gs://translation_output/a_b_c_[trg]_translation.[extension] `glossary_translation_output`:
         /// gs://translation_test/a_b_c_[trg]_glossary_translation.[extension] The output document will maintain the
         /// same file format as the input document. The naming format of error output files follows (for target language
@@ -1829,7 +2211,8 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Required. The BCP-47 language code of the input document if known, for example, "en-US" or "sr-Latn".
-        /// Supported language codes are listed in Language Support (https://cloud.google.com/translate/docs/languages).
+        /// Supported language codes are listed in [Language
+        /// Support](https://cloud.google.com/translate/docs/languages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
         public virtual string SourceLanguageCode { get; set; }
@@ -2108,6 +2491,10 @@ namespace Google.Apis.Translate.v3.Data
     /// <summary>Represents a glossary built from user provided data.</summary>
     public class Glossary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The display name of the glossary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Output only. When the glossary creation was finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
@@ -2146,6 +2533,31 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a single entry in a glossary.</summary>
+    public class GlossaryEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes the glossary entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Used for an unidirectional glossary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsPair")]
+        public virtual GlossaryTermsPair TermsPair { get; set; }
+
+        /// <summary>Used for an equivalent term sets glossary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsSet")]
+        public virtual GlossaryTermsSet TermsSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input configuration for glossaries.</summary>
     public class GlossaryInputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2162,6 +2574,50 @@ namespace Google.Apis.Translate.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single glossary term</summary>
+    public class GlossaryTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The language for this glossary term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The text for the glossary term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single entry for an unidirectional glossary.</summary>
+    public class GlossaryTermsPair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source term is the term that will get match in the text,</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTerm")]
+        public virtual GlossaryTerm SourceTerm { get; set; }
+
+        /// <summary>The term that will replace the match source term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetTerm")]
+        public virtual GlossaryTerm TargetTerm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each
+    /// term can be replaced by the other terms in the set.
+    /// </summary>
+    public class GlossaryTermsSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Each term in the set represents a term that can be replaced by the other terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terms")]
+        public virtual System.Collections.Generic.IList<GlossaryTerm> Terms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2240,6 +2696,24 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>
         /// A token to retrieve a page of results. Pass this value in the [ListGlossariesRequest.page_token] field in
         /// the subsequent call to `ListGlossaries` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListGlossaryEntries</summary>
+    public class ListGlossaryEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Glossary Entries</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryEntries")]
+        public virtual System.Collections.Generic.IList<GlossaryEntry> GlossaryEntries { get; set; }
+
+        /// <summary>
+        /// Optional. A token to retrieve a page of results. Pass this value in the
+        /// [ListGLossaryEntriesRequest.page_token] field in the subsequent calls.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2373,23 +2847,23 @@ namespace Google.Apis.Translate.v3.Data
         /// input/output matching never changes. Callers should also expect all the content in input_file are processed
         /// and ready to be consumed (that is, no partial output file is written). Since index.csv will be keeping
         /// updated during the process, please make sure there is no custom retention policy applied on the output
-        /// bucket that may avoid file updating.
-        /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy) The format of translations_file
-        /// (for target language code 'trg') is: gs://translation_test/a_b_c_'trg'_translations.[extension] If the input
-        /// file extension is tsv, the output has the following columns: Column 1: ID of the request provided in the
-        /// input, if it's not provided in the input, then the input row number is used (0-based). Column 2: source
-        /// sentence. Column 3: translation without applying a glossary. Empty string if there is an error. Column 4
-        /// (only present if a glossary is provided in the request): translation after applying the glossary. Empty
-        /// string if there is an error applying the glossary. Could be same string as column 3 if there is no glossary
-        /// applied. If input file extension is a txt or html, the translation is directly written to the output file.
-        /// If glossary is requested, a separate glossary_translations_file has format of
-        /// gs://translation_test/a_b_c_'trg'_glossary_translations.[extension] The format of errors file (for target
-        /// language code 'trg') is: gs://translation_test/a_b_c_'trg'_errors.[extension] If the input file extension is
-        /// tsv, errors_file contains the following: Column 1: ID of the request provided in the input, if it's not
-        /// provided in the input, then the input row number is used (0-based). Column 2: source sentence. Column 3:
-        /// Error detail for the translation. Could be empty. Column 4 (only present if a glossary is provided in the
-        /// request): Error when applying the glossary. If the input file extension is txt or html, glossary_error_file
-        /// will be generated that contains error details. glossary_error_file has format of
+        /// bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy)
+        /// The format of translations_file (for target language code 'trg') is:
+        /// gs://translation_test/a_b_c_'trg'_translations.[extension] If the input file extension is tsv, the output
+        /// has the following columns: Column 1: ID of the request provided in the input, if it's not provided in the
+        /// input, then the input row number is used (0-based). Column 2: source sentence. Column 3: translation without
+        /// applying a glossary. Empty string if there is an error. Column 4 (only present if a glossary is provided in
+        /// the request): translation after applying the glossary. Empty string if there is an error applying the
+        /// glossary. Could be same string as column 3 if there is no glossary applied. If input file extension is a txt
+        /// or html, the translation is directly written to the output file. If glossary is requested, a separate
+        /// glossary_translations_file has format of gs://translation_test/a_b_c_'trg'_glossary_translations.[extension]
+        /// The format of errors file (for target language code 'trg') is:
+        /// gs://translation_test/a_b_c_'trg'_errors.[extension] If the input file extension is tsv, errors_file
+        /// contains the following: Column 1: ID of the request provided in the input, if it's not provided in the
+        /// input, then the input row number is used (0-based). Column 2: source sentence. Column 3: Error detail for
+        /// the translation. Could be empty. Column 4 (only present if a glossary is provided in the request): Error
+        /// when applying the glossary. If the input file extension is txt or html, glossary_error_file will be
+        /// generated that contains error details. glossary_error_file has format of
         /// gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]

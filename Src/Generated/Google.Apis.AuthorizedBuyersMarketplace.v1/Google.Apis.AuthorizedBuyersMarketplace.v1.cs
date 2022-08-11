@@ -3743,6 +3743,17 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Targeting of the inventory types a bid request can originate from.</summary>
+    public class InventoryTypeTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of targeted inventory types for the bid request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryTypes")]
+        public virtual System.Collections.Generic.IList<string> InventoryTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing auction packages.</summary>
     public class ListAuctionPackagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3876,6 +3887,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         /// <summary>Output only. Inventory sizes to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
         public virtual InventorySizeTargeting InventorySizeTargeting { get; set; }
+
+        /// <summary>Output only. Inventory type targeting information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryTypeTargeting")]
+        public virtual InventoryTypeTargeting InventoryTypeTargeting { get; set; }
 
         /// <summary>Output only. Placement targeting information, for example, URL, mobile applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementTargeting")]
