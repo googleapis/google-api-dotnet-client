@@ -9877,6 +9877,10 @@ namespace Google.Apis.Vision.v1.Data
     /// </summary>
     public class TextDetectionParams : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of advanced OCR options to fine-tune OCR behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
+        public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
+
         /// <summary>
         /// By default, Cloud Vision API only includes confidence score for DOCUMENT_TEXT_DETECTION result. Set the flag
         /// to true to include confidence score for TEXT_DETECTION as well.

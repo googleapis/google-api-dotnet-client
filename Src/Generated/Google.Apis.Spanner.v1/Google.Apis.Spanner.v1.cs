@@ -2123,7 +2123,7 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>Lists Cloud Spanner database roles.</summary>
                     /// <param name="parent">
                     /// Required. The database whose roles should be listed. Values are of the form
-                    /// `projects//instances//databases//databaseRoles`.
+                    /// `projects//instances//databases/`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2142,7 +2142,7 @@ namespace Google.Apis.Spanner.v1
 
                         /// <summary>
                         /// Required. The database whose roles should be listed. Values are of the form
-                        /// `projects//instances//databases//databaseRoles`.
+                        /// `projects//instances//databases/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }

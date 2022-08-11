@@ -4832,10 +4832,6 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// </summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional entity key aliases for a Group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalGroupKeys")]
-        public virtual System.Collections.Generic.IList<EntityKey> AdditionalGroupKeys { get; set; }
-
         /// <summary>Output only. The time when the `Group` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

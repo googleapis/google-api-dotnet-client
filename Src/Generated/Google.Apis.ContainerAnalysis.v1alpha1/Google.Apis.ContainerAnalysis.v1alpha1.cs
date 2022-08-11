@@ -2817,6 +2817,20 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
 }
 namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 {
+    /// <summary>
+    /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single
+    /// resource.
+    /// </summary>
+    public class AnalysisCompleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>type of analysis that were completed on a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
+        public virtual System.Collections.Generic.IList<string> AnalysisType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Artifact describes a build product.</summary>
     public class Artifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2940,11 +2954,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -4477,6 +4494,16 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Provides information about the scan status of a discovered resource.</summary>
     public class Discovered : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of analysis that were completed for a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisCompleted")]
+        public virtual AnalysisCompleted AnalysisCompleted { get; set; }
+
+        /// <summary>
+        /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisError")]
+        public virtual System.Collections.Generic.IList<Status> AnalysisError { get; set; }
+
         /// <summary>The status of discovery for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatus")]
         public virtual string AnalysisStatus { get; set; }

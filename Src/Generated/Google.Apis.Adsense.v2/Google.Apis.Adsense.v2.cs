@@ -374,7 +374,11 @@ namespace Google.Apis.Adsense.v2
                     }
                 }
 
-                /// <summary>Gets the AdSense code for a given ad unit.</summary>
+                /// <summary>
+                /// Gets the ad unit code for a given ad unit. For more information, see [About the AdSense
+                /// code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your
+                /// HTML](https://support.google.com/adsense/answer/9190028).
+                /// </summary>
                 /// <param name="name">
                 /// Required. Name of the adunit for which to get the adcode. Format:
                 /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
@@ -384,7 +388,11 @@ namespace Google.Apis.Adsense.v2
                     return new GetAdcodeRequest(service, name);
                 }
 
-                /// <summary>Gets the AdSense code for a given ad unit.</summary>
+                /// <summary>
+                /// Gets the ad unit code for a given ad unit. For more information, see [About the AdSense
+                /// code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your
+                /// HTML](https://support.google.com/adsense/answer/9190028).
+                /// </summary>
                 public class GetAdcodeRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.AdUnitAdCode>
                 {
                     /// <summary>Constructs a new GetAdcode request.</summary>
@@ -4037,10 +4045,14 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representation of the AdSense code for a given ad unit.</summary>
+    /// <summary>
+    /// Representation of the ad unit code for a given ad unit. For more information, see [About the AdSense
+    /// code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your
+    /// HTML](https://support.google.com/adsense/answer/9190028).
+    /// </summary>
     public class AdUnitAdCode : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The AdSense code snippet to add to the body of an HTML page.</summary>
+        /// <summary>Output only. The code snippet to add to the body of an HTML page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adCode")]
         public virtual string AdCode { get; set; }
 

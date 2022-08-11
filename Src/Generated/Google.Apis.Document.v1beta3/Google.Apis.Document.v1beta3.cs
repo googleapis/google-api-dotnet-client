@@ -2190,6 +2190,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("individualImportStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus> IndividualImportStatuses { get; set; }
 
+        /// <summary>Total number of the documents that are qualified for importing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
+        public virtual System.Nullable<int> TotalDocumentCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2470,9 +2474,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
         public virtual string OutputGcsDestination { get; set; }
 
-        /// <summary>
-        /// The error encountered while attempting to process the document. Empty if there are no errors.
-        /// </summary>
+        /// <summary>The status processing the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
@@ -5228,9 +5230,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
         public virtual string OutputGcsDestination { get; set; }
 
-        /// <summary>
-        /// The error encountered while attempting to process the document. Empty if there are no errors.
-        /// </summary>
+        /// <summary>The status processing the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
@@ -6390,6 +6390,13 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prefixedNamingOnProperties")]
         public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
 
+        /// <summary>
+        /// If set, we will skip the naming format validation in the schema. So the string values in
+        /// `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipNamingValidation")]
+        public virtual System.Nullable<bool> SkipNamingValidation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7321,41 +7328,48 @@ namespace Google.Apis.Document.v1beta3.Data
     /// possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular
     /// offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular
     /// time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The
-    /// date is relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is considered not to have a
-    /// specific year. month and day must have valid, non-zero values. This type may also be used to represent a
-    /// physical time if all the date and time fields are set and either case of the `time_offset` oneof is set.
-    /// Consider using `Timestamp` message for physical time instead. If your use case also would like to store the
-    /// user's timezone, that can be done in another field. This type is more flexible than some applications may want.
-    /// Make sure to document and validate your application's limitations.
+    /// date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered
+    /// not to have a specific year, month, or day respectively. This type may also be used to represent a physical time
+    /// if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using
+    /// `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone,
+    /// that can be done in another field. This type is more flexible than some applications may want. Make sure to
+    /// document and validate your application's limitations.
     /// </summary>
     public class GoogleTypeDateTime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+        /// <summary>
+        /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime
+        /// without a day.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>
-        /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
-        /// "24:00:00" for scenarios like business closing time.
+        /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may
+        /// choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+        /// <summary>
+        /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; }
 
-        /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
-        /// allows leap-seconds.
+        /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the
+        /// value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }

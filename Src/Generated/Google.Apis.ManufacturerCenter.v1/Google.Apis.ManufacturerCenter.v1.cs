@@ -832,6 +832,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
+        /// <summary>Grocery Attributes. For more information, see go/mfc-nutrition-attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grocery")]
+        public virtual Grocery Grocery { get; set; }
+
         /// <summary>
         /// The Global Trade Item Number (GTIN) of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#gtin.
@@ -873,6 +877,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
+
+        /// <summary>Nutrition Attributes. For more information, see go/mfc-nutrition-attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutrition")]
+        public virtual Nutrition Nutrition { get; set; }
 
         /// <summary>
         /// The pattern of the product. For more information, see
@@ -1086,6 +1094,63 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Combination of float amout and unit.</summary>
+    public class FloatUnit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual System.Nullable<double> Amount { get; set; }
+
+        /// <summary>unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Grocery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Active ingredients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeIngredients")]
+        public virtual string ActiveIngredients { get; set; }
+
+        /// <summary>Alcohol by volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alcoholByVolume")]
+        public virtual System.Nullable<double> AlcoholByVolume { get; set; }
+
+        /// <summary>Allergens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allergens")]
+        public virtual string Allergens { get; set; }
+
+        /// <summary>Derived nutrition claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("derivedNutritionClaim")]
+        public virtual System.Collections.Generic.IList<string> DerivedNutritionClaim { get; set; }
+
+        /// <summary>Directions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directions")]
+        public virtual string Directions { get; set; }
+
+        /// <summary>Indications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indications")]
+        public virtual string Indications { get; set; }
+
+        /// <summary>Ingredients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingredients")]
+        public virtual string Ingredients { get; set; }
+
+        /// <summary>Nutrition claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutritionClaim")]
+        public virtual System.Collections.Generic.IList<string> NutritionClaim { get; set; }
+
+        /// <summary>Storage instructions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageInstructions")]
+        public virtual string StorageInstructions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An image.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1162,6 +1227,184 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>List of the products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<Product> Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Nutrition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Added sugars.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedSugars")]
+        public virtual FloatUnit AddedSugars { get; set; }
+
+        /// <summary>Added sugars daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedSugarsDailyPercentage")]
+        public virtual System.Nullable<double> AddedSugarsDailyPercentage { get; set; }
+
+        /// <summary>Calcium.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calcium")]
+        public virtual FloatUnit Calcium { get; set; }
+
+        /// <summary>Calcium daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calciumDailyPercentage")]
+        public virtual System.Nullable<double> CalciumDailyPercentage { get; set; }
+
+        /// <summary>Cholesterol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cholesterol")]
+        public virtual FloatUnit Cholesterol { get; set; }
+
+        /// <summary>Cholesterol daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cholesterolDailyPercentage")]
+        public virtual System.Nullable<double> CholesterolDailyPercentage { get; set; }
+
+        /// <summary>Dietary fiber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dietaryFiber")]
+        public virtual FloatUnit DietaryFiber { get; set; }
+
+        /// <summary>Dietary fiber daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dietaryFiberDailyPercentage")]
+        public virtual System.Nullable<double> DietaryFiberDailyPercentage { get; set; }
+
+        /// <summary>Mandatory Nutrition Facts. Energy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energy")]
+        public virtual FloatUnit Energy { get; set; }
+
+        /// <summary>Energy from fat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyFromFat")]
+        public virtual FloatUnit EnergyFromFat { get; set; }
+
+        /// <summary>Folate daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folateDailyPercentage")]
+        public virtual System.Nullable<double> FolateDailyPercentage { get; set; }
+
+        /// <summary>Folate folic acid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folateFolicAcid")]
+        public virtual FloatUnit FolateFolicAcid { get; set; }
+
+        /// <summary>Folate mcg DFE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folateMcgDfe")]
+        public virtual System.Nullable<double> FolateMcgDfe { get; set; }
+
+        /// <summary>Iron.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iron")]
+        public virtual FloatUnit Iron { get; set; }
+
+        /// <summary>Iron daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ironDailyPercentage")]
+        public virtual System.Nullable<double> IronDailyPercentage { get; set; }
+
+        /// <summary>Monounsaturated fat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monounsaturatedFat")]
+        public virtual FloatUnit MonounsaturatedFat { get; set; }
+
+        /// <summary>Nutrition fact measure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutritionFactMeasure")]
+        public virtual string NutritionFactMeasure { get; set; }
+
+        /// <summary>Polyols.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polyols")]
+        public virtual FloatUnit Polyols { get; set; }
+
+        /// <summary>Polyunsaturated fat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polyunsaturatedFat")]
+        public virtual FloatUnit PolyunsaturatedFat { get; set; }
+
+        /// <summary>Potassium.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potassium")]
+        public virtual FloatUnit Potassium { get; set; }
+
+        /// <summary>Potassium daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potassiumDailyPercentage")]
+        public virtual System.Nullable<double> PotassiumDailyPercentage { get; set; }
+
+        /// <summary>Prepared size description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preparedSizeDescription")]
+        public virtual string PreparedSizeDescription { get; set; }
+
+        /// <summary>Protein.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protein")]
+        public virtual FloatUnit Protein { get; set; }
+
+        /// <summary>Protein daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proteinDailyPercentage")]
+        public virtual System.Nullable<double> ProteinDailyPercentage { get; set; }
+
+        /// <summary>Saturated fat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saturatedFat")]
+        public virtual FloatUnit SaturatedFat { get; set; }
+
+        /// <summary>Saturated fat daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saturatedFatDailyPercentage")]
+        public virtual System.Nullable<double> SaturatedFatDailyPercentage { get; set; }
+
+        /// <summary>Food Serving Size. Serving size description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingSizeDescription")]
+        public virtual string ServingSizeDescription { get; set; }
+
+        /// <summary>Serving size measure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingSizeMeasure")]
+        public virtual FloatUnit ServingSizeMeasure { get; set; }
+
+        /// <summary>Servings per container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingsPerContainer")]
+        public virtual string ServingsPerContainer { get; set; }
+
+        /// <summary>Sodium.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sodium")]
+        public virtual FloatUnit Sodium { get; set; }
+
+        /// <summary>Sodium daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sodiumDailyPercentage")]
+        public virtual System.Nullable<double> SodiumDailyPercentage { get; set; }
+
+        /// <summary>Starch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starch")]
+        public virtual FloatUnit Starch { get; set; }
+
+        /// <summary>Total carbohydrate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCarbohydrate")]
+        public virtual FloatUnit TotalCarbohydrate { get; set; }
+
+        /// <summary>Total carbohydrate daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCarbohydrateDailyPercentage")]
+        public virtual System.Nullable<double> TotalCarbohydrateDailyPercentage { get; set; }
+
+        /// <summary>Total fat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFat")]
+        public virtual FloatUnit TotalFat { get; set; }
+
+        /// <summary>Total fat daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFatDailyPercentage")]
+        public virtual System.Nullable<double> TotalFatDailyPercentage { get; set; }
+
+        /// <summary>Total sugars.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSugars")]
+        public virtual FloatUnit TotalSugars { get; set; }
+
+        /// <summary>Total sugars daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSugarsDailyPercentage")]
+        public virtual System.Nullable<double> TotalSugarsDailyPercentage { get; set; }
+
+        /// <summary>Trans fat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transFat")]
+        public virtual FloatUnit TransFat { get; set; }
+
+        /// <summary>Trans fat daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transFatDailyPercentage")]
+        public virtual System.Nullable<double> TransFatDailyPercentage { get; set; }
+
+        /// <summary>Vitamin D.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vitaminD")]
+        public virtual FloatUnit VitaminD { get; set; }
+
+        /// <summary>Vitamin D daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vitaminDDailyPercentage")]
+        public virtual System.Nullable<double> VitaminDDailyPercentage { get; set; }
+
+        /// <summary>Voluntary nutrition fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voluntaryNutritionFact")]
+        public virtual System.Collections.Generic.IList<VoluntaryNutritionFact> VoluntaryNutritionFact { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1252,6 +1495,25 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>A short section name that can be reused between multiple product details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionName")]
         public virtual string SectionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Voluntary Nutrition Facts.</summary>
+    public class VoluntaryNutritionFact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Daily percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyPercentage")]
+        public virtual System.Nullable<double> DailyPercentage { get; set; }
+
+        /// <summary>Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual FloatUnit Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

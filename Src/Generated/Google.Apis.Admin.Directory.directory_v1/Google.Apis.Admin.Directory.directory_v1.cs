@@ -10183,7 +10183,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Additional parameters controlling delivery channel behavior. Optional.</summary>
+        /// <summary>
+        /// Additional parameters controlling delivery channel behavior. Optional. For example, `params.ttl` specifies
+        /// the time-to-live in seconds for the notification channel, where the default is 2 hours and the maximum TTL
+        /// is 2 days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
 
@@ -11270,6 +11274,30 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonEditableAliases")]
         public virtual System.Collections.Generic.IList<string> NonEditableAliases { get; set; }
+    }
+
+    /// <summary>The Directory API manages aliases, which are alternative email addresses.</summary>
+    public class GroupAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alias email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>The unique ID of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The type of the API resource. For Alias resources, the value is `admin#directory#alias`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The primary email address of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
+        public virtual string PrimaryEmail { get; set; }
     }
 
     public class Groups : Google.Apis.Requests.IDirectResponseSchema
@@ -12361,7 +12389,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// Stores the hash format of the `password` property. The following `hashFunction` values are allowed: * `MD5`
-        /// - Accepts simple hex-encoded values. * `SHA1` - Accepts simple hex-encoded values. * `crypt` - Compliant
+        /// - Accepts simple hex-encoded values. * `SHA-1` - Accepts simple hex-encoded values. * `crypt` - Compliant
         /// with the [C crypt library](https://en.wikipedia.org/wiki/Crypt_%28C%29). Supports the DES, MD5 (hash prefix
         /// `$1$`), SHA-256 (hash prefix `$5$`), and SHA-512 (hash prefix `$6$`) hash algorithms. If rounds are
         /// specified as part of the prefix, they must be 10,000 or fewer.
@@ -12641,6 +12669,30 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Directory API manages aliases, which are alternative email addresses.</summary>
+    public class UserAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alias email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>The unique ID for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The type of the API resource. For Alias resources, the value is `admin#directory#alias`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The user's primary email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
+        public virtual string PrimaryEmail { get; set; }
     }
 
     /// <summary>JSON template for an email.</summary>

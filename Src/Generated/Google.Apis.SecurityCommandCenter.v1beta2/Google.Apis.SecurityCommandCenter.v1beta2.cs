@@ -5035,6 +5035,44 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents database access information, such as queries. A database may be a sub-resource of an instance (as in
+    /// the case of CloudSQL instances or Cloud Spanner instances), or the database instance itself. Some database
+    /// resources may not have the full resource name populated because these resource types are not yet supported by
+    /// Cloud Asset Inventory (e.g. CloudSQL databases). In these cases only the display name will be provided.
+    /// </summary>
+    public class Database : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human readable name of the database the user connected to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The target usernames/roles/groups of a SQL privilege grant (not an IAM policy change).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantees")]
+        public virtual System.Collections.Generic.IList<string> Grantees { get; set; }
+
+        /// <summary>
+        /// The full resource name of the database the user connected to, if it is supported by CAI.
+        /// (https://google.aip.dev/122#full-resource-names)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The SQL statement associated with the relevant access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// The username used to connect to the DB. This may not necessarily be an IAM principal, and has no required
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
+        public virtual string UserName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of a subscription.</summary>
     public class Details : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5261,6 +5299,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Database associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual Database Database { get; set; }
 
         /// <summary>Contains more detail about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
