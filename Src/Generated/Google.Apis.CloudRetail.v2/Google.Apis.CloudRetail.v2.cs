@@ -4069,7 +4069,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// restricted feature. Contact Retail Search support team if you are interested in enabling it. This feature is
         /// only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent
         /// searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with
-        /// CompleteQueryRequest.query case insensitively. * They are transformed to lower cases. * They are UTF-8 safe.
+        /// CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe.
         /// Recent searches are deduplicated. More recent searches will be reserved when duplication happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
@@ -4711,14 +4711,14 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Maximum number of results to return per page. Set this property to the number of prediction results needed.
-        /// If zero, the service will choose a reasonable default. The maximum allowed value is 100. Values above 100
-        /// will be coerced to 100.
+        /// Maximum number of results to return. Set this property to the number of prediction results needed. If zero,
+        /// the service will choose a reasonable default. The maximum allowed value is 100. Values above 100 will be
+        /// coerced to 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>This field is not used for now, leave it unset.</summary>
+        /// <summary>This field is not used; leave it unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 

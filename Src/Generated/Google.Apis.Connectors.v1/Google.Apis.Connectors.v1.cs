@@ -298,7 +298,6 @@ namespace Google.Apis.Connectors.v1
             {
                 this.service = service;
                 Connections = new ConnectionsResource(service);
-                Global = new GlobalResource(service);
                 Operations = new OperationsResource(service);
                 Providers = new ProvidersResource(service);
             }
@@ -1217,519 +1216,6 @@ namespace Google.Apis.Connectors.v1
                 }
             }
 
-            /// <summary>Gets the Global resource.</summary>
-            public virtual GlobalResource Global { get; }
-
-            /// <summary>The "global" collection of methods.</summary>
-            public class GlobalResource
-            {
-                private const string Resource = "global";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public GlobalResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    Providers = new ProvidersResource(service);
-                }
-
-                /// <summary>Gets the Providers resource.</summary>
-                public virtual ProvidersResource Providers { get; }
-
-                /// <summary>The "providers" collection of methods.</summary>
-                public class ProvidersResource
-                {
-                    private const string Resource = "providers";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ProvidersResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                        Connectors = new ConnectorsResource(service);
-                    }
-
-                    /// <summary>Gets the Connectors resource.</summary>
-                    public virtual ConnectorsResource Connectors { get; }
-
-                    /// <summary>The "connectors" collection of methods.</summary>
-                    public class ConnectorsResource
-                    {
-                        private const string Resource = "connectors";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public ConnectorsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                            Versions = new VersionsResource(service);
-                        }
-
-                        /// <summary>Gets the Versions resource.</summary>
-                        public virtual VersionsResource Versions { get; }
-
-                        /// <summary>The "versions" collection of methods.</summary>
-                        public class VersionsResource
-                        {
-                            private const string Resource = "versions";
-
-                            /// <summary>The service which this resource belongs to.</summary>
-                            private readonly Google.Apis.Services.IClientService service;
-
-                            /// <summary>Constructs a new resource.</summary>
-                            public VersionsResource(Google.Apis.Services.IClientService service)
-                            {
-                                this.service = service;
-                            }
-
-                            /// <summary>Gets details of a single connector version.</summary>
-                            /// <param name="name">
-                            /// Required. Resource name of the form:
-                            /// `projects/*/locations/*/providers/*/connectors/*/versions/*`
-                            /// </param>
-                            public virtual GetRequest Get(string name)
-                            {
-                                return new GetRequest(service, name);
-                            }
-
-                            /// <summary>Gets details of a single connector version.</summary>
-                            public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ConnectorVersion>
-                            {
-                                /// <summary>Constructs a new Get request.</summary>
-                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                                {
-                                    Name = name;
-                                    InitParameters();
-                                }
-
-                                /// <summary>
-                                /// Required. Resource name of the form:
-                                /// `projects/*/locations/*/providers/*/connectors/*/versions/*`
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Name { get; private set; }
-
-                                /// <summary>
-                                /// Specifies which fields of the ConnectorVersion are returned in the response.
-                                /// Defaults to `CUSTOMER` view.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                                /// <summary>
-                                /// Specifies which fields of the ConnectorVersion are returned in the response.
-                                /// Defaults to `CUSTOMER` view.
-                                /// </summary>
-                                public enum ViewEnum
-                                {
-                                    /// <summary>CONNECTOR_VERSION_VIEW_UNSPECIFIED.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_UNSPECIFIED")]
-                                    CONNECTORVERSIONVIEWUNSPECIFIED = 0,
-
-                                    /// <summary>Do not include role grant configs.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_BASIC")]
-                                    CONNECTORVERSIONVIEWBASIC = 1,
-
-                                    /// <summary>Include role grant configs.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_FULL")]
-                                    CONNECTORVERSIONVIEWFULL = 2,
-                                }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "get";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+name}";
-
-                                /// <summary>Initializes Get parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/global/providers/[^/]+/connectors/[^/]+/versions/[^/]+$",
-                                    });
-                                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                }
-                            }
-
-                            /// <summary>Lists Connector Versions in a given project and location.</summary>
-                            /// <param name="parent">
-                            /// Required. Parent resource of the connectors, of the form:
-                            /// `projects/*/locations/*/providers/*/connectors/*`
-                            /// </param>
-                            public virtual ListRequest List(string parent)
-                            {
-                                return new ListRequest(service, parent);
-                            }
-
-                            /// <summary>Lists Connector Versions in a given project and location.</summary>
-                            public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListConnectorVersionsResponse>
-                            {
-                                /// <summary>Constructs a new List request.</summary>
-                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                                {
-                                    Parent = parent;
-                                    InitParameters();
-                                }
-
-                                /// <summary>
-                                /// Required. Parent resource of the connectors, of the form:
-                                /// `projects/*/locations/*/providers/*/connectors/*`
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Parent { get; private set; }
-
-                                /// <summary>Page size.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual System.Nullable<int> PageSize { get; set; }
-
-                                /// <summary>Page token.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string PageToken { get; set; }
-
-                                /// <summary>
-                                /// Specifies which fields of the ConnectorVersion are returned in the response.
-                                /// Defaults to `CUSTOMER` view.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                                /// <summary>
-                                /// Specifies which fields of the ConnectorVersion are returned in the response.
-                                /// Defaults to `CUSTOMER` view.
-                                /// </summary>
-                                public enum ViewEnum
-                                {
-                                    /// <summary>CONNECTOR_VERSION_VIEW_UNSPECIFIED.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_UNSPECIFIED")]
-                                    CONNECTORVERSIONVIEWUNSPECIFIED = 0,
-
-                                    /// <summary>Do not include role grant configs.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_BASIC")]
-                                    CONNECTORVERSIONVIEWBASIC = 1,
-
-                                    /// <summary>Include role grant configs.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_FULL")]
-                                    CONNECTORVERSIONVIEWFULL = 2,
-                                }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "list";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+parent}/versions";
-
-                                /// <summary>Initializes List parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/global/providers/[^/]+/connectors/[^/]+$",
-                                    });
-                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                }
-                            }
-                        }
-
-                        /// <summary>Gets details of a single Connector.</summary>
-                        /// <param name="name">
-                        /// Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*`
-                        /// </param>
-                        public virtual GetRequest Get(string name)
-                        {
-                            return new GetRequest(service, name);
-                        }
-
-                        /// <summary>Gets details of a single Connector.</summary>
-                        public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Connector>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*`
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "get";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+name}";
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/global/providers/[^/]+/connectors/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>Lists Connectors in a given project and location.</summary>
-                        /// <param name="parent">
-                        /// Required. Parent resource of the connectors, of the form:
-                        /// `projects/*/locations/*/providers/*`
-                        /// </param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(service, parent);
-                        }
-
-                        /// <summary>Lists Connectors in a given project and location.</summary>
-                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListConnectorsResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. Parent resource of the connectors, of the form:
-                            /// `projects/*/locations/*/providers/*`
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Page size.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>Page token.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "list";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+parent}/connectors";
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/global/providers/[^/]+$",
-                                });
-                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-                    }
-
-                    /// <summary>Gets details of a single Provider.</summary>
-                    /// <param name="name">
-                    /// Required. Resource name of the form: `projects/*/locations/*/providers/*`
-                    /// </param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(service, name);
-                    }
-
-                    /// <summary>Gets details of a single Provider.</summary>
-                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Provider>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Resource name of the form: `projects/*/locations/*/providers/*`</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global/providers/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Lists Providers in a given project and location.</summary>
-                    /// <param name="parent">
-                    /// Required. Parent resource of the API, of the form: `projects/*/locations/*`
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>Lists Providers in a given project and location.</summary>
-                    public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListProvidersResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. Parent resource of the API, of the form: `projects/*/locations/*`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Page size.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Page token.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/providers";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-            }
-
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -2031,6 +1517,420 @@ namespace Google.Apis.Connectors.v1
                 public ProvidersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Connectors = new ConnectorsResource(service);
+                }
+
+                /// <summary>Gets the Connectors resource.</summary>
+                public virtual ConnectorsResource Connectors { get; }
+
+                /// <summary>The "connectors" collection of methods.</summary>
+                public class ConnectorsResource
+                {
+                    private const string Resource = "connectors";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConnectorsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Versions = new VersionsResource(service);
+                    }
+
+                    /// <summary>Gets the Versions resource.</summary>
+                    public virtual VersionsResource Versions { get; }
+
+                    /// <summary>The "versions" collection of methods.</summary>
+                    public class VersionsResource
+                    {
+                        private const string Resource = "versions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public VersionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets details of a single connector version.</summary>
+                        /// <param name="name">
+                        /// Required. Resource name of the form:
+                        /// `projects/*/locations/*/providers/*/connectors/*/versions/*` Only global location is
+                        /// supported for ConnectorVersion resource.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details of a single connector version.</summary>
+                        public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ConnectorVersion>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the form:
+                            /// `projects/*/locations/*/providers/*/connectors/*/versions/*` Only global location is
+                            /// supported for ConnectorVersion resource.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
+                            /// `CUSTOMER` view.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>
+                            /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
+                            /// `CUSTOMER` view.
+                            /// </summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>CONNECTOR_VERSION_VIEW_UNSPECIFIED.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_UNSPECIFIED")]
+                                CONNECTORVERSIONVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Do not include role grant configs.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_BASIC")]
+                                CONNECTORVERSIONVIEWBASIC = 1,
+
+                                /// <summary>Include role grant configs.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_FULL")]
+                                CONNECTORVERSIONVIEWFULL = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists Connector Versions in a given project and location.</summary>
+                        /// <param name="parent">
+                        /// Required. Parent resource of the connectors, of the form:
+                        /// `projects/*/locations/*/providers/*/connectors/*` Only global location is supported for
+                        /// ConnectorVersion resource.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists Connector Versions in a given project and location.</summary>
+                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListConnectorVersionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource of the connectors, of the form:
+                            /// `projects/*/locations/*/providers/*/connectors/*` Only global location is supported for
+                            /// ConnectorVersion resource.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
+                            /// `BASIC` view.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>
+                            /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
+                            /// `BASIC` view.
+                            /// </summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>CONNECTOR_VERSION_VIEW_UNSPECIFIED.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_UNSPECIFIED")]
+                                CONNECTORVERSIONVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Do not include role grant configs.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_BASIC")]
+                                CONNECTORVERSIONVIEWBASIC = 1,
+
+                                /// <summary>Include role grant configs.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_VIEW_FULL")]
+                                CONNECTORVERSIONVIEWFULL = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/versions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Connector.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*` Only
+                    /// global location is supported for Connector resource.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single Connector.</summary>
+                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Connector>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*` Only
+                        /// global location is supported for Connector resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Connectors in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent resource of the connectors, of the form: `projects/*/locations/*/providers/*`
+                    /// Only global location is supported for Connector resource.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Connectors in a given project and location.</summary>
+                    public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListConnectorsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent resource of the connectors, of the form:
+                        /// `projects/*/locations/*/providers/*` Only global location is supported for Connector
+                        /// resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/connectors";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets details of a provider.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the form: `projects/*/locations/*/providers/*` Only global location is
+                /// supported for Provider resource.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a provider.</summary>
+                public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Provider>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the form: `projects/*/locations/*/providers/*` Only global location
+                    /// is supported for Provider resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>
@@ -2105,6 +2005,81 @@ namespace Google.Apis.Connectors.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists Providers in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent resource of the API, of the form: `projects/*/locations/*` Only global location is
+                /// supported for Provider resource.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Providers in a given project and location.</summary>
+                public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListProvidersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource of the API, of the form: `projects/*/locations/*` Only global location
+                    /// is supported for Provider resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/providers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2582,11 +2557,14 @@ namespace Google.Apis.Connectors.v1.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -2711,7 +2689,8 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>
         /// Required. Connector version on which the connection is created. The format is:
-        /// projects/*/locations/global/providers/*/connectors/*/versions/*
+        /// projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for
+        /// ConnectorVersion resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorVersion")]
         public virtual string ConnectorVersion { get; set; }
@@ -2723,6 +2702,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Description of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user
+        /// defined destination(s).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
+        public virtual System.Collections.Generic.IList<DestinationConfig> DestinationConfigs { get; set; }
 
         /// <summary>
         /// Output only. GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -2753,6 +2739,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Configuration for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
+        public virtual NodeConfig NodeConfig { get; set; }
 
         /// <summary>Optional. Service account needed for runtime plane to access GCP resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -2852,7 +2842,8 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>
         /// Output only. Resource name of the Connector. Format:
-        /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}
+        /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector} Only global location is
+        /// supported for Connector resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2905,7 +2896,8 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>
         /// Output only. Resource name of the Version. Format:
-        /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}/versions/{version}
+        /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}/versions/{version} Only
+        /// global location is supported for Connector resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2931,6 +2923,39 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Updated time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Destination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For publicly routable host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>The port is the target port number that is accepted by the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define the Connectors target endpoint.</summary>
+    public class DestinationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destinations for the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
+
+        /// <summary>The key is the destination identifier that is supported by the Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3338,6 +3363,21 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the connection.</summary>
+    public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum number of nodes in the runtime nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<int> MaxNodeCount { get; set; }
+
+        /// <summary>Minimum number of nodes in the runtime nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
     /// https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -3565,7 +3605,8 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>
         /// Output only. Resource name of the Provider. Format:
-        /// projects/{project}/locations/{location}/providers/{provider}
+        /// projects/{project}/locations/{location}/providers/{provider} Only global location is supported for Provider
+        /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

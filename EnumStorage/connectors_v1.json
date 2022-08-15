@@ -27,5 +27,15 @@
     "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
     "CONNECTOR_VERSION_VIEW_BASIC",
     "CONNECTOR_VERSION_VIEW_FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+GetRequest.ViewEnum": [
+    "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
+    "CONNECTOR_VERSION_VIEW_BASIC",
+    "CONNECTOR_VERSION_VIEW_FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+ListRequest.ViewEnum": [
+    "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
+    "CONNECTOR_VERSION_VIEW_BASIC",
+    "CONNECTOR_VERSION_VIEW_FULL"
   ]
 }

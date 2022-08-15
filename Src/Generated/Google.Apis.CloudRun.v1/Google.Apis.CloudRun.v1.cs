@@ -1014,6 +1014,65 @@ namespace Google.Apis.CloudRun.v1
                 this.service = service;
             }
 
+            /// <summary>Cancel an execution.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the execution to cancel. Replace {namespace} with the project ID or number. It
+            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual CancelRequest Cancel(Google.Apis.CloudRun.v1.Data.CancelExecutionRequest body, string name)
+            {
+                return new CancelRequest(service, body, name);
+            }
+
+            /// <summary>Cancel an execution.</summary>
+            public class CancelRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Execution>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.CancelExecutionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the execution to cancel. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRun.v1.Data.CancelExecutionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+name}:cancel";
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/executions/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Delete an execution.</summary>
             /// <param name="name">
             /// Required. The name of the execution to delete. Replace {namespace} with the project ID or number. It
@@ -5547,11 +5606,14 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -5572,6 +5634,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for cancelling an execution.</summary>
+    public class CancelExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6309,7 +6378,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.</summary>
+    /// <summary>GRPCAction describes an action involving a GRPC port.</summary>
     public class GRPCAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Port number of the gRPC service. Number must be in the range 1 to 65535.</summary>
@@ -6392,7 +6461,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.</summary>
+    /// <summary>HTTPGetAction describes an action based on HTTP Get requests.</summary>
     public class HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6418,7 +6487,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes</summary>
+    /// <summary>HTTPHeader describes a custom header to be used in HTTP probes</summary>
     public class HTTPHeader : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The header field name</summary>
@@ -7936,7 +8005,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket</summary>
+    /// <summary>TCPSocketAction describes an action based on opening a socket</summary>
     public class TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>(Optional) Optional: Host name to connect to, defaults to the pod IP.</summary>

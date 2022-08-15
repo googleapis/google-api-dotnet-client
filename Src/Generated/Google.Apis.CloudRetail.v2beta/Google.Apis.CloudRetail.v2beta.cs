@@ -6077,7 +6077,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// restricted feature. Contact Retail Search support team if you are interested in enabling it. This feature is
         /// only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent
         /// searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with
-        /// CompleteQueryRequest.query case insensitively. * They are transformed to lower cases. * They are UTF-8 safe.
+        /// CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe.
         /// Recent searches are deduplicated. More recent searches will be reserved when duplication happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
@@ -6910,10 +6910,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string BranchId { get; set; }
 
         /// <summary>
-        /// String representing the destination to import for, all if left empty. List of possible values can be found
-        /// here. [https://support.google.com/merchants/answer/7501026] List of allowed string values: "Shopping_ads",
-        /// "Buy_on_google_listings", "Display_ads", "Local_inventory _ads", "Free_listings", "Free_local_listings"
-        /// NOTE: The string values are case sensitive.
+        /// String representing the destination to import for, all if left empty. List of possible values is given in
+        /// [Included destination](https://support.google.com/merchants/answer/7501026). List of allowed string values:
+        /// "Shopping_ads", "Buy_on_google_listings", "Display_ads", "Local_inventory _ads", "Free_listings",
+        /// "Free_local_listings" NOTE: The string values are case sensitive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
@@ -7011,14 +7011,14 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Maximum number of results to return per page. Set this property to the number of prediction results needed.
-        /// If zero, the service will choose a reasonable default. The maximum allowed value is 100. Values above 100
-        /// will be coerced to 100.
+        /// Maximum number of results to return. Set this property to the number of prediction results needed. If zero,
+        /// the service will choose a reasonable default. The maximum allowed value is 100. Values above 100 will be
+        /// coerced to 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>This field is not used for now, leave it unset.</summary>
+        /// <summary>This field is not used; leave it unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
@@ -8036,7 +8036,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms
-    /// provided is combined with OR operator. * Action Input: The request query and filter that are applied to the
+    /// provided are combined with OR operator. * Action Input: The request query and filter that are applied to the
     /// retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used
     /// to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters
     /// conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.

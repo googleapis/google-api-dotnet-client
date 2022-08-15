@@ -2228,8 +2228,8 @@ namespace Google.Apis.CertificateManager.v1.Data
     public class AuthorizationAttemptInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not
-        /// guaranteed to be stable. For programmatic access use Reason enum.
+        /// Output only. Human readable explanation for reaching the state. Provided to help address the configuration
+        /// issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
@@ -2242,7 +2242,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
         public virtual string FailureReason { get; set; }
 
-        /// <summary>State of the domain for managed certificate issuance.</summary>
+        /// <summary>Output only. State of the domain for managed certificate issuance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -2483,19 +2483,21 @@ namespace Google.Apis.CertificateManager.v1.Data
     /// <summary>Describes a Target Proxy which uses this Certificate Map.</summary>
     public class GclbTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IP configurations for this Target Proxy where the Certificate Map is serving.</summary>
+        /// <summary>
+        /// Output only. IP configurations for this Target Proxy where the Certificate Map is serving.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfigs")]
         public virtual System.Collections.Generic.IList<IpConfig> IpConfigs { get; set; }
 
         /// <summary>
-        /// This field returns the resource name in the following format:
+        /// Output only. This field returns the resource name in the following format:
         /// `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetHttpsProxy")]
         public virtual string TargetHttpsProxy { get; set; }
 
         /// <summary>
-        /// This field returns the resource name in the following format:
+        /// Output only. This field returns the resource name in the following format:
         /// `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSslProxy")]
@@ -2508,11 +2510,11 @@ namespace Google.Apis.CertificateManager.v1.Data
     /// <summary>Defines IP configuration where this Certificate Map is serving.</summary>
     public class IpConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An external IP address.</summary>
+        /// <summary>Output only. An external IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        /// <summary>Ports.</summary>
+        /// <summary>Output only. Ports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> Ports { get; set; }
 
@@ -2694,7 +2696,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
-        /// <summary>Information about issues with provisioning a Managed Certificate.</summary>
+        /// <summary>Output only. Information about issues with provisioning a Managed Certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningIssue")]
         public virtual ProvisioningIssue ProvisioningIssue { get; set; }
 
@@ -2792,13 +2794,13 @@ namespace Google.Apis.CertificateManager.v1.Data
     public class ProvisioningIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Human readable explanation about the issue. Provided to help address the configuration issues. Not
-        /// guaranteed to be stable. For programmatic access use Reason enum.
+        /// Output only. Human readable explanation about the issue. Provided to help address the configuration issues.
+        /// Not guaranteed to be stable. For programmatic access use Reason enum.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
 
-        /// <summary>Reason for provisioning failures.</summary>
+        /// <summary>Output only. Reason for provisioning failures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
