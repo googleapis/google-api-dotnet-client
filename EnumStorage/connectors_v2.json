@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Connectors.v2.ConnectorsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Connectors.v2.ConnectorsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

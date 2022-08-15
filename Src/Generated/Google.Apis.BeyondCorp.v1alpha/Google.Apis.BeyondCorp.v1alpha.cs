@@ -359,14 +359,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     public virtual string Insight { get; private set; }
 
                     /// <summary>
-                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// Required. Aggregation type. Available aggregation could be fetched by calling insight list and
                     /// get APIs in `BASIC` view.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("aggregation", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<AggregationEnum> Aggregation { get; set; }
 
                     /// <summary>
-                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// Required. Aggregation type. Available aggregation could be fetched by calling insight list and
                     /// get APIs in `BASIC` view.
                     /// </summary>
                     public enum AggregationEnum
@@ -557,9 +557,10 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 /// <summary>
                 /// Gets the value for a selected particular insight with default configuration. The default aggregation
                 /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
-                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
-                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
-                /// `BASIC` will only return the metadata for the insight.
+                /// returned for recent 7 days starting the day before. The insight data size will be limited to 50
+                /// rows. Use the organization level path for fetching at org level and project level path for fetching
+                /// the insight value specific to a particular project. Setting the `view` to `BASIC` will only return
+                /// the metadata for the insight.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the insight using the form:
@@ -574,9 +575,10 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 /// <summary>
                 /// Gets the value for a selected particular insight with default configuration. The default aggregation
                 /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
-                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
-                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
-                /// `BASIC` will only return the metadata for the insight.
+                /// returned for recent 7 days starting the day before. The insight data size will be limited to 50
+                /// rows. Use the organization level path for fetching at org level and project level path for fetching
+                /// the insight value specific to a particular project. Setting the `view` to `BASIC` will only return
+                /// the metadata for the insight.
                 /// </summary>
                 public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>
                 {
@@ -6249,14 +6251,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     public virtual string Insight { get; private set; }
 
                     /// <summary>
-                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// Required. Aggregation type. Available aggregation could be fetched by calling insight list and
                     /// get APIs in `BASIC` view.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("aggregation", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<AggregationEnum> Aggregation { get; set; }
 
                     /// <summary>
-                    /// Optional. Aggregation type. Available aggregation could be fetched by calling insight list and
+                    /// Required. Aggregation type. Available aggregation could be fetched by calling insight list and
                     /// get APIs in `BASIC` view.
                     /// </summary>
                     public enum AggregationEnum
@@ -6447,9 +6449,10 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 /// <summary>
                 /// Gets the value for a selected particular insight with default configuration. The default aggregation
                 /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
-                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
-                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
-                /// `BASIC` will only return the metadata for the insight.
+                /// returned for recent 7 days starting the day before. The insight data size will be limited to 50
+                /// rows. Use the organization level path for fetching at org level and project level path for fetching
+                /// the insight value specific to a particular project. Setting the `view` to `BASIC` will only return
+                /// the metadata for the insight.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the insight using the form:
@@ -6464,9 +6467,10 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 /// <summary>
                 /// Gets the value for a selected particular insight with default configuration. The default aggregation
                 /// level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be
-                /// returned for recent 7 days. Use the organization level path for fetching at org level and project
-                /// level path for fetching the insight value specific to a particular project. Setting the `view` to
-                /// `BASIC` will only return the metadata for the insight.
+                /// returned for recent 7 days starting the day before. The insight data size will be limited to 50
+                /// rows. Use the organization level path for fetching at org level and project level path for fetching
+                /// the insight value specific to a particular project. Setting the `view` to `BASIC` will only return
+                /// the metadata for the insight.
                 /// </summary>
                 public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>
                 {
@@ -8995,11 +8999,14 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,

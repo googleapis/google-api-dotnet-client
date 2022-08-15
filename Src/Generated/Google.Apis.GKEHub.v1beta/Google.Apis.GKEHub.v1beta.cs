@@ -1832,11 +1832,14 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3274,35 +3277,6 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>State of the Policy Controller.</summary>
-    public class PolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Map from deployment name to deployment state. Example deployments are gatekeeper-controller-manager,
-        /// gatekeeper-audit deployment, and gatekeeper-mutation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deploymentStates")]
-        public virtual System.Collections.Generic.IDictionary<string, string> DeploymentStates { get; set; }
-
-        /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual PolicyControllerHubVersion Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The build version of Gatekeeper that Policy Controller is using.</summary>
-    public class PolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
     /// </summary>
@@ -3332,17 +3306,13 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ClusterName { get; set; }
 
         /// <summary>
-        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
-        /// MembershipSpec in the FeatureSpec represents the intended state
+        /// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation" 4. "constraint
+        /// template library"
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
-        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("componentStates")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ComponentStates { get; set; }
 
-        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
-        public virtual PolicyControllerHubState PolicyControllerHubState { get; set; }
-
-        /// <summary>The lifecycle state Policy Controller is in.</summary>
+        /// <summary>The overall Policy Controller lifecycle state observed by the Hub Feature controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -3363,6 +3333,21 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<string> Backends { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OnClusterState represents the state of a sub-component of Policy Controller.</summary>
+    public class PolicyControllerOnClusterState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Surface potential errors or information logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The lifecycle state of this component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

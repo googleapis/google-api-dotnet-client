@@ -323,8 +323,8 @@ namespace Google.Apis.CloudFilestore.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The backup's project and location, in the format
-                /// `projects/{project_number}/locations/{location}`. In Cloud Filestore, backup locations map to GCP
-                /// regions, for example **us-west1**.
+                /// `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to GCP regions,
+                /// for example **us-west1**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1.Data.Backup body, string parent)
                 {
@@ -344,8 +344,8 @@ namespace Google.Apis.CloudFilestore.v1
 
                     /// <summary>
                     /// Required. The backup's project and location, in the format
-                    /// `projects/{project_number}/locations/{location}`. In Cloud Filestore, backup locations map to
-                    /// GCP regions, for example **us-west1**.
+                    /// `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to GCP
+                    /// regions, for example **us-west1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -504,8 +504,8 @@ namespace Google.Apis.CloudFilestore.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve backup information, in the format
-                /// `projects/{project_number}/locations/{location}`. In Cloud Filestore, backup locations map to GCP
-                /// regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for the
+                /// `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to GCP regions,
+                /// for example **us-west1**. To retrieve backup information for all locations, use "-" for the
                 /// `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -527,9 +527,9 @@ namespace Google.Apis.CloudFilestore.v1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve backup information, in the format
-                    /// `projects/{project_number}/locations/{location}`. In Cloud Filestore, backup locations map to
-                    /// GCP regions, for example **us-west1**. To retrieve backup information for all locations, use "-"
-                    /// for the `{location}` value.
+                    /// `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to GCP
+                    /// regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for
+                    /// the `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1083,8 +1083,8 @@ namespace Google.Apis.CloudFilestore.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The instance's project and location, in the format
-                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones, for
-                /// example **us-west1-b**.
+                /// `projects/{project_id}/locations/{location}`. In Filestore, locations map to GCP zones, for example
+                /// **us-west1-b**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1.Data.Instance body, string parent)
                 {
@@ -1108,8 +1108,8 @@ namespace Google.Apis.CloudFilestore.v1
 
                     /// <summary>
                     /// Required. The instance's project and location, in the format
-                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones,
-                    /// for example **us-west1-b**.
+                    /// `projects/{project_id}/locations/{location}`. In Filestore, locations map to GCP zones, for
+                    /// example **us-west1-b**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1964,7 +1964,7 @@ namespace Google.Apis.CloudFilestore.v1
 }
 namespace Google.Apis.CloudFilestore.v1.Data
 {
-    /// <summary>A Cloud Filestore backup.</summary>
+    /// <summary>A Filestore backup.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Capacity of the source file share when the backup was created.</summary>
@@ -2004,21 +2004,19 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>
-        /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
-        /// </summary>
+        /// <summary>Name of the file share in the source Filestore instance that the backup is created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFileShare")]
         public virtual string SourceFileShare { get; set; }
 
         /// <summary>
-        /// The resource name of the source Cloud Filestore instance, in the format
+        /// The resource name of the source Filestore instance, in the format
         /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
         public virtual string SourceInstance { get; set; }
 
         /// <summary>
-        /// Output only. The service tier of the source Cloud Filestore instance that this backup is created from.
+        /// Output only. The service tier of the source Filestore instance that this backup is created from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstanceTier")]
         public virtual string SourceInstanceTier { get; set; }
@@ -2136,7 +2134,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>File share configuration for the instance.</summary>
     public class FileShareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.</summary>
+        /// <summary>File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
         public virtual System.Nullable<long> CapacityGb { get; set; }
 
@@ -2475,7 +2473,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Cloud Filestore instance.</summary>
+    /// <summary>A Filestore instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time when the instance was created.</summary>
@@ -2778,7 +2776,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP
         /// addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26,
         /// respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges
-        /// for other Cloud Filestore instances in the selected VPC network.
+        /// for other Filestore instances in the selected VPC network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; }
@@ -2919,7 +2917,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
     public class RestoreInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Name of the file share in the Cloud Filestore instance that the backup is being restored to.
+        /// Required. Name of the file share in the Filestore instance that the backup is being restored to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileShare")]
         public virtual string FileShare { get; set; }

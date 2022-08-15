@@ -4381,11 +4381,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -8282,6 +8285,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
         public virtual string RoutineType { get; set; }
 
+        /// <summary>Optional. Spark specific options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkOptions")]
+        public virtual SparkOptions SparkOptions { get; set; }
+
         /// <summary>
         /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the
         /// creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body
@@ -8514,6 +8521,71 @@ namespace Google.Apis.Bigquery.v2.Data
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(SnapshotTimeRaw);
             set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for a user-defined Spark routine.</summary>
+    public class SparkOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Archive files to be extracted into the working directory of each executor. For more information about Apache
+        /// Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
+
+        /// <summary>
+        /// Fully qualified name of the user-provided Spark connection object. Format:
+        /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
+        /// <summary>Custom container image for the runtime environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
+        public virtual string ContainerImage { get; set; }
+
+        /// <summary>
+        /// Files to be placed in the working directory of each executor. For more information about Apache Spark, see
+        /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
+
+        /// <summary>
+        /// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache
+        /// Spark](https://spark.apache.org/docs/latest/index.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jarUris")]
+        public virtual System.Collections.Generic.IList<string> JarUris { get; set; }
+
+        /// <summary>
+        /// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri
+        /// field must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainFileUri")]
+        public virtual string MainFileUri { get; set; }
+
+        /// <summary>
+        /// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For
+        /// more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>
+        /// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`,
+        /// and `.zip`. For more information about Apache Spark, see [Apache
+        /// Spark](https://spark.apache.org/docs/latest/index.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pyFileUris")]
+        public virtual System.Collections.Generic.IList<string> PyFileUris { get; set; }
+
+        /// <summary>Runtime version. If not specified, the default runtime version is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9300,6 +9372,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cleanSpikesAndDips")]
         public virtual System.Nullable<bool> CleanSpikesAndDips { get; set; }
 
+        /// <summary>
+        /// Enums for color space, used for processing images in Object Table. See more details at
+        /// https://www.tensorflow.org/io/tutorials/colorspace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorSpace")]
+        public virtual string ColorSpace { get; set; }
+
         /// <summary>Subsample ratio of columns for each level for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colsampleBylevel")]
         public virtual System.Nullable<double> ColsampleBylevel { get; set; }
@@ -9528,7 +9607,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preserveInputStructs")]
         public virtual System.Nullable<bool> PreserveInputStructs { get; set; }
 
-        /// <summary>Number of paths for the sampled shapley explain method.</summary>
+        /// <summary>Number of paths for the sampled Shapley explain method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampledShapleyNumPaths")]
         public virtual System.Nullable<long> SampledShapleyNumPaths { get; set; }
 
@@ -9620,6 +9699,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
         public virtual TrainingOptions TrainingOptions { get; set; }
+
+        /// <summary>The start time of this training run, in milliseconds since epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
+        public virtual System.Nullable<long> TrainingStartTime { get; set; }
 
         /// <summary>The model id in Vertex AI Model Registry for this training run</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelId")]

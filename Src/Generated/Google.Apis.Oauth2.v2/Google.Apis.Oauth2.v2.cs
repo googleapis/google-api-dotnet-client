@@ -65,7 +65,7 @@ namespace Google.Apis.Oauth2.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Google OAuth2 API.</summary>
         public class Scope
         {
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
             /// <summary>See your personal info, including any personal info you've made publicly available</summary>
@@ -78,7 +78,7 @@ namespace Google.Apis.Oauth2.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the Google OAuth2 API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
             /// <summary>See your personal info, including any personal info you've made publicly available</summary>
