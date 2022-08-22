@@ -18,7 +18,7 @@
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
 
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
