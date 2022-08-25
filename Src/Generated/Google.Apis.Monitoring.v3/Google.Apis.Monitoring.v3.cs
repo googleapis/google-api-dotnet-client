@@ -5942,6 +5942,14 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// If provided, this field specifies the criteria that must be met by uptime checks to be included in
+                /// the response.For more details, see Filtering syntax
+                /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering#filter_syntax).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// The maximum number of results to return in a single response. The server may further constrain the
                 /// maximum number of results returned in a single page. If the page_size is &amp;lt;=0, the server will
                 /// decide the number of results to be returned.
@@ -5977,6 +5985,14 @@ namespace Google.Apis.Monitoring.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -8201,6 +8217,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
+        /// <summary>Contains information needed to add pings to an HTTP check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pingConfig")]
+        public virtual PingConfig PingConfig { get; set; }
+
         /// <summary>
         /// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP
         /// server against which to run the check. Will be combined with host (specified within the monitored_resource)
@@ -9451,6 +9471,20 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed
+    /// for each part of the redirect chain.
+    /// </summary>
+    public class PingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pingsCount")]
+        public virtual System.Nullable<int> PingsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single data point in a time series.</summary>
     public class Point : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9861,6 +9895,10 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>Information required for a TCP Uptime check request.</summary>
     public class TcpCheck : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Contains information needed to add pings to a TCP check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pingConfig")]
+        public virtual PingConfig PingConfig { get; set; }
+
         /// <summary>
         /// The TCP port on the server against which to run the check. Will be combined with host (specified within the
         /// monitored_resource) to construct the full URL. Required.

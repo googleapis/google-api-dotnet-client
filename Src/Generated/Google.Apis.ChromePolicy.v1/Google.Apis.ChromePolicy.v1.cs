@@ -1435,7 +1435,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource representing a policy schema. Next ID: 12</summary>
+    /// <summary>Resource representing a policy schema. Next ID: 13</summary>
     public class GoogleChromePolicyV1PolicySchema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specific access restrictions related to this policy.</summary>
@@ -1468,7 +1468,11 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notices")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaNoticeDescription> Notices { get; set; }
 
-        /// <summary>Output only. Current life cycle information.</summary>
+        /// <summary>Output only. Current lifecycle information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycle")]
+        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifecycle { get; set; }
+
+        /// <summary>Deprecated field because of typo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifeycle")]
         public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifeycle { get; set; }
 

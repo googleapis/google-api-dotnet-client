@@ -1461,6 +1461,13 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
         public virtual string Cause { get; set; }
 
+        /// <summary>
+        /// List of project IDs that the user has specified in the request but does not have permission to access
+        /// network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectsMissingPermission")]
+        public virtual System.Collections.Generic.IList<string> ProjectsMissingPermission { get; set; }
+
         /// <summary>URI of the resource that caused the abort.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
@@ -1540,11 +1547,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -1572,6 +1582,40 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for cloud function attributes.</summary>
+    public class CloudFunctionEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A [Cloud function](https://cloud.google.com/functions) name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a Cloud function.</summary>
+    public class CloudFunctionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which the Cloud function is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>URI of a Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Latest successfully deployed version id of the Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual System.Nullable<long> VersionId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1730,6 +1774,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A [Cloud function](https://cloud.google.com/functions).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
+        public virtual CloudFunctionEndpoint CloudFunction { get; set; }
+
         /// <summary>A [Cloud SQL](https://cloud.google.com/sql) instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual string CloudSqlInstance { get; set; }
@@ -2487,6 +2535,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; }
 
+        /// <summary>Display information of a Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
+        public virtual CloudFunctionInfo CloudFunction { get; set; }
+
         /// <summary>Display information of a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual CloudSQLInstanceInfo CloudSqlInstance { get; set; }
@@ -2551,6 +2603,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Display information of a VPC connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcConnector")]
+        public virtual VpcConnectorInfo VpcConnector { get; set; }
+
         /// <summary>Display information of a Compute Engine VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnGateway")]
         public virtual VpnGatewayInfo VpnGateway { get; set; }
@@ -2612,6 +2668,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a VPC connector.</summary>
+    public class VpcConnectorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a VPC connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which the VPC connector is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>URI of a VPC connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

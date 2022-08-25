@@ -3042,10 +3042,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -3071,9 +3069,7 @@ namespace Google.Apis.DLP.v2
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -3452,10 +3448,8 @@ namespace Google.Apis.DLP.v2
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -3480,10 +3474,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8316,10 +8308,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -8345,9 +8335,7 @@ namespace Google.Apis.DLP.v2
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -8726,10 +8714,8 @@ namespace Google.Apis.DLP.v2
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -8754,10 +8740,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8924,10 +8908,7 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2Action : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is
-        /// in the same location as the original data.
-        /// </summary>
+        /// <summary>Create a de-identified copy of the input data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentify")]
         public virtual GooglePrivacyDlpV2Deidentify Deidentify { get; set; }
 
@@ -8961,6 +8942,20 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>Request message for ActivateJobTrigger.</summary>
     public class GooglePrivacyDlpV2ActivateJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Apply transformation to all findings.</summary>
+    public class GooglePrivacyDlpV2AllInfoTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Apply to all text.</summary>
+    public class GooglePrivacyDlpV2AllText : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10211,7 +10206,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each
+    /// Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each
     /// transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size
     /// exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the
     /// BigQuery insert API limit it will be truncated when written to the failure output table. The failure output
@@ -10222,9 +10217,10 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2Deidentify : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. User settable GCS bucket and folders to store de-identified files. This field must be set for
-        /// cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified
-        /// files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        /// Required. User settable Cloud Storage bucket and folders to store de-identified files. This field must be
+        /// set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input
+        /// bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or
+        /// gs://bucket
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOutput")]
         public virtual string CloudStorageOutput { get; set; }
@@ -10261,6 +10257,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>The configuration that controls how the data will change.</summary>
     public class GooglePrivacyDlpV2DeidentifyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Treat the dataset as an image and redact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageTransformations")]
+        public virtual GooglePrivacyDlpV2ImageTransformations ImageTransformations { get; set; }
+
         /// <summary>
         /// Treat the dataset as free-form text and apply the same free text transformation everywhere.
         /// </summary>
@@ -11144,6 +11144,47 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for determining how redaction of images should occur.</summary>
+    public class GooglePrivacyDlpV2ImageTransformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only
+        /// one instance is allowed within the ImageTransformations message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allInfoTypes")]
+        public virtual GooglePrivacyDlpV2AllInfoTypes AllInfoTypes { get; set; }
+
+        /// <summary>
+        /// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the
+        /// ImageTransformations message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allText")]
+        public virtual GooglePrivacyDlpV2AllText AllText { get; set; }
+
+        /// <summary>
+        /// The color to use when redacting content from an image. If not specified, the default is black.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionColor")]
+        public virtual GooglePrivacyDlpV2Color RedactionColor { get; set; }
+
+        /// <summary>Apply transformation to the selected info_types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedInfoTypes")]
+        public virtual GooglePrivacyDlpV2SelectedInfoTypes SelectedInfoTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A type of transformation that is applied over images.</summary>
+    public class GooglePrivacyDlpV2ImageTransformations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ImageTransformation> Transforms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Type of information detected by the API.</summary>
     public class GooglePrivacyDlpV2InfoType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11541,7 +11582,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Enable email notification to project owners and editors on jobs's completion/failure.</summary>
+    /// <summary>
+    /// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential
+    /// Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
+    /// </summary>
     public class GooglePrivacyDlpV2JobNotificationEmails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -12696,6 +12740,24 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GooglePrivacyDlpV2RecordTransformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Findings container modification timestamp, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerTimestamp")]
+        public virtual object ContainerTimestamp { get; set; }
+
+        /// <summary>Container version, if available ("generation" for Cloud Storage).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
+        public virtual string ContainerVersion { get; set; }
+
+        /// <summary>For record transformations, provide a field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual GooglePrivacyDlpV2FieldId FieldId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A type of transformation that is applied over structured data such as a table.</summary>
     public class GooglePrivacyDlpV2RecordTransformations : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12997,6 +13059,20 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrencePeriodDuration")]
         public virtual object RecurrencePeriodDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Apply transformation to the selected info_types.</summary>
+    public class GooglePrivacyDlpV2SelectedInfoTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the
+        /// ImageTransformations message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13551,6 +13627,87 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A flattened description of a `PrimitiveTransformation` or `RecordSuppression`.</summary>
+    public class GooglePrivacyDlpV2TransformationDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A human-readable string representation of the `RecordCondition` corresponding to this transformation. Set if
+        /// a `RecordCondition` was used to determine whether or not to apply this transformation. Examples: *
+        /// (age_field &amp;gt; 85) * (age_field &amp;lt;= 18) * (zip_field exists) * (zip_field == 01234)
+        /// &amp;amp;&amp;amp; (city_field != "Springville") * (zip_field == 01234) &amp;amp;&amp;amp; (age_field
+        /// &amp;lt;= 18) &amp;amp;&amp;amp; (city_field exists)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>
+        /// A description of the transformation. This is empty for a RECORD_SUPPRESSION, or is the output of calling
+        /// toString() on the `PrimitiveTransformation` protocol buffer message for any other type of transformation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Set if the transformation was limited to a specific `InfoType`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
+
+        /// <summary>The transformation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about a single transformation. This object contains a description of the transformation, information
+    /// about whether the transformation was successfully applied, and the precise location where the transformation
+    /// occurred. These details are stored in a user-specified BigQuery table.
+    /// </summary>
+    public class GooglePrivacyDlpV2TransformationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The top level name of the container where the transformation is located (this will be the source file name
+        /// or table name).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
+        public virtual string ContainerName { get; set; }
+
+        /// <summary>The name of the job that completed the transformation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Status of the transformation, if transformation was not successful, this will specify what caused it to
+        /// fail, otherwise it will show that the transformation was successful.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetails")]
+        public virtual GooglePrivacyDlpV2TransformationResultStatus StatusDetails { get; set; }
+
+        /// <summary>
+        /// Description of transformation. This would only contain more than one element if there were multiple matching
+        /// transformations and which one to apply was ambiguous. Not set for states that contain no transformation,
+        /// currently only state that contains no transformation is
+        /// TransformationResultStateType.METADATA_UNRETRIEVABLE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformation")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TransformationDescription> Transformation { get; set; }
+
+        /// <summary>The precise location of the transformed content in the original container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationLocation")]
+        public virtual GooglePrivacyDlpV2TransformationLocation TransformationLocation { get; set; }
+
+        /// <summary>
+        /// The number of bytes that were transformed. If transformation was unsuccessful or did not take place because
+        /// there was no content to transform, this will be zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformedBytes")]
+        public virtual System.Nullable<long> TransformedBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Config for storing transformation details.</summary>
     public class GooglePrivacyDlpV2TransformationDetailsStorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13588,6 +13745,31 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the location of a transformation.</summary>
+    public class GooglePrivacyDlpV2TransformationLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Information about the functionality of the container where this finding occurred, if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerType")]
+        public virtual string ContainerType { get; set; }
+
+        /// <summary>
+        /// For infotype transformations, link to the corresponding findings ID so that location information does not
+        /// need to be duplicated. Each findings ID correlates to an entry in the findings output table, this table only
+        /// gets created when users specify to save findings (add the save findings action to the request).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingId")]
+        public virtual string FindingId { get; set; }
+
+        /// <summary>For record transformations, provide a field and container information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordTransformation")]
+        public virtual GooglePrivacyDlpV2RecordTransformation RecordTransformation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Overview of the modifications that occurred.</summary>
     public class GooglePrivacyDlpV2TransformationOverview : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13598,6 +13780,23 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Total size in bytes that were transformed in some way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformedBytes")]
         public virtual System.Nullable<long> TransformedBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GooglePrivacyDlpV2TransformationResultStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed error codes and messages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual GoogleRpcStatus Details { get; set; }
+
+        /// <summary>
+        /// Transformation result status type, this will be either SUCCESS, or it will be the reason for why the
+        /// transformation was not completely successful.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultStatusType")]
+        public virtual string ResultStatusType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

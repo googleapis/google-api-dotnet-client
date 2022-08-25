@@ -4104,8 +4104,9 @@ namespace Google.Apis.Firestore.v1.Data
 
     /// <summary>
     /// The TTL (time-to-live) configuration for documents that have this `Field` set. Storing a timestamp value into a
-    /// TTL-enabled field will be treated as the document's absolute expiration time. Using any other data type or
-    /// leaving the field absent will disable the TTL for the individual document.
+    /// TTL-enabled field will be treated as the document's absolute expiration time. Timestamp values in the past
+    /// indicate that the document is eligible for immediate expiration. Using any other data type or leaving the field
+    /// absent will disable expiration for the individual document.
     /// </summary>
     public class GoogleFirestoreAdminV1TtlConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4681,13 +4682,16 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual System.Nullable<int> Offset { get; set; }
 
         /// <summary>
-        /// The order to apply to the query results. Firestore guarantees a stable ordering through the following rules:
-        /// * Any field required to appear in `order_by`, that is not already specified in `order_by`, is appended to
-        /// the order in field name order by default. * If an order on `__name__` is not specified, it is appended by
-        /// default. Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no
-        /// order was specified. For example: * `SELECT * FROM Foo ORDER BY A` becomes `SELECT * FROM Foo ORDER BY A,
-        /// __name__` * `SELECT * FROM Foo ORDER BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` *
-        /// `SELECT * FROM Foo WHERE A &amp;gt; 1` becomes `SELECT * FROM Foo WHERE A &amp;gt; 1 ORDER BY A, __name__`
+        /// The order to apply to the query results. Firestore allows callers to provide a full ordering, a partial
+        /// ordering, or no ordering at all. In all cases, Firestore guarantees a stable ordering through the following
+        /// rules: * The `order_by` is required to reference all fields used with an inequality filter. * All fields
+        /// that are required to be in the `order_by` but are not already present are appended in lexicographical
+        /// ordering of the field name. * If an order on `__name__` is not specified, it is appended by default. Fields
+        /// are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was
+        /// specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC, __name__ ASC` * `ORDER BY a DESC` becomes
+        /// `ORDER BY a DESC, __name__ DESC` * `WHERE a &amp;gt; 1` becomes `WHERE a &amp;gt; 1 ORDER BY a ASC, __name__
+        /// ASC` * `WHERE __name__ &amp;gt; ... AND a &amp;gt; 1` becomes `WHERE __name__ &amp;gt; ... AND a &amp;gt; 1
+        /// ORDER BY a ASC, __name__ ASC`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual System.Collections.Generic.IList<Order> OrderBy { get; set; }

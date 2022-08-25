@@ -4126,7 +4126,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// to delete it.
             /// </summary>
             /// <param name="advertiserId">The ID of the advertiser this insertion order belongs to.</param>
-            /// <param name="insertionOrderId">The ID of the insertion order we need to delete.</param>
+            /// <param name="insertionOrderId">The ID of the insertion order to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long insertionOrderId)
             {
                 return new DeleteRequest(service, advertiserId, insertionOrderId);
@@ -4151,7 +4151,7 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>The ID of the insertion order we need to delete.</summary>
+                /// <summary>The ID of the insertion order to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long InsertionOrderId { get; private set; }
 
@@ -6345,7 +6345,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
             /// </summary>
             /// <param name="advertiserId">The ID of the advertiser this line item belongs to.</param>
-            /// <param name="lineItemId">The ID of the line item we need to fetch.</param>
+            /// <param name="lineItemId">The ID of the line item to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long lineItemId)
             {
                 return new DeleteRequest(service, advertiserId, lineItemId);
@@ -6369,7 +6369,7 @@ namespace Google.Apis.DisplayVideo.v1
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>The ID of the line item we need to fetch.</summary>
+                /// <summary>The ID of the line item to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long LineItemId { get; private set; }
 
@@ -9452,7 +9452,8 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
+                /// `TARGETING_TYPE_YOUTUBE_CHANNEL`
                 /// </param>
                 /// <param name="assignedTargetingOptionId">
                 /// Required. An identifier unique to the targeting type in this advertiser that identifies the assigned
@@ -9482,7 +9483,8 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -9490,7 +9492,8 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -9762,7 +9765,8 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="targetingType">
                 /// Required. Identifies the type of assigned targeting options to list. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
+                /// `TARGETING_TYPE_YOUTUBE_CHANNEL`
                 /// </param>
                 public virtual ListRequest List(long advertiserId, ListRequest.TargetingTypeEnum targetingType)
                 {
@@ -9787,7 +9791,8 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Required. Identifies the type of assigned targeting options to list. Supported targeting types:
                     /// * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -9795,7 +9800,8 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Required. Identifies the type of assigned targeting options to list. Supported targeting types:
                     /// * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {

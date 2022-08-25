@@ -1372,6 +1372,65 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         }
                     }
 
+                    /// <summary>Extend Schema for Domain</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                    /// </param>
+                    public virtual ExtendSchemaRequest ExtendSchema(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ExtendSchemaRequest body, string domain)
+                    {
+                        return new ExtendSchemaRequest(service, body, domain);
+                    }
+
+                    /// <summary>Extend Schema for Domain</summary>
+                    public class ExtendSchemaRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ExtendSchema request.</summary>
+                        public ExtendSchemaRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ExtendSchemaRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ExtendSchemaRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "extendSchema";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+domain}:extendSchema";
+
+                        /// <summary>Initializes ExtendSchema parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets information about a domain.</summary>
                     /// <param name="name">
                     /// Required. The domain resource name using the form:
@@ -3290,11 +3349,14 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3585,6 +3647,29 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ExtendSchemaRequest is the request message for ExtendSchema method.</summary>
+    public class ExtendSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Description for Schema Change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>File uploaded as a byte stream input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileContents")]
+        public virtual string FileContents { get; set; }
+
+        /// <summary>
+        /// File stored in Cloud Storage bucket and represented in the form
+        /// projects/{project_id}/buckets/{bucket_name}/objects/{object_name} File should be in the same project as the
+        /// domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
+        public virtual string GcsPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudManagedidentitiesV1OpMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3722,9 +3807,9 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Deprecated. The MaintenancePolicies that have been attached to the instance. The key must be of the type
-        /// name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same
-        /// policy type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
+        /// Optional. Deprecated. The MaintenancePolicies that have been attached to the instance. The key must be of
+        /// the type name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define
+        /// the same policy type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
         public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
@@ -3872,8 +3957,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the embedded policy must define the same policy
         /// type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug. If only the name is
-        /// needed (like in the deprecated Instance.maintenance_policy_names field) then only populate
-        /// MaintenancePolicy.name.
+        /// needed, then only populate MaintenancePolicy.name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicies")]
         public virtual System.Collections.Generic.IDictionary<string, MaintenancePolicy> MaintenancePolicies { get; set; }

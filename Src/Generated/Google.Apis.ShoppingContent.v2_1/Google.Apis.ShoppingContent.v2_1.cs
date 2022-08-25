@@ -12833,7 +12833,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleMyBusinessLink")]
         public virtual AccountGoogleMyBusinessLink GoogleMyBusinessLink { get; set; }
 
-        /// <summary>Required for update. Merchant Center account ID.</summary>
+        /// <summary>Required. 64-bit Merchant Center account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; }
 

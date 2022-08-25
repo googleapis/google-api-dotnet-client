@@ -1377,7 +1377,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.AllocateIds.</summary>
     public class AllocateIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
@@ -1423,7 +1426,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
@@ -1449,7 +1455,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.Commit.</summary>
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
@@ -2300,7 +2309,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.Lookup.</summary>
     public class LookupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
@@ -2676,9 +2688,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The options shared by read requests.</summary>
     public class ReadOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The non-transactional read consistency to use. Cannot be set to `STRONG` for global queries.
-        /// </summary>
+        /// <summary>The non-transactional read consistency to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readConsistency")]
         public virtual string ReadConsistency { get; set; }
 
@@ -2714,7 +2724,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.ReserveIds.</summary>
     public class ReserveIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
@@ -2738,7 +2751,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
@@ -2760,7 +2776,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 

@@ -6529,6 +6529,20 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKey")]
         public virtual string ResourceKey { get; set; }
 
+        /// <summary>
+        /// The SHA1 checksum associated with this file, if available. This field is only populated for files with
+        /// content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
+        public virtual string Sha1Checksum { get; set; }
+
+        /// <summary>
+        /// The SHA256 checksum associated with this file, if available. This field is only populated for files with
+        /// content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Checksum")]
+        public virtual string Sha256Checksum { get; set; }
+
         /// <summary>Whether the file has been shared. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shared")]
         public virtual System.Nullable<bool> Shared { get; set; }

@@ -1506,18 +1506,11 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
-        /// <summary>
-        /// Service-specific metadata associated with the operation. It typically contains progress information and
-        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
-        /// a long-running operation should document the metadata type, if any.
-        /// </summary>
+        /// <summary>This field will contain a `SubmitUriMetadata` object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
-        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        /// </summary>
+        /// <summary>This will match the pattern `/v1/{project-name}/operations/{operation-id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

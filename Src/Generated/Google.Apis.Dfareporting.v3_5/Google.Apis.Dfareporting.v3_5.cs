@@ -105,13 +105,13 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://dfareporting.googleapis.com/";
+            BaseUriOverride ?? "https://dfareporting.googleapis.com/dfareporting/v3.5/";
         #else
-            "https://dfareporting.googleapis.com/";
+            "https://dfareporting.googleapis.com/dfareporting/v3.5/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "";
+        public override string BasePath => "dfareporting/v3.5/";
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
@@ -557,7 +557,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}";
+            public override string RestPath => "userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -631,7 +631,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissionGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/accountPermissionGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -684,7 +684,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissionGroups";
+            public override string RestPath => "userprofiles/{profileId}/accountPermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -750,7 +750,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissions/{id}";
+            public override string RestPath => "userprofiles/{profileId}/accountPermissions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -803,7 +803,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissions";
+            public override string RestPath => "userprofiles/{profileId}/accountPermissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -869,7 +869,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles/{id}";
+            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -930,7 +930,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1045,7 +1045,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1176,7 +1176,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1237,7 +1237,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1303,7 +1303,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts/{id}";
+            public override string RestPath => "userprofiles/{profileId}/accounts/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1416,7 +1416,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts";
+            public override string RestPath => "userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1531,7 +1531,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts";
+            public override string RestPath => "userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1592,7 +1592,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts";
+            public override string RestPath => "userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1658,7 +1658,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads/{id}";
+            public override string RestPath => "userprofiles/{profileId}/ads/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1719,7 +1719,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1962,7 +1962,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2205,7 +2205,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2266,7 +2266,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2332,7 +2332,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/advertiserGroups/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2391,7 +2391,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/advertiserGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2452,7 +2452,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2551,7 +2551,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2658,7 +2658,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2719,7 +2719,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2785,7 +2785,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages/{id}";
+            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2846,7 +2846,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2964,7 +2964,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3103,7 +3103,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3164,7 +3164,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3230,7 +3230,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers/{id}";
+            public override string RestPath => "userprofiles/{profileId}/advertisers/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3291,7 +3291,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3426,7 +3426,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3581,7 +3581,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3642,7 +3642,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3702,7 +3702,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/browsers";
+            public override string RestPath => "userprofiles/{profileId}/browsers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3782,7 +3782,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
+            public override string RestPath => "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3869,7 +3869,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
+            public override string RestPath => "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3967,7 +3967,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns/{id}";
+            public override string RestPath => "userprofiles/{profileId}/campaigns/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -4028,7 +4028,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -4157,7 +4157,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4320,7 +4320,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -4381,7 +4381,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -4447,7 +4447,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/changeLogs/{id}";
+            public override string RestPath => "userprofiles/{profileId}/changeLogs/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -4792,7 +4792,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/changeLogs";
+            public override string RestPath => "userprofiles/{profileId}/changeLogs";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4948,7 +4948,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/cities";
+            public override string RestPath => "userprofiles/{profileId}/cities";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5046,7 +5046,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/connectionTypes/{id}";
+            public override string RestPath => "userprofiles/{profileId}/connectionTypes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5099,7 +5099,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/connectionTypes";
+            public override string RestPath => "userprofiles/{profileId}/connectionTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5165,7 +5165,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories/{id}";
+            public override string RestPath => "userprofiles/{profileId}/contentCategories/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -5224,7 +5224,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories/{id}";
+            public override string RestPath => "userprofiles/{profileId}/contentCategories/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5285,7 +5285,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -5384,7 +5384,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5491,7 +5491,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -5552,7 +5552,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -5620,7 +5620,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/conversions/batchinsert";
+            public override string RestPath => "userprofiles/{profileId}/conversions/batchinsert";
 
             /// <summary>Initializes Batchinsert parameter list.</summary>
             protected override void InitParameters()
@@ -5673,7 +5673,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/conversions/batchupdate";
+            public override string RestPath => "userprofiles/{profileId}/conversions/batchupdate";
 
             /// <summary>Initializes Batchupdate parameter list.</summary>
             protected override void InitParameters()
@@ -5739,7 +5739,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/countries/{dartId}";
+            public override string RestPath => "userprofiles/{profileId}/countries/{dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5792,7 +5792,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/countries";
+            public override string RestPath => "userprofiles/{profileId}/countries";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5866,7 +5866,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets";
+            public override string RestPath => "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6028,7 +6028,7 @@ namespace Google.Apis.Dfareporting.v3_5
             /// </list>
             /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "dfareporting/v3.5/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"), "POST", stream, contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"), "POST", stream, contentType)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -6091,7 +6091,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6164,7 +6164,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6239,7 +6239,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6352,7 +6352,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6473,7 +6473,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -6548,7 +6548,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -6622,7 +6622,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{id}";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6681,7 +6681,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{id}";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6742,7 +6742,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6846,7 +6846,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6961,7 +6961,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7022,7 +7022,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7088,7 +7088,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/creativeGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7149,7 +7149,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7257,7 +7257,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7380,7 +7380,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7441,7 +7441,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7507,7 +7507,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives/{id}";
+            public override string RestPath => "userprofiles/{profileId}/creatives/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7568,7 +7568,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7825,7 +7825,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8012,7 +8012,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -8073,7 +8073,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8149,7 +8149,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dimensionvalues/query";
+            public override string RestPath => "userprofiles/{profileId}/dimensionvalues/query";
 
             /// <summary>Initializes Query parameter list.</summary>
             protected override void InitParameters()
@@ -8231,7 +8231,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/directorySites/{id}";
+            public override string RestPath => "userprofiles/{profileId}/directorySites/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8292,7 +8292,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/directorySites";
+            public override string RestPath => "userprofiles/{profileId}/directorySites";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8419,7 +8419,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/directorySites";
+            public override string RestPath => "userprofiles/{profileId}/directorySites";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8611,7 +8611,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dynamicTargetingKeys/{objectId}";
+            public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys/{objectId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8696,7 +8696,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dynamicTargetingKeys";
+            public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8777,7 +8777,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dynamicTargetingKeys";
+            public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8875,7 +8875,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags/{id}";
+            public override string RestPath => "userprofiles/{profileId}/eventTags/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8934,7 +8934,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags/{id}";
+            public override string RestPath => "userprofiles/{profileId}/eventTags/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8995,7 +8995,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -9162,7 +9162,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9301,7 +9301,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -9362,7 +9362,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -9433,7 +9433,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/reports/{reportId}/files/{fileId}";
+            public override string RestPath => "reports/{reportId}/files/{fileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9641,7 +9641,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/files";
+            public override string RestPath => "userprofiles/{profileId}/files";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9747,7 +9747,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities/{id}";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -9804,7 +9804,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities/generatetag";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities/generatetag";
 
             /// <summary>Initializes Generatetag parameter list.</summary>
             protected override void InitParameters()
@@ -9863,7 +9863,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities/{id}";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9924,7 +9924,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -10079,7 +10079,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10242,7 +10242,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10303,7 +10303,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -10369,7 +10369,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10430,7 +10430,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -10571,7 +10571,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10702,7 +10702,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10763,7 +10763,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -10829,7 +10829,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations/{id}";
+            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10889,7 +10889,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10956,7 +10956,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -11017,7 +11017,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -11089,7 +11089,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}";
+            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11228,7 +11228,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/inventoryItems";
+            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/inventoryItems";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11368,7 +11368,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/languages";
+            public override string RestPath => "userprofiles/{profileId}/languages";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11428,7 +11428,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/metros";
+            public override string RestPath => "userprofiles/{profileId}/metros";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11494,7 +11494,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileApps/{id}";
+            public override string RestPath => "userprofiles/{profileId}/mobileApps/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11632,7 +11632,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileApps";
+            public override string RestPath => "userprofiles/{profileId}/mobileApps";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11738,7 +11738,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileCarriers/{id}";
+            public override string RestPath => "userprofiles/{profileId}/mobileCarriers/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11791,7 +11791,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileCarriers";
+            public override string RestPath => "userprofiles/{profileId}/mobileCarriers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11857,7 +11857,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystemVersions/{id}";
+            public override string RestPath => "userprofiles/{profileId}/operatingSystemVersions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11910,7 +11910,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystemVersions";
+            public override string RestPath => "userprofiles/{profileId}/operatingSystemVersions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11976,7 +11976,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystems/{dartId}";
+            public override string RestPath => "userprofiles/{profileId}/operatingSystems/{dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12029,7 +12029,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystems";
+            public override string RestPath => "userprofiles/{profileId}/operatingSystems";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12101,7 +12101,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}";
+            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12235,7 +12235,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orderDocuments";
+            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orderDocuments";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12387,7 +12387,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orders/{id}";
+            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orders/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12511,7 +12511,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orders";
+            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orders";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12641,7 +12641,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/placementGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12702,7 +12702,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -12930,7 +12930,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13141,7 +13141,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -13202,7 +13202,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -13268,7 +13268,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies/{id}";
+            public override string RestPath => "userprofiles/{profileId}/placementStrategies/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -13327,7 +13327,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies/{id}";
+            public override string RestPath => "userprofiles/{profileId}/placementStrategies/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13388,7 +13388,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -13488,7 +13488,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13595,7 +13595,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -13656,7 +13656,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -13833,7 +13833,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements/generatetags";
+            public override string RestPath => "userprofiles/{profileId}/placements/generatetags";
 
             /// <summary>Initializes Generatetags parameter list.</summary>
             protected override void InitParameters()
@@ -13908,7 +13908,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements/{id}";
+            public override string RestPath => "userprofiles/{profileId}/placements/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13969,7 +13969,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -14254,7 +14254,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14489,7 +14489,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -14550,7 +14550,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -14616,7 +14616,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/platformTypes/{id}";
+            public override string RestPath => "userprofiles/{profileId}/platformTypes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14669,7 +14669,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/platformTypes";
+            public override string RestPath => "userprofiles/{profileId}/platformTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14735,7 +14735,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/postalCodes/{code}";
+            public override string RestPath => "userprofiles/{profileId}/postalCodes/{code}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14788,7 +14788,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/postalCodes";
+            public override string RestPath => "userprofiles/{profileId}/postalCodes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14854,7 +14854,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{id}";
+            public override string RestPath => "userprofiles/{profileId}/projects/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14965,7 +14965,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects";
+            public override string RestPath => "userprofiles/{profileId}/projects";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15081,7 +15081,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/regions";
+            public override string RestPath => "userprofiles/{profileId}/regions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15147,7 +15147,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingListShares/{remarketingListId}";
+            public override string RestPath => "userprofiles/{profileId}/remarketingListShares/{remarketingListId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15214,7 +15214,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingListShares";
+            public override string RestPath => "userprofiles/{profileId}/remarketingListShares";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15275,7 +15275,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingListShares";
+            public override string RestPath => "userprofiles/{profileId}/remarketingListShares";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -15341,7 +15341,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists/{id}";
+            public override string RestPath => "userprofiles/{profileId}/remarketingLists/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15402,7 +15402,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -15511,7 +15511,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15634,7 +15634,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15695,7 +15695,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -15788,7 +15788,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/compatiblefields/query";
+                public override string RestPath => "userprofiles/{profileId}/reports/compatiblefields/query";
 
                 /// <summary>Initializes Query parameter list.</summary>
                 protected override void InitParameters()
@@ -15868,7 +15868,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}/files/{fileId}";
+                public override string RestPath => "userprofiles/{profileId}/reports/{reportId}/files/{fileId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -16072,7 +16072,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}/files";
+                public override string RestPath => "userprofiles/{profileId}/reports/{reportId}/files";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -16164,7 +16164,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -16223,7 +16223,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -16284,7 +16284,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports";
+            public override string RestPath => "userprofiles/{profileId}/reports";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -16389,7 +16389,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports";
+            public override string RestPath => "userprofiles/{profileId}/reports";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -16488,7 +16488,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -16551,7 +16551,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}/run";
+            public override string RestPath => "userprofiles/{profileId}/reports/{reportId}/run";
 
             /// <summary>Initializes Run parameter list.</summary>
             protected override void InitParameters()
@@ -16626,7 +16626,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -16700,7 +16700,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites/{id}";
+            public override string RestPath => "userprofiles/{profileId}/sites/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -16761,7 +16761,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -16899,7 +16899,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17078,7 +17078,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -17139,7 +17139,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -17205,7 +17205,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sizes/{id}";
+            public override string RestPath => "userprofiles/{profileId}/sizes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17266,7 +17266,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sizes";
+            public override string RestPath => "userprofiles/{profileId}/sizes";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -17335,7 +17335,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sizes";
+            public override string RestPath => "userprofiles/{profileId}/sizes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17433,7 +17433,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts/{id}";
+            public override string RestPath => "userprofiles/{profileId}/subaccounts/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17494,7 +17494,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -17593,7 +17593,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17700,7 +17700,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -17761,7 +17761,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -17827,7 +17827,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetableRemarketingLists/{id}";
+            public override string RestPath => "userprofiles/{profileId}/targetableRemarketingLists/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17944,7 +17944,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetableRemarketingLists";
+            public override string RestPath => "userprofiles/{profileId}/targetableRemarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18066,7 +18066,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates/{id}";
+            public override string RestPath => "userprofiles/{profileId}/targetingTemplates/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18127,7 +18127,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -18234,7 +18234,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18349,7 +18349,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -18410,7 +18410,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -18470,7 +18470,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}";
+            public override string RestPath => "userprofiles/{profileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18509,7 +18509,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles";
+            public override string RestPath => "userprofiles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18567,7 +18567,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissionGroups/{id}";
+            public override string RestPath => "userprofiles/{profileId}/userRolePermissionGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18620,7 +18620,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissionGroups";
+            public override string RestPath => "userprofiles/{profileId}/userRolePermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18686,7 +18686,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissions/{id}";
+            public override string RestPath => "userprofiles/{profileId}/userRolePermissions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18743,7 +18743,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissions";
+            public override string RestPath => "userprofiles/{profileId}/userRolePermissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18817,7 +18817,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles/{id}";
+            public override string RestPath => "userprofiles/{profileId}/userRoles/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -18876,7 +18876,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles/{id}";
+            public override string RestPath => "userprofiles/{profileId}/userRoles/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18937,7 +18937,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -19044,7 +19044,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19167,7 +19167,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -19228,7 +19228,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -19294,7 +19294,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/videoFormats/{id}";
+            public override string RestPath => "userprofiles/{profileId}/videoFormats/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -19347,7 +19347,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/videoFormats";
+            public override string RestPath => "userprofiles/{profileId}/videoFormats";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()

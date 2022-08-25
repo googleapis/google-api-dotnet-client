@@ -3623,10 +3623,7 @@ namespace Google.Apis.Appengine.v1
 }
 namespace Google.Apis.Appengine.v1.Data
 {
-    /// <summary>
-    /// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API
-    /// handlers.
-    /// </summary>
+    /// <summary>Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.</summary>
     public class ApiConfigHandler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5523,9 +5520,8 @@ namespace Google.Apis.Appengine.v1.Data
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Serving configuration for Google Cloud Endpoints
-        /// (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is
-        /// set.
+        /// Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET
+        /// requests if view=FULL is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; }

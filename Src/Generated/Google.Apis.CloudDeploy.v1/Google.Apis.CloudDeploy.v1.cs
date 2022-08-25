@@ -3096,11 +3096,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
         /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3982,7 +3985,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual object DeployEndTime { get; set; }
 
         /// <summary>
-        /// Output only. The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        /// Output only. The reason this rollout failed. This will always be unspecified while the rollout is in
+        /// progress.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployFailureCause")]
         public virtual string DeployFailureCause { get; set; }
@@ -4013,7 +4017,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Output only. Reason the build failed. Empty if the build succeeded.</summary>
+        /// <summary>Output only. Additional information about the rollout failure, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
         public virtual string FailureReason { get; set; }
 

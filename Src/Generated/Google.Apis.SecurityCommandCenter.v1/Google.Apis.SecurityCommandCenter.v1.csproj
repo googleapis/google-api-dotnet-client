@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.SecurityCommandCenter.v1 Client Library</Title>
-    <Version>1.57.0.2777</Version>
+    <Version>1.57.0.2792</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

@@ -5939,6 +5939,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dumpHeapOnOom")]
         public virtual System.Nullable<bool> DumpHeapOnOom { get; set; }
 
+        /// <summary>If true serial port logging will be enabled for the launcher VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLauncherVmSerialPortLogging")]
+        public virtual System.Nullable<bool> EnableLauncherVmSerialPortLogging { get; set; }
+
         /// <summary>Whether to enable Streaming Engine for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
         public virtual System.Nullable<bool> EnableStreamingEngine { get; set; }
@@ -6165,6 +6169,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information useful for debugging a hot key detection.</summary>
+    public class HotKeyDebuggingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Debugging information for each detected hot key. Keyed by a hash of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedHotKeys")]
+        public virtual System.Collections.Generic.IDictionary<string, HotKeyInfo> DetectedHotKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Proto describing a hot key detected on a given WorkItem.</summary>
     public class HotKeyDetection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6179,6 +6194,31 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>User-provided name of the step that contains this hot key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userStepName")]
         public virtual string UserStepName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a hot key.</summary>
+    public class HotKeyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The age of the hot key measured from when it was first detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotKeyAge")]
+        public virtual object HotKeyAge { get; set; }
+
+        /// <summary>
+        /// A detected hot key that is causing limited parallelism. This field will be populated only if the following
+        /// flag is set to true: "--enable_hot_key_logging".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// If true, then the above key is truncated and cannot be deserialized. This occurs if the key above is
+        /// populated and the key size is &amp;gt;5MB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyTruncated")]
+        public virtual System.Nullable<bool> KeyTruncated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8381,6 +8421,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Straggler summary for this stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stragglerSummary")]
+        public virtual StragglerSummary StragglerSummary { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8458,6 +8502,55 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, object> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information useful for debugging a straggler. Each type will provide specialized debugging information relevant
+    /// for a particular cause. The StragglerDebuggingInfo will be 1:1 mapping to the StragglerCause enum.
+    /// </summary>
+    public class StragglerDebuggingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hot key debugging details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotKey")]
+        public virtual HotKeyDebuggingInfo HotKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information useful for straggler identification and debugging.</summary>
+    public class StragglerInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The straggler causes, keyed by the string representation of the StragglerCause enum and contains specialized
+        /// debugging information for each straggler cause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("causes")]
+        public virtual System.Collections.Generic.IDictionary<string, StragglerDebuggingInfo> Causes { get; set; }
+
+        /// <summary>The time when the work item attempt became a straggler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summarized straggler identification details.</summary>
+    public class StragglerSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Aggregated counts of straggler causes, keyed by the string representation of the StragglerCause enum.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stragglerCauseCount")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> StragglerCauseCount { get; set; }
+
+        /// <summary>The total count of stragglers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStragglerCount")]
+        public virtual System.Nullable<long> TotalStragglerCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8984,6 +9077,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>State of this work item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Information about straggler detections for this work item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stragglerInfo")]
+        public virtual StragglerInfo StragglerInfo { get; set; }
 
         /// <summary>Name of this work item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskId")]

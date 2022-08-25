@@ -5888,6 +5888,16 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string Collation { get; set; }
 
         /// <summary>
+        /// Specifies if connections must use Cloud SQL connectors. Option values include the following: *
+        /// `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow
+        /// connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized
+        /// networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field
+        /// is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorEnforcement")]
+        public virtual string ConnectorEnforcement { get; set; }
+
+        /// <summary>
         /// Configuration specific to read replica instances. Indicates whether database flags for crash-safe
         /// replication are enabled. This property was only applicable to First Generation instances.
         /// </summary>
