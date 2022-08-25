@@ -5349,7 +5349,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A result of Resource Search, containing information of a cloud resource. Next ID: 29</summary>
+    /// <summary>A result of Resource Search, containing information of a cloud resource. Next ID: 31</summary>
     public class ResourceSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5360,7 +5360,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types) to
         /// see which fields are included. You can search values of these fields through free text search. However, you
         /// should not consume the field programically as the field names and values may change as the GCP service
-        /// updates to a new incompatible API version. To search against the `additional_attributes`: * use a free text
+        /// updates to a new incompatible API version. To search against the `additional_attributes`: * Use a free text
         /// query to match the attributes values. Example: to search `additional_attributes = { dnsName: "foobar" }`,
         /// you can issue a query `foobar`.
         /// </summary>
@@ -5369,7 +5369,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The type of this resource. Example: `compute.googleapis.com/Disk`. To search against the `asset_type`: *
-        /// specify the `asset_type` field in your search request.
+        /// Specify the `asset_type` field in your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
@@ -5386,7 +5386,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The create timestamp of this resource, at which the resource was created. The granularity is in seconds.
         /// Timestamp.nanos will always be 0. This field is available only when the resource's Protobuf contains it. To
-        /// search against `create_time`: * use a field query. - value in seconds since unix epoch. Example: `createTime
+        /// search against `create_time`: * Use a field query. - value in seconds since unix epoch. Example: `createTime
         /// &amp;gt; 1609459200` - value in date string. Example: `createTime &amp;gt; 2021-01-01` - value in date-time
         /// string (must be quoted). Example: `createTime &amp;gt; "2021-01-01T00:00:00"`
         /// </summary>
@@ -5395,8 +5395,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes. This
-        /// field is available only when the resource's Protobuf contains it. To search against the `description`: * use
-        /// a field query. Example: `description:"important instance"` * use a free text query. Example: `"important
+        /// field is available only when the resource's Protobuf contains it. To search against the `description`: * Use
+        /// a field query. Example: `description:"important instance"` * Use a free text query. Example: `"important
         /// instance"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -5404,7 +5404,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The display name of this resource. This field is available only when the resource's Protobuf contains it. To
-        /// search against the `display_name`: * use a field query. Example: `displayName:"My Instance"` * use a free
+        /// search against the `display_name`: * Use a field query. Example: `displayName:"My Instance"` * Use a free
         /// text query. Example: `"My Instance"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -5412,8 +5412,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available
-        /// when the resource belongs to one or more folders. To search against `folders`: * use a field query. Example:
-        /// `folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `scope` field as this folder in
+        /// when the resource belongs to one or more folders. To search against `folders`: * Use a field query. Example:
+        /// `folders:(123 OR 456)` * Use a free text query. Example: `123` * Specify the `scope` field as this folder in
         /// your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
@@ -5425,7 +5425,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// or
         /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
         /// name. This field is available only when the resource's Protobuf contains it. To search against the
-        /// `kms_key`: * use a field query. Example: `kmsKey:key` * use a free text query. Example: `key`
+        /// `kms_key`: * Use a field query. Example: `kmsKey:key` * Use a free text query. Example: `key`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
@@ -5434,17 +5434,17 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// Labels associated with this resource. See [Labelling and grouping GCP
         /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
         /// for more information. This field is available only when the resource's Protobuf contains it. To search
-        /// against the `labels`: * use a field query: - query on any label's key or value. Example: `labels:prod` -
+        /// against the `labels`: * Use a field query: - query on any label's key or value. Example: `labels:prod` -
         /// query by a given label. Example: `labels.env:prod` - query by a given label's existence. Example:
-        /// `labels.env:*` * use a free text query. Example: `prod`
+        /// `labels.env:*` * Use a free text query. Example: `prod`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`. This field is available only
-        /// when the resource's Protobuf contains it. To search against the `location`: * use a field query. Example:
-        /// `location:us-west*` * use a free text query. Example: `us-west*`
+        /// when the resource's Protobuf contains it. To search against the `location`: * Use a field query. Example:
+        /// `location:us-west*` * Use a free text query. Example: `us-west*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -5453,7 +5453,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// The full resource name of this resource. Example:
         /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Cloud Asset
         /// Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format) for more
-        /// information. To search against the `name`: * use a field query. Example: `name:instance1` * use a free text
+        /// information. To search against the `name`: * Use a field query. Example: `name:instance1` * Use a free text
         /// query. Example: `instance1`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5464,7 +5464,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// group GCP resources. See [Labelling GCP
         /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
         /// for more information. This field is available only when the resource's Protobuf contains it. To search
-        /// against the `network_tags`: * use a field query. Example: `networkTags:internal` * use a free text query.
+        /// against the `network_tags`: * Use a field query. Example: `networkTags:internal` * Use a free text query.
         /// Example: `internal`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
@@ -5472,8 +5472,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The organization that this resource belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
-        /// field is available when the resource belongs to an organization. To search against `organization`: * use a
-        /// field query. Example: `organization:123` * use a free text query. Example: `123` * specify the `scope` field
+        /// field is available when the resource belongs to an organization. To search against `organization`: * Use a
+        /// field query. Example: `organization:123` * Use a free text query. Example: `123` * Specify the `scope` field
         /// as this organization in your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
@@ -5481,7 +5481,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The type of this resource's immediate parent, if there is one. To search against the `parent_asset_type`: *
-        /// use a field query. Example: `parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * use a free
+        /// Use a field query. Example: `parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * Use a free
         /// text query. Example: `cloudresourcemanager.googleapis.com/Project`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentAssetType")]
@@ -5489,7 +5489,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The full resource name of this resource's parent, if it has one. To search against the
-        /// `parent_full_resource_name`: * use a field query. Example: `parentFullResourceName:"project-name"` * use a
+        /// `parent_full_resource_name`: * Use a field query. Example: `parentFullResourceName:"project-name"` * Use a
         /// free text query. Example: `project-name`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFullResourceName")]
@@ -5497,8 +5497,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The project that this resource belongs to, in the form of projects/{PROJECT_NUMBER}. This field is available
-        /// when the resource belongs to a project. To search against `project`: * use a field query. Example:
-        /// `project:12345` * use a free text query. Example: `12345` * specify the `scope` field as this project in
+        /// when the resource belongs to a project. To search against `project`: * Use a field query. Example:
+        /// `project:12345` * Use a free text query. Example: `12345` * Specify the `scope` field as this project in
         /// your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
@@ -5522,7 +5522,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// resource is a project provided by Cloud Resource Manager, its state will include
         /// LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and DELETE_IN_PROGRESS. See `lifecycleState`
         /// definition in [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects). To
-        /// search against the `state`: * use a field query. Example: `state:RUNNING` * use a free text query. Example:
+        /// search against the `state`: * Use a field query. Example: `state:RUNNING` * Use a free text query. Example:
         /// `RUNNING`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5530,15 +5530,15 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: *
-        /// use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * use
+        /// Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * Use
         /// a free text query. Example: - `env`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagKeys")]
         public virtual System.Collections.Generic.IList<string> TagKeys { get; set; }
 
         /// <summary>
-        /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * use a field
-        /// query. Example: - `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * use a free text query. Example: -
+        /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field
+        /// query. Example: - `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * Use a free text query. Example: -
         /// `456`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValueIds")]
@@ -5546,8 +5546,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
-        /// against the `tagValues`: * use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
-        /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * use a free text query. Example: -
+        /// against the `tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
+        /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * Use a free text query. Example: -
         /// `prod`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
@@ -5556,7 +5556,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The last update timestamp of this resource, at which the resource was last modified or deleted. The
         /// granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the
-        /// resource's Protobuf contains it. To search against `update_time`: * use a field query. - value in seconds
+        /// resource's Protobuf contains it. To search against `update_time`: * Use a field query. - value in seconds
         /// since unix epoch. Example: `updateTime &amp;lt; 1609459200` - value in date string. Example: `updateTime
         /// &amp;lt; 2021-01-01` - value in date-time string (must be quoted). Example: `updateTime &amp;lt;
         /// "2021-01-01T00:00:00"`

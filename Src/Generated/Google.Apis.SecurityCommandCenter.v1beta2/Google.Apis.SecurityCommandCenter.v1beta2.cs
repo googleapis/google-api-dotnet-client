@@ -5284,7 +5284,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// Output only. Map containing the point of contacts for the given finding. The key represents the type of
         /// contact, while the value contains a list of all the contacts that pertain. Please refer to:
         /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories {
-        /// "security": { "contacts": [ { "email": "person1@company.com" }, { "email": "person2@company.com" } ] }
+        /// "security": { "contacts": [ { "email": "person1@company.com" }, { "email": "person2@company.com" } ] } }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
         public virtual System.Collections.Generic.IDictionary<string, ContactDetails> Contacts { get; set; }
@@ -6035,7 +6035,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
         public virtual System.Collections.Generic.IList<ProcessSignature> Signatures { get; set; }
 
-        /// <summary>The list of URIs associated to the Findings</summary>
+        /// <summary>The list of URIs associated to the Findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
 

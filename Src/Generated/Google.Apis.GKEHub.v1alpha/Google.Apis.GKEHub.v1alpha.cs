@@ -4141,14 +4141,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class IdentityServiceAuthMethod : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>AzureAD specific Configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("azureadConfig")]
-        public virtual IdentityServiceAzureADConfig AzureadConfig { get; set; }
-
-        /// <summary>GoogleConfig specific configuration</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleConfig")]
-        public virtual IdentityServiceGoogleConfig GoogleConfig { get; set; }
-
         /// <summary>Identifier for auth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4160,50 +4152,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Proxy server address to use for auth method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
         public virtual string Proxy { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration for the AzureAD Auth flow.</summary>
-    public class IdentityServiceAzureADConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// ID for the registered client application that makes authentication requests to the Azure AD identity
-        /// provider.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; }
-
-        /// <summary>Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
-        public virtual string ClientSecret { get; set; }
-
-        /// <summary>Output only. Encrypted AzureAD client secret.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]
-        public virtual string EncryptedClientSecret { get; set; }
-
-        /// <summary>The redirect URL that kubectl uses for authorization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kubectlRedirectUri")]
-        public virtual string KubectlRedirectUri { get; set; }
-
-        /// <summary>
-        /// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific
-        /// tenant.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
-        public virtual string Tenant { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration for the Google Plugin Auth flow.</summary>
-    public class IdentityServiceGoogleConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Disable automatic configuration of Google Plugin on supported platforms.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disable")]
-        public virtual System.Nullable<bool> Disable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6744,6 +6744,14 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Execution configuration for a workload.</summary>
     public class ExecutionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause
+        /// the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation
+        /// of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleTtl")]
+        public virtual object IdleTtl { get; set; }
+
         /// <summary>Optional. The Cloud KMS key to use for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }

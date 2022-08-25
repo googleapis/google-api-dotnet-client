@@ -743,7 +743,10 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
     /// <summary>Request message for Verifications.GenerateVerificationToken.</summary>
     public class GenerateVerificationTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The target location.</summary>
+        /// <summary>
+        /// Required. The target location. Note: The location information should exactly match the target Location,
+        /// otherwise the generated verification token won't be able to verify the target Location.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; }
 

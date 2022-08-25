@@ -1133,6 +1133,71 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     });
                 }
             }
+
+            /// <summary>Restores the specified AndroidApp to the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the AndroidApp, in the format: projects/
+            /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+            /// Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to
+            /// the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details about
+            /// PROJECT_IDENTIFIER and APP_ID values.
+            /// </param>
+            public virtual UndeleteRequest Undelete(Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteAndroidAppRequest body, string name)
+            {
+                return new UndeleteRequest(service, body, name);
+            }
+
+            /// <summary>Restores the specified AndroidApp to the project.</summary>
+            public class UndeleteRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteAndroidAppRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the AndroidApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource
+                /// from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID
+                /// Refer to the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details
+                /// about PROJECT_IDENTIFIER and APP_ID values.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteAndroidAppRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "undelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:undelete";
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/androidApps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the AvailableLocations resource.</summary>
@@ -1837,6 +1902,71 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     });
                 }
             }
+
+            /// <summary>Restores the specified IosApp to the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID
+            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be
+            /// used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
+            /// [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.
+            /// </param>
+            public virtual UndeleteRequest Undelete(Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteIosAppRequest body, string name)
+            {
+                return new UndeleteRequest(service, body, name);
+            }
+
+            /// <summary>Restores the specified IosApp to the project.</summary>
+            public class UndeleteRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteIosAppRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the IosApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to
+                /// the IosApp [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
+                /// and APP_ID values.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteIosAppRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "undelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:undelete";
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/iosApps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the WebApps resource.</summary>
@@ -2291,6 +2421,71 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     });
                 }
             }
+
+            /// <summary>Restores the specified WebApp to the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID
+            /// Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be
+            /// used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp
+            /// [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID
+            /// values.
+            /// </param>
+            public virtual UndeleteRequest Undelete(Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteWebAppRequest body, string name)
+            {
+                return new UndeleteRequest(service, body, name);
+            }
+
+            /// <summary>Restores the specified WebApp to the project.</summary>
+            public class UndeleteRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteWebAppRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the WebApp, in the format: projects/
+                /// PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
+                /// Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to
+                /// the WebApp [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER
+                /// and APP_ID values.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteWebAppRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "undelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:undelete";
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/webApps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -2722,6 +2917,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>
+            /// Optional. Controls whether Projects in the DELETING state should be returned. Defaults to false.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -2746,6 +2947,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3227,14 +3436,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
-
-        /// <summary>The SHA1 certificate hashes for the AndroidApp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hashes")]
-        public virtual System.Collections.Generic.IList<string> Sha1Hashes { get; set; }
-
-        /// <summary>The SHA256 certificate hashes for the AndroidApp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hashes")]
-        public virtual System.Collections.Generic.IList<string> Sha256Hashes { get; set; }
 
         /// <summary>Output only. The lifecycle state of the App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3990,6 +4191,48 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    public class UndeleteAndroidAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Checksum provided in the AndroidApp entity, which if provided ensures the client has an up-to-date value
+        /// before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>If set to true, only validate the request and do not undelete the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    public class UndeleteIosAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Checksum provided in the IosApp entity, which if provided ensures the client has an up-to-date value before
+        /// proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>If set to true, only validate the request and do not undelete the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    public class UndeleteWebAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Checksum provided in the WebApp entity, which if provided ensures the client has an up-to-date value before
+        /// proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>If set to true, only validate the request and do not undelete the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
     /// <summary>Details of a Firebase App for the web.</summary>

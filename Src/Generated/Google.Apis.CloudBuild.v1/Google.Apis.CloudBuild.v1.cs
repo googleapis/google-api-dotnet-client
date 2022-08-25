@@ -1567,9 +1567,8 @@ namespace Google.Apis.CloudBuild.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The maximum number of configs to return. The service may return fewer than this value. If
-                        /// unspecified, at most 50 configs will be returned. The maximum value is 1000; values above
-                        /// 1000 will be coerced to 1000.
+                        /// The maximum number of configs to return. The service may return fewer than this value. The
+                        /// maximum value is 1000; values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }

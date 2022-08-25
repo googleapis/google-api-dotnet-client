@@ -1106,6 +1106,34 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Bob Weaver Deinterlacing Filter Configuration.</summary>
+    public class BwdifConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deinterlaceAllFrames")]
+        public virtual System.Nullable<bool> DeinterlaceAllFrames { get; set; }
+
+        /// <summary>
+        /// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`:
+        /// Output one frame for each frame - `send_field`: Output one frame for each field
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: -
+        /// `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic
+        /// detection of field parity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parity")]
+        public virtual string Parity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Color preprocessing configuration. **Note:** This configuration is not supported.</summary>
     public class Color : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1173,6 +1201,21 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strength")]
         public virtual System.Nullable<double> Strength { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deinterlace configuration for input video.</summary>
+    public class Deinterlace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the Bob Weaver Deinterlacing Filter Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bwdif")]
+        public virtual BwdifConfig Bwdif { get; set; }
+
+        /// <summary>Specifies the Yet Another Deinterlacing Filter Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yadif")]
+        public virtual YadifConfig Yadif { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1964,6 +2007,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deblock")]
         public virtual Deblock Deblock { get; set; }
 
+        /// <summary>Specify the video deinterlace configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deinterlace")]
+        public virtual Deinterlace Deinterlace { get; set; }
+
         /// <summary>Denoise preprocessing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denoise")]
         public virtual Denoise Denoise { get; set; }
@@ -2254,6 +2301,38 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Yet Another Deinterlacing Filter Configuration.</summary>
+    public class YadifConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deinterlaceAllFrames")]
+        public virtual System.Nullable<bool> DeinterlaceAllFrames { get; set; }
+
+        /// <summary>Disable spacial interlacing. The default is `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSpatialInterlacing")]
+        public virtual System.Nullable<bool> DisableSpatialInterlacing { get; set; }
+
+        /// <summary>
+        /// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`:
+        /// Output one frame for each frame - `send_field`: Output one frame for each field
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: -
+        /// `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic
+        /// detection of field parity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parity")]
+        public virtual string Parity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

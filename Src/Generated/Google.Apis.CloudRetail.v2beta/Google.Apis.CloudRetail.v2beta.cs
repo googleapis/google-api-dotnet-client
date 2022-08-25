@@ -713,8 +713,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the added place IDs are not immediately
                         /// manifested in the Product queried by ProductService.GetProduct or
-                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
-                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
+                        /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
+                        /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
+                        /// Operations associated with the stale updates will not be marked as done until being
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
+                        /// enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -734,8 +737,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the added place IDs are not immediately
                         /// manifested in the Product queried by ProductService.GetProduct or
-                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
-                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
+                        /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
+                        /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
+                        /// Operations associated with the stale updates will not be marked as done until being
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
+                        /// enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class AddFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -794,9 +800,12 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// returned, updates are not immediately manifested in the Product queried by
                         /// ProductService.GetProduct or ProductService.ListProducts. Local inventory information can
                         /// only be modified using this method. ProductService.CreateProduct and
-                        /// ProductService.UpdateProduct has no effect on local inventories. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// ProductService.UpdateProduct has no effect on local inventories. The returned Operations
+                        /// will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
+                        /// conflicting updates are issued, the Operations associated with the stale updates will not be
+                        /// marked as done until being obsolete. This feature is only available for users who have
+                        /// Retail Search enabled. Please enable Retail Search on Cloud Console before using this
+                        /// feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -818,9 +827,12 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// returned, updates are not immediately manifested in the Product queried by
                         /// ProductService.GetProduct or ProductService.ListProducts. Local inventory information can
                         /// only be modified using this method. ProductService.CreateProduct and
-                        /// ProductService.UpdateProduct has no effect on local inventories. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// ProductService.UpdateProduct has no effect on local inventories. The returned Operations
+                        /// will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
+                        /// conflicting updates are issued, the Operations associated with the stale updates will not be
+                        /// marked as done until being obsolete. This feature is only available for users who have
+                        /// Retail Search enabled. Please enable Retail Search on Cloud Console before using this
+                        /// feature.
                         /// </summary>
                         public class AddLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1368,8 +1380,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the removed place IDs are not immediately
                         /// manifested in the Product queried by ProductService.GetProduct or
-                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
-                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
+                        /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
+                        /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
+                        /// Operations associated with the stale updates will not be marked as done until being
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
+                        /// enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1389,8 +1404,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the removed place IDs are not immediately
                         /// manifested in the Product queried by ProductService.GetProduct or
-                        /// ProductService.ListProducts. This feature is only available for users who have Retail Search
-                        /// enabled. Please enable Retail Search on Cloud Console before using this feature.
+                        /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
+                        /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
+                        /// Operations associated with the stale updates will not be marked as done until being
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
+                        /// enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class RemoveFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1448,8 +1466,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// immediately manifested in the Product queried by ProductService.GetProduct or
                         /// ProductService.ListProducts. Local inventory information can only be removed using this
                         /// method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local
-                        /// inventories. This feature is only available for users who have Retail Search enabled. Please
-                        /// enable Retail Search on Cloud Console before using this feature.
+                        /// inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will
+                        /// return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated
+                        /// with the stale updates will not be marked as done until being obsolete. This feature is only
+                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
+                        /// Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1470,8 +1491,11 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// immediately manifested in the Product queried by ProductService.GetProduct or
                         /// ProductService.ListProducts. Local inventory information can only be removed using this
                         /// method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local
-                        /// inventories. This feature is only available for users who have Retail Search enabled. Please
-                        /// enable Retail Search on Cloud Console before using this feature.
+                        /// inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will
+                        /// return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated
+                        /// with the stale updates will not be marked as done until being obsolete. This feature is only
+                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
+                        /// Console before using this feature.
                         /// </summary>
                         public class RemoveLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1537,9 +1561,12 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// this product will be used. If no inventory fields are set in SetInventoryRequest.set_mask,
                         /// then any existing inventory information will be preserved. Pre-existing inventory
                         /// information can only be updated with ProductService.SetInventory,
-                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. This
-                        /// feature is only available for users who have Retail Search enabled. Please enable Retail
-                        /// Search on Cloud Console before using this feature.
+                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. The
+                        /// returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND
+                        /// afterwards. If conflicting updates are issued, the Operations associated with the stale
+                        /// updates will not be marked as done until being obsolete. This feature is only available for
+                        /// users who have Retail Search enabled. Please enable Retail Search on Cloud Console before
+                        /// using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -1566,9 +1593,12 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// this product will be used. If no inventory fields are set in SetInventoryRequest.set_mask,
                         /// then any existing inventory information will be preserved. Pre-existing inventory
                         /// information can only be updated with ProductService.SetInventory,
-                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. This
-                        /// feature is only available for users who have Retail Search enabled. Please enable Retail
-                        /// Search on Cloud Console before using this feature.
+                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. The
+                        /// returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND
+                        /// afterwards. If conflicting updates are issued, the Operations associated with the stale
+                        /// updates will not be marked as done until being obsolete. This feature is only available for
+                        /// users who have Retail Search enabled. Please enable Retail Search on Cloud Console before
+                        /// using this feature.
                         /// </summary>
                         public class SetInventoryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -3185,9 +3215,9 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Bulk import of User events. Request processing might be synchronous. Events that already exist
-                    /// are skipped. Use this method for backfilling historical user events. Operation.response is of
-                    /// type ImportResponse. Note that it is possible for a subset of the items to be successfully
-                    /// inserted. Operation.metadata is of type ImportMetadata.
+                    /// are skipped. Use this method for backfilling historical user events. `Operation.response` is of
+                    /// type `ImportResponse`. Note that it is possible for a subset of the items to be successfully
+                    /// inserted. `Operation.metadata` is of type `ImportMetadata`.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. `projects/1234/locations/global/catalogs/default_catalog`</param>
@@ -3198,9 +3228,9 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Bulk import of User events. Request processing might be synchronous. Events that already exist
-                    /// are skipped. Use this method for backfilling historical user events. Operation.response is of
-                    /// type ImportResponse. Note that it is possible for a subset of the items to be successfully
-                    /// inserted. Operation.metadata is of type ImportMetadata.
+                    /// are skipped. Use this method for backfilling historical user events. `Operation.response` is of
+                    /// type `ImportResponse`. Note that it is possible for a subset of the items to be successfully
+                    /// inserted. `Operation.metadata` is of type `ImportMetadata`.
                     /// </summary>
                     public class ImportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                     {
@@ -4735,7 +4765,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
-        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// Import errors are written to sharded files in this directory, one per line, as a JSON-encoded
         /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
@@ -4746,7 +4776,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the Import operation. This will be returned by the
+    /// Metadata related to the progress of the Import operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudRetailV2ImportMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -4761,8 +4791,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Pub/Sub topic for receiving notification. If this field is set, when the import is finished, a notification
-        /// will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation. Format of the
-        /// Pub/Sub topic is `projects/{project}/topics/{topic}`.
+        /// is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of the Pub/Sub
+        /// topic is `projects/{project}/topics/{topic}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -5109,7 +5139,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
-        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// Import errors are written to sharded files in this directory, one per line, as a JSON-encoded
         /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
@@ -5120,7 +5150,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the Import operation. This will be returned by the
+    /// Metadata related to the progress of the Import operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudRetailV2alphaImportMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -5135,8 +5165,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Pub/Sub topic for receiving notification. If this field is set, when the import is finished, a notification
-        /// will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation. Format of the
-        /// Pub/Sub topic is `projects/{project}/topics/{topic}`.
+        /// is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of the Pub/Sub
+        /// topic is `projects/{project}/topics/{topic}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -5203,7 +5233,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Metadata that describes the training and serving parameters of a Model. A Model can be associated with a
-    /// ServingConfig and then queried through the Predict api.
+    /// ServingConfig and then queried through the Predict API.
     /// </summary>
     public class GoogleCloudRetailV2alphaModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5212,23 +5242,23 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The state of data requirements for this model: DATA_OK and DATA_ERROR. Recommendation model
-        /// cannot be trained if the data is in DATA_ERROR state. Recommendation model can have DATA_ERROR state even if
-        /// serving state is ACTIVE: models were trained successfully before, but cannot be refreshed because model no
-        /// longer has sufficient data for training.
+        /// Output only. The state of data requirements for this model: `DATA_OK` and `DATA_ERROR`. Recommendation model
+        /// cannot be trained if the data is in `DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state
+        /// even if serving state is `ACTIVE`: models were trained successfully before, but cannot be refreshed because
+        /// model no longer has sufficient data for training.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
         public virtual string DataState { get; set; }
 
         /// <summary>
         /// Required. The display name of the model. Should be human readable, used to display Recommendation Models in
-        /// the Retail Cloud Cosole Dashboard. UTF-8 encoded string with limit of 1024 characters.
+        /// the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. If RECOMMENDATIONS_FILTERING_ENABLED, recommendation filtering by attributes is enabled for the
+        /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the
         /// model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteringOption")]
@@ -5240,7 +5270,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Required. The fully qualified resource name of the model. Format:
-        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id} catalog_id has
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
         /// char limit of 50. recommendation_model_id has char limit of 40.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5261,7 +5291,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the
-        /// TuneModel method. Default value is PERIODIC_TUNING_ENABLED.
+        /// `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodicTuningState")]
         public virtual string PeriodicTuningState { get; set; }
@@ -5272,15 +5302,15 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigLists")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaModelServingConfigList> ServingConfigLists { get; set; }
 
-        /// <summary>Output only. The serving state of the model: ACTIVE, NOT_ACTIVE.</summary>
+        /// <summary>Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
         public virtual string ServingState { get; set; }
 
         /// <summary>
-        /// Optional. The training state that the model is in (e.g. TRAINING or PAUSED). Since part of the cost of
+        /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of
         /// running the service is frequency of training - this can be used to determine when to train model in order to
-        /// control cost. If not specified: the default value for CreateModel method is TRAINING. the default value for
-        /// UpdateModel method is to keep the state the same as before.
+        /// control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value
+        /// for `UpdateModel` method is to keep the state the same as before.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
         public virtual string TrainingState { get; set; }
@@ -5294,8 +5324,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
-        /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, 'similar-items', 'buy-it-again',
-        /// `recently-viewed`(readonly value).
+        /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
+        /// and `recently-viewed`(readonly value).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5348,9 +5378,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This has to be a valid ServingConfig identifier. e.g. for a ServingConfig with full name:
-        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config` this would be
-        /// 'my_candidate_config'
+        /// This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name:
+        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be
+        /// `my_candidate_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigId")]
         public virtual string ServingConfigId { get; set; }
@@ -5367,7 +5397,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate> Candidates { get; set; }
 
         /// <summary>
-        /// Required. The default candidate (in case the model fails at serving time, we can fall back to the default).
+        /// Required. The default candidate. If the model fails at serving time, we fall back to the default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCandidate")]
         public virtual GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate DefaultCandidate { get; set; }
@@ -5381,12 +5411,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Represents an ordered combination of valid serving configs, which / may be used for PAGE_OPTIMIZATION
+    /// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION`
     /// recommendations.
     /// </summary>
     public class GoogleCloudRetailV2alphaModelServingConfigList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A set of valid serving configs that may be used for PAGE_OPTIMIZATION.</summary>
+        /// <summary>Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
         public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
 
@@ -6491,7 +6521,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Google Cloud Storage location for input content. format.</summary>
+    /// <summary>Google Cloud Storage location for input content.</summary>
     public class GoogleCloudRetailV2betaGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6500,8 +6530,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// `product_merchant_center`: See [Importing catalog data from Merchant
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: Using
-        /// https://support.google.com/analytics/answer/3437719. Supported values for control imports: * 'control'
-        /// (default): One JSON Control per line. Supported values for catalog attribute imports: * 'catalog_attribute'
+        /// https://support.google.com/analytics/answer/3437719. Supported values for control imports: * `control`
+        /// (default): One JSON Control per line. Supported values for catalog attribute imports: * `catalog_attribute`
         /// (default): One CSV CatalogAttribute per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
@@ -6586,8 +6616,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Pub/Sub topic for receiving notification. If this field is set, when the import is finished, a notification
-        /// will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation. Format of the
-        /// Pub/Sub topic is `projects/{project}/topics/{topic}`.
+        /// is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of the Pub/Sub
+        /// topic is `projects/{project}/topics/{topic}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -6615,7 +6645,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
-        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// Import errors are written to sharded files in this directory, one per line, as a JSON-encoded
         /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
@@ -6626,7 +6656,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the Import operation. This will be returned by the
+    /// Metadata related to the progress of the Import operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudRetailV2betaImportMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -6641,8 +6671,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Pub/Sub topic for receiving notification. If this field is set, when the import is finished, a notification
-        /// will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation. Format of the
-        /// Pub/Sub topic is `projects/{project}/topics/{topic}`.
+        /// is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of the Pub/Sub
+        /// topic is `projects/{project}/topics/{topic}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -6676,8 +6706,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Full Pub/Sub topic name for receiving notification. If this field is set, when the import is finished, a
-        /// notification will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation.
-        /// Format of the Pub/Sub topic is `projects/{project}/topics/{topic}`. It has to be within the same project as
+        /// notification is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of
+        /// the Pub/Sub topic is `projects/{project}/topics/{topic}`. It has to be within the same project as
         /// ImportProductsRequest.parent. Make sure that `service-@gcp-sa-retail.iam.gserviceaccount.com` has the
         /// `pubsub.topics.publish` IAM permission on the topic.
         /// </summary>
@@ -6696,8 +6726,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Indicates which fields in the provided imported 'products' to update. If not set, will by default update all
-        /// fields.
+        /// Indicates which fields in the provided imported `products` to update. If not set, all fields are updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }

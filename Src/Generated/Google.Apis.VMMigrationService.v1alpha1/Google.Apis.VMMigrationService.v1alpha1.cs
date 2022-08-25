@@ -5191,8 +5191,8 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     public class LocalizedMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples
-        /// are: "en-US", "fr-CH", "es-MX"
+        /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt.
+        /// Examples are: "en-US", "fr-CH", "es-MX"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; }

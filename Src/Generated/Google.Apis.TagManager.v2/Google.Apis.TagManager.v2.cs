@@ -4660,7 +4660,7 @@ namespace Google.Apis.TagManager.v2
                     /// <summary>Creates a GTM Trigger.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// GTM Workspaces's API relative path. Example:
+                    /// GTM Workspace's API relative path. Example:
                     /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Trigger body, string parent)
@@ -4680,7 +4680,7 @@ namespace Google.Apis.TagManager.v2
                         }
 
                         /// <summary>
-                        /// GTM Workspaces's API relative path. Example:
+                        /// GTM Workspace's API relative path. Example:
                         /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4820,7 +4820,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Lists all GTM Triggers of a Container.</summary>
                     /// <param name="parent">
-                    /// GTM Workspaces's API relative path. Example:
+                    /// GTM Workspace's API relative path. Example:
                     /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -4839,7 +4839,7 @@ namespace Google.Apis.TagManager.v2
                         }
 
                         /// <summary>
-                        /// GTM Workspaces's API relative path. Example:
+                        /// GTM Workspace's API relative path. Example:
                         /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -7174,8 +7174,8 @@ namespace Google.Apis.TagManager.v2.Data
 
     /// <summary>
     /// Built-in variables are a special category of variables that are pre-created and non-customizable. They provide
-    /// common functionality like accessing propeties of the gtm data layer, monitoring clicks, or accessing elements of
-    /// a page URL.
+    /// common functionality like accessing properties of the gtm data layer, monitoring clicks, or accessing elements
+    /// of a page URL.
     /// </summary>
     public class BuiltInVariable : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7537,7 +7537,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numZones")]
         public virtual string NumZones { get; set; }
 
-        /// <summary>GTM Container Versions's API relative path.</summary>
+        /// <summary>GTM Container Version's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
@@ -9101,10 +9101,6 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>User notes on how to apply this zone in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
-
-        /// <summary>Additional parameters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-        public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
         /// <summary>GTM Zone's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]

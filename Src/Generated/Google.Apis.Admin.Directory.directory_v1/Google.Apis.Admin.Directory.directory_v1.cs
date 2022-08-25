@@ -1212,7 +1212,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// once.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable ID of the Google Workspace account</param>
+        /// <param name="customerId">Immutable. ID of the Google Workspace account</param>
         /// <param name="orgUnitPath">Full path of the target organizational unit or its ID</param>
         public virtual MoveDevicesToOuRequest MoveDevicesToOu(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsMoveDevicesToOu body, string customerId, string orgUnitPath)
         {
@@ -1234,7 +1234,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account</summary>
+            /// <summary>Immutable. ID of the Google Workspace account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -1578,9 +1578,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     }
 
                     /// <summary>Gets command data a specific command issued to the device.</summary>
-                    /// <param name="customerId">Immutable. Immutable ID of the Google Workspace account.</param>
-                    /// <param name="deviceId">Immutable. Immutable ID of Chrome OS Device.</param>
-                    /// <param name="commandId">Immutable. Immutable ID of Chrome OS Device Command.</param>
+                    /// <param name="customerId">Immutable. ID of the Google Workspace account.</param>
+                    /// <param name="deviceId">Immutable. ID of Chrome OS Device.</param>
+                    /// <param name="commandId">Immutable. ID of Chrome OS Device Command.</param>
                     public virtual GetRequest Get(string customerId, string deviceId, long commandId)
                     {
                         return new GetRequest(service, customerId, deviceId, commandId);
@@ -1598,15 +1598,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             InitParameters();
                         }
 
-                        /// <summary>Immutable. Immutable ID of the Google Workspace account.</summary>
+                        /// <summary>Immutable. ID of the Google Workspace account.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string CustomerId { get; private set; }
 
-                        /// <summary>Immutable. Immutable ID of Chrome OS Device.</summary>
+                        /// <summary>Immutable. ID of Chrome OS Device.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string DeviceId { get; private set; }
 
-                        /// <summary>Immutable. Immutable ID of Chrome OS Device Command.</summary>
+                        /// <summary>Immutable. ID of Chrome OS Device Command.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("commandId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual long CommandId { get; private set; }
 
@@ -1653,8 +1653,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                 /// <summary>Issues a command for the device to execute.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="customerId">Immutable. Immutable ID of the Google Workspace account.</param>
-                /// <param name="deviceId">Immutable. Immutable ID of Chrome OS Device.</param>
+                /// <param name="customerId">Immutable. ID of the Google Workspace account.</param>
+                /// <param name="deviceId">Immutable. ID of Chrome OS Device.</param>
                 public virtual IssueCommandRequest IssueCommand(Google.Apis.Admin.Directory.directory_v1.Data.DirectoryChromeosdevicesIssueCommandRequest body, string customerId, string deviceId)
                 {
                     return new IssueCommandRequest(service, body, customerId, deviceId);
@@ -1672,11 +1672,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Immutable ID of the Google Workspace account.</summary>
+                    /// <summary>Immutable. ID of the Google Workspace account.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CustomerId { get; private set; }
 
-                    /// <summary>Immutable. Immutable ID of Chrome OS Device.</summary>
+                    /// <summary>Immutable. ID of Chrome OS Device.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DeviceId { get; private set; }
 
@@ -3763,7 +3763,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Checks whether the given user is a member of the group. Membership can be direct or nested.
+        /// Checks whether the given user is a member of the group. Membership can be direct or nested, but if nested,
+        /// the `memberKey` and `groupKey` must be entities in the same domain or an `Invalid input` error is returned.
+        /// To check for nested memberships that include entities outside of the group's domain, use the
+        /// [`checkTransitiveMembership()`](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/checkTransitiveMembership)
+        /// method in the Cloud Identity Groups API.
         /// </summary>
         /// <param name="groupKey">
         /// Identifies the group in the API request. The value can be the group's email address, group alias, or the
@@ -3779,7 +3783,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Checks whether the given user is a member of the group. Membership can be direct or nested.
+        /// Checks whether the given user is a member of the group. Membership can be direct or nested, but if nested,
+        /// the `memberKey` and `groupKey` must be entities in the same domain or an `Invalid input` error is returned.
+        /// To check for nested memberships that include entities outside of the group's domain, use the
+        /// [`checkTransitiveMembership()`](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/checkTransitiveMembership)
+        /// method in the Cloud Identity Groups API.
         /// </summary>
         public class HasMemberRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MembersHasMember>
         {
@@ -10745,6 +10753,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
     }
 
+    /// <summary>The data regarding an action to update the status of a Chrome OS device.</summary>
     public class ChromeOsDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Action to be taken on the Chrome OS device.</summary>

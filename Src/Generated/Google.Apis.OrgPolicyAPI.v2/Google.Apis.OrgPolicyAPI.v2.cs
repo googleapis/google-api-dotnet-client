@@ -814,6 +814,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
         {
             this.service = service;
             Constraints = new ConstraintsResource(service);
+            CustomConstraints = new CustomConstraintsResource(service);
             Policies = new PoliciesResource(service);
         }
 
@@ -913,6 +914,349 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the CustomConstraints resource.</summary>
+        public virtual CustomConstraintsResource CustomConstraints { get; }
+
+        /// <summary>The "customConstraints" collection of methods.</summary>
+        public class CustomConstraintsResource
+        {
+            private const string Resource = "customConstraints";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CustomConstraintsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the
+            /// constraint already exists on the given organization.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Must be in the following form: * `organizations/{organization_id}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the
+            /// constraint already exists on the given organization.
+            /// </summary>
+            public class CreateRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Must be in the following form: * `organizations/{organization_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/customConstraints";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// constraint does not exist.
+            /// </summary>
+            /// <param name="name">
+            /// Required. Name of the custom constraint to delete. See `CustomConstraint` for naming rules.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// Deletes a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// constraint does not exist.
+            /// </summary>
+            public class DeleteRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the custom constraint to delete. See `CustomConstraint` for naming rules.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/customConstraints/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// CustomConstraint does not exist.
+            /// </summary>
+            /// <param name="name">
+            /// Required. Resource name of the custom constraint. See `CustomConstraint` for naming requirements.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// CustomConstraint does not exist.
+            /// </summary>
+            public class GetRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the custom constraint. See `CustomConstraint` for naming requirements.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/customConstraints/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves all of the `CustomConstraints` that exist on a particular organization resource.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The target Cloud resource that parents the set of custom constraints that will be returned
+            /// from this call. Must be in one of the following forms: * `organizations/{organization_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Retrieves all of the `CustomConstraints` that exist on a particular organization resource.
+            /// </summary>
+            public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The target Cloud resource that parents the set of custom constraints that will be returned
+                /// from this call. Must be in one of the following forms: * `organizations/{organization_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
+                /// at any point start using this field to limit page size.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
+                /// server may at any point start using this field.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/customConstraints";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be
+            /// * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
+            /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
+            /// </summary>
+            public class PatchRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should
+                /// be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
+                /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/customConstraints/[^/]+$",
                     });
                 }
             }
@@ -1961,6 +2305,55 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A custom constraint defined by customers which can *only* be applied to the given resource types and
+    /// organization. By creating a custom constraint, customers can applied policies of this custom constraint.
+    /// *Creating a custom constraint itself does NOT apply any policy enforcement*.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2CustomConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow or deny type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'`
+        /// or, `resource.management.auto_upgrade == true`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Detailed information about this custom policy constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>One line display name for the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>All the operations being applied for this constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodTypes")]
+        public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
+
+        /// <summary>
+        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
+        /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/"
+        /// Example: * `compute.googleapis.com/Instance`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response returned from the ListConstraints method.</summary>
     public class GoogleCloudOrgpolicyV2ListConstraintsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1969,6 +2362,30 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2Constraint> Constraints { get; set; }
 
         /// <summary>Page token used to retrieve the next page. This is currently not used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The response returned from the ListCustomConstraints method. It will be empty if no `CustomConstraints` are set
+    /// on the organization resource.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// All `CustomConstraints` that exist on the organization resource. It will be empty if no `CustomConstraints`
+        /// are set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2CustomConstraint> CustomConstraints { get; set; }
+
+        /// <summary>
+        /// Page token used to retrieve the next page. This is currently not used, but the server may at any point start
+        /// supplying a valid token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

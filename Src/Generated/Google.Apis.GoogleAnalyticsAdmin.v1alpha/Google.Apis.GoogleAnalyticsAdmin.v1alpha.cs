@@ -1575,7 +1575,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
-            /// <summary>Lookup for a single Audience. Audiences created before 2020 may not be supported.</summary>
+            /// <summary>
+            /// Lookup for a single Audience. Audiences created before 2020 may not be supported. Default audiences will
+            /// not show filter definitions.
+            /// </summary>
             /// <param name="name">
             /// Required. The name of the Audience to get. Example format: properties/1234/audiences/5678
             /// </param>
@@ -1584,7 +1587,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Lookup for a single Audience. Audiences created before 2020 may not be supported.</summary>
+            /// <summary>
+            /// Lookup for a single Audience. Audiences created before 2020 may not be supported. Default audiences will
+            /// not show filter definitions.
+            /// </summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1624,14 +1630,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
-            /// <summary>Lists Audiences on a property. Audiences created before 2020 may not be supported.</summary>
+            /// <summary>
+            /// Lists Audiences on a property. Audiences created before 2020 may not be supported. Default audiences
+            /// will not show filter definitions.
+            /// </summary>
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists Audiences on a property. Audiences created before 2020 may not be supported.</summary>
+            /// <summary>
+            /// Lists Audiences on a property. Audiences created before 2020 may not be supported. Default audiences
+            /// will not show filter definitions.
+            /// </summary>
             public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListAudiencesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

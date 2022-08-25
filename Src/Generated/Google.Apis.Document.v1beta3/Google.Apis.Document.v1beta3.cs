@@ -1892,9 +1892,17 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>Total number of documents that failed to be deleted in storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorDocumentCount")]
+        public virtual System.Nullable<int> ErrorDocumentCount { get; set; }
+
         /// <summary>The list of response details of each document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualBatchDeleteStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus> IndividualBatchDeleteStatuses { get; set; }
+
+        /// <summary>Total number of documents deleting from dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
+        public virtual System.Nullable<int> TotalDocumentCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1907,7 +1915,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
 
-        /// <summary>The status of deleting the document.</summary>
+        /// <summary>The status of deleting the document in storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
@@ -2186,6 +2194,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>Validation statuses of the batch documents import config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importConfigValidationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult> ImportConfigValidationResults { get; set; }
+
         /// <summary>The list of response details of each document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualImportStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus> IndividualImportStatuses { get; set; }
@@ -2193,6 +2205,24 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Total number of the documents that are qualified for importing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
         public virtual System.Nullable<int> TotalDocumentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The validation status of each import config. Status is set to errors if there is no documents to import in the
+    /// import_config, or OK if the operation will try to proceed at least one document.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source Cloud Storage URI specified in the import config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
+        public virtual string InputGcsSource { get; set; }
+
+        /// <summary>The validation status of import config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2234,32 +2264,55 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
         /// <summary>
-        /// Returns the newly added document Cloud Storage prefix if the documents are founded in Cloud Storage while
-        /// not in Document Service storage.
+        /// The list of dataset resync statuses. Not checked when `dataset_documents` is specified in ResyncRequest.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newlyAddedDocuments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument> NewlyAddedDocuments { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetResyncStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus> DatasetResyncStatuses { get; set; }
+
+        /// <summary>
+        /// The list of document resync statuses. The same document could have multiple
+        /// `individual_document_resync_statuses` if it has multiple inconsistencies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualDocumentResyncStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus> IndividualDocumentResyncStatuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The proto for updated document in resync pipeline.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Resync status against inconsistency types on the dataset level.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The prefix of cloud storage, identifies the destination document which should be updated by resync pipeline.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationPrefix")]
-        public virtual string DestinationPrefix { get; set; }
+        /// <summary>The type of the inconsistency of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetInconsistencyType")]
+        public virtual string DatasetInconsistencyType { get; set; }
 
         /// <summary>
-        /// The prefix of cloud storage, identifies the original document which should be updated by resync pipeline.
+        /// The status of resyncing the dataset with regards to the detected inconsistency. Empty if `validate_only` is
+        /// true in the request.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourcePrefix")]
-        public virtual string SourcePrefix { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
-        /// <summary>The final status of the documents which should be updated by resync pipeline.</summary>
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resync status for each document per inconsistency type.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The document identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>The type of document inconsistency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentInconsistencyType")]
+        public virtual string DocumentInconsistencyType { get; set; }
+
+        /// <summary>
+        /// The status of resyncing the document with regards to the detected inconsistency. Empty if `validate_only` is
+        /// true in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
@@ -2889,14 +2942,6 @@ namespace Google.Apis.Document.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
-
-        /// <summary>
-        /// Optional. This attribute indicates that the processing didn't actually identify this entity, but a
-        /// confidence score was assigned that represent the potential that this could be a false negative. A
-        /// non-present entity should have an empty mention_text and text_anchor.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nonPresent")]
-        public virtual System.Nullable<bool> NonPresent { get; set; }
 
         /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
@@ -4071,14 +4116,6 @@ namespace Google.Apis.Document.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
-
-        /// <summary>
-        /// Optional. This attribute indicates that the processing didn't actually identify this entity, but a
-        /// confidence score was assigned that represent the potential that this could be a false negative. A
-        /// non-present entity should have an empty mention_text and text_anchor.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nonPresent")]
-        public virtual System.Nullable<bool> NonPresent { get; set; }
 
         /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
@@ -5521,14 +5558,6 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string MentionText { get; set; }
 
         /// <summary>
-        /// Optional. This attribute indicates that the processing didn't actually identify this entity, but a
-        /// confidence score was assigned that represent the potential that this could be a false negative. A
-        /// non-present entity should have an empty mention_text and text_anchor.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nonPresent")]
-        public virtual System.Nullable<bool> NonPresent { get; set; }
-
-        /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
         /// address) is not supported for certain parsers. This field is also only populated for certain supported
         /// document types.
@@ -6312,6 +6341,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Metadata for the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3EntityTypeMetadata EntityTypeMetadata { get; set; }
+
         /// <summary>
         /// If specified, lists all the possible values for this entity. This should not be more than a handful of
         /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
@@ -6323,7 +6356,7 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>
         /// Name of the type. It must be unique within the schema file and cannot be a 'Common Type'. Besides that we
         /// use the following naming conventions: - *use snake_casing* - name matching is case-insensitive - Maximum 64
-        /// characters. - Must start with a letter. - Allowed characters: ASCII letters [a-z0-9_-]. (For backward
+        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         /// compatibility internal infrastructure and tooling can handle any ascii character) - The '/' is sometimes
         /// used to denote a property of a type. For example line_item/amount. This convention is deprecated, but will
         /// still be honored for backward compatibility.
@@ -6360,6 +6393,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Occurrence type limits the number of instances an entity type appears in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
         public virtual string OccurrenceType { get; set; }
+
+        /// <summary>Any additional metadata about the property can be added here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3PropertyMetadata PropertyMetadata { get; set; }
 
         /// <summary>
         /// A reference to the value type of the property. This type is subject to the same conventions as the
@@ -6569,6 +6606,29 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about an entity type.</summary>
+    public class GoogleCloudDocumentaiV1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human review labeling config on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
+
+        /// <summary>Human review config on the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
+
+        /// <summary>Whether the entity type should be considered as "inactive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
+
+        /// <summary>If set, the properties of this entity type must be prefixed with the parents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixedNamingOnProperties")]
+        public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for fetch processor types.</summary>
     public class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6617,6 +6677,17 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for human review labeling config.</summary>
+    public class GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to enable normalization editing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNormalizationEditing")]
+        public virtual System.Nullable<bool> EnableNormalizationEditing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6635,6 +6706,21 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>A message providing more details about the human review state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for Human Review config.</summary>
+    public class GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence threshold if human review validation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
+        public virtual System.Nullable<float> ConfidenceThreshold { get; set; }
+
+        /// <summary>Whether to enable human review validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableValidation")]
+        public virtual System.Nullable<bool> EnableValidation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6910,6 +6996,25 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>If set, the processor version that will be used as a replacement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
         public virtual string ReplacementProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a property.</summary>
+    public class GoogleCloudDocumentaiV1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human review labeling config on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
+
+        /// <summary>Human review validation config on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
+
+        /// <summary>Whether the property should be considered as "inactive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

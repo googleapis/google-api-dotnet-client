@@ -728,6 +728,53 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
 }
 namespace Google.Apis.MyBusinessPlaceActions.v1.Data
 {
+    /// <summary>Day level availability.</summary>
+    public class AvailableDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An available date for a fulfillment method. Assumed to be in merchant's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentDate")]
+        public virtual Date FulfillmentDate { get; set; }
+
+        /// <summary>
+        /// Unix timestamp. The last time till when, a user could place an order to be received by `fulfillment_date`.
+        /// In other words, after last_ordering_time, fulfillment_date will no longer be shown as available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastOrderingTime")]
+        public virtual object LastOrderingTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -735,6 +782,61 @@ namespace Google.Apis.MyBusinessPlaceActions.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fee details for the fulfillment method associated with the action.</summary>
+    public class FeeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base fee associated with the fulfillment method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseFee")]
+        public virtual MinimumFee BaseFee { get; set; }
+
+        /// <summary>The fixed fee associated with the fulfillment method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFee")]
+        public virtual FixedFee FixedFee { get; set; }
+
+        /// <summary>No fee for the fulfillment method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noFee")]
+        public virtual NoFee NoFee { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The fixed fee required for the fulfillment method.</summary>
+    public class FixedFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of the fixed fee for the fulfillment method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Money Amount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The fulfillment option for an order online action.</summary>
+    public class FulfillmentOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of days on which there is availability for this fulfillment method (preferably at least 2).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableDay")]
+        public virtual System.Collections.Generic.IList<AvailableDay> AvailableDay { get; set; }
+
+        /// <summary>Fee details for the fulfillment method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feeDetails")]
+        public virtual FeeDetails FeeDetails { get; set; }
+
+        /// <summary>Fulfillment type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentType")]
+        public virtual string FulfillmentType { get; set; }
+
+        /// <summary>Minimum order for the fulfillment method associated with the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumOrder")]
+        public virtual Money MinimumOrder { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -776,6 +878,61 @@ namespace Google.Apis.MyBusinessPlaceActions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The minimum fee required for the fulfillment method.</summary>
+    public class MinimumFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base fee amount for the fulfillment method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseFeeAmount")]
+        public virtual Money BaseFeeAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>No fee required for the fulfillment method associated with the action.</summary>
+    public class NoFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Client version of the metadata for an order online action.</summary>
+    public class OrderOnlineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Available fulfillment options for an order online action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentOption")]
+        public virtual System.Collections.Generic.IList<FulfillmentOption> FulfillmentOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a place action link and its attributes.</summary>
     public class PlaceActionLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -804,6 +961,12 @@ namespace Google.Apis.MyBusinessPlaceActions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Metadata for the order online link. Supports action with PlaceActionType of SHOP_ONLINE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderOnlineMetadata")]
+        public virtual OrderOnlineMetadata OrderOnlineMetadata { get; set; }
 
         /// <summary>Required. The type of place action that can be performed using this link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeActionType")]
