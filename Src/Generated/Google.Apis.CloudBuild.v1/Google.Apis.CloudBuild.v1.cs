@@ -34,6 +34,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="initializer">The service initializer.</param>
         public CloudBuildService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            GithubDotComWebhook = new GithubDotComWebhookResource(this);
             Locations = new LocationsResource(this);
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
@@ -84,6 +85,9 @@ namespace Google.Apis.CloudBuild.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the GithubDotComWebhook resource.</summary>
+        public virtual GithubDotComWebhookResource GithubDotComWebhook { get; }
 
         /// <summary>Gets the Locations resource.</summary>
         public virtual LocationsResource Locations { get; }
@@ -276,6 +280,75 @@ namespace Google.Apis.CloudBuild.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "githubDotComWebhook" collection of methods.</summary>
+    public class GithubDotComWebhookResource
+    {
+        private const string Resource = "githubDotComWebhook";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GithubDotComWebhookResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ReceiveRequest Receive(Google.Apis.CloudBuild.v1.Data.HttpBody body)
+        {
+            return new ReceiveRequest(service, body);
+        }
+
+        /// <summary>ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook.</summary>
+        public class ReceiveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Receive request.</summary>
+            public ReceiveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.HttpBody body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// For GitHub Enterprise webhooks, this key is used to associate the webhook request with the
+            /// GitHubEnterpriseConfig to use for validation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("webhookKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string WebhookKey { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudBuild.v1.Data.HttpBody Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "receive";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/githubDotComWebhook:receive";
+
+            /// <summary>Initializes Receive parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("webhookKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "webhookKey",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 

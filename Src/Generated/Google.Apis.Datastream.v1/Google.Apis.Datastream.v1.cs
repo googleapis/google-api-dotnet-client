@@ -2787,6 +2787,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleExcludedObjects")]
         public virtual OracleRdbms OracleExcludedObjects { get; set; }
 
+        /// <summary>PostgreSQL data source objects to avoid backfilling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlExcludedObjects")]
+        public virtual PostgresqlRdbms PostgresqlExcludedObjects { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2825,6 +2829,35 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BigQueryDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field
+        /// will only affect new tables created in the future, but existing tables will not be impacted. Lower values
+        /// mean that queries will return fresher data, but may result in higher cost.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFreshness")]
+        public virtual object DataFreshness { get; set; }
+
+        /// <summary>Single destination dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleTargetDataset")]
+        public virtual SingleTargetDataset SingleTargetDataset { get; set; }
+
+        /// <summary>Source hierarchy datasets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceHierarchyDatasets")]
+        public virtual SourceHierarchyDatasets SourceHierarchyDatasets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BigQuery warehouse profile.</summary>
+    public class BigQueryProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2837,6 +2870,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// </summary>
     public class ConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>BigQuery Connection Profile configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryProfile")]
+        public virtual BigQueryProfile BigqueryProfile { get; set; }
+
         /// <summary>Output only. The create time of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -2869,6 +2906,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleProfile")]
         public virtual OracleProfile OracleProfile { get; set; }
 
+        /// <summary>PostgreSQL Connection Profile configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlProfile")]
+        public virtual PostgresqlProfile PostgresqlProfile { get; set; }
+
         /// <summary>Private connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
@@ -2885,9 +2926,43 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Dataset template used for dynamic dataset creation.</summary>
+    public class DatasetTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name
+        /// will be separated by an underscore. i.e. _.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetIdPrefix")]
+        public virtual string DatasetIdPrefix { get; set; }
+
+        /// <summary>
+        /// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery
+        /// Service Account associated with your project requires access to this encryption key. i.e.
+        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See
+        /// https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Required. The geographic location where the dataset should reside. See
+        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of the stream destination.</summary>
     public class DestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>BigQuery destination configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestinationConfig")]
+        public virtual BigQueryDestinationConfig BigqueryDestinationConfig { get; set; }
+
         /// <summary>
         /// Required. Destination connection profile resource. Format:
         /// `projects/{project}/locations/{location}/connectionProfiles/{name}`
@@ -2932,6 +3007,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleRdbms")]
         public virtual OracleRdbms OracleRdbms { get; set; }
 
+        /// <summary>PostgreSQL RDBMS to enrich with child data objects and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
+        public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2946,6 +3025,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Enriched Oracle RDBMS object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleRdbms")]
         public virtual OracleRdbms OracleRdbms { get; set; }
+
+        /// <summary>Enriched PostgreSQL RDBMS object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
+        public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3713,6 +3796,159 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PostgreSQL Column.</summary>
+    public class PostgresqlColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Column name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>The PostgreSQL data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Column length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Whether or not the column can accept a null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
+
+        /// <summary>The ordinal position of the column in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
+        public virtual System.Nullable<int> OrdinalPosition { get; set; }
+
+        /// <summary>Column precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<int> Precision { get; set; }
+
+        /// <summary>Whether or not the column represents a primary key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKey")]
+        public virtual System.Nullable<bool> PrimaryKey { get; set; }
+
+        /// <summary>Column scale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL data source object identifier.</summary>
+    public class PostgresqlObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Required. The table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL database profile.</summary>
+    public class PostgresqlProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Database for the PostgreSQL connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Required. Hostname for the PostgreSQL connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Required. Password for the PostgreSQL connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Port for the PostgreSQL connection, default value is 5432.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Required. Username for the PostgreSQL connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL database structure.</summary>
+    public class PostgresqlRdbms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PostgreSQL schemas in the database server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlSchemas")]
+        public virtual System.Collections.Generic.IList<PostgresqlSchema> PostgresqlSchemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL schema.</summary>
+    public class PostgresqlSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tables in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlTables")]
+        public virtual System.Collections.Generic.IList<PostgresqlTable> PostgresqlTables { get; set; }
+
+        /// <summary>Schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL data source configuration</summary>
+    public class PostgresqlSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PostgreSQL objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual PostgresqlRdbms ExcludeObjects { get; set; }
+
+        /// <summary>PostgreSQL objects to include in the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual PostgresqlRdbms IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. The name of the publication that includes the set of all tables that are defined in the stream's
+        /// include_objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publication")]
+        public virtual string Publication { get; set; }
+
+        /// <summary>
+        /// Required. The name of the logical replication slot that's configured with the pgoutput plugin.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationSlot")]
+        public virtual string ReplicationSlot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL table.</summary>
+    public class PostgresqlTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes
+        /// everything.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlColumns")]
+        public virtual System.Collections.Generic.IList<PostgresqlColumn> PostgresqlColumns { get; set; }
+
+        /// <summary>Table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's
     /// network.
@@ -3807,6 +4043,16 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single target dataset to which all data will be streamed.</summary>
+    public class SingleTargetDataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of the stream source.</summary>
     public class SourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3818,12 +4064,28 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleSourceConfig")]
         public virtual OracleSourceConfig OracleSourceConfig { get; set; }
 
+        /// <summary>PostgreSQL data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlSourceConfig")]
+        public virtual PostgresqlSourceConfig PostgresqlSourceConfig { get; set; }
+
         /// <summary>
         /// Required. Source connection profile resoource. Format:
         /// `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConnectionProfile")]
         public virtual string SourceConnectionProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+    /// </summary>
+    public class SourceHierarchyDatasets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetTemplate")]
+        public virtual DatasetTemplate DatasetTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3839,6 +4101,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Oracle data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleIdentifier")]
         public virtual OracleObjectIdentifier OracleIdentifier { get; set; }
+
+        /// <summary>PostgreSQL data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlIdentifier")]
+        public virtual PostgresqlObjectIdentifier PostgresqlIdentifier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

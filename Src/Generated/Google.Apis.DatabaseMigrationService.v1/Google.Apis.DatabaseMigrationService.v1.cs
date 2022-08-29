@@ -2414,6 +2414,51 @@ namespace Google.Apis.DatabaseMigrationService.v1
 namespace Google.Apis.DatabaseMigrationService.v1.Data
 {
     /// <summary>
+    /// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+    /// </summary>
+    public class AlloyDbConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The AlloyDB cluster ID that this connection profile is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>Immutable. Metadata used to create the destination AlloyDB cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual AlloyDbSettings Settings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for creating an AlloyDB cluster.</summary>
+    public class AlloyDbSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. Initial user to setup during cluster creation. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialUser")]
+        public virtual UserPassword InitialUser { get; set; }
+
+        /// <summary>
+        /// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryInstanceSettings")]
+        public virtual PrimaryInstanceSettings PrimaryInstanceSettings { get; set; }
+
+        /// <summary>
+        /// Required. The resource link for the VPC network in which cluster resources are created and from which they
+        /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
+        /// in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
+        public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
     /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
@@ -2655,6 +2700,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>A connection profile definition.</summary>
     public class ConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An AlloyDB cluster connection profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydb")]
+        public virtual AlloyDbConnectionProfile Alloydb { get; set; }
+
         /// <summary>A CloudSQL database connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudsql")]
         public virtual CloudSqlConnectionProfile Cloudsql { get; set; }
@@ -2980,6 +3029,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MachineConfig describes the configuration of a machine.</summary>
+    public class MachineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of CPU's in the VM instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
+        public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a Database Migration Service migration job object.</summary>
     public class MigrationJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3275,6 +3335,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string Host { get; set; }
 
         /// <summary>
+        /// Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's
+        /// associated with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkArchitecture")]
+        public virtual string NetworkArchitecture { get; set; }
+
+        /// <summary>
         /// Required. Input only. The password for the user that Database Migration Service will be using to connect to
         /// the database. This field is not returned on request, and the value is encrypted when stored in Database
         /// Migration Service.
@@ -3300,6 +3367,43 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for the cluster's primary instance</summary>
+    public class PrimaryInstanceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB
+        /// documentation for how these can be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseFlags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DatabaseFlags { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Configuration for the machines that host the underlying database engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineConfig")]
+        public virtual MachineConfig MachineConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The private IP address for the Instance. This is the connection endpoint for an end-user
+        /// application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIp")]
+        public virtual string PrivateIp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3561,6 +3665,27 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The username/password for a database user. Used for specifying initial users at cluster creation time.
+    /// </summary>
+    public class UserPassword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The initial password for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Output only. Indicates if the initial_user.password field has been set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSet")]
+        public virtual System.Nullable<bool> PasswordSet { get; set; }
+
+        /// <summary>The database username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

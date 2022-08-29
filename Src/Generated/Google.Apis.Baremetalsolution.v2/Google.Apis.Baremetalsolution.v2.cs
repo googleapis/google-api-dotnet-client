@@ -1162,6 +1162,104 @@ namespace Google.Apis.Baremetalsolution.v2
                     this.service = service;
                 }
 
+                /// <summary>Create an NFS share.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent project and location.</param>
+                public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.NfsShare body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create an NFS share.</summary>
+                public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.NfsShare body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent project and location.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.NfsShare Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/nfsShares";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete an NFS share. The underlying volume is automatically deleted.</summary>
+                /// <param name="name">Required. The name of the NFS share to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Delete an NFS share. The underlying volume is automatically deleted.</summary>
+                public class DeleteRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the NFS share to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/nfsShares/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Get details of a single NFS share.</summary>
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
@@ -1293,7 +1391,7 @@ namespace Google.Apis.Baremetalsolution.v2
 
                 /// <summary>Update details of a single NFS share.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The name of the NFS share.</param>
+                /// <param name="name">Immutable. The name of the NFS share.</param>
                 public virtual PatchRequest Patch(Google.Apis.Baremetalsolution.v2.Data.NfsShare body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1310,12 +1408,13 @@ namespace Google.Apis.Baremetalsolution.v2
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The name of the NFS share.</summary>
+                    /// <summary>Immutable. The name of the NFS share.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// The list of fields to update. The only currently supported fields are: `labels`
+                    /// `allowed_clients`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2367,7 +2466,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("noRootSquash")]
         public virtual System.Nullable<bool> NoRootSquash { get; set; }
 
-        /// <summary>The IP address of the share on this network.</summary>
+        /// <summary>
+        /// Output only. The IP address of the share on this network. Assigned automatically during provisioning based
+        /// on the network's services_cidr.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareIp")]
         public virtual string ShareIp { get; set; }
 
@@ -2940,6 +3042,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
+        /// <summary>Whether network uses standard frames or jumbo ones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jumboFramesEnabled")]
+        public virtual System.Nullable<bool> JumboFramesEnabled { get; set; }
+
         /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2948,6 +3054,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
         public virtual System.Collections.Generic.IList<string> MacAddress { get; set; }
 
+        /// <summary>Input only. List of mount points to attach the network to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPoints")]
+        public virtual System.Collections.Generic.IList<NetworkMountPoint> MountPoints { get; set; }
+
         /// <summary>
         /// Output only. The resource name of this `Network`. Resource names are schemeless URIs that follow the
         /// conventions in https://cloud.google.com/apis/design/resource_names. Format:
@@ -2955,6 +3065,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Pod name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
 
         /// <summary>
         /// List of IP address reservations in this network. When updating this field, an error will be generated if a
@@ -3090,6 +3204,29 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Mount point for a network.</summary>
+    public class NetworkMountPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Network should be a default gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultGateway")]
+        public virtual System.Nullable<bool> DefaultGateway { get; set; }
+
+        /// <summary>Instance to attach network to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>Ip address of the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Logical interface to detach from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalInterface")]
+        public virtual string LogicalInterface { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Network with all used IP addresses.</summary>
     public class NetworkUsage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3161,7 +3298,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The name of the NFS share.</summary>
+        /// <summary>Immutable. The name of the NFS share.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3176,11 +3313,17 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedSizeGib")]
         public virtual System.Nullable<long> RequestedSizeGib { get; set; }
 
-        /// <summary>The state of the NFS share.</summary>
+        /// <summary>Output only. The state of the NFS share.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The volume containing the share.</summary>
+        /// <summary>Immutable. The storage type of the underlying volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageType")]
+        public virtual string StorageType { get; set; }
+
+        /// <summary>
+        /// Output only. The underlying volume of the share. Created automatically during provisioning.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volume")]
         public virtual string Volume { get; set; }
 
@@ -3566,7 +3709,11 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The QOS policy applied to this VRF.</summary>
+        /// <summary>
+        /// The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same
+        /// QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is
+        /// left for backward-compatibility.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qosPolicy")]
         public virtual QosPolicy QosPolicy { get; set; }
 
@@ -3585,6 +3732,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>VLAN attachment details.</summary>
     public class VlanAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Input only. Pairing key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
+        public virtual string PairingKey { get; set; }
+
         /// <summary>The peer IP of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIp")]
         public virtual string PeerIp { get; set; }
@@ -3592,6 +3743,12 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The peer vlan ID of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerVlanId")]
         public virtual System.Nullable<long> PeerVlanId { get; set; }
+
+        /// <summary>
+        /// The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qosPolicy")]
+        public virtual QosPolicy QosPolicy { get; set; }
 
         /// <summary>The router IP of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routerIp")]

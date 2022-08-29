@@ -3623,10 +3623,7 @@ namespace Google.Apis.Appengine.v1beta
 }
 namespace Google.Apis.Appengine.v1beta.Data
 {
-    /// <summary>
-    /// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API
-    /// handlers.
-    /// </summary>
+    /// <summary>Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.</summary>
     public class ApiConfigHandler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4267,10 +4264,10 @@ namespace Google.Apis.Appengine.v1beta.Data
     }
 
     /// <summary>
-    /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling
-    /// for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment
-    /// deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service
-    /// Management API (https://cloud.google.com/service-management/overview).
+    /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides
+    /// tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible
+    /// environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the
+    /// Service Management API (https://cloud.google.com/service-management/overview).
     /// </summary>
     public class EndpointsApiService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5581,9 +5578,8 @@ namespace Google.Apis.Appengine.v1beta.Data
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Serving configuration for Google Cloud Endpoints
-        /// (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is
-        /// set.
+        /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET
+        /// requests if view=FULL is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; }
