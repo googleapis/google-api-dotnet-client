@@ -1515,6 +1515,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputError")]
         public virtual Status OutputError { get; set; }
 
+        /// <summary>
+        /// The ID associated with the request. This is a unique ID specific only to the given request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual System.Nullable<long> RequestId { get; set; }
+
         /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
@@ -1939,6 +1945,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// </summary>
     public class RecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The ID associated with the request. This is a unique ID specific only to the given request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual System.Nullable<long> RequestId { get; set; }
+
         /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }

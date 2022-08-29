@@ -4712,9 +4712,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that
-        /// reflect a customer's organizational needs and deployment strategies. They can be used to filter resources
-        /// and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular
+        /// Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a
+        /// customer's organizational needs and deployment strategies. They can be used to filter resources and
+        /// aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular
         /// expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform
         /// to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a
         /// given resource. * Keys and values must both be under 128 bytes.
@@ -4736,7 +4736,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Required. The type of the instance. Defaults to `PRODUCTION`.</summary>
+        /// <summary>The type of the instance. Defaults to `PRODUCTION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

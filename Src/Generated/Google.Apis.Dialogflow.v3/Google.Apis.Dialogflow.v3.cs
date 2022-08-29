@@ -15422,6 +15422,13 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Metadata for ConversationDatasets.</summary>
     public class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The resource name of the conversation dataset that will be created. Format:
+        /// `projects//locations//conversationDatasets/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationDataset")]
+        public virtual string ConversationDataset { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

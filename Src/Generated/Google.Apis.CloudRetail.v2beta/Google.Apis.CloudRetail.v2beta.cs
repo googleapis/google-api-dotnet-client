@@ -321,6 +321,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     Branches = new BranchesResource(service);
                     CompletionData = new CompletionDataResource(service);
                     Controls = new ControlsResource(service);
+                    Models = new ModelsResource(service);
                     Operations = new OperationsResource(service);
                     Placements = new PlacementsResource(service);
                     ServingConfigs = new ServingConfigsResource(service);
@@ -716,8 +717,8 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
-                        /// enable Retail Search on Cloud Console before using this feature.
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
+                        /// Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -740,8 +741,8 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
-                        /// enable Retail Search on Cloud Console before using this feature.
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
+                        /// Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class AddFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -804,8 +805,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
                         /// conflicting updates are issued, the Operations associated with the stale updates will not be
                         /// marked as done until being obsolete. This feature is only available for users who have
-                        /// Retail Search enabled. Please enable Retail Search on Cloud Console before using this
-                        /// feature.
+                        /// Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -831,8 +831,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
                         /// conflicting updates are issued, the Operations associated with the stale updates will not be
                         /// marked as done until being obsolete. This feature is only available for users who have
-                        /// Retail Search enabled. Please enable Retail Search on Cloud Console before using this
-                        /// feature.
+                        /// Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class AddLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1383,8 +1382,8 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
-                        /// enable Retail Search on Cloud Console before using this feature.
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
+                        /// Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1407,8 +1406,8 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Please
-                        /// enable Retail Search on Cloud Console before using this feature.
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
+                        /// Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class RemoveFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1469,8 +1468,8 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will
                         /// return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated
                         /// with the stale updates will not be marked as done until being obsolete. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// available for users who have Retail Search enabled. Enable Retail Search on Cloud Console
+                        /// before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1494,8 +1493,8 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will
                         /// return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated
                         /// with the stale updates will not be marked as done until being obsolete. This feature is only
-                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
-                        /// Console before using this feature.
+                        /// available for users who have Retail Search enabled. Enable Retail Search on Cloud Console
+                        /// before using this feature.
                         /// </summary>
                         public class RemoveLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1549,24 +1548,23 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// <summary>
                         /// Updates inventory information for a Product while respecting the last update timestamps of
                         /// each inventory field. This process is asynchronous and does not require the Product to exist
-                        /// before updating fulfillment information. If the request is valid, the update will be
-                        /// enqueued and processed downstream. As a consequence, when a response is returned, updates
-                        /// are not immediately manifested in the Product queried by ProductService.GetProduct or
+                        /// before updating fulfillment information. If the request is valid, the update is enqueued and
+                        /// processed downstream. As a consequence, when a response is returned, updates are not
+                        /// immediately manifested in the Product queried by ProductService.GetProduct or
                         /// ProductService.ListProducts. When inventory is updated with ProductService.CreateProduct and
-                        /// ProductService.UpdateProduct, the specified inventory field value(s) will overwrite any
-                        /// existing value(s) while ignoring the last update time for this field. Furthermore, the last
-                        /// update time for the specified inventory fields will be overwritten to the time of the
+                        /// ProductService.UpdateProduct, the specified inventory field value(s) overwrite any existing
+                        /// value(s) while ignoring the last update time for this field. Furthermore, the last update
+                        /// times for the specified inventory fields are overwritten by the times of the
                         /// ProductService.CreateProduct or ProductService.UpdateProduct request. If no inventory fields
                         /// are set in CreateProductRequest.product, then any pre-existing inventory information for
-                        /// this product will be used. If no inventory fields are set in SetInventoryRequest.set_mask,
-                        /// then any existing inventory information will be preserved. Pre-existing inventory
-                        /// information can only be updated with ProductService.SetInventory,
-                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. The
-                        /// returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND
-                        /// afterwards. If conflicting updates are issued, the Operations associated with the stale
-                        /// updates will not be marked as done until being obsolete. This feature is only available for
-                        /// users who have Retail Search enabled. Please enable Retail Search on Cloud Console before
-                        /// using this feature.
+                        /// this product is used. If no inventory fields are set in SetInventoryRequest.set_mask, then
+                        /// any existing inventory information is preserved. Pre-existing inventory information can only
+                        /// be updated with ProductService.SetInventory, ProductService.AddFulfillmentPlaces, and
+                        /// ProductService.RemoveFulfillmentPlaces. The returned Operations is obsolete after one day,
+                        /// and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting updates are issued,
+                        /// the Operations associated with the stale updates are not marked as done until they are
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
+                        /// Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -1581,24 +1579,23 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// <summary>
                         /// Updates inventory information for a Product while respecting the last update timestamps of
                         /// each inventory field. This process is asynchronous and does not require the Product to exist
-                        /// before updating fulfillment information. If the request is valid, the update will be
-                        /// enqueued and processed downstream. As a consequence, when a response is returned, updates
-                        /// are not immediately manifested in the Product queried by ProductService.GetProduct or
+                        /// before updating fulfillment information. If the request is valid, the update is enqueued and
+                        /// processed downstream. As a consequence, when a response is returned, updates are not
+                        /// immediately manifested in the Product queried by ProductService.GetProduct or
                         /// ProductService.ListProducts. When inventory is updated with ProductService.CreateProduct and
-                        /// ProductService.UpdateProduct, the specified inventory field value(s) will overwrite any
-                        /// existing value(s) while ignoring the last update time for this field. Furthermore, the last
-                        /// update time for the specified inventory fields will be overwritten to the time of the
+                        /// ProductService.UpdateProduct, the specified inventory field value(s) overwrite any existing
+                        /// value(s) while ignoring the last update time for this field. Furthermore, the last update
+                        /// times for the specified inventory fields are overwritten by the times of the
                         /// ProductService.CreateProduct or ProductService.UpdateProduct request. If no inventory fields
                         /// are set in CreateProductRequest.product, then any pre-existing inventory information for
-                        /// this product will be used. If no inventory fields are set in SetInventoryRequest.set_mask,
-                        /// then any existing inventory information will be preserved. Pre-existing inventory
-                        /// information can only be updated with ProductService.SetInventory,
-                        /// ProductService.AddFulfillmentPlaces, and ProductService.RemoveFulfillmentPlaces. The
-                        /// returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND
-                        /// afterwards. If conflicting updates are issued, the Operations associated with the stale
-                        /// updates will not be marked as done until being obsolete. This feature is only available for
-                        /// users who have Retail Search enabled. Please enable Retail Search on Cloud Console before
-                        /// using this feature.
+                        /// this product is used. If no inventory fields are set in SetInventoryRequest.set_mask, then
+                        /// any existing inventory information is preserved. Pre-existing inventory information can only
+                        /// be updated with ProductService.SetInventory, ProductService.AddFulfillmentPlaces, and
+                        /// ProductService.RemoveFulfillmentPlaces. The returned Operations is obsolete after one day,
+                        /// and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting updates are issued,
+                        /// the Operations associated with the stale updates are not marked as done until they are
+                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
+                        /// Retail Search on Cloud Console before using this feature.
                         /// </summary>
                         public class SetInventoryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1670,8 +1667,8 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// Bulk import of processed completion dataset. Request processing is asynchronous. Partial
                     /// updating is not supported. The operation is successfully finished only after the imported
                     /// suggestions are indexed successfully and ready for serving. The process takes hours. This
-                    /// feature is only available for users who have Retail Search enabled. Please enable Retail Search
-                    /// on Cloud Console before using this feature.
+                    /// feature is only available for users who have Retail Search enabled. Enable Retail Search on
+                    /// Cloud Console before using this feature.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1687,8 +1684,8 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// Bulk import of processed completion dataset. Request processing is asynchronous. Partial
                     /// updating is not supported. The operation is successfully finished only after the imported
                     /// suggestions are indexed successfully and ready for serving. The process takes hours. This
-                    /// feature is only available for users who have Retail Search enabled. Please enable Retail Search
-                    /// on Cloud Console before using this feature.
+                    /// feature is only available for users who have Retail Search enabled. Enable Retail Search on
+                    /// Cloud Console before using this feature.
                     /// </summary>
                     public class ImportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                     {
@@ -1891,7 +1888,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>Gets a Control.</summary>
                     /// <param name="name">
-                    /// Required. The resource name of the Control to delete. Format:
+                    /// Required. The resource name of the Control to get. Format:
                     /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
@@ -1910,7 +1907,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the Control to delete. Format:
+                        /// Required. The resource name of the Control to get. Format:
                         /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1940,7 +1937,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
                     }
 
-                    /// <summary>Lists all Controls linked to this catalog.</summary>
+                    /// <summary>Lists all Controls by their parent Catalog.</summary>
                     /// <param name="parent">
                     /// Required. The catalog resource name. Format:
                     /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
@@ -1950,7 +1947,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists all Controls linked to this catalog.</summary>
+                    /// <summary>Lists all Controls by their parent Catalog.</summary>
                     public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaListControlsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2039,7 +2036,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT
-                    /// is returned. If the Control to delete does not exist, a NOT_FOUND error is returned.
+                    /// is returned. If the Control to update does not exist, a NOT_FOUND error is returned.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -2052,7 +2049,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT
-                    /// is returned. If the Control to delete does not exist, a NOT_FOUND error is returned.
+                    /// is returned. If the Control to update does not exist, a NOT_FOUND error is returned.
                     /// </summary>
                     public class PatchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl>
                     {
@@ -2111,6 +2108,489 @@ namespace Google.Apis.CloudRetail.v2beta
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Models resource.</summary>
+                public virtual ModelsResource Models { get; }
+
+                /// <summary>The "models" collection of methods.</summary>
+                public class ModelsResource
+                {
+                    private const string Resource = "models";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ModelsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new model.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource under which to create the model. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new model.</summary>
+                    public class CreateRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource under which to create the model. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Whether to run a dry run to validate the request (without actually creating the
+                        /// model).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DryRun { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/models";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dryRun",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes an existing model.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Model to delete. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes an existing model.</summary>
+                    public class DeleteRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Model to delete. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the models linked to this event store.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent for which to list models. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all the models linked to this event store.</summary>
+                    public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaListModelsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent for which to list models. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed
+                        /// value is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListModels` call. Provide this to retrieve
+                        /// the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/models";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Update of model metadata. Only fields that currently can be updated are: `filtering_option` and
+                    /// `periodic_tuning_state`. If other values are provided, this API method ignores them.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The fully qualified resource name of the model. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                    /// catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Update of model metadata. Only fields that currently can be updated are: `filtering_option` and
+                    /// `periodic_tuning_state`. If other values are provided, this API method ignores them.
+                    /// </summary>
+                    public class PatchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified resource name of the model. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                        /// catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Indicates which fields in the provided 'model' to update. If not set, by default
+                        /// updates all fields.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/models/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Pauses the training of an existing model.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the model to pause. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                    /// </param>
+                    public virtual PauseRequest Pause(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPauseModelRequest body, string name)
+                    {
+                        return new PauseRequest(service, body, name);
+                    }
+
+                    /// <summary>Pauses the training of an existing model.</summary>
+                    public class PauseRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel>
+                    {
+                        /// <summary>Constructs a new Pause request.</summary>
+                        public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPauseModelRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the model to pause. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPauseModelRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "pause";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}:pause";
+
+                        /// <summary>Initializes Pause parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Resumes the training of an existing model.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the model to resume. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                    /// </param>
+                    public virtual ResumeRequest Resume(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaResumeModelRequest body, string name)
+                    {
+                        return new ResumeRequest(service, body, name);
+                    }
+
+                    /// <summary>Resumes the training of an existing model.</summary>
+                    public class ResumeRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel>
+                    {
+                        /// <summary>Constructs a new Resume request.</summary>
+                        public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaResumeModelRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the model to resume. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaResumeModelRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "resume";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}:resume";
+
+                        /// <summary>Initializes Resume parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Tunes an existing model.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the model to tune. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                    /// </param>
+                    public virtual TuneRequest Tune(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaTuneModelRequest body, string name)
+                    {
+                        return new TuneRequest(service, body, name);
+                    }
+
+                    /// <summary>Tunes an existing model.</summary>
+                    public class TuneRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Tune request.</summary>
+                        public TuneRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaTuneModelRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the model to tune. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaTuneModelRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "tune";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}:tune";
+
+                        /// <summary>Initializes Tune parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/models/[^/]+$",
                             });
                         }
                     }
@@ -2375,7 +2855,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Performs a search. This feature is only available for users who have Retail Search enabled.
-                    /// Please enable Retail Search on Cloud Console before using this feature.
+                    /// Enable Retail Search on Cloud Console before using this feature.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
@@ -2393,7 +2873,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Performs a search. This feature is only available for users who have Retail Search enabled.
-                    /// Please enable Retail Search on Cloud Console before using this feature.
+                    /// Enable Retail Search on Cloud Console before using this feature.
                     /// </summary>
                     public class SearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchResponse>
                     {
@@ -2474,7 +2954,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
                     /// Required. The source ServingConfig resource name . Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual AddControlRequest AddControl(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddControlRequest body, string servingConfig)
                     {
@@ -2500,7 +2980,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The source ServingConfig resource name . Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -2621,7 +3101,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the ServingConfig to delete. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -2642,7 +3122,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The resource name of the ServingConfig to delete. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2676,7 +3156,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the ServingConfig to get. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2697,7 +3177,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2729,7 +3209,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <summary>Lists all ServingConfigs linked to this catalog.</summary>
                     /// <param name="parent">
                     /// Required. The catalog resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2748,7 +3228,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The catalog resource name. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2960,7 +3440,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
                     /// Required. The source ServingConfig resource name . Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual RemoveControlRequest RemoveControl(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveControlRequest body, string servingConfig)
                     {
@@ -2983,7 +3463,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The source ServingConfig resource name . Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -3020,7 +3500,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Performs a search. This feature is only available for users who have Retail Search enabled.
-                    /// Please enable Retail Search on Cloud Console before using this feature.
+                    /// Enable Retail Search on Cloud Console before using this feature.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
@@ -3038,7 +3518,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Performs a search. This feature is only available for users who have Retail Search enabled.
-                    /// Please enable Retail Search on Cloud Console before using this feature.
+                    /// Enable Retail Search on Cloud Console before using this feature.
                     /// </summary>
                     public class SearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchResponse>
                     {
@@ -3344,11 +3824,11 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
 
                     /// <summary>
-                    /// Starts a user event rejoin operation with latest product catalog. Events will not be annotated
-                    /// with detailed product information if product is missing from the catalog at the time the user
-                    /// event is ingested, and these events are stored as unjoined events with a limited usage on
-                    /// training and serving. This method can be used to start a join operation on specified events with
-                    /// latest version of product catalog. It can also be used to correct events joined with the wrong
+                    /// Starts a user-event rejoin operation with latest product catalog. Events are not annotated with
+                    /// detailed product information for products that are missing from the catalog when the user event
+                    /// is ingested. These events are stored as unjoined events with limited usage on training and
+                    /// serving. You can use this method to start a join operation on specified events with the latest
+                    /// version of product catalog. You can also use this method to correct events joined with the wrong
                     /// product catalog. A rejoin operation can take hours or days to complete.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -3362,11 +3842,11 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
 
                     /// <summary>
-                    /// Starts a user event rejoin operation with latest product catalog. Events will not be annotated
-                    /// with detailed product information if product is missing from the catalog at the time the user
-                    /// event is ingested, and these events are stored as unjoined events with a limited usage on
-                    /// training and serving. This method can be used to start a join operation on specified events with
-                    /// latest version of product catalog. It can also be used to correct events joined with the wrong
+                    /// Starts a user-event rejoin operation with latest product catalog. Events are not annotated with
+                    /// detailed product information for products that are missing from the catalog when the user event
+                    /// is ingested. These events are stored as unjoined events with limited usage on training and
+                    /// serving. You can use this method to start a join operation on specified events with the latest
+                    /// version of product catalog. You can also use this method to correct events joined with the wrong
                     /// product catalog. A rejoin operation can take hours or days to complete.
                     /// </summary>
                     public class RejoinRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
@@ -3478,8 +3958,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                 /// <summary>
                 /// Completes the specified prefix with keyword suggestions. This feature is only available for users
-                /// who have Retail Search enabled. Please enable Retail Search on Cloud Console before using this
-                /// feature.
+                /// who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
                 /// </summary>
                 /// <param name="catalog">
                 /// Required. Catalog for which the completion is performed. Full resource name of catalog, such as
@@ -3492,8 +3971,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                 /// <summary>
                 /// Completes the specified prefix with keyword suggestions. This feature is only available for users
-                /// who have Retail Search enabled. Please enable Retail Search on Cloud Console before using this
-                /// feature.
+                /// who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
                 /// </summary>
                 public class CompleteQueryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaCompleteQueryResponse>
                 {
@@ -3693,7 +4171,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <summary>Gets a CompletionConfig.</summary>
                 /// <param name="name">
                 /// Required. Full CompletionConfig resource name. Format:
-                /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig
+                /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig`
                 /// </param>
                 public virtual GetCompletionConfigRequest GetCompletionConfig(string name)
                 {
@@ -3712,7 +4190,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Required. Full CompletionConfig resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4877,14 +5355,14 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for RejoinUserEvents method.</summary>
+    /// <summary>Metadata for `RejoinUserEvents` method.</summary>
     public class GoogleCloudRetailV2RejoinUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for RejoinUserEvents method.</summary>
+    /// <summary>Response message for `RejoinUserEvents` method.</summary>
     public class GoogleCloudRetailV2RejoinUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of user events that were joined with latest product catalog.</summary>
@@ -5034,7 +5512,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// The resource name of the model that this create applies to. Format:
-        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -5059,7 +5537,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the Export operation. This will be returned by the
+    /// Metadata related to the progress of the Export operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudRetailV2alphaExportMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -5506,14 +5984,14 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for RejoinUserEvents method.</summary>
+    /// <summary>Metadata for `RejoinUserEvents` method.</summary>
     public class GoogleCloudRetailV2alphaRejoinUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for RejoinUserEvents method.</summary>
+    /// <summary>Response message for `RejoinUserEvents` method.</summary>
     public class GoogleCloudRetailV2alphaRejoinUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of user events that were joined with latest product catalog.</summary>
@@ -5607,7 +6085,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// The resource name of the model that this tune applies to. Format:
-        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -6298,8 +6776,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a
-        /// partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and
-        /// allowed, " a b c d" is 4 terms and not allowed for partial match.
+        /// partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and
+        /// allowed, but " a b c d" is 4 terms and not allowed for a partial match.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -6324,15 +6802,14 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Configures dynamic serving time metadata that is used to pre and post process search/recommendation model
-    /// results.
+    /// Configures dynamic metadata that can be linked to a ServingConfig and affect search or recommendation results at
+    /// serving time.
     /// </summary>
     public class GoogleCloudRetailV2betaControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. List of serving configuration ids that that are associated with this control. Note the
-        /// association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in
-        /// the same catalog.
+        /// Output only. List of serving configuration ids that are associated with this control in the same Catalog.
+        /// Note the association is managed via the ServingConfig, this is an output only denormalized view.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
         public virtual System.Collections.Generic.IList<string> AssociatedServingConfigIds { get; set; }
@@ -6344,7 +6821,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>A facet specification to perform faceted search.</summary>
+        /// <summary>
+        /// A facet specification to perform faceted search. Note that this field is deprecated and will throw
+        /// NOT_IMPLEMENTED if used for creating a control.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestFacetSpec FacetSpec { get; set; }
 
@@ -6360,9 +6840,17 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual GoogleCloudRetailV2betaRule Rule { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The solution types that the serving config is used for. Currently we support setting
-        /// only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If
-        /// no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        /// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search
+        /// controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one
+        /// search_solution_use_case per control.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSolutionUseCase")]
+        public virtual System.Collections.Generic.IList<string> SearchSolutionUseCase { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The solution types that the control is used for. Currently we support setting only one
+        /// type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no
+        /// solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
         public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
@@ -6432,7 +6920,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the Export operation. This will be returned by the
+    /// Metadata related to the progress of the Export operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudRetailV2betaExportMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -6848,6 +7336,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to a ListModelRequest.</summary>
+    public class GoogleCloudRetailV2betaListModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaModel> Models { get; set; }
+
+        /// <summary>Pagination token, if not returned indicates the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ProductService.ListProducts method.</summary>
     public class GoogleCloudRetailV2betaListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6990,6 +7493,126 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata that describes the training and serving parameters of a Model. A Model can be associated with a
+    /// ServingConfig and then queried through the Predict API.
+    /// </summary>
+    public class GoogleCloudRetailV2betaModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp the Recommendation Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The state of data requirements for this model: `DATA_OK` and `DATA_ERROR`. Recommendation model
+        /// cannot be trained if the data is in `DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state
+        /// even if serving state is `ACTIVE`: models were trained successfully before, but cannot be refreshed because
+        /// model no longer has sufficient data for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the model. Should be human readable, used to display Recommendation Models in
+        /// the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the
+        /// model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringOption")]
+        public virtual string FilteringOption { get; set; }
+
+        /// <summary>Output only. The timestamp when the latest successful tune finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
+        public virtual object LastTuneTime { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
+        /// char limit of 50. recommendation_model_id has char limit of 40.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`,
+        /// `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of
+        /// recommendation: `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// `frequently-bought-together` =&amp;gt; `revenue_per_order`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the
+        /// `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicTuningState")]
+        public virtual string PeriodicTuningState { get; set; }
+
+        /// <summary>
+        /// Output only. The list of valid serving configs associated with the PageOptimizationConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigLists")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaModelServingConfigList> ServingConfigLists { get; set; }
+
+        /// <summary>Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
+        public virtual string ServingState { get; set; }
+
+        /// <summary>
+        /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of
+        /// running the service is frequency of training - this can be used to determine when to train model in order to
+        /// control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value
+        /// for `UpdateModel` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Output only. The tune operation associated with the model. Can be used to determine if there is an ongoing
+        /// tune for this recommendation. Empty field implies no tune is goig on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningOperation")]
+        public virtual string TuningOperation { get; set; }
+
+        /// <summary>
+        /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
+        /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
+        /// and `recently-viewed`(readonly value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp the Recommendation Model was last updated. E.g. if a Recommendation Model was paused
+        /// - this would be the time the pause was initiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION`
+    /// recommendations.
+    /// </summary>
+    public class GoogleCloudRetailV2betaModelServingConfigList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
+        public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Output result.</summary>
     public class GoogleCloudRetailV2betaOutputResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6997,6 +7620,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaBigQueryOutputResult> BigqueryResult { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for pausing training of a model.</summary>
+    public class GoogleCloudRetailV2betaPauseModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7283,12 +7913,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Product categories. This field is repeated for supporting one product belonging to several parallel
         /// categories. Strongly recommended using the full path for better search / recommendation quality. To
         /// represent full path of category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is
-        /// part of the category name, please replace it with other character(s). For example, if a shoes product
-        /// belongs to both ["Shoes &amp;amp; Accessories" -&amp;gt; "Shoes"] and ["Sports &amp;amp; Fitness" -&amp;gt;
-        /// "Athletic Clothing" -&amp;gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp;amp;
-        /// Accessories &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic Clothing &amp;gt; Shoes" ] Must be
-        /// set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed
-        /// per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of
+        /// part of the category name, replace it with other character(s). For example, if a shoes product belongs to
+        /// both ["Shoes &amp;amp; Accessories" -&amp;gt; "Shoes"] and ["Sports &amp;amp; Fitness" -&amp;gt; "Athletic
+        /// Clothing" -&amp;gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp;amp; Accessories
+        /// &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic Clothing &amp;gt; Shoes" ] Must be set for
+        /// Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per
+        /// Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of
         /// 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google
         /// Merchant Center property google_product_category. Schema.org property [Product.category]
         /// (https://schema.org/category). [mc_google_product_category]:
@@ -7393,6 +8023,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. A list of local inventories specific to different places. This is only available for users who
+        /// have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localInventories")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaLocalInventory> LocalInventories { get; set; }
 
         /// <summary>
         /// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each
@@ -7772,7 +8409,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for RejoinUserEvents method.</summary>
+    /// <summary>Metadata for `RejoinUserEvents` method.</summary>
     public class GoogleCloudRetailV2betaRejoinUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -7784,8 +8421,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// The type of the user event rejoin to define the scope and range of the user events to be rejoined with the
-        /// latest product catalog. Defaults to USER_EVENT_REJOIN_SCOPE_UNSPECIFIED if this field is not set, or set to
-        /// an invalid integer value.
+        /// latest product catalog. Defaults to `USER_EVENT_REJOIN_SCOPE_UNSPECIFIED` if this field is not set, or set
+        /// to an invalid integer value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEventRejoinScope")]
         public virtual string UserEventRejoinScope { get; set; }
@@ -7794,7 +8431,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for RejoinUserEvents method.</summary>
+    /// <summary>Response message for `RejoinUserEvents` method.</summary>
     public class GoogleCloudRetailV2betaRejoinUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of user events that were joined with latest product catalog.</summary>
@@ -7957,10 +8594,16 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for resuming training of a model.</summary>
+    public class GoogleCloudRetailV2betaResumeModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies
-    /// what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search
-    /// endpoint.
+    /// what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
     /// </summary>
     public class GoogleCloudRetailV2betaRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8266,8 +8909,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// The categories associated with a category page. Required for category navigation queries to achieve good
         /// search quality. The format should be the same as UserEvent.page_categories; To represent full path of
         /// category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the category name,
-        /// please replace it with other character(s). Category pages include special pages such as sales or promotions.
-        /// For instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales &amp;gt; 2017
+        /// replace it with other character(s). Category pages include special pages such as sales or promotions. For
+        /// instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales &amp;gt; 2017
         /// Black Friday Deals"].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
@@ -8289,7 +8932,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
-        /// <summary>The specification for personalization.</summary>
+        /// <summary>
+        /// The specification for personalization. Notice that if both ServingConfig.personalization_spec and
+        /// SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override
+        /// ServingConfig.personalization_spec.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
 
@@ -8810,8 +9457,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// Configures metadata that is used to generate serving time results (e.g. search results or recommendation
-    /// predictions). The ServingConfig is passed in the search and predict request and together with the
-    /// Catalog.default_branch, generates results.
+    /// predictions).
     /// </summary>
     public class GoogleCloudRetailV2betaServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8834,13 +9480,17 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// How much diversity to use in recommendation model results e.g. 'medium-diversity' or 'high-diversity'.
-        /// Currently supported values: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' *
-        /// 'auto-diversity' If not specified, we choose default based on recommendation model type. Default value:
-        /// 'no-diversity'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        /// How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`.
+        /// Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` *
+        /// `auto-diversity` If not specified, we choose default based on recommendation model type. Default value:
+        /// `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diversityLevel")]
         public virtual string DiversityLevel { get; set; }
+
+        /// <summary>What kind of diversity to use - data driven or rule based.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diversityType")]
+        public virtual string DiversityType { get; set; }
 
         /// <summary>
         /// Condition do not associate specifications. If multiple do not associate conditions match, all matching do
@@ -8858,9 +9508,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec DynamicFacetSpec { get; set; }
 
         /// <summary>
-        /// Whether to add additional category filters on the 'similar-items' model. If not specified, we enable it by
-        /// default. Allowed values are: * 'no-category-match': No additional filtering of original results from the
-        /// model and the customer's filters. * 'relaxed-category-match': Only keep results with categories that match
+        /// Whether to add additional category filters on the `similar-items` model. If not specified, we enable it by
+        /// default. Allowed values are: * `no-category-match`: No additional filtering of original results from the
+        /// model and the customer's filters. * `relaxed-category-match`: Only keep results with categories that match
         /// at least one item categories in the PredictRequests's context item. * If customer also sends filters in the
         /// PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be
         /// set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
@@ -8894,10 +9544,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IList<string> IgnoreControlIds { get; set; }
 
         /// <summary>
-        /// The id of the model to use at serving time. Currently only RecommendationModels are supported:
-        /// https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a
-        /// compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is
-        /// SOLUTION_TYPE_RECOMMENDATION.
+        /// The id of the model in the same Catalog to use at serving time. Currently only RecommendationModels are
+        /// supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to
+        /// a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types
+        /// is SOLUTION_TYPE_RECOMMENDATION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
@@ -8915,11 +9565,19 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IList<string> OnewaySynonymsControlIds { get; set; }
 
         /// <summary>
+        /// The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set.
+        /// SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
+        public virtual GoogleCloudRetailV2betaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
+
+        /// <summary>
         /// How much price ranking we want in serving results. Price reranking causes product items with a similar
         /// recommendation probability to be ordered by price, with the highest-priced items first. This setting could
-        /// result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' *
-        /// 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose
-        /// default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is
+        /// result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` *
+        /// `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose
+        /// default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is
         /// SOLUTION_TYPE_RECOMMENDATION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceRerankingLevel")]
@@ -9064,6 +9722,16 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
+    /// Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to
+    /// happen).
+    /// </summary>
+    public class GoogleCloudRetailV2betaTuneModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// UserEvent captures all metadata information Retail API needs to know about how end users interact with
     /// customers' website.
     /// </summary>
@@ -9165,7 +9833,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// The categories associated with a category page. To represent full path of category, use '&amp;gt;' sign to
-        /// separate different hierarchies. If '&amp;gt;' is part of the category name, please replace it with other
+        /// separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with other
         /// character(s). Category pages include special pages such as sales or promotions. For instance, a special sale
         /// page may have the category hierarchy: "pageCategories" : ["Sales &amp;gt; 2017 Black Friday Deals"].
         /// Required for `category-page-view` events. At least one of search_query or page_categories is required for
