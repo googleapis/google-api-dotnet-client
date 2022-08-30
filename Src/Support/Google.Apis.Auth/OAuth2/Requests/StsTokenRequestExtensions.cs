@@ -27,9 +27,9 @@ using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
-    internal static class GoogleWifStsTokenRequestExtensions
+    internal static class StsTokenRequestExtensions
     {
-        internal static async Task<TokenResponse> ExecuteAsync(this GoogleWifStsTokenRequest request, HttpClient httpClient,
+        internal static async Task<TokenResponse> ExecuteAsync(this StsTokenRequest request, HttpClient httpClient,
             string tokenServerUrl, IClock clock, ILogger logger, CancellationToken taskCancellationToken)
         {
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, tokenServerUrl)
@@ -46,7 +46,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// If present, Client ID and Client Secret should be used to perform basic authentication
         /// with Client ID being the username and Client Secret the password.
         /// </summary>
-        private static AuthenticationHeaderValue GetAuthenticationHeader(this GoogleWifStsTokenRequest request) =>
+        private static AuthenticationHeaderValue GetAuthenticationHeader(this StsTokenRequest request) =>
             (request.ClientId is string && request.ClientSecret is string)
             ? new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{request.ClientId}:{request.ClientSecret}")))
             : null;

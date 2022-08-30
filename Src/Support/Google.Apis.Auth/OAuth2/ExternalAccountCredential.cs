@@ -27,6 +27,9 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public abstract class ExternalAccountCredential : ServiceCredential
     {
+        private const string GrantType = "urn:ietf:params:oauth:grant-type:token-exchange";
+        private const string RequestedTokenType = "urn:ietf:params:oauth:token-type:access_token";
+
         /// <summary>
         /// Initializer for <see cref="ExternalAccountCredential"/>.
         /// </summary>
@@ -237,9 +240,11 @@ namespace Google.Apis.Auth.OAuth2
 
         private protected async Task<TokenResponse> RequestStsAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            GoogleWifStsTokenRequest request = new GoogleWifStsTokenRequest
+            StsTokenRequest request = new StsTokenRequest
             {
                 Audience = Audience,
+                GrantType = GrantType,
+                RequestedTokenType = RequestedTokenType,
                 Scope = HasExplicitScopes ? string.Join(" ", Scopes) : null,
                 SubjectToken = await GetSubjectTokenAsync(taskCancellationToken).ConfigureAwait(false),
                 SubjectTokenType = SubjectTokenType,

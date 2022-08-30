@@ -21,16 +21,16 @@ namespace Google.Apis.Auth.OAuth2.Requests
     /// <summary>
     /// OAuth 2.0 subject token exchange request as defined in
     /// https://datatracker.ietf.org/doc/html/rfc8693#section-2.1.
-    /// This is a partial definition of the spec as required to support Google WIF.
+    /// This is only a partial definition of the spec as required to support Google WIF.
     /// </summary>
-    internal class GoogleWifStsTokenRequest
+    internal class StsTokenRequest
     {
         /// <summary>
         /// Gets the grant type for this request.
         /// Only <code>urn:ietf:params:oauth:grant-type:token-exchange</code> is currently supported.
         /// </summary>
         [RequestParameter("grant_type")]
-        public string GrantType { get; } = "urn:ietf:params:oauth:grant-type:token-exchange";
+        public string GrantType { get; set; }
 
         /// <summary>
         /// The audience for which the requested token is intended. For instance:
@@ -51,7 +51,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// Only <code>urn:ietf:params:oauth:token-type:access_token</code> is currently supported.
         /// </summary>
         [RequestParameter("requested_token_type")]
-        public string RequestedTokenType { get; } = "urn:ietf:params:oauth:token-type:access_token";
+        public string RequestedTokenType { get; set; }
 
         /// <summary>
         /// In terms of Google 3PI support, this is the 3PI credential.
