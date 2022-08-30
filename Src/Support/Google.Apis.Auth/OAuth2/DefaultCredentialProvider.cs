@@ -210,7 +210,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 JsonCredentialParameters.AuthorizedUserCredentialType => new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters)),
                 JsonCredentialParameters.ServiceAccountCredentialType => GoogleCredential.FromServiceAccountCredential(CreateServiceAccountCredentialFromParameters(credentialParameters)),
-                JsonCredentialParameters.ExternalAccountCredentialType => new GoogleCredential(CreateExternalCredentialFromParametes(credentialParameters)),
+                JsonCredentialParameters.ExternalAccountCredentialType => new GoogleCredential(CreateExternalCredentialFromParameters(credentialParameters)),
                 _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}."),
             };
 
@@ -264,7 +264,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Creates an external account credential from JSON data.
         /// </summary>
-        private static IGoogleCredential CreateExternalCredentialFromParametes(JsonCredentialParameters parameters)
+        private static IGoogleCredential CreateExternalCredentialFromParameters(JsonCredentialParameters parameters)
         {
             if (parameters.Type != JsonCredentialParameters.ExternalAccountCredentialType || parameters.CredentialSourceConfig is null)
             {
