@@ -33,11 +33,23 @@ namespace Google.Apis.Auth.OAuth2
     /// interacting server to server. For example, a service account credential could be used to access Google Cloud
     /// Storage from a web application without a user's involvement.
     /// <para>
-    /// <code>ServiceAccountCredential</code> inherits from this class in order to support Service Account. More
+    /// <see cref="ServiceAccountCredential"/> inherits from this class in order to support Service Accounts. More
     /// details available at: https://developers.google.com/accounts/docs/OAuth2ServiceAccount.
-    /// <see cref="Google.Apis.Auth.OAuth2.ComputeCredential"/> is another example for a class that inherits from this
+    /// <see cref="ComputeCredential"/> is another example of a class that inherits from this
     /// class in order to support Compute credentials. For more information about Compute authentication, see:
     /// https://cloud.google.com/compute/docs/authentication.
+    /// </para>
+    /// <para>
+    /// <see cref="ExternalAccountCredential"/> inherits from this class to support both Workload Identity Federation
+    /// and Workforce Identity Federation. You can read more about these topics in
+    /// https://cloud.google.com/iam/docs/workload-identity-federation and
+    /// https://cloud.google.com/iam/docs/workforce-identity-federation respectively.
+    /// Note that in the case of Workforce Identity Federation, the external account does not represent a service account
+    /// but a user account, so, the fact that <see cref="ExternalAccountCredential"/> inherits from <see cref="ServiceCredential"/>
+    /// might be construed as misleading. In reality <see cref="ServiceCredential"/> is not tied to a service account
+    /// in terms of implementation, only in terms of name. For instance, a better name for this class might have been NoUserFlowCredential, and
+    /// in that sense, it's correct that <see cref="ExternalAccountCredential"/> inherits from <see cref="ServiceCredential"/>
+    /// even when representing a Workforce Identity Federation account.
     /// </para>
     /// </summary>
     public abstract class ServiceCredential : ICredential, ITokenAccessWithHeaders,

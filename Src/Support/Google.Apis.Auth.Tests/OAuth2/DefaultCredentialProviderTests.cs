@@ -134,6 +134,20 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""format"": {
     ""type"": ""json"",
     ""subject_token_field_name"": ""access_token""}}}";
+        private const string DummyUrlSourcedWorkforceExternalAccountCredentialFileContents = @"{
+""type"":""external_account"",
+""audience"":""//iam.googleapis.com/locations/global/workforcePools/pool/providers/oidc-google"",
+""subject_token_type"":""urn:ietf:params:oauth:token-type:id_token"",
+""token_url"":""https://sts.googleapis.com/v1/token"",
+""workforce_pool_user_project"": ""user_project"",
+""credential_source"": {
+  ""headers"": {
+    ""Metadata"": ""True""
+  },
+  ""url"": ""http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""format"": {
+    ""type"": ""json"",
+    ""subject_token_field_name"": ""access_token""}}}";
 
         public DefaultCredentialProviderTests()
         {
@@ -265,6 +279,20 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             var impersonatedExternalCredential = Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
             Assert.IsType<ImpersonatedCredential>(impersonatedExternalCredential.ImplicitlyImpersonated.Value);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_WorkforceIdentity()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, DummyUrlSourcedWorkforceExternalAccountCredentialFileContents);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var workforceCredntial = Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
+            Assert.Equal("user_project", workforceCredntial.WorkforcePoolUserProject);
         }
 
         #endregion

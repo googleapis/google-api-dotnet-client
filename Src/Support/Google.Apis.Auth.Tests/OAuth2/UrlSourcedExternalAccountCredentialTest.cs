@@ -47,6 +47,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private const string ImpersonationScope = "https://www.googleapis.com/auth/iam";
         private const string ClientId = "dummy_client_ID";
         private const string ClientSecret = "dummy_client_secret";
+        private const string WorkforcePoolUserProject = "dummy_workforce_project";
 
         private const string AccessToken = "dummy_access_token";
         private const string RefreshedAccessToken = "dummy_refreshed_access_token";
@@ -67,15 +68,24 @@ namespace Google.Apis.Auth.Tests.OAuth2
             });
         }
 
-        private static async Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope)
+        private static async Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope, bool isWorkforce = false)
         {
             Assert.Equal(TokenUrl, accessTokenRequest.RequestUri.ToString());
             Assert.Equal(HttpMethod.Post, accessTokenRequest.Method);
 
-            Assert.Equal("Basic", accessTokenRequest.Headers.Authorization.Scheme);
-            Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes($"{ClientId}:{ClientSecret}")), accessTokenRequest.Headers.Authorization.Parameter);
-
             string contentText = WebUtility.UrlDecode(await accessTokenRequest.Content.ReadAsStringAsync());
+
+            if (isWorkforce)
+            {
+                Assert.Null(accessTokenRequest.Headers.Authorization);
+                Assert.Contains($"options={{\"userProject\":\"{WorkforcePoolUserProject}\"}}", contentText);
+            }
+            else
+            {
+                Assert.Equal("Basic", accessTokenRequest.Headers.Authorization.Scheme);
+                Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes($"{ClientId}:{ClientSecret}")), accessTokenRequest.Headers.Authorization.Parameter);
+                Assert.DoesNotContain("options=", contentText);
+            }
 
             Assert.Contains(GrantTypeClaim, contentText);
             Assert.Contains(RequestedTokenTypeClaim, contentText);
@@ -177,6 +187,58 @@ namespace Google.Apis.Auth.Tests.OAuth2
                         }))
                 };
             }
+        }
+
+        [Fact]
+        public async Task FetchesAccessToken_Workforce()
+        {
+            var messageHandler = new DelegatedMessageHandler(ValidateSubjectTokenRequest, request => ValidateAccessTokenRequest(request, Scope, isWorkforce: true));
+
+            var credential = new UrlSourcedExternalAccountCredential(
+                new UrlSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, SubjectTokenUrl)
+                {
+                    HttpClientFactory = new MockHttpClientFactory(messageHandler),
+                    Headers = { { SubjectTokenServiceHeader } },
+                    WorkforcePoolUserProject = WorkforcePoolUserProject,
+                    Scopes = new string[] { Scope },
+                    QuotaProject = QuotaProject
+                });
+
+            var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
+
+            Assert.Equal(AccessToken, token.AccessToken);
+            var header = Assert.Single(token.Headers);
+            Assert.Equal(QuotaProjectHeaderName, header.Key);
+            var headerValue = Assert.Single(header.Value);
+            Assert.Equal(QuotaProject, headerValue);
+            Assert.Equal(2, messageHandler.Calls);
+        }
+
+        [Fact]
+        public async Task FetchesAccessToken_ClientIdAndSecret_IgnoresWorkforce()
+        {
+            var messageHandler = new DelegatedMessageHandler(ValidateSubjectTokenRequest, request => ValidateAccessTokenRequest(request, Scope, isWorkforce: false));
+
+            var credential = new UrlSourcedExternalAccountCredential(
+                new UrlSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, SubjectTokenUrl)
+                {
+                    HttpClientFactory = new MockHttpClientFactory(messageHandler),
+                    Headers = { { SubjectTokenServiceHeader } },
+                    WorkforcePoolUserProject = WorkforcePoolUserProject,
+                    ClientId = ClientId,
+                    ClientSecret = ClientSecret,
+                    Scopes = new string[] { Scope },
+                    QuotaProject = QuotaProject
+                });
+
+            var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
+
+            Assert.Equal(AccessToken, token.AccessToken);
+            var header = Assert.Single(token.Headers);
+            Assert.Equal(QuotaProjectHeaderName, header.Key);
+            var headerValue = Assert.Single(header.Value);
+            Assert.Equal(QuotaProject, headerValue);
+            Assert.Equal(2, messageHandler.Calls);
         }
 
         [Fact]

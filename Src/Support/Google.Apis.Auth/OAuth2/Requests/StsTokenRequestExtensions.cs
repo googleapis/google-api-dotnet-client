@@ -18,10 +18,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
 using Google.Apis.Requests.Parameters;
 using Google.Apis.Util;
-using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,19 +33,10 @@ namespace Google.Apis.Auth.OAuth2.Requests
             {
                 Content = ParameterUtils.CreateFormUrlEncodedContent(request)
             };
-            httpRequest.Headers.Authorization = request.GetAuthenticationHeader();
+            httpRequest.Headers.Authorization = request.AuthenticationHeader;
 
             var response = await httpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
             return await TokenResponse.FromHttpResponseAsync(response, clock, logger).ConfigureAwait(false);
         }
-
-        /// <summary>
-        /// If present, Client ID and Client Secret should be used to perform basic authentication
-        /// with Client ID being the username and Client Secret the password.
-        /// </summary>
-        private static AuthenticationHeaderValue GetAuthenticationHeader(this StsTokenRequest request) =>
-            (request.ClientId is string && request.ClientSecret is string)
-            ? new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{request.ClientId}:{request.ClientSecret}")))
-            : null;
     }
 }

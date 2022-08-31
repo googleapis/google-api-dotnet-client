@@ -288,6 +288,7 @@ namespace Google.Apis.Auth.OAuth2
                 {
                     QuotaProject = parameters.QuotaProject,
                     ServiceAccountImpersonationUrl = parameters.ServiceAccountImpersonationUrl,
+                    WorkforcePoolUserProject = parameters.WorkforcePoolUserProject,
                     ClientId = parameters.ClientId,
                     ClientSecret = parameters.ClientSecret,
                     SubjectTokenJsonFieldName = parameters.CredentialSourceConfig.Format?.Type?.Equals("json", StringComparison.OrdinalIgnoreCase) == true
