@@ -55,6 +55,17 @@ namespace Google.Apis.Auth.OAuth2
             internal string ServiceAccountImpersonationUrl { get; set; }
 
             /// <summary>
+            /// The GCP project number to be used for Workforce Identity Pools
+            /// external credentials.
+            /// </summary>
+            /// <remarks>
+            /// If this external account credential represents a Workforce Identity Pool
+            /// enabled identity and this values is not specified, then an API key needs to be
+            /// used alongside this credential to call Google APIs.
+            /// </remarks>
+            public string WorkforcePoolUserProject { get; set; }
+
+            /// <summary>
             /// The Client ID.
             /// </summary>
             /// <remarks>
@@ -87,6 +98,7 @@ namespace Google.Apis.Auth.OAuth2
                 Audience = other.Audience;
                 SubjectTokenType = other.SubjectTokenType;
                 ServiceAccountImpersonationUrl = other.ServiceAccountImpersonationUrl;
+                WorkforcePoolUserProject = other.WorkforcePoolUserProject;
                 ClientId = other.ClientId;
                 ClientSecret = other.ClientSecret;
             }
@@ -96,6 +108,7 @@ namespace Google.Apis.Auth.OAuth2
                 Audience = other.Audience;
                 SubjectTokenType = other.SubjectTokenType;
                 ServiceAccountImpersonationUrl= other.ServiceAccountImpersonationUrl;
+                WorkforcePoolUserProject= other.WorkforcePoolUserProject;
                 ClientId = other.ClientId;
                 ClientSecret = other.ClientSecret;
             }
@@ -119,6 +132,18 @@ namespace Google.Apis.Auth.OAuth2
         /// should be directly used without impersonation.
         /// </summary>
         public string ServiceAccountImpersonationUrl { get; }
+
+        /// <summary>
+        /// The GCP project number to be used for Workforce Pools
+        /// external credentials.
+        /// </summary>
+        /// <remarks>
+        /// If this external account credential represents a Workforce Pool
+        /// enabled identity and this values is not specified, then an API key needs to be
+        /// used alongside this credential to call Google APIs.
+        /// </remarks>
+        public string WorkforcePoolUserProject { get; }
+
 
         /// <summary>
         /// The Client ID.
@@ -168,6 +193,7 @@ namespace Google.Apis.Auth.OAuth2
             Audience = initializer.Audience;
             SubjectTokenType = initializer.SubjectTokenType;
             ServiceAccountImpersonationUrl = initializer.ServiceAccountImpersonationUrl;
+            WorkforcePoolUserProject = initializer.WorkforcePoolUserProject;
             ClientId = initializer.ClientId;
             ClientSecret = initializer.ClientSecret;
             WithoutImpersonationConfiguration = new Lazy<GoogleCredential>(WithoutImpersonationConfigurationImpl, LazyThreadSafetyMode.ExecutionAndPublication);
@@ -240,17 +266,18 @@ namespace Google.Apis.Auth.OAuth2
 
         private protected async Task<TokenResponse> RequestStsAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            StsTokenRequest request = new StsTokenRequest
+            StsTokenRequest request = new StsTokenRequestBuilder
             {
                 Audience = Audience,
                 GrantType = GrantType,
                 RequestedTokenType = RequestedTokenType,
-                Scope = HasExplicitScopes ? string.Join(" ", Scopes) : null,
+                Scopes = Scopes,
                 SubjectToken = await GetSubjectTokenAsync(taskCancellationToken).ConfigureAwait(false),
                 SubjectTokenType = SubjectTokenType,
+                WorkforcePoolUserProject = WorkforcePoolUserProject,
                 ClientId = ClientId,
                 ClientSecret = ClientSecret,
-            };
+            }.Build();
 
             return await request
                 .ExecuteAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)

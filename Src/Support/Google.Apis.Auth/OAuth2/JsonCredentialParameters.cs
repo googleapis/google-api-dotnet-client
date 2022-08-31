@@ -132,6 +132,18 @@ namespace Google.Apis.Auth.OAuth2
         public string ServiceAccountImpersonationUrl { get; set; }
 
         /// <summary>
+        /// The GCP project number to be used for Workforce Pools
+        /// external credentials.
+        /// </summary>
+        /// <remarks>
+        /// If this external account credential represents a Workforce Pool
+        /// enabled identity and this values is not specified, then an API key needs to be
+        /// used alongside this credential to call Google APIs.
+        /// </remarks>
+        [JsonProperty("workforce_pool_user_project")]
+        public string WorkforcePoolUserProject { get; set; }
+
+        /// <summary>
         /// The credential source associated with an external account credential.
         /// </summary>
         [JsonProperty("credential_source")]
