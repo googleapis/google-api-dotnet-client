@@ -38,10 +38,14 @@ namespace IntegrationTests
             }
             var wellKnown = JObject.Parse(wellKnownJson);
 
+            // Supressing the warning as in this case the expected values are not the constants, we are precisely
+            // checking that the constants have the expected values which come from the source of truth.
+#pragma warning disable xUnit2000 // Constants and literals should be the expected argument
             Assert.Equal(wellKnown["authorization_endpoint"].ToString(), GoogleAuthConsts.OidcAuthorizationUrl);
             Assert.Equal(wellKnown["token_endpoint"].ToString(), GoogleAuthConsts.OidcTokenUrl);
             Assert.Equal(wellKnown["revocation_endpoint"].ToString(), GoogleAuthConsts.RevokeTokenUrl);
             Assert.Equal(wellKnown["jwks_uri"].ToString(), GoogleAuthConsts.JsonWebKeySetUrl);
+#pragma warning restore xUnit2000 // Constants and literals should be the expected argument
         }
     }
 }
