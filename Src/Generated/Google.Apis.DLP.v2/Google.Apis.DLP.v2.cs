@@ -8916,7 +8916,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobNotificationEmails")]
         public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; }
 
-        /// <summary>Publish a notification to a pubsub topic.</summary>
+        /// <summary>Publish a notification to a Pub/Sub topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubSub")]
         public virtual GooglePrivacyDlpV2PublishToPubSub PubSub { get; set; }
 
@@ -10073,7 +10073,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A condition for determining whether a PubSub should be triggered.</summary>
+    /// <summary>A condition for determining whether a Pub/Sub should be triggered.</summary>
     public class GooglePrivacyDlpV2DataProfilePubSubCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An expression.</summary>
@@ -10087,7 +10087,6 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>
     /// Pub/Sub topic message for a DataProfileAction.PubSubNotification event. To receive a message of protocol buffer
     /// schema type, convert the message data to an object of this proto class.
-    /// https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-proto-messages
     /// </summary>
     public class GooglePrivacyDlpV2DataProfilePubSubMessage : Google.Apis.Requests.IDirectResponseSchema
     {

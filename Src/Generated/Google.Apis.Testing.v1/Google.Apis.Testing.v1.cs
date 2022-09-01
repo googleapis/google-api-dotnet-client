@@ -1176,6 +1176,14 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usesPermission")]
         public virtual System.Collections.Generic.IList<string> UsesPermission { get; set; }
 
+        /// <summary>Version number used internally by the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<long> VersionCode { get; set; }
+
+        /// <summary>Version number shown to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

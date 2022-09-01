@@ -1523,7 +1523,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
                 /// paths: - text - cards (Requires [service account
-                /// authentication](/chat/api/guides/auth/service-accounts).)
+                /// authentication](/chat/api/guides/auth/service-accounts).) - cards_v2
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3606,7 +3606,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Whether the space is a DM between a Chat app and a single human.</summary>
+        /// <summary>Optional. Whether the space is a DM between a Chat app and a single human.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 

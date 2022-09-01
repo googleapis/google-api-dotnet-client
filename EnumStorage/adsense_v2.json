@@ -55,7 +55,8 @@
     "DOMAIN_REGISTRANT",
     "WEBSEARCH_QUERY_STRING",
     "AD_FORMAT_NAME",
-    "AD_FORMAT_CODE"
+    "AD_FORMAT_CODE",
+    "HOSTED_AD_CLIENT_ID"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateCsvRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",
@@ -153,7 +154,8 @@
     "DOMAIN_REGISTRANT",
     "WEBSEARCH_QUERY_STRING",
     "AD_FORMAT_NAME",
-    "AD_FORMAT_CODE"
+    "AD_FORMAT_CODE",
+    "HOSTED_AD_CLIENT_ID"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",

@@ -1481,8 +1481,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Output only. Response only. Resource name of the subscription. It will have the format of
-        /// "partners/{partner_id}/subscriptions/{subscription_id}"
+        /// Optional. Resource name of the subscription. It will have the format of
+        /// "partners/{partner_id}/subscriptions/{subscription_id}". This is available for authorizeAddon, but otherwise
+        /// is response only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

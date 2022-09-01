@@ -2376,9 +2376,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -3836,15 +3837,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class OAuthRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in
-        /// http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling
-        /// this feature accidentally may have the risk of losing authentication enforcement. Please reach out to
-        /// api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowAnyScope")]
-        public virtual System.Nullable<bool> AllowAnyScope { get; set; }
-
         /// <summary>
         /// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these
         /// scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar,

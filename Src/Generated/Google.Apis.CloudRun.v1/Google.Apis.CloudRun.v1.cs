@@ -1102,7 +1102,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
                 /// deletes in the background. Please see
-                /// http://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more information.
+                /// https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more information.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PropagationPolicy { get; set; }
@@ -2969,7 +2969,15 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.
+                /// and notIn. For example, to list all tasks of execution "foo" in succeeded state:
+                /// `run.googleapis.com/execution=foo,run.googleapis.com/runningState=Succeeded`. Supported states are:
+                /// * `Pending`: Initial state of all tasks. The task has not yet started but eventually will. *
+                /// `Running`: Container instances for this task are running or will be running shortly. * `Succeeded`:
+                /// No more container instances to run for the task, and the last attempt succeeded. * `Failed`: No more
+                /// container instances to run for the task, and the last attempt failed. This task has run out of retry
+                /// attempts. * `Cancelled`: Task was running but got stopped because its parent execution has been
+                /// aborted. * `Abandoned`: The task has not yet started and never will because its parent execution has
+                /// been aborted.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
@@ -5633,25 +5641,22 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run. Selects a key from a ConfigMap.</summary>
+    /// <summary>Not supported by Cloud Run.</summary>
     public class ConfigMapKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The key to select.</summary>
+        /// <summary>Required. Not supported by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>
-        /// This field should not be used directly as it is meant to be inlined directly into the message. Use the
-        /// "name" field instead.
-        /// </summary>
+        /// <summary>Not supported by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; }
 
-        /// <summary>Required. The ConfigMap to select from.</summary>
+        /// <summary>Required. Not supported by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Specify whether the ConfigMap or its key must be defined</summary>
+        /// <summary>Not supported by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
@@ -5792,23 +5797,15 @@ namespace Google.Apis.CloudRun.v1.Data
     public class Container : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references
-        /// $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference
-        /// in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-        /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
-        /// More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are
+        /// not supported in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>
         /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable
-        /// cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be
-        /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
-        /// the variable exists or not. More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// provided. Variable references are not supported in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
@@ -6056,10 +6053,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the
-        /// container and any route environment variables. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-        /// references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        /// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -6078,7 +6072,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>EnvVarSource represents a source for the value of an EnvVar.</summary>
     public class EnvVarSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Not supported by Cloud Run. Selects a key of a ConfigMap.</summary>
+        /// <summary>Not supported by Cloud Run. Not supported in Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMapKeyRef")]
         public virtual ConfigMapKeySelector ConfigMapKeyRef { get; set; }
 
@@ -6217,7 +6211,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
         public virtual object CompletionTime { get; set; }
 
-        /// <summary>Optional. The latest available observations of an execution's current state.</summary>
+        /// <summary>
+        /// Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the
+        /// "spec" inline with the observed state of the world. Execution-specific conditions include: *
+        /// `ResourcesAvailable`: `True` when underlying resources have been provisioned. * `Started`: `True` when the
+        /// execution has started to execute. * `Completed`: `True` when the execution has succeeded. `False` when the
+        /// execution has failed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
 
@@ -6519,8 +6519,9 @@ namespace Google.Apis.CloudRun.v1.Data
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The latest available observations of a job's current state. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/controllers/job/
+        /// Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec"
+        /// inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job
+        /// is ready to be executed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
@@ -7273,7 +7274,7 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of
-        /// the Revision. Cloud Run: supported, defaults to 80
+        /// the Revision. If not specified, defaults to 80.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
         public virtual System.Nullable<int> ContainerConcurrency { get; set; }
@@ -7321,11 +7322,11 @@ namespace Google.Apis.CloudRun.v1.Data
     public class RevisionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec"
+        /// Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec"
         /// inline with the observed state of the world. As a Revision is being prepared, it will incrementally update
-        /// conditions. Revision-specific conditions include: * "ResourcesAvailable": True when underlying resources
-        /// have been provisioned. * "ContainerHealthy": True when the Revision readiness check completes. * "Active":
-        /// True when the Revision may receive traffic.
+        /// conditions. Revision-specific conditions include: * `ResourcesAvailable`: `True` when underlying resources
+        /// have been provisioned. * `ContainerHealthy`: `True` when the Revision readiness check completes. * `Active`:
+        /// `True` when the Revision may receive traffic.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
@@ -7694,10 +7695,10 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual Addressable Address { get; set; }
 
         /// <summary>
-        /// Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with
-        /// the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when
-        /// the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. *
-        /// `Ready`: `True` when all underlying resources are ready.
+        /// Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec`
+        /// inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`:
+        /// `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is
+        /// ready. * `Ready`: `True` when all underlying resources are ready.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
@@ -8024,8 +8025,10 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual object CompletionTime { get; set; }
 
         /// <summary>
-        /// Optional. The latest available observations of a task's current state. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/controllers/job/
+        /// Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the
+        /// "spec" inline with the observed state of the world. Task-specific conditions include: * `Started`: `True`
+        /// when the task has started to execute. * `Completed`: `True` when the task has succeeded. `False` when the
+        /// task has failed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
@@ -8158,11 +8161,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Volume represents a named volume in a container.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a
-        /// volume as files using the keys in the Data field as the file names, unless the items element is populated
-        /// with specific mappings of keys to paths.
-        /// </summary>
+        /// <summary>Not supported in Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMap")]
         public virtual ConfigMapVolumeSource ConfigMap { get; set; }
 

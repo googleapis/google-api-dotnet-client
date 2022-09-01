@@ -4701,9 +4701,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -5320,7 +5321,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Output only. Resource usage statistics.</summary>
+        /// <summary>Resource usage statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageSignal")]
         public virtual GoogleCloudDatacatalogV1UsageSignal UsageSignal { get; set; }
 
@@ -6502,12 +6503,17 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// </summary>
     public class GoogleCloudDatacatalogV1UsageSignal : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Favorite count in the source system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("favoriteCount")]
+        public virtual System.Nullable<long> FavoriteCount { get; set; }
+
         /// <summary>The end timestamp of the duration of usage statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
+        /// Output only. BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are
+        /// `{"24H", "7D", "30D"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageWithinTimeRange")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1UsageStats> UsageWithinTimeRange { get; set; }

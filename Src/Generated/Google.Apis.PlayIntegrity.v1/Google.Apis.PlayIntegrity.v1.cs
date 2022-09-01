@@ -356,6 +356,10 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     public class AccountRiskVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Indicates the account risk level of the current user session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual string Risk { get; set; }
+
+        /// <summary>Required. Indicates the account risk level of the current user session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskLevel")]
         public virtual string RiskLevel { get; set; }
 

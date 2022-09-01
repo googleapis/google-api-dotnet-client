@@ -1435,7 +1435,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource representing a policy schema. Next ID: 13</summary>
+    /// <summary>Resource representing a policy schema. Next ID: 14</summary>
     public class GoogleChromePolicyV1PolicySchema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specific access restrictions related to this policy.</summary>
@@ -1449,6 +1449,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalTargetKeyNames")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1AdditionalTargetKeyName> AdditionalTargetKeyNames { get; set; }
+
+        /// <summary>Output only. Title of the category in which a setting belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryTitle")]
+        public virtual string CategoryTitle { get; set; }
 
         /// <summary>Schema definition using proto descriptor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definition")]

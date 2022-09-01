@@ -68,9 +68,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Identity API.</summary>
         public class Scope
         {
-            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity</summary>
-            public static string CloudIdentity = "https://www.googleapis.com/auth/cloud-identity";
-
             /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
             public static string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
 
@@ -92,16 +89,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
             /// <summary>
-            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
-            /// </summary>
-            public static string CloudIdentityUserinvitations = "https://www.googleapis.com/auth/cloud-identity.userinvitations";
-
-            /// <summary>
-            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
-            /// </summary>
-            public static string CloudIdentityUserinvitationsReadonly = "https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly";
-
-            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -111,9 +98,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Identity API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity</summary>
-            public const string CloudIdentity = "https://www.googleapis.com/auth/cloud-identity";
-
             /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
             public const string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
 
@@ -133,16 +117,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// See any Cloud Identity Groups that you can access, including group members and their emails
             /// </summary>
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
-
-            /// <summary>
-            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
-            /// </summary>
-            public const string CloudIdentityUserinvitations = "https://www.googleapis.com/auth/cloud-identity.userinvitations";
-
-            /// <summary>
-            /// See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
-            /// </summary>
-            public const string CloudIdentityUserinvitationsReadonly = "https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly";
 
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
