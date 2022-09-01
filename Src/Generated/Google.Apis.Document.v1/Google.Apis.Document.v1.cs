@@ -2727,6 +2727,68 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata of the batch export documents operation.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualExportStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus> IndividualExportStatuses { get; set; }
+
+        /// <summary>The list of statistics for each dataset split type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitExportStats")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat> SplitExportStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the export process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The path to source docproto of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>
+        /// The output_gcs_destination of the exported document if it was successful, otherwise empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
+        public virtual string OutputGcsDestination { get; set; }
+
+        /// <summary>The status of the exporting of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The statistic representing a dataset split type for this export.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dataset split type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitType")]
+        public virtual string SplitType { get; set; }
+
+        /// <summary>Total number of documents with the given dataset split type to be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
+        public virtual System.Nullable<int> TotalDocumentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response proto of ExportDocuments method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata message associated with the ExportProcessorVersion operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

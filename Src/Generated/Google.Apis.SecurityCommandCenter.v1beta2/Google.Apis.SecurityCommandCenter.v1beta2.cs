@@ -4703,7 +4703,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>
         /// A string representing the principal_subject associated with the identity. As compared to `principal_email`,
         /// supports principals that aren't associated with email addresses, such as third party principals. For most
-        /// identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subject/{subject)`
+        /// identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subjects/{subject}`
         /// except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
         /// format `serviceAccount:{identity pool name}[{subject}]`
         /// </summary>
@@ -6475,14 +6475,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Identity delegation history of an authenticated service account.</summary>
     public class ServiceAccountDelegationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The email address of a Google account. .</summary>
+        /// <summary>The email address of a Google account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
         public virtual string PrincipalEmail { get; set; }
 
         /// <summary>
         /// A string representing the principal_subject associated with the identity. As compared to `principal_email`,
         /// supports principals that aren't associated with email addresses, such as third party principals. For most
-        /// identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subject/{subject)`
+        /// identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subjects/{subject}`
         /// except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
         /// format `serviceAccount:{identity pool name}[{subject}]`
         /// </summary>

@@ -2099,6 +2099,13 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("AD_CLIENT_ID")]
                     ADCLIENTID = 5,
 
+                    /// <summary>
+                    /// Unique ID of a sub-account's ad client. The members of this dimension match the values from
+                    /// AdClient.reporting_dimension_id (for the sub-account).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("HOSTED_AD_CLIENT_ID")]
+                    HOSTEDADCLIENTID = 46,
+
                     /// <summary>Localized product name (e.g. "AdSense for Content", "AdSense for Search").</summary>
                     [Google.Apis.Util.StringValueAttribute("PRODUCT_NAME")]
                     PRODUCTNAME = 6,
@@ -2881,6 +2888,13 @@ namespace Google.Apis.Adsense.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AD_CLIENT_ID")]
                     ADCLIENTID = 5,
+
+                    /// <summary>
+                    /// Unique ID of a sub-account's ad client. The members of this dimension match the values from
+                    /// AdClient.reporting_dimension_id (for the sub-account).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("HOSTED_AD_CLIENT_ID")]
+                    HOSTEDADCLIENTID = 46,
 
                     /// <summary>Localized product name (e.g. "AdSense for Content", "AdSense for Search").</summary>
                     [Google.Apis.Util.StringValueAttribute("PRODUCT_NAME")]

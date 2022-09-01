@@ -27931,6 +27931,56 @@
   },
   "regionSecurityPolicies": {
    "methods": {
+    "addRule": {
+     "description": "Inserts a rule into a security policy.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.addRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "validateOnly": {
+       "description": "If true, the request will not be committed.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule",
+     "request": {
+      "$ref": "SecurityPolicyRule"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "description": "Deletes the specified policy.",
      "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
@@ -28014,6 +28064,55 @@
      "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
      "response": {
       "$ref": "SecurityPolicy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getRule": {
+     "description": "Gets a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
+     "httpMethod": "GET",
+     "id": "compute.regionSecurityPolicies.getRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to get from the security policy.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to which the queried rule belongs.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
+     "response": {
+      "$ref": "SecurityPolicyRule"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -28184,6 +28283,110 @@
      "request": {
       "$ref": "SecurityPolicy"
      },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "patchRule": {
+     "description": "Patches a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.patchRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to patch.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "validateOnly": {
+       "description": "If true, the request will not be committed.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule",
+     "request": {
+      "$ref": "SecurityPolicyRule"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "removeRule": {
+     "description": "Deletes a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.removeRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to remove from the security policy.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule",
      "response": {
       "$ref": "Operation"
      },
@@ -39330,7 +39533,7 @@
    }
   }
  },
- "revision": "20220816",
+ "revision": "20220823",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -40583,7 +40786,7 @@
      "description": "[Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both."
     },
     "interface": {
-     "description": "Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.",
+     "description": "Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.",
      "enum": [
       "NVDIMM",
       "NVME",
@@ -46233,7 +46436,7 @@
      "type": "array"
     },
     "direction": {
-     "description": "Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.",
+     "description": "Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.",
      "enum": [
       "EGRESS",
       "INGRESS"
@@ -51855,6 +52058,11 @@
      "format": "int32",
      "type": "integer"
     },
+    "queuing": {
+     "description": "[Output Only] The number of instances that the managed instance group is currently queuing.",
+     "format": "int32",
+     "type": "integer"
+    },
     "recreating": {
      "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.",
      "format": "int32",
@@ -53711,6 +53919,7 @@
       "CREATING_WITHOUT_RETRIES",
       "DELETING",
       "NONE",
+      "QUEUING",
       "RECREATING",
       "REFRESHING",
       "RESTARTING",
@@ -53727,6 +53936,7 @@
       "The managed instance group is attempting to create this instance only once. If the group fails to create this instance, it does not try again and the group's targetSize value is decreased.",
       "The managed instance group is permanently deleting this instance.",
       "The managed instance group has not scheduled any actions for this instance.",
+      "The managed instance group is queuing this instance.",
       "The managed instance group is recreating this instance.",
       "The managed instance group is applying configuration changes to the instance without stopping it. For example, the group can update the target pool list for an instance without stopping that instance.",
       "The managed instance group is restarting this instance.",
@@ -58580,6 +58790,7 @@
       "CREATING_WITHOUT_RETRIES",
       "DELETING",
       "NONE",
+      "QUEUING",
       "RECREATING",
       "REFRESHING",
       "RESTARTING",
@@ -58596,6 +58807,7 @@
       "The managed instance group is attempting to create this instance only once. If the group fails to create this instance, it does not try again and the group's targetSize value is decreased.",
       "The managed instance group is permanently deleting this instance.",
       "The managed instance group has not scheduled any actions for this instance.",
+      "The managed instance group is queuing this instance.",
       "The managed instance group is recreating this instance.",
       "The managed instance group is applying configuration changes to the instance without stopping it. For example, the group can update the target pool list for an instance without stopping that instance.",
       "The managed instance group is restarting this instance.",
@@ -58658,6 +58870,10 @@
     "lastAttempt": {
      "$ref": "ManagedInstanceLastAttempt",
      "description": "[Output Only] Information about the last attempt to create or delete the instance."
+    },
+    "name": {
+     "description": "[Output Only] The name of the instance. The name will always exist even if the instance has not yet been created.",
+     "type": "string"
     },
     "preservedStateFromConfig": {
      "$ref": "PreservedState",
@@ -59006,7 +59222,7 @@
      "type": "string"
     },
     "mtu": {
-     "description": "Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.",
+     "description": "Maximum Transmission Unit in bytes. The minimum value for this field is 1300 and the maximum value is 8896. The suggested value is 1500, which is the default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If unspecified, the value defaults to 1460.",
      "format": "int32",
      "type": "integer"
     },

@@ -6745,9 +6745,9 @@ namespace Google.Apis.Dataproc.v1.Data
     public class ExecutionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause
-        /// the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation
-        /// of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the
+        /// session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of
+        /// Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTtl")]
         public virtual object IdleTtl { get; set; }
@@ -7566,6 +7566,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<JobStatus> StatusHistory { get; set; }
 
+        /// <summary>Optional. Job is a Trino job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trinoJob")]
+        public virtual TrinoJob TrinoJob { get; set; }
+
         /// <summary>
         /// Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is available
         /// for testing purposes only. It may be changed before final release.
@@ -8276,6 +8280,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; }
+
+        /// <summary>Optional. Job is a Trino job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trinoJob")]
+        public virtual TrinoJob TrinoJob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9331,6 +9339,54 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>A subset of TestPermissionsRequest.permissions that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component
+    /// (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created
+    /// to submit a Trino job to the cluster.
+    /// </summary>
+    public class TrinoJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Trino client tags to attach to this query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientTags")]
+        public virtual System.Collections.Generic.IList<string> ClientTags { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to
+        /// true can be useful when executing independent parallel queries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
+        public virtual System.Nullable<bool> ContinueOnFailure { get; set; }
+
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The format in which query output will be displayed. See the Trino documentation for supported
+        /// output formats
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputFormat")]
+        public virtual string OutputFormat { get; set; }
+
+        /// <summary>
+        /// Optional. A mapping of property names to values. Used to set Trino session properties
+        /// (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>The HCFS URI of the script that contains SQL queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
+        public virtual string QueryFileUri { get; set; }
+
+        /// <summary>A list of queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
+        public virtual QueryList QueryList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
