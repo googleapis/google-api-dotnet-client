@@ -4379,9 +4379,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -7084,6 +7085,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchStatistics")]
         public virtual SearchStatistics SearchStatistics { get; set; }
 
+        /// <summary>[Output-only] Statistics of a Spark procedure job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkStatistics")]
+        public virtual SparkStatistics SparkStatistics { get; set; }
+
         /// <summary>
         /// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT":
         /// SELECT query. "INSERT": INSERT query; see
@@ -8526,6 +8531,20 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class SparkLoggingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] Project ID used for logging</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project_id")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>[Output-only] Resource type used for logging</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource_type")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options for a user-defined Spark routine.</summary>
     public class SparkOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8586,6 +8605,28 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Runtime version. If not specified, the default runtime version is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SparkStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] Endpoints generated for the Spark job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Endpoints { get; set; }
+
+        /// <summary>[Output-only] Logging info is used to generate a link to Cloud Logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logging_info")]
+        public virtual SparkLoggingInfo LoggingInfo { get; set; }
+
+        /// <summary>[Output-only] Spark job id if a Spark job is created successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spark_job_id")]
+        public virtual string SparkJobId { get; set; }
+
+        /// <summary>[Output-only] Location where the Spark job is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spark_job_location")]
+        public virtual string SparkJobLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

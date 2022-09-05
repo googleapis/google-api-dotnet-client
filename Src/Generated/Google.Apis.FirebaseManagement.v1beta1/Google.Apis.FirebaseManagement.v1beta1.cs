@@ -931,7 +931,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+                /// <summary>
+                /// Controls whether Apps in the DELETED state should be returned in the response. If not specified,
+                /// only `ACTIVE` Apps will be returned.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -1025,8 +1028,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Specifies which fields to update. Note that the fields `name`, `app_id`, `project_id`,
-                /// `package_name`, and `state` are all immutable.
+                /// Specifies which fields of the AndroidApp to update. Note that the following fields are immutable:
+                /// `name`, `app_id`, `project_id`, and `package_name`. To update `state`, use any of the following
+                /// endpoints: RemoveAndroidApp or UndeleteAndroidApp.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1069,7 +1073,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Removes the specified AndroidApp from the project.</summary>
+            /// <summary>Removes the specified AndroidApp from the FirebaseProject.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the AndroidApp, in the format: projects/
@@ -1083,7 +1087,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new RemoveRequest(service, body, name);
             }
 
-            /// <summary>Removes the specified AndroidApp from the project.</summary>
+            /// <summary>Removes the specified AndroidApp from the FirebaseProject.</summary>
             public class RemoveRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Remove request.</summary>
@@ -1134,7 +1138,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Restores the specified AndroidApp to the project.</summary>
+            /// <summary>Restores the specified AndroidApp to the FirebaseProject.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the AndroidApp, in the format: projects/
@@ -1148,7 +1152,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new UndeleteRequest(service, body, name);
             }
 
-            /// <summary>Restores the specified AndroidApp to the project.</summary>
+            /// <summary>Restores the specified AndroidApp to the FirebaseProject.</summary>
             public class UndeleteRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Undelete request.</summary>
@@ -1702,7 +1706,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+                /// <summary>
+                /// Controls whether Apps in the DELETED state should be returned in the response. If not specified,
+                /// only `ACTIVE` Apps will be returned.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -1794,8 +1801,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Specifies which fields to update. Note that the fields `name`, `appId`, `projectId`, `bundleId`, and
-                /// `state` are all immutable
+                /// Specifies which fields of the IosApp to update. Note that the following fields are immutable:
+                /// `name`, `app_id`, `project_id`, and `bundle_id`. To update `state`, use any of the following
+                /// endpoints: RemoveIosApp or UndeleteIosApp.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1838,7 +1846,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Removes the specified IosApp from the project.</summary>
+            /// <summary>Removes the specified IosApp from the FirebaseProject.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID
@@ -1852,7 +1860,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new RemoveRequest(service, body, name);
             }
 
-            /// <summary>Removes the specified IosApp from the project.</summary>
+            /// <summary>Removes the specified IosApp from the FirebaseProject.</summary>
             public class RemoveRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Remove request.</summary>
@@ -1903,7 +1911,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Restores the specified IosApp to the project.</summary>
+            /// <summary>Restores the specified IosApp to the FirebaseProject.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID
@@ -1917,7 +1925,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new UndeleteRequest(service, body, name);
             }
 
-            /// <summary>Restores the specified IosApp to the project.</summary>
+            /// <summary>Restores the specified IosApp to the FirebaseProject.</summary>
             public class UndeleteRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Undelete request.</summary>
@@ -2221,7 +2229,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+                /// <summary>
+                /// Controls whether Apps in the DELETED state should be returned in the response. If not specified,
+                /// only `ACTIVE` Apps will be returned.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -2313,8 +2324,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Specifies which fields to update. Note that the fields `name`, `appId`, `projectId` and `state` are
-                /// all immutable
+                /// Specifies which fields of the WebApp to update. Note that the following fields are immutable:
+                /// `name`, `app_id`, and `project_id`. To update `state`, use any of the following endpoints:
+                /// RemoveWebApp or UndeleteWebApp.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2357,7 +2369,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Removes the specified WebApp from the project.</summary>
+            /// <summary>Removes the specified WebApp from the FirebaseProject.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID
@@ -2371,7 +2383,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new RemoveRequest(service, body, name);
             }
 
-            /// <summary>Removes the specified WebApp from the project.</summary>
+            /// <summary>Removes the specified WebApp from the FirebaseProject.</summary>
             public class RemoveRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Remove request.</summary>
@@ -2422,7 +2434,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 }
             }
 
-            /// <summary>Restores the specified WebApp to the project.</summary>
+            /// <summary>Restores the specified WebApp to the FirebaseProject.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID
@@ -2436,7 +2448,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 return new UndeleteRequest(service, body, name);
             }
 
-            /// <summary>Restores the specified WebApp to the project.</summary>
+            /// <summary>Restores the specified WebApp to the FirebaseProject.</summary>
             public class UndeleteRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Undelete request.</summary>
@@ -2918,7 +2930,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Optional. Controls whether Projects in the DELETING state should be returned. Defaults to false.
+            /// Optional. Controls whether Projects in the DELETED state should be returned in the response. If not
+            /// specified, only `ACTIVE` Projects will be returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -3005,8 +3018,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Specifies which fields to update. If this list is empty, then no state will be updated. Note that the
-            /// fields `name`, `projectId`, and `projectNumber` are all immutable.
+            /// Specifies which fields of the FirebaseProject to update. Note that the following fields are immutable:
+            /// `name`, `project_id`, and `project_number`. To update `state`, use any of the following Google Cloud
+            /// endpoints:
+            /// [`projects.delete`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/delete) or
+            /// [`projects.undelete`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/undelete)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -3199,7 +3215,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+            /// <summary>
+            /// Controls whether Apps in the DELETED state should be returned. If not specified, only `ACTIVE` Apps will
+            /// be returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -3652,11 +3671,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual DefaultResources Resources { get; set; }
 
-        /// <summary>
-        /// Output only. The lifecycle state of the Project. Updates to the state must be performed via
-        /// com.google.cloudresourcemanager.v1.Projects.DeleteProject and
-        /// com.google.cloudresourcemanager.v1.Projects.UndeleteProject
-        /// </summary>
+        /// <summary>Output only. The lifecycle state of the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
     }
@@ -4006,7 +4021,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set to true, only validate the request and do not delete the app.</summary>
+        /// <summary>If set to true, the request is only validated. The App will _not_ be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -4027,7 +4042,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set to true, only validate the request and do not delete the app.</summary>
+        /// <summary>If set to true, the request is only validated. The App will _not_ be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -4048,7 +4063,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set to true, only validate the request and do not delete the app.</summary>
+        /// <summary>If set to true, the request is only validated. The App will _not_ be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -4202,7 +4217,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set to true, only validate the request and do not undelete the app.</summary>
+        /// <summary>If set to true, the request is only validated. The App will _not_ be undeleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -4216,7 +4231,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set to true, only validate the request and do not undelete the app.</summary>
+        /// <summary>If set to true, the request is only validated. The App will _not_ be undeleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -4230,7 +4245,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set to true, only validate the request and do not undelete the app.</summary>
+        /// <summary>If set to true, the request is only validated. The App will _not_ be undeleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }

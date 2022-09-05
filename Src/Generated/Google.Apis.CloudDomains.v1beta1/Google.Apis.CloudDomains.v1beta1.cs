@@ -1393,8 +1393,8 @@ namespace Google.Apis.CloudDomains.v1beta1
                 /// <summary>
                 /// Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud
                 /// Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains,
-                /// the list of domains returned depends on the individual user making the call. Domains supported by
-                /// Google Domains, but not supported by Cloud Domains, are not returned.
+                /// the list of domains returned depends on the individual user making the call. Domains already managed
+                /// by Cloud Domains are not returned.
                 /// </summary>
                 /// <param name="location">
                 /// Required. The location. Must be in the format `projects/*/locations/*`.
@@ -1407,8 +1407,8 @@ namespace Google.Apis.CloudDomains.v1beta1
                 /// <summary>
                 /// Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud
                 /// Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains,
-                /// the list of domains returned depends on the individual user making the call. Domains supported by
-                /// Google Domains, but not supported by Cloud Domains, are not returned.
+                /// the list of domains returned depends on the individual user making the call. Domains already managed
+                /// by Cloud Domains are not returned.
                 /// </summary>
                 public class RetrieveImportableDomainsRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.RetrieveImportableDomainsResponse>
                 {
@@ -3223,7 +3223,7 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentRegistrar")]
         public virtual string CurrentRegistrar { get; set; }
 
-        /// <summary>The URL of registrar that currently manages the domain.</summary>
+        /// <summary>The URL of the registrar that currently manages the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentRegistrarUri")]
         public virtual string CurrentRegistrarUri { get; set; }
 

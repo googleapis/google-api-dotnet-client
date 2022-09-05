@@ -5758,7 +5758,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`,
         /// `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of
         /// recommendation: `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
-        /// `frequently-bought-together` =&amp;gt; `revenue_per_order`
+        /// `frequently-bought-together` =&amp;gt; `revenue_per_order` This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
         public virtual string OptimizationObjective { get; set; }
@@ -5803,7 +5808,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
         /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
-        /// and `recently-viewed`(readonly value).
+        /// and `recently-viewed`(readonly value). This field together with optimization_objective describe model
+        /// metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for
+        /// more details on what the model metadata control and which combination of parameters are valid. For invalid
+        /// combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`),
+        /// you receive an error 400 if you try to create/update a recommendation with this set of knobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -7542,7 +7551,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`,
         /// `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of
         /// recommendation: `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
-        /// `frequently-bought-together` =&amp;gt; `revenue_per_order`
+        /// `frequently-bought-together` =&amp;gt; `revenue_per_order` This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
         public virtual string OptimizationObjective { get; set; }
@@ -7583,7 +7597,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
         /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
-        /// and `recently-viewed`(readonly value).
+        /// and `recently-viewed`(readonly value). This field together with optimization_objective describe model
+        /// metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for
+        /// more details on what the model metadata control and which combination of parameters are valid. For invalid
+        /// combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`),
+        /// you receive an error 400 if you try to create/update a recommendation with this set of knobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
