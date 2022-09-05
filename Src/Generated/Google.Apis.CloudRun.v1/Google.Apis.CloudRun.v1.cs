@@ -2391,8 +2391,9 @@ namespace Google.Apis.CloudRun.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// The resource's parent. In Cloud Run, it may be one of the following: *
-            /// `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
+            /// Required. The resource's parent. In Cloud Run, it may be one of the following: *
+            /// `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+            /// `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` *
             /// `projects/{project_id_or_number}/regions/{region}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
@@ -2415,9 +2416,10 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The resource's parent. In Cloud Run, it may be one of the following: *
-                /// `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
-                /// `projects/{project_id_or_number}/regions/{region}`
+                /// Required. The resource's parent. In Cloud Run, it may be one of the following: *
+                /// `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                /// `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}`
+                /// * `projects/{project_id_or_number}/regions/{region}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2472,7 +2474,7 @@ namespace Google.Apis.CloudRun.v1
             /// associated Revisions.
             /// </summary>
             /// <param name="name">
-            /// The fully qualified name of the service to delete. It can be any of the following forms: *
+            /// Required. The fully qualified name of the service to delete. It can be any of the following forms: *
             /// `namespaces/{project_id_or_number}/services/{service_name}` *
             /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
             /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
@@ -2496,7 +2498,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The fully qualified name of the service to delete. It can be any of the following forms: *
+                /// Required. The fully qualified name of the service to delete. It can be any of the following forms: *
                 /// `namespaces/{project_id_or_number}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
@@ -2581,7 +2583,7 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Gets information about a service.</summary>
             /// <param name="name">
-            /// The fully qualified name of the service to retrieve. It can be any of the following forms: *
+            /// Required. The fully qualified name of the service to retrieve. It can be any of the following forms: *
             /// `namespaces/{project_id_or_number}/services/{service_name}` *
             /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
             /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
@@ -2602,8 +2604,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The fully qualified name of the service to retrieve. It can be any of the following forms: *
-                /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                /// Required. The fully qualified name of the service to retrieve. It can be any of the following forms:
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </summary>
@@ -2636,8 +2638,9 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Lists services for the given project and region.</summary>
             /// <param name="parent">
-            /// The parent from where the resources should be listed. In Cloud Run, it may be one of the following: *
-            /// `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
+            /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
+            /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+            /// `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` *
             /// `projects/{project_id_or_number}/regions/{region}`
             /// </param>
             public virtual ListRequest List(string parent)
@@ -2656,14 +2659,15 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The parent from where the resources should be listed. In Cloud Run, it may be one of the following:
-                /// * `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
-                /// `projects/{project_id_or_number}/regions/{region}`
+                /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
+                /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                /// `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}`
+                /// * `projects/{project_id_or_number}/regions/{region}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Encoded string to continue paging.</summary>
+                /// <summary>Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -2681,7 +2685,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>Optional. The maximum number of records that should be returned.</summary>
+                /// <summary>The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
 
@@ -2780,7 +2784,7 @@ namespace Google.Apis.CloudRun.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The fully qualified name of the service to replace. It can be any of the following forms: *
+            /// Required. The fully qualified name of the service to replace. It can be any of the following forms: *
             /// `namespaces/{project_id_or_number}/services/{service_name}` *
             /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
             /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
@@ -2806,8 +2810,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The fully qualified name of the service to replace. It can be any of the following forms: *
-                /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                /// Required. The fully qualified name of the service to replace. It can be any of the following forms:
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </summary>
@@ -4699,9 +4703,10 @@ namespace Google.Apis.CloudRun.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The resource's parent. In Cloud Run, it may be one of the following: *
-                /// `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
-                /// `projects/{project_id_or_number}/regions/{region}`
+                /// Required. The resource's parent. In Cloud Run, it may be one of the following: *
+                /// `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                /// `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}`
+                /// * `projects/{project_id_or_number}/regions/{region}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
                 {
@@ -4723,8 +4728,10 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The resource's parent. In Cloud Run, it may be one of the following: *
-                    /// `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
+                    /// Required. The resource's parent. In Cloud Run, it may be one of the following: *
+                    /// `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                    /// `namespaces/{project_id_or_number}/services` *
+                    /// `projects/{project_id_or_number}/locations/{region}` *
                     /// `projects/{project_id_or_number}/regions/{region}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4780,7 +4787,7 @@ namespace Google.Apis.CloudRun.v1
                 /// all associated Revisions.
                 /// </summary>
                 /// <param name="name">
-                /// The fully qualified name of the service to delete. It can be any of the following forms: *
+                /// Required. The fully qualified name of the service to delete. It can be any of the following forms: *
                 /// `namespaces/{project_id_or_number}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
@@ -4804,8 +4811,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The fully qualified name of the service to delete. It can be any of the following forms: *
-                    /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                    /// Required. The fully qualified name of the service to delete. It can be any of the following
+                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                     /// </summary>
@@ -4889,8 +4896,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Gets information about a service.</summary>
                 /// <param name="name">
-                /// The fully qualified name of the service to retrieve. It can be any of the following forms: *
-                /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                /// Required. The fully qualified name of the service to retrieve. It can be any of the following forms:
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </param>
@@ -4910,8 +4917,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The fully qualified name of the service to retrieve. It can be any of the following forms: *
-                    /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                    /// Required. The fully qualified name of the service to retrieve. It can be any of the following
+                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                     /// </summary>
@@ -5024,9 +5031,10 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Lists services for the given project and region.</summary>
                 /// <param name="parent">
-                /// The parent from where the resources should be listed. In Cloud Run, it may be one of the following:
-                /// * `namespaces/{project_id_or_number}` * `projects/{project_id_or_number}/locations/{region}` *
-                /// `projects/{project_id_or_number}/regions/{region}`
+                /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
+                /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                /// `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}`
+                /// * `projects/{project_id_or_number}/regions/{region}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -5044,15 +5052,16 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The parent from where the resources should be listed. In Cloud Run, it may be one of the
-                    /// following: * `namespaces/{project_id_or_number}` *
+                    /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of
+                    /// the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                    /// `namespaces/{project_id_or_number}/services` *
                     /// `projects/{project_id_or_number}/locations/{region}` *
                     /// `projects/{project_id_or_number}/regions/{region}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Encoded string to continue paging.</summary>
+                    /// <summary>Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -5071,7 +5080,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>Optional. The maximum number of records that should be returned.</summary>
+                    /// <summary>The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -5170,8 +5179,8 @@ namespace Google.Apis.CloudRun.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The fully qualified name of the service to replace. It can be any of the following forms: *
-                /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                /// Required. The fully qualified name of the service to replace. It can be any of the following forms:
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </param>
@@ -5196,8 +5205,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The fully qualified name of the service to replace. It can be any of the following forms: *
-                    /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                    /// Required. The fully qualified name of the service to replace. It can be any of the following
+                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                     /// </summary>
@@ -5575,9 +5584,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -6980,17 +6990,17 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The immutable name of the resource. In Cloud Run, name is required when creating top-level resources
-        /// (Service, Job), and must be unique within a Cloud Run project/region. More info:
-        /// https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest,
-        /// name must contain fewer than 50 characters. Otherwise,
+        /// Required. The name of the resource. In Cloud Run, name is required when creating top-level resources
+        /// (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More
+        /// info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a
+        /// CreateServiceRequest, name must contain fewer than 50 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be
-        /// project ID or number.
+        /// Required. Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must
+        /// be project ID or number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
@@ -7000,10 +7010,10 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; }
 
         /// <summary>
-        /// Optional. Opaque, system-generated value that represents the internal version of this object that can be
-        /// used by clients to determine when objects have changed. May be used for optimistic concurrency, change
-        /// detection, and the watch operation on a resource or set of resources. Clients must treat these values as
-        /// opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info:
+        /// Opaque, system-generated value that represents the internal version of this object that can be used by
+        /// clients to determine when objects have changed. May be used for optimistic concurrency, change detection,
+        /// and the watch operation on a resource or set of resources. Clients must treat these values as opaque and
+        /// passed unmodified back to the server or omit the value to disable conflict-detection. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]

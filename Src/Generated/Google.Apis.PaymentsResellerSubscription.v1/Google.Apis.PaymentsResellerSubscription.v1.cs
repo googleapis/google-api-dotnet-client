@@ -311,11 +311,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. Specifies the filters for the products results. The syntax defined in the EBNF grammar:
-                /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be thrown if any specified
-                /// parameter is not supported. Currently, it can only be used by Youtube partners. Allowed parameters
-                /// are: - regionCodes - zipCode - eligibilityId Multiple parameters can be specified, for example:
-                /// "regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign"
+                /// Optional. Specifies the filters for the product results. The syntax is defined in
+                /// https://google.aip.dev/160 with the following caveats: - Only the following features are supported:
+                /// - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has
+                /// operator `:` (no wildcards `*`) - Only the following fields are supported: - `region_codes` -
+                /// `youtube_payload.partner_eligibility_id` - `youtube_payload.postal_code` - Unless explicitly
+                /// mentioned above, other features are not supported. Example: `region_codes:US AND
+                /// youtube_payload.postal_code=94043 AND youtube_payload.partner_eligibility_id=eligibility-id`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -493,12 +495,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. Specifies the filters for the promotion results. The syntax defined in the EBNF grammar:
-                /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be thrown if the specified
-                /// parameter(s) is not supported. Currently, it can only be used by Youtube partners. Allowed
-                /// parameters are: - region_codes: "US" - zip_code: "94043" - eligibility_id: "2022H1Campaign" Multiple
-                /// parameters can be specified, for example: "region_codes=US zip_code=94043
-                /// eligibility_id=2022H1Campaign"
+                /// Optional. Specifies the filters for the promotion results. The syntax is defined in
+                /// https://google.aip.dev/160 with the following caveats: - Only the following features are supported:
+                /// - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has
+                /// operator `:` (no wildcards `*`) - Only the following fields are supported: - `applicable_products` -
+                /// `region_codes` - `youtube_payload.partner_eligibility_id` - `youtube_payload.postal_code` - Unless
+                /// explicitly mentioned above, other features are not supported. Example:
+                /// `applicable_products:partners/partner1/products/product1 AND region_codes:US AND
+                /// youtube_payload.postal_code=94043 AND youtube_payload.partner_eligibility_id=eligibility-id`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1216,12 +1220,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the filters for the promotion results. The syntax defined in the EBNF grammar:
-        /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be thrown if any specified parameter is
-        /// not supported. Currently, it can only be used by Youtube partners. Allowed parameters are: - regionCodes -
-        /// zipCode - eligibilityId - applicableProducts Multiple parameters can be specified, for example:
-        /// "regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign", or
-        /// "applicableProducts=partners/p1/products/product2"
+        /// Optional. Specifies the filters for the promotion results. The syntax is defined in
+        /// https://google.aip.dev/160 with the following caveats: - Only the following features are supported: -
+        /// Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator
+        /// `:` (no wildcards `*`) - Only the following fields are supported: - `applicable_products` - `region_codes` -
+        /// `youtube_payload.partner_eligibility_id` - `youtube_payload.postal_code` - Unless explicitly mentioned
+        /// above, other features are not supported. Example: `applicable_products:partners/partner1/products/product1
+        /// AND region_codes:US AND youtube_payload.postal_code=94043 AND
+        /// youtube_payload.partner_eligibility_id=eligibility-id`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

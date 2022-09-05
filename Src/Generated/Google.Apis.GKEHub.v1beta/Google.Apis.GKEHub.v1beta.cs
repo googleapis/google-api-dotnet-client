@@ -1632,7 +1632,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>**Anthos Observability**: Spec</summary>
     public class AnthosObservabilityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>default membership spec for unconfigured memberships</summary>
+        /// <summary>Default membership spec for unconfigured memberships</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMembershipSpec")]
         public virtual AnthosObservabilityMembershipSpec DefaultMembershipSpec { get; set; }
 
@@ -1644,16 +1644,13 @@ namespace Google.Apis.GKEHub.v1beta.Data
     public class AnthosObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// use full of metrics rather than optimized metrics. See
+        /// Use full of metrics rather than optimized metrics. See
         /// https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doNotOptimizeMetrics")]
         public virtual System.Nullable<bool> DoNotOptimizeMetrics { get; set; }
 
-        /// <summary>
-        /// enable collecting and reporting metrics and logs from user apps See
-        /// go/onyx-application-metrics-logs-user-guide
-        /// </summary>
+        /// <summary>Enable collecting and reporting metrics and logs from user apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverOnApplications")]
         public virtual System.Nullable<bool> EnableStackdriverOnApplications { get; set; }
 
@@ -1830,9 +1827,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -1969,7 +1967,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preventDrift")]
         public virtual System.Nullable<bool> PreventDrift { get; set; }
 
-        /// <summary>Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured” mode.</summary>
+        /// <summary>Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
 
@@ -2101,6 +2099,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Status of gatekeeper-controller-manager pod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatekeeperControllerManagerState")]
         public virtual string GatekeeperControllerManagerState { get; set; }
+
+        /// <summary>Status of the pod serving the mutation webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatekeeperMutation")]
+        public virtual string GatekeeperMutation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2718,6 +2720,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// </summary>
     public class IdentityServiceAuthMethod : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GoogleConfig specific configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleConfig")]
+        public virtual IdentityServiceGoogleConfig GoogleConfig { get; set; }
+
         /// <summary>Identifier for auth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2729,6 +2735,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Proxy server address to use for auth method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
         public virtual string Proxy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Google Plugin Auth flow.</summary>
+    public class IdentityServiceGoogleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disable automatic configuration of Google Plugin on supported platforms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disable")]
+        public virtual System.Nullable<bool> Disable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2792,6 +2809,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployCloudConsoleProxy")]
         public virtual System.Nullable<bool> DeployCloudConsoleProxy { get; set; }
+
+        /// <summary>Enable access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAccessToken")]
+        public virtual System.Nullable<bool> EnableAccessToken { get; set; }
 
         /// <summary>Output only. Encrypted OIDC Client secret</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]

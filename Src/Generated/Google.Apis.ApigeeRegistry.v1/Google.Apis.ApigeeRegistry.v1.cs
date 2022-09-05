@@ -341,17 +341,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                         this.service = service;
                     }
 
-                    /// <summary>CreateArtifact creates a specified artifact.</summary>
+                    /// <summary>Creates a specified artifact.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                    /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>CreateArtifact creates a specified artifact.</summary>
+                    /// <summary>Creates a specified artifact.</summary>
                     public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -363,7 +363,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                        /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -414,16 +414,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                    /// <summary>Removes a specified artifact.</summary>
                     /// <param name="name">
-                    /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                    /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                    /// <summary>Removes a specified artifact.</summary>
                     public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -434,7 +434,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                        /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -463,16 +463,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>GetArtifact returns a specified artifact.</summary>
+                    /// <summary>Returns a specified artifact.</summary>
                     /// <param name="name">
-                    /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                    /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>GetArtifact returns a specified artifact.</summary>
+                    /// <summary>Returns a specified artifact.</summary>
                     public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -483,7 +483,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                        /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -513,13 +513,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored with
-                    /// GZip compression, the default behavior is to return the artifact uncompressed (the mime_type
-                    /// response field indicates the exact format returned).
+                    /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the
+                    /// default behavior is to return the artifact uncompressed (the mime_type response field indicates
+                    /// the exact format returned).
                     /// </summary>
                     /// <param name="name">
                     /// Required. The name of the artifact whose contents should be retrieved. Format:
-                    /// {parent}/artifacts/*
+                    /// `{parent}/artifacts/*`
                     /// </param>
                     public virtual GetContentsRequest GetContents(string name)
                     {
@@ -527,9 +527,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored with
-                    /// GZip compression, the default behavior is to return the artifact uncompressed (the mime_type
-                    /// response field indicates the exact format returned).
+                    /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the
+                    /// default behavior is to return the artifact uncompressed (the mime_type response field indicates
+                    /// the exact format returned).
                     /// </summary>
                     public class GetContentsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.HttpBody>
                     {
@@ -542,7 +542,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The name of the artifact whose contents should be retrieved. Format:
-                        /// {parent}/artifacts/*
+                        /// `{parent}/artifacts/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -652,16 +652,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>ListArtifacts returns matching artifacts.</summary>
+                    /// <summary>Returns matching artifacts.</summary>
                     /// <param name="parent">
-                    /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                    /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>ListArtifacts returns matching artifacts.</summary>
+                    /// <summary>Returns matching artifacts.</summary>
                     public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListArtifactsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -672,7 +672,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                        /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -683,6 +683,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order
+                        /// using the "desc" identifier, e.g. "foo desc,bar"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
 
                         /// <summary>
                         /// The maximum number of artifacts to return. The service may return fewer than this value. If
@@ -729,6 +736,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -748,7 +763,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                    /// <summary>Used to replace a specified artifact.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Resource name.</param>
                     public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
@@ -756,7 +771,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         return new ReplaceArtifactRequest(service, body, name);
                     }
 
-                    /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                    /// <summary>Used to replace a specified artifact.</summary>
                     public class ReplaceArtifactRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                     {
                         /// <summary>Constructs a new ReplaceArtifact request.</summary>
@@ -975,17 +990,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                             this.service = service;
                         }
 
-                        /// <summary>CreateArtifact creates a specified artifact.</summary>
+                        /// <summary>Creates a specified artifact.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                        /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>CreateArtifact creates a specified artifact.</summary>
+                        /// <summary>Creates a specified artifact.</summary>
                         public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -997,7 +1012,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                            /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1048,16 +1063,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                        /// <summary>Removes a specified artifact.</summary>
                         /// <param name="name">
-                        /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                        /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                        /// <summary>Removes a specified artifact.</summary>
                         public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -1068,7 +1083,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                            /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1097,16 +1112,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>GetArtifact returns a specified artifact.</summary>
+                        /// <summary>Returns a specified artifact.</summary>
                         /// <param name="name">
-                        /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                        /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>GetArtifact returns a specified artifact.</summary>
+                        /// <summary>Returns a specified artifact.</summary>
                         public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -1117,7 +1132,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                            /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1147,13 +1162,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored
-                        /// with GZip compression, the default behavior is to return the artifact uncompressed (the
-                        /// mime_type response field indicates the exact format returned).
+                        /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression,
+                        /// the default behavior is to return the artifact uncompressed (the mime_type response field
+                        /// indicates the exact format returned).
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the artifact whose contents should be retrieved. Format:
-                        /// {parent}/artifacts/*
+                        /// `{parent}/artifacts/*`
                         /// </param>
                         public virtual GetContentsRequest GetContents(string name)
                         {
@@ -1161,9 +1176,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored
-                        /// with GZip compression, the default behavior is to return the artifact uncompressed (the
-                        /// mime_type response field indicates the exact format returned).
+                        /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression,
+                        /// the default behavior is to return the artifact uncompressed (the mime_type response field
+                        /// indicates the exact format returned).
                         /// </summary>
                         public class GetContentsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.HttpBody>
                         {
@@ -1176,7 +1191,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The name of the artifact whose contents should be retrieved. Format:
-                            /// {parent}/artifacts/*
+                            /// `{parent}/artifacts/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1205,16 +1220,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>ListArtifacts returns matching artifacts.</summary>
+                        /// <summary>Returns matching artifacts.</summary>
                         /// <param name="parent">
-                        /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                        /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>ListArtifacts returns matching artifacts.</summary>
+                        /// <summary>Returns matching artifacts.</summary>
                         public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListArtifactsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1225,7 +1240,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                            /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1236,6 +1251,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending
+                            /// order using the "desc" identifier, e.g. "foo desc,bar"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
 
                             /// <summary>
                             /// The maximum number of artifacts to return. The service may return fewer than this value.
@@ -1282,6 +1304,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -1301,7 +1331,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                        /// <summary>Used to replace a specified artifact.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Resource name.</param>
                         public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
@@ -1309,7 +1339,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             return new ReplaceArtifactRequest(service, body, name);
                         }
 
-                        /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                        /// <summary>Used to replace a specified artifact.</summary>
                         public class ReplaceArtifactRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                         {
                             /// <summary>Constructs a new ReplaceArtifact request.</summary>
@@ -1355,18 +1385,18 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>CreateApiDeployment creates a specified deployment.</summary>
+                    /// <summary>Creates a specified deployment.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of deployments. Format:
-                    /// projects/*/locations/*/apis/*
+                    /// `projects/*/locations/*/apis/*`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>CreateApiDeployment creates a specified deployment.</summary>
+                    /// <summary>Creates a specified deployment.</summary>
                     public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -1379,7 +1409,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The parent, which owns this collection of deployments. Format:
-                        /// projects/*/locations/*/apis/*
+                        /// `projects/*/locations/*/apis/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1431,12 +1461,11 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// DeleteApiDeployment removes a specified deployment, all revisions, and all child resources (e.g.
-                    /// artifacts).
+                    /// Removes a specified deployment, all revisions, and all child resources (e.g., artifacts).
                     /// </summary>
                     /// <param name="name">
                     /// Required. The name of the deployment to delete. Format:
-                    /// projects/*/locations/*/apis/*/deployments/*
+                    /// `projects/*/locations/*/apis/*/deployments/*`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -1444,8 +1473,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// DeleteApiDeployment removes a specified deployment, all revisions, and all child resources (e.g.
-                    /// artifacts).
+                    /// Removes a specified deployment, all revisions, and all child resources (e.g., artifacts).
                     /// </summary>
                     public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                     {
@@ -1458,7 +1486,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The name of the deployment to delete. Format:
-                        /// projects/*/locations/*/apis/*/deployments/*
+                        /// `projects/*/locations/*/apis/*/deployments/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1502,17 +1530,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>DeleteApiDeploymentRevision deletes a revision of a deployment.</summary>
+                    /// <summary>Deletes a revision of a deployment.</summary>
                     /// <param name="name">
                     /// Required. The name of the deployment revision to be deleted, with a revision ID explicitly
-                    /// included. Example: projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8
+                    /// included. Example: `projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8`
                     /// </param>
                     public virtual DeleteRevisionRequest DeleteRevision(string name)
                     {
                         return new DeleteRevisionRequest(service, name);
                     }
 
-                    /// <summary>DeleteApiDeploymentRevision deletes a revision of a deployment.</summary>
+                    /// <summary>Deletes a revision of a deployment.</summary>
                     public class DeleteRevisionRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment>
                     {
                         /// <summary>Constructs a new DeleteRevision request.</summary>
@@ -1524,7 +1552,8 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The name of the deployment revision to be deleted, with a revision ID explicitly
-                        /// included. Example: projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8
+                        /// included. Example:
+                        /// `projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1553,17 +1582,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>GetApiDeployment returns a specified deployment.</summary>
+                    /// <summary>Returns a specified deployment.</summary>
                     /// <param name="name">
                     /// Required. The name of the deployment to retrieve. Format:
-                    /// projects/*/locations/*/apis/*/deployments/*
+                    /// `projects/*/locations/*/apis/*/deployments/*`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>GetApiDeployment returns a specified deployment.</summary>
+                    /// <summary>Returns a specified deployment.</summary>
                     public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1575,7 +1604,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The name of the deployment to retrieve. Format:
-                        /// projects/*/locations/*/apis/*/deployments/*
+                        /// `projects/*/locations/*/apis/*/deployments/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1685,17 +1714,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>ListApiDeployments returns matching deployments.</summary>
+                    /// <summary>Returns matching deployments.</summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of deployments. Format:
-                    /// projects/*/locations/*/apis/*
+                    /// `projects/*/locations/*/apis/*`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>ListApiDeployments returns matching deployments.</summary>
+                    /// <summary>Returns matching deployments.</summary>
                     public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListApiDeploymentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1707,7 +1736,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The parent, which owns this collection of deployments. Format:
-                        /// projects/*/locations/*/apis/*
+                        /// `projects/*/locations/*/apis/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1718,6 +1747,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order
+                        /// using the "desc" identifier, e.g. "foo desc,bar"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
 
                         /// <summary>
                         /// The maximum number of deployments to return. The service may return fewer than this value.
@@ -1764,6 +1800,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1784,8 +1828,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// ListApiDeploymentRevisions lists all revisions of a deployment. Revisions are returned in
-                    /// descending order of revision creation time.
+                    /// Lists all revisions of a deployment. Revisions are returned in descending order of revision
+                    /// creation time.
                     /// </summary>
                     /// <param name="name">Required. The name of the deployment to list revisions for.</param>
                     public virtual ListRevisionsRequest ListRevisions(string name)
@@ -1794,8 +1838,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// ListApiDeploymentRevisions lists all revisions of a deployment. Revisions are returned in
-                    /// descending order of revision creation time.
+                    /// Lists all revisions of a deployment. Revisions are returned in descending order of revision
+                    /// creation time.
                     /// </summary>
                     public class ListRevisionsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListApiDeploymentRevisionsResponse>
                     {
@@ -1861,7 +1905,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>UpdateApiDeployment can be used to modify a specified deployment.</summary>
+                    /// <summary>Used to modify a specified deployment.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Resource name.</param>
                     public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment body, string name)
@@ -1869,7 +1913,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>UpdateApiDeployment can be used to modify a specified deployment.</summary>
+                    /// <summary>Used to modify a specified deployment.</summary>
                     public class PatchRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -1893,8 +1937,8 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// The list of fields to be updated. If omitted, all fields are updated that are set in the
-                        /// request message (fields set to default values are ignored). If a "*" is specified, all
-                        /// fields are updated, including fields that are unspecified/default in the request.
+                        /// request message (fields set to default values are ignored). If an asterisk "*" is specified,
+                        /// all fields are updated, including fields that are unspecified/default in the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -1946,8 +1990,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// RollbackApiDeployment sets the current revision to a specified prior revision. Note that this
-                    /// creates a new revision with a new revision ID.
+                    /// Sets the current revision to a specified prior revision. Note that this creates a new revision
+                    /// with a new revision ID.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The deployment being rolled back.</param>
@@ -1957,8 +2001,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// RollbackApiDeployment sets the current revision to a specified prior revision. Note that this
-                    /// creates a new revision with a new revision ID.
+                    /// Sets the current revision to a specified prior revision. Note that this creates a new revision
+                    /// with a new revision ID.
                     /// </summary>
                     public class RollbackRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment>
                     {
@@ -2071,7 +2115,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>TagApiDeploymentRevision adds a tag to a specified revision of a deployment.</summary>
+                    /// <summary>Adds a tag to a specified revision of a deployment.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The name of the deployment to be tagged, including the revision ID.
@@ -2081,7 +2125,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         return new TagRevisionRequest(service, body, name);
                     }
 
-                    /// <summary>TagApiDeploymentRevision adds a tag to a specified revision of a deployment.</summary>
+                    /// <summary>Adds a tag to a specified revision of a deployment.</summary>
                     public class TagRevisionRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment>
                     {
                         /// <summary>Constructs a new TagRevision request.</summary>
@@ -2236,17 +2280,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                             this.service = service;
                         }
 
-                        /// <summary>CreateArtifact creates a specified artifact.</summary>
+                        /// <summary>Creates a specified artifact.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                        /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>CreateArtifact creates a specified artifact.</summary>
+                        /// <summary>Creates a specified artifact.</summary>
                         public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -2258,7 +2302,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                            /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2309,16 +2353,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                        /// <summary>Removes a specified artifact.</summary>
                         /// <param name="name">
-                        /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                        /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                        /// <summary>Removes a specified artifact.</summary>
                         public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -2329,7 +2373,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                            /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2358,16 +2402,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>GetArtifact returns a specified artifact.</summary>
+                        /// <summary>Returns a specified artifact.</summary>
                         /// <param name="name">
-                        /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                        /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>GetArtifact returns a specified artifact.</summary>
+                        /// <summary>Returns a specified artifact.</summary>
                         public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -2378,7 +2422,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                            /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2408,13 +2452,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored
-                        /// with GZip compression, the default behavior is to return the artifact uncompressed (the
-                        /// mime_type response field indicates the exact format returned).
+                        /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression,
+                        /// the default behavior is to return the artifact uncompressed (the mime_type response field
+                        /// indicates the exact format returned).
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the artifact whose contents should be retrieved. Format:
-                        /// {parent}/artifacts/*
+                        /// `{parent}/artifacts/*`
                         /// </param>
                         public virtual GetContentsRequest GetContents(string name)
                         {
@@ -2422,9 +2466,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored
-                        /// with GZip compression, the default behavior is to return the artifact uncompressed (the
-                        /// mime_type response field indicates the exact format returned).
+                        /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression,
+                        /// the default behavior is to return the artifact uncompressed (the mime_type response field
+                        /// indicates the exact format returned).
                         /// </summary>
                         public class GetContentsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.HttpBody>
                         {
@@ -2437,7 +2481,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The name of the artifact whose contents should be retrieved. Format:
-                            /// {parent}/artifacts/*
+                            /// `{parent}/artifacts/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2547,16 +2591,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>ListArtifacts returns matching artifacts.</summary>
+                        /// <summary>Returns matching artifacts.</summary>
                         /// <param name="parent">
-                        /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                        /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>ListArtifacts returns matching artifacts.</summary>
+                        /// <summary>Returns matching artifacts.</summary>
                         public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListArtifactsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -2567,7 +2611,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                            /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2578,6 +2622,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending
+                            /// order using the "desc" identifier, e.g. "foo desc,bar"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
 
                             /// <summary>
                             /// The maximum number of artifacts to return. The service may return fewer than this value.
@@ -2624,6 +2675,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -2643,7 +2702,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                        /// <summary>Used to replace a specified artifact.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Resource name.</param>
                         public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
@@ -2651,7 +2710,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             return new ReplaceArtifactRequest(service, body, name);
                         }
 
-                        /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                        /// <summary>Used to replace a specified artifact.</summary>
                         public class ReplaceArtifactRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                         {
                             /// <summary>Constructs a new ReplaceArtifact request.</summary>
@@ -2870,17 +2929,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 this.service = service;
                             }
 
-                            /// <summary>CreateArtifact creates a specified artifact.</summary>
+                            /// <summary>Creates a specified artifact.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">
-                            /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                            /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                             {
                                 return new CreateRequest(service, body, parent);
                             }
 
-                            /// <summary>CreateArtifact creates a specified artifact.</summary>
+                            /// <summary>Creates a specified artifact.</summary>
                             public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
@@ -2892,7 +2951,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
 
                                 /// <summary>
-                                /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                                /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
@@ -2943,16 +3002,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
                             }
 
-                            /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                            /// <summary>Removes a specified artifact.</summary>
                             /// <param name="name">
-                            /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                            /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
                                 return new DeleteRequest(service, name);
                             }
 
-                            /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                            /// <summary>Removes a specified artifact.</summary>
                             public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
@@ -2963,7 +3022,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
 
                                 /// <summary>
-                                /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                                /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -2992,16 +3051,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
                             }
 
-                            /// <summary>GetArtifact returns a specified artifact.</summary>
+                            /// <summary>Returns a specified artifact.</summary>
                             /// <param name="name">
-                            /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                            /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
                                 return new GetRequest(service, name);
                             }
 
-                            /// <summary>GetArtifact returns a specified artifact.</summary>
+                            /// <summary>Returns a specified artifact.</summary>
                             public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                             {
                                 /// <summary>Constructs a new Get request.</summary>
@@ -3012,7 +3071,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
 
                                 /// <summary>
-                                /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                                /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -3042,13 +3101,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// GetArtifactContents returns the contents of a specified artifact. If artifacts are
-                            /// stored with GZip compression, the default behavior is to return the artifact
-                            /// uncompressed (the mime_type response field indicates the exact format returned).
+                            /// Returns the contents of a specified artifact. If artifacts are stored with GZip
+                            /// compression, the default behavior is to return the artifact uncompressed (the mime_type
+                            /// response field indicates the exact format returned).
                             /// </summary>
                             /// <param name="name">
                             /// Required. The name of the artifact whose contents should be retrieved. Format:
-                            /// {parent}/artifacts/*
+                            /// `{parent}/artifacts/*`
                             /// </param>
                             public virtual GetContentsRequest GetContents(string name)
                             {
@@ -3056,9 +3115,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
 
                             /// <summary>
-                            /// GetArtifactContents returns the contents of a specified artifact. If artifacts are
-                            /// stored with GZip compression, the default behavior is to return the artifact
-                            /// uncompressed (the mime_type response field indicates the exact format returned).
+                            /// Returns the contents of a specified artifact. If artifacts are stored with GZip
+                            /// compression, the default behavior is to return the artifact uncompressed (the mime_type
+                            /// response field indicates the exact format returned).
                             /// </summary>
                             public class GetContentsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.HttpBody>
                             {
@@ -3071,7 +3130,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                                 /// <summary>
                                 /// Required. The name of the artifact whose contents should be retrieved. Format:
-                                /// {parent}/artifacts/*
+                                /// `{parent}/artifacts/*`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -3182,16 +3241,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
                             }
 
-                            /// <summary>ListArtifacts returns matching artifacts.</summary>
+                            /// <summary>Returns matching artifacts.</summary>
                             /// <param name="parent">
-                            /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                            /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
                                 return new ListRequest(service, parent);
                             }
 
-                            /// <summary>ListArtifacts returns matching artifacts.</summary>
+                            /// <summary>Returns matching artifacts.</summary>
                             public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListArtifactsResponse>
                             {
                                 /// <summary>Constructs a new List request.</summary>
@@ -3202,7 +3261,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
 
                                 /// <summary>
-                                /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                                /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
@@ -3213,6 +3272,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string Filter { get; set; }
+
+                                /// <summary>
+                                /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending
+                                /// order using the "desc" identifier, e.g. "foo desc,bar"
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string OrderBy { get; set; }
 
                                 /// <summary>
                                 /// The maximum number of artifacts to return. The service may return fewer than this
@@ -3259,6 +3325,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                         DefaultValue = null,
                                         Pattern = null,
                                     });
+                                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "orderBy",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
@@ -3278,7 +3352,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 }
                             }
 
-                            /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                            /// <summary>Used to replace a specified artifact.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="name">Resource name.</param>
                             public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
@@ -3286,7 +3360,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 return new ReplaceArtifactRequest(service, body, name);
                             }
 
-                            /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                            /// <summary>Used to replace a specified artifact.</summary>
                             public class ReplaceArtifactRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                             {
                                 /// <summary>Constructs a new ReplaceArtifact request.</summary>
@@ -3470,18 +3544,18 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>CreateApiSpec creates a specified spec.</summary>
+                        /// <summary>Creates a specified spec.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The parent, which owns this collection of specs. Format:
-                        /// projects/*/locations/*/apis/*/versions/*
+                        /// `projects/*/locations/*/apis/*/versions/*`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.ApiSpec body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>CreateApiSpec creates a specified spec.</summary>
+                        /// <summary>Creates a specified spec.</summary>
                         public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiSpec>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -3494,7 +3568,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The parent, which owns this collection of specs. Format:
-                            /// projects/*/locations/*/apis/*/versions/*
+                            /// `projects/*/locations/*/apis/*/versions/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3546,12 +3620,11 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// DeleteApiSpec removes a specified spec, all revisions, and all child resources (e.g.
-                        /// artifacts).
+                        /// Removes a specified spec, all revisions, and all child resources (e.g., artifacts).
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the spec to delete. Format:
-                        /// projects/*/locations/*/apis/*/versions/*/specs/*
+                        /// `projects/*/locations/*/apis/*/versions/*/specs/*`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -3559,8 +3632,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// DeleteApiSpec removes a specified spec, all revisions, and all child resources (e.g.
-                        /// artifacts).
+                        /// Removes a specified spec, all revisions, and all child resources (e.g., artifacts).
                         /// </summary>
                         public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                         {
@@ -3573,7 +3645,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The name of the spec to delete. Format:
-                            /// projects/*/locations/*/apis/*/versions/*/specs/*
+                            /// `projects/*/locations/*/apis/*/versions/*/specs/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3617,18 +3689,18 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>DeleteApiSpecRevision deletes a revision of a spec.</summary>
+                        /// <summary>Deletes a revision of a spec.</summary>
                         /// <param name="name">
                         /// Required. The name of the spec revision to be deleted, with a revision ID explicitly
                         /// included. Example:
-                        /// projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8
+                        /// `projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8`
                         /// </param>
                         public virtual DeleteRevisionRequest DeleteRevision(string name)
                         {
                             return new DeleteRevisionRequest(service, name);
                         }
 
-                        /// <summary>DeleteApiSpecRevision deletes a revision of a spec.</summary>
+                        /// <summary>Deletes a revision of a spec.</summary>
                         public class DeleteRevisionRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiSpec>
                         {
                             /// <summary>Constructs a new DeleteRevision request.</summary>
@@ -3641,7 +3713,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// <summary>
                             /// Required. The name of the spec revision to be deleted, with a revision ID explicitly
                             /// included. Example:
-                            /// projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8
+                            /// `projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3670,17 +3742,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>GetApiSpec returns a specified spec.</summary>
+                        /// <summary>Returns a specified spec.</summary>
                         /// <param name="name">
                         /// Required. The name of the spec to retrieve. Format:
-                        /// projects/*/locations/*/apis/*/versions/*/specs/*
+                        /// `projects/*/locations/*/apis/*/versions/*/specs/*`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>GetApiSpec returns a specified spec.</summary>
+                        /// <summary>Returns a specified spec.</summary>
                         public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiSpec>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -3692,7 +3764,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The name of the spec to retrieve. Format:
-                            /// projects/*/locations/*/apis/*/versions/*/specs/*
+                            /// `projects/*/locations/*/apis/*/versions/*/specs/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3722,13 +3794,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// GetApiSpecContents returns the contents of a specified spec. If specs are stored with GZip
-                        /// compression, the default behavior is to return the spec uncompressed (the mime_type response
-                        /// field indicates the exact format returned).
+                        /// Returns the contents of a specified spec. If specs are stored with GZip compression, the
+                        /// default behavior is to return the spec uncompressed (the mime_type response field indicates
+                        /// the exact format returned).
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the spec whose contents should be retrieved. Format:
-                        /// projects/*/locations/*/apis/*/versions/*/specs/*
+                        /// `projects/*/locations/*/apis/*/versions/*/specs/*`
                         /// </param>
                         public virtual GetContentsRequest GetContents(string name)
                         {
@@ -3736,9 +3808,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// GetApiSpecContents returns the contents of a specified spec. If specs are stored with GZip
-                        /// compression, the default behavior is to return the spec uncompressed (the mime_type response
-                        /// field indicates the exact format returned).
+                        /// Returns the contents of a specified spec. If specs are stored with GZip compression, the
+                        /// default behavior is to return the spec uncompressed (the mime_type response field indicates
+                        /// the exact format returned).
                         /// </summary>
                         public class GetContentsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.HttpBody>
                         {
@@ -3751,7 +3823,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The name of the spec whose contents should be retrieved. Format:
-                            /// projects/*/locations/*/apis/*/versions/*/specs/*
+                            /// `projects/*/locations/*/apis/*/versions/*/specs/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3861,17 +3933,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>ListApiSpecs returns matching specs.</summary>
+                        /// <summary>Returns matching specs.</summary>
                         /// <param name="parent">
                         /// Required. The parent, which owns this collection of specs. Format:
-                        /// projects/*/locations/*/apis/*/versions/*
+                        /// `projects/*/locations/*/apis/*/versions/*`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>ListApiSpecs returns matching specs.</summary>
+                        /// <summary>Returns matching specs.</summary>
                         public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListApiSpecsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -3883,7 +3955,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// Required. The parent, which owns this collection of specs. Format:
-                            /// projects/*/locations/*/apis/*/versions/*
+                            /// `projects/*/locations/*/apis/*/versions/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3894,6 +3966,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending
+                            /// order using the "desc" identifier, e.g. "foo desc,bar"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
 
                             /// <summary>
                             /// The maximum number of specs to return. The service may return fewer than this value. If
@@ -3940,6 +4019,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -3960,8 +4047,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// ListApiSpecRevisions lists all revisions of a spec. Revisions are returned in descending
-                        /// order of revision creation time.
+                        /// Lists all revisions of a spec. Revisions are returned in descending order of revision
+                        /// creation time.
                         /// </summary>
                         /// <param name="name">Required. The name of the spec to list revisions for.</param>
                         public virtual ListRevisionsRequest ListRevisions(string name)
@@ -3970,8 +4057,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// ListApiSpecRevisions lists all revisions of a spec. Revisions are returned in descending
-                        /// order of revision creation time.
+                        /// Lists all revisions of a spec. Revisions are returned in descending order of revision
+                        /// creation time.
                         /// </summary>
                         public class ListRevisionsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListApiSpecRevisionsResponse>
                         {
@@ -4037,7 +4124,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>UpdateApiSpec can be used to modify a specified spec.</summary>
+                        /// <summary>Used to modify a specified spec.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Resource name.</param>
                         public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.ApiSpec body, string name)
@@ -4045,7 +4132,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             return new PatchRequest(service, body, name);
                         }
 
-                        /// <summary>UpdateApiSpec can be used to modify a specified spec.</summary>
+                        /// <summary>Used to modify a specified spec.</summary>
                         public class PatchRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiSpec>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -4069,8 +4156,9 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                             /// <summary>
                             /// The list of fields to be updated. If omitted, all fields are updated that are set in the
-                            /// request message (fields set to default values are ignored). If a "*" is specified, all
-                            /// fields are updated, including fields that are unspecified/default in the request.
+                            /// request message (fields set to default values are ignored). If an asterisk "*" is
+                            /// specified, all fields are updated, including fields that are unspecified/default in the
+                            /// request.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -4122,8 +4210,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// RollbackApiSpec sets the current revision to a specified prior revision. Note that this
-                        /// creates a new revision with a new revision ID.
+                        /// Sets the current revision to a specified prior revision. Note that this creates a new
+                        /// revision with a new revision ID.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Required. The spec being rolled back.</param>
@@ -4133,8 +4221,8 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
 
                         /// <summary>
-                        /// RollbackApiSpec sets the current revision to a specified prior revision. Note that this
-                        /// creates a new revision with a new revision ID.
+                        /// Sets the current revision to a specified prior revision. Note that this creates a new
+                        /// revision with a new revision ID.
                         /// </summary>
                         public class RollbackRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiSpec>
                         {
@@ -4247,7 +4335,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             }
                         }
 
-                        /// <summary>TagApiSpecRevision adds a tag to a specified revision of a spec.</summary>
+                        /// <summary>Adds a tag to a specified revision of a spec.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The name of the spec to be tagged, including the revision ID.
@@ -4257,7 +4345,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             return new TagRevisionRequest(service, body, name);
                         }
 
-                        /// <summary>TagApiSpecRevision adds a tag to a specified revision of a spec.</summary>
+                        /// <summary>Adds a tag to a specified revision of a spec.</summary>
                         public class TagRevisionRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiSpec>
                         {
                             /// <summary>Constructs a new TagRevision request.</summary>
@@ -4376,18 +4464,18 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>CreateApiVersion creates a specified version.</summary>
+                    /// <summary>Creates a specified version.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of versions. Format:
-                    /// projects/*/locations/*/apis/*
+                    /// `projects/*/locations/*/apis/*`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.ApiVersion body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>CreateApiVersion creates a specified version.</summary>
+                    /// <summary>Creates a specified version.</summary>
                     public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiVersion>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -4400,7 +4488,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The parent, which owns this collection of versions. Format:
-                        /// projects/*/locations/*/apis/*
+                        /// `projects/*/locations/*/apis/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -4451,20 +4539,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>
-                    /// DeleteApiVersion removes a specified version and all of the resources that it owns.
-                    /// </summary>
+                    /// <summary>Removes a specified version and all of the resources that it owns.</summary>
                     /// <param name="name">
-                    /// Required. The name of the version to delete. Format: projects/*/locations/*/apis/*/versions/*
+                    /// Required. The name of the version to delete. Format: `projects/*/locations/*/apis/*/versions/*`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>
-                    /// DeleteApiVersion removes a specified version and all of the resources that it owns.
-                    /// </summary>
+                    /// <summary>Removes a specified version and all of the resources that it owns.</summary>
                     public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -4476,7 +4560,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The name of the version to delete. Format:
-                        /// projects/*/locations/*/apis/*/versions/*
+                        /// `projects/*/locations/*/apis/*/versions/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4520,16 +4604,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>GetApiVersion returns a specified version.</summary>
+                    /// <summary>Returns a specified version.</summary>
                     /// <param name="name">
-                    /// Required. The name of the version to retrieve. Format: projects/*/locations/*/apis/*/versions/*
+                    /// Required. The name of the version to retrieve. Format:
+                    /// `projects/*/locations/*/apis/*/versions/*`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>GetApiVersion returns a specified version.</summary>
+                    /// <summary>Returns a specified version.</summary>
                     public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiVersion>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -4541,7 +4626,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The name of the version to retrieve. Format:
-                        /// projects/*/locations/*/apis/*/versions/*
+                        /// `projects/*/locations/*/apis/*/versions/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4651,17 +4736,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>ListApiVersions returns matching versions.</summary>
+                    /// <summary>Returns matching versions.</summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of versions. Format:
-                    /// projects/*/locations/*/apis/*
+                    /// `projects/*/locations/*/apis/*`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>ListApiVersions returns matching versions.</summary>
+                    /// <summary>Returns matching versions.</summary>
                     public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListApiVersionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4673,7 +4758,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// Required. The parent, which owns this collection of versions. Format:
-                        /// projects/*/locations/*/apis/*
+                        /// `projects/*/locations/*/apis/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -4684,6 +4769,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order
+                        /// using the "desc" identifier, e.g. "foo desc,bar"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
 
                         /// <summary>
                         /// The maximum number of versions to return. The service may return fewer than this value. If
@@ -4730,6 +4822,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -4749,7 +4849,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         }
                     }
 
-                    /// <summary>UpdateApiVersion can be used to modify a specified version.</summary>
+                    /// <summary>Used to modify a specified version.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Resource name.</param>
                     public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.ApiVersion body, string name)
@@ -4757,7 +4857,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>UpdateApiVersion can be used to modify a specified version.</summary>
+                    /// <summary>Used to modify a specified version.</summary>
                     public class PatchRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ApiVersion>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -4781,8 +4881,8 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                         /// <summary>
                         /// The list of fields to be updated. If omitted, all fields are updated that are set in the
-                        /// request message (fields set to default values are ignored). If a "*" is specified, all
-                        /// fields are updated, including fields that are unspecified/default in the request.
+                        /// request message (fields set to default values are ignored). If an asterisk "*" is specified,
+                        /// all fields are updated, including fields that are unspecified/default in the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -4972,17 +5072,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>CreateApi creates a specified API.</summary>
+                /// <summary>Creates a specified API.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent, which owns this collection of APIs. Format: projects/*/locations/*
+                /// Required. The parent, which owns this collection of APIs. Format: `projects/*/locations/*`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Api body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>CreateApi creates a specified API.</summary>
+                /// <summary>Creates a specified API.</summary>
                 public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Api>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4994,13 +5094,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent, which owns this collection of APIs. Format: projects/*/locations/*
+                    /// Required. The parent, which owns this collection of APIs. Format: `projects/*/locations/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The ID to use for the api, which will become the final component of the api's resource
+                    /// Required. The ID to use for the API, which will become the final component of the API's resource
                     /// name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162,
                     /// IDs must not have the form of a UUID.
                     /// </summary>
@@ -5045,16 +5145,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>DeleteApi removes a specified API and all of the resources that it owns.</summary>
+                /// <summary>Removes a specified API and all of the resources that it owns.</summary>
                 /// <param name="name">
-                /// Required. The name of the API to delete. Format: projects/*/locations/*/apis/*
+                /// Required. The name of the API to delete. Format: `projects/*/locations/*/apis/*`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>DeleteApi removes a specified API and all of the resources that it owns.</summary>
+                /// <summary>Removes a specified API and all of the resources that it owns.</summary>
                 public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -5065,7 +5165,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the API to delete. Format: projects/*/locations/*/apis/*
+                    /// Required. The name of the API to delete. Format: `projects/*/locations/*/apis/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5109,16 +5209,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>GetApi returns a specified API.</summary>
+                /// <summary>Returns a specified API.</summary>
                 /// <param name="name">
-                /// Required. The name of the API to retrieve. Format: projects/*/locations/*/apis/*
+                /// Required. The name of the API to retrieve. Format: `projects/*/locations/*/apis/*`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>GetApi returns a specified API.</summary>
+                /// <summary>Returns a specified API.</summary>
                 public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Api>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5129,7 +5229,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the API to retrieve. Format: projects/*/locations/*/apis/*
+                    /// Required. The name of the API to retrieve. Format: `projects/*/locations/*/apis/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5238,16 +5338,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>ListApis returns matching APIs.</summary>
+                /// <summary>Returns matching APIs.</summary>
                 /// <param name="parent">
-                /// Required. The parent, which owns this collection of APIs. Format: projects/*/locations/*
+                /// Required. The parent, which owns this collection of APIs. Format: `projects/*/locations/*`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>ListApis returns matching APIs.</summary>
+                /// <summary>Returns matching APIs.</summary>
                 public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListApisResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5258,7 +5358,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent, which owns this collection of APIs. Format: projects/*/locations/*
+                    /// Required. The parent, which owns this collection of APIs. Format: `projects/*/locations/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5269,6 +5369,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using
+                    /// the "desc" identifier, e.g. "foo desc,bar"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// The maximum number of APIs to return. The service may return fewer than this value. If
@@ -5315,6 +5422,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -5334,7 +5449,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>UpdateApi can be used to modify a specified API.</summary>
+                /// <summary>Used to modify a specified API.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.Api body, string name)
@@ -5342,7 +5457,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>UpdateApi can be used to modify a specified API.</summary>
+                /// <summary>Used to modify a specified API.</summary>
                 public class PatchRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Api>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5358,7 +5473,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set to true, and the api is not found, a new api will be created. In this situation,
+                    /// If set to true, and the API is not found, a new API will be created. In this situation,
                     /// `update_mask` is ignored.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
@@ -5366,8 +5481,8 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                     /// <summary>
                     /// The list of fields to be updated. If omitted, all fields are updated that are set in the request
-                    /// message (fields set to default values are ignored). If a "*" is specified, all fields are
-                    /// updated, including fields that are unspecified/default in the request.
+                    /// message (fields set to default values are ignored). If an asterisk "*" is specified, all fields
+                    /// are updated, including fields that are unspecified/default in the request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -5574,17 +5689,17 @@ namespace Google.Apis.ApigeeRegistry.v1
                     this.service = service;
                 }
 
-                /// <summary>CreateArtifact creates a specified artifact.</summary>
+                /// <summary>Creates a specified artifact.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>CreateArtifact creates a specified artifact.</summary>
+                /// <summary>Creates a specified artifact.</summary>
                 public class CreateRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -5596,7 +5711,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                    /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5647,16 +5762,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                /// <summary>Removes a specified artifact.</summary>
                 /// <param name="name">
-                /// Required. The name of the artifact to delete. Format: {parent}/artifacts/*
+                /// Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>DeleteArtifact removes a specified artifact.</summary>
+                /// <summary>Removes a specified artifact.</summary>
                 public class DeleteRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -5666,7 +5781,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the artifact to delete. Format: {parent}/artifacts/*</summary>
+                    /// <summary>Required. The name of the artifact to delete. Format: `{parent}/artifacts/*`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5694,16 +5809,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>GetArtifact returns a specified artifact.</summary>
+                /// <summary>Returns a specified artifact.</summary>
                 /// <param name="name">
-                /// Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*
+                /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>GetArtifact returns a specified artifact.</summary>
+                /// <summary>Returns a specified artifact.</summary>
                 public class GetRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5713,7 +5828,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the artifact to retrieve. Format: {parent}/artifacts/*</summary>
+                    /// <summary>
+                    /// Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5742,12 +5859,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                 }
 
                 /// <summary>
-                /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored with GZip
-                /// compression, the default behavior is to return the artifact uncompressed (the mime_type response
-                /// field indicates the exact format returned).
+                /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the
+                /// default behavior is to return the artifact uncompressed (the mime_type response field indicates the
+                /// exact format returned).
                 /// </summary>
                 /// <param name="name">
-                /// Required. The name of the artifact whose contents should be retrieved. Format: {parent}/artifacts/*
+                /// Required. The name of the artifact whose contents should be retrieved. Format:
+                /// `{parent}/artifacts/*`
                 /// </param>
                 public virtual GetContentsRequest GetContents(string name)
                 {
@@ -5755,9 +5873,9 @@ namespace Google.Apis.ApigeeRegistry.v1
                 }
 
                 /// <summary>
-                /// GetArtifactContents returns the contents of a specified artifact. If artifacts are stored with GZip
-                /// compression, the default behavior is to return the artifact uncompressed (the mime_type response
-                /// field indicates the exact format returned).
+                /// Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the
+                /// default behavior is to return the artifact uncompressed (the mime_type response field indicates the
+                /// exact format returned).
                 /// </summary>
                 public class GetContentsRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.HttpBody>
                 {
@@ -5770,7 +5888,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 
                     /// <summary>
                     /// Required. The name of the artifact whose contents should be retrieved. Format:
-                    /// {parent}/artifacts/*
+                    /// `{parent}/artifacts/*`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5879,16 +5997,16 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>ListArtifacts returns matching artifacts.</summary>
+                /// <summary>Returns matching artifacts.</summary>
                 /// <param name="parent">
-                /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>ListArtifacts returns matching artifacts.</summary>
+                /// <summary>Returns matching artifacts.</summary>
                 public class ListRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.ListArtifactsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5899,7 +6017,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent, which owns this collection of artifacts. Format: {parent}
+                    /// Required. The parent, which owns this collection of artifacts. Format: `{parent}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5910,6 +6028,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using
+                    /// the "desc" identifier, e.g. "foo desc,bar"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// The maximum number of artifacts to return. The service may return fewer than this value. If
@@ -5956,6 +6081,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -5975,7 +6108,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     }
                 }
 
-                /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                /// <summary>Used to replace a specified artifact.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Resource name.</param>
                 public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
@@ -5983,7 +6116,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     return new ReplaceArtifactRequest(service, body, name);
                 }
 
-                /// <summary>ReplaceArtifact can be used to replace a specified artifact.</summary>
+                /// <summary>Used to replace a specified artifact.</summary>
                 public class ReplaceArtifactRequest : ApigeeRegistryBaseServiceRequest<Google.Apis.ApigeeRegistry.v1.Data.Artifact>
                 {
                     /// <summary>Constructs a new ReplaceArtifact request.</summary>
@@ -7234,8 +7367,7 @@ namespace Google.Apis.ApigeeRegistry.v1
 namespace Google.Apis.ApigeeRegistry.v1.Data
 {
     /// <summary>
-    /// An Api is a top-level description of an API. Apis are produced by producers and are commitments to provide
-    /// services.
+    /// A top-level description of an API. Produced by producers and are commitments to provide services.
     /// </summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7249,7 +7381,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
 
         /// <summary>
         /// A user-definable description of the availability of this service. Format: free-form, but we expect single
-        /// words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        /// words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
@@ -7269,10 +7401,10 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// <summary>
         /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations.
         /// Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase
-        /// letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64
+        /// letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64
         /// user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for
         /// more information and examples of labels. System reserved label keys are prefixed with
-        /// "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -7281,11 +7413,11 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}</summary>
+        /// <summary>The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedDeployment")]
         public virtual string RecommendedDeployment { get; set; }
 
-        /// <summary>The recommended version of the API. Format: apis/{api}/versions/{version}</summary>
+        /// <summary>The recommended version of the API. Format: `apis/{api}/versions/{version}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedVersion")]
         public virtual string RecommendedVersion { get; set; }
 
@@ -7298,9 +7430,9 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     }
 
     /// <summary>
-    /// An ApiDeployment describes a service running at particular address that provides a particular version of an API.
-    /// ApiDeployments have revisions which correspond to different configurations of a single deployment in time.
-    /// Revision identifiers should be updated whenever the served API spec or endpoint address changes.
+    /// Describes a service running at particular address that provides a particular version of an API. ApiDeployments
+    /// have revisions which correspond to different configurations of a single deployment in time. Revision identifiers
+    /// should be updated whenever the served API spec or endpoint address changes.
     /// </summary>
     public class ApiDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7319,8 +7451,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// The full resource name (including revision id) of the spec of the API being served by the deployment.
-        /// Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        /// The full resource name (including revision ID) of the spec of the API being served by the deployment.
+        /// Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiSpecRevision")]
         public virtual string ApiSpecRevision { get; set; }
@@ -7344,7 +7476,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         public virtual string EndpointUri { get; set; }
 
         /// <summary>
-        /// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not
+        /// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not
         /// affect the revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalChannelUri")]
@@ -7363,7 +7495,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64
         /// user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for
         /// more information and examples of labels. System reserved label keys are prefixed with
-        /// "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -7392,11 +7524,11 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     }
 
     /// <summary>
-    /// An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that
-    /// consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an
-    /// ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and
-    /// stored as a unit. Multiple specs can exist to provide representations in different API description formats.
-    /// Synchronization of these representations would be provided by tooling and background services.
+    /// Describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use
+    /// to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs
+    /// consist of multiple files, these should be bundled together (e.g., in a zip archive) and stored as a unit.
+    /// Multiple specs can exist to provide representations in different API description formats. Synchronization of
+    /// these representations would be provided by tooling and background services.
     /// </summary>
     public class ApiSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7440,15 +7572,15 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64
         /// user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for
         /// more information and examples of labels. System reserved label keys are prefixed with
-        /// "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// A style (format) descriptor for this spec that is specified as a Media Type
-        /// (https://en.wikipedia.org/wiki/Media_type). Possible values include "application/vnd.apigee.proto",
-        /// "application/vnd.apigee.openapi", and "application/vnd.apigee.graphql", with possible suffixes representing
+        /// (https://en.wikipedia.org/wiki/Media_type). Possible values include `application/vnd.apigee.proto`,
+        /// `application/vnd.apigee.openapi`, and `application/vnd.apigee.graphql`, with possible suffixes representing
         /// compression types. These hypothetical names are defined in the vendor tree defined in RFC6838
         /// (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently
         /// only GZip compression is supported (indicated with "+gzip").
@@ -7494,9 +7626,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An ApiVersion describes a particular version of an API. ApiVersions are what consumers actually use.
-    /// </summary>
+    /// <summary>Describes a particular version of an API. ApiVersions are what consumers actually use.</summary>
     public class ApiVersion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7525,7 +7655,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64
         /// user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for
         /// more information and examples of labels. System reserved label keys are prefixed with
-        /// "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -7536,7 +7666,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
 
         /// <summary>
         /// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect
-        /// single words that describe API maturity, e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
+        /// single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
         /// "DEPRECATED", "RETIRED".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -7553,9 +7683,9 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     /// <summary>
     /// Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is
     /// too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent
-    /// resources, they should generally be used for metadata that is needed infrequently, i.e. not for display in
-    /// primary views of the resource but perhaps displayed or downloaded upon request. The ListArtifacts method allows
-    /// artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large)
+    /// resources, they should generally be used for metadata that is needed infrequently, i.e., not for display in
+    /// primary views of the resource but perhaps displayed or downloaded upon request. The `ListArtifacts` method
+    /// allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large)
     /// contents.
     /// </summary>
     public class Artifact : Google.Apis.Requests.IDirectResponseSchema
@@ -7623,13 +7753,17 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
-        /// An email address that represents a Google group. For example, `admins@example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
+        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -7782,7 +7916,9 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.</summary>
+        /// <summary>
+        /// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -8141,7 +8277,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     public class RollbackApiDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The revision ID to roll back to. It must be a revision of the same deployment. Example: c7cfa2a8
+        /// Required. The revision ID to roll back to. It must be a revision of the same deployment. Example: `c7cfa2a8`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
@@ -8154,7 +8290,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     public class RollbackApiSpecRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The revision ID to roll back to. It must be a revision of the same spec. Example: c7cfa2a8
+        /// Required. The revision ID to roll back to. It must be a revision of the same spec. Example: `c7cfa2a8`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
