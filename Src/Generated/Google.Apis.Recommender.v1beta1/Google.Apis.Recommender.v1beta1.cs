@@ -3768,8 +3768,8 @@ namespace Google.Apis.Recommender.v1beta1.Data
     }
 
     /// <summary>
-    /// An insight along with the information used to derive the insight. The insight may have associated recomendations
-    /// as well.
+    /// An insight along with the information used to derive the insight. The insight may have associated
+    /// recommendations as well.
     /// </summary>
     public class GoogleCloudRecommenderV1beta1Insight : Google.Apis.Requests.IDirectResponseSchema
     {

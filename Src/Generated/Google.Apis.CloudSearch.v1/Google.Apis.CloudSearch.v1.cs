@@ -5219,18 +5219,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next Id: 5</summary>
+    /// <summary>Next Id: 6</summary>
     public class AppsDynamiteSharedActivityFeedAnnotationData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Unique id of the Activity Feed message. This will be in the form of "space-id/message-id" or
-        /// "dm-id/message-id", where the space-/dm-id and message-id components are extracted from the top-level
-        /// MessageId in message.proto (http://shortn/_SulV51DNfF). This is copied into annotations so that no client
-        /// changes are needed to access this value. Clients will need a unique id for every Activity Feed message to
-        /// implement click-to-source.
+        /// Unique id of the Activity Feed message used by clients to implement click-to-source. This is the same
+        /// messageId as the top-level id field for the Activity Feed item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityFeedMessageId")]
-        public virtual string ActivityFeedMessageId { get; set; }
+        public virtual MessageId ActivityFeedMessageId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("chatItem")]
         public virtual AppsDynamiteSharedChatItem ChatItem { get; set; }
@@ -6530,7 +6527,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information that references a Dynamite chat message.</summary>
+    /// <summary>
+    /// Information that references a Dynamite chat message. This is only used for Activity Feed messages.
+    /// </summary>
     public class AppsDynamiteSharedMessageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6539,6 +6538,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual MessageId MessageId { get; set; }
+
+        /// <summary>The type of the source chat message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
 
         /// <summary>
         /// Timestamp of when the topic containing the message has been read by the user. This is populated if the
@@ -7891,7 +7894,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cseEnabled")]
         public virtual System.Nullable<bool> CseEnabled { get; set; }
 
-        /// <summary>Indicates whether the current call is moderated. go/meet-multimod-dd</summary>
+        /// <summary>Indicates whether the current call is moderated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderationEnabled")]
         public virtual System.Nullable<bool> ModerationEnabled { get; set; }
 
@@ -11917,7 +11920,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// An optional alias for the meeting space. The alias can in some cases be resolved to the meeting space,
         /// similar to the meeting code. The limitation is that the user needs to be in the same meeting domain as the
-        /// meeting space. See go/thor-backend/meeting-alias for more details.
+        /// meeting space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meetingAlias")]
         public virtual string MeetingAlias { get; set; }
@@ -11944,7 +11947,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// Output only. A URL that clients (e.g. Calendar) can use to show the web page with all join methods available
         /// for this meeting space. This link is also used in iOS universal links and Android intents, used for opening
-        /// the "More ways to join" view in the Thor mobile apps. Example:
+        /// the "More ways to join" view in the Meet mobile apps. Example:
         /// https://tel.meet/mee-ting-cod?pin=1234567891011 Here, "pin" is the universal phone PIN. We include it
         /// explicitly to better support the offline case on the mobile. This is set when the meeting space has either a
         /// universal PIN or an interop PIN and clients who can show a "more ways to join" button should show it
@@ -12195,6 +12198,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>ID of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual MessageId Id { get; set; }
+
+        /// <summary>
+        /// Whether the message is content purged. Content purged messages contain only data required for tombstone (see
+        /// go/chat-infinite-tombstone). This field is only used by Vault to display tombstone and should only be set to
+        /// true if the message is a tombstone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isContentPurged")]
+        public virtual System.Nullable<bool> IsContentPurged { get; set; }
 
         /// <summary>
         /// Output only. Indicates if the message is an inline reply. Set to true only if the message's ParentPath is
@@ -14796,7 +14807,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultAsViewer")]
         public virtual System.Nullable<bool> DefaultAsViewer { get; set; }
 
-        /// <summary>Indicates whether the meeting space is moderated. go/meet-multimod-dd</summary>
+        /// <summary>Indicates whether the meeting space is moderated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderationEnabled")]
         public virtual System.Nullable<bool> ModerationEnabled { get; set; }
 
@@ -16135,7 +16146,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains info regarding the updater of an Activity Feed item. Next Id: 6</summary>
+    /// <summary>Contains info regarding the updater of an Activity Feed item. Next Id: 7</summary>
     public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Describes how updater_count_to_show should be used.</summary>
@@ -16156,6 +16167,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowGaiaId")]
         public virtual System.Nullable<long> UpdaterToShowGaiaId { get; set; }
+
+        /// <summary>
+        /// The display name of the updater for clients to show used for Gmail items. This (along with the updater
+        /// fields above) will be populated in the thread pipeline (http://shortn/_rPS0GCp94Y) when converting Activity
+        /// Feed message attributes into client-renderable Activity Feed items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowName")]
+        public virtual string UpdaterToShowName { get; set; }
 
         /// <summary>The updater for clients to show used for Dynamite Chat items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowUserId")]

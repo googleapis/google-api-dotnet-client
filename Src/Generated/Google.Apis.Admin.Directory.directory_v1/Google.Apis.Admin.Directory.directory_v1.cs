@@ -1055,12 +1055,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("status")]
                 Status = 5,
-
-                /// <summary>
-                /// Chrome device support end date. This is applicable only for devices purchased directly from Google.
-                /// </summary>
-                [Google.Apis.Util.StringValueAttribute("supportEndDate")]
-                SupportEndDate = 6,
             }
 
             /// <summary>The full path of the organizational unit (minus the leading `/`) or its unique ID.</summary>

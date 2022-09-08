@@ -3732,6 +3732,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>VLAN attachment details.</summary>
     public class VlanAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Immutable. The identifier of the attachment within vrf.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>Input only. Pairing key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
         public virtual string PairingKey { get; set; }
@@ -3807,9 +3811,19 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; }
+
         /// <summary>Originally requested size, in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originallyRequestedSizeGib")]
         public virtual System.Nullable<long> OriginallyRequestedSizeGib { get; set; }
+
+        /// <summary>Immutable. Performance tier of the Volume. Default is SHARED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceTier")]
+        public virtual string PerformanceTier { get; set; }
 
         /// <summary>Immutable. Pod name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
@@ -3886,6 +3900,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>NFS exports. Set only when protocol is PROTOCOL_NFS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nfsExports")]
         public virtual System.Collections.Generic.IList<NfsExport> NfsExports { get; set; }
+
+        /// <summary>Performance tier of the Volume. Default is SHARED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceTier")]
+        public virtual string PerformanceTier { get; set; }
 
         /// <summary>Volume protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]

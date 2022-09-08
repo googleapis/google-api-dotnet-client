@@ -1796,8 +1796,8 @@ namespace Google.Apis.RealTimeBidding.v1
 
                 /// <summary>
                 /// Order specification by which results should be sorted. If no sort order is specified, the results
-                /// will be returned in an arbitrary order. Currently results can be sorted by `createTime`. Example:
-                /// 'createTime DESC'.
+                /// will be returned in alphabetic order based on the publisher's publisher code. Results can be sorted
+                /// by `createTime`. Example: 'createTime DESC'.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -4367,7 +4367,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// field on the [Google RTB
         /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) or the
         /// `BidRequest.site.publisher.id` / `BidRequest.app.publisher.id` field on the [OpenRTB
-        /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto).
+        /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto). Publisher IDs
+        /// will be returned in the order that they were entered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherTargeting")]
         public virtual StringTargetingDimension PublisherTargeting { get; set; }

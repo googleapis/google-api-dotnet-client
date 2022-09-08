@@ -765,6 +765,65 @@ namespace Google.Apis.Storagetransfer.v1
             }
         }
 
+        /// <summary>Deletes a transfer job. Deleting a transfer job sets its status to DELETED.</summary>
+        /// <param name="jobName">Required. The job to delete.</param>
+        /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
+        public virtual DeleteRequest Delete(string jobName, string projectId)
+        {
+            return new DeleteRequest(service, jobName, projectId);
+        }
+
+        /// <summary>Deletes a transfer job. Deleting a transfer job sets its status to DELETED.</summary>
+        public class DeleteRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string jobName, string projectId) : base(service)
+            {
+                JobName = jobName;
+                ProjectId = projectId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The job to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string JobName { get; private set; }
+
+            /// <summary>Required. The ID of the Google Cloud project that owns the job.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+jobName}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("jobName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "jobName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^transferJobs/.*$",
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Gets a transfer job.</summary>
         /// <param name="jobName">Required. The job to get.</param>
         /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
@@ -2618,7 +2677,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// Required. The job to update. `transferJob` is expected to specify one or more of five fields: description,
         /// transfer_spec, notification_config, logging_config, and status. An `UpdateTransferJobRequest` that specifies
         /// other fields are rejected with the error INVALID_ARGUMENT. Updating a job status to DELETED requires
-        /// `storagetransfer.jobs.delete` permissions.
+        /// `storagetransfer.jobs.delete` permission.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; }

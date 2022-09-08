@@ -5396,7 +5396,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tetheringConfigDisabled")]
         public virtual System.Nullable<bool> TetheringConfigDisabled { get; set; }
 
-        /// <summary>Whether user uninstallation of applications is disabled.</summary>
+        /// <summary>
+        /// Whether user uninstallation of applications is disabled. This prevents apps from being uninstalled, even
+        /// those removed using applications
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uninstallAppsDisabled")]
         public virtual System.Nullable<bool> UninstallAppsDisabled { get; set; }
 
