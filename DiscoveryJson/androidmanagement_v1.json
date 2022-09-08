@@ -1065,7 +1065,7 @@
    }
   }
  },
- "revision": "20220823",
+ "revision": "20220829",
  "rootUrl": "https://androidmanagement.googleapis.com/",
  "schemas": {
   "AdbShellCommandEvent": {
@@ -4630,7 +4630,7 @@
      "type": "boolean"
     },
     "uninstallAppsDisabled": {
-     "description": "Whether user uninstallation of applications is disabled.",
+     "description": "Whether user uninstallation of applications is disabled. This prevents apps from being uninstalled, even those removed using applications",
      "type": "boolean"
     },
     "unmuteMicrophoneDisabled": {

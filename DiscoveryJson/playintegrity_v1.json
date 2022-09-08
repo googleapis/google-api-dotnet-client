@@ -138,7 +138,7 @@
    }
   }
  },
- "revision": "20220829",
+ "revision": "20220906",
  "rootUrl": "https://playintegrity.googleapis.com/",
  "schemas": {
   "AccountDetails": {
@@ -236,7 +236,7 @@
      "type": "string"
     },
     "certificateSha256Digest": {
-     "description": "Hex fingerprint of the application signing certificate. e.g. \u201cABCE1F....\u201d Set iff app_recognition_verdict != UNEVALUATED.",
+     "description": "The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff app_recognition_verdict != UNEVALUATED.",
      "items": {
       "type": "string"
      },

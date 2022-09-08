@@ -2989,7 +2989,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 }
             }
 
-            /// <summary>Lists publisher profiles</summary>
+            /// <summary>
+            /// Lists publisher profiles. The returned publisher profiles aren't in any defined order. The order of the
+            /// results might change. A new publisher profile can appear in any place in the list of returned results.
+            /// </summary>
             /// <param name="parent">
             /// Required. Parent that owns the collection of publisher profiles Format: `buyers/{buyerId}`
             /// </param>
@@ -2998,7 +3001,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists publisher profiles</summary>
+            /// <summary>
+            /// Lists publisher profiles. The returned publisher profiles aren't in any defined order. The order of the
+            /// results might change. A new publisher profile can appear in any place in the list of returned results.
+            /// </summary>
             public class ListRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ListPublisherProfilesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

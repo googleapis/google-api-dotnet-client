@@ -14409,9 +14409,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Destination status message.</summary>
     public class CollectionStatusDestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Country codes (ISO 3166-1 alpha-2) where the collection is approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
+        public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; }
+
         /// <summary>The name of the destination</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
+
+        /// <summary>Country codes (ISO 3166-1 alpha-2) where the collection is disapproved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; }
+
+        /// <summary>Country codes (ISO 3166-1 alpha-2) where the collection is pending approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
+        public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; }
 
         /// <summary>The status for the specified destination in the collections target country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -14424,6 +14436,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Issue associated with the collection.</summary>
     public class CollectionStatusItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Country codes (ISO 3166-1 alpha-2) where issue applies to the offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableCountries")]
+        public virtual System.Collections.Generic.IList<string> ApplicableCountries { get; set; }
+
         /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
         public virtual string AttributeName { get; set; }
@@ -16197,6 +16213,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
+
+        /// <summary>
+        /// A list of custom (merchant-provided) attributes. Can also be used to submit any attribute of the feed
+        /// specification in its generic form, for example, `{ "name": "size type", "value": "regular" }`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
+        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>In-store product location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]

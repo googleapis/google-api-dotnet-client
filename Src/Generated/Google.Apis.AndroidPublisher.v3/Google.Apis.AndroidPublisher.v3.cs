@@ -1046,6 +1046,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 
+                /// <summary>
+                /// Device tier config (DTC) to be used for generating deliverables (APKs). Contains id of the DTC or
+                /// "LATEST" for last uploaded DTC.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("deviceTierConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DeviceTierConfigId { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
@@ -1078,6 +1085,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     RequestParameters.Add("ackBundleInstallationWarning", new Google.Apis.Discovery.Parameter
                     {
                         Name = "ackBundleInstallationWarning",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deviceTierConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceTierConfigId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1215,6 +1230,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
+
+                /// <summary>
+                /// Device tier config (DTC) to be used for generating deliverables (APKs). Contains id of the DTC or
+                /// "LATEST" for last uploaded DTC.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("deviceTierConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DeviceTierConfigId { get; set; }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
                 /// <remarks>

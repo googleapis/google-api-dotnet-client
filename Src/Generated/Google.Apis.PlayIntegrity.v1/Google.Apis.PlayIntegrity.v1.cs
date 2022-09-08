@@ -375,8 +375,8 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string AppRecognitionVerdict { get; set; }
 
         /// <summary>
-        /// Hex fingerprint of the application signing certificate. e.g. “ABCE1F....” Set iff app_recognition_verdict !=
-        /// UNEVALUATED.
+        /// The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff
+        /// app_recognition_verdict != UNEVALUATED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateSha256Digest")]
         public virtual System.Collections.Generic.IList<string> CertificateSha256Digest { get; set; }

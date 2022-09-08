@@ -1200,7 +1200,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     public class GoogleCloudAssuredworkloadsV1beta1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The billing account used for the resources which are direct children of workload. This billing
+        /// Optional. The billing account used for the resources which are direct children of workload. This billing
         /// account is initially associated with the resources created as part of Workload creation. After the initial
         /// creation of these resources, the customer can change the assigned billing account. The resource name has the
         /// form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -1215,6 +1215,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
+
+        /// <summary>
+        /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
+        /// disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow
+        /// your project developers to use these services in their environment."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
+        public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
 
         /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -1466,7 +1474,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     public class GoogleCloudAssuredworkloadsVersioningV1mainWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. The billing account used for the resources which are direct children of workload. This billing
+        /// Optional. The billing account used for the resources which are direct children of workload. This billing
         /// account is initially associated with the resources created as part of Workload creation. After the initial
         /// creation of these resources, the customer can change the assigned billing account. The resource name has the
         /// form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -1485,6 +1493,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Output only. Count of active Violations in the Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceStatus")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus ComplianceStatus { get; set; }
+
+        /// <summary>
+        /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
+        /// disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow
+        /// your project developers to use these services in their environment."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
+        public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
 
         /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]

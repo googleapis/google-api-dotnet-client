@@ -5427,7 +5427,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseDialect")]
         public virtual string DatabaseDialect { get; set; }
 
-        /// <summary>Output only. The encryption information for the backup.</summary>
+        /// <summary>Output only. Output only. The encryption information for the backup. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
 
@@ -6061,7 +6061,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>
         /// Required. The name of the database role. Values are of the form
-        /// `projects//instances//databases//databaseRoles/ `, where `` is as specified in the `CREATE ROLE` DDL
+        /// `projects//instances//databases//databaseRoles/` where `` is as specified in the `CREATE ROLE` DDL
         /// statement.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
