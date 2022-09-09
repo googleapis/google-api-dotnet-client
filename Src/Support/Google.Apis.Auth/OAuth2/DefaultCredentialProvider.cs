@@ -279,7 +279,16 @@ namespace Google.Apis.Auth.OAuth2
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.File))
             {
-                throw new NotImplementedException("File-sourced credentials not yet supported.");
+                return new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
+                    parameters.TokenUrl, parameters.Audience, parameters.SubjectTokenType, parameters.CredentialSourceConfig.File)
+                {
+                    QuotaProject = parameters.QuotaProject,
+                    ServiceAccountImpersonationUrl = parameters.ServiceAccountImpersonationUrl,
+                    WorkforcePoolUserProject = parameters.WorkforcePoolUserProject,
+                    ClientId = parameters.ClientId,
+                    ClientSecret = parameters.ClientSecret,
+                    SubjectTokenJsonFieldName = parameters.ExtractSubjectTokenFieldName(),
+                });
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.Url))
             {
@@ -291,9 +300,7 @@ namespace Google.Apis.Auth.OAuth2
                     WorkforcePoolUserProject = parameters.WorkforcePoolUserProject,
                     ClientId = parameters.ClientId,
                     ClientSecret = parameters.ClientSecret,
-                    SubjectTokenJsonFieldName = parameters.CredentialSourceConfig.Format?.Type?.Equals("json", StringComparison.OrdinalIgnoreCase) == true
-                        ? parameters.CredentialSourceConfig.Format.SubjectTokenFieldName
-                        : null
+                    SubjectTokenJsonFieldName = parameters.ExtractSubjectTokenFieldName(),
                 };
                 if (parameters.CredentialSourceConfig.Headers is object)
                 {

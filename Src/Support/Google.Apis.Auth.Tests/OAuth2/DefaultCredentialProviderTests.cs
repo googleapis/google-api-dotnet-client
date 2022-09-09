@@ -120,6 +120,14 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""format"": {
     ""type"": ""json"",
     ""subject_token_field_name"": ""access_token""}}}";
+        private const string DummyFileSourcedExternalAccountCredentialFileContents = @"{
+  ""type"": ""external_account"",
+  ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""subject_token_type"": ""urn:ietf:params:oauth:token-type:saml2"",
+  ""token_url"": ""https://sts.googleapis.com/v1/token"",
+  ""credential_source"": {
+    ""file"": ""/var/run/saml/assertion/token""
+  }}";
         private const string DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents = @"{
 ""type"": ""external_account"",
 ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
@@ -134,6 +142,15 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""format"": {
     ""type"": ""json"",
     ""subject_token_field_name"": ""access_token""}}}";
+        private const string DummyFileSourcedImpersonatedExternalAccountCredentialFileContents = @"{
+  ""type"": ""external_account"",
+  ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""subject_token_type"": ""urn:ietf:params:oauth:token-type:saml2"",
+  ""service_account_impersonation_url"": ""https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/$EMAIL:generateAccessToken"",
+  ""token_url"": ""https://sts.googleapis.com/v1/token"",
+  ""credential_source"": {
+    ""file"": ""/var/run/saml/assertion/token""
+  }}";
         private const string DummyUrlSourcedWorkforceExternalAccountCredentialFileContents = @"{
 ""type"":""external_account"",
 ""audience"":""//iam.googleapis.com/locations/global/workforcePools/pool/providers/oidc-google"",
@@ -148,6 +165,15 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""format"": {
     ""type"": ""json"",
     ""subject_token_field_name"": ""access_token""}}}";
+        private const string DummyFileSourcedWorkforceExternalAccountCredentialFileContents = @"{
+  ""type"": ""external_account"",
+  ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""subject_token_type"": ""urn:ietf:params:oauth:token-type:saml2"",
+  ""token_url"": ""https://sts.googleapis.com/v1/token"",
+  ""workforce_pool_user_project"": ""user_project"",
+  ""credential_source"": {
+    ""file"": ""/var/run/saml/assertion/token""
+  }}";
 
         public DefaultCredentialProviderTests()
         {
@@ -254,45 +280,70 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             await Assert.ThrowsAsync<InvalidOperationException>(() => credentialProvider.GetDefaultCredentialAsync());
         }
 
-        [Fact]
-        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential()
+        public static TheoryData<string, Type> ExternalAccountCredentialTestData => new TheoryData<string, Type>
+        {
+            { DummyUrlSourcedExternalAccountCredentialFileContents, typeof(UrlSourcedExternalAccountCredential) },
+            { DummyFileSourcedExternalAccountCredentialFileContents, typeof (FileSourcedExternalAccountCredential) },
+        };
+
+        [Theory]
+        [MemberData(nameof(ExternalAccountCredentialTestData))]
+        public async Task GetDefaultCredential_ExternalAccountCredential(string credentialFileContent, Type expectedCredentialType)
         {
             // Setup fake environment variables and credential file contents.
             var credentialFilepath = "TempFilePath.json";
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
-            credentialProvider.SetFileContents(credentialFilepath, DummyUrlSourcedExternalAccountCredentialFileContents);
+            credentialProvider.SetFileContents(credentialFilepath, credentialFileContent);
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
-            Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
+            Assert.IsType(expectedCredentialType, credential.UnderlyingCredential);
         }
 
-        [Fact]
-        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_Impersonated()
+        public static TheoryData<string, Type> ExternalImpersonatedAccountCredentialTestData => new TheoryData<string, Type>
+        {
+            { DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents, typeof(UrlSourcedExternalAccountCredential) },
+            { DummyFileSourcedImpersonatedExternalAccountCredentialFileContents, typeof (FileSourcedExternalAccountCredential) },
+        };
+
+        [Theory]
+        [MemberData(nameof(ExternalImpersonatedAccountCredentialTestData))]
+        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_Impersonated(string credentialFileContent, Type expectedCredentialType)
         {
             // Setup fake environment variables and credential file contents.
             var credentialFilepath = "TempFilePath.json";
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
-            credentialProvider.SetFileContents(credentialFilepath, DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents);
+            credentialProvider.SetFileContents(credentialFilepath, credentialFileContent);
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
-            var impersonatedExternalCredential = Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
+            Assert.IsType(expectedCredentialType, credential.UnderlyingCredential);
+
+            var impersonatedExternalCredential = (ExternalAccountCredential)credential.UnderlyingCredential;
             Assert.IsType<ImpersonatedCredential>(impersonatedExternalCredential.ImplicitlyImpersonated.Value);
         }
 
-        [Fact]
-        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_WorkforceIdentity()
+        public static TheoryData<string, Type> ExternalWorkforceAccountCredentialTestData => new TheoryData<string, Type>
+        {
+            { DummyUrlSourcedWorkforceExternalAccountCredentialFileContents, typeof(UrlSourcedExternalAccountCredential) },
+            { DummyFileSourcedWorkforceExternalAccountCredentialFileContents, typeof (FileSourcedExternalAccountCredential) },
+        };
+
+        [Theory]
+        [MemberData(nameof(ExternalWorkforceAccountCredentialTestData))]
+        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_WorkforceIdentity(string credentialFileContent, Type expectedCredentialType)
         {
             // Setup fake environment variables and credential file contents.
             var credentialFilepath = "TempFilePath.json";
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
-            credentialProvider.SetFileContents(credentialFilepath, DummyUrlSourcedWorkforceExternalAccountCredentialFileContents);
+            credentialProvider.SetFileContents(credentialFilepath, credentialFileContent);
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
-            var workforceCredntial = Assert.IsType<UrlSourcedExternalAccountCredential>(credential.UnderlyingCredential);
-            Assert.Equal("user_project", workforceCredntial.WorkforcePoolUserProject);
+            Assert.IsType(expectedCredentialType, credential.UnderlyingCredential);
+
+            var workforceCredential = (ExternalAccountCredential)credential.UnderlyingCredential;
+            Assert.Equal("user_project", workforceCredential.WorkforcePoolUserProject);
         }
 
         #endregion

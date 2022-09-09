@@ -16,12 +16,25 @@ limitations under the License.
 
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Util;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2
 {
+    /// <summary>
+    /// Exception thrown when the subject token cannot be obtained for a given
+    /// external account credential.
+    /// </summary>
+    public class SubjectTokenException : Exception
+    {
+        internal SubjectTokenException(ExternalAccountCredential credential, Exception innerException) : base(
+            $"An error occurred while attempting to obtain the subject token for {credential.ThrowIfNull(nameof(credential)).GetType().Name}",
+            innerException)
+        { }
+    }
+
     /// <summary>
     /// Base class for external account credentials.
     /// </summary>
@@ -262,7 +275,19 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Gets the subject token to be exchanged for the access token.
         /// </summary>
-        protected abstract Task<string> GetSubjectTokenAsync(CancellationToken taskCancellationToken);
+        protected abstract Task<string> GetSubjectTokenAsyncImpl(CancellationToken taskCancellationToken);
+
+        private async Task<string> GetSubjectTokenAsync(CancellationToken taskCancellationTokne)
+        {
+            try
+            {
+                return await GetSubjectTokenAsyncImpl(taskCancellationTokne).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                throw new SubjectTokenException(this, ex);
+            }
+        }
 
         private protected async Task<TokenResponse> RequestStsAccessTokenAsync(CancellationToken taskCancellationToken)
         {
