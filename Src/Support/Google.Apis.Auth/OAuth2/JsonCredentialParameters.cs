@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Google.Apis.Auth.OAuth2
@@ -206,5 +207,13 @@ namespace Google.Apis.Auth.OAuth2
                 public string SubjectTokenFieldName { get; set; }
             }
         }
+    }
+
+    internal static class JsonCredentialParametersExtensions
+    {
+        public static string ExtractSubjectTokenFieldName(this JsonCredentialParameters parameters) =>
+            parameters.CredentialSourceConfig.Format?.Type?.Equals("json", StringComparison.OrdinalIgnoreCase) == true
+                ? parameters.CredentialSourceConfig.Format.SubjectTokenFieldName
+                : null;
     }
 }

@@ -108,7 +108,7 @@ namespace Google.Apis.Auth.OAuth2
             }));
 
         /// <inheritdoc/>
-        protected async override Task<string> GetSubjectTokenAsync(CancellationToken taskCancellationToken)
+        protected async override Task<string> GetSubjectTokenAsyncImpl(CancellationToken taskCancellationToken)
         {
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, SubjectTokenUrl);
             foreach (var headerPair in Headers)
@@ -117,6 +117,7 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
             var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (string.IsNullOrEmpty(SubjectTokenJsonFieldName))
