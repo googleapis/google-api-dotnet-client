@@ -6962,7 +6962,7 @@ namespace Google.Apis.TagManager.v2
         }
 
         /// <summary>Gets a GTM Account.</summary>
-        /// <param name="path">GTM Accounts's API relative path. Example: accounts/{account_id}</param>
+        /// <param name="path">GTM Account's API relative path. Example: accounts/{account_id}</param>
         public virtual GetRequest Get(string path)
         {
             return new GetRequest(service, path);
@@ -6978,7 +6978,7 @@ namespace Google.Apis.TagManager.v2
                 InitParameters();
             }
 
-            /// <summary>GTM Accounts's API relative path. Example: accounts/{account_id}</summary>
+            /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
             [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Path { get; private set; }
 
@@ -7454,7 +7454,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>GTM ContainerVersions's API relative path.</summary>
+        /// <summary>GTM Container Version's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 

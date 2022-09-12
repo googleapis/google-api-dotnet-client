@@ -2038,6 +2038,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
 
+        /// <summary>Shielded Instance options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
         /// <summary>Output only. The current state for the TPU Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2190,6 +2194,17 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>The email address of the service identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of Shielded Instance options.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines whether the instance has Secure Boot enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

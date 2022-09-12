@@ -6351,14 +6351,16 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Catalog attributes that were deleted. Only attributes that are not in use by products can be deleted.
+        /// Catalog attributes that were deleted. Only pre-loaded catalog attributes that are neither in use by products
+        /// nor predefined can be deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedCatalogAttributes")]
         public virtual System.Collections.Generic.IList<string> DeletedCatalogAttributes { get; set; }
 
         /// <summary>
-        /// Catalog attributes that were reset. Attributes that are in use by products cannot be deleted, however their
-        /// configuration properties will reset to default values upon removal request.
+        /// Catalog attributes that were reset. Catalog attributes that are either in use by products or are predefined
+        /// attributes cannot be deleted; however, their configuration properties will reset to default values upon
+        /// removal request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetCatalogAttributes")]
         public virtual System.Collections.Generic.IList<string> ResetCatalogAttributes { get; set; }
@@ -6492,8 +6494,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
         /// pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
         /// CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-loaded CatalogAttributes. Only
-        /// pre-loaded CatalogAttributes that are neither in use by products nor predefined can be deleted.
-        /// CatalogAttributes that are either in use by products or are predefined cannot be deleted; however, their
+        /// pre-loaded catalog attributes that are neither in use by products nor predefined can be deleted. Catalog
+        /// attributes that are either in use by products or are predefined attributes cannot be deleted; however, their
         /// configuration properties will reset to default values upon removal request. After catalog changes, it takes
         /// about 10 minutes for this field to update.
         /// </summary>
@@ -7914,7 +7916,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableQuantity")]
         public virtual System.Nullable<int> AvailableQuantity { get; set; }
 
-        /// <summary>The timestamp when this Product becomes available for SearchService.Search.</summary>
+        /// <summary>
+        /// The timestamp when this Product becomes available for SearchService.Search. Note that this is only
+        /// applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableTime")]
         public virtual object AvailableTime { get; set; }
 
@@ -7982,11 +7987,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is
-        /// not available for SearchService.Search after expire_time. However, the product can still be retrieved by
-        /// ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and
-        /// publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant
-        /// Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only
+        /// applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the
+        /// users to delete the stale products explicitly, instead of using this field to determine staleness. If it is
+        /// set, the Product is not available for SearchService.Search after expire_time. However, the product can still
+        /// be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than
+        /// available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties:
+        /// Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
@@ -8044,7 +8051,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Output only. A list of local inventories specific to different places. This is only available for users who
-        /// have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+        /// have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and
+        /// ProductService.RemoveLocalInventories APIs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localInventories")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaLocalInventory> LocalInventories { get; set; }
@@ -8164,9 +8172,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string Title { get; set; }
 
         /// <summary>
-        /// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and
-        /// expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl
-        /// is left blank when retrieving the Product. If it is set, the product is not available for
+        /// Input only. The TTL (time to live) of the product. Note that this is only applicable to Type.PRIMARY and
+        /// Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products
+        /// explicitly, instead of using this field to determine staleness. If it is set, it must be a non-negative
+        /// value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the
+        /// output and ttl is left blank when retrieving the Product. If it is set, the product is not available for
         /// SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by
         /// ProductService.GetProduct and ProductService.ListProducts.
         /// </summary>

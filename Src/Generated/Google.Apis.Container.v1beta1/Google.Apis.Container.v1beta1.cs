@@ -7282,6 +7282,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolId")]
         public virtual string DesiredNodePoolId { get; set; }
 
+        /// <summary>The desired node pool logging configuration defaults for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolLoggingConfig")]
+        public virtual NodePoolLoggingConfig DesiredNodePoolLoggingConfig { get; set; }
+
         /// <summary>
         /// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit
         /// versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest":
@@ -8269,6 +8273,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LoggingVariantConfig specifies the behaviour of the logging component.</summary>
+    public class LoggingVariantConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Logging variant deployed on nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variant")]
+        public virtual string Variant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the Maintenance exclusion option.</summary>
     public class MaintenanceExclusionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8715,6 +8730,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; }
 
+        /// <summary>Logging configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
+
         /// <summary>
         /// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If
         /// unspecified, the default machine type is `e2-medium`.
@@ -8829,6 +8848,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>GCFS (Google Container File System, also known as Riptide) options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
+
+        /// <summary>Logging configuration for node pools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9144,6 +9167,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Subset of NodeConfig message that has defaults.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfigDefaults")]
         public virtual NodeConfigDefaults NodeConfigDefaults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NodePoolLoggingConfig specifies logging configuration for nodepools.</summary>
+    public class NodePoolLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Logging variant configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantConfig")]
+        public virtual LoggingVariantConfig VariantConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10625,6 +10659,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
+
+        /// <summary>Logging configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
 
         /// <summary>
         /// The name (project, location, cluster, node pool) of the node pool to update. Specified in the format

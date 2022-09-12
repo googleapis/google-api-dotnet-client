@@ -981,7 +981,10 @@ namespace Google.Apis.Dataproc.v1
                 /// Deletes the batch workload resource. If the batch is not in terminal state, the delete fails and the
                 /// response returns FAILED_PRECONDITION.
                 /// </summary>
-                /// <param name="name">Required. The name of the batch resource to delete.</param>
+                /// <param name="name">
+                /// Required. The fully qualified name of the batch to retrieve in the format
+                /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -1000,7 +1003,10 @@ namespace Google.Apis.Dataproc.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the batch resource to delete.</summary>
+                    /// <summary>
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1029,7 +1035,10 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Gets the batch workload resource representation.</summary>
-                /// <param name="name">Required. The name of the batch to retrieve.</param>
+                /// <param name="name">
+                /// Required. The fully qualified name of the batch to retrieve in the format
+                /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -1045,7 +1054,10 @@ namespace Google.Apis.Dataproc.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the batch to retrieve.</summary>
+                    /// <summary>
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6243,9 +6255,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. members can have the following
         /// values: allUsers: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with
-        /// a Google account or a service account. user:{emailid}: An email address that represents a specific Google
-        /// account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a
-        /// Google service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific
+        /// Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents
+        /// a Google service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service
         /// account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example,
         /// my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a
@@ -6927,6 +6940,45 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneUri")]
         public virtual string ZoneUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata describing the Compute Engine node pool operation.</summary>
+    public class GceNodePoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Cluster UUID associated with the Compute Engine node pool operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; }
+
+        /// <summary>Output only. Short description of operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Compute Engine node pool ID for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceNodePoolId")]
+        public virtual string GceNodePoolId { get; set; }
+
+        /// <summary>Output only. Labels associated with the operation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>Output only. Current operation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ClusterOperationStatus Status { get; set; }
+
+        /// <summary>Output only. The previous operation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
+        public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; }
+
+        /// <summary>Output only. Errors encountered during operation execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
