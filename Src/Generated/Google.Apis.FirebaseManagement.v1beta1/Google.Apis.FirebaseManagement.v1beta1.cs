@@ -3456,6 +3456,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
+        /// <summary>The SHA1 certificate hashes for the AndroidApp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hashes")]
+        public virtual System.Collections.Generic.IList<string> Sha1Hashes { get; set; }
+
+        /// <summary>The SHA256 certificate hashes for the AndroidApp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hashes")]
+        public virtual System.Collections.Generic.IList<string> Sha256Hashes { get; set; }
+
         /// <summary>Output only. The lifecycle state of the App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

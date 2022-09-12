@@ -1555,7 +1555,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Audio report.</summary>
+    /// <summary>
+    /// Status data for storage. * This field is telemetry information and this will change over time as the device is
+    /// utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceAudioStatus](https://chromeenterprise.google/policies/#ReportDeviceAudioStatus) * Data Collection
+    /// Frequency: 10 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1AudioStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Active input device's name.</summary>
@@ -1590,7 +1597,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Battery info</summary>
+    /// <summary>
+    /// Information about the battery. * This field provides device information, which is static and will not change
+    /// over time. * Data for this field is controlled via policy:
+    /// [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus) * Data Collection
+    /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1BatteryInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Design capacity (mAmpere-hours).</summary>
@@ -1621,7 +1635,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Sampling data for battery.</summary>
+    /// <summary>
+    /// Sampling data for battery. * This field is telemetry information and this will change over time as the device is
+    /// utilized. * Data for this field is controlled via policy:
+    /// [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus) * Data Collection
+    /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1BatterySampleReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Battery charge percentage.</summary>
@@ -1663,7 +1684,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Status data for battery.</summary>
+    /// <summary>
+    /// Status data for battery. * This field is telemetry information and this will change over time as the device is
+    /// utilized. * Data for this field is controlled via policy:
+    /// [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus) * Data Collection
+    /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1BatteryStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Battery health.</summary>
@@ -1949,10 +1977,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CPU specs for a CPU.</summary>
+    /// <summary>
+    /// CPU specifications for the device * This field provides device information, which is static and will not change
+    /// over time. * Data for this field is controlled via policy:
+    /// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
+    /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1CpuInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The CPU architecture.</summary>
+        /// <summary>
+        /// Output only. Architecture type for the CPU. * This field provides device information, which is static and
+        /// will not change over time. * Data for this field is controlled via policy:
+        /// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
+        /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If
+        /// the device is offline, the collected data is stored locally, and will be reported when the device is next
+        /// online: No * Reported for affiliated users only: N/A
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual string Architecture { get; set; }
 
@@ -1979,7 +2021,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains samples of the cpu status reports.</summary>
+    /// <summary>
+    /// Provides information about the status of the CPU. * This field is telemetry information and this will change
+    /// over time as the device is utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
+    /// Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1CpuStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. CPU temperature sample info per CPU core in Celsius</summary>
@@ -2004,7 +2053,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CPU temperature of a device. Sampled per CPU core in Celsius</summary>
+    /// <summary>
+    /// CPU temperature of a device. Sampled per CPU core in Celsius. * This field is telemetry information and this
+    /// will change over time as the device is utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
+    /// Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1CpuTemperatureInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. CPU label. Example: Core 0</summary>
@@ -2203,7 +2259,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information of the graphics subsystem.</summary>
+    /// <summary>
+    /// Information of the graphics subsystem. * This field provides device information, which is static and will not
+    /// change over time. * Data for this field is controlled via policy:
+    /// [ReportDeviceGraphicsStatus](https://chromeenterprise.google/policies/#ReportDeviceGraphicsStatus) * Data
+    /// Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+    /// Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is
+    /// next online: No * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1GraphicsInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Information about the graphics adapter (GPU).</summary>
@@ -2214,7 +2277,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information of the graphics subsystem.</summary>
+    /// <summary>
+    /// Information of the graphics subsystem. * This field is telemetry information and this will change over time as
+    /// the device is utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceGraphicsInfo](https://chromeenterprise.google/policies/#ReportDeviceGraphicsInfo) * Data Collection
+    /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
+    /// * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1GraphicsStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Information about the displays for the device.</summary>
@@ -2317,7 +2387,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Memory information of a device.</summary>
+    /// <summary>
+    /// Memory information of a device. * This field has both telemetry and device information: - `totalRamBytes` -
+    /// Device information - `availableRamBytes` - Telemetry information - `totalMemoryEncryption` - Device information
+    /// * Data for this field is controlled via policy:
+    /// [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+    /// Frequency: - `totalRamBytes` - Only at upload - `availableRamBytes` - Every 10 minutes - `totalMemoryEncryption`
+    /// - at device startup * Default Data Reporting Frequency: - `totalRamBytes` - 3 hours - `availableRamBytes` - 3
+    /// hours - `totalMemoryEncryption` - at device startup - Policy Controlled: Yes * Cache: If the device is offline,
+    /// the collected data is stored locally, and will be reported when the device is next online: only for
+    /// `totalMemoryEncryption` * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1MemoryInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Amount of available RAM in bytes.</summary>
@@ -2336,7 +2416,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains samples of memory status reports.</summary>
+    /// <summary>
+    /// Contains samples of memory status reports. * This field is telemetry information and this will change over time
+    /// as the device is utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+    /// Frequency: Only at upload, SystemRamFreeByes is collected every 10 minutes * Default Data Reporting Frequency:
+    /// Every 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally,
+    /// and will be reported when the device is next online: No * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1MemoryStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Number of page faults during this collection</summary>
@@ -2361,7 +2448,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Network device.</summary>
+    /// <summary>
+    /// Details about the network device. * This field provides device information, which is static and will not change
+    /// over time. * Data for this field is controlled via policy:
+    /// [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration) *
+    /// Data Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy
+    /// Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported
+    /// when the device is next online: Yes * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1NetworkDevice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The integrated circuit card ID associated with the device's sim card.</summary>
@@ -2410,7 +2504,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Network devices info.</summary>
+    /// <summary>
+    /// Network device information. * This field provides device information, which is static and will not change over
+    /// time. * Data for this field is controlled via policy:
+    /// [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration) *
+    /// Data Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy
+    /// Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported
+    /// when the device is next online: Yes * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. List of network devices.</summary>
@@ -2421,7 +2522,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>State of visible/configured networks.</summary>
+    /// <summary>
+    /// State of visible/configured networks. * This field is telemetry information and this will change over time as
+    /// the device is utilized. * Data for this field is controlled via policy:
+    /// [ReportNetworkStatus](https://chromeenterprise.google/policies/#ReportNetworkStatus) * Data Collection
+    /// Frequency: 60 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
+    /// device is offline, the collected data is stored locally, and will be reported when the device is next online:
+    /// Yes * Reported for affiliated users only: Yes
+    /// </summary>
     public class GoogleChromeManagementV1NetworkStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Current connection state of the network.</summary>
@@ -2487,7 +2595,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains information regarding the current OS update status.</summary>
+    /// <summary>
+    /// Contains information regarding the current OS update status. * This field is telemetry information and this will
+    /// change over time as the device is utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceOsUpdateStatus](https://chromeenterprise.google/policies/#ReportDeviceOsUpdateStatus) * Data
+    /// Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+    /// Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is
+    /// next online: No * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1OsUpdateStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Timestamp of the last reboot.</summary>
@@ -2522,7 +2637,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Status data for storage.</summary>
+    /// <summary>
+    /// Status data for storage. * This field is telemetry information and this will change over time as the device is
+    /// utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus) * Data
+    /// Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+    /// Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is
+    /// next online: No * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1StorageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The available space for user data storage in the device in bytes.</summary>
@@ -2560,7 +2682,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Status data for storage.</summary>
+    /// <summary>
+    /// Status data for storage. * This field is telemetry information and this will change over time as the device is
+    /// utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus) * Data
+    /// Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+    /// Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is
+    /// next online: No * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1StorageStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Reports on disk.</summary>
@@ -2678,7 +2807,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Thunderbolt bus info.</summary>
+    /// <summary>
+    /// Thunderbolt bus info. * This field provides device information, which is static and will not change over time. *
+    /// Data for this field is controlled via policy:
+    /// [ReportDeviceSecurityStatus](https://chromeenterprise.google/policies/#ReportDeviceSecurityStatus) * Data
+    /// Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy
+    /// Controlled: No * Cache: If the device is offline, the collected data is stored locally, and will be reported
+    /// when the device is next online: Yes * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1ThunderboltInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Security level of the Thunderbolt bus.</summary>
@@ -2689,7 +2825,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Memory encryption information of a device.</summary>
+    /// <summary>
+    /// Memory encryption information of a device. * This field provides device information, which is static and will
+    /// not change over time. * Data for this field is controlled via policy:
+    /// [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+    /// Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy Controlled: Yes *
+    /// Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is
+    /// next online: Yes * Reported for affiliated users only: N/A
+    /// </summary>
     public class GoogleChromeManagementV1TotalMemoryEncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Memory encryption algorithm.</summary>

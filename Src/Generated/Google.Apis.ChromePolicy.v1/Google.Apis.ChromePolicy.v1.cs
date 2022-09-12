@@ -1522,7 +1522,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
     /// <summary>Provides detailed information for a particular field that is part of a PolicySchema.</summary>
     public class GoogleChromePolicyV1PolicySchemaFieldDescription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The description for the field.</summary>
+        /// <summary>Deprecated. Use name and field_description instead. The description for the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -1537,6 +1537,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDependencies")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDependencies> FieldDependencies { get; set; }
 
+        /// <summary>Output only. The description of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDescription")]
+        public virtual string FieldDescription { get; set; }
+
         /// <summary>Output only. Any input constraints associated on the values for the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConstraint")]
         public virtual string InputConstraint { get; set; }
@@ -1546,6 +1550,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownValueDescriptions")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription> KnownValueDescriptions { get; set; }
+
+        /// <summary>Output only. The name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Output only. Provides the description of the fields nested in this field, if the field is a message type

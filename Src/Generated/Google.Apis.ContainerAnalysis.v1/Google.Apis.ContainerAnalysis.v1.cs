@@ -1915,9 +1915,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -2766,6 +2767,21 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Allow this build step to fail without failing the entire build if and only if the exit code is one of the
+        /// specified codes. If allow_failure is also specified, this field will take precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowExitCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowExitCodes { get; set; }
+
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this
+        /// step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error
+        /// information will be reported in the failure_detail field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowFailure")]
+        public virtual System.Nullable<bool> AllowFailure { get; set; }
+
+        /// <summary>
         /// A list of arguments that will be presented to the step when it is started. If the image used to run the
         /// step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does
         /// not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be
@@ -2797,6 +2813,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; }
+
+        /// <summary>Output only. Return code from running the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
 
         /// <summary>
         /// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.

@@ -3094,9 +3094,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -3149,6 +3150,42 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specifying where to deploy a Cloud Run Service.</summary>
+    public class CloudRunLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The location where the Cloud Run Service should be located. Format is
+        /// `projects/{project}/locations/{location}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloudRunMetadata contains information from a Cloud Run deployment.</summary>
+    public class CloudRunMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The Cloud Run Revision id associated with a `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the Cloud Run Service that is associated with a `Rollout`. Format is
+        /// projects/{project}/locations/{location}/services/{service}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>Output only. The Cloud Run Service urls that are associated with a `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceUrls")]
+        public virtual System.Collections.Generic.IList<string> ServiceUrls { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3594,6 +3631,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata surfaces information associated with a `Rollout` to the user.</summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the Cloud Run Service that is associated with a `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual CloudRunMetadata CloudRun { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4031,6 +4079,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Output only. Metadata contains information about the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual Metadata Metadata { get; set; }
+
         /// <summary>
         /// Optional. Name of the `Rollout`. Format is projects/{project}/
         /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
@@ -4250,6 +4302,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requireApproval")]
         public virtual System.Nullable<bool> RequireApproval { get; set; }
 
+        /// <summary>Information specifying a Cloud Run deployment target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("run")]
+        public virtual CloudRunLocation Run { get; set; }
+
         /// <summary>Output only. Resource id of the `Target`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual string TargetId { get; set; }
@@ -4315,6 +4371,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
         public virtual string FailureCause { get; set; }
+
+        /// <summary>Output only. Additional information about the render failure, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to render the manifest for

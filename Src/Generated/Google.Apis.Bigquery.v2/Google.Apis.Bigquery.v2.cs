@@ -6305,6 +6305,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; }
 
+        /// <summary>Connection properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
+        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
+
         /// <summary>
         /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported:
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must
@@ -8635,8 +8639,8 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>
     /// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` *
     /// ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT&amp;gt;: { "typeKind":
-    /// "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": {
-    /// "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
+    /// "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": {
+    /// "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
     /// </summary>
     public class StandardSqlDataType : Google.Apis.Requests.IDirectResponseSchema
     {

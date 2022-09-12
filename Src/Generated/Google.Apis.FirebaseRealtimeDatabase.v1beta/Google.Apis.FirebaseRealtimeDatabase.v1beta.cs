@@ -62,7 +62,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Firebase Realtime Database Management API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Firebase Realtime Database API.</summary>
         public class Scope
         {
             /// <summary>
@@ -83,9 +83,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
             public static string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
         }
 
-        /// <summary>
-        /// Available OAuth 2.0 scope constants for use with the Firebase Realtime Database Management API.
-        /// </summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Firebase Realtime Database API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
