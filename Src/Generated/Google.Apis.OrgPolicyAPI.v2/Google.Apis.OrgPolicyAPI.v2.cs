@@ -2350,6 +2350,13 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
 
+        /// <summary>
+        /// Output only. The last time this custom constraint was updated. This represents the last time that the
+        /// `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

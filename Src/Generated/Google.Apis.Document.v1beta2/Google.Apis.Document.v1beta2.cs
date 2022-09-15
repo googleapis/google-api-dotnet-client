@@ -2613,6 +2613,12 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual GoogleTypeColor Color { get; set; }
 
+        /// <summary>
+        /// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
+        public virtual string FontFamily { get; set; }
+
         /// <summary>Font size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentStyleFontSize FontSize { get; set; }
@@ -3843,6 +3849,12 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Text color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual GoogleTypeColor Color { get; set; }
+
+        /// <summary>
+        /// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
+        public virtual string FontFamily { get; set; }
 
         /// <summary>Font size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]

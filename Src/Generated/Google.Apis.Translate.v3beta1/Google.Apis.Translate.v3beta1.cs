@@ -2473,6 +2473,14 @@ namespace Google.Apis.Translate.v3beta1.Data
     /// <summary>A document translation request.</summary>
     public class TranslateDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. This flag is to support user customized attribution. If not provided, the default is `Machine
+        /// Translated by Google`. Customized attribution should follow rules in
+        /// https://cloud.google.com/translate/attribution#attribution_and_logos
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customizedAttribution")]
+        public virtual string CustomizedAttribution { get; set; }
+
         /// <summary>Required. Input configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentInputConfig")]
         public virtual DocumentInputConfig DocumentInputConfig { get; set; }

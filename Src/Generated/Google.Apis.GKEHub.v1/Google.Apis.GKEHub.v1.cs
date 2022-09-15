@@ -2509,6 +2509,12 @@ namespace Google.Apis.GKEHub.v1.Data
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowVerticalScale")]
+        public virtual System.Nullable<bool> AllowVerticalScale { get; set; }
+
+        /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
         /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
         /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
@@ -4169,12 +4175,31 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status of data plane management. Only reported per-member.</summary>
+    public class ServiceMeshDataPlaneManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explanation of the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<ServiceMeshStatusDetails> Details { get; set; }
+
+        /// <summary>Lifecycle status of data plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Service Mesh**: Spec for a single Membership for the servicemesh feature</summary>
     public class ServiceMeshMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enables automatic control plane management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
         public virtual string ControlPlane { get; set; }
+
+        /// <summary>Enables automatic Service Mesh management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4188,6 +4213,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Output only. Status of control plane management</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
         public virtual ServiceMeshControlPlaneManagement ControlPlaneManagement { get; set; }
+
+        /// <summary>Output only. Status of data plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPlaneManagement")]
+        public virtual ServiceMeshDataPlaneManagement DataPlaneManagement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

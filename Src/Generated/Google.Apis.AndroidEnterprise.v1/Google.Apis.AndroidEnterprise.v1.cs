@@ -1679,7 +1679,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             this.service = service;
         }
 
-        /// <summary>Removes an entitlement to an app for a user.</summary>
+        /// <summary>
+        /// Removes an entitlement to an app for a user. **Note:** This item has been deprecated. New integrations
+        /// cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the user.</param>
         /// <param name="entitlementId">
@@ -1690,7 +1693,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new DeleteRequest(service, enterpriseId, userId, entitlementId);
         }
 
-        /// <summary>Removes an entitlement to an app for a user.</summary>
+        /// <summary>
+        /// Removes an entitlement to an app for a user. **Note:** This item has been deprecated. New integrations
+        /// cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1754,7 +1760,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
-        /// <summary>Retrieves details of an entitlement.</summary>
+        /// <summary>
+        /// Retrieves details of an entitlement. **Note:** This item has been deprecated. New integrations cannot use
+        /// this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the user.</param>
         /// <param name="entitlementId">
@@ -1765,7 +1774,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new GetRequest(service, enterpriseId, userId, entitlementId);
         }
 
-        /// <summary>Retrieves details of an entitlement.</summary>
+        /// <summary>
+        /// Retrieves details of an entitlement. **Note:** This item has been deprecated. New integrations cannot use
+        /// this method and can refer to our new recommendations.
+        /// </summary>
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Entitlement>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1829,7 +1841,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
-        /// <summary>Lists all entitlements for the specified user. Only the ID is set.</summary>
+        /// <summary>
+        /// Lists all entitlements for the specified user. Only the ID is set. **Note:** This item has been deprecated.
+        /// New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the user.</param>
         public virtual ListRequest List(string enterpriseId, string userId)
@@ -1837,7 +1852,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, userId);
         }
 
-        /// <summary>Lists all entitlements for the specified user. Only the ID is set.</summary>
+        /// <summary>
+        /// Lists all entitlements for the specified user. Only the ID is set. **Note:** This item has been deprecated.
+        /// New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EntitlementsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1888,7 +1906,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
-        /// <summary>Adds or updates an entitlement to an app for a user.</summary>
+        /// <summary>
+        /// Adds or updates an entitlement to an app for a user. **Note:** This item has been deprecated. New
+        /// integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the user.</param>
@@ -1900,7 +1921,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new UpdateRequest(service, body, enterpriseId, userId, entitlementId);
         }
 
-        /// <summary>Adds or updates an entitlement to an app for a user.</summary>
+        /// <summary>
+        /// Adds or updates an entitlement to an app for a user. **Note:** This item has been deprecated. New
+        /// integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Entitlement>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2002,7 +2026,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             this.service = service;
         }
 
-        /// <summary>Retrieves details of an enterprise's group license for a product.</summary>
+        /// <summary>
+        /// Retrieves details of an enterprise's group license for a product. **Note:** This item has been deprecated.
+        /// New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="groupLicenseId">
         /// The ID of the product the group license is for, e.g. "app:com.google.android.gm".
@@ -2012,7 +2039,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new GetRequest(service, enterpriseId, groupLicenseId);
         }
 
-        /// <summary>Retrieves details of an enterprise's group license for a product.</summary>
+        /// <summary>
+        /// Retrieves details of an enterprise's group license for a product. **Note:** This item has been deprecated.
+        /// New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GroupLicense>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2063,14 +2093,20 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
-        /// <summary>Retrieves IDs of all products for which the enterprise has a group license.</summary>
+        /// <summary>
+        /// Retrieves IDs of all products for which the enterprise has a group license. **Note:** This item has been
+        /// deprecated. New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
             return new ListRequest(service, enterpriseId);
         }
 
-        /// <summary>Retrieves IDs of all products for which the enterprise has a group license.</summary>
+        /// <summary>
+        /// Retrieves IDs of all products for which the enterprise has a group license. **Note:** This item has been
+        /// deprecated. New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GroupLicensesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2123,7 +2159,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             this.service = service;
         }
 
-        /// <summary>Retrieves the IDs of the users who have been granted entitlements under the license.</summary>
+        /// <summary>
+        /// Retrieves the IDs of the users who have been granted entitlements under the license. **Note:** This item has
+        /// been deprecated. New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="groupLicenseId">
         /// The ID of the product the group license is for, e.g. "app:com.google.android.gm".
@@ -2133,7 +2172,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, groupLicenseId);
         }
 
-        /// <summary>Retrieves the IDs of the users who have been granted entitlements under the license.</summary>
+        /// <summary>
+        /// Retrieves the IDs of the users who have been granted entitlements under the license. **Note:** This item has
+        /// been deprecated. New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GroupLicenseUsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3409,7 +3451,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>
         ///  Approves the specified product and the relevant app permissions, if any. The maximum number of products
         /// that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to design and
-        /// create a store layout to display approved products to your users, see Store Layout Design.
+        /// create a store layout to display approved products to your users, see Store Layout Design. **Note:** This
+        /// item has been deprecated. New integrations cannot use this method and can refer to our new recommendations.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -3422,7 +3465,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>
         ///  Approves the specified product and the relevant app permissions, if any. The maximum number of products
         /// that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to design and
-        /// create a store layout to display approved products to your users, see Store Layout Design.
+        /// create a store layout to display approved products to your users, see Store Layout Design. **Note:** This
+        /// item has been deprecated. New integrations cannot use this method and can refer to our new recommendations.
         /// </summary>
         public class ApproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
@@ -3487,7 +3531,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// approve that product. Admins should accept the displayed permissions by interacting with a separate UI
         /// element in the EMM console, which in turn should trigger the use of this URL as the
         /// approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be
-        /// used to display permissions for up to 1 day.
+        /// used to display permissions for up to 1 day. **Note:** This item has been deprecated. New integrations
+        /// cannot use this method and can refer to our new recommendations.
         /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the product.</param>
@@ -3502,7 +3547,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// approve that product. Admins should accept the displayed permissions by interacting with a separate UI
         /// element in the EMM console, which in turn should trigger the use of this URL as the
         /// approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be
-        /// used to display permissions for up to 1 day.
+        /// used to display permissions for up to 1 day. **Note:** This item has been deprecated. New integrations
+        /// cannot use this method and can refer to our new recommendations.
         /// </summary>
         public class GenerateApprovalUrlRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsGenerateApprovalUrlResponse>
         {
@@ -3781,7 +3827,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>
-        /// Finds approved products that match a query, or all approved products if there is no query.
+        /// Finds approved products that match a query, or all approved products if there is no query. **Note:** This
+        /// item has been deprecated. New integrations cannot use this method and can refer to our new recommendations.
         /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
@@ -3790,7 +3837,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>
-        /// Finds approved products that match a query, or all approved products if there is no query.
+        /// Finds approved products that match a query, or all approved products if there is no query. **Note:** This
+        /// item has been deprecated. New integrations cannot use this method and can refer to our new recommendations.
         /// </summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsListResponse>
         {
@@ -3905,7 +3953,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
-        /// <summary>Unapproves the specified product (and the relevant app permissions, if any)</summary>
+        /// <summary>
+        /// Unapproves the specified product (and the relevant app permissions, if any) **Note:** This item has been
+        /// deprecated. New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the product.</param>
         public virtual UnapproveRequest Unapprove(string enterpriseId, string productId)
@@ -3913,7 +3964,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new UnapproveRequest(service, enterpriseId, productId);
         }
 
-        /// <summary>Unapproves the specified product (and the relevant app permissions, if any)</summary>
+        /// <summary>
+        /// Unapproves the specified product (and the relevant app permissions, if any) **Note:** This item has been
+        /// deprecated. New integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class UnapproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Unapprove request.</summary>
@@ -5030,7 +5084,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
-        /// <summary>Retrieves the set of products a user is entitled to access.</summary>
+        /// <summary>
+        /// Retrieves the set of products a user is entitled to access. **Note:** This item has been deprecated. New
+        /// integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the user.</param>
         public virtual GetAvailableProductSetRequest GetAvailableProductSet(string enterpriseId, string userId)
@@ -5038,7 +5095,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new GetAvailableProductSetRequest(service, enterpriseId, userId);
         }
 
-        /// <summary>Retrieves the set of products a user is entitled to access.</summary>
+        /// <summary>
+        /// Retrieves the set of products a user is entitled to access. **Note:** This item has been deprecated. New
+        /// integrations cannot use this method and can refer to our new recommendations.
+        /// </summary>
         public class GetAvailableProductSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductSet>
         {
             /// <summary>Constructs a new GetAvailableProductSet request.</summary>
@@ -5287,7 +5347,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>
         /// Modifies the set of products that a user is entitled to access (referred to as *whitelisted* products). Only
         /// products that are approved or products that were previously approved (products with revoked approval) can be
-        /// whitelisted.
+        /// whitelisted. **Note:** This item has been deprecated. New integrations cannot use this method and can refer
+        /// to our new recommendations.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -5300,7 +5361,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>
         /// Modifies the set of products that a user is entitled to access (referred to as *whitelisted* products). Only
         /// products that are approved or products that were previously approved (products with revoked approval) can be
-        /// whitelisted.
+        /// whitelisted. **Note:** This item has been deprecated. New integrations cannot use this method and can refer
+        /// to our new recommendations.
         /// </summary>
         public class SetAvailableProductSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductSet>
         {

@@ -2518,8 +2518,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This
         /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
         /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part
-        /// of an organization, you can remove all owners, potentially making the organization inaccessible. + Calling
-        /// this method requires enabling the App Engine Admin API.
+        /// of an organization, you can remove all owners, potentially making the organization inaccessible.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -2550,8 +2549,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This
         /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
         /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part
-        /// of an organization, you can remove all owners, potentially making the organization inaccessible. + Calling
-        /// this method requires enabling the App Engine Admin API.
+        /// of an organization, you can remove all owners, potentially making the organization inaccessible.
         /// </summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {

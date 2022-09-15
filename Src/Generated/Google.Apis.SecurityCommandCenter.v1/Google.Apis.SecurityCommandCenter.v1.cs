@@ -8442,6 +8442,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>
+        /// Output only. The human readable display name of the finding source such as "Event Threat Detection" or
+        /// "Security Health Analytics"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
+        public virtual string ParentDisplayName { get; set; }
+
         /// <summary>Represents operating system processes associated with the Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
         public virtual System.Collections.Generic.IList<Process> Processes { get; set; }
@@ -8800,6 +8807,32 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The full resource type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A resource value config is a mapping configuration of user's tag values to resource values. Used by the attack
+    /// path simulation.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name for the resource value config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Resource value level this expression represents</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
+        public virtual string ResourceValue { get; set; }
+
+        /// <summary>
+        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
+        public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

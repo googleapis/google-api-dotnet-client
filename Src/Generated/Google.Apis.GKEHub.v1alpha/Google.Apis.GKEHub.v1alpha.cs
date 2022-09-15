@@ -2381,6 +2381,73 @@ namespace Google.Apis.GKEHub.v1alpha
                         });
                     }
                 }
+
+                /// <summary>
+                /// ValidateCreateMembership is a preflight check for CreateMembership. It checks the following: 1.
+                /// Caller has the required `gkehub.memberships.create` permission. 2. The membership_id is still
+                /// available.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Memberships will be created. Specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ValidateCreateRequest ValidateCreate(Google.Apis.GKEHub.v1alpha.Data.ValidateCreateMembershipRequest body, string parent)
+                {
+                    return new ValidateCreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// ValidateCreateMembership is a preflight check for CreateMembership. It checks the following: 1.
+                /// Caller has the required `gkehub.memberships.create` permission. 2. The membership_id is still
+                /// available.
+                /// </summary>
+                public class ValidateCreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ValidateCreateMembershipResponse>
+                {
+                    /// <summary>Constructs a new ValidateCreate request.</summary>
+                    public ValidateCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.ValidateCreateMembershipRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Memberships will be created. Specified in
+                    /// the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.ValidateCreateMembershipRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "validateCreate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/memberships:validateCreate";
+
+                    /// <summary>Initializes ValidateCreate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -3221,6 +3288,12 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Configuration for Config Sync</summary>
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowVerticalScale")]
+        public virtual System.Nullable<bool> AllowVerticalScale { get; set; }
+
         /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
         /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
@@ -5293,6 +5366,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultChannel")]
         public virtual string DefaultChannel { get; set; }
 
+        /// <summary>Enables automatic Service Mesh management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5454,6 +5531,51 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Kind of the resource (e.g. Deployment).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `GkeHub.ValidateCreateMembership` method.</summary>
+    public class ValidateCreateMembershipRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Membership resource to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual Membership Membership { get; set; }
+
+        /// <summary>Required. Client chosen membership id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipId")]
+        public virtual string MembershipId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `GkeHub.ValidateCreateMembership` method.</summary>
+    public class ValidateCreateMembershipResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Wraps all the validator results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationResults")]
+        public virtual System.Collections.Generic.IList<ValidationResult> ValidationResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ValidationResults are results set by each validator running during ValidateCreateMembership.</summary>
+    public class ValidationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional information for the validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Whether the validation is passed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>Validator type to validate membership with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validator")]
+        public virtual string Validator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
