@@ -11293,10 +11293,6 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>The infoType details for this column.</summary>
     public class GooglePrivacyDlpV2InfoTypeSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Approximate percentage of non-null rows that contained data detected by this infotype.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedPrevalence")]
-        public virtual System.Nullable<int> EstimatedPrevalence { get; set; }
-
         /// <summary>The infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
@@ -13415,7 +13411,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVisibility")]
         public virtual string ResourceVisibility { get; set; }
 
-        /// <summary>Number of rows in the table when the profile was generated.</summary>
+        /// <summary>
+        /// Number of rows in the table when the profile was generated. This will not be populated for BigLake tables.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
 

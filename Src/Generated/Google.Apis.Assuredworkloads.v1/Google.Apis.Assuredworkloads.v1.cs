@@ -1006,6 +1006,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
 
+        /// <summary>
+        /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
+        /// disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow
+        /// your project developers to use these services in their environment."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
+        public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
+
         /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

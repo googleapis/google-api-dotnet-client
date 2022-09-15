@@ -1209,6 +1209,21 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Allow this build step to fail without failing the entire build if and only if the exit code is one of the
+        /// specified codes. If allow_failure is also specified, this field will take precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowExitCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowExitCodes { get; set; }
+
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this
+        /// step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error
+        /// information will be reported in the failure_detail field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowFailure")]
+        public virtual System.Nullable<bool> AllowFailure { get; set; }
+
+        /// <summary>
         /// A list of arguments that will be presented to the step when it is started. If the image used to run the
         /// step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does
         /// not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be
@@ -1240,6 +1255,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; }
+
+        /// <summary>Output only. Return code from running the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
 
         /// <summary>
         /// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.

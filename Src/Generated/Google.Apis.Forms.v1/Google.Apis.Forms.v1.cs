@@ -1529,7 +1529,10 @@ namespace Google.Apis.Forms.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The returned responses.</summary>
+        /// <summary>
+        /// The returned form responses. Note: The `formId` field is not returned in the `FormResponse` object for list
+        /// requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
         public virtual System.Collections.Generic.IList<FormResponse> Responses { get; set; }
 

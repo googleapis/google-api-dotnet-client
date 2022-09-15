@@ -1084,6 +1084,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 }
 namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 {
+    /// <summary>Describes the amount unit including the currency code.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1Amount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Amount in micros (1_000_000 micros = 1 currency unit)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
+        public virtual System.Nullable<long> AmountMicros { get; set; }
+
+        /// <summary>
+        /// Required. Currency codes in accordance with [ISO-4217 Currency Codes]
+        /// (https://en.wikipedia.org/wiki/ISO_4217). For example, USD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1325,11 +1343,15 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Response only. Resource name of the subscription. It will have the format of
+        /// Output only. Response only. Resource name of the product. It will have the format of
         /// "partners/{partner_id}/products/{product_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Price configs for the product in the available regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig> PriceConfigs { get; set; }
 
         /// <summary>
         /// Output only. 2-letter ISO region code where the product is available in. Ex. "US" Please refers to:
@@ -1345,6 +1367,21 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. Localized human readable name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
         public virtual System.Collections.Generic.IList<GoogleTypeLocalizedText> Titles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configs the prices in an available region.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The price in the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount Amount { get; set; }
+
+        /// <summary>Output only. 2-letter ISO region code where the product is available in. Ex. "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1424,6 +1461,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>The duration of an introductory pricing promotion.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The discount amount. The value is positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountAmount")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount DiscountAmount { get; set; }
+
+        /// <summary>Output only. The discount percentage in micros. For example, 50,000 represents 5%.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountRatioMicros")]
+        public virtual System.Nullable<long> DiscountRatioMicros { get; set; }
+
         /// <summary>Output only. Output Only. The duration of an introductory offer in billing cycles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrenceCount")]
         public virtual System.Nullable<int> RecurrenceCount { get; set; }

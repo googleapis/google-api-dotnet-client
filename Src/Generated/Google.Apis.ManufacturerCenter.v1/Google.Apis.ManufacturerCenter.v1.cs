@@ -832,7 +832,9 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
-        /// <summary>Grocery Attributes. For more information, see go/mfc-nutrition-attributes.</summary>
+        /// <summary>
+        /// Grocery Attributes. See more at https://support.google.com/manufacturers/answer/12098458#grocery.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grocery")]
         public virtual Grocery Grocery { get; set; }
 
@@ -878,7 +880,9 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
 
-        /// <summary>Nutrition Attributes. For more information, see go/mfc-nutrition-attributes.</summary>
+        /// <summary>
+        /// Nutrition Attributes. See more at https://support.google.com/manufacturers/answer/12098458#food-servings.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nutrition")]
         public virtual Nutrition Nutrition { get; set; }
 
@@ -1094,7 +1098,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Combination of float amout and unit.</summary>
+    /// <summary>Combination of float amount and unit.</summary>
     public class FloatUnit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>amount.</summary>

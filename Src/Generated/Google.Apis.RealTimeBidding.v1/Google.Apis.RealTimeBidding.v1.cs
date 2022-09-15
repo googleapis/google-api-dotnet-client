@@ -319,8 +319,8 @@ namespace Google.Apis.RealTimeBidding.v1
             /// to the child seat buyer (`456`) under bidder account (`123`), you would use the pattern: `buyers/456`.
             /// 3. The ID of the bidder itself. So for listing creatives pertaining to bidder (`123`), you would use
             /// `buyers/123`. If you want to access all creatives pertaining to both the bidder and all of its child
-            /// seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives pertaining to bidder
-            /// (`123`), use `bidders/123`.
+            /// seat accounts, you would use `bidders/{bidderAccountId}`, for example, for all creatives pertaining to
+            /// bidder (`123`), use `bidders/123`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -351,8 +351,8 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// pertaining to the child seat buyer (`456`) under bidder account (`123`), you would use the pattern:
                 /// `buyers/456`. 3. The ID of the bidder itself. So for listing creatives pertaining to bidder (`123`),
                 /// you would use `buyers/123`. If you want to access all creatives pertaining to both the bidder and
-                /// all of its child seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
-                /// pertaining to bidder (`123`), use `bidders/123`.
+                /// all of its child seat accounts, you would use `bidders/{bidderAccountId}`, for example, for all
+                /// creatives pertaining to bidder (`123`), use `bidders/123`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -367,7 +367,7 @@ namespace Google.Apis.RealTimeBidding.v1
 
                 /// <summary>
                 /// Requested page size. The server may return fewer creatives than requested (due to timeout
-                /// constraint) even if more are available via another call. If unspecified, server will pick an
+                /// constraint) even if more are available through another call. If unspecified, server will pick an
                 /// appropriate default. Acceptable values are 1 to 1000, inclusive.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1804,7 +1804,7 @@ namespace Google.Apis.RealTimeBidding.v1
 
                 /// <summary>
                 /// Requested page size. The server may return fewer results than requested (due to timeout constraint)
-                /// even if more are available via another call. If unspecified, the server will pick an appropriate
+                /// even if more are available through another call. If unspecified, the server will pick an appropriate
                 /// default. Acceptable values are 1 to 5000, inclusive.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2177,8 +2177,8 @@ namespace Google.Apis.RealTimeBidding.v1
             /// to the child seat buyer (`456`) under bidder account (`123`), you would use the pattern: `buyers/456`.
             /// 3. The ID of the bidder itself. So for listing creatives pertaining to bidder (`123`), you would use
             /// `buyers/123`. If you want to access all creatives pertaining to both the bidder and all of its child
-            /// seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives pertaining to bidder
-            /// (`123`), use `bidders/123`.
+            /// seat accounts, you would use `bidders/{bidderAccountId}`, for example, for all creatives pertaining to
+            /// bidder (`123`), use `bidders/123`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2209,8 +2209,8 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// pertaining to the child seat buyer (`456`) under bidder account (`123`), you would use the pattern:
                 /// `buyers/456`. 3. The ID of the bidder itself. So for listing creatives pertaining to bidder (`123`),
                 /// you would use `buyers/123`. If you want to access all creatives pertaining to both the bidder and
-                /// all of its child seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
-                /// pertaining to bidder (`123`), use `bidders/123`.
+                /// all of its child seat accounts, you would use `bidders/{bidderAccountId}`, for example, for all
+                /// creatives pertaining to bidder (`123`), use `bidders/123`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2225,7 +2225,7 @@ namespace Google.Apis.RealTimeBidding.v1
 
                 /// <summary>
                 /// Requested page size. The server may return fewer creatives than requested (due to timeout
-                /// constraint) even if more are available via another call. If unspecified, server will pick an
+                /// constraint) even if more are available through another call. If unspecified, server will pick an
                 /// appropriate default. Acceptable values are 1 to 1000, inclusive.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3259,11 +3259,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     public class Bidder : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. A flag to bypass pretargeting for private auctions and preferred deals. When true, bid requests
-        /// from these nonguaranteed deals will always be sent. When false, bid requests will be subject to regular
-        /// pretargeting configurations. Programmatic Guaranteed deals will always be sent to the bidder, regardless of
-        /// the value for this flag. Auction packages are not impacted by this value and are subject to the regular
-        /// pretargeting configurations.
+        /// Output only. An option to bypass pretargeting for private auctions and preferred deals. When true, bid
+        /// requests from these nonguaranteed deals will always be sent. When false, bid requests will be subject to
+        /// regular pretargeting configurations. Programmatic Guaranteed deals will always be sent to the bidder,
+        /// regardless of the value for this flag. Auction packages are not impacted by this value and are subject to
+        /// the regular pretargeting configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bypassNonguaranteedDealsPretargeting")]
         public virtual System.Nullable<bool> BypassNonguaranteedDealsPretargeting { get; set; }
@@ -3306,8 +3306,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     public class Buyer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The number of creatives that this buyer submitted via the API or bid with in the last 30 days.
-        /// This is counted against the maximum number of active creatives.
+        /// Output only. The number of creatives that this buyer submitted through the API or bid with in the last 30
+        /// days. This is counted against the maximum number of active creatives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeCreativeCount")]
         public virtual System.Nullable<long> ActiveCreativeCount { get; set; }
@@ -3381,7 +3381,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
         public virtual System.Nullable<long> AgencyId { get; set; }
 
-        /// <summary>Output only. The last update timestamp of the creative via API.</summary>
+        /// <summary>Output only. The last update timestamp of the creative through the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiUpdateTime")]
         public virtual object ApiUpdateTime { get; set; }
 
@@ -3675,7 +3675,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expandedUrl")]
         public virtual string ExpandedUrl { get; set; }
 
-        /// <summary>HTTP error code (e.g. 404 or 5xx)</summary>
+        /// <summary>HTTP error code (for example, 404 or 5xx)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpError")]
         public virtual System.Nullable<int> HttpError { get; set; }
 
@@ -3719,7 +3719,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// <summary>Number of HTTP calls made by a creative, broken down by domain.</summary>
     public class DomainCallEvidence : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Breakdown of the most frequent domains called via HTTP by the creative.</summary>
+        /// <summary>Breakdown of the most frequent domains called through HTTP by the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topHttpCallDomains")]
         public virtual System.Collections.Generic.IList<DomainCalls> TopHttpCallDomains { get; set; }
 
@@ -4137,15 +4137,15 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     public class PolicyCompliance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Serving status for the given transaction type (e.g., open auction, deals) or region (e.g., China, Russia).
-        /// Can be used to filter the response of the creatives.list method.
+        /// Serving status for the given transaction type (for example, open auction, deals) or region (for example,
+        /// China, Russia). Can be used to filter the response of the creatives.list method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
         /// <summary>
-        /// Topics related to the policy compliance for this transaction type (e.g., open auction, deals) or region
-        /// (e.g., China, Russia). Topics may be present only if status is DISAPPROVED.
+        /// Topics related to the policy compliance for this transaction type (for example, open auction, deals) or
+        /// region (for example, China, Russia). Topics may be present only if status is DISAPPROVED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topics")]
         public virtual System.Collections.Generic.IList<PolicyTopicEntry> Topics { get; set; }
@@ -4685,7 +4685,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// The Pub/Sub subscription that can be used to pull creative status notifications. This would be of the format
         /// `projects/{project_id}/subscriptions/{subscription_id}`. Subscription is created with pull delivery. All
         /// service accounts belonging to the bidder will have read access to this subscription. Subscriptions that are
-        /// inactive for more than 90 days will be disabled. Please use watchCreatives to re-enable the subscription.
+        /// inactive for more than 90 days will be disabled. Use watchCreatives to re-enable the subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }

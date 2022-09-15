@@ -1623,7 +1623,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>
                 /// Requested page size. The server may return fewer creatives than requested (due to timeout
-                /// constraint) even if more are available via another call. If unspecified, server will pick an
+                /// constraint) even if more are available through another call. If unspecified, server will pick an
                 /// appropriate default. Acceptable values are 1 to 1000, inclusive.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2089,10 +2089,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <summary>
             /// Update given deals to pause serving. This method will set the
             /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request.
-            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
-            /// accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call
-            /// PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not
-            /// finalized or renegotiating.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause
+            /// endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for
+            /// deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">Account ID of the buyer.</param>
@@ -2105,10 +2104,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <summary>
             /// Update given deals to pause serving. This method will set the
             /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request.
-            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
-            /// accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call
-            /// PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not
-            /// finalized or renegotiating.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause
+            /// endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for
+            /// deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
             /// </summary>
             public class PauseRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
@@ -2170,10 +2168,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <summary>
             /// Update given deals to resume serving. This method will set the
             /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request.
-            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
-            /// accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other
-            /// party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of
-            /// proposal_id or which are not finalized or renegotiating.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume
+            /// endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to
+            /// call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not
+            /// finalized or renegotiating.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">Account ID of the buyer.</param>
@@ -2186,10 +2184,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <summary>
             /// Update given deals to resume serving. This method will set the
             /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request.
-            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
-            /// accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other
-            /// party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of
-            /// proposal_id or which are not finalized or renegotiating.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume
+            /// endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to
+            /// call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not
+            /// finalized or renegotiating.
             /// </summary>
             public class ResumeRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
@@ -6658,8 +6656,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     /// <summary>
     /// A client user is created under a client buyer and has restricted access to the Marketplace and certain other
     /// sections of the Authorized Buyers UI based on the role granted to the associated client buyer. The only way a
-    /// new client user can be created is via accepting an email invitation (see the accounts.clients.invitations.create
-    /// method). All fields are required unless otherwise specified.
+    /// new client user can be created is through accepting an email invitation (see the
+    /// accounts.clients.invitations.create method). All fields are required unless otherwise specified.
     /// </summary>
     public class ClientUser : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6786,7 +6784,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
         public virtual System.Nullable<long> AgencyId { get; set; }
 
-        /// <summary>Output only. The last update timestamp of the creative via API.</summary>
+        /// <summary>Output only. The last update timestamp of the creative through the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiUpdateTime")]
         public virtual object ApiUpdateTime { get; set; }
 
@@ -6882,8 +6880,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// Output only. The granular status of this ad in specific contexts. A context here relates to where something
-        /// ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the type of
-        /// auction).
+        /// ultimately serves (for example, a physical location, a platform, an HTTPS versus HTTP request, or the type
+        /// of auction).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingRestrictions")]
         public virtual System.Collections.Generic.IList<ServingRestriction> ServingRestrictions { get; set; }
@@ -7137,8 +7135,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// Optional. Proposed flight start time of the deal. This will generally be stored in the granularity of one
-        /// second since deal serving starts at seconds boundary. Any time specified with more granularity (e.g., in
-        /// milliseconds) will be truncated towards the start of time in seconds.
+        /// second since deal serving starts at seconds boundary. Any time specified with more granularity (for example,
+        /// in milliseconds) will be truncated towards the start of time in seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableStartTime")]
         public virtual object AvailableStartTime { get; set; }
@@ -7172,8 +7170,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string CreativePreApprovalPolicy { get; set; }
 
         /// <summary>
-        /// Output only. Restricitions about the creatives associated with the deal (i.e., size) This is available for
-        /// Programmatic Guaranteed/Preferred Deals in Ad Manager.
+        /// Output only. Restricitions about the creatives associated with the deal (for example, size) This is
+        /// available for Programmatic Guaranteed/Preferred Deals in Ad Manager.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeRestrictions")]
         public virtual CreativeRestrictions CreativeRestrictions { get; set; }
@@ -7307,7 +7305,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>
     /// The deal terms specify the details of a Product/deal. They specify things like price per buyer, the type of
-    /// pricing model (e.g., fixed price, auction) and expected impressions from the publisher.
+    /// pricing model (for example, fixed price, auction) and expected impressions from the publisher.
     /// </summary>
     public class DealTerms : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7401,7 +7399,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     /// <summary>
     /// A set of filters that is applied to a request for data. Within a filter set, an AND operation is performed
     /// across the filters represented by each field. An OR operation is performed across the filters represented by the
-    /// multiple values of a repeated field, e.g., "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
+    /// multiple values of a repeated field, for example, "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
     /// seller_network_id=56)".
     /// </summary>
     public class FilterSet : Google.Apis.Requests.IDirectResponseSchema
@@ -7421,7 +7419,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// The ID of the creative on which to filter; optional. This field may be set only for a filter set that
-        /// accesses account-level troubleshooting data, i.e., one whose name matches the
+        /// accesses account-level troubleshooting data, for example, one whose name matches the
         /// `bidders/*/accounts/*/filterSets/*` pattern.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
@@ -7429,8 +7427,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// The ID of the deal on which to filter; optional. This field may be set only for a filter set that accesses
-        /// account-level troubleshooting data, i.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`
-        /// pattern.
+        /// account-level troubleshooting data, for example, one whose name matches the
+        /// `bidders/*/accounts/*/filterSets/*` pattern.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
         public virtual System.Nullable<long> DealId { get; set; }
@@ -7462,7 +7460,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// The list of platforms on which to filter; may be empty. The filters represented by multiple platforms are
-        /// ORed together (i.e., if non-empty, results must match any one of the platforms).
+        /// ORed together (for example, if non-empty, results must match any one of the platforms).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
         public virtual System.Collections.Generic.IList<string> Platforms { get; set; }
@@ -7487,15 +7485,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// For Authorized Buyers only. The list of IDs of the seller (publisher) networks on which to filter; may be
-        /// empty. The filters represented by multiple seller network IDs are ORed together (i.e., if non-empty, results
-        /// must match any one of the publisher networks). See
+        /// empty. The filters represented by multiple seller network IDs are ORed together (for example, if non-empty,
+        /// results must match any one of the publisher networks). See
         /// [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids) file
         /// for the set of existing seller network IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerNetworkIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> SellerNetworkIds { get; set; }
 
-        /// <summary>The granularity of time intervals if a time series breakdown is desired; optional.</summary>
+        /// <summary>The granularity of time intervals if a time series breakdown is preferred; optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesGranularity")]
         public virtual string TimeSeriesGranularity { get; set; }
 
@@ -7526,7 +7524,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>
     /// The number of filtered bids with the specified dimension values, among those filtered due to the requested
-    /// filtering reason (i.e. creative status), that have the specified detail.
+    /// filtering reason (for example, creative status), that have the specified detail.
     /// </summary>
     public class FilteredBidDetailRow : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7982,7 +7980,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     public class ListFilteredBidsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// List of rows, with counts of filtered bids aggregated by filtering reason (i.e. creative status).
+        /// List of rows, with counts of filtered bids aggregated by filtering reason (for example, creative status).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusRows")]
         public virtual System.Collections.Generic.IList<CreativeStatusRow> CreativeStatusRows { get; set; }
@@ -8020,7 +8018,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     public class ListLosingBidsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// List of rows, with counts of losing bids aggregated by loss reason (i.e. creative status).
+        /// List of rows, with counts of losing bids aggregated by loss reason (for example, creative status).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusRows")]
         public virtual System.Collections.Generic.IList<CreativeStatusRow> CreativeStatusRows { get; set; }
@@ -8104,7 +8102,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     public class LocationContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// IDs representing the geo location for this context. Please refer to the
+        /// IDs representing the geo location for this context. Refer to the
         /// [geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file for different geo
         /// criteria IDs.
         /// </summary>
@@ -8130,11 +8128,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
         public virtual InventorySizeTargeting InventorySizeTargeting { get; set; }
 
-        /// <summary>Placement targeting information, e.g., URL, mobile applications.</summary>
+        /// <summary>Placement targeting information, for example, URL, mobile applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementTargeting")]
         public virtual PlacementTargeting PlacementTargeting { get; set; }
 
-        /// <summary>Technology targeting information, e.g., operating system, device category.</summary>
+        /// <summary>Technology targeting information, for example, operating system, device category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
         public virtual TechnologyTargeting TechnologyTargeting { get; set; }
 
@@ -8148,7 +8146,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>
     /// A metric value, with an expected value and a variance; represents a count that may be either exact or estimated
-    /// (i.e. when sampled).
+    /// (for example, when sampled).
     /// </summary>
     public class MetricValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8157,10 +8155,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual System.Nullable<long> Value { get; set; }
 
         /// <summary>
-        /// The variance (i.e. square of the standard deviation) of the metric value. If value is exact, variance is 0.
-        /// Can be used to calculate margin of error as a percentage of value, using the following formula, where Z is
-        /// the standard constant that depends on the desired size of the confidence interval (e.g. for 90% confidence
-        /// interval, use Z = 1.645): marginOfError = 100 * Z * sqrt(variance) / value
+        /// The variance (for example, square of the standard deviation) of the metric value. If value is exact,
+        /// variance is 0. Can be used to calculate margin of error as a percentage of value, using the following
+        /// formula, where Z is the standard constant that depends on the preferred size of the confidence interval (for
+        /// example, for 90% confidence interval, use Z = 1.645): marginOfError = 100 * Z * sqrt(variance) / value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variance")]
         public virtual System.Nullable<long> Variance { get; set; }
@@ -8398,8 +8396,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }
 
     /// <summary>
-    /// Represents targeting about where the ads can appear, e.g., certain sites or mobile applications. Different
-    /// placement targeting types will be logically OR'ed.
+    /// Represents targeting about where the ads can appear, for example, certain sites or mobile applications.
+    /// Different placement targeting types will be logically OR'ed.
     /// </summary>
     public class PlacementTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8488,7 +8486,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }
 
     /// <summary>
-    /// A product is a segment of inventory that a seller wishes to sell. It is associated with certain terms and
+    /// A product is a segment of inventory that a seller wants to sell. It is associated with certain terms and
     /// targeting information which helps the buyer know more about the inventory.
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
@@ -8817,21 +8815,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>
     /// A relative date range, specified by an offset and a duration. The supported range of dates begins 30 days before
-    /// today and ends today, i.e., the limits for these values are: offset_days &amp;gt;= 0 duration_days &amp;gt;= 1
-    /// offset_days + duration_days &amp;lt;= 30
+    /// today and ends today, for example, the limits for these values are: offset_days &amp;gt;= 0 duration_days
+    /// &amp;gt;= 1 offset_days + duration_days &amp;lt;= 30
     /// </summary>
     public class RelativeDateRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of days in the requested date range, e.g., for a range spanning today: 1. For a range spanning
-        /// the last 7 days: 7.
+        /// The number of days in the requested date range, for example, for a range spanning today: 1. For a range
+        /// spanning the last 7 days: 7.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationDays")]
         public virtual System.Nullable<int> DurationDays { get; set; }
 
         /// <summary>
-        /// The end date of the filter set, specified as the number of days before today, e.g., for a range where the
-        /// last date is today: 0.
+        /// The end date of the filter set, specified as the number of days before today, for example, for a range where
+        /// the last date is today: 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetDays")]
         public virtual System.Nullable<int> OffsetDays { get; set; }
@@ -8957,8 +8955,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>
     /// Output only. A representation of the status of an ad in a specific context. A context here relates to where
-    /// something ultimately serves (for example, a user or publisher geo, a platform, an HTTPS vs HTTP request, or the
-    /// type of auction).
+    /// something ultimately serves (for example, a user or publisher geo, a platform, an HTTPS versus HTTP request, or
+    /// the type of auction).
     /// </summary>
     public class ServingRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8975,7 +8973,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>
         /// Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the
-        /// response of the creatives.list method. Deprecated; please use disapproval field instead.
+        /// response of the creatives.list method. Deprecated; use disapproval field instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalReasons")]
         public virtual System.Collections.Generic.IList<Disapproval> DisapprovalReasons { get; set; }
@@ -9134,8 +9132,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }
 
     /// <summary>
-    /// Represents a list of targeted and excluded URLs (e.g., google.com). For Private Auction and AdX Preferred Deals,
-    /// URLs are either included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't apply.
+    /// Represents a list of targeted and excluded URLs (for example, google.com). For Private Auction and AdX Preferred
+    /// Deals, URLs are either included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't
+    /// apply.
     /// </summary>
     public class UrlTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
