@@ -6975,6 +6975,21 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Merchant Center Feed filter criterrion.</summary>
+    public class GoogleCloudRetailV2alphaMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Merchant Center primary feed id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
+        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
+
+        /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
+        public virtual string PrimaryFeedName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
     /// linked merchant center account will be streamed to the linked branch.
@@ -6998,6 +7013,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
+
+        /// <summary>
+        /// Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list
+        /// is empty. Otherwise the offers will be ingested from selected feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feeds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaMerchantCenterFeedFilter> Feeds { get; set; }
 
         /// <summary>
         /// Language of the title/description and other string attributes. Use language tags defined by [BCP
@@ -9839,6 +9861,20 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata associated with a create operation.</summary>
+    public class GoogleCloudRetailV2betaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this create applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2betaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10023,6 +10059,135 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata that describes the training and serving parameters of a Model. A Model can be associated with a
+    /// ServingConfig and then queried through the Predict API.
+    /// </summary>
+    public class GoogleCloudRetailV2betaModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp the Recommendation Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The state of data requirements for this model: `DATA_OK` and `DATA_ERROR`. Recommendation model
+        /// cannot be trained if the data is in `DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state
+        /// even if serving state is `ACTIVE`: models were trained successfully before, but cannot be refreshed because
+        /// model no longer has sufficient data for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the model. Should be human readable, used to display Recommendation Models in
+        /// the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the
+        /// model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringOption")]
+        public virtual string FilteringOption { get; set; }
+
+        /// <summary>Output only. The timestamp when the latest successful tune finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
+        public virtual object LastTuneTime { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
+        /// char limit of 50. recommendation_model_id has char limit of 40.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`,
+        /// `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of
+        /// recommendation: `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// `frequently-bought-together` =&amp;gt; `revenue_per_order` This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the
+        /// `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicTuningState")]
+        public virtual string PeriodicTuningState { get; set; }
+
+        /// <summary>
+        /// Output only. The list of valid serving configs associated with the PageOptimizationConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigLists")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaModelServingConfigList> ServingConfigLists { get; set; }
+
+        /// <summary>Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
+        public virtual string ServingState { get; set; }
+
+        /// <summary>
+        /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of
+        /// running the service is frequency of training - this can be used to determine when to train model in order to
+        /// control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value
+        /// for `UpdateModel` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Output only. The tune operation associated with the model. Can be used to determine if there is an ongoing
+        /// tune for this recommendation. Empty field implies no tune is goig on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningOperation")]
+        public virtual string TuningOperation { get; set; }
+
+        /// <summary>
+        /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
+        /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
+        /// and `recently-viewed`(readonly value). This field together with optimization_objective describe model
+        /// metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for
+        /// more details on what the model metadata control and which combination of parameters are valid. For invalid
+        /// combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`),
+        /// you receive an error 400 if you try to create/update a recommendation with this set of knobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp the Recommendation Model was last updated. E.g. if a Recommendation Model was paused
+        /// - this would be the time the pause was initiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION`
+    /// recommendations.
+    /// </summary>
+    public class GoogleCloudRetailV2betaModelServingConfigList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
+        public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Output result.</summary>
     public class GoogleCloudRetailV2betaOutputResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10131,6 +10296,27 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2betaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2betaTuneModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this tune applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2betaTuneModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

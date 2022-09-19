@@ -44,6 +44,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.ArtifactRegistry.v1.ProjectsResource+LocationsResource+RepositoriesResource+KfpArtifactsResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ArtifactRegistry.v1.ProjectsResource+LocationsResource+RepositoriesResource+KfpArtifactsResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.ArtifactRegistry.v1.ProjectsResource+LocationsResource+RepositoriesResource+PackagesResource+VersionsResource+GetRequest.ViewEnum": [
     "VERSION_VIEW_UNSPECIFIED",
     "BASIC",

@@ -989,7 +989,7 @@ namespace Google.Apis.ChromePolicy.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Required. The customer for which the file upload will apply.</param>
-        public virtual UploadRequest Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer)
+        public virtual UploadRequest Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest body, string customer)
         {
             return new UploadRequest(service, body, customer);
         }
@@ -997,10 +997,10 @@ namespace Google.Apis.ChromePolicy.v1
         /// <summary>
         /// Creates an enterprise file from the content provided by user. Returns a public download url for end user.
         /// </summary>
-        public class UploadRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileResponse>
+        public class UploadRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileResponse>
         {
             /// <summary>Constructs a new Upload request.</summary>
-            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer) : base(service)
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest body, string customer) : base(service)
             {
                 Customer = customer;
                 Body = body;
@@ -1012,7 +1012,7 @@ namespace Google.Apis.ChromePolicy.v1
             public virtual string Customer { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest Body { get; set; }
+            Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1065,13 +1065,13 @@ namespace Google.Apis.ChromePolicy.v1
         /// <param name="customer">Required. The customer for which the file upload will apply.</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
-        public virtual UploadMediaUpload Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer, System.IO.Stream stream, string contentType)
+        public virtual UploadMediaUpload Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest body, string customer, System.IO.Stream stream, string contentType)
         {
             return new UploadMediaUpload(service, body, customer, stream, contentType);
         }
 
         /// <summary>Upload media upload which supports resumable upload.</summary>
-        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileResponse>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileResponse>
         {
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
@@ -1174,7 +1174,7 @@ namespace Google.Apis.ChromePolicy.v1
             /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer, System.IO.Stream stream, string contentType)
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest body, string customer, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+customer}/policies/files:uploadPolicyFile"), "POST", stream, contentType)
             {
                 Customer = customer;
@@ -1777,7 +1777,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
     }
 
     /// <summary>Request message for uploading a file for a policy. Next ID: 5</summary>
-    public class GoogleChromePolicyV1UploadPolicyFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleChromePolicyVersionsV1UploadPolicyFileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The fully qualified policy schema and field name this file is uploaded for. This information will
@@ -1791,7 +1791,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
     }
 
     /// <summary>Response message for downloading an uploaded file. Next ID: 2</summary>
-    public class GoogleChromePolicyV1UploadPolicyFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleChromePolicyVersionsV1UploadPolicyFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The uri for end user to download the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]

@@ -295,8 +295,153 @@ namespace Google.Apis.Spanner.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            InstanceConfigOperations = new InstanceConfigOperationsResource(service);
             InstanceConfigs = new InstanceConfigsResource(service);
             Instances = new InstancesResource(service);
+        }
+
+        /// <summary>Gets the InstanceConfigOperations resource.</summary>
+        public virtual InstanceConfigOperationsResource InstanceConfigOperations { get; }
+
+        /// <summary>The "instanceConfigOperations" collection of methods.</summary>
+        public class InstanceConfigOperationsResource
+        {
+            private const string Resource = "instanceConfigOperations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public InstanceConfigOperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Lists the user-managed instance config long-running operations in the given project. An instance config
+            /// operation has a name of the form `projects//instanceConfigs//operations/`. The long-running operation
+            /// metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include
+            /// those that have completed/failed/canceled within the last 7 days, and pending operations. Operations
+            /// returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most
+            /// recently started operation.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The project of the instance config operations. Values are of the form `projects/`.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists the user-managed instance config long-running operations in the given project. An instance config
+            /// operation has a name of the form `projects//instanceConfigs//operations/`. The long-running operation
+            /// metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include
+            /// those that have completed/failed/canceled within the last 7 days, and pending operations. Operations
+            /// returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most
+            /// recently started operation.
+            /// </summary>
+            public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListInstanceConfigOperationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project of the instance config operations. Values are of the form `projects/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// An expression that filters the list of returned operations. A filter expression consists of a field
+                /// name, a comparison operator, and a value for filtering. The value must be a string, a number, or a
+                /// boolean. The comparison operator must be one of: `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`,
+                /// `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case sensitive. The
+                /// following fields in the Operation are eligible for filtering: * `name` - The name of the
+                /// long-running operation * `done` - False if the operation is in progress, else true. *
+                /// `metadata.@type` - the type of metadata. For example, the type string for
+                /// CreateInstanceConfigMetadata is
+                /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata`. * `metadata.` -
+                /// any field in metadata.value. `metadata.@type` must be specified first, if filtering on metadata
+                /// fields. * `error` - Error associated with the long-running operation. * `response.@type` - the type
+                /// of response. * `response.` - any field in response.value. You can combine multiple expressions by
+                /// enclosing each expression in parentheses. By default, expressions are combined with AND logic.
+                /// However, you can specify AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true` -
+                /// The operation is complete. * `(metadata.@type=` \
+                /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata) AND` \
+                /// `(metadata.instance_config.name:custom-config) AND` \ `(metadata.progress.start_time &amp;lt;
+                /// \"2021-03-28T14:50:00Z\") AND` \ `(error:*)` - Return operations where: * The operation's metadata
+                /// type is CreateInstanceConfigMetadata. * The instance config name contains "custom-config". * The
+                /// operation started before 2021-03-28T14:50:00Z. * The operation resulted in an error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Number of operations to be returned in the response. If 0 or less, defaults to the server's maximum
+                /// allowed page size.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// If non-empty, `page_token` should contain a next_page_token from a previous
+                /// ListInstanceConfigOperationsResponse to the same `parent` and with the same `filter`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/instanceConfigOperations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the InstanceConfigs resource.</summary>
@@ -595,6 +740,183 @@ namespace Google.Apis.Spanner.v1
                 }
             }
 
+            /// <summary>
+            /// Creates an instance config and begins preparing it to be used. The returned long-running operation can
+            /// be used to track the progress of preparing the new instance config. The instance config name is assigned
+            /// by the caller. If the named instance config already exists, `CreateInstanceConfig` returns
+            /// `ALREADY_EXISTS`. Immediately after the request returns: * The instance config is readable via the API,
+            /// with all requested attributes. The instance config's reconciling field is set to true. Its state is
+            /// `CREATING`. While the operation is pending: * Cancelling the operation renders the instance config
+            /// immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to
+            /// modify the instance config are rejected. Upon completion of the returned operation: * Instances can be
+            /// created using the instance configuration. * The instance config's reconciling field becomes false. Its
+            /// state becomes `READY`. The returned long-running operation will have a name of the format `/operations/`
+            /// and can be used to track creation of the instance config. The metadata field type is
+            /// CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
+            /// requires `spanner.instanceConfigs.create` permission on the resource parent.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in which to create the instance config. Values are of the form
+            /// `projects/`.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateInstanceConfigRequest body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates an instance config and begins preparing it to be used. The returned long-running operation can
+            /// be used to track the progress of preparing the new instance config. The instance config name is assigned
+            /// by the caller. If the named instance config already exists, `CreateInstanceConfig` returns
+            /// `ALREADY_EXISTS`. Immediately after the request returns: * The instance config is readable via the API,
+            /// with all requested attributes. The instance config's reconciling field is set to true. Its state is
+            /// `CREATING`. While the operation is pending: * Cancelling the operation renders the instance config
+            /// immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to
+            /// modify the instance config are rejected. Upon completion of the returned operation: * Instances can be
+            /// created using the instance configuration. * The instance config's reconciling field becomes false. Its
+            /// state becomes `READY`. The returned long-running operation will have a name of the format `/operations/`
+            /// and can be used to track creation of the instance config. The metadata field type is
+            /// CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
+            /// requires `spanner.instanceConfigs.create` permission on the resource parent.
+            /// </summary>
+            public class CreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.CreateInstanceConfigRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project in which to create the instance config. Values are of the form
+                /// `projects/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Spanner.v1.Data.CreateInstanceConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/instanceConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes the instance config. Deletion is only allowed when no instances are using the configuration. If
+            /// any instances are using the config, returns `FAILED_PRECONDITION`. Only user managed configurations can
+            /// be deleted. Authorization requires `spanner.instanceConfigs.delete` permission on the resource name.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the instance configuration to be deleted. Values are of the form
+            /// `projects//instanceConfigs/`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// Deletes the instance config. Deletion is only allowed when no instances are using the configuration. If
+            /// any instances are using the config, returns `FAILED_PRECONDITION`. Only user managed configurations can
+            /// be deleted. Authorization requires `spanner.instanceConfigs.delete` permission on the resource name.
+            /// </summary>
+            public class DeleteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the instance configuration to be deleted. Values are of the form
+                /// `projects//instanceConfigs/`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Used for optimistic concurrency control as a way to help prevent simultaneous deletes of an instance
+                /// config from overwriting each other. If not empty, the API only deletes the instance config when the
+                /// etag provided matches the current status of the requested instance config. Otherwise, deletes the
+                /// instance config without checking the current status of the requested instance config.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Etag { get; set; }
+
+                /// <summary>
+                /// An option to validate, but not actually execute, a request, and provide the same response.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/instanceConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Gets information about a particular instance configuration.</summary>
             /// <param name="name">
             /// Required. The name of the requested instance configuration. Values are of the form
@@ -726,6 +1048,93 @@ namespace Google.Apis.Spanner.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Updates an instance config. The returned long-running operation can be used to track the progress of
+            /// updating the instance. If the named instance config does not exist, returns `NOT_FOUND`. Only user
+            /// managed configurations can be updated. Immediately after the request returns: * The instance config's
+            /// reconciling field is set to true. While the operation is pending: * Cancelling the operation sets its
+            /// metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after which point
+            /// it terminates with a `CANCELLED` status. * All other attempts to modify the instance config are
+            /// rejected. * Reading the instance config via the API continues to give the pre-request values. Upon
+            /// completion of the returned operation: * Creating instances using the instance configuration uses the new
+            /// values. * The instance config's new values are readable via the API. * The instance config's reconciling
+            /// field becomes false. The returned long-running operation will have a name of the format `/operations/`
+            /// and can be used to track the instance config modification. The metadata field type is
+            /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
+            /// requires `spanner.instanceConfigs.update` permission on the resource name.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// A unique identifier for the instance configuration. Values are of the form
+            /// `projects//instanceConfigs/a-z*`.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.UpdateInstanceConfigRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates an instance config. The returned long-running operation can be used to track the progress of
+            /// updating the instance. If the named instance config does not exist, returns `NOT_FOUND`. Only user
+            /// managed configurations can be updated. Immediately after the request returns: * The instance config's
+            /// reconciling field is set to true. While the operation is pending: * Cancelling the operation sets its
+            /// metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after which point
+            /// it terminates with a `CANCELLED` status. * All other attempts to modify the instance config are
+            /// rejected. * Reading the instance config via the API continues to give the pre-request values. Upon
+            /// completion of the returned operation: * Creating instances using the instance configuration uses the new
+            /// values. * The instance config's new values are readable via the API. * The instance config's reconciling
+            /// field becomes false. The returned long-running operation will have a name of the format `/operations/`
+            /// and can be used to track the instance config modification. The metadata field type is
+            /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
+            /// requires `spanner.instanceConfigs.update` permission on the resource name.
+            /// </summary>
+            public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.UpdateInstanceConfigRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// A unique identifier for the instance configuration. Values are of the form
+                /// `projects//instanceConfigs/a-z*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Spanner.v1.Data.UpdateInstanceConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/instanceConfigs/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Instances resource.</summary>
@@ -829,20 +1238,7 @@ namespace Google.Apis.Spanner.v1
                     /// \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time &amp;lt; \"2018-03-28T14:50:00Z\")
                     /// AND` \ `(error:*)` - Returns operations where: * The operation's metadata type is
                     /// CreateBackupMetadata. * The backup name contains the string "howl". * The operation started
-                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error. *
-                    /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata) AND` \
-                    /// `(metadata.source_backup:test) AND` \ `(metadata.progress.start_time &amp;lt;
-                    /// \"2022-01-18T14:50:00Z\") AND` \ `(error:*)` - Returns operations where: * The operation's
-                    /// metadata type is CopyBackupMetadata. * The source backup name contains the string "test". * The
-                    /// operation started before 2022-01-18T14:50:00Z. * The operation resulted in an error. *
-                    /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
-                    /// AND` \ `(metadata.database:test_db)) OR` \
-                    /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata) AND`
-                    /// \ `(metadata.source_backup:test_bkp)) AND` \ `(error:*)` - Returns operations where: * The
-                    /// operation's metadata matches either of criteria: * The operation's metadata type is
-                    /// CreateBackupMetadata AND the source database name of the backup contains the string "test_db" *
-                    /// The operation's metadata type is CopyBackupMetadata AND the source backup name contains the
-                    /// string "test_bkp" * The operation resulted in an error.
+                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -5591,9 +5987,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -5918,6 +6315,54 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extraStatements")]
         public virtual System.Collections.Generic.IList<string> ExtraStatements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the operation returned by CreateInstanceConfig.</summary>
+    public class CreateInstanceConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which this operation was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; }
+
+        /// <summary>The target instance config end state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
+        public virtual InstanceConfig InstanceConfig { get; set; }
+
+        /// <summary>The progress of the CreateInstanceConfig operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for CreateInstanceConfigRequest.</summary>
+    public class CreateInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The InstanceConfig proto of the configuration to create. instance_config.name must be
+        /// `/instanceConfigs/`. instance_config.base_config must be a Google managed configuration name, e.g.
+        /// /instanceConfigs/us-east1, /instanceConfigs/nam3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
+        public virtual InstanceConfig InstanceConfig { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the instance config to create. Valid identifiers are of the form
+        /// `custom-[-a-z0-9]*[a-z0-9]` and must be between 2 and 64 characters in length. The `custom-` prefix is
+        /// required to avoid name conflicts with Google managed configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceConfigId")]
+        public virtual string InstanceConfigId { get; set; }
+
+        /// <summary>
+        /// An option to validate, but not actually execute, a request, and provide the same response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6601,15 +7046,56 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class InstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Base configuration name, e.g. projects//instanceConfigs/nam3, based on which this configuration is created.
+        /// Only set for user managed configurations. `base_config` must refer to a configuration of type GOOGLE_MANAGED
+        /// in the same project as this configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseConfig")]
+        public virtual string BaseConfig { get; set; }
+
+        /// <summary>Output only. Whether this instance config is a Google or User Managed Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configType")]
+        public virtual string ConfigType { get; set; }
+
         /// <summary>The name of this instance configuration as it appears in UIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a instance
+        /// config from overwriting each other. It is strongly suggested that systems make use of the etag in the
+        /// read-modify-write cycle to perform instance config updates in order to avoid race conditions: An etag is
+        /// returned in the response which contains instance configs, and systems are expected to put that etag in the
+        /// request to update instance config to ensure that their change will be applied to the same version of the
+        /// instance config. If no etag is provided in the call to update instance config, then the existing instance
+        /// config is overwritten blindly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>
         /// Output only. Describes whether free instances are available to be created in this instance config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeInstanceAvailability")]
         public virtual string FreeInstanceAvailability { get; set; }
+
+        /// <summary>
+        /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that
+        /// reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter
+        /// collections of resources. They can be used to control how resource metrics are aggregated. And they can be
+        /// used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must
+        /// be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. *
+        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
+        /// `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See
+        /// https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own
+        /// code, please note that additional characters may be allowed in the future. Therefore, you are advised to use
+        /// an internal label representation, such as JSON, which doesn't rely upon specific characters being
+        /// disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we
+        /// were to allow "_" in a future release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Allowed values of the "default_leader" schema option for databases in instances that use this instance
@@ -6625,13 +7111,28 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. The available optional replicas to choose from for user managed configurations. Populated for
+        /// Google managed configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionalReplicas")]
+        public virtual System.Collections.Generic.IList<ReplicaInfo> OptionalReplicas { get; set; }
+
+        /// <summary>
+        /// Output only. If true, the instance config is being created or updated. If false, there are no ongoing
+        /// operations for the instance config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>
         /// The geographic placement of nodes in this instance configuration and their replication properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
+        /// <summary>Output only. The current instance config state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
     }
 
     /// <summary>
@@ -6880,6 +7381,28 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for ListInstanceConfigOperations.</summary>
+    public class ListInstanceConfigOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// `next_page_token` can be sent in a subsequent ListInstanceConfigOperations call to fetch more of the
+        /// matching metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of matching instance config long-running operations. Each operation's name will be prefixed by the
+        /// instance config's name. The operation's metadata field type `metadata.type_url` describes the type of the
+        /// metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7765,6 +8288,10 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Read lock mode for the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readLockMode")]
+        public virtual string ReadLockMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8564,6 +9091,54 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. DDL statements to be applied to the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
         public virtual System.Collections.Generic.IList<string> Statements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the operation returned by UpdateInstanceConfig.</summary>
+    public class UpdateInstanceConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which this operation was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; }
+
+        /// <summary>The desired instance config after updating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
+        public virtual InstanceConfig InstanceConfig { get; set; }
+
+        /// <summary>The progress of the UpdateInstanceConfig operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for UpdateInstanceConfigRequest.</summary>
+    public class UpdateInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The user instance config to update, which must always include the instance config name. Otherwise,
+        /// only fields mentioned in update_mask need be included. To prevent conflicts of concurrent updates, etag can
+        /// be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
+        public virtual InstanceConfig InstanceConfig { get; set; }
+
+        /// <summary>
+        /// Required. A mask specifying which fields in InstanceConfig should be updated. The field mask must always be
+        /// specified; this prevents any future fields in InstanceConfig from being erased accidentally by clients that
+        /// do not know about them. Only display_name and labels can be updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>
+        /// An option to validate, but not actually execute, a request, and provide the same response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1545,9 +1545,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -1586,10 +1587,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Wrapper for cloud function attributes.</summary>
+    /// <summary>Wrapper for Cloud Function attributes.</summary>
     public class CloudFunctionEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A [Cloud function](https://cloud.google.com/functions) name.</summary>
+        /// <summary>A [Cloud Function](https://cloud.google.com/functions) name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -1597,22 +1598,22 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>For display only. Metadata associated with a Cloud function.</summary>
+    /// <summary>For display only. Metadata associated with a Cloud Function.</summary>
     public class CloudFunctionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of a Cloud function.</summary>
+        /// <summary>Name of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Location in which the Cloud function is deployed.</summary>
+        /// <summary>Location in which the Cloud Function is deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>URI of a Cloud function.</summary>
+        /// <summary>URI of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
-        /// <summary>Latest successfully deployed version id of the Cloud function.</summary>
+        /// <summary>Latest successfully deployed version id of the Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual System.Nullable<long> VersionId { get; set; }
 
@@ -1774,7 +1775,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A [Cloud function](https://cloud.google.com/functions).</summary>
+        /// <summary>A [Cloud Function](https://cloud.google.com/functions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual CloudFunctionEndpoint CloudFunction { get; set; }
 
@@ -2535,7 +2536,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; }
 
-        /// <summary>Display information of a Cloud function.</summary>
+        /// <summary>Display information of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual CloudFunctionInfo CloudFunction { get; set; }
 

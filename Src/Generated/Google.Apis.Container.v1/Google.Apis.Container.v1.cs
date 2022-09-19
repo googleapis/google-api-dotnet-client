@@ -6371,7 +6371,7 @@ namespace Google.Apis.Container.v1.Data
         /// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
         /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
         /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
-        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This
+        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This
         /// field is deprecated, min_cpu_platform should be specified using
         /// https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform
         /// field pass "automatic" as field value.
@@ -9117,7 +9117,7 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>
         /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify
-        /// "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        /// "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }

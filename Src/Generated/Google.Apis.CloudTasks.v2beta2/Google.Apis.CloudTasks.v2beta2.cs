@@ -408,45 +408,32 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>
                     /// Creates and buffers a new task without the need to explicitly define a Task message. The queue
-                    /// must have HTTP target. To create the task with a custom ID, use the following format and set
-                    /// TASK_ID to your desired ID:
-                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer To create the
-                    /// task with an automatically generated ID, use the following format:
-                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer. Note: This feature is in
-                    /// its experimental stage. You must request access to the API through the [Cloud Tasks BufferTask
-                    /// Experiment Signup form](https://forms.gle/X8Zr5hiXH5tTGFqh8).
+                    /// must have HTTP target. Note: This feature is in its experimental stage. You must request access
+                    /// to the API through the [Cloud Tasks BufferTasks Experiment Signup
+                    /// form](https://forms.gle/X8Zr5hiXH5tTGFqh8).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="queue">
+                    /// <param name="parent">
                     /// Required. The parent queue name. For example:
                     /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
                     /// </param>
-                    /// <param name="taskId">
-                    /// Optional. Task ID for the task being created. If not provided, a random task ID is assigned to
-                    /// the task.
-                    /// </param>
-                    public virtual BufferRequest Buffer(Google.Apis.CloudTasks.v2beta2.Data.BufferTaskRequest body, string queue, string taskId)
+                    public virtual BufferRequest Buffer(Google.Apis.CloudTasks.v2beta2.Data.BufferTaskRequest body, string parent)
                     {
-                        return new BufferRequest(service, body, queue, taskId);
+                        return new BufferRequest(service, body, parent);
                     }
 
                     /// <summary>
                     /// Creates and buffers a new task without the need to explicitly define a Task message. The queue
-                    /// must have HTTP target. To create the task with a custom ID, use the following format and set
-                    /// TASK_ID to your desired ID:
-                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer To create the
-                    /// task with an automatically generated ID, use the following format:
-                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer. Note: This feature is in
-                    /// its experimental stage. You must request access to the API through the [Cloud Tasks BufferTask
-                    /// Experiment Signup form](https://forms.gle/X8Zr5hiXH5tTGFqh8).
+                    /// must have HTTP target. Note: This feature is in its experimental stage. You must request access
+                    /// to the API through the [Cloud Tasks BufferTasks Experiment Signup
+                    /// form](https://forms.gle/X8Zr5hiXH5tTGFqh8).
                     /// </summary>
                     public class BufferRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.BufferTaskResponse>
                     {
                         /// <summary>Constructs a new Buffer request.</summary>
-                        public BufferRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.BufferTaskRequest body, string queue, string taskId) : base(service)
+                        public BufferRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.BufferTaskRequest body, string parent) : base(service)
                         {
-                            Queue = queue;
-                            TaskId = taskId;
+                            Parent = parent;
                             Body = body;
                             InitParameters();
                         }
@@ -455,15 +442,8 @@ namespace Google.Apis.CloudTasks.v2beta2
                         /// Required. The parent queue name. For example:
                         /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("queue", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Queue { get; private set; }
-
-                        /// <summary>
-                        /// Optional. Task ID for the task being created. If not provided, a random task ID is assigned
-                        /// to the task.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("taskId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string TaskId { get; private set; }
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudTasks.v2beta2.Data.BufferTaskRequest Body { get; set; }
@@ -478,27 +458,19 @@ namespace Google.Apis.CloudTasks.v2beta2
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2beta2/{+queue}/tasks/{taskId}:buffer";
+                        public override string RestPath => "v2beta2/{+parent}/tasks:buffer";
 
                         /// <summary>Initializes Buffer parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("queue", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "queue",
+                                Name = "parent",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                            });
-                            RequestParameters.Add("taskId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "taskId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
                             });
                         }
                     }
@@ -2419,7 +2391,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     public class BufferTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Body of the HTTP request. The body can take any generic value. The value is written to the
+        /// Optional. Body of the HTTP request. The body can take any generic value. The value will be written to the
         /// HttpRequest of the [Task].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
@@ -2589,11 +2561,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Defines a header message. A header can have a key and a value.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The key of the header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>The value of the header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 

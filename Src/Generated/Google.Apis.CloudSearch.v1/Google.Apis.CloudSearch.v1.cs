@@ -2442,8 +2442,8 @@ namespace Google.Apis.CloudSearch.v1
                 /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field
                 /// using the language set in browser or for the page. In the event that the user's language preference
                 /// is known, set this field to the known user language. When specified, the documents in search results
-                /// are biased towards the specified language. The suggest API does not use this parameter. Instead,
-                /// suggest autocompletes only based on characters in the query.
+                /// are biased towards the specified language. From Suggest API perspective, for 3p suggest this is used
+                /// as a hint while making predictions to add language boosting.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsLanguageCode { get; set; }
@@ -5219,9 +5219,18 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next Id: 6</summary>
+    /// <summary>Next Id: 7</summary>
     public class AppsDynamiteSharedActivityFeedAnnotationData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Timestamp of when the Activity Feed message that contains this annotation was created. This is roughly when
+        /// the activity happened, such as when a reaction happened, but will have at least some small delay, since the
+        /// Activity Feed message is created asynchronously after. This timestamp should only be used for display when
+        /// the activity create time is not available in the Chat UI, like the time of a reaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activityFeedMessageCreateTime")]
+        public virtual object ActivityFeedMessageCreateTime { get; set; }
+
         /// <summary>
         /// Unique id of the Activity Feed message used by clients to implement click-to-source. This is the same
         /// messageId as the top-level id field for the Activity Feed item.
@@ -6771,6 +6780,35 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The retention state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains info on membership count for member types: HUMAN_USER, APP_USER &amp;amp; ROSTER_MEMBER different
+    /// states: INVITED, JOINED
+    /// </summary>
+    public class AppsDynamiteSharedSegmentedMembershipCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("memberType")]
+        public virtual string MemberType { get; set; }
+
+        /// <summary>count of members with given type and state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipCount")]
+        public virtual System.Nullable<int> MembershipCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipState")]
+        public virtual string MembershipState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteSharedSegmentedMembershipCounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteSharedSegmentedMembershipCount> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10476,7 +10514,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// The corpus specific metadata for office-type documents, from Google Docs and other sources. This message is
-    /// passed to the scorer and beyond. Next tag: 7
+    /// passed to the scorer and beyond. Next tag: 9
     /// </summary>
     public class GoogleDocsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10499,6 +10537,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastContentModifiedTimestamp")]
         public virtual System.Nullable<long> LastContentModifiedTimestamp { get; set; }
+
+        /// <summary>Contains number of subscribers for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numSubscribers")]
+        public virtual System.Nullable<int> NumSubscribers { get; set; }
+
+        /// <summary>Size of untruncated viewers list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numViewers")]
+        public virtual System.Nullable<int> NumViewers { get; set; }
 
         /// <summary>
         /// Additional per-result information, akin to Gmail's SingleThreadResponse. Note: GWS no longer seems to use
@@ -13941,8 +13987,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field using the
         /// language set in browser or for the page. In the event that the user's language preference is known, set this
         /// field to the known user language. When specified, the documents in search results are biased towards the
-        /// specified language. The suggest API does not use this parameter. Instead, suggest autocompletes only based
-        /// on characters in the query.
+        /// specified language. From Suggest API perspective, for 3p suggest this is used as a hint while making
+        /// predictions to add language boosting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -14198,6 +14244,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Roster deletion state - considered active unless set to deleted</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rosterState")]
         public virtual string RosterState { get; set; }
+
+        /// <summary>Roster membership count. May contain counts based on member type and membership state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentedMembershipCounts")]
+        public virtual AppsDynamiteSharedSegmentedMembershipCounts SegmentedMembershipCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

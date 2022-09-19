@@ -846,6 +846,85 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
 
+            /// <summary>
+            /// Counts of devices with a specific hardware specification from the requested hardware type (for example
+            /// model name, processor type). Further information can be found here
+            /// https://support.google.com/chrome/a/answer/10564947
+            /// </summary>
+            /// <param name="customer">Required. The customer ID or "my_customer".</param>
+            public virtual CountChromeHardwareFleetDevicesRequest CountChromeHardwareFleetDevices(string customer)
+            {
+                return new CountChromeHardwareFleetDevicesRequest(service, customer);
+            }
+
+            /// <summary>
+            /// Counts of devices with a specific hardware specification from the requested hardware type (for example
+            /// model name, processor type). Further information can be found here
+            /// https://support.google.com/chrome/a/answer/10564947
+            /// </summary>
+            public class CountChromeHardwareFleetDevicesRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>
+            {
+                /// <summary>Constructs a new CountChromeHardwareFleetDevices request.</summary>
+                public CountChromeHardwareFleetDevicesRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The customer ID or "my_customer".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Optional. The ID of the organizational unit. If omitted, all data will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Required. Mask of the fields that should be populated in the returned report.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadMask { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeHardwareFleetDevices";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countChromeHardwareFleetDevices";
+
+                /// <summary>Initializes CountChromeHardwareFleetDevices parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Generate report of installed Chrome versions.</summary>
             /// <param name="customer">
             /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
@@ -1939,6 +2018,34 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response containing a list of devices with a specific type of hardware specification from the requested hardware
+    /// type.
+    /// </summary>
+    public class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The DeviceHardwareCountReport for device cpu type (for example Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceHardwareCountReport> CpuReports { get; set; }
+
+        /// <summary>The DeviceHardwareCountReport for device memory amount in gigabytes (for example 16).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceHardwareCountReport> MemoryReports { get; set; }
+
+        /// <summary>The DeviceHardwareCountReport for device model type (for example Acer C7 Chromebook).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceHardwareCountReport> ModelReports { get; set; }
+
+        /// <summary>The DeviceHardwareCountReport for device storage amount in gigabytes (for example 128).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceHardwareCountReport> StorageReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing requested browser versions details and counts.</summary>
     public class GoogleChromeManagementV1CountChromeVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2121,6 +2228,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Public model name of the devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Report for CountChromeDevicesPerHardwareSpecResponse, contains the count of devices with a unique hardware
+    /// specification.
+    /// </summary>
+    public class GoogleChromeManagementV1DeviceHardwareCountReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Public name of the hardware specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Count of devices with a unique hardware specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
