@@ -4754,6 +4754,21 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DataMaskingStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Output-only] [Preview] Whether any accessed data was protected by data masking. The actual evaluation is
+        /// done by accessStats.masked_field_count &amp;gt; 0. Since this is only used for the discovery_doc generation
+        /// purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of
+        /// the variable is done else-where.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataMaskingApplied")]
+        public virtual System.Nullable<bool> DataMaskingApplied { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Data split result. This contains references to the training and evaluation data tables that were used to train
     /// the model.
@@ -6870,6 +6885,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
+
+        /// <summary>[Output-only] Statistics for data masking. Present only for query and extract jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataMaskingStatistics")]
+        public virtual DataMaskingStatistics DataMaskingStatistics { get; set; }
 
         /// <summary>
         /// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a

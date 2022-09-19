@@ -2095,7 +2095,10 @@ namespace Google.Apis.SQLAdmin.v1
             }
         }
 
-        /// <summary>Updates settings of a Cloud SQL instance. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Partially updates settings of a Cloud SQL instance by merging the request with the current configuration.
+        /// This method supports patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -2104,7 +2107,10 @@ namespace Google.Apis.SQLAdmin.v1
             return new PatchRequest(service, body, project, instance);
         }
 
-        /// <summary>Updates settings of a Cloud SQL instance. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Partially updates settings of a Cloud SQL instance by merging the request with the current configuration.
+        /// This method supports patch semantics.
+        /// </summary>
         public class PatchRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4189,6 +4195,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string Status { get; set; }
 
         /// <summary>
+        /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL
+        /// Server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>
         /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to
         /// "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
@@ -4266,6 +4279,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binLogCoordinates")]
         public virtual BinLogCoordinates BinLogCoordinates { get; set; }
+
+        /// <summary>
+        /// (SQL Server only) Clone only the specified databases from the source instance. Clone all databases if empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseNames")]
+        public virtual System.Collections.Generic.IList<string> DatabaseNames { get; set; }
 
         /// <summary>Name of the Cloud SQL instance to be created as a clone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationInstanceName")]
@@ -5888,11 +5907,11 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string Collation { get; set; }
 
         /// <summary>
-        /// Specifies if connections must use Cloud SQL connectors. Option values include the following: *
-        /// `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow
-        /// connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized
-        /// networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field
-        /// is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        /// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED`
+        /// (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections
+        /// that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this
+        /// field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified
+        /// when patching or updating an existing instance, it is left unchanged in the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorEnforcement")]
         public virtual string ConnectorEnforcement { get; set; }
@@ -6010,6 +6029,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>Server timezone, relevant only for Cloud SQL for SQL Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>
         /// User-provided labels, represented as a dictionary where each label is a single key value pair.

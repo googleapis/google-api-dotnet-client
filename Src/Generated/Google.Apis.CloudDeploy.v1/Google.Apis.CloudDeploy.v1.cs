@@ -353,6 +353,187 @@ namespace Google.Apis.CloudDeploy.v1
                         public RolloutsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                            JobRuns = new JobRunsResource(service);
+                        }
+
+                        /// <summary>Gets the JobRuns resource.</summary>
+                        public virtual JobRunsResource JobRuns { get; }
+
+                        /// <summary>The "jobRuns" collection of methods.</summary>
+                        public class JobRunsResource
+                        {
+                            private const string Resource = "jobRuns";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public JobRunsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Gets details of a single JobRun.</summary>
+                            /// <param name="name">
+                            /// Required. Name of the `JobRun`. Format must be
+                            /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>Gets details of a single JobRun.</summary>
+                            public class GetRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.JobRun>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Name of the `JobRun`. Format must be
+                                /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+/jobRuns/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Lists JobRuns in a given project and location.</summary>
+                            /// <param name="parent">
+                            /// Required. The `Rollout` which owns this collection of `JobRun` objects.
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(service, parent);
+                            }
+
+                            /// <summary>Lists JobRuns in a given project and location.</summary>
+                            public class ListRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.ListJobRunsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The `Rollout` which owns this collection of `JobRun` objects.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. Filter results to be returned. See https://google.aip.dev/160 for more
+                                /// details.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Filter { get; set; }
+
+                                /// <summary>
+                                /// Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
+                                /// details.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string OrderBy { get; set; }
+
+                                /// <summary>
+                                /// Optional. The maximum number of `JobRun` objects to return. The service may return
+                                /// fewer than this value. If unspecified, at most 50 `JobRun` objects will be returned.
+                                /// The maximum value is 1000; values above 1000 will be set to 1000.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// Optional. A page token, received from a previous `ListJobRuns` call. Provide this to
+                                /// retrieve the subsequent page. When paginating, all other provided parameters match
+                                /// the call that provided the page token.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/jobRuns";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                    });
+                                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "orderBy",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Approves a Rollout.</summary>
@@ -682,6 +863,67 @@ namespace Google.Apis.CloudDeploy.v1
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Retries the specified Job in a Rollout.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="rollout">
+                        /// Required. Name of the Rollout. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                        /// releases/{release}/rollouts/{rollout}.
+                        /// </param>
+                        public virtual RetryJobRequest RetryJob(Google.Apis.CloudDeploy.v1.Data.RetryJobRequest body, string rollout)
+                        {
+                            return new RetryJobRequest(service, body, rollout);
+                        }
+
+                        /// <summary>Retries the specified Job in a Rollout.</summary>
+                        public class RetryJobRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.RetryJobResponse>
+                        {
+                            /// <summary>Constructs a new RetryJob request.</summary>
+                            public RetryJobRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.RetryJobRequest body, string rollout) : base(service)
+                            {
+                                Rollout = rollout;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the Rollout. Format is
+                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                            /// releases/{release}/rollouts/{rollout}.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Rollout { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudDeploy.v1.Data.RetryJobRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "retryJob";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+rollout}:retryJob";
+
+                            /// <summary>Initializes RetryJob parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "rollout",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
                                 });
                             }
                         }
@@ -3158,8 +3400,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class CloudRunLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The location where the Cloud Run Service should be located. Format is
-        /// `projects/{project}/locations/{location}`.
+        /// Required. The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -3353,6 +3594,53 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A deploy Job.</summary>
+    public class DeployJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DeployJobRun contains information specific to a deploy `JobRun`.</summary>
+    public class DeployJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the Cloud Build `Build` object that is used to deploy. Format is
+        /// projects/{project}/locations/{location}/builds/{build}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual string Build { get; set; }
+
+        /// <summary>
+        /// Output only. The reason the deploy failed. This will always be unspecified while the deploy is in progress
+        /// or if it succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
+        public virtual string FailureCause { get; set; }
+
+        /// <summary>Output only. Additional information about the deploy failure, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deployment job composition.</summary>
+    public class DeploymentJobs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The deploy Job. This is the first job run in the phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
+        public virtual Job DeployJob { get; set; }
+
+        /// <summary>Output only. The verify Job. Runs after a deploy if the deploy succeeds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyJob")]
+        public virtual Job VerifyJob { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3481,6 +3769,92 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Job represents an operation for a `Rollout`.</summary>
+    public class Job : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A deploy Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
+        public virtual DeployJob DeployJob { get; set; }
+
+        /// <summary>Output only. The ID of the Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the `JobRun` responsible for the most recent invocation of this Job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobRun")]
+        public virtual string JobRun { get; set; }
+
+        /// <summary>Output only. The current state of the Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. A verify Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyJob")]
+        public virtual VerifyJob VerifyJob { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A `JobRun` resource in the Google Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job
+    /// evaluation.
+    /// </summary>
+    public class JobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time at which the `JobRun` was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Information specific to a deploy `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployJobRun")]
+        public virtual DeployJobRun DeployJobRun { get; set; }
+
+        /// <summary>Output only. Time at which the `JobRun` ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. ID of the `Rollout` job this `JobRun` corresponds to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the `JobRun`. Format is projects/{project}/locations/{location}/
+        /// deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/ {rollouts}/jobRuns/{uuid}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. ID of the `Rollout` phase this `JobRun` belongs in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
+
+        /// <summary>Output only. Time at which the `JobRun` was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Output only. The current state of the `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Unique identifier of the `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. Information specific to a verify `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyJobRun")]
+        public virtual VerifyJobRun VerifyJobRun { get; set; }
+    }
+
     /// <summary>The response object from `ListDeliveryPipelines`.</summary>
     public class ListDeliveryPipelinesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3496,6 +3870,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ListJobRunsResponse is the response object returned by `ListJobRuns`.</summary>
+    public class ListJobRunsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `JobRun` objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobRuns")]
+        public virtual System.Collections.Generic.IList<JobRun> JobRuns { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -3631,7 +4027,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata surfaces information associated with a `Rollout` to the user.</summary>
+    /// <summary>Metadata includes information associated with a `Rollout`.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The name of the Cloud Run Service that is associated with a `Rollout`.</summary>
@@ -3719,6 +4115,25 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Phase represents a collection of jobs that are logically grouped together for a `Rollout`.</summary>
+    public class Phase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Deployment job composition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentJobs")]
+        public virtual DeploymentJobs DeploymentJobs { get; set; }
+
+        /// <summary>Output only. The ID of the Phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. Current state of the Phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4003,6 +4418,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RetryJobRequest is the request object used by `RetryJob`.</summary>
+    public class RetryJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The job ID for the Job to retry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>Required. The phase ID the Job to retry belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from 'RetryJob'.</summary>
+    public class RetryJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains information around a specific
     /// deployment to a `Target`.
@@ -4089,6 +4526,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The phases that represent the workflows of this `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phases")]
+        public virtual System.Collections.Generic.IList<Phase> Phases { get; set; }
 
         /// <summary>Output only. Current state of the `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4194,6 +4635,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
         public virtual System.Collections.Generic.IList<string> Profiles { get; set; }
 
+        /// <summary>Optional. The strategy to use for a `Rollout` to this stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strategy")]
+        public virtual Strategy Strategy { get; set; }
+
         /// <summary>
         /// The target_id to which this stage points. This field refers exclusively to the last segment of a target
         /// name. For example, this field would just be `my-target` (rather than
@@ -4202,6 +4647,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual string TargetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Standard represents the standard deployment strategy.</summary>
+    public class Standard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to verify a deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verify")]
+        public virtual System.Nullable<bool> Verify { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4231,6 +4687,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Strategy contains deployment strategy information.</summary>
+    public class Strategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual Standard Standard { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4437,6 +4906,48 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A verify Job.</summary>
+    public class VerifyJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VerifyJobRun contains information specific to a verify `JobRun`.</summary>
+    public class VerifyJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. URI of a directory containing the verify artifacts. This contains the Skaffold event log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactUri")]
+        public virtual string ArtifactUri { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the Cloud Build `Build` object that is used to verify. Format is
+        /// projects/{project}/locations/{location}/builds/{build}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual string Build { get; set; }
+
+        /// <summary>Output only. File path of the Skaffold event log relative to the artifact URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventLogPath")]
+        public virtual string EventLogPath { get; set; }
+
+        /// <summary>
+        /// Output only. The reason the verify failed. This will always be unspecified while the verify is in progress
+        /// or if it succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
+        public virtual string FailureCause { get; set; }
+
+        /// <summary>Output only. Additional information about the verify failure, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

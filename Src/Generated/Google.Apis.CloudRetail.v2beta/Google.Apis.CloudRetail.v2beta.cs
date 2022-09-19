@@ -6870,6 +6870,20 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata associated with a create operation.</summary>
+    public class GoogleCloudRetailV2betaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this create applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A custom attribute that is not explicitly modeled in Product.</summary>
     public class GoogleCloudRetailV2betaCustomAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7437,6 +7451,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Merchant Center Feed filter criterrion.</summary>
+    public class GoogleCloudRetailV2betaMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Merchant Center primary feed id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
+        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
+
+        /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
+        public virtual string PrimaryFeedName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
     /// linked merchant center account will be streamed to the linked branch.
@@ -7460,6 +7489,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
+
+        /// <summary>
+        /// Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list
+        /// is empty. Otherwise the offers will be ingested from selected feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feeds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaMerchantCenterFeedFilter> Feeds { get; set; }
 
         /// <summary>
         /// Language of the title/description and other string attributes. Use language tags defined by [BCP
@@ -9749,11 +9785,32 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2betaTuneModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this tune applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to
     /// happen).
     /// </summary>
     public class GoogleCloudRetailV2betaTuneModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2betaTuneModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

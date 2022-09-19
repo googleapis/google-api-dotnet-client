@@ -986,7 +986,8 @@ namespace Google.Apis.Pubsub.v1
             /// <param name="name">
             /// Required. User-provided name for this snapshot. If the name is not provided in the request, the server
             /// will assign a random name for this snapshot on the same project as the subscription. Note that for REST
-            /// API requests, you must specify a name. See the resource name rules. Format is
+            /// API requests, you must specify a name. See the [resource name
+            /// rules](https://cloud.google.com/pubsub/docs/admin#resource_names). Format is
             /// `projects/{project}/snapshots/{snap}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
@@ -1020,7 +1021,8 @@ namespace Google.Apis.Pubsub.v1
                 /// <summary>
                 /// Required. User-provided name for this snapshot. If the name is not provided in the request, the
                 /// server will assign a random name for this snapshot on the same project as the subscription. Note
-                /// that for REST API requests, you must specify a name. See the resource name rules. Format is
+                /// that for REST API requests, you must specify a name. See the [resource name
+                /// rules](https://cloud.google.com/pubsub/docs/admin#resource_names). Format is
                 /// `projects/{project}/snapshots/{snap}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3432,7 +3434,7 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the `CreateSnapshot` method.</summary>
     public class CreateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>See Creating and managing labels.</summary>
+        /// <summary>See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3940,8 +3942,8 @@ namespace Google.Apis.Pubsub.v1.Data
         /// `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid
         /// version, even if the subscription was created without this attribute. The only supported values for the
         /// `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1`
-        /// or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes {
-        /// "x-goog-version": "v1" }
+        /// or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: `attributes {
+        /// "x-goog-version": "v1" }`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
@@ -4173,7 +4175,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>
         /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge
         /// receipt before resending the message. In the interval after the message is delivered and before it is
-        /// acknowledged, it is considered to be *outstanding*. During that time period, the message will not be
+        /// acknowledged, it is considered to be _outstanding_. During that time period, the message will not be
         /// redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for
         /// the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the
         /// corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a
@@ -4246,7 +4248,7 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>See Creating and managing labels.</summary>
+        /// <summary>See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 

@@ -2014,7 +2014,7 @@
    }
   }
  },
- "revision": "20220909",
+ "revision": "20220908",
  "rootUrl": "https://retail.googleapis.com/",
  "schemas": {
   "GoogleApiHttpBody": {
@@ -3649,6 +3649,17 @@
    },
    "type": "object"
   },
+  "GoogleCloudRetailV2betaCreateModelMetadata": {
+   "description": "Metadata associated with a create operation.",
+   "id": "GoogleCloudRetailV2betaCreateModelMetadata",
+   "properties": {
+    "model": {
+     "description": "The resource name of the model that this create applies to. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "GoogleCloudRetailV2betaCustomAttribute": {
    "description": "A custom attribute that is not explicitly modeled in Product.",
    "id": "GoogleCloudRetailV2betaCustomAttribute",
@@ -4146,6 +4157,22 @@
    },
    "type": "object"
   },
+  "GoogleCloudRetailV2betaMerchantCenterFeedFilter": {
+   "description": "Merchant Center Feed filter criterrion.",
+   "id": "GoogleCloudRetailV2betaMerchantCenterFeedFilter",
+   "properties": {
+    "primaryFeedId": {
+     "description": "Merchant Center primary feed id.",
+     "format": "int64",
+     "type": "string"
+    },
+    "primaryFeedName": {
+     "description": "Merchant Center primary feed name. The name is used for the display purposes only.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "GoogleCloudRetailV2betaMerchantCenterLink": {
    "description": "Represents a link between a Merchant Center account and a branch. Once a link is established, products from the linked merchant center account will be streamed to the linked branch.",
    "id": "GoogleCloudRetailV2betaMerchantCenterLink",
@@ -4158,6 +4185,13 @@
      "description": "String representing the destination to import for, all if left empty. List of possible values is given in [Included destination](https://support.google.com/merchants/answer/7501026). List of allowed string values: \"Shopping_ads\", \"Buy_on_google_listings\", \"Display_ads\", \"Local_inventory _ads\", \"Free_listings\", \"Free_local_listings\" NOTE: The string values are case sensitive.",
      "items": {
       "type": "string"
+     },
+     "type": "array"
+    },
+    "feeds": {
+     "description": "Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list is empty. Otherwise the offers will be ingested from selected feeds.",
+     "items": {
+      "$ref": "GoogleCloudRetailV2betaMerchantCenterFeedFilter"
      },
      "type": "array"
     },
@@ -5900,9 +5934,26 @@
    "properties": {},
    "type": "object"
   },
+  "GoogleCloudRetailV2betaTuneModelMetadata": {
+   "description": "Metadata associated with a tune operation.",
+   "id": "GoogleCloudRetailV2betaTuneModelMetadata",
+   "properties": {
+    "model": {
+     "description": "The resource name of the model that this tune applies to. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "GoogleCloudRetailV2betaTuneModelRequest": {
    "description": "Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to happen).",
    "id": "GoogleCloudRetailV2betaTuneModelRequest",
+   "properties": {},
+   "type": "object"
+  },
+  "GoogleCloudRetailV2betaTuneModelResponse": {
+   "description": "Response associated with a tune operation.",
+   "id": "GoogleCloudRetailV2betaTuneModelResponse",
    "properties": {},
    "type": "object"
   },

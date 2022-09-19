@@ -3166,11 +3166,17 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ecoCertifications")]
         public virtual System.Collections.Generic.IList<EcoCertification> EcoCertifications { get; set; }
 
-        /// <summary>LEED certification.</summary>
+        /// <summary>
+        /// LEED certification. Deprecated: this field is no longer populated. LEED certification status is now provided
+        /// directly by USGBC.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leedCertification")]
         public virtual string LeedCertification { get; set; }
 
-        /// <summary>LEED certification exception.</summary>
+        /// <summary>
+        /// LEED certification exception. Deprecated: this field is no longer populated. LEED certification status is
+        /// now provided directly by USGBC.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leedCertificationException")]
         public virtual string LeedCertificationException { get; set; }
 
