@@ -5344,7 +5344,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setupActions")]
         public virtual System.Collections.Generic.IList<SetupAction> SetupActions { get; set; }
 
-        /// <summary>Whether location sharing is disabled.</summary>
+        /// <summary>
+        /// Whether location sharing is disabled. share_location_disabled is supported for both fully managed devices
+        /// and personally owned work profiles.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareLocationDisabled")]
         public virtual System.Nullable<bool> ShareLocationDisabled { get; set; }
 
@@ -5437,9 +5440,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> VpnConfigDisabled { get; set; }
 
         /// <summary>
-        /// Whether configuring Wi-Fi access points is disabled.Note: If a network connection can't be made at boot time
-        /// and configuring Wi-Fi is disabled then network escape hatch will be shown in order to refresh the device
-        /// policy (see networkEscapeHatchEnabled).
+        /// Whether configuring Wi-Fi access points is disabled. Note: If a network connection can't be made at boot
+        /// time and configuring Wi-Fi is disabled then network escape hatch will be shown in order to refresh the
+        /// device policy (see networkEscapeHatchEnabled).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigDisabled")]
         public virtual System.Nullable<bool> WifiConfigDisabled { get; set; }

@@ -337,6 +337,50 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The collection period is a date range which includes the `first` and `last` day.</summary>
+    public class CollectionPeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The first day in the collection period, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstDate")]
+        public virtual Date FirstDate { get; set; }
+
+        /// <summary>The last day in the collection period, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDate")]
+        public virtual Date LastDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Key defines all the dimensions that identify this record as unique.</summary>
     public class Key : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -490,6 +534,10 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     /// </summary>
     public class Record : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The collection period indicates when the data reflected in this record was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionPeriod")]
+        public virtual CollectionPeriod CollectionPeriod { get; set; }
+
         /// <summary>
         /// Key defines all of the unique querying parameters needed to look up a user experience record.
         /// </summary>

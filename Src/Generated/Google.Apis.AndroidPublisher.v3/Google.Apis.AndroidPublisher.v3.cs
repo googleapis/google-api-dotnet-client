@@ -9929,6 +9929,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Nullable<bool> LegacyCompatible { get; set; }
 
         /// <summary>
+        /// Subscription offer id which is legacy compatible. The backward compatible subscription offer is returned by
+        /// the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one subscription offer can be
+        /// marked as legacy compatible for a given renewing base plan. To have no Subscription offer as legacy
+        /// compatible set this field as empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyCompatibleSubscriptionOfferId")]
+        public virtual string LegacyCompatibleSubscriptionOfferId { get; set; }
+
+        /// <summary>
         /// The proration mode for the base plan determines what happens when a user switches to this plan from another
         /// base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE.
         /// </summary>

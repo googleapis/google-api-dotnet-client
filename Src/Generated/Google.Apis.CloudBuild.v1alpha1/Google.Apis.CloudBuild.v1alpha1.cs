@@ -875,6 +875,39 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of BatchCreateGitLabConnectedRepositories RPC method.</summary>
+    public class BatchCreateGitLabConnectedRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GitLab connected repository requests' responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConnectedRepositories")]
+        public virtual System.Collections.Generic.IList<GitLabConnectedRepository> GitlabConnectedRepositories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `BatchCreateGitLabConnectedRepositories` operation.</summary>
+    public class BatchCreateGitLabConnectedRepositoriesResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>
+        /// The name of the `GitLabConfig` that added connected repositories. Format:
+        /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual string Config { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>/ BitbucketServerConnectedRepository represents a connected Bitbucket Server / repository.</summary>
     public class BitbucketServerConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1408,6 +1441,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `CreateGitLabConfig` operation.</summary>
+    public class CreateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the `CreateWorkerPool` operation.</summary>
     public class CreateWorkerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1474,6 +1529,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `DeleteGitLabConfig` operation.</summary>
+    public class DeleteGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the `DeleteWorkerPool` operation.</summary>
     public class DeleteWorkerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1531,6 +1608,49 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GitLabConnectedRepository represents a GitLab connected repository request response.</summary>
+    public class GitLabConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the `GitLabConfig` that added connected repository. Format:
+        /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The GitLab repositories to connect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual GitLabRepositoryId Repo { get; set; }
+
+        /// <summary>Output only. The status of the repo connection request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise</summary>
+    public class GitLabRepositoryId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Identifier for the repository. example: "namespace/project-slug", namespace is usually the
+        /// username or group ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the webhook that was created for receiving events from this repo. We only create and
+        /// manage a single webhook for each repo.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
+        public virtual System.Nullable<int> WebhookId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2338,6 +2458,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `UpdateGitLabConfig` operation.</summary>
+    public class UpdateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

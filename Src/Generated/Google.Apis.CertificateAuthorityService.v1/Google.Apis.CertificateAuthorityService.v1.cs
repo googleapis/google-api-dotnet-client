@@ -5276,6 +5276,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
         public virtual System.Nullable<bool> DeleteResource { get; set; }
 
+        /// <summary>Excluisive action returned by the CLH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
         public virtual string ExclusiveAction { get; set; }
 

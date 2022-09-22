@@ -1846,10 +1846,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>
-        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
-        /// document, this field will be empty.
-        /// </summary>
+        /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -3054,10 +3051,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>
-        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
-        /// document, this field will be empty.
-        /// </summary>
+        /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 

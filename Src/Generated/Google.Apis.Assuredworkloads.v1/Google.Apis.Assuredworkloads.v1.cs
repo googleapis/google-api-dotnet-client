@@ -482,6 +482,264 @@ namespace Google.Apis.Assuredworkloads.v1
                 public WorkloadsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Violations = new ViolationsResource(service);
+                }
+
+                /// <summary>Gets the Violations resource.</summary>
+                public virtual ViolationsResource Violations { get; }
+
+                /// <summary>The "violations" collection of methods.</summary>
+                public class ViolationsResource
+                {
+                    private const string Resource = "violations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ViolationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Acknowledges an existing violation. By acknowledging a violation, users acknowledge the
+                    /// existence of a compliance violation in their workload and decide to ignore it due to a valid
+                    /// business justification. Acknowledgement is a permanent operation and it cannot be reverted.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the Violation to acknowledge. Format:
+                    /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                    /// </param>
+                    public virtual AcknowledgeRequest Acknowledge(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest body, string name)
+                    {
+                        return new AcknowledgeRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Acknowledges an existing violation. By acknowledging a violation, users acknowledge the
+                    /// existence of a compliance violation in their workload and decide to ignore it due to a valid
+                    /// business justification. Acknowledgement is a permanent operation and it cannot be reverted.
+                    /// </summary>
+                    public class AcknowledgeRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse>
+                    {
+                        /// <summary>Constructs a new Acknowledge request.</summary>
+                        public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Violation to acknowledge. Format:
+                        /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "acknowledge";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:acknowledge";
+
+                        /// <summary>Initializes Acknowledge parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+/violations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves Assured Workload Violation based on ID.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Violation to fetch (ie. Violation.name). Format:
+                    /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves Assured Workload Violation based on ID.</summary>
+                    public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Violation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Violation to fetch (ie. Violation.name). Format:
+                        /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+/violations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists the Violations in the AssuredWorkload Environment. Callers may also choose to read across
+                    /// multiple Workloads as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash
+                    /// character) as a wildcard character instead of workload-id in the parent. Format
+                    /// `organizations/{org_id}/locations/{location}/workloads/-`
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The Workload name. Format
+                    /// `organizations/{org_id}/locations/{location}/workloads/{workload}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists the Violations in the AssuredWorkload Environment. Callers may also choose to read across
+                    /// multiple Workloads as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash
+                    /// character) as a wildcard character instead of workload-id in the parent. Format
+                    /// `organizations/{org_id}/locations/{location}/workloads/-`
+                    /// </summary>
+                    public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListViolationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Workload name. Format
+                        /// `organizations/{org_id}/locations/{location}/workloads/{workload}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. A custom filter for filtering by the Violations properties.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The end of the time window.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object IntervalEndTime { get; set; }
+
+                        /// <summary>The start of the time window.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object IntervalStartTime { get; set; }
+
+                        /// <summary>Optional. Page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. Page token returned from previous request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/violations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("interval.endTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "interval.endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "interval.startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates Assured Workload.</summary>
@@ -932,6 +1190,32 @@ namespace Google.Apis.Assuredworkloads.v1
 }
 namespace Google.Apis.Assuredworkloads.v1.Data
 {
+    /// <summary>Request for acknowledging the violation Next Id: 4</summary>
+    public class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Business justification explaining the need for violation acknowledgement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the OrgPolicy which was modified with non-compliant change and resulted in this violation.
+        /// Format: projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name}
+        /// organizations/{organization_id}/policies/{constraint_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
+        public virtual string NonCompliantOrgPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for violation acknowledgement</summary>
+    public class GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
     public class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -952,6 +1236,21 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Optional. The parent of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of ListViolations endpoint.</summary>
+    public class GoogleCloudAssuredworkloadsV1ListViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token. Returns empty if reached the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of Violations under a Workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1Violation> Violations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -986,6 +1285,163 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Response for restricting the list of allowed resources.</summary>
     public class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Workload monitoring Violation.</summary>
+    public class GoogleCloudAssuredworkloadsV1Violation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean that indicates if the violation is acknowledged</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
+        public virtual System.Nullable<bool> Acknowledged { get; set; }
+
+        /// <summary>
+        /// Optional. Timestamp when this violation was acknowledged last. This will be absent when acknowledged field
+        /// is marked as false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
+        public virtual object AcknowledgementTime { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Audit Log Link for violated resource Format:
+        /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogLink")]
+        public virtual string AuditLogLink { get; set; }
+
+        /// <summary>Output only. Time of the event which triggered the Violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginTime")]
+        public virtual object BeginTime { get; set; }
+
+        /// <summary>
+        /// Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access,
+        /// Encryption, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Name of the Violation. Format:
+        /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this
+        /// violation. Format: projects/{project_number}/policies/{constraint_name}
+        /// folders/{folder_id}/policies/{constraint_name} organizations/{organization_id}/policies/{constraint_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
+        public virtual string NonCompliantOrgPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this
+        /// violation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
+        public virtual string OrgPolicyConstraint { get; set; }
+
+        /// <summary>Output only. Compliance violation remediation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
+        public virtual GoogleCloudAssuredworkloadsV1ViolationRemediation Remediation { get; set; }
+
+        /// <summary>
+        /// Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolveTime")]
+        public virtual object ResolveTime { get; set; }
+
+        /// <summary>Output only. State of the violation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The last time when the Violation record was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents remediation guidance to resolve compliance violation for AssuredWorkload</summary>
+    public class GoogleCloudAssuredworkloadsV1ViolationRemediation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Values that can resolve the violation For example: for list org policy violations, this will either be the
+        /// list of allowed or denied values
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliantValues")]
+        public virtual System.Collections.Generic.IList<string> CompliantValues { get; set; }
+
+        /// <summary>Required. Remediation instructions to resolve violations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
+        public virtual GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions Instructions { get; set; }
+
+        /// <summary>Output only. Reemediation type based on the type of org policy values violated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationType")]
+        public virtual string RemediationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Instructions to remediate violation</summary>
+    public class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Remediation instructions to resolve violation via cloud console</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consoleInstructions")]
+        public virtual GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole ConsoleInstructions { get; set; }
+
+        /// <summary>Remediation instructions to resolve violation via gcloud cli</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcloudInstructions")]
+        public virtual GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud GcloudInstructions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Remediation instructions to resolve violation via cloud console</summary>
+    public class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional urls for more information about steps</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLinks")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLinks { get; set; }
+
+        /// <summary>Link to console page where violations can be resolved</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consoleUris")]
+        public virtual System.Collections.Generic.IList<string> ConsoleUris { get; set; }
+
+        /// <summary>Steps to resolve violation via cloud console</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<string> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Remediation instructions to resolve violation via gcloud cli</summary>
+    public class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional urls for more information about steps</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLinks")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLinks { get; set; }
+
+        /// <summary>Gcloud command to resolve violation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcloudCommands")]
+        public virtual System.Collections.Generic.IList<string> GcloudCommands { get; set; }
+
+        /// <summary>Steps to resolve violation via gcloud cli</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<string> Steps { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1160,575 +1616,6 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
     /// <summary>Signed Access Approvals (SAA) enrollment response.</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Indicates SAA enrollment setup error if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]
-        public virtual System.Collections.Generic.IList<string> SetupErrors { get; set; }
-
-        /// <summary>Indicates SAA enrollment status of a given workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
-        public virtual string SetupStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; }
-
-        /// <summary>Optional. Time when the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Optional. The display name of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Optional. The parent of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>
-        /// Optional. Resource properties in the input that are used for creating/customizing workload resources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings> ResourceSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1Workload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The billing account used for the resources which are direct children of workload. This billing
-        /// account is initially associated with the resources created as part of Workload creation. After the initial
-        /// creation of these resources, the customer can change the assigned billing account. The resource name has the
-        /// form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
-        public virtual string BillingAccount { get; set; }
-
-        /// <summary>Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cjisSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings CjisSettings { get; set; }
-
-        /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; }
-
-        /// <summary>
-        /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
-        /// disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow
-        /// your project developers to use these services in their environment."
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
-        public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
-
-        /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
-        /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example:
-        /// My Workload
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
-        /// Europe/Canada customers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSovereignControls")]
-        public virtual System.Nullable<bool> EnableSovereignControls { get; set; }
-
-        /// <summary>
-        /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
-        /// Update &amp;amp; Delete operations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings FedrampHighSettings { get; set; }
-
-        /// <summary>Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
-
-        /// <summary>Input only. Immutable. Settings specific to resources needed for IL4.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; }
-
-        /// <summary>Output only. Represents the KAJ enrollment state of the given workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentState")]
-        public virtual string KajEnrollmentState { get; set; }
-
-        /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is
-        /// provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should
-        /// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>Optional. Labels applied to the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Optional. The resource name of the workload. Format:
-        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
-        /// folder resource which is a child of the Workload parent. If not specified all resources are created under
-        /// the parent organization. Format: folders/{folder_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
-        public virtual string ProvisionedResourcesParent { get; set; }
-
-        /// <summary>
-        /// Input only. Resource properties that are used to customize workload resources. These properties (such as
-        /// custom project id) will be used to create workload resources if possible. This field is optional.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings> ResourceSettings { get; set; }
-
-        /// <summary>
-        /// Output only. The resources associated with this workload. These resources will be created when creating the
-        /// workload. If any of the projects already exist, the workload creation will fail. Always read only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> Resources { get; set; }
-
-        /// <summary>
-        /// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is
-        /// queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("saaEnrollmentResponse")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for CJIS.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for IL4.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to the Key Management Service.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a
-        /// new version of the crypto key and mark it as the primary.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual object NextRotationTime { get; set; }
-
-        /// <summary>
-        /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
-        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
-        public virtual object RotationPeriod { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represent the resources that are children of this Workload.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Resource identifier. For a project this represents project_number.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual System.Nullable<long> ResourceId { get; set; }
-
-        /// <summary>Indicates the type of resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represent the custom settings for the resources to be created.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// User-assigned resource display name. If not empty it will be used to create a resource with the specified
-        /// name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
-        /// creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as
-        /// folder_id is assigned by Google.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>
-        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
-        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Signed Access Approvals (SAA) enrollment response.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Indicates SAA enrollment setup error if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]
-        public virtual System.Collections.Generic.IList<string> SetupErrors { get; set; }
-
-        /// <summary>Indicates SAA enrollment status of a given workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
-        public virtual string SetupStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; }
-
-        /// <summary>Optional. Time when the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Optional. The display name of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Optional. The parent of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>
-        /// Optional. Resource properties in the input that are used for creating/customizing workload resources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings> ResourceSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The billing account used for the resources which are direct children of workload. This billing
-        /// account is initially associated with the resources created as part of Workload creation. After the initial
-        /// creation of these resources, the customer can change the assigned billing account. The resource name has the
-        /// form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
-        public virtual string BillingAccount { get; set; }
-
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cjisSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCJISSettings CjisSettings { get; set; }
-
-        /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; }
-
-        /// <summary>Output only. Count of active Violations in the Workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complianceStatus")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus ComplianceStatus { get; set; }
-
-        /// <summary>
-        /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
-        /// disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow
-        /// your project developers to use these services in their environment."
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
-        public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
-
-        /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
-        /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example:
-        /// My Workload
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
-        /// Europe/Canada customers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSovereignControls")]
-        public virtual System.Nullable<bool> EnableSovereignControls { get; set; }
-
-        /// <summary>
-        /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
-        /// Update &amp;amp; Delete operations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings FedrampHighSettings { get; set; }
-
-        /// <summary>
-        /// Required. Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
-
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIL4Settings Il4Settings { get; set; }
-
-        /// <summary>Output only. Represents the KAJ enrollment state of the given workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentState")]
-        public virtual string KajEnrollmentState { get; set; }
-
-        /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is
-        /// provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should
-        /// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>Optional. Labels applied to the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Optional. The resource name of the workload. Format:
-        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
-        /// folder resource which is a child of the Workload parent. If not specified all resources are created under
-        /// the parent organization. Format: folders/{folder_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
-        public virtual string ProvisionedResourcesParent { get; set; }
-
-        /// <summary>
-        /// Input only. Resource properties that are used to customize workload resources. These properties (such as
-        /// custom project id) will be used to create workload resources if possible. This field is optional.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings> ResourceSettings { get; set; }
-
-        /// <summary>
-        /// Output only. The resources associated with this workload. These resources will be created when creating the
-        /// workload. If any of the projects already exist, the workload creation will fail. Always read only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo> Resources { get; set; }
-
-        /// <summary>
-        /// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is
-        /// queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("saaEnrollmentResponse")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for CJIS.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the Compliance Status of this workload</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Count of active Violations which are acknowledged in the Workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedViolationCount")]
-        public virtual System.Nullable<int> AcknowledgedViolationCount { get; set; }
-
-        /// <summary>Count of active Violations which haven't been acknowledged.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
-        public virtual System.Nullable<int> ActiveViolationCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to resources needed for IL4.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Settings specific to the Key Management Service.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a
-        /// new version of the crypto key and mark it as the primary.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual object NextRotationTime { get; set; }
-
-        /// <summary>
-        /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
-        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
-        public virtual object RotationPeriod { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represent the resources that are children of this Workload.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Resource identifier. For a project this represents project_number.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual System.Nullable<long> ResourceId { get; set; }
-
-        /// <summary>Indicates the type of resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represent the custom settings for the resources to be created.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// User-assigned resource display name. If not empty it will be used to create a resource with the specified
-        /// name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
-        /// creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as
-        /// folder_id is assigned by Google.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>
-        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
-        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Signed Access Approvals (SAA) enrollment response.</summary>
-    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates SAA enrollment setup error if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]

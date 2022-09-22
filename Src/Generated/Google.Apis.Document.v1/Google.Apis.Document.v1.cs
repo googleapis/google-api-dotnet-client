@@ -3443,10 +3443,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>
-        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
-        /// document, this field will be empty.
-        /// </summary>
+        /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -3581,6 +3578,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>The configuration used when outputting documents.</summary>
     public class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which fields to include in the output documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; }
+
         /// <summary>The Cloud Storage uri (a directory) of the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -4520,10 +4521,6 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
         public virtual System.Nullable<bool> Inactive { get; set; }
 
-        /// <summary>If set, the properties of this entity type must be prefixed with the parents.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prefixedNamingOnProperties")]
-        public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5248,10 +5245,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>
-        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
-        /// document, this field will be empty.
-        /// </summary>
+        /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -6428,10 +6422,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>
-        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
-        /// document, this field will be empty.
-        /// </summary>
+        /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 

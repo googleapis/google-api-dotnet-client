@@ -9479,8 +9479,7 @@ namespace Google.Apis.DisplayVideo.v2
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-                /// `TARGETING_TYPE_YOUTUBE_CHANNEL`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                 /// </param>
                 /// <param name="assignedTargetingOptionId">
                 /// Required. An identifier unique to the targeting type in this advertiser that identifies the assigned
@@ -9510,8 +9509,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -9519,8 +9517,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -9792,8 +9789,7 @@ namespace Google.Apis.DisplayVideo.v2
                 /// <param name="targetingType">
                 /// Required. Identifies the type of assigned targeting options to list. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-                /// `TARGETING_TYPE_YOUTUBE_CHANNEL`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                 /// </param>
                 public virtual ListRequest List(long advertiserId, ListRequest.TargetingTypeEnum targetingType)
                 {
@@ -9818,8 +9814,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of assigned targeting options to list. Supported targeting types:
                     /// * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -9827,8 +9822,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of assigned targeting options to list. Supported targeting types:
                     /// * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -22093,7 +22087,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class ExchangeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The enum value for the exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
         public virtual string Exchange { get; set; }
 
