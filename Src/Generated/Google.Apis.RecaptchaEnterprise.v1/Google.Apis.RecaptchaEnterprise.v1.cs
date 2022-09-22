@@ -1741,7 +1741,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The hostname of the page on which the token was generated.</summary>
+        /// <summary>The hostname of the page on which the token was generated (Web keys only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Assuredworkloads.v1beta1.AssuredworkloadsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Assuredworkloads.v1beta1.AssuredworkloadsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

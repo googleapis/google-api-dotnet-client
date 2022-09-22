@@ -2644,6 +2644,13 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
+        /// <summary>
+        /// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe
+        /// fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
+        public virtual GoogleCloudRunV2Probe LivenessProbe { get; set; }
+
         /// <summary>Name of the container specified as a DNS_LABEL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2662,6 +2669,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual GoogleCloudRunV2ResourceRequirements Resources { get; set; }
+
+        /// <summary>
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is
+        /// provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
+        public virtual GoogleCloudRunV2Probe StartupProbe { get; set; }
 
         /// <summary>Volume to mount into the container's filesystem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
@@ -2947,6 +2962,65 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GRPCAction describes an action involving a GRPC port.</summary>
+    public class GoogleCloudRunV2GRPCAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Port number of the gRPC service. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
+        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
+        /// behavior is defined by gRPC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HTTPGetAction describes an action based on HTTP Get requests.</summary>
+    public class GoogleCloudRunV2HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Custom headers to set in the request. HTTP allows repeated headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2HTTPHeader> HttpHeaders { get; set; }
+
+        /// <summary>Path to access on the HTTP server. Defaults to '/'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Scheme to use for connecting to the host. Defaults to HTTP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HTTPHeader describes a custom header to be used in HTTP probes</summary>
+    public class GoogleCloudRunV2HTTPHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The header field name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The header field value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Job represents the configuration of a single job. A job an immutable resource that references a container image
     /// which is run to completion.
@@ -3177,6 +3251,67 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The resulting list of Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Task> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
+    /// receive traffic.
+    /// </summary>
+    public class GoogleCloudRunV2Probe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3.
+        /// Minimum value is 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
+        public virtual System.Nullable<int> FailureThreshold { get; set; }
+
+        /// <summary>
+        /// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
+        public virtual GoogleCloudRunV2GRPCAction Grpc { get; set; }
+
+        /// <summary>
+        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
+        public virtual GoogleCloudRunV2HTTPGetAction HttpGet { get; set; }
+
+        /// <summary>
+        /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds.
+        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More
+        /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
+        public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
+
+        /// <summary>
+        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for
+        /// liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than
+        /// timeout_seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
+        public virtual System.Nullable<int> PeriodSeconds { get; set; }
+
+        /// <summary>
+        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be
+        /// specified. TCP hooks not yet supported
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
+        public virtual GoogleCloudRunV2TCPSocketAction TcpSocket { get; set; }
+
+        /// <summary>
+        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value
+        /// is 3600. Must be smaller than period_seconds. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
+        public virtual System.Nullable<int> TimeoutSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3699,6 +3834,25 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The main URI in which this Service is serving traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+    }
+
+    /// <summary>TCPSocketAction describes an action based on opening a socket</summary>
+    public class GoogleCloudRunV2TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Host name to connect to, defaults to the pod IP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be
+        /// an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to
+        /// properly support the IntOrString golang type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Task represents a single run of a container to completion.</summary>

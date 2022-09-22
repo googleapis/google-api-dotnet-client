@@ -16833,11 +16833,11 @@ namespace Google.Apis.Dfareporting.v4
                 /// <summary>Order of sorted results.</summary>
                 public enum SortOrderEnum
                 {
-                    /// <summary></summary>
+                    /// <summary>Ascending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                     ASCENDING = 0,
 
-                    /// <summary></summary>
+                    /// <summary>Descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                     DESCENDING = 1,
                 }
@@ -17225,7 +17225,7 @@ namespace Google.Apis.Dfareporting.v4
 
         /// <summary>Updates an existing report. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="profileId">The DFA user profile ID.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         /// <param name="reportId">The ID of the report.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId)
         {
@@ -17244,7 +17244,7 @@ namespace Google.Apis.Dfareporting.v4
                 InitParameters();
             }
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -24149,7 +24149,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The dimension name, e.g. dfa:advertiser</summary>
+        /// <summary>The dimension name, e.g. advertiser</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -24464,6 +24464,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>The kind of resource this is, in this case dfareporting#eventFilter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>Filter on a custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uvarFilter")]
+        public virtual UvarFilter UvarFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29497,6 +29501,33 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>User role collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRoles")]
         public virtual System.Collections.Generic.IList<UserRole> UserRoles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the filtering on a single uvar.</summary>
+    public class UvarFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Return rows which don't match this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complement")]
+        public virtual System.Nullable<bool> Complement { get; set; }
+
+        /// <summary>Custom variable index the filter is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<long> Index { get; set; }
+
+        /// <summary>The kind of resource this is, in this case dfareporting#uvarFilter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Indicates how the filter should be matched to the values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("match")]
+        public virtual string Match { get; set; }
+
+        /// <summary>Values to filter on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

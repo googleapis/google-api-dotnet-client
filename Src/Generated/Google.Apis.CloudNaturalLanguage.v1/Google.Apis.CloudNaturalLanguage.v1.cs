@@ -776,9 +776,34 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Model options available for classification requests.</summary>
+    public class ClassificationModelOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Setting this field will use the V1 model and V1 content categories version. The V1 model is a legacy model;
+        /// support for this will be discontinued in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("v1Model")]
+        public virtual V1Model V1Model { get; set; }
+
+        /// <summary>
+        /// Setting this field will use the V2 model with the appropriate content categories version. The V2 model is a
+        /// better performing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("v2Model")]
+        public virtual V2Model V2Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The document classification request message.</summary>
     public class ClassifyTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Model options to use for classification. Defaults to v1 options if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classificationModelOptions")]
+        public virtual ClassificationModelOptions ClassificationModelOptions { get; set; }
+
         /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; }
@@ -936,6 +961,13 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// </summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The model options to use for classification. Defaults to v1 options if not specified. Only used if
+        /// `classify_text` is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classificationModelOptions")]
+        public virtual ClassificationModelOptions ClassificationModelOptions { get; set; }
+
         /// <summary>Classify the full document into categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifyText")]
         public virtual System.Nullable<bool> ClassifyText { get; set; }
@@ -1119,6 +1151,24 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         /// <summary>The token text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual TextSpan Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for the V1 model.</summary>
+    public class V1Model : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for the V2 model.</summary>
+    public class V2Model : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content categories used for classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentCategoriesVersion")]
+        public virtual string ContentCategoriesVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

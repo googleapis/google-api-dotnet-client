@@ -1745,7 +1745,519 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public ChromeResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                PrintServers = new PrintServersResource(service);
                 Printers = new PrintersResource(service);
+            }
+
+            /// <summary>Gets the PrintServers resource.</summary>
+            public virtual PrintServersResource PrintServers { get; }
+
+            /// <summary>The "printServers" collection of methods.</summary>
+            public class PrintServersResource
+            {
+                private const string Resource = "printServers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PrintServersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates multiple print servers.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The [unique
+                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
+                /// Google Workspace account. Format: `customers/{id}`
+                /// </param>
+                public virtual BatchCreatePrintServersRequest BatchCreatePrintServers(Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintServersRequest body, string parent)
+                {
+                    return new BatchCreatePrintServersRequest(service, body, parent);
+                }
+
+                /// <summary>Creates multiple print servers.</summary>
+                public class BatchCreatePrintServersRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintServersResponse>
+                {
+                    /// <summary>Constructs a new BatchCreatePrintServers request.</summary>
+                    public BatchCreatePrintServersRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintServersRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The [unique
+                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// customer's Google Workspace account. Format: `customers/{id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintServersRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchCreatePrintServers";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+parent}/chrome/printServers:batchCreatePrintServers";
+
+                    /// <summary>Initializes BatchCreatePrintServers parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes multiple print servers.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The [unique
+                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
+                /// Google Workspace account. Format: `customers/{customer.id}`
+                /// </param>
+                public virtual BatchDeletePrintServersRequest BatchDeletePrintServers(Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintServersRequest body, string parent)
+                {
+                    return new BatchDeletePrintServersRequest(service, body, parent);
+                }
+
+                /// <summary>Deletes multiple print servers.</summary>
+                public class BatchDeletePrintServersRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintServersResponse>
+                {
+                    /// <summary>Constructs a new BatchDeletePrintServers request.</summary>
+                    public BatchDeletePrintServersRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintServersRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The [unique
+                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// customer's Google Workspace account. Format: `customers/{customer.id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintServersRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDeletePrintServers";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+parent}/chrome/printServers:batchDeletePrintServers";
+
+                    /// <summary>Initializes BatchDeletePrintServers parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a print server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The [unique
+                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
+                /// Google Workspace account. Format: `customers/{id}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a print server.</summary>
+                public class CreateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.PrintServer>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The [unique
+                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// customer's Google Workspace account. Format: `customers/{id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Admin.Directory.directory_v1.Data.PrintServer Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+parent}/chrome/printServers";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a print server.</summary>
+                /// <param name="name">
+                /// Required. The name of the print server to be deleted. Format:
+                /// `customers/{customer.id}/chrome/printServers/{print_server.id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a print server.</summary>
+                public class DeleteRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the print server to be deleted. Format:
+                    /// `customers/{customer.id}/chrome/printServers/{print_server.id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/chrome/printServers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns a print server's configuration.</summary>
+                /// <param name="name">
+                /// Required. The [unique
+                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
+                /// Google Workspace account. Format: `customers/{id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Returns a print server's configuration.</summary>
+                public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.PrintServer>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The [unique
+                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// customer's Google Workspace account. Format: `customers/{id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/chrome/printServers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists print server configurations.</summary>
+                /// <param name="parent">
+                /// Required. The [unique
+                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
+                /// Google Workspace account. Format: `customers/{id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists print server configurations.</summary>
+                public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ListPrintServersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The [unique
+                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// customer's Google Workspace account. Format: `customers/{id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Search query in [Common Expression Language syntax](https://github.com/google/cel-spec).
+                    /// Supported filters are `display_name`, `description`, and `uri`. Example:
+                    /// `printServer.displayName=='marketing-queue'`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sort order for results. Supported values are `display_name`, `description`, or `create_time`.
+                    /// Default order is ascending, but descending order can be returned by appending "desc" to the
+                    /// `order_by` field. For instance, `orderBy=='description desc'` returns the print servers sorted
+                    /// by description in descending order.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// If `org_unit_id` is present in the request, only print servers owned or inherited by the
+                    /// organizational unit (OU) are returned. If the `PrintServer` resource's `org_unit_id` matches the
+                    /// one in the request, the OU owns the server. If `org_unit_id` is not specified in the request,
+                    /// all print servers are returned or filtered against.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrgUnitId { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of objects to return (default `100`, max `100`). The service might return
+                    /// fewer than this value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A generated token to paginate results (the `next_page_token` from a previous call).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+parent}/chrome/printServers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orgUnitId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a print server's configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. Resource name of the print server. Leave empty when creating. Format:
+                /// `customers/{customer.id}/printServers/{print_server.id}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a print server's configuration.</summary>
+                public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.PrintServer>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. Resource name of the print server. Leave empty when creating. Format:
+                    /// `customers/{customer.id}/printServers/{print_server.id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The list of fields to update. Some fields are read-only and cannot be updated. Values for
+                    /// unspecified fields are patched.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Admin.Directory.directory_v1.Data.PrintServer Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/chrome/printServers/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Printers resource.</summary>
@@ -9875,6 +10387,33 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to add multiple new print servers in a batch.</summary>
+    public class BatchCreatePrintServersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A list of `PrintServer` resources to be created (max `50` per batch).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreatePrintServerRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BatchCreatePrintServersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of create failures. `PrintServer` IDs are not populated, as print servers were not created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failures")]
+        public virtual System.Collections.Generic.IList<PrintServerFailureInfo> Failures { get; set; }
+
+        /// <summary>A list of successfully created print servers with their IDs populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServers")]
+        public virtual System.Collections.Generic.IList<PrintServer> PrintServers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for adding new printers in batch.</summary>
     public class BatchCreatePrintersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9896,6 +10435,31 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>A list of successfully created printers with their IDs populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("printers")]
         public virtual System.Collections.Generic.IList<Printer> Printers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to delete multiple existing print servers in a batch.</summary>
+    public class BatchDeletePrintServersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of print server IDs that should be deleted (max `100` per batch).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServerIds")]
+        public virtual System.Collections.Generic.IList<string> PrintServerIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BatchDeletePrintServersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of update failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedPrintServers")]
+        public virtual System.Collections.Generic.IList<PrintServerFailureInfo> FailedPrintServers { get; set; }
+
+        /// <summary>A list of print server IDs that were successfully deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServerIds")]
+        public virtual System.Collections.Generic.IList<string> PrintServerIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10798,6 +11362,29 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for adding a new print server.</summary>
+    public class CreatePrintServerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of
+        /// the customer's Google Workspace account. Format: `customers/{id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Required. A print server to create. If you want to place the print server under a specific organizational
+        /// unit (OU), then populate the `org_unit_id`. Otherwise the print server is created under the root OU. The
+        /// `org_unit_id` can be retrieved using the [Directory
+        /// API](https://developers.google.com/admin-sdk/directory/v1/guides/manage-org-units).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServer")]
+        public virtual PrintServer PrintServer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for adding a new printer.</summary>
     public class CreatePrinterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11320,6 +11907,23 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Token used to access next page of this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+    }
+
+    public class ListPrintServersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` in a request to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of print servers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServers")]
+        public virtual System.Collections.Generic.IList<PrintServer> PrintServers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Response for listing allowed printer models.</summary>
@@ -11855,6 +12459,71 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Date and time of the last successful OS update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a print server.</summary>
+    public class PrintServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time when the print server was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Editable. Description of the print server (as shown in the Admin console).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Editable. Display name of the print server (as shown in the Admin console).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Immutable. ID of the print server. Leave empty when creating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the print server. Leave empty when creating. Format:
+        /// `customers/{customer.id}/printServers/{print_server.id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// ID of the organization unit (OU) that owns this print server. This value can only be set when the print
+        /// server is initially created. If it's not populated, the print server is placed under the root OU. The
+        /// `org_unit_id` can be retrieved using the [Directory API](/admin-sdk/directory/reference/rest/v1/orgunits).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Editable. Print server URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Info about failures</summary>
+    public class PrintServerFailureInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Canonical code for why the update failed to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>Failure reason message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Failed print server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServer")]
+        public virtual PrintServer PrintServer { get; set; }
+
+        /// <summary>ID of a failed print server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printServerId")]
+        public virtual string PrintServerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

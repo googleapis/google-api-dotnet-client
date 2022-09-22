@@ -323,6 +323,77 @@ namespace Google.Apis.Adsense.v2
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
+                /// product](https://developers.google.com/adsense/platforms/). Note that ad units can only be created
+                /// for ad clients with an "AFC" product code. For more info see the [AdClient
+                /// resource](https://developers.google.com/adsense/management/reference/rest/v2/accounts.adclients).
+                /// For now, this method can only be used to create `DISPLAY` ad units. See:
+                /// https://support.google.com/adsense/answer/9183566
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Ad client to create an ad unit under. Format: accounts/{account}/adclients/{adclient}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Adsense.v2.Data.AdUnit body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
+                /// product](https://developers.google.com/adsense/platforms/). Note that ad units can only be created
+                /// for ad clients with an "AFC" product code. For more info see the [AdClient
+                /// resource](https://developers.google.com/adsense/management/reference/rest/v2/accounts.adclients).
+                /// For now, this method can only be used to create `DISPLAY` ad units. See:
+                /// https://support.google.com/adsense/answer/9183566
+                /// </summary>
+                public class CreateRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.AdUnit>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Adsense.v2.Data.AdUnit body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Ad client to create an ad unit under. Format: accounts/{account}/adclients/{adclient}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Adsense.v2.Data.AdUnit Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/adunits";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adclients/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets an ad unit from a specified account and ad client.</summary>
                 /// <param name="name">
                 /// Required. AdUnit to get information about. Format:
@@ -598,6 +669,85 @@ namespace Google.Apis.Adsense.v2
                         });
                     }
                 }
+
+                /// <summary>
+                /// Updates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
+                /// product](https://developers.google.com/adsense/platforms/). For now, this method can only be used to
+                /// update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the ad unit. Format:
+                /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Adsense.v2.Data.AdUnit body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
+                /// product](https://developers.google.com/adsense/platforms/). For now, this method can only be used to
+                /// update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
+                /// </summary>
+                public class PatchRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.AdUnit>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Adsense.v2.Data.AdUnit body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the ad unit. Format:
+                    /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to update. If empty, a full update is performed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Adsense.v2.Data.AdUnit Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adclients/[^/]+/adunits/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Customchannels resource.</summary>
@@ -615,6 +765,128 @@ namespace Google.Apis.Adsense.v2
                 public CustomchannelsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a custom channel. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The ad client to create a custom channel under. Format:
+                /// accounts/{account}/adclients/{adclient}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Adsense.v2.Data.CustomChannel body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a custom channel. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// </summary>
+                public class CreateRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.CustomChannel>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Adsense.v2.Data.CustomChannel body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The ad client to create a custom channel under. Format:
+                    /// accounts/{account}/adclients/{adclient}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Adsense.v2.Data.CustomChannel Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/customchannels";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adclients/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a custom channel. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// </summary>
+                /// <param name="name">
+                /// Required. Name of the custom channel to delete. Format:
+                /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a custom channel. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// </summary>
+                public class DeleteRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom channel to delete. Format:
+                    /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adclients/[^/]+/customchannels/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>Gets information about the selected custom channel.</summary>
@@ -826,6 +1098,83 @@ namespace Google.Apis.Adsense.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a custom channel. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the custom channel. Format:
+                /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Adsense.v2.Data.CustomChannel body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a custom channel. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// </summary>
+                public class PatchRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.CustomChannel>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Adsense.v2.Data.CustomChannel body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the custom channel. Format:
+                    /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to update. If empty, a full update is performed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Adsense.v2.Data.CustomChannel Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adclients/[^/]+/customchannels/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4203,6 +4552,13 @@ namespace Google.Apis.Adsense.v2.Data
     /// <summary>Representation of a custom channel.</summary>
     public class CustomChannel : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether the custom channel is active and collecting data. See
+        /// https://support.google.com/adsense/answer/10077192.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
         /// <summary>Required. Display name of the custom channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -4249,6 +4605,17 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

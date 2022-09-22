@@ -8321,7 +8321,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
 
         /// <summary>
-        /// Output only. Map containing the point of contacts for the given finding. The key represents the type of
+        /// Output only. Map containing the points of contact for the given finding. The key represents the type of
         /// contact, while the value contains a list of all the contacts that pertain. Please refer to:
         /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories {
         /// "security": { "contacts": [ { "email": "person1@company.com" }, { "email": "person2@company.com" } ] } }
@@ -8444,7 +8444,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Output only. The human readable display name of the finding source such as "Event Threat Detection" or
-        /// "Security Health Analytics"
+        /// "Security Health Analytics".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
         public virtual string ParentDisplayName { get; set; }

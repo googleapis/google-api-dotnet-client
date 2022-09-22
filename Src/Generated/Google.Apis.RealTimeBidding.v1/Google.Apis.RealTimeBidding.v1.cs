@@ -3466,6 +3466,16 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("native")]
         public virtual NativeContent Native { get; set; }
 
+        /// <summary>
+        /// Experimental field that can be used during the [FLEDGE Origin
+        /// Trial](/authorized-buyers/rtb/fledge-origin-trial). The URL to fetch an interest group ad used in
+        /// [TURTLEDOVE on-device
+        /// auction](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups"). This
+        /// should be unique among all creatives for a given `accountId`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderUrl")]
+        public virtual string RenderUrl { get; set; }
+
         /// <summary>All restricted categories for the ads that may be shown from this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
         public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; }
