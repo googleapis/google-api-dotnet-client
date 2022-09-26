@@ -308,9 +308,10 @@ namespace Google.Apis.CloudSecurityToken.v1
 
         /// <summary>
         /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within an
-        /// identity pool, or it applies a Credential Access Boundary to a Google access token. When you call this
-        /// method, do not send the `Authorization` HTTP header in the request. This method does not require the
-        /// `Authorization` header, and using the header can cause the request to fail.
+        /// identity pool, or it applies a Credential Access Boundary to a Google access token. Note that workforce
+        /// pools do not support Credential Access Boundary at the moment. When you call this method, do not send the
+        /// `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and
+        /// using the header can cause the request to fail.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual TokenRequest Token(Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeTokenRequest body)
@@ -320,9 +321,10 @@ namespace Google.Apis.CloudSecurityToken.v1
 
         /// <summary>
         /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within an
-        /// identity pool, or it applies a Credential Access Boundary to a Google access token. When you call this
-        /// method, do not send the `Authorization` HTTP header in the request. This method does not require the
-        /// `Authorization` header, and using the header can cause the request to fail.
+        /// identity pool, or it applies a Credential Access Boundary to a Google access token. Note that workforce
+        /// pools do not support Credential Access Boundary at the moment. When you call this method, do not send the
+        /// `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and
+        /// using the header can cause the request to fail.
         /// </summary>
         public class TokenRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeTokenResponse>
         {
@@ -472,8 +474,9 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     {
         /// <summary>
         /// The full resource name of the identity provider; for example:
-        /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/`. Required when
-        /// exchanging an external credential for a Google access token.
+        /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/` for workload identity
+        /// pool providers, or `//iam.googleapis.com/locations/global/workforcePools//providers/` for workforce pool
+        /// providers. Required when exchanging an external credential for a Google access token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
@@ -525,9 +528,11 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// asserted in the JWT. - `aud`: For workload identity pools, this must be a value specified in the allowed
         /// audiences for the workload identity pool provider, or one of the audiences allowed by default if no
         /// audiences were specified. See
-        /// https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc
-        /// Example header: ``` { "alg": "RS256", "kid": "us-east-11" } ``` Example payload: ``` { "iss":
-        /// "https://accounts.google.com", "iat": 1517963104, "exp": 1517966704, "aud":
+        /// https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc.
+        /// For workforce pools, this must match the client ID specified in the provider configuration. See
+        /// https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers#oidc. Example header:
+        /// ``` { "alg": "RS256", "kid": "us-east-11" } ``` Example payload: ``` { "iss": "https://accounts.google.com",
+        /// "iat": 1517963104, "exp": 1517966704, "aud":
         /// "//iam.googleapis.com/projects/1234567890123/locations/global/workloadIdentityPools/my-pool/providers/my-provider",
         /// "sub": "113475438248934895348", "my_claims": { "additional_claim": "value" } } ``` If `subject_token` is for
         /// AWS, it must be a serialized `GetCallerIdentity` token. This token contains the same information as a
@@ -676,7 +681,9 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>
         /// The human-readable identifier for the token principal subject. For example, if the provided token is
         /// associated with a workload identity pool, this field contains a value in the following format:
-        /// `principal://iam.googleapis.com/projects//locations/global/workloadIdentityPools//subject/`
+        /// `principal://iam.googleapis.com/projects//locations/global/workloadIdentityPools//subject/`. If the provided
+        /// token is associated with a workforce pool, this field contains a value in the following format:
+        /// `principal://iam.googleapis.com/locations/global/workforcePools//subject/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }

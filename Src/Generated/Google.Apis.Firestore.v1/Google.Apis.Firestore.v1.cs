@@ -2139,6 +2139,81 @@ namespace Google.Apis.Firestore.v1
                     }
                 }
 
+                /// <summary>
+                /// Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API
+                /// allows running an aggregation to produce a series of AggregationResult server-side. High-Level
+                /// Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
+                /// SELECT * FROM k where a = true ); ```
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents` or
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                /// `projects/my-project/databases/my-database/documents` or
+                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                /// </param>
+                public virtual RunAggregationQueryRequest RunAggregationQuery(Google.Apis.Firestore.v1.Data.RunAggregationQueryRequest body, string parent)
+                {
+                    return new RunAggregationQueryRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API
+                /// allows running an aggregation to produce a series of AggregationResult server-side. High-Level
+                /// Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
+                /// SELECT * FROM k where a = true ); ```
+                /// </summary>
+                public class RunAggregationQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.RunAggregationQueryResponse>
+                {
+                    /// <summary>Constructs a new RunAggregationQuery request.</summary>
+                    public RunAggregationQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RunAggregationQueryRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents` or
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                    /// `projects/my-project/databases/my-database/documents` or
+                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.RunAggregationQueryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "runAggregationQuery";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:runAggregationQuery";
+
+                    /// <summary>Initializes RunAggregationQuery parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
+                    }
+                }
+
                 /// <summary>Runs a query.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -3078,6 +3153,47 @@ namespace Google.Apis.Firestore.v1
 }
 namespace Google.Apis.Firestore.v1.Data
 {
+    /// <summary>Defines a aggregation that produces a single result.</summary>
+    public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional name of the field to store the result of the aggregation into. If not provided, Firestore
+        /// will pick a default name following the format `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS
+        /// count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ... ); ``` becomes:
+        /// ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS field_1, COUNT_UP_TO(3) AS count_up_to_3,
+        /// COUNT_UP_TO(4) AS field_2 OVER ( ... ); ``` Requires: * Must be unique across all aggregation aliases. *
+        /// Conform to document field name limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>Count aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual Count Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of a single bucket from a Firestore aggregation query. The keys of `aggregate_fields` are the same
+    /// for all results in an aggregation query, unlike document queries which can have different fields present for
+    /// each result.
+    /// </summary>
+    public class AggregationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The result of the aggregation functions, ex: `COUNT(*) AS total_docs`. The key is the alias assigned to the
+        /// aggregation function on input and the size of this map equals the number of aggregation functions in the
+        /// query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateFields")]
+        public virtual System.Collections.Generic.IDictionary<string, Value> AggregateFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An array value.</summary>
     public class ArrayValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3280,6 +3396,25 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The operator for combining multiple filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
         public virtual string Op { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Count of documents that match the query. The `COUNT(*)` aggregation function operates on the entire document so
+    /// it does not require a field reference.
+    /// </summary>
+    public class Count : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional constraint on the maximum number of documents to count. This provides a way to set an
+        /// upper bound on the number of documents to scan, limiting latency and cost. Unspecified is interpreted as no
+        /// bound. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be
+        /// greater than zero when present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upTo")]
+        public virtual System.Nullable<long> UpTo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3526,9 +3661,12 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A reference to a field, such as `max(messages.time) as max_time`.</summary>
+    /// <summary>A reference to a field in a document, ex: `stats.operations`.</summary>
     public class FieldReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The relative path of the document being referenced. Requires: * Conform to document field name limitations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
         public virtual string FieldPath { get; set; }
 
@@ -3887,12 +4025,12 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1Index : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field
-        /// entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last
-        /// field, it will be added automatically with the same direction as that of the last field defined. If the
-        /// final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless
-        /// explicitly specified). For single field indexes, this will always be exactly one entry with a field path
-        /// equal to the field path of the associated field.
+        /// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100
+        /// fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not
+        /// specified as the last field, it will be added automatically with the same direction as that of the last
+        /// field defined. If the final field in a composite index is not directional, the `__name__` will be ordered
+        /// ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry
+        /// with a field path equal to the field path of the associated field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1IndexField> Fields { get; set; }
@@ -4557,6 +4695,59 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for Firestore.RunAggregationQuery.</summary>
+    public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
+        /// returned as the first response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newTransaction")]
+        public virtual TransactionOptions NewTransaction { get; set; }
+
+        /// <summary>
+        /// Executes the query at the given timestamp. Requires: * Cannot be more than 270 seconds in the past.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>An aggregation query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredAggregationQuery")]
+        public virtual StructuredAggregationQuery StructuredAggregationQuery { get; set; }
+
+        /// <summary>
+        /// Run the aggregation within an already active transaction. The value here is the opaque transaction ID to
+        /// execute the query in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for Firestore.RunAggregationQuery.</summary>
+    public class RunAggregationQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the aggregate value is valid for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>A single aggregation result. Not present when reporting partial progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual AggregationResult Result { get; set; }
+
+        /// <summary>
+        /// The transaction that was started as part of this request. Only present on the first response when the
+        /// request requested to start a new transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4656,10 +4847,32 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Firestore query for running an aggregation over a StructuredQuery.</summary>
+    public class StructuredAggregationQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Series of aggregations to apply over the results of the `structured_query`. Requires: * A minimum
+        /// of one and maximum of five aggregations per query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
+
+        /// <summary>Nested structured query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
+        public virtual StructuredQuery StructuredQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Firestore query.</summary>
     public class StructuredQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A end point for the query results.</summary>
+        /// <summary>
+        /// A potential prefix of a position in the result set to end the query at. This is similar to `START_AT` but
+        /// with it controlling the end position rather than the start position. Requires: * The number of values cannot
+        /// be greater than the number of fields specified in the `ORDER BY` clause.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endAt")]
         public virtual Cursor EndAt { get; set; }
 
@@ -4668,15 +4881,16 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual System.Collections.Generic.IList<CollectionSelector> From { get; set; }
 
         /// <summary>
-        /// The maximum number of results to return. Applies after all other constraints. Must be &amp;gt;= 0 if
-        /// specified.
+        /// The maximum number of results to return. Applies after all other constraints. Requires: * The value must be
+        /// greater than or equal to zero if specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<int> Limit { get; set; }
 
         /// <summary>
-        /// The number of results to skip. Applies before limit, but after all other constraints. Must be &amp;gt;= 0 if
-        /// specified.
+        /// The number of documents to skip before returning the first result. This applies after the constraints
+        /// specified by the `WHERE`, `START AT`, &amp;amp; `END AT` but before the `LIMIT` clause. Requires: * The
+        /// value must be greater than or equal to zero if specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; }
@@ -4700,7 +4914,19 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("select")]
         public virtual Projection Select { get; set; }
 
-        /// <summary>A starting point for the query results.</summary>
+        /// <summary>
+        /// A potential prefix of a position in the result set to start the query at. The ordering of the result set is
+        /// based on the `ORDER BY` clause of the original query. ``` SELECT * FROM k WHERE a = 1 AND b &amp;gt; 2 ORDER
+        /// BY b ASC, __name__ ASC; ``` This query's results are ordered by `(b ASC, __name__ ASC)`. Cursors can
+        /// reference either the full ordering or a prefix of the location, though it cannot reference more fields than
+        /// what are in the provided `ORDER BY`. Continuing off the example above, attaching the following start cursors
+        /// will have varying impact: - `START BEFORE (2, /k/123)`: start the query right before `a = 1 AND b &amp;gt; 2
+        /// AND __name__ &amp;gt; /k/123`. - `START AFTER (10)`: start the query right after `a = 1 AND b &amp;gt; 10`.
+        /// Unlike `OFFSET` which requires scanning over the first N results to skip, a start cursor allows the query to
+        /// begin at a logical position. This position is not required to match an actual result, it will scan forward
+        /// from this position to find the next document. Requires: * The number of values cannot be greater than the
+        /// number of fields specified in the `ORDER BY` clause.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startAt")]
         public virtual Cursor StartAt { get; set; }
 

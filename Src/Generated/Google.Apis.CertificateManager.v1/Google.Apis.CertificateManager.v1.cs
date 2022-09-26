@@ -2326,7 +2326,10 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Output only. A list of GCLB targets which use this Certificate Map.</summary>
+        /// <summary>
+        /// Output only. A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this
+        /// list if it's attached to a Forwarding Rule.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclbTargets")]
         public virtual System.Collections.Generic.IList<GclbTarget> GclbTargets { get; set; }
 

@@ -5879,7 +5879,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>An individual panel with a list of ServingConfigs to consider for it.</summary>
     public class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The candidates to consider on the panel. Limit = 10.</summary>
+        /// <summary>Required. The candidates to consider on the panel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate> Candidates { get; set; }
 
@@ -7700,13 +7700,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// filterOutOfStockItems. Restricts predictions to products that do not have a stockState value of
         /// OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") *
         /// filterOutOfStockItems tag=(-"promotional") * filterOutOfStockItems If your filter blocks all prediction
-        /// results, the API will return generic (unfiltered) popular products. If you only want results strictly
-        /// matching the filters, set `strictFiltering` to True in `PredictRequest.params` to receive empty results
-        /// instead. Note that the API will never return items with storageStatus of "EXPIRED" or "DELETED" regardless
-        /// of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute-based
-        /// expressions are expected instead of the above described tag-based syntax. Examples: * (colors: ANY("Red",
-        /// "Blue")) AND NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR
-        /// categories: ANY("Phones"))
+        /// results, the API will return *no* results. If instead you want empty result sets to return generic
+        /// (unfiltered) popular products, set `strictFiltering` to False in `PredictRequest.params`. Note that the API
+        /// will never return items with storageStatus of "EXPIRED" or "DELETED" regardless of filter choices. If
+        /// `filterSyntaxV2` is set to true under the `params` field, then attribute-based expressions are expected
+        /// instead of the above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND NOT
+        /// (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories:
+        /// ANY("Phones"))
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

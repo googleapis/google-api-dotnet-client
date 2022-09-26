@@ -913,6 +913,10 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
+                /// <summary>Optional. The job name. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
+
                 /// <summary>
                 /// If there are many jobs, limit response to at most this many. The actual number of jobs returned will
                 /// be the lesser of max_responses and an unspecified server-defined limit.
@@ -991,6 +995,14 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
                     {
                         Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1449,6 +1461,10 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
+                /// <summary>Optional. The job name. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
+
                 /// <summary>
                 /// If there are many jobs, limit response to at most this many. The actual number of jobs returned will
                 /// be the lesser of max_responses and an unspecified server-defined limit.
@@ -1527,6 +1543,14 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
                     {
                         Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3300,6 +3324,10 @@ namespace Google.Apis.Dataflow.v1b3
                         ACTIVE = 3,
                     }
 
+                    /// <summary>Optional. The job name. Optional.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Name { get; set; }
+
                     /// <summary>
                     /// If there are many jobs, limit response to at most this many. The actual number of jobs returned
                     /// will be the lesser of max_responses and an unspecified server-defined limit.
@@ -3382,6 +3410,14 @@ namespace Google.Apis.Dataflow.v1b3
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7352,6 +7388,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Description of each transform in the pipeline and collections between them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPipelineTransform")]
         public virtual System.Collections.Generic.IList<TransformSummary> OriginalPipelineTransform { get; set; }
+
+        /// <summary>A hash value of the submitted pipeline portable graph step names if exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepNamesHash")]
+        public virtual string StepNamesHash { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

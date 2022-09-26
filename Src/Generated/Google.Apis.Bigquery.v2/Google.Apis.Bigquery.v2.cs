@@ -6334,6 +6334,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string CreateDisposition { get; set; }
 
         /// <summary>
+        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query
+        /// with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createSession")]
+        public virtual System.Nullable<bool> CreateSession { get; set; }
+
+        /// <summary>
         /// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted.
         /// This list and the precision and the scale parameters of the decimal field determine the target type. In the
         /// order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports
@@ -6985,27 +6992,27 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class JobStatistics2 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.</summary>
+        /// <summary>BI Engine specific Statistics. [Output only] BI Engine specific Statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biEngineStatistics")]
         public virtual BiEngineStatistics BiEngineStatistics { get; set; }
 
-        /// <summary>[Output-only] Billing tier for the job.</summary>
+        /// <summary>[Output only] Billing tier for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingTier")]
         public virtual System.Nullable<int> BillingTier { get; set; }
 
-        /// <summary>[Output-only] Whether the query result was fetched from the query cache.</summary>
+        /// <summary>[Output only] Whether the query result was fetched from the query cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>
-        /// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP
+        /// [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP
         /// ALL ROW ACCESS POLICIES queries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlAffectedRowAccessPolicyCount")]
         public virtual System.Nullable<long> DdlAffectedRowAccessPolicyCount { get; set; }
 
         /// <summary>
-        /// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that
+        /// [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that
         /// ddl_target_table is used just for its type information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlDestinationTable")]
@@ -7021,7 +7028,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
         public virtual string DdlOperationPerformed { get; set; }
 
-        /// <summary>[Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.</summary>
+        /// <summary>[Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetDataset")]
         public virtual DatasetReference DdlTargetDataset { get; set; }
 
@@ -7030,85 +7037,85 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual RoutineReference DdlTargetRoutine { get; set; }
 
         /// <summary>
-        /// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY
+        /// [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY
         /// queries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRowAccessPolicy")]
         public virtual RowAccessPolicyReference DdlTargetRowAccessPolicy { get; set; }
 
         /// <summary>
-        /// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
+        /// [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
         /// queries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
         public virtual TableReference DdlTargetTable { get; set; }
 
         /// <summary>
-        /// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE
+        /// [Output only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE
         /// or TRUNCATE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmlStats")]
         public virtual DmlStatistics DmlStats { get; set; }
 
-        /// <summary>[Output-only] The original estimate of bytes processed for the job.</summary>
+        /// <summary>[Output only] The original estimate of bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytesProcessed")]
         public virtual System.Nullable<long> EstimatedBytesProcessed { get; set; }
 
-        /// <summary>[Output-only] Statistics of a BigQuery ML training job.</summary>
+        /// <summary>[Output only] Statistics of a BigQuery ML training job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mlStatistics")]
         public virtual MlStatistics MlStatistics { get; set; }
 
-        /// <summary>[Output-only, Beta] Information about create model query job progress.</summary>
+        /// <summary>[Output only, Beta] Information about create model query job progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTraining")]
         public virtual BigQueryModelTraining ModelTraining { get; set; }
 
-        /// <summary>[Output-only, Beta] Deprecated; do not use.</summary>
+        /// <summary>[Output only, Beta] Deprecated; do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingCurrentIteration")]
         public virtual System.Nullable<int> ModelTrainingCurrentIteration { get; set; }
 
-        /// <summary>[Output-only, Beta] Deprecated; do not use.</summary>
+        /// <summary>[Output only, Beta] Deprecated; do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingExpectedTotalIteration")]
         public virtual System.Nullable<long> ModelTrainingExpectedTotalIteration { get; set; }
 
         /// <summary>
-        /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE
+        /// [Output only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE
         /// or DELETE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
-        /// <summary>[Output-only] Describes execution plan for the query.</summary>
+        /// <summary>[Output only] Describes execution plan for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
         public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; }
 
         /// <summary>
-        /// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        /// [Output only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedRoutines")]
         public virtual System.Collections.Generic.IList<RoutineReference> ReferencedRoutines { get; set; }
 
         /// <summary>
-        /// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a
+        /// [Output only] Referenced tables for the job. Queries that reference more than 50 tables will not have a
         /// complete list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
         public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; }
 
-        /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
+        /// <summary>[Output only] Job resource usage breakdown by reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
         public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; }
 
         /// <summary>
-        /// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        /// [Output only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
-        /// <summary>[Output-only] Search query specific statistics.</summary>
+        /// <summary>[Output only] Search query specific statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchStatistics")]
         public virtual SearchStatistics SearchStatistics { get; set; }
 
-        /// <summary>[Output-only] Statistics of a Spark procedure job.</summary>
+        /// <summary>[Output only] Statistics of a Spark procedure job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkStatistics")]
         public virtual SparkStatistics SparkStatistics { get; set; }
 
@@ -7130,20 +7137,20 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; }
 
-        /// <summary>[Output-only] [Beta] Describes a timeline of job execution.</summary>
+        /// <summary>[Output only] [Beta] Describes a timeline of job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeline")]
         public virtual System.Collections.Generic.IList<QueryTimelineSample> Timeline { get; set; }
 
-        /// <summary>[Output-only] Total bytes billed for the job.</summary>
+        /// <summary>[Output only] Total bytes billed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
         public virtual System.Nullable<long> TotalBytesBilled { get; set; }
 
-        /// <summary>[Output-only] Total bytes processed for the job.</summary>
+        /// <summary>[Output only] Total bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
         /// <summary>
-        /// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of
+        /// [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of
         /// the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is
         /// precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper
         /// bound of what the query would cost.
@@ -7152,12 +7159,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string TotalBytesProcessedAccuracy { get; set; }
 
         /// <summary>
-        /// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+        /// [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPartitionsProcessed")]
         public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; }
 
-        /// <summary>[Output-only] Slot-milliseconds for the job.</summary>
+        /// <summary>[Output only] Slot-milliseconds for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
         public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
@@ -7170,14 +7177,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 
-        /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
+        /// <summary>[Output only] Job resource usage breakdown by reservation.</summary>
         public class ReservationUsageData
         {
-            /// <summary>[Output-only] Reservation name or "unreserved" for on-demand resources usage.</summary>
+            /// <summary>[Output only] Reservation name or "unreserved" for on-demand resources usage.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; }
 
-            /// <summary>[Output-only] Slot-milliseconds the job spent in the given reservation.</summary>
+            /// <summary>[Output only] Slot-milliseconds the job spent in the given reservation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
             public virtual System.Nullable<long> SlotMs { get; set; }
         }
@@ -7509,7 +7516,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("optimalTrialIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> OptimalTrialIds { get; set; }
 
-        /// <summary>Output only. Information for all training runs in increasing order of start_time.</summary>
+        /// <summary>Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
         public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; }
     }
@@ -9729,42 +9736,47 @@ namespace Google.Apis.Bigquery.v2.Data
     public class TrainingRun : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Global explanation contains the explanation of top features on the class level. Applies to classification
-        /// models only.
+        /// Output only. Global explanation contains the explanation of top features on the class level. Applies to
+        /// classification models only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classLevelGlobalExplanations")]
         public virtual System.Collections.Generic.IList<GlobalExplanation> ClassLevelGlobalExplanations { get; set; }
 
-        /// <summary>Data split result of the training run. Only set when the input data is actually split.</summary>
+        /// <summary>
+        /// Output only. Data split result of the training run. Only set when the input data is actually split.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitResult")]
         public virtual DataSplitResult DataSplitResult { get; set; }
 
-        /// <summary>The evaluation metrics over training/eval data that were computed at the end of training.</summary>
+        /// <summary>
+        /// Output only. The evaluation metrics over training/eval data that were computed at the end of training.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
         public virtual EvaluationMetrics EvaluationMetrics { get; set; }
 
         /// <summary>
-        /// Global explanation contains the explanation of top features on the model level. Applies to both regression
-        /// and classification models.
+        /// Output only. Global explanation contains the explanation of top features on the model level. Applies to both
+        /// regression and classification models.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelLevelGlobalExplanation")]
         public virtual GlobalExplanation ModelLevelGlobalExplanation { get; set; }
 
-        /// <summary>Output of each iteration run, results.size() &lt;= max_iterations.</summary>
+        /// <summary>Output only. Output of each iteration run, results.size() &lt;= max_iterations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<IterationResult> Results { get; set; }
 
-        /// <summary>The start time of this training run.</summary>
+        /// <summary>Output only. The start time of this training run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
         /// <summary>
-        /// Options that were used for this training run, includes user specified and default options that were used.
+        /// Output only. Options that were used for this training run, includes user specified and default options that
+        /// were used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
         public virtual TrainingOptions TrainingOptions { get; set; }
 
-        /// <summary>The start time of this training run, in milliseconds since epoch.</summary>
+        /// <summary>Output only. The start time of this training run, in milliseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
         public virtual System.Nullable<long> TrainingStartTime { get; set; }
 
@@ -9772,7 +9784,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelId")]
         public virtual string VertexAiModelId { get; set; }
 
-        /// <summary>The model version in Vertex AI Model Registry for this training run</summary>
+        /// <summary>Output only. The model version in Vertex AI Model Registry for this training run</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelVersion")]
         public virtual string VertexAiModelVersion { get; set; }
 
