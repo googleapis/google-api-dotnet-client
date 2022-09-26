@@ -324,9 +324,9 @@ namespace Google.Apis.Adsense.v2
                 }
 
                 /// <summary>
-                /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
-                /// product](https://developers.google.com/adsense/platforms/). Note that ad units can only be created
-                /// for ad clients with an "AFC" product code. For more info see the [AdClient
+                /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms](https://developers.google.com/adsense/platforms/) product. Note that ad units can only be
+                /// created for ad clients with an "AFC" product code. For more info see the [AdClient
                 /// resource](https://developers.google.com/adsense/management/reference/rest/v2/accounts.adclients).
                 /// For now, this method can only be used to create `DISPLAY` ad units. See:
                 /// https://support.google.com/adsense/answer/9183566
@@ -341,9 +341,9 @@ namespace Google.Apis.Adsense.v2
                 }
 
                 /// <summary>
-                /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
-                /// product](https://developers.google.com/adsense/platforms/). Note that ad units can only be created
-                /// for ad clients with an "AFC" product code. For more info see the [AdClient
+                /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms](https://developers.google.com/adsense/platforms/) product. Note that ad units can only be
+                /// created for ad clients with an "AFC" product code. For more info see the [AdClient
                 /// resource](https://developers.google.com/adsense/management/reference/rest/v2/accounts.adclients).
                 /// For now, this method can only be used to create `DISPLAY` ad units. See:
                 /// https://support.google.com/adsense/answer/9183566
@@ -671,9 +671,9 @@ namespace Google.Apis.Adsense.v2
                 }
 
                 /// <summary>
-                /// Updates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
-                /// product](https://developers.google.com/adsense/platforms/). For now, this method can only be used to
-                /// update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
+                /// Updates an ad unit. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms](https://developers.google.com/adsense/platforms/) product. For now, this method can only
+                /// be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -686,9 +686,9 @@ namespace Google.Apis.Adsense.v2
                 }
 
                 /// <summary>
-                /// Updates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms
-                /// product](https://developers.google.com/adsense/platforms/). For now, this method can only be used to
-                /// update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
+                /// Updates an ad unit. This method can only be used by projects enabled for the [AdSense for
+                /// Platforms](https://developers.google.com/adsense/platforms/) product. For now, this method can only
+                /// be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
                 /// </summary>
                 public class PatchRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.AdUnit>
                 {
@@ -769,7 +769,7 @@ namespace Google.Apis.Adsense.v2
 
                 /// <summary>
                 /// Creates a custom channel. This method can only be used by projects enabled for the [AdSense for
-                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// Platforms](https://developers.google.com/adsense/platforms/) product.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -783,7 +783,7 @@ namespace Google.Apis.Adsense.v2
 
                 /// <summary>
                 /// Creates a custom channel. This method can only be used by projects enabled for the [AdSense for
-                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// Platforms](https://developers.google.com/adsense/platforms/) product.
                 /// </summary>
                 public class CreateRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.CustomChannel>
                 {
@@ -834,7 +834,7 @@ namespace Google.Apis.Adsense.v2
 
                 /// <summary>
                 /// Deletes a custom channel. This method can only be used by projects enabled for the [AdSense for
-                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// Platforms](https://developers.google.com/adsense/platforms/) product.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom channel to delete. Format:
@@ -847,7 +847,7 @@ namespace Google.Apis.Adsense.v2
 
                 /// <summary>
                 /// Deletes a custom channel. This method can only be used by projects enabled for the [AdSense for
-                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// Platforms](https://developers.google.com/adsense/platforms/) product.
                 /// </summary>
                 public class DeleteRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.Empty>
                 {
@@ -1108,7 +1108,7 @@ namespace Google.Apis.Adsense.v2
 
                 /// <summary>
                 /// Updates a custom channel. This method can only be used by projects enabled for the [AdSense for
-                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// Platforms](https://developers.google.com/adsense/platforms/) product.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1122,7 +1122,7 @@ namespace Google.Apis.Adsense.v2
 
                 /// <summary>
                 /// Updates a custom channel. This method can only be used by projects enabled for the [AdSense for
-                /// Platforms product](https://developers.google.com/adsense/platforms/).
+                /// Platforms](https://developers.google.com/adsense/platforms/) product.
                 /// </summary>
                 public class PatchRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.CustomChannel>
                 {

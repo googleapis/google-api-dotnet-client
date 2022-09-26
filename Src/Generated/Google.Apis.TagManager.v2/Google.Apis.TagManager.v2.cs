@@ -6538,7 +6538,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Lists all Containers that belongs to a GTM Account.</summary>
-            /// <param name="parent">GTM Accounts's API relative path. Example: accounts/{account_id}.</param>
+            /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -6554,7 +6554,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>GTM Accounts's API relative path. Example: accounts/{account_id}.</summary>
+                /// <summary>GTM Account's API relative path. Example: accounts/{account_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -6842,7 +6842,7 @@ namespace Google.Apis.TagManager.v2
             /// List all users that have access to the account along with Account and Container user access granted to
             /// each of them.
             /// </summary>
-            /// <param name="parent">GTM Accounts's API relative path. Example: accounts/{account_id}</param>
+            /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -6861,7 +6861,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>GTM Accounts's API relative path. Example: accounts/{account_id}</summary>
+                /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -7051,7 +7051,7 @@ namespace Google.Apis.TagManager.v2
 
         /// <summary>Updates a GTM Account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="path">GTM Accounts's API relative path. Example: accounts/{account_id}</param>
+        /// <param name="path">GTM Account's API relative path. Example: accounts/{account_id}</param>
         public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Account body, string path)
         {
             return new UpdateRequest(service, body, path);
@@ -7068,7 +7068,7 @@ namespace Google.Apis.TagManager.v2
                 InitParameters();
             }
 
-            /// <summary>GTM Accounts's API relative path. Example: accounts/{account_id}</summary>
+            /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
             [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Path { get; private set; }
 

@@ -3511,8 +3511,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class DeliveryPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-        /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3621,6 +3620,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Additional information about the deploy failure, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
+
+        /// <summary>Output only. Metadata containing information about the deploy job run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual DeployJobRunMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DeployJobRunMetadata surfaces information associated with a `DeployJobRun` to the user.</summary>
+    public class DeployJobRunMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the Cloud Run Service that is associated with a `DeployJobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual CloudRunMetadata CloudRun { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3853,6 +3867,44 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Information specific to a verify `JobRun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyJobRun")]
         public virtual VerifyJobRun VerifyJobRun { get; set; }
+    }
+
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/jobrun_notification" Platform Log event that describes the failure
+    /// to send JobRun resource update Pub/Sub notification.
+    /// </summary>
+    public class JobRunNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobRun")]
+        public virtual string JobRun { get; set; }
+
+        /// <summary>Debug message for when a notification fails to send.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>Unique identifier of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
+        public virtual string ReleaseUid { get; set; }
+
+        /// <summary>Unique identifier of the `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutUid")]
+        public virtual string RolloutUid { get; set; }
+
+        /// <summary>ID of the `Target`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The response object from `ListDeliveryPipelines`.</summary>

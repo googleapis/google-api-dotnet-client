@@ -10639,9 +10639,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
-        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-        /// represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
@@ -10950,6 +10951,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
 
+        /// <summary>KMS wrapped key. Must not be set if `crypto_key` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
+        public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10993,6 +10998,28 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
+
+        /// <summary>KMS wrapped key. Must not be set if `crypto_key` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
+        public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains configuration for streaming de-identified FHIR export.</summary>
+    public class DeidentifiedStoreDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration to use when de-identifying resources that are added to this store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual DeidentifyConfig Config { get; set; }
+
+        /// <summary>
+        /// The full resource name of a Cloud Healthcare FHIR store, for example,
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("store")]
+        public virtual string Store { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11121,6 +11148,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
         public virtual FhirFilter ResourceFilter { get; set; }
+
+        /// <summary>
+        /// If true, skips resources that are created or modified after the de-identify operation is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipModifiedResources")]
+        public virtual System.Nullable<bool> SkipModifiedResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12399,6 +12432,29 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     }
 
     /// <summary>
+    /// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key.
+    /// The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+    /// Healthcare Service Agent service account. For more information, see [Creating a wrapped key]
+    /// (https://cloud.google.com/dlp/docs/create-wrapped-key).
+    /// </summary>
+    public class KmsWrappedCryptoKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the KMS CryptoKey to use for unwrapping. For example,
+        /// `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
+        public virtual string CryptoKey { get; set; }
+
+        /// <summary>Required. The wrapped data crypto key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
+        public virtual string WrappedKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// EntityMentions can be linked to multiple entities using a LinkedEntity message lets us add other fields, e.g.
     /// confidence.
     /// </summary>
@@ -13401,6 +13457,23 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>
+        /// The destination FHIR store for de-identified resources. After this field is added, all subsequent
+        /// creates/updates/patches to the source store will be de-identified using the provided configuration and
+        /// applied to the destination store. Importing resources to the source store will not trigger the streaming. If
+        /// the source store already contains resources when this option is enabled, those resources will not be copied
+        /// to the destination store unless they are subsequently updated. This may result in invalid references in the
+        /// destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission
+        /// on the destination store to your project's **Cloud Healthcare Service Agent** [service
+        /// account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
+        /// The destination store must set enable_update_create to true. The destination store must have
+        /// disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to
+        /// Cloud Logging (see [Viewing error logs in Cloud
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifiedStoreDestination")]
+        public virtual DeidentifiedStoreDestination DeidentifiedStoreDestination { get; set; }
 
         /// <summary>
         /// Supply a FHIR resource type (such as "Patient" or "Observation"). See

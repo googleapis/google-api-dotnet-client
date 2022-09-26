@@ -5578,6 +5578,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>User labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>List of network names specifying networks to which this policy is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<ResponsePolicyNetwork> Networks { get; set; }

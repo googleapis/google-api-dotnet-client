@@ -2539,6 +2539,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destIpRange")]
         public virtual string DestIpRange { get; set; }
 
+        /// <summary>Destination port ranges of the route. Policy based routes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destPortRanges")]
+        public virtual System.Collections.Generic.IList<string> DestPortRanges { get; set; }
+
         /// <summary>Name of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -2563,9 +2567,21 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
+        /// <summary>Protocols of the route. Policy based routes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
+        public virtual System.Collections.Generic.IList<string> Protocols { get; set; }
+
         /// <summary>Type of route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
         public virtual string RouteType { get; set; }
+
+        /// <summary>Source IP address range of the route. Policy based routes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("srcIpRange")]
+        public virtual string SrcIpRange { get; set; }
+
+        /// <summary>Source port ranges of the route. Policy based routes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("srcPortRanges")]
+        public virtual System.Collections.Generic.IList<string> SrcPortRanges { get; set; }
 
         /// <summary>
         /// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from

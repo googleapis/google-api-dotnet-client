@@ -1842,7 +1842,10 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Required. An ordered sequence of property names and their index attributes.</summary>
+        /// <summary>
+        /// Required. An ordered sequence of property names and their index attributes. Requires: * A maximum of 100
+        /// properties.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<GoogleDatastoreAdminV1IndexedProperty> Properties { get; set; }
 
