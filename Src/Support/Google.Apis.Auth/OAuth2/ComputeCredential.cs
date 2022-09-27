@@ -237,10 +237,15 @@ namespace Google.Apis.Auth.OAuth2
                     }
                     catch (Exception e) when (e is HttpRequestException || e is WebException || e is OperationCanceledException)
                     {
-                        // No-op; we'll retry.
+                        // We'll retry, but let's log the exception.
                         // We may eventually want to handle the different exception types in different ways,
                         // e.g. returning false rather than retrying for some exception types. However,
                         // for now it's safe just to retry.
+                        Logger.Debug(
+                            "An exception ocurred while attempting to reach Google's metadata service on attempt {0}. " +
+                            "A total of {1} attempts will be made. " +
+                            "The exception was: {2}.",
+                            i + 1, MetadataServerPingAttempts, e);
                     }
                 }
             }
