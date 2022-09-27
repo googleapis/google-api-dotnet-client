@@ -24,6 +24,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -181,5 +182,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
             // At this point our call has already been counted.
             _delegates[Calls - 1](request);
+
+        public void AssertAllCallsMade() => Assert.Equal(_delegates.Length, Calls);
     }
 }

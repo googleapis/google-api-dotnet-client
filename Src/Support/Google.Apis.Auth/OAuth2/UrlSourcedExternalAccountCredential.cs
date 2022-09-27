@@ -27,9 +27,8 @@ using System.Threading.Tasks;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// URL-sourced credentials as described in the
-    /// "Determining the subject token in Microsoft Azure and URL-sourced credentials" section of
-    /// https://google.aip.dev/auth/4117.
+    /// URL-sourced credentials as described in
+    /// https://google.aip.dev/auth/4117#determining-the-subject-token-in-microsoft-azure-and-url-sourced-credentials.
     /// </summary>
     public sealed class UrlSourcedExternalAccountCredential : ExternalAccountCredential, IGoogleCredential
     {

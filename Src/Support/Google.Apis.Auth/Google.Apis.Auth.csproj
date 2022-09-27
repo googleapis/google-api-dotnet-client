@@ -78,4 +78,10 @@ Supported Platforms:
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="OAuth2/AwsExternalAccountCredential.*.cs">
+      <DependentUpon>OAuth2/AwsExternalAccountCredential.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

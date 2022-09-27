@@ -52,7 +52,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
 
             AssertAccessTokenWithHeaders(token);
-            Assert.Equal(1, messageHandler.Calls);
+            messageHandler.AssertAllCallsMade();
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
 
             AssertImpersonatedAccessTokenWithHeaders(token);
-            Assert.Equal(2, messageHandler.Calls);
+            messageHandler.AssertAllCallsMade();
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
 
             AssertAccessTokenWithHeaders(token);
-            Assert.Equal(1, messageHandler.Calls);
+            messageHandler.AssertAllCallsMade();
         }
 
         [Fact]
@@ -139,7 +139,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Assert.Equal(AccessToken, await credential.GetAccessTokenForRequestAsync());
 
-            Assert.Equal(1, messageHandler.Calls);
+            messageHandler.AssertAllCallsMade();
         }
 
         [Fact]
@@ -162,7 +162,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Assert.Equal(RefreshedAccessToken, await credential.GetAccessTokenForRequestAsync());
 
-            Assert.Equal(2, messageHandler.Calls);
+            messageHandler.AssertAllCallsMade();
         }
 
         public static TheoryData<FileSourcedExternalAccountCredential, Type> SubjectTokenExceptionData

@@ -51,7 +51,10 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected const string QuotaProject = "dummy_project_id";
         protected const string QuotaProjectHeaderName = "x-goog-user-project";
 
-        protected static async Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope, bool isWorkforce = false)
+        protected static Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope, bool isWorkforce = false) =>
+            ValidateAccessTokenRequest(accessTokenRequest, scope, contentText => Assert.Contains($"subject_token={SubjectTokenText}", contentText), isWorkforce);
+
+        protected static async Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope, Action<string> subjectTokenValidator, bool isWorkforce = false)
         {
             Assert.Equal(TokenUrl, accessTokenRequest.RequestUri.ToString());
             Assert.Equal(HttpMethod.Post, accessTokenRequest.Method);
@@ -74,8 +77,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Contains(RequestedTokenTypeClaim, contentText);
             Assert.Contains($"audience={Audience}", contentText);
             Assert.Contains($"subject_token_type={SubjectTokenType}", contentText);
-            Assert.Contains($"subject_token={SubjectTokenText}", contentText);
             Assert.Contains($"scope={scope}", contentText);
+
+            subjectTokenValidator?.Invoke(contentText);
 
             return await BuildAccessTokenResponse(AccessToken);
         }
@@ -94,7 +98,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Assert.Contains(Scope, contentText);
 
-            return await BuildAccessTokenResponse(new
+            return await BuildStringContentResponseFromJson(new
             {
                 accessToken = ImpersonatedAccessToken,
                 expireTime = "2020-05-13T16:00:00.045123456Z"
@@ -118,15 +122,17 @@ namespace Google.Apis.Auth.Tests.OAuth2
             BuildAccessTokenResponse(RefreshedAccessToken);
 
         protected static Task<HttpResponseMessage> BuildAccessTokenResponse(string accessToken) =>
-            BuildAccessTokenResponse(new TokenResponse
+            BuildStringContentResponseFromJson(new TokenResponse
             {
                 AccessToken = accessToken,
                 ExpiresInSeconds = 24 * 60 * 60
             });
 
-        protected static Task<HttpResponseMessage> BuildAccessTokenResponse(object accessToken)
+        protected static Task<HttpResponseMessage> BuildStringContentResponseFromJson(object accessToken) =>
+            BuildStringContentResponse(NewtonsoftJsonSerializer.Instance.Serialize(accessToken));
+
+        protected static Task<HttpResponseMessage> BuildStringContentResponse(string content)
         {
-            string content = NewtonsoftJsonSerializer.Instance.Serialize(accessToken);
             return Task.FromResult(new HttpResponseMessage
             {
                 Content = new StringContent(content, Encoding.UTF8)

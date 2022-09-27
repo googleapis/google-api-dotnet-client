@@ -128,6 +128,18 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""credential_source"": {
     ""file"": ""/var/run/saml/assertion/token""
   }}";
+        private const string DummyAwsExternalAccountCredentialFile = @"{
+  ""type"": ""external_account"",
+  ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""subject_token_type"": ""urn:ietf:params:aws:token-type:aws4_request"",
+  ""token_url"": ""https://sts.googleapis.com/v1/token"",
+  ""credential_source"": {
+    ""environment_id"": ""aws1"",
+    ""region_url"": ""http://169.254.169.254/latest/meta-data/placement/availability-zone"",
+    ""url"": ""http://169.254.169.254/latest/meta-data/iam/security-credentials"",
+    ""regional_cred_verification_url"": ""https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15"",
+    ""imdsv2_session_token_url"": ""http://169.254.169.254/latest/api/token""
+  }}";
         private const string DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents = @"{
 ""type"": ""external_account"",
 ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
@@ -151,6 +163,19 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""credential_source"": {
     ""file"": ""/var/run/saml/assertion/token""
   }}";
+        private const string DummyAwsImpersonatedExternalAccountCredentialFile = @"{
+  ""type"": ""external_account"",
+  ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""subject_token_type"": ""urn:ietf:params:aws:token-type:aws4_request"",
+  ""service_account_impersonation_url"": ""https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/$EMAIL:generateAccessToken"",
+  ""token_url"": ""https://sts.googleapis.com/v1/token"",
+  ""credential_source"": {
+    ""environment_id"": ""aws1"",
+    ""region_url"": ""http://169.254.169.254/latest/meta-data/placement/availability-zone"",
+    ""url"": ""http://169.254.169.254/latest/meta-data/iam/security-credentials"",
+    ""regional_cred_verification_url"": ""https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15"",
+    ""imdsv2_session_token_url"": ""http://169.254.169.254/latest/api/token""
+  }}";
         private const string DummyUrlSourcedWorkforceExternalAccountCredentialFileContents = @"{
 ""type"":""external_account"",
 ""audience"":""//iam.googleapis.com/locations/global/workforcePools/pool/providers/oidc-google"",
@@ -173,6 +198,19 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
   ""workforce_pool_user_project"": ""user_project"",
   ""credential_source"": {
     ""file"": ""/var/run/saml/assertion/token""
+  }}";
+        private const string DummyAwsWorkforceExternalAccountCredentialFileContents = @"{
+  ""type"": ""external_account"",
+  ""audience"": ""//iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID"",
+  ""subject_token_type"": ""urn:ietf:params:aws:token-type:aws4_request"",
+  ""token_url"": ""https://sts.googleapis.com/v1/token"",
+  ""workforce_pool_user_project"": ""user_project"",
+  ""credential_source"": {
+    ""environment_id"": ""aws1"",
+    ""region_url"": ""http://169.254.169.254/latest/meta-data/placement/availability-zone"",
+    ""url"": ""http://169.254.169.254/latest/meta-data/iam/security-credentials"",
+    ""regional_cred_verification_url"": ""https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15"",
+    ""imdsv2_session_token_url"": ""http://169.254.169.254/latest/api/token""
   }}";
 
         public DefaultCredentialProviderTests()
@@ -284,6 +322,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
         {
             { DummyUrlSourcedExternalAccountCredentialFileContents, typeof(UrlSourcedExternalAccountCredential) },
             { DummyFileSourcedExternalAccountCredentialFileContents, typeof (FileSourcedExternalAccountCredential) },
+            { DummyAwsExternalAccountCredentialFile, typeof(AwsExternalAccountCredential) },
         };
 
         [Theory]
@@ -304,6 +343,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
         {
             { DummyUrlSourcedImpersonatedExternalAccountCredentialFileContents, typeof(UrlSourcedExternalAccountCredential) },
             { DummyFileSourcedImpersonatedExternalAccountCredentialFileContents, typeof (FileSourcedExternalAccountCredential) },
+            { DummyAwsImpersonatedExternalAccountCredentialFile, typeof (AwsExternalAccountCredential) },
         };
 
         [Theory]
@@ -327,6 +367,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
         {
             { DummyUrlSourcedWorkforceExternalAccountCredentialFileContents, typeof(UrlSourcedExternalAccountCredential) },
             { DummyFileSourcedWorkforceExternalAccountCredentialFileContents, typeof (FileSourcedExternalAccountCredential) },
+            { DummyAwsWorkforceExternalAccountCredentialFileContents, typeof(AwsExternalAccountCredential) } ,
         };
 
         [Theory]
