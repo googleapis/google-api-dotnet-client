@@ -162,11 +162,33 @@ namespace Google.Apis.Auth.OAuth2
             public string EnvironmentId { get; set; }
 
             /// <summary>
+            /// For AWS credentials this is the metadata server URL used to determine the AWS region
+            /// that should be included as part of the subject token.
+            /// </summary>
+            [JsonProperty("region_url")]
+            public string RegionUrl { get; set; }
+
+            /// <summary>
             /// For URL-sourced credentials this is the URL from which to obtain the subject token from.
-            /// For AWS credentials this is the URL from which to obtain the IAM role associated to the instance.
+            /// For AWS credentials this is the URL for the metadata server from which to obtain the
+            /// security credentials that will be used to sign the subject token.
             /// </summary>
             [JsonProperty("url")]
             public string Url { get; set; }
+
+            /// <summary>
+            /// For AWS credentials, the STS server will use this URL to validate the subject token
+            /// included on the STS request. This URL will be included as part of the subject token.
+            /// </summary>
+            [JsonProperty("regional_cred_verification_url")]
+            public string RegionalCredentialVerificationUrl { get; set; }
+
+            /// <summary>
+            /// For AWS credentials, if present, a session token fetched from this URL should be used when making
+            /// requests to the metadata server.
+            /// </summary>
+            [JsonProperty("imdsv2_session_token_url")]
+            public string ImdsV2SessionTokenUrl { get; set; }
 
             /// <summary>
             /// For URL-sourced credentilas this are headers to be included on the request to obtain the subject token.

@@ -275,7 +275,25 @@ namespace Google.Apis.Auth.OAuth2
             // The order in which these checks are performed is relevant, see https://google.aip.dev/auth/4117.
             if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.EnvironmentId))
             {
-                throw new NotImplementedException("AWS external credentials not yet supported.");
+                if (!parameters.CredentialSourceConfig.EnvironmentId.Equals(AwsExternalAccountCredential.SupportedVersion, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidOperationException(
+                        $"Only {AwsExternalAccountCredential.SupportedVersion} version of AWS external account credentials is supported by this library.");
+                }
+
+                return new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
+                    parameters.TokenUrl, parameters.Audience, parameters.SubjectTokenType,
+                    parameters.CredentialSourceConfig.RegionalCredentialVerificationUrl)
+                {
+                    QuotaProject = parameters.QuotaProject,
+                    ServiceAccountImpersonationUrl = parameters.ServiceAccountImpersonationUrl,
+                    WorkforcePoolUserProject = parameters.WorkforcePoolUserProject,
+                    ClientId = parameters.ClientId,
+                    ClientSecret = parameters.ClientSecret,
+                    RegionUrl = parameters.CredentialSourceConfig.RegionUrl,
+                    SecurityCredentialsUrl = parameters.CredentialSourceConfig.Url,
+                    ImdsV2SessionTokenUrl = parameters.CredentialSourceConfig.ImdsV2SessionTokenUrl
+                });
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.File))
             {

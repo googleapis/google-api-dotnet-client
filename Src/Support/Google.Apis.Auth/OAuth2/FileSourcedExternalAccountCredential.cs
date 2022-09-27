@@ -24,9 +24,8 @@ using System.Threading.Tasks;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// File-sourced credentials as described in the
-    /// "Determining the subject token in file-sourced credentials" section of
-    /// https://google.aip.dev/auth/4117.
+    /// File-sourced credentials as described in
+    /// https://google.aip.dev/auth/4117#determining-the-subject-token-in-file-sourced-credentials.
     /// </summary>
     public sealed class FileSourcedExternalAccountCredential : ExternalAccountCredential, IGoogleCredential
     {
