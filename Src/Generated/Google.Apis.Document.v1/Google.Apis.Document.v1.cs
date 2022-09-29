@@ -3623,6 +3623,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1DocumentPageImage Image { get; set; }
 
+        /// <summary>Image Quality Scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
+        public virtual GoogleCloudDocumentaiV1DocumentPageImageQualityScores ImageQualityScores { get; set; }
+
         /// <summary>Layout for the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1DocumentPageLayout Layout { get; set; }
@@ -3864,6 +3868,42 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Width of the image in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image Quality Scores for the page image</summary>
+    public class GoogleCloudDocumentaiV1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of detected defects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
+
+        /// <summary>The overall quality score. Range [0, 1] where 1 is perfect quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
+        public virtual System.Nullable<float> QualityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image Quality Defects</summary>
+    public class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy",
+        /// "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small",
+        /// "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5399,6 +5439,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImage Image { get; set; }
 
+        /// <summary>Image Quality Scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores ImageQualityScores { get; set; }
+
         /// <summary>Layout for the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; }
@@ -5640,6 +5684,42 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Width of the image in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image Quality Scores for the page image</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of detected defects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
+
+        /// <summary>The overall quality score. Range [0, 1] where 1 is perfect quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
+        public virtual System.Nullable<float> QualityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image Quality Defects</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy",
+        /// "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small",
+        /// "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6605,6 +6685,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImage Image { get; set; }
 
+        /// <summary>Image Quality Scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores ImageQualityScores { get; set; }
+
         /// <summary>Layout for the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; }
@@ -6846,6 +6930,42 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Width of the image in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image Quality Scores for the page image</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of detected defects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
+
+        /// <summary>The overall quality score. Range [0, 1] where 1 is perfect quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
+        public virtual System.Nullable<float> QualityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image Quality Defects</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy",
+        /// "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small",
+        /// "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

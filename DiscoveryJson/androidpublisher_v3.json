@@ -3920,7 +3920,7 @@
    }
   }
  },
- "revision": "20220920",
+ "revision": "20220928",
  "rootUrl": "https://androidpublisher.googleapis.com/",
  "schemas": {
   "AcquisitionTargetingRule": {
@@ -5547,7 +5547,7 @@
    "id": "PrepaidPlan",
    "properties": {
     "allowExtendAfterTime": {
-     "description": "After this time, the subscription is allowed for a new top-up purchase. Not present if the subscription is already extended by a top-up purchase.",
+     "description": "If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be present for expired prepaid plans.",
      "format": "google-datetime",
      "type": "string"
     }

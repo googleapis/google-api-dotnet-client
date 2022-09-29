@@ -7622,6 +7622,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Bot-specific profile information.</summary>
     public class BotInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("appAllowlistStatus")]
+        public virtual string AppAllowlistStatus { get; set; }
+
         /// <summary>Identifier of the application associated with the bot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual AppId AppId { get; set; }
@@ -7656,6 +7659,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
+        /// <summary>If the app supports a home screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportHomeScreen")]
+        public virtual System.Nullable<bool> SupportHomeScreen { get; set; }
+
         /// <summary>
         /// Urls with additional information related to the bot. This field should always be set even if all the fields
         /// within it are empty, so that it is convenient for clients to work with this field in javascript.
@@ -7669,9 +7676,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedUses")]
         public virtual System.Collections.Generic.IList<string> SupportedUses { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("whitelistStatus")]
-        public virtual string WhitelistStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13354,7 +13358,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// Indicates that users can perform wildcard search for this property. Only supported for Text properties.
         /// IsReturnable must be true to set this option. In a given datasource maximum of 5 properties can be marked as
-        /// is_wildcard_searchable.
+        /// is_wildcard_searchable. For more details, see [Define object
+        /// properties](https://developers.google.com/cloud-search/docs/guides/schema-guide#properties)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isWildcardSearchable")]
         public virtual System.Nullable<bool> IsWildcardSearchable { get; set; }
@@ -14845,7 +14850,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatLock")]
         public virtual System.Nullable<bool> ChatLock { get; set; }
 
-        /// <summary>Whether meeting artifacts will be shared with co-hosts.</summary>
+        /// <summary>Whether meeting artifacts will be shared with cohosts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohostArtifactSharingEnabled")]
         public virtual System.Nullable<bool> CohostArtifactSharingEnabled { get; set; }
 
@@ -16040,7 +16045,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// Mime type of the content (Currently mapped from Page Render Service ItemType) Note that this is not
         /// necessarily the mime type of the http resource. For example a text/html from youtube or vimeo may actually
         /// be classified as a video type. Then we shall mark it as video/* since we don't know exactly what type of
-        /// video it is. NEXT TAG : 16
+        /// video it is.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -16066,6 +16071,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The original URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual SafeUrlProto Url { get; set; }
+
+        /// <summary>NEXT TAG : 17</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlSource")]
+        public virtual string UrlSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16196,9 +16205,18 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains info regarding the updater of an Activity Feed item. Next Id: 7</summary>
+    /// <summary>Contains info regarding the updater of an Activity Feed item. Next Id: 8</summary>
     public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Avatar url of the user who triggered the Drive Notification email. This field will be populated if we can
+        /// extract such information from the Drive Notification email. This should only be used to fetch user avatars
+        /// when updater_to_show_email is not populated. This field is not set for non-Drive Notification items. This is
+        /// not the actual sender of the email, as the sender is always comments-noreply@docs.google.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveNotificationAvatarUrl")]
+        public virtual string DriveNotificationAvatarUrl { get; set; }
+
         /// <summary>Describes how updater_count_to_show should be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updaterCountDisplayType")]
         public virtual string UpdaterCountDisplayType { get; set; }
@@ -16207,7 +16225,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updaterCountToShow")]
         public virtual System.Nullable<int> UpdaterCountToShow { get; set; }
 
-        /// <summary>The email of the updater for clients to show used for Gmail items.</summary>
+        /// <summary>
+        /// The email of the updater for clients to show used for Gmail items. For Drive Notifications, this is the
+        /// email of the user who triggered the Drive Notification email. This field will be populated if we can extract
+        /// such information from the Drive Notification email. This is not the actual sender of the email, as the
+        /// sender is always comments-noreply@docs.google.com.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowEmail")]
         public virtual string UpdaterToShowEmail { get; set; }
 
@@ -16219,9 +16242,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Nullable<long> UpdaterToShowGaiaId { get; set; }
 
         /// <summary>
-        /// The display name of the updater for clients to show used for Gmail items. This (along with the updater
-        /// fields above) will be populated in the thread pipeline (http://shortn/_rPS0GCp94Y) when converting Activity
-        /// Feed message attributes into client-renderable Activity Feed items.
+        /// The display name of the updater for clients to show used for Gmail items. For non-Drive Notification items,
+        /// this field will always be populated. If the display name cannot be found for the user, the fallback string
+        /// will be the email address. For Drive Notification items, this is the email of the user who triggered the
+        /// Drive notification email. This field will be populated if we can extract such information from the Drive
+        /// Notification email. This is not the actual sender of the email, as the sender is always
+        /// comments-noreply@docs.google.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowName")]
         public virtual string UpdaterToShowName { get; set; }

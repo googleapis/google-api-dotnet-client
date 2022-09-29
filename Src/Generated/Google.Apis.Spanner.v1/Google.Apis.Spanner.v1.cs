@@ -6333,7 +6333,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>The progress of the CreateInstanceConfig operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; }
+        public virtual InstanceOperationProgress Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7133,6 +7133,27 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Output only. The current instance config state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+    }
+
+    /// <summary>
+    /// Encapsulates progress related information for a Cloud Spanner long running instance operations.
+    /// </summary>
+    public class InstanceOperationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; }
+
+        /// <summary>Time the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -8508,6 +8529,16 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual Transaction Transaction { get; set; }
 
+        /// <summary>
+        /// A SQL query can be parameterized. In PLAN mode, these parameters can be undeclared. This indicates the field
+        /// names and types for those undeclared parameters in the SQL query. For example, a SQL query like `"SELECT *
+        /// FROM Users where UserId = @userId and UserName = @userName "` could return a `undeclared_parameters` value
+        /// like: "fields": [ { "name": "UserId", "type": { "code": "INT64" } }, { "name": "UserName", "type": { "code":
+        /// "STRING" } }, ]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("undeclaredParameters")]
+        public virtual StructType UndeclaredParameters { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9109,7 +9140,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>The progress of the UpdateInstanceConfig operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; }
+        public virtual InstanceOperationProgress Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

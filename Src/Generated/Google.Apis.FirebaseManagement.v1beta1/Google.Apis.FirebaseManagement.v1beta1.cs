@@ -3661,16 +3661,16 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. A user-assigned unique identifier for the Project. This identifier may appear in URLs or names
-        /// for some Firebase resources associated with the Project, but it should generally be treated as a convenience
-        /// alias to reference the Project.
+        /// Output only. Immutable. A user-assigned unique identifier for the Project. This identifier may appear in
+        /// URLs or names for some Firebase resources associated with the Project, but it should generally be treated as
+        /// a convenience alias to reference the Project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Output only. The globally unique, Google-assigned canonical identifier for the Project. Use this identifier
-        /// when configuring integrations and/or making API calls to Firebase or third-party services.
+        /// Output only. Immutable. The globally unique, Google-assigned canonical identifier for the Project. Use this
+        /// identifier when configuring integrations and/or making API calls to Firebase or third-party services.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; }

@@ -2875,16 +2875,14 @@ namespace Google.Apis.CloudResourceManager.v3
 
             /// <summary>
             /// Optional. The maximum number of TagBindings to return in the response. The server allows a maximum of
-            /// 300 TagBindings to return. If unspecified, the server will use 100 as the default. Currently this api
-            /// returns unpaginated response and `page_size` is ignored.
+            /// 300 TagBindings to return. If unspecified, the server will use 100 as the default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
             /// Optional. A pagination token returned from a previous call to `ListTagBindings` that indicates where
-            /// this listing should continue from. Currently this api returns unpaginated response and `page_token` is
-            /// ignored.
+            /// this listing should continue from.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }

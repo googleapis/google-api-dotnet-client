@@ -304,6 +304,7 @@ namespace Google.Apis.Baremetalsolution.v2
                 Operations = new OperationsResource(service);
                 ProvisioningConfigs = new ProvisioningConfigsResource(service);
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
+                SshKeys = new SshKeysResource(service);
                 Volumes = new VolumesResource(service);
             }
 
@@ -493,6 +494,112 @@ namespace Google.Apis.Baremetalsolution.v2
                         RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
                         {
                             Name = "instance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Disable the interactive serial console feature on an instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual DisableInteractiveSerialConsoleRequest DisableInteractiveSerialConsole(Google.Apis.Baremetalsolution.v2.Data.DisableInteractiveSerialConsoleRequest body, string name)
+                {
+                    return new DisableInteractiveSerialConsoleRequest(service, body, name);
+                }
+
+                /// <summary>Disable the interactive serial console feature on an instance.</summary>
+                public class DisableInteractiveSerialConsoleRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new DisableInteractiveSerialConsole request.</summary>
+                    public DisableInteractiveSerialConsoleRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.DisableInteractiveSerialConsoleRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.DisableInteractiveSerialConsoleRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disableInteractiveSerialConsole";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:disableInteractiveSerialConsole";
+
+                    /// <summary>Initializes DisableInteractiveSerialConsole parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enable the interactive serial console feature on an instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual EnableInteractiveSerialConsoleRequest EnableInteractiveSerialConsole(Google.Apis.Baremetalsolution.v2.Data.EnableInteractiveSerialConsoleRequest body, string name)
+                {
+                    return new EnableInteractiveSerialConsoleRequest(service, body, name);
+                }
+
+                /// <summary>Enable the interactive serial console feature on an instance.</summary>
+                public class EnableInteractiveSerialConsoleRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new EnableInteractiveSerialConsole request.</summary>
+                    public EnableInteractiveSerialConsoleRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.EnableInteractiveSerialConsoleRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.EnableInteractiveSerialConsoleRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableInteractiveSerialConsole";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:enableInteractiveSerialConsole";
+
+                    /// <summary>Initializes EnableInteractiveSerialConsole parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1101,7 +1208,8 @@ namespace Google.Apis.Baremetalsolution.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The list of fields to update. The only currently supported fields are: `labels`, `reservations`
+                    /// The list of fields to update. The only currently supported fields are: `labels`, `reservations`,
+                    /// `vrf.vlan_attachments`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1658,7 +1766,9 @@ namespace Google.Apis.Baremetalsolution.v2
 
                 /// <summary>Update existing ProvisioningConfig.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The name of the provisioning config.</param>
+                /// <param name="name">
+                /// Output only. The system-generated name of the provisioning config. This follows the UUID format.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1675,7 +1785,9 @@ namespace Google.Apis.Baremetalsolution.v2
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The name of the provisioning config.</summary>
+                    /// <summary>
+                    /// Output only. The system-generated name of the provisioning config. This follows the UUID format.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1847,6 +1959,230 @@ namespace Google.Apis.Baremetalsolution.v2
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/provisioningQuotas";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SshKeys resource.</summary>
+            public virtual SshKeysResource SshKeys { get; }
+
+            /// <summary>The "sshKeys" collection of methods.</summary>
+            public class SshKeysResource
+            {
+                private const string Resource = "sshKeys";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SshKeysResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Register a public SSH key in the specified project for use with the interactive serial console
+                /// feature.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent containing the SSH keys.</param>
+                public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.SSHKey body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Register a public SSH key in the specified project for use with the interactive serial console
+                /// feature.
+                /// </summary>
+                public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.SSHKey>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.SSHKey body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent containing the SSH keys.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the key, which will become the final component of the key's resource
+                    /// name. This value must match the regex: [a-zA-Z0-9@.\-_]{1,64}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("sshKeyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SshKeyId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.SSHKey Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/sshKeys";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("sshKeyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sshKeyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a public SSH key registered in the specified project.</summary>
+                /// <param name="name">
+                /// Required. The name of the SSH key to delete. Currently, the only valid value for the location is
+                /// "global".
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a public SSH key registered in the specified project.</summary>
+                public class DeleteRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the SSH key to delete. Currently, the only valid value for the location is
+                    /// "global".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/sshKeys/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists the public SSH keys registered for the specified project. These SSH keys are used only for the
+                /// interactive serial console feature.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent containing the SSH keys. Currently, the only valid value for the location is
+                /// "global".
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists the public SSH keys registered for the specified project. These SSH keys are used only for the
+                /// interactive serial console feature.
+                /// </summary>
+                public class ListRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ListSSHKeysResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent containing the SSH keys. Currently, the only valid value for the location
+                    /// is "global".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/sshKeys";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -2492,6 +2828,31 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for disabling the interactive serial console on an instance.</summary>
+    public class DisableInteractiveSerialConsoleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for enabling the interactive serial console on an instance.</summary>
+    public class EnableInteractiveSerialConsoleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response with all provisioning settings.</summary>
     public class FetchInstanceProvisioningSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2882,6 +3243,23 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response of ListSSHKeys.</summary>
+    public class ListSSHKeysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The SSH keys registered in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshKeys")]
+        public virtual System.Collections.Generic.IList<SSHKey> SshKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message containing the list of storage volumes.</summary>
     public class ListVolumesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3033,6 +3411,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The cidr of the Network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
+
+        /// <summary>Output only. Gateway ip address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayIp")]
+        public virtual string GatewayIp { get; set; }
 
         /// <summary>An identifier for the `Network`, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -3450,6 +3832,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudConsoleUri")]
         public virtual string CloudConsoleUri { get; set; }
 
+        /// <summary>Optional. The user-defined identifier of the provisioning config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customId")]
+        public virtual string CustomId { get; set; }
+
         /// <summary>
         /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in
         /// request messages.
@@ -3471,7 +3857,9 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Output only. The name of the provisioning config.</summary>
+        /// <summary>
+        /// Output only. The system-generated name of the provisioning config. This follows the UUID format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3574,6 +3962,23 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>New Volume size, in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGib")]
         public virtual System.Nullable<long> SizeGib { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An SSH key, used for authorizing with the interactive serial console feature.</summary>
+    public class SSHKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of this SSH key. Currently, the only valid value for the location is "global".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The public SSH key. This must be in OpenSSH .authorized_keys format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
+        public virtual string PublicKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

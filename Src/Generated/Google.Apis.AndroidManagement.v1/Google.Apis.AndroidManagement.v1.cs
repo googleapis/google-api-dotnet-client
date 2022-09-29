@@ -5140,7 +5140,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installUnknownSourcesAllowed")]
         public virtual System.Nullable<bool> InstallUnknownSourcesAllowed { get; set; }
 
-        /// <summary>Whether the keyguard is disabled.</summary>
+        /// <summary>
+        /// If true, this disables the Lock Screen
+        /// (https://source.android.com/docs/core/display/multi_display/lock-screen) for primary and/or secondary
+        /// displays.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyguardDisabled")]
         public virtual System.Nullable<bool> KeyguardDisabled { get; set; }
 

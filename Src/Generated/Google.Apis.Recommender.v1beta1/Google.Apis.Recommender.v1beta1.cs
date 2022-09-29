@@ -4061,6 +4061,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
         public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; }
 
+        /// <summary>Use with CategoryType.RELIABILITY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reliabilityProjection")]
+        public virtual GoogleCloudRecommenderV1beta1ReliabilityProjection ReliabilityProjection { get; set; }
+
         /// <summary>Use with CategoryType.SECURITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProjection")]
         public virtual GoogleCloudRecommenderV1beta1SecurityProjection SecurityProjection { get; set; }
@@ -4600,6 +4604,21 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information on the impact of a reliability recommendation.</summary>
+    public class GoogleCloudRecommenderV1beta1ReliabilityProjection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Per-recommender projection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
+
+        /// <summary>Reliability risks mitigated by this recommendation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risks")]
+        public virtual System.Collections.Generic.IList<string> Risks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

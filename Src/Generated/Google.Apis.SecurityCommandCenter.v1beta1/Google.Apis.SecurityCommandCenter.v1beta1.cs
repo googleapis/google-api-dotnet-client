@@ -2186,6 +2186,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userAgentFamily")]
         public virtual string UserAgentFamily { get; set; }
 
+        /// <summary>
+        /// A string representing a username. This is likely not an IAM principal. For instance, this may be the system
+        /// user name if the finding is VM-related, or this may be some type of application login user name, depending
+        /// on the type of finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3177,6 +3185,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
     /// <summary>The response to a BulkMute request. Contains the LRO information.</summary>
     public class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that is exposed as a result of a finding.</summary>
+    public class GoogleCloudSecuritycenterV1ExposedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A path that an attacker could take to reach an exposed resource.</summary>
+    public class GoogleCloudSecuritycenterV1ExposurePath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

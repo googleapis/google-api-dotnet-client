@@ -1027,9 +1027,8 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>
-        /// Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one
-        /// active TransferOperation. If this method is called while a TransferOperation is active, an error will be
-        /// returned.
+        /// Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active
+        /// `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="jobName">Required. The name of the transfer job.</param>
@@ -1039,9 +1038,8 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>
-        /// Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one
-        /// active TransferOperation. If this method is called while a TransferOperation is active, an error will be
-        /// returned.
+        /// Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active
+        /// `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned.
         /// </summary>
         public class RunRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Operation>
         {

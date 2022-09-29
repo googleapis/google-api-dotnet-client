@@ -1844,6 +1844,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isCwsHosted")]
         public virtual System.Nullable<bool> IsCwsHosted { get; set; }
 
+        /// <summary>Output only. Whether an app supports policy for extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isExtensionPolicySupported")]
+        public virtual System.Nullable<bool> IsExtensionPolicySupported { get; set; }
+
         /// <summary>Output only. Whether the app is only for Kiosk mode on ChromeOS devices</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isKioskOnly")]
         public virtual System.Nullable<bool> IsKioskOnly { get; set; }
