@@ -1800,6 +1800,20 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration options for networking connections in the Composer 2 environment.</summary>
+    public class NetworkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You
+        /// cannot set networking connection type in public IP environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
     /// </summary>
@@ -2070,6 +2084,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivatelyUsedPublicIps")]
         public virtual System.Nullable<bool> EnablePrivatelyUsedPublicIps { get; set; }
+
+        /// <summary>Optional. Configuration for the network connections configuration in the environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkingConfig")]
+        public virtual NetworkingConfig NetworkingConfig { get; set; }
 
         /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.

@@ -35,7 +35,6 @@ namespace Google.Apis.Baremetalsolution.v1
         public BaremetalsolutionService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Operations = new OperationsResource(this);
-            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -85,9 +84,6 @@ namespace Google.Apis.Baremetalsolution.v1
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
-
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for Baremetalsolution requests.</summary>
@@ -551,118 +547,6 @@ namespace Google.Apis.Baremetalsolution.v1
             }
         }
     }
-
-    /// <summary>The "projects" collection of methods.</summary>
-    public class ProjectsResource
-    {
-        private const string Resource = "projects";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ProjectsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            Locations = new LocationsResource(service);
-        }
-
-        /// <summary>Gets the Locations resource.</summary>
-        public virtual LocationsResource Locations { get; }
-
-        /// <summary>The "locations" collection of methods.</summary>
-        public class LocationsResource
-        {
-            private const string Resource = "locations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LocationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                Instances = new InstancesResource(service);
-            }
-
-            /// <summary>Gets the Instances resource.</summary>
-            public virtual InstancesResource Instances { get; }
-
-            /// <summary>The "instances" collection of methods.</summary>
-            public class InstancesResource
-            {
-                private const string Resource = "instances";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public InstancesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Perform an ungraceful, hard reset on a machine (equivalent to shutting the power off, and then
-                /// turning it back on).
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="instance">Required. Name of the instance to reset.</param>
-                public virtual ResetInstanceRequest ResetInstance(Google.Apis.Baremetalsolution.v1.Data.ResetInstanceRequest body, string instance)
-                {
-                    return new ResetInstanceRequest(service, body, instance);
-                }
-
-                /// <summary>
-                /// Perform an ungraceful, hard reset on a machine (equivalent to shutting the power off, and then
-                /// turning it back on).
-                /// </summary>
-                public class ResetInstanceRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v1.Data.ResetInstanceResponse>
-                {
-                    /// <summary>Constructs a new ResetInstance request.</summary>
-                    public ResetInstanceRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v1.Data.ResetInstanceRequest body, string instance) : base(service)
-                    {
-                        Instance = instance;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the instance to reset.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Instance { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Baremetalsolution.v1.Data.ResetInstanceRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "resetInstance";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+instance}:resetInstance";
-
-                    /// <summary>Initializes ResetInstance parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "instance",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                        });
-                    }
-                }
-            }
-        }
-    }
 }
 namespace Google.Apis.Baremetalsolution.v1.Data
 {
@@ -738,20 +622,6 @@ namespace Google.Apis.Baremetalsolution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for ResetInstance.</summary>
-    public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for ResetInstance.</summary>
-    public class ResetInstanceResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

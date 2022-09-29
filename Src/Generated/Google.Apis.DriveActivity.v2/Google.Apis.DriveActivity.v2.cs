@@ -356,6 +356,10 @@ namespace Google.Apis.DriveActivity.v2.Data
     /// <summary>Data describing the type and additional information of an action.</summary>
     public class ActionDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Label was changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedLabelChange")]
+        public virtual AppliedLabelChange AppliedLabelChange { get; set; }
+
         /// <summary>A change about comments was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual Comment Comment { get; set; }
@@ -465,6 +469,43 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Label changes that were made on the Target.</summary>
+    public class AppliedLabelChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Changes that were made to the Label on the Target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<AppliedLabelChangeDetail> Changes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change made to a Label on the Target.</summary>
+    public class AppliedLabelChangeDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field Changes. Only present if `types` contains `LABEL_FIELD_VALUE_CHANGED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldChanges")]
+        public virtual System.Collections.Generic.IList<FieldValueChange> FieldChanges { get; set; }
+
+        /// <summary>
+        /// The Label name representing the Label that changed. This name always contains the revision of the Label that
+        /// was used when this Action occurred. The format is `labels/id@revision`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The human-readable title of the label that changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The types of changes made to the Label on the Target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A comment with an assignment.</summary>
     public class Assignment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -562,6 +603,17 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>The type of Data Leak Prevention (DLP) change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for Date Field value.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -779,6 +831,74 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains a value of a Field.</summary>
+    public class FieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>Integer Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integer")]
+        public virtual Integer Integer { get; set; }
+
+        /// <summary>Selection Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selection")]
+        public virtual Selection Selection { get; set; }
+
+        /// <summary>Selection List Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectionList")]
+        public virtual SelectionList SelectionList { get; set; }
+
+        /// <summary>Text Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual Text Text { get; set; }
+
+        /// <summary>Text List Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textList")]
+        public virtual TextList TextList { get; set; }
+
+        /// <summary>User Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual SingleUser User { get; set; }
+
+        /// <summary>User List Field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userList")]
+        public virtual UserList UserList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Change to a Field value.</summary>
+    public class FieldValueChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable display name for this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ID of this field. Field IDs are unique within a Label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual string FieldId { get; set; }
+
+        /// <summary>
+        /// The value that is now set on the field. If not present, the field was cleared. At least one of
+        /// {old_value|new_value} is always set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
+        public virtual FieldValue NewValue { get; set; }
+
+        /// <summary>
+        /// The value that was previously set on the field. If not present, the field was newly set. At least one of
+        /// {old_value|new_value} is always set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
+        public virtual FieldValue OldValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This item is deprecated; please see `DriveFile` instead.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -854,6 +974,17 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>The impersonated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impersonatedUser")]
         public virtual User ImpersonatedUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for Integer Field value.</summary>
+    public class Integer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1115,12 +1246,49 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Wrapper for Selection Field value as combined value/display_name pair for selected choice.</summary>
+    public class Selection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Selection value as human-readable display string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Selection value as Field Choice ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for SelectionList Field value.</summary>
+    public class SelectionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Selection values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Selection> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about settings changes.</summary>
     public class SettingsChange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The set of changes made to restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictionChanges")]
         public virtual System.Collections.Generic.IList<RestrictionChange> RestrictionChanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for User Field value.</summary>
+    public class SingleUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User value as email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1224,6 +1392,28 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Wrapper for Text Field value.</summary>
+    public class Text : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of Text Field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for Text List Field value.</summary>
+    public class TextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Text> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about time ranges.</summary>
     public class TimeRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1267,6 +1457,17 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>A user about whom nothing is currently known.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unknownUser")]
         public virtual UnknownUser UnknownUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for UserList Field value.</summary>
+    public class UserList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<SingleUser> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

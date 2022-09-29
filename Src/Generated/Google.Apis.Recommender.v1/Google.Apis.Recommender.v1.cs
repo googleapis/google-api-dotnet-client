@@ -4069,9 +4069,17 @@ namespace Google.Apis.Recommender.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
         public virtual GoogleCloudRecommenderV1CostProjection CostProjection { get; set; }
 
+        /// <summary>Use with CategoryType.RELAIBILITY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reliabilityProjection")]
+        public virtual GoogleCloudRecommenderV1ReliabilityProjection ReliabilityProjection { get; set; }
+
         /// <summary>Use with CategoryType.SECURITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProjection")]
         public virtual GoogleCloudRecommenderV1SecurityProjection SecurityProjection { get; set; }
+
+        /// <summary>Use with CategoryType.SUSTAINABILITY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityProjection")]
+        public virtual GoogleCloudRecommenderV1SustainabilityProjection SustainabilityProjection { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4609,12 +4617,45 @@ namespace Google.Apis.Recommender.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information on the impact of a reliability recommendation.</summary>
+    public class GoogleCloudRecommenderV1ReliabilityProjection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Per-recommender projection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
+
+        /// <summary>Reliability risks mitigated by this recommendation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risks")]
+        public virtual System.Collections.Generic.IList<string> Risks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains various ways of describing the impact on Security.</summary>
     public class GoogleCloudRecommenderV1SecurityProjection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional security impact details that is provided by the recommender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains metadata about how much sustainability a recommendation can save or incur.</summary>
+    public class GoogleCloudRecommenderV1SustainabilityProjection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration for which this sustainability applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Carbon Footprint generated in kg of CO2 equivalent. Chose kg_c_o2e so that the name renders correctly in
+        /// camelCase (kgCO2e).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kgCO2e")]
+        public virtual System.Nullable<double> KgCO2e { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

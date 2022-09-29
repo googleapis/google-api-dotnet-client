@@ -5305,6 +5305,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
         public virtual CVSSv3 CvssV3 { get; set; }
 
+        /// <summary>CVSS version used to populate cvss_score and severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
+        public virtual string CvssVersion { get; set; }
+
         /// <summary>Details of all known distros and packages affected by this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<Detail> Details { get; set; }
@@ -5341,6 +5345,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
+
+        /// <summary>Output only. CVSS version used to populate cvss_score and severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
+        public virtual string CvssVersion { get; set; }
 
         /// <summary>The cvss v3 score for the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssv3")]

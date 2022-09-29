@@ -1519,6 +1519,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Compliance Regime associated with this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partner")]
+        public virtual string Partner { get; set; }
+
         /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
         /// folder resource which is a child of the Workload parent. If not specified all resources are created under

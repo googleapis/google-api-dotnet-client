@@ -4275,6 +4275,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
 
+        /// <summary>Output only. CVSS version used to populate cvss_score and severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
+        public virtual string CvssVersion { get; set; }
+
         /// <summary>
         /// The distro assigned severity for this vulnerability when it is available, and note provider assigned
         /// severity when distro has not yet assigned a severity for this vulnerability. When there are multiple
@@ -5584,6 +5588,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The full description of the CVSS for version 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
         public virtual CVSSv3 CvssV3 { get; set; }
+
+        /// <summary>CVSS version used to populate cvss_score and severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
+        public virtual string CvssVersion { get; set; }
 
         /// <summary>A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cwe")]

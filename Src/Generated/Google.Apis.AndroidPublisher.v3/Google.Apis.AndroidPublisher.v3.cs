@@ -11377,8 +11377,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class PrepaidPlan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// After this time, the subscription is allowed for a new top-up purchase. Not present if the subscription is
-        /// already extended by a top-up purchase.
+        /// If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be
+        /// present for expired prepaid plans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowExtendAfterTime")]
         public virtual object AllowExtendAfterTime { get; set; }
