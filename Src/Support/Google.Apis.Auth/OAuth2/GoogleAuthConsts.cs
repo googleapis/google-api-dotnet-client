@@ -69,10 +69,6 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The IAP Json Web Key Set (jwks) URL.</summary>
         public const string IapKeySetUrl = "https://www.gstatic.com/iap/verify/public_key-jwk";
 
-        /// <summary>Installed application redirect URI.</summary>
-        [Obsolete(@"The OAuth out-of-band flow will be deprecated and this constant will be removed on October 3rd 2022. You can read more about deprecation here: https://developers.googleblog.com/2022/02/making-oauth-flows-safer.html#disallowed-oob.")]
-        public const string InstalledAppRedirectUri = "urn:ietf:wg:oauth:2.0:oob";
-
         /// <summary>Installed application localhost redirect URI.</summary>
         public const string LocalhostRedirectUri = "http://localhost";
 
