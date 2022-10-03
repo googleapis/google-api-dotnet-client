@@ -5138,6 +5138,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string GcsPath { get; set; }
 
         /// <summary>
+        /// The detailed content which caused the error on importing an inventory activity.
+        /// http://cs/google3/google/cloud/retail/v2main/inventory_activity.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryActivity")]
+        public virtual string InventoryActivity { get; set; }
+
+        /// <summary>
         /// Line number of the content in file. Should be empty for permission or batch operation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
@@ -5146,6 +5153,41 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>The operation resource name of the LRO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
         public virtual string OperationName { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing an order.
+        /// http://cs/google3/google/cloud/retail/v2main/order.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual string Order { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place.
+        /// http://cs/google3/google/cloud/retail/v2main/place.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("place")]
+        public virtual string Place { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place asset.
+        /// http://cs/google3/google/cloud/retail/v2main/place_asset.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeAsset")]
+        public virtual string PlaceAsset { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place product price.
+        /// http://cs/google3/google/cloud/retail/v2main/place_product_price.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeProductPrice")]
+        public virtual string PlaceProductPrice { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place product settings.
+        /// http://cs/google3/google/cloud/retail/v2main/place_product_settings.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeProductSettings")]
+        public virtual string PlaceProductSettings { get; set; }
 
         /// <summary>The detailed content which caused the error on importing a product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
@@ -6477,7 +6519,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet. Could only be
         /// DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an
-        /// INVALID_ARGUMENT error is returned.
+        /// INVALID_ARGUMENT error is returned. Must be specified, otherwise throws INVALID_FORMAT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicFacetableOption")]
         public virtual string DynamicFacetableOption { get; set; }
@@ -6504,7 +6546,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED
-        /// attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search.
+        /// attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must
+        /// be specified, otherwise throws INVALID_FORMAT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexableOption")]
         public virtual string IndexableOption { get; set; }
@@ -6530,7 +6573,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED,
         /// attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute
         /// type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there
-        /// are no text values associated to numerical attributes.
+        /// are no text values associated to numerical attributes. Must be specified, otherwise throws INVALID_FORMAT
+        /// error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchableOption")]
         public virtual string SearchableOption { get; set; }
@@ -7451,10 +7495,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Merchant Center Feed filter criterrion.</summary>
+    /// <summary>Merchant Center Feed filter criterion.</summary>
     public class GoogleCloudRetailV2betaMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Merchant Center primary feed id.</summary>
+        /// <summary>Merchant Center primary feed ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
         public virtual System.Nullable<long> PrimaryFeedId { get; set; }
 
@@ -7473,10 +7517,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaMerchantCenterLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The branch id (e.g. 0/1/2) within this catalog that products from merchant_center_account_id are streamed
+        /// The branch ID (e.g. 0/1/2) within this catalog that products from merchant_center_account_id are streamed
         /// to. When updating this field, an empty value will use the currently configured default branch. However,
-        /// changing the default branch later on won't change the linked branch here. A single branch id can only have
-        /// one linked merchant center account id.
+        /// changing the default branch later on won't change the linked branch here. A single branch ID can only have
+        /// one linked merchant center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
@@ -7508,7 +7552,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Required. The linked [Merchant center account
-        /// id](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
+        /// ID](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
         /// account or a sub-account of a MCA.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterAccountId")]

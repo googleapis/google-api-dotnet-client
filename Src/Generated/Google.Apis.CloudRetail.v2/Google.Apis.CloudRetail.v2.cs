@@ -4594,6 +4594,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string GcsPath { get; set; }
 
         /// <summary>
+        /// The detailed content which caused the error on importing an inventory activity.
+        /// http://cs/google3/google/cloud/retail/v2main/inventory_activity.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryActivity")]
+        public virtual string InventoryActivity { get; set; }
+
+        /// <summary>
         /// Line number of the content in file. Should be empty for permission or batch operation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
@@ -4602,6 +4609,41 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>The operation resource name of the LRO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
         public virtual string OperationName { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing an order.
+        /// http://cs/google3/google/cloud/retail/v2main/order.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual string Order { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place.
+        /// http://cs/google3/google/cloud/retail/v2main/place.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("place")]
+        public virtual string Place { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place asset.
+        /// http://cs/google3/google/cloud/retail/v2main/place_asset.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeAsset")]
+        public virtual string PlaceAsset { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place product price.
+        /// http://cs/google3/google/cloud/retail/v2main/place_product_price.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeProductPrice")]
+        public virtual string PlaceProductPrice { get; set; }
+
+        /// <summary>
+        /// The detailed content which caused the error on importing a place product settings.
+        /// http://cs/google3/google/cloud/retail/v2main/place_product_settings.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeProductSettings")]
+        public virtual string PlaceProductSettings { get; set; }
 
         /// <summary>The detailed content which caused the error on importing a product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
@@ -4929,7 +4971,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>
         /// If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet. Could only be
         /// DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an
-        /// INVALID_ARGUMENT error is returned.
+        /// INVALID_ARGUMENT error is returned. Must be specified, otherwise throws INVALID_FORMAT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicFacetableOption")]
         public virtual string DynamicFacetableOption { get; set; }
@@ -4949,7 +4991,8 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED
-        /// attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search.
+        /// attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must
+        /// be specified, otherwise throws INVALID_FORMAT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexableOption")]
         public virtual string IndexableOption { get; set; }
@@ -4967,7 +5010,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED,
         /// attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute
         /// type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there
-        /// are no text values associated to numerical attributes.
+        /// are no text values associated to numerical attributes. Must be specified, otherwise throws INVALID_FORMAT
+        /// error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchableOption")]
         public virtual string SearchableOption { get; set; }

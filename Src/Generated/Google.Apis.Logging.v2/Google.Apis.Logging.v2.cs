@@ -939,7 +939,10 @@ namespace Google.Apis.Logging.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The id to use for this view.</summary>
+                        /// <summary>
+                        /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
 
@@ -4122,7 +4125,10 @@ namespace Google.Apis.Logging.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The id to use for this view.</summary>
+                        /// <summary>
+                        /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
 
@@ -6327,7 +6333,10 @@ namespace Google.Apis.Logging.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. The id to use for this view.</summary>
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ViewId { get; set; }
 
@@ -8351,7 +8360,10 @@ namespace Google.Apis.Logging.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The id to use for this view.</summary>
+                        /// <summary>
+                        /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
 
@@ -11170,7 +11182,10 @@ namespace Google.Apis.Logging.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The id to use for this view.</summary>
+                        /// <summary>
+                        /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
 

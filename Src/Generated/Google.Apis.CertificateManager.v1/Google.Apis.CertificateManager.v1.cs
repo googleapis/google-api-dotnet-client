@@ -297,10 +297,309 @@ namespace Google.Apis.CertificateManager.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                CertificateIssuanceConfigs = new CertificateIssuanceConfigsResource(service);
                 CertificateMaps = new CertificateMapsResource(service);
                 Certificates = new CertificatesResource(service);
                 DnsAuthorizations = new DnsAuthorizationsResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the CertificateIssuanceConfigs resource.</summary>
+            public virtual CertificateIssuanceConfigsResource CertificateIssuanceConfigs { get; }
+
+            /// <summary>The "certificateIssuanceConfigs" collection of methods.</summary>
+            public class CertificateIssuanceConfigsResource
+            {
+                private const string Resource = "certificateIssuanceConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CertificateIssuanceConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new CertificateIssuanceConfig in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the certificate issuance config. Must be in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new CertificateIssuanceConfig in a given project and location.</summary>
+                public class CreateRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the certificate issuance config. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. A user-provided name of the certificate config.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("certificateIssuanceConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CertificateIssuanceConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/certificateIssuanceConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("certificateIssuanceConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "certificateIssuanceConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single CertificateIssuanceConfig.</summary>
+                /// <param name="name">
+                /// Required. A name of the certificate issuance config to delete. Must be in the format
+                /// `projects/*/locations/*/certificateIssuanceConfigs/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single CertificateIssuanceConfig.</summary>
+                public class DeleteRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the certificate issuance config to delete. Must be in the format
+                    /// `projects/*/locations/*/certificateIssuanceConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single CertificateIssuanceConfig.</summary>
+                /// <param name="name">
+                /// Required. A name of the certificate issuance config to describe. Must be in the format
+                /// `projects/*/locations/*/certificateIssuanceConfigs/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single CertificateIssuanceConfig.</summary>
+                public class GetRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the certificate issuance config to describe. Must be in the format
+                    /// `projects/*/locations/*/certificateIssuanceConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists CertificateIssuanceConfigs in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the certificate should be listed, specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists CertificateIssuanceConfigs in a given project and location.</summary>
+                public class ListRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.ListCertificateIssuanceConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the certificate should be listed, specified in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter expression to restrict the Certificates Configs returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// A list of Certificate Config field names used to specify the order of the returned results. The
+                    /// default sorting order is ascending. To specify descending order for a field, add a suffix "
+                    /// desc".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Maximum number of certificate configs to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates that this is
+                    /// a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the system should
+                    /// return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/certificateIssuanceConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the CertificateMaps resource.</summary>
@@ -2315,6 +2614,85 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+    /// </summary>
+    public class CertificateAuthorityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines a CertificateAuthorityServiceConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityServiceConfig")]
+        public virtual CertificateAuthorityServiceConfig CertificateAuthorityServiceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information required to contact CA service.</summary>
+    public class CertificateAuthorityServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A CA pool resource used to issue a certificate. The CA pool string has a relative resource path
+        /// following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caPool")]
+        public virtual string CaPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CertificateIssuanceConfig specifies how to issue and manage a certificate.</summary>
+    public class CertificateIssuanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The CA that issues the workload certificate. It includes the CA address, type, authentication to
+        /// CA service, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityConfig")]
+        public virtual CertificateAuthorityConfig CertificateAuthorityConfig { get; set; }
+
+        /// <summary>Output only. The creation timestamp of a CertificateIssuanceConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>One or more paragraphs of text description of a CertificateIssuanceConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The key algorithm to use when generating the private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
+        public virtual string KeyAlgorithm { get; set; }
+
+        /// <summary>Set of labels associated with a CertificateIssuanceConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Required. Workload certificate lifetime requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
+        public virtual object Lifetime { get; set; }
+
+        /// <summary>
+        /// A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique
+        /// globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the
+        /// certificate. Must be a number between 1-99, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationWindowPercentage")]
+        public virtual System.Nullable<int> RotationWindowPercentage { get; set; }
+
+        /// <summary>Output only. The last update timestamp of a CertificateIssuanceConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a collection of certificate configurations.</summary>
     public class CertificateMap : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2525,6 +2903,28 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `ListCertificateIssuanceConfigs` method.</summary>
+    public class ListCertificateIssuanceConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of certificate configs for the parent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateIssuanceConfigs")]
+        public virtual System.Collections.Generic.IList<CertificateIssuanceConfig> CertificateIssuanceConfigs { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the `ListCertificateMapEntries` method.</summary>
     public class ListCertificateMapEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2698,6 +3098,15 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<string> Domains { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in
+        /// the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates
+        /// will instead be publicly signed as documented at
+        /// https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuanceConfig")]
+        public virtual string IssuanceConfig { get; set; }
 
         /// <summary>Output only. Information about issues with provisioning a Managed Certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningIssue")]

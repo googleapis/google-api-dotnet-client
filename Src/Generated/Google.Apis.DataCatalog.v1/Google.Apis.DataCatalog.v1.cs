@@ -5307,8 +5307,8 @@ namespace Google.Apis.DataCatalog.v1.Data
 
         /// <summary>
         /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a
-        /// type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and
-        /// defaults to an empty timestamp.
+        /// system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is
+        /// optional and defaults to an empty timestamp.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSystemTimestamps")]
         public virtual GoogleCloudDatacatalogV1SystemTimestamps SourceSystemTimestamps { get; set; }

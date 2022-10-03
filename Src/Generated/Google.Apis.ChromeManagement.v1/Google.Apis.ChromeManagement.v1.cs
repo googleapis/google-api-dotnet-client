@@ -1801,6 +1801,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Boot performance report of a device. * This field is telemetry information and this will change over time as the
+    /// device is utilized. * Data for this field is controlled via policy:
+    /// [ReportDeviceBootMode](https://chromeenterprise.google/policies/#ReportDeviceBootMode) * Data Collection
+    /// Frequency: On every boot up event * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache:
+    /// If the device is offline, the collected data is stored locally, and will be reported when the device is next
+    /// online: Yes * Reported for affiliated users only: N/A
+    /// </summary>
+    public class GoogleChromeManagementV1BootPerformanceReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total time to boot up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootUpDuration")]
+        public virtual object BootUpDuration { get; set; }
+
+        /// <summary>The timestamp when power came on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootUpTime")]
+        public virtual object BootUpTime { get; set; }
+
+        /// <summary>Timestamp when the report was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Total time since shutdown start to power off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shutdownDuration")]
+        public virtual object ShutdownDuration { get; set; }
+
+        /// <summary>The shutdown reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shutdownReason")]
+        public virtual string ShutdownReason { get; set; }
+
+        /// <summary>The timestamp when shutdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shutdownTime")]
+        public virtual object ShutdownTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a browser version and its install count.</summary>
     public class GoogleChromeManagementV1BrowserVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2849,6 +2887,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Battery reports collected periodically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batteryStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BatteryStatusReport> BatteryStatusReport { get; set; }
+
+        /// <summary>Output only. Boot performance reports of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootPerformanceReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BootPerformanceReport> BootPerformanceReport { get; set; }
 
         /// <summary>Output only. Information regarding CPU specs for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuInfo")]

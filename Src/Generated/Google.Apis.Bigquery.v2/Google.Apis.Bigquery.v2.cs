@@ -7169,6 +7169,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
         /// <summary>
+        /// [Output-only] Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE
+        /// AS SELECT (CTAS).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferredBytes")]
+        public virtual System.Nullable<long> TransferredBytes { get; set; }
+
+        /// <summary>
         /// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
@@ -9780,11 +9787,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
         public virtual System.Nullable<long> TrainingStartTime { get; set; }
 
-        /// <summary>The model id in Vertex AI Model Registry for this training run</summary>
+        /// <summary>
+        /// The model id in the [Vertex AI Model
+        /// Registry](https://cloud.google.com/vertex-ai/docs/model-registry/introduction) for this training run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelId")]
         public virtual string VertexAiModelId { get; set; }
 
-        /// <summary>Output only. The model version in Vertex AI Model Registry for this training run</summary>
+        /// <summary>
+        /// Output only. The model version in the [Vertex AI Model
+        /// Registry](https://cloud.google.com/vertex-ai/docs/model-registry/introduction) for this training run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelVersion")]
         public virtual string VertexAiModelVersion { get; set; }
 

@@ -2127,6 +2127,10 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Describes a resource associated with this operation.</summary>
     public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource permission required for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
+        public virtual string Permission { get; set; }
+
         /// <summary>
         /// The identifier of the parent of this resource instance. Must be in one of the following formats: -
         /// `projects/` - `folders/` - `organizations/`
