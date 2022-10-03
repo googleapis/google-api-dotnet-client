@@ -899,6 +899,15 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Images { get; set; }
 
         /// <summary>
+        /// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact
+        /// Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the
+        /// build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
+        public virtual System.Collections.Generic.IList<MavenArtifact> MavenArtifacts { get; set; }
+
+        /// <summary>
         /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in
         /// the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using
         /// the builder service account's credentials. The location and generation of the uploaded objects will be
@@ -906,6 +915,14 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objects")]
         public virtual ArtifactObjects Objects { get; set; }
+
+        /// <summary>
+        /// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// The build service account credentials will be used to perform the upload. If any objects fail to be pushed,
+        /// the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonPackages")]
+        public virtual System.Collections.Generic.IList<PythonPackage> PythonPackages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1829,6 +1846,42 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+    /// </summary>
+    public class MavenArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maven `artifactId` value used when uploading the artifact to Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
+        public virtual string ArtifactId { get; set; }
+
+        /// <summary>Maven `groupId` value used when uploading the artifact to Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an
+        /// absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace,
+        /// e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in
+        /// the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>Maven `version` value used when uploading the artifact to Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Network describes the network configuration for a `WorkerPool`.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2095,6 +2148,30 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can
+    /// encapsulate multiple objects to be uploaded to a single repository.
+    /// </summary>
+    public class PythonPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and
+        /// sometimes additionally an `.asc` file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the
+        /// workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2173,9 +2250,17 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; }
 
+        /// <summary>Maven artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
+        public virtual System.Collections.Generic.IList<UploadedMavenArtifact> MavenArtifacts { get; set; }
+
         /// <summary>Number of artifacts uploaded. Only populated when artifacts are uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numArtifacts")]
         public virtual System.Nullable<long> NumArtifacts { get; set; }
+
+        /// <summary>Python artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonPackages")]
+        public virtual System.Collections.Generic.IList<UploadedPythonPackage> PythonPackages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2567,6 +2652,44 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Maven artifact uploaded using the MavenArtifact directive.</summary>
+    public class UploadedMavenArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the Maven Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Artifact uploaded using the PythonPackage directive.</summary>
+    public class UploadedPythonPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the Python Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

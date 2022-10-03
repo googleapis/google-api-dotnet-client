@@ -2645,8 +2645,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Image { get; set; }
 
         /// <summary>
-        /// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe
-        /// fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual GoogleCloudRunV2Probe LivenessProbe { get; set; }

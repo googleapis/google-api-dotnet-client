@@ -313,6 +313,7 @@ namespace Google.Apis.ChromePolicy.v1
             {
                 this.service = service;
                 Groups = new GroupsResource(service);
+                Networks = new NetworksResource(service);
                 Orgunits = new OrgunitsResource(service);
             }
 
@@ -606,6 +607,236 @@ namespace Google.Apis.ChromePolicy.v1
                 }
             }
 
+            /// <summary>Gets the Networks resource.</summary>
+            public virtual NetworksResource Networks { get; }
+
+            /// <summary>The "networks" collection of methods.</summary>
+            public class NetworksResource
+            {
+                private const string Resource = "networks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NetworksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a certificate at a specified OU for a customer.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">Required. The customer for which the certificate will apply.</param>
+                public virtual DefineCertificateRequest DefineCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateRequest body, string customer)
+                {
+                    return new DefineCertificateRequest(service, body, customer);
+                }
+
+                /// <summary>Creates a certificate at a specified OU for a customer.</summary>
+                public class DefineCertificateRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateResponse>
+                {
+                    /// <summary>Constructs a new DefineCertificate request.</summary>
+                    public DefineCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer for which the certificate will apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "defineCertificate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/networks:defineCertificate";
+
+                    /// <summary>Initializes DefineCertificate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Define a new network.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">Required. The customer who will own this new network.</param>
+                public virtual DefineNetworkRequest DefineNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkRequest body, string customer)
+                {
+                    return new DefineNetworkRequest(service, body, customer);
+                }
+
+                /// <summary>Define a new network.</summary>
+                public class DefineNetworkRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkResponse>
+                {
+                    /// <summary>Constructs a new DefineNetwork request.</summary>
+                    public DefineNetworkRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer who will own this new network.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "defineNetwork";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/networks:defineNetwork";
+
+                    /// <summary>Initializes DefineNetwork parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Remove an existing certificate by guid.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">Required. The customer whose certificate will be removed.</param>
+                public virtual RemoveCertificateRequest RemoveCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateRequest body, string customer)
+                {
+                    return new RemoveCertificateRequest(service, body, customer);
+                }
+
+                /// <summary>Remove an existing certificate by guid.</summary>
+                public class RemoveCertificateRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateResponse>
+                {
+                    /// <summary>Constructs a new RemoveCertificate request.</summary>
+                    public RemoveCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer whose certificate will be removed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removeCertificate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/networks:removeCertificate";
+
+                    /// <summary>Initializes RemoveCertificate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Remove an existing network by guid.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">Required. The customer whose network will be removed.</param>
+                public virtual RemoveNetworkRequest RemoveNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkRequest body, string customer)
+                {
+                    return new RemoveNetworkRequest(service, body, customer);
+                }
+
+                /// <summary>Remove an existing network by guid.</summary>
+                public class RemoveNetworkRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkResponse>
+                {
+                    /// <summary>Constructs a new RemoveNetwork request.</summary>
+                    public RemoveNetworkRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer whose network will be removed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removeNetwork";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/policies/networks:removeNetwork";
+
+                    /// <summary>Initializes RemoveNetwork parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Orgunits resource.</summary>
             public virtual OrgunitsResource Orgunits { get; }
 
@@ -843,7 +1074,7 @@ namespace Google.Apis.ChromePolicy.v1
             }
 
             /// <summary>Get a specific policy schema for a customer by its resource name.</summary>
-            public class GetRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1PolicySchema>
+            public class GetRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1PolicySchema>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -892,7 +1123,7 @@ namespace Google.Apis.ChromePolicy.v1
             /// <summary>
             /// Gets a list of policy schemas that match a specified filter value for a given customer.
             /// </summary>
-            public class ListRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListPolicySchemasResponse>
+            public class ListRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ListPolicySchemasResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -912,7 +1143,9 @@ namespace Google.Apis.ChromePolicy.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The maximum number of policy schemas to return.</summary>
+                /// <summary>
+                /// The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1203,21 +1436,6 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Additional key names that will be used to identify the target of the policy value.</summary>
-    public class GoogleChromePolicyV1AdditionalTargetKeyName : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Key name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>Key description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("keyDescription")]
-        public virtual string KeyDescription { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for specifying that multiple policy values will be deleted.</summary>
     public class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1285,6 +1503,98 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1ModifyOrgUnitPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for creating a certificate.</summary>
+    public class GoogleChromePolicyV1DefineCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The optional name of the certificate. If not specified, the certificate issuer will be used as the
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ceritificateName")]
+        public virtual string CeritificateName { get; set; }
+
+        /// <summary>Required. The raw contents of the .PEM, .CRT, or .CER file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; }
+
+        /// <summary>Optional. Certificate settings within the chrome.networks.certificates namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this certificate is applied. The following resources are supported: *
+        /// Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for creating a certificate.</summary>
+    public class GoogleChromePolicyV1DefineCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The guid of the certificate created by the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>the affiliated settings of the certificate (NOT IMPLEMENTED)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>the resource at which the certificate is defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for creating a new network.</summary>
+    public class GoogleChromePolicyV1DefineNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the new created network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Detailed network settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this new network will be defined. The following resources are
+        /// supported: * Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for creating a network.</summary>
+    public class GoogleChromePolicyV1DefineNetworkResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Network ID of the new created network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>Detailed network settings of the new created network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>
+        /// The target resource on which this new network will be defined. The following resources are supported: *
+        /// Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1368,21 +1678,6 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for listing policy schemas that match a filter.</summary>
-    public class GoogleChromePolicyV1ListPolicySchemasResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The page token used to get the next page of policy schemas.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The list of policy schemas that match the query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policySchemas")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchema> PolicySchemas { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request parameters for modifying a policy value for a specific group target.</summary>
     public class GoogleChromePolicyV1ModifyGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1435,203 +1730,31 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource representing a policy schema. Next ID: 14</summary>
-    public class GoogleChromePolicyV1PolicySchema : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A network setting contains network configurations.</summary>
+    public class GoogleChromePolicyV1NetworkSetting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Specific access restrictions related to this policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessRestrictions")]
-        public virtual System.Collections.Generic.IList<string> AccessRestrictions { get; set; }
+        /// <summary>The fully qualified name of the network setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
 
-        /// <summary>
-        /// Output only. Additional key names that will be used to identify the target of the policy value. When
-        /// specifying a `policyTargetKey`, each of the additional keys specified here will have to be included in the
-        /// `additionalTargetKeys` map.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalTargetKeyNames")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1AdditionalTargetKeyName> AdditionalTargetKeyNames { get; set; }
-
-        /// <summary>Output only. Title of the category in which a setting belongs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("categoryTitle")]
-        public virtual string CategoryTitle { get; set; }
-
-        /// <summary>Schema definition using proto descriptor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("definition")]
-        public virtual Proto2FileDescriptorProto Definition { get; set; }
-
-        /// <summary>Output only. Detailed description of each field that is part of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldDescriptions")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDescription> FieldDescriptions { get; set; }
-
-        /// <summary>Format: name=customers/{customer}/policySchemas/{schema_namespace}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. Special notice messages related to setting certain values in certain fields in the schema.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notices")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaNoticeDescription> Notices { get; set; }
-
-        /// <summary>Output only. Current lifecycle information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycle")]
-        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifecycle { get; set; }
-
-        /// <summary>Deprecated field because of typo.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifeycle")]
-        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifeycle { get; set; }
-
-        /// <summary>Output only. Description about the policy schema for user consumption.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyDescription")]
-        public virtual string PolicyDescription { get; set; }
-
-        /// <summary>
-        /// Output only. The fully qualified name of the policy schema. This value is used to fill the field
-        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
-        /// BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
-        public virtual string SchemaName { get; set; }
-
-        /// <summary>Output only. URI to related support article for this schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportUri")]
-        public virtual string SupportUri { get; set; }
-
-        /// <summary>Output only. Information about applicable target resources for the policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validTargetResources")]
-        public virtual System.Collections.Generic.IList<string> ValidTargetResources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The field and the value it must have for another field to be allowed to be set.</summary>
-    public class GoogleChromePolicyV1PolicySchemaFieldDependencies : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The source field which this field depends on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceField")]
-        public virtual string SourceField { get; set; }
-
-        /// <summary>The value which the source field must have for this field to be allowed to be set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceFieldValue")]
-        public virtual string SourceFieldValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Provides detailed information for a particular field that is part of a PolicySchema.</summary>
-    public class GoogleChromePolicyV1PolicySchemaFieldDescription : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated. Use name and field_description instead. The description for the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Output only. The name of the field for associated with this description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; }
-
-        /// <summary>
-        /// Output only. Provides a list of fields and values. At least one of the fields must have the corresponding
-        /// value in order for this field to be allowed to be set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldDependencies")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDependencies> FieldDependencies { get; set; }
-
-        /// <summary>Output only. The description of the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldDescription")]
-        public virtual string FieldDescription { get; set; }
-
-        /// <summary>Output only. Any input constraints associated on the values for the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputConstraint")]
-        public virtual string InputConstraint { get; set; }
-
-        /// <summary>
-        /// Output only. If the field has a set of known values, this field will provide a description for these values.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knownValueDescriptions")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription> KnownValueDescriptions { get; set; }
-
-        /// <summary>Output only. The name of the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. Provides the description of the fields nested in this field, if the field is a message type
-        /// that defines multiple fields.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nestedFieldDescriptions")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDescription> NestedFieldDescriptions { get; set; }
-
-        /// <summary>
-        /// Output only. Provides a list of fields that are required to be set if this field has a certain value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredItems")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaRequiredItems> RequiredItems { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Provides detailed information about a known value that is allowed for a particular field in a PolicySchema.
-    /// </summary>
-    public class GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Additional description for this value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Output only. The string represenstation of the value that can be set for the field.</summary>
+        /// <summary>The value of the network setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Provides special notice messages related to a particular value in a field that is part of a PolicySchema.
-    /// </summary>
-    public class GoogleChromePolicyV1PolicySchemaNoticeDescription : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Error information for a modification request of a specific field on a specific policy.</summary>
+    public class GoogleChromePolicyV1PolicyModificationFieldError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. Whether the user needs to acknowledge the notice message before the value can be set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementRequired")]
-        public virtual System.Nullable<bool> AcknowledgementRequired { get; set; }
+        /// <summary>Output only. The error message related to the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
 
-        /// <summary>Output only. The field name associated with the notice.</summary>
+        /// <summary>Output only. The name of the field with the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
-
-        /// <summary>Output only. The notice message associate with the value of the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("noticeMessage")]
-        public virtual string NoticeMessage { get; set; }
-
-        /// <summary>
-        /// Output only. The value of the field that has a notice. When setting the field to this value, the user may be
-        /// required to acknowledge the notice message in order for the value to be set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("noticeValue")]
-        public virtual string NoticeValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The fields that will become required based on the value of this field.</summary>
-    public class GoogleChromePolicyV1PolicySchemaRequiredItems : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The value(s) of the field that provoke required field enforcement. An empty field_conditions implies that
-        /// any value assigned to this field will provoke required field enforcement.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldConditions")]
-        public virtual System.Collections.Generic.IList<string> FieldConditions { get; set; }
-
-        /// <summary>The fields that are required as a consequence of the field conditions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredFields")]
-        public virtual System.Collections.Generic.IList<string> RequiredFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1673,6 +1796,56 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request object for removing a certificate.</summary>
+    public class GoogleChromePolicyV1RemoveCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GUID of the certificate to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this certificate will be removed. The following resources are
+        /// supported: * Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for removing a certificate.</summary>
+    public class GoogleChromePolicyV1RemoveCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for removing a network</summary>
+    public class GoogleChromePolicyV1RemoveNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GUID of the network to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this network will be removed. The following resources are supported:
+        /// * Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for removing a network.</summary>
+    public class GoogleChromePolicyV1RemoveNetworkResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for getting the resolved policy value for a specific target.</summary>
     public class GoogleChromePolicyV1ResolveRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1688,7 +1861,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for
         /// example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema
         /// name. Wildcards cannot be used in namespace directly. Please read
-        /// https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namepsaces. For
+        /// https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
         /// example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
         /// "chrome.*", "chrome.*.apps.*"
         /// </summary>
@@ -1776,7 +1949,243 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for uploading a file for a policy. Next ID: 5</summary>
+    /// <summary>Additional key names that will be used to identify the target of the policy value.</summary>
+    public class GoogleChromePolicyVersionsV1AdditionalTargetKeyName : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Key description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyDescription")]
+        public virtual string KeyDescription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing policy schemas that match a filter.</summary>
+    public class GoogleChromePolicyVersionsV1ListPolicySchemasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The page token used to get the next page of policy schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of policy schemas that match the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchemas")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchema> PolicySchemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource representing a policy schema.</summary>
+    public class GoogleChromePolicyVersionsV1PolicySchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Specific access restrictions related to this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessRestrictions")]
+        public virtual System.Collections.Generic.IList<string> AccessRestrictions { get; set; }
+
+        /// <summary>
+        /// Output only. Additional key names that will be used to identify the target of the policy value. When
+        /// specifying a `policyTargetKey`, each of the additional keys specified here will have to be included in the
+        /// `additionalTargetKeys` map.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTargetKeyNames")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1AdditionalTargetKeyName> AdditionalTargetKeyNames { get; set; }
+
+        /// <summary>Title of the category in which a setting belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryTitle")]
+        public virtual string CategoryTitle { get; set; }
+
+        /// <summary>Schema definition using proto descriptor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definition")]
+        public virtual Proto2FileDescriptorProto Definition { get; set; }
+
+        /// <summary>Output only. Detailed description of each field that is part of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDescriptions")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> FieldDescriptions { get; set; }
+
+        /// <summary>Format: name=customers/{customer}/policySchemas/{schema_namespace}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Special notice messages related to setting certain values in certain fields in the schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notices")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription> Notices { get; set; }
+
+        /// <summary>Output only. Current lifecycle information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycle")]
+        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifecycle { get; set; }
+
+        /// <summary>Deprecated field because of typo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifeycle")]
+        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifeycle { get; set; }
+
+        /// <summary>Output only. Description about the policy schema for user consumption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyDescription")]
+        public virtual string PolicyDescription { get; set; }
+
+        /// <summary>
+        /// Output only. The fully qualified name of the policy schema. This value is used to fill the field
+        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
+        /// BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
+        public virtual string SchemaName { get; set; }
+
+        /// <summary>Output only. URI to related support article for this schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportUri")]
+        public virtual string SupportUri { get; set; }
+
+        /// <summary>Output only. Information about applicable target resources for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validTargetResources")]
+        public virtual System.Collections.Generic.IList<string> ValidTargetResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The field and the value it must have for another field to be allowed to be set.</summary>
+    public class GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source field which this field depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceField")]
+        public virtual string SourceField { get; set; }
+
+        /// <summary>The value which the source field must have for this field to be allowed to be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFieldValue")]
+        public virtual string SourceFieldValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides detailed information for a particular field that is part of a PolicySchema.</summary>
+    public class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Client default if the policy is unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual object DefaultValue { get; set; }
+
+        /// <summary>Deprecated. Use name and field_description instead. The description for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The name of the field for associated with this description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>
+        /// Output only. Provides a list of fields and values. At least one of the fields must have the corresponding
+        /// value in order for this field to be allowed to be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDependencies")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies> FieldDependencies { get; set; }
+
+        /// <summary>Output only. The description of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDescription")]
+        public virtual string FieldDescription { get; set; }
+
+        /// <summary>Output only. Any input constraints associated on the values for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConstraint")]
+        public virtual string InputConstraint { get; set; }
+
+        /// <summary>
+        /// Output only. If the field has a set of known values, this field will provide a description for these values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownValueDescriptions")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription> KnownValueDescriptions { get; set; }
+
+        /// <summary>Output only. The name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Provides the description of the fields nested in this field, if the field is a message type
+        /// that defines multiple fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestedFieldDescriptions")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> NestedFieldDescriptions { get; set; }
+
+        /// <summary>
+        /// Output only. Provides a list of fields that are required to be set if this field has a certain value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredItems")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems> RequiredItems { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides detailed information about a known value that is allowed for a particular field in a PolicySchema.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Additional description for this value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The string represenstation of the value that can be set for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides special notice messages related to a particular value in a field that is part of a PolicySchema.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the user needs to acknowledge the notice message before the value can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementRequired")]
+        public virtual System.Nullable<bool> AcknowledgementRequired { get; set; }
+
+        /// <summary>Output only. The field name associated with the notice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>Output only. The notice message associate with the value of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noticeMessage")]
+        public virtual string NoticeMessage { get; set; }
+
+        /// <summary>
+        /// Output only. The value of the field that has a notice. When setting the field to this value, the user may be
+        /// required to acknowledge the notice message in order for the value to be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noticeValue")]
+        public virtual string NoticeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The fields that will become required based on the value of this field.</summary>
+    public class GoogleChromePolicyVersionsV1PolicySchemaRequiredItems : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The value(s) of the field that provoke required field enforcement. An empty field_conditions implies that
+        /// any value assigned to this field will provoke required field enforcement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldConditions")]
+        public virtual System.Collections.Generic.IList<string> FieldConditions { get; set; }
+
+        /// <summary>The fields that are required as a consequence of the field conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredFields")]
+        public virtual System.Collections.Generic.IList<string> RequiredFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for uploading a file for a policy.</summary>
     public class GoogleChromePolicyVersionsV1UploadPolicyFileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1790,7 +2199,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for downloading an uploaded file. Next ID: 2</summary>
+    /// <summary>Response message for downloading an uploaded file.</summary>
     public class GoogleChromePolicyVersionsV1UploadPolicyFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The uri for end user to download the file.</summary>

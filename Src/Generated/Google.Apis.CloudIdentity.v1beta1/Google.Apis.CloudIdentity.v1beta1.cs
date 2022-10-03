@@ -37,6 +37,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             Customers = new CustomersResource(this);
             Devices = new DevicesResource(this);
             Groups = new GroupsResource(this);
+            InboundSamlSsoProfiles = new InboundSamlSsoProfilesResource(this);
+            InboundSsoAssignments = new InboundSsoAssignmentsResource(this);
             OrgUnits = new OrgUnitsResource(this);
         }
 
@@ -133,6 +135,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         /// <summary>Gets the Groups resource.</summary>
         public virtual GroupsResource Groups { get; }
+
+        /// <summary>Gets the InboundSamlSsoProfiles resource.</summary>
+        public virtual InboundSamlSsoProfilesResource InboundSamlSsoProfiles { get; }
+
+        /// <summary>Gets the InboundSsoAssignments resource.</summary>
+        public virtual InboundSsoAssignmentsResource InboundSsoAssignments { get; }
 
         /// <summary>Gets the OrgUnits resource.</summary>
         public virtual OrgUnitsResource OrgUnits { get; }
@@ -3460,6 +3468,906 @@ namespace Google.Apis.CloudIdentity.v1beta1
         }
     }
 
+    /// <summary>The "inboundSamlSsoProfiles" collection of methods.</summary>
+    public class InboundSamlSsoProfilesResource
+    {
+        private const string Resource = "inboundSamlSsoProfiles";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public InboundSamlSsoProfilesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            IdpCredentials = new IdpCredentialsResource(service);
+        }
+
+        /// <summary>Gets the IdpCredentials resource.</summary>
+        public virtual IdpCredentialsResource IdpCredentials { get; }
+
+        /// <summary>The "idpCredentials" collection of methods.</summary>
+        public class IdpCredentialsResource
+        {
+            private const string Resource = "idpCredentials";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public IdpCredentialsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Adds an IdpCredential. Up to 2 credentials are allowed.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The InboundSamlSsoProfile that owns the IdpCredential. Format:
+            /// `inboundSamlSsoProfiles/{sso_profile_id}`
+            /// </param>
+            public virtual AddRequest Add(Google.Apis.CloudIdentity.v1beta1.Data.AddIdpCredentialRequest body, string parent)
+            {
+                return new AddRequest(service, body, parent);
+            }
+
+            /// <summary>Adds an IdpCredential. Up to 2 credentials are allowed.</summary>
+            public class AddRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Add request.</summary>
+                public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.AddIdpCredentialRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The InboundSamlSsoProfile that owns the IdpCredential. Format:
+                /// `inboundSamlSsoProfiles/{sso_profile_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.AddIdpCredentialRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "add";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/idpCredentials:add";
+
+                /// <summary>Initializes Add parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^inboundSamlSsoProfiles/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes an IdpCredential.</summary>
+            /// <param name="name">
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the IdpCredential
+            /// to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an IdpCredential.</summary>
+            public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// IdpCredential to delete. Format:
+                /// `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^inboundSamlSsoProfiles/[^/]+/idpCredentials/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets an IdpCredential.</summary>
+            /// <param name="name">
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the IdpCredential
+            /// to retrieve. Format: `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets an IdpCredential.</summary>
+            public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.IdpCredential>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// IdpCredential to retrieve. Format:
+                /// `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^inboundSamlSsoProfiles/[^/]+/idpCredentials/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns a list of IdpCredentials in an InboundSamlSsoProfile.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of `IdpCredential`s. Format:
+            /// `inboundSamlSsoProfiles/{sso_profile_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns a list of IdpCredentials in an InboundSamlSsoProfile.</summary>
+            public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListIdpCredentialsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of `IdpCredential`s. Format:
+                /// `inboundSamlSsoProfiles/{sso_profile_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of `IdpCredential`s to return. The service may return fewer than this value.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListIdpCredentials` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListIdpCredentials` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/idpCredentials";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^inboundSamlSsoProfiles/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Creates an InboundSamlSsoProfile for a customer.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates an InboundSamlSsoProfile for a customer.</summary>
+        public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/inboundSamlSsoProfiles";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Deletes an InboundSamlSsoProfile.</summary>
+        /// <param name="name">
+        /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// InboundSamlSsoProfile to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}`
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Deletes an InboundSamlSsoProfile.</summary>
+        public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// InboundSamlSsoProfile to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundSamlSsoProfiles/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets an InboundSamlSsoProfile.</summary>
+        /// <param name="name">
+        /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// InboundSamlSsoProfile to get. Format: `inboundSamlSsoProfiles/{sso_profile_id}`
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets an InboundSamlSsoProfile.</summary>
+        public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// InboundSamlSsoProfile to get. Format: `inboundSamlSsoProfiles/{sso_profile_id}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundSamlSsoProfiles/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists InboundSamlSsoProfiles for a customer.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists InboundSamlSsoProfiles for a customer.</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListInboundSamlSsoProfilesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A CEL expression to filter the results. The only currently-supported filter is filtering by customer.
+            /// For example: `customer==customers/C0123abc`. Omitting the filter or specifying a filter of
+            /// `customer==customers/my_customer` will return the profiles for the customer that the caller
+            /// (authenticated user) belongs to.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of InboundSamlSsoProfiles to return. The service may return fewer than this value. If
+            /// omitted (or defaulted to zero) the server will use a sensible default. This default may change over
+            /// time. The maximum allowed value is 100, though requests with page_size greater than that will be
+            /// silently interpreted as having this maximum value. This may increase in the futue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A page token, received from a previous `ListInboundSamlSsoProfiles` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListInboundSamlSsoProfiles` must
+            /// match the call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/inboundSamlSsoProfiles";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an InboundSamlSsoProfile.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Updates an InboundSamlSsoProfile.</summary>
+        public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO
+            /// profile.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundSamlSsoProfiles/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "inboundSsoAssignments" collection of methods.</summary>
+    public class InboundSsoAssignmentsResource
+    {
+        private const string Resource = "inboundSsoAssignments";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public InboundSsoAssignmentsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates an InboundSsoAssignment for users and devices in a `Customer` under a given `Group` or `OrgUnit`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates an InboundSsoAssignment for users and devices in a `Customer` under a given `Group` or `OrgUnit`.
+        /// </summary>
+        public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/inboundSsoAssignments";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Deletes an InboundSsoAssignment. To disable SSO, Create (or Update) an assignment that has `sso_mode` ==
+        /// `SSO_OFF`.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// InboundSsoAssignment to delete. Format: `inboundSsoAssignments/{assignment}`
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>
+        /// Deletes an InboundSsoAssignment. To disable SSO, Create (or Update) an assignment that has `sso_mode` ==
+        /// `SSO_OFF`.
+        /// </summary>
+        public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// InboundSsoAssignment to delete. Format: `inboundSsoAssignments/{assignment}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundSsoAssignments/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets an InboundSsoAssignment.</summary>
+        /// <param name="name">
+        /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// InboundSsoAssignment to fetch. Format: `inboundSsoAssignments/{assignment}`
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets an InboundSsoAssignment.</summary>
+        public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// InboundSsoAssignment to fetch. Format: `inboundSsoAssignments/{assignment}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundSsoAssignments/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists the InboundSsoAssignments for a `Customer`.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists the InboundSsoAssignments for a `Customer`.</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListInboundSsoAssignmentsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A CEL expression to filter the results. The only currently-supported filter is filtering by customer.
+            /// For example: `customer==customers/C0123abc`. Omitting the filter or specifying a filter of
+            /// `customer==customers/my_customer` will return the assignments for the customer that the caller
+            /// (authenticated user) belongs to.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of assignments to return. The service may return fewer than this value. If omitted
+            /// (or defaulted to zero) the server will use a sensible default. This default may change over time. The
+            /// maximum allowed value is 100, though requests with page_size greater than that will be silently
+            /// interpreted as having this maximum value. This may increase in the futue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A page token, received from a previous `ListInboundSsoAssignments` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListInboundSsoAssignments` must
+            /// match the call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/inboundSsoAssignments";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an InboundSsoAssignment. The body of this request is the `inbound_sso_assignment` field and the
+        /// `update_mask` is relative to that. For example: a PATCH to
+        /// `/v1beta1/inboundSsoAssignments/0abcdefg1234567&amp;amp;update_mask=rank` with a body of `{ "rank": 1 }`
+        /// moves that (presumably group-targeted) SSO assignment to the highest priority and shifts any other
+        /// group-targeted assignments down in priority.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Inbound SSO
+        /// Assignment.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Updates an InboundSsoAssignment. The body of this request is the `inbound_sso_assignment` field and the
+        /// `update_mask` is relative to that. For example: a PATCH to
+        /// `/v1beta1/inboundSsoAssignments/0abcdefg1234567&amp;amp;update_mask=rank` with a body of `{ "rank": 1 }`
+        /// moves that (presumably group-targeted) SSO assignment to the highest priority and shifts any other
+        /// group-targeted assignments down in priority.
+        /// </summary>
+        public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Inbound SSO
+            /// Assignment.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundSsoAssignments/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "orgUnits" collection of methods.</summary>
     public class OrgUnitsResource
     {
@@ -3706,6 +4614,27 @@ namespace Google.Apis.CloudIdentity.v1beta1
 }
 namespace Google.Apis.CloudIdentity.v1beta1.Data
 {
+    /// <summary>LRO response metadata for InboundSamlSsoProfilesService.AddIdpCredential.</summary>
+    public class AddIdpCredentialOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The request for creating an IdpCredential with its associated payload. An InboundSamlSsoProfile can own up to 2
+    /// credentials.
+    /// </summary>
+    public class AddIdpCredentialRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PEM encoded x509 certificate containing the public signing key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemData")]
+        public virtual string PemData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource representing the Android specific attributes of a Device.</summary>
     public class AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3980,6 +4909,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LRO response metadata for InboundSamlSsoProfilesService.CreateInboundSamlSsoProfile.</summary>
+    public class CreateInboundSamlSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundSsoAssignmentsService.CreateInboundSsoAssignment.</summary>
+    public class CreateInboundSsoAssignmentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Additional custom attribute values may be one of these types</summary>
     public class CustomAttributeValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3995,6 +4938,27 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundSamlSsoProfilesService.DeleteIdpCredential.</summary>
+    public class DeleteIdpCredentialOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundSamlSsoProfilesService.DeleteInboundSamlSsoProfile.</summary>
+    public class DeleteInboundSamlSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundSsoAssignmentsService.DeleteInboundSsoAssignment.</summary>
+    public class DeleteInboundSsoAssignmentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4188,6 +5152,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Email address of the user registered on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of a DSA public key.</summary>
+    public class DsaPublicKeyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key size in bits (size of parameter P).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keySize")]
+        public virtual System.Nullable<int> KeySize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4903,6 +5878,114 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The identity provider's credentials (for signing assertions, etc).</summary>
+    public class IdpCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information of a DSA public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dsaKeyInfo")]
+        public virtual DsaPublicKeyInfo DsaKeyInfo { get; set; }
+
+        /// <summary>
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the credential.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Information of a RSA public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rsaKeyInfo")]
+        public virtual RsaPublicKeyInfo RsaKeyInfo { get; set; }
+
+        /// <summary>Output only. Time when the `IdpCredential` was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between a Google enterprise customer and
+    /// a SAML identity provider.
+    /// </summary>
+    public class InboundSamlSsoProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The customer. For example: `customers/C0123abc`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>Human-readable name of the SAML SSO profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>SAML identity provider configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual SamlIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// SAML service provider configuration for this SAML SSO profile. These are the service provider details
+        /// provided by Google that should be configured on the corresponding identity provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spConfig")]
+        public virtual SamlSpConfig SpConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targets with "set" SSO assignments and their respective assignments.</summary>
+    public class InboundSsoAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The customer. For example: `customers/C0123abc`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Inbound SSO
+        /// Assignment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Must be zero (which is the default value so it can be omitted) for assignments with `target_org_unit` set
+        /// and must be greater-than-or-equal-to one for assignments with `target_group` set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<int> Rank { get; set; }
+
+        /// <summary>SAML SSO details. Must be set if and only if `sso_mode` is set to `SAML_SSO`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samlSsoInfo")]
+        public virtual SamlSsoInfo SamlSsoInfo { get; set; }
+
+        /// <summary>
+        /// Assertions about users assigned to an IdP will always be accepted from that IdP. This controls whether/when
+        /// Google should redirect a user to the IdP. Unset (defaults) is the recommended configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signInBehavior")]
+        public virtual SignInBehavior SignInBehavior { get; set; }
+
+        /// <summary>Inbound SSO behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssoMode")]
+        public virtual string SsoMode { get; set; }
+
+        /// <summary>Immutable. Must be of the form `groups/{group}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetGroup")]
+        public virtual string TargetGroup { get; set; }
+
+        /// <summary>Immutable. Must be of the form `orgUnits/{org_unit}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetOrgUnit")]
+        public virtual string TargetOrgUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for IsInvitableUser RPC.</summary>
     public class IsInvitableUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4968,6 +6051,60 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// A continuation token to retrieve the next page of results, or empty if there are no more results available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the InboundSamlSsoProfilesService.ListIdpCredentials method.</summary>
+    public class ListIdpCredentialsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IdpCredentials from the specified InboundSamlSsoProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpCredentials")]
+        public virtual System.Collections.Generic.IList<IdpCredential> IdpCredentials { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the InboundSamlSsoProfilesService.ListInboundSamlSsoProfiles method.</summary>
+    public class ListInboundSamlSsoProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of InboundSamlSsoProfiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSamlSsoProfiles")]
+        public virtual System.Collections.Generic.IList<InboundSamlSsoProfile> InboundSamlSsoProfiles { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the InboundSsoAssignmentsService.ListInboundSsoAssignments method.</summary>
+    public class ListInboundSsoAssignmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The assignments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSsoAssignments")]
+        public virtual System.Collections.Generic.IList<InboundSsoAssignment> InboundSsoAssignments { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5438,6 +6575,84 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information of a RSA public key.</summary>
+    public class RsaPublicKeyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key size in bits (size of the modulus).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keySize")]
+        public virtual System.Nullable<int> KeySize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SAML IDP (identity provider) configuration.</summary>
+    public class SamlIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their
+        /// passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at
+        /// customer-level. Must use `HTTPS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changePasswordUri")]
+        public virtual string ChangePasswordUri { get; set; }
+
+        /// <summary>Required. The SAML **Entity ID** of the identity provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>
+        /// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out
+        /// link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML
+        /// `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logoutRedirectUri")]
+        public virtual string LogoutRedirectUri { get; set; }
+
+        /// <summary>
+        /// Required. The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is
+        /// the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the
+        /// `HTTP-Redirect` binding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleSignOnServiceUri")]
+        public virtual string SingleSignOnServiceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SAML SP (service provider) configuration.</summary>
+    public class SamlSpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login.
+        /// Currently assumed to accept response messages via the `HTTP-POST` binding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertionConsumerServiceUri")]
+        public virtual string AssertionConsumerServiceUri { get; set; }
+
+        /// <summary>Output only. The SAML **Entity ID** for this service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details that are applicable when `sso_mode` == `SAML_SSO`.</summary>
+    public class SamlSsoInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the `InboundSamlSsoProfile` to use. Must be of the form
+        /// `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSamlSsoProfile")]
+        public virtual string InboundSamlSsoProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for GroupsService.SearchGroups.</summary>
     public class SearchGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5512,6 +6727,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Controls sign-in behavior.</summary>
+    public class SignInBehavior : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When to redirect sign-ins to the IdP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectCondition")]
+        public virtual string RedirectCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -5551,6 +6777,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundSamlSsoProfilesService.UpdateInboundSamlSsoProfile.</summary>
+    public class UpdateInboundSamlSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundSsoAssignmentsService.UpdateInboundSsoAssignment.</summary>
+    public class UpdateInboundSsoAssignmentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

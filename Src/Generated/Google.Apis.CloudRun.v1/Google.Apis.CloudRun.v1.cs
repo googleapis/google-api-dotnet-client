@@ -5842,7 +5842,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imagePullPolicy")]
         public virtual string ImagePullPolicy { get; set; }
 
-        /// <summary>Not supported by Cloud Run.</summary>
+        /// <summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual Probe LivenessProbe { get; set; }
 

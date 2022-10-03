@@ -331,9 +331,28 @@ namespace Google.Apis.PlayIntegrity.v1
 }
 namespace Google.Apis.PlayIntegrity.v1.Data
 {
+    /// <summary>
+    /// Contains a signal helping apps differentiating between likely genuine users and likely non-genuine traffic (such
+    /// as accounts being used for fraud, accounts used by automated traffic, or accounts used in device farms) based on
+    /// the presence and volume of Play store activity.
+    /// </summary>
+    public class AccountActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Indicates the activity level of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activityLevel")]
+        public virtual string ActivityLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the account information such as the licensing status for the user in the scope.</summary>
     public class AccountDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Details about the account activity for the user in the scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountActivity")]
+        public virtual AccountActivity AccountActivity { get; set; }
+
         /// <summary>
         /// Details about the account risk for the user in the scope. This feature is available only to selected
         /// developers.
