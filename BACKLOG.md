@@ -18,18 +18,6 @@ the request and want to put work into it.
 - Status: Design work required to implement in a backwards compatible way.
 - Action: Will be fixed only if a problem is found for which there is no work-around.
 
-## Reference documentation should be automatically updated
-
-- Issue: [#903](https://github.com/googleapis/google-api-dotnet-client/issues/903)
-- Status: Investigation required to determine best way to automate.
-- Action: Nice to have, as there are currently no up to date docs, except the source code.
-
-## Update dotnet contributing guidelines on developers.google.com
-
-- Issue: [#1059](https://github.com/googleapis/google-api-dotnet-client/issues/1059)
-- Status: Update not started.
-- Action: Nice to have, as they are currently a little incorrect.
-
 ## Support uploading in chunks - maybe with ResumableUpload
 
 - Issue: [#1076](https://github.com/googleapis/google-api-dotnet-client/issues/1076)
@@ -40,13 +28,6 @@ the request and want to put work into it.
 
 - Issue: [#1087](https://github.com/googleapis/google-api-dotnet-client/issues/1087)
 - Status: Investigation required.
-- Action: Unlikely, this repo is in maintenance mode.
-
-## Support / Documentation for limited device authorisation flow
-
-- Issue [#1105](https://github.com/googleapis/google-api-dotnet-client/issues/1105)
-- Status: Slightly unclear at the moment whether this is about
-  documenting existing features, or implementing a new flow
 - Action: Unlikely, this repo is in maintenance mode.
 
 ## Polly integration for HttpClient
@@ -74,5 +55,6 @@ the request and want to put work into it.
 - Issue [#1827 PCKE flow should no require client_secret](https://github.com/googleapis/google-api-dotnet-client/issues/1827)
 - Issue [#1857 Retrieve default Compute credential email](https://github.com/googleapis/google-api-dotnet-client/issues/1857)
 - Issue [#2011 Add support for Domain-Wide Delegation using ImpersonatedCredential](https://github.com/googleapis/google-api-dotnet-client/issues/2011)
-- Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries.
-- Action: bring these issues up for consideration as part of consolidation work.
+- Issue [#2159 Impersonation for gcloud credentials](https://github.com/googleapis/google-api-dotnet-client/issues/2159)
+- Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries. These feature requests are on the Auth team backlog.
+- Action: Auth team will prioritize these issues and we'll work on them accordingly.
