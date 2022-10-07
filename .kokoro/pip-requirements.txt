@@ -1,0 +1,2 @@
+# Separate requirements so that pip can be updated first.
+pip == 22.2.2 --hash=sha256:b61a374b5bc40a6e982426aede40c9b5a08ff20e640f5b56977f4f91fed1e39a

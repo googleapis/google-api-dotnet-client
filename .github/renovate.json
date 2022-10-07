@@ -4,7 +4,8 @@
     ":disableDependencyDashboard"
   ],
   "ignorePaths": [
-    "Src/Generated/**"
+    "Src/Generated/**",
+    ".kokoro/**"
   ],
   "packageRules": [
     {
