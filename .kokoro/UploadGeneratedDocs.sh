@@ -10,9 +10,9 @@ then
   exit 1
 fi
 
-# Make sure we have the most recent version of pip, then install the gcp-docuploader package
-python -m pip install --upgrade pip
-python -m pip install -q gcp-docuploader
+# Make sure we have the most recent version of pip, then install other packages.
+python -m pip install --require-hashes -r pip-requirements.txt
+python -m pip install --require-hashes -r requirements.txt
 
 declare -r service_account_json=$(realpath $1)
 declare -r staging_bucket=$2
