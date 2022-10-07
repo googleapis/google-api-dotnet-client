@@ -1192,11 +1192,27 @@ namespace Google.Apis.Tests.Apis.Requests
                 Task.FromResult(_fn(request));
         }
 
+        // This is a valid JSON, but not one we recognize
+        const string ErrorJson_Unknown =
+            "{ " +
+                "\"error\":\"invalid_target\", " +
+                "\"error_description\":\"The target service indicated by the \\\"audience\\\" parameters is invalid. This might either be because the pool or provider is disabled or deleted or because it doesn't exist.\" " +
+            "}";
+
         // HttpContent and HttpStatusCode for the response.
         // Expected ex.Message and ex.ToString() content.
         public static TheoryData<HttpContent, HttpStatusCode, string, string> DeserializeErrorThrows =>
             new TheoryData<HttpContent, HttpStatusCode, string, string>
             {
+                {
+                    new StringContent(ErrorJson_Unknown),
+                    HttpStatusCode.BadRequest,
+                    "The service TestService has thrown an exception. HttpStatusCode is BadRequest. No error message was specified.",
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are: {ErrorJson_Unknown}"
+                },
                 {
                     new StringContent(""),
                     HttpStatusCode.BadRequest,
@@ -1239,7 +1255,7 @@ namespace Google.Apis.Tests.Apis.Requests
             new TheoryData<string, HttpStatusCode, string, string>
             {
                 {
-                    "{error:{message:\"json error\"}}",
+                    "{\"error\":{\"message\":\"json error\"}}",
                     HttpStatusCode.BadRequest,
                     $"json error",
                     $"Google.Apis.Requests.RequestError{Environment.NewLine}" +
@@ -1247,7 +1263,7 @@ namespace Google.Apis.Tests.Apis.Requests
                     $"No individual errors{Environment.NewLine}"
                 },
                 {
-                    "{error:{message:\"json error\",\"errors\":[{\"message\":\"individual error\",\"domain\":\"global\",\"reason\":\"badRequest\"}]}}",
+                    "{\"error\":{\"message\":\"json error\",\"errors\":[{\"message\":\"individual error\",\"domain\":\"global\",\"reason\":\"badRequest\"}]}}",
                     HttpStatusCode.BadRequest,
                     $"json error",
                     $"Google.Apis.Requests.RequestError{Environment.NewLine}" +
