@@ -82,70 +82,77 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Creates a new default credential.</summary>
         private async Task<GoogleCredential> CreateDefaultCredentialAsync()
         {
-            // 1. First try the environment variable.
-            string credentialPath = GetEnvironmentVariable(CredentialEnvironmentVariable);
-            if (!string.IsNullOrWhiteSpace(credentialPath))
+            GoogleCredential credential =
+                // 1. First try the environment variable.
+                await GetAdcFromEnvironmentVariableAsync().ConfigureAwait(false)
+                // 2. Then try the well known file.
+                ?? await GetAdcFromWellKnownFileAsync().ConfigureAwait(false)
+                // 3. Then try the compute engine.
+                ?? await GetAdcFromComputeAsync().ConfigureAwait(false)
+                // If everything we tried has failed, throw an exception.
+                ?? throw new InvalidOperationException(
+                    "The Application Default Credentials are not available. " +
+                    "They are available if running in Google Compute Engine. " +
+                    $"Otherwise, the environment variable {CredentialEnvironmentVariable} must be defined pointing to a file defining the credentials. " +
+                    $"See {HelpPermalink} for more information.");
+
+            return credential.CreateWithEnvironmentQuotaProject();
+
+            async Task<GoogleCredential> GetAdcFromEnvironmentVariableAsync()
             {
-                try
+                string credentialPath = GetEnvironmentVariable(CredentialEnvironmentVariable);
+                if (!string.IsNullOrWhiteSpace(credentialPath))
                 {
-                    return await CreateDefaultCredentialFromFileAsync(credentialPath, default).ConfigureAwait(false);
+                    try
+                    {
+                        return await CreateDefaultCredentialFromFileAsync(credentialPath, default).ConfigureAwait(false);
+                    }
+                    catch (Exception e)
+                    {
+                        // Catching generic exception type because any corrupted file could manifest in different ways
+                        // including but not limited to the System, System.IO or from the Newtonsoft.Json namespace.
+                        throw new InvalidOperationException(
+                            $"Error reading credential file from location {credentialPath}: {e.Message}{Environment.NewLine}" +
+                            $"Please check the value of the Environment Variable {CredentialEnvironmentVariable}.", e);
+                    }
                 }
-                catch (Exception e)
-                {
-                    // Catching generic exception type because any corrupted file could manifest in different ways
-                    // including but not limited to the System, System.IO or from the Newtonsoft.Json namespace.
-                    throw new InvalidOperationException(
-                        String.Format("Error reading credential file from location {0}: {1}"
-                            + "\nPlease check the value of the Environment Variable {2}",
-                            credentialPath,
-                            e.Message,
-                            CredentialEnvironmentVariable), e);
-                }
+                return null;
             }
 
-            // 2. Then try the well known file.
-            credentialPath = GetWellKnownCredentialFilePath();
-            if (!string.IsNullOrWhiteSpace(credentialPath))
+            async Task<GoogleCredential> GetAdcFromWellKnownFileAsync()
             {
-                try
+                string credentialPath = GetWellKnownCredentialFilePath();
+                if (!string.IsNullOrWhiteSpace(credentialPath))
                 {
-                    return await CreateDefaultCredentialFromFileAsync(credentialPath, default).ConfigureAwait(false);
+                    try
+                    {
+                        return await CreateDefaultCredentialFromFileAsync(credentialPath, default).ConfigureAwait(false);
+                    }
+                    catch (Exception e) when (e is FileNotFoundException || e is DirectoryNotFoundException)
+                    {
+                        // File is not present, eat the exception and move on to the next check.
+                        Logger.Debug($"Well-known credential file {credentialPath} not found.");
+                    }
+                    catch (Exception e)
+                    {
+                        throw new InvalidOperationException(
+                            $"Error reading credential file from location {credentialPath}: {e.Message}{Environment.NewLine}" +
+                            "Please rerun 'gcloud auth login' to regenerate credentials file.", e);
+                    }
                 }
-                catch (FileNotFoundException)
-                {
-                    // File is not present, eat the exception and move on to the next check.
-                    Logger.Debug("Well-known credential file {0} not found.", credentialPath);
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    // Directory not present, eat the exception and move on to the next check.
-                    Logger.Debug("Well-known credential file {0} not found.", credentialPath);
-                }
-                catch (Exception e)
-                {
-                    throw new InvalidOperationException(
-                        String.Format("Error reading credential file from location {0}: {1}"
-                            + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
-                            credentialPath,
-                            e.Message), e);
-                }
+                return null;
             }
 
-            // 3. Then try the compute engine.
-            Logger.Debug("Checking whether the application is running on ComputeEngine.");
-            if (await ComputeCredential.IsRunningOnComputeEngine().ConfigureAwait(false))
+            async Task<GoogleCredential> GetAdcFromComputeAsync()
             {
-                Logger.Debug("ComputeEngine check passed. Using ComputeEngine Credentials.");
-                return new GoogleCredential(new ComputeCredential());
+                Logger.Debug("Checking whether the application is running on ComputeEngine.");
+                if (await ComputeCredential.IsRunningOnComputeEngine().ConfigureAwait(false))
+                {
+                    Logger.Debug("ComputeEngine check passed. Using ComputeEngine Credentials.");
+                    return new GoogleCredential(new ComputeCredential());
+                }
+                return null;
             }
-
-            // If everything we tried has failed, throw an exception.
-            throw new InvalidOperationException(
-                String.Format("The Application Default Credentials are not available. They are available if running"
-                    + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
-                    + " pointing to a file defining the credentials. See {1} for more information.",
-                    CredentialEnvironmentVariable,
-                    HelpPermalink));
         }
 
         private async Task<GoogleCredential> CreateDefaultCredentialFromFileAsync(string credentialPath, CancellationToken cancellationToken)
