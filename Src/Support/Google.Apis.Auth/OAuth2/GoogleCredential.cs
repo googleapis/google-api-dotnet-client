@@ -306,6 +306,24 @@ namespace Google.Apis.Auth.OAuth2
             new GoogleCredential(credential.WithQuotaProject(quotaProject));
 
         /// <summary>
+        /// Creates a copy of this credential with the ambient quota project as set in
+        /// <see cref="GoogleAuthConsts.QuotaProjectEnvironmentVariable"/>.
+        /// If <see cref="GoogleAuthConsts.QuotaProjectEnvironmentVariable"/> is not set, or if
+        /// it is set to the empty value, this method returns this instance.
+        /// </summary>
+        /// <remarks>
+        /// The ADC quota project value will be overwritten only if the environment variable is present
+        /// and set to a non-empty value.
+        /// If the environment variable is not present or if it is present but unset, the credential
+        /// returned will maintain whatever quota project value it already had, i.e. the credential's
+        /// quota project value will not be unset.
+        /// </remarks>
+        public GoogleCredential CreateWithEnvironmentQuotaProject() =>
+            GoogleAuthConsts.EnvironmentQuotaProject is string environmentQuotaProject
+            ? CreateWithQuotaProject(environmentQuotaProject)
+            : this;
+
+        /// <summary>
         /// Creates a copy of this credential with the specified HTTP client factory.
         /// </summary>
         /// <param name="factory">The HTTP client factory to be used by the new credential.

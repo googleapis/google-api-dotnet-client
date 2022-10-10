@@ -91,6 +91,21 @@ namespace Google.Apis.Auth.OAuth2
         internal const string IamScope = "https://www.googleapis.com/auth/iam";
 
         /// <summary>
+        /// Name of the environment variable that will be checked for an ambient quota project ID.
+        /// If set, this value will be applied to Application Default Credentials.
+        /// </summary>
+        public const string QuotaProjectEnvironmentVariable = "GOOGLE_CLOUD_QUOTA_PROJECT";
+
+        /// <summary>
+        /// The non empty value set on <see cref="QuotaProjectEnvironmentVariable"/>, if any;
+        /// null otherwise.
+        /// </summary>
+        internal static string EnvironmentQuotaProject =>
+            Environment.GetEnvironmentVariable(QuotaProjectEnvironmentVariable) is string environmentQuotaProject && environmentQuotaProject != ""
+            ? environmentQuotaProject
+            : null;
+
+        /// <summary>
         /// The effective Compute Engine authorization token server URL.
         /// This takes account of the GCE_METADATA_HOST environment variable.
         /// </summary>
