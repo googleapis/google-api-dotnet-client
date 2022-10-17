@@ -107,6 +107,10 @@ namespace Google.Apis.Auth.OAuth2
 
         internal AwsExternalAccountCredential(Initializer initializer) : base(initializer)
         {
+            AwsMetadataServerClient.ValidateMetadataServerUrlIfAny(initializer.ImdsV2SessionTokenUrl, "IMDS V2 Session Token");
+            AwsMetadataServerClient.ValidateMetadataServerUrlIfAny(initializer.RegionUrl, "Region");
+            AwsMetadataServerClient.ValidateMetadataServerUrlIfAny(initializer.SecurityCredentialsUrl, "Security Credentials");
+
             RegionUrl = initializer.RegionUrl;
             RegionalCredentialVerificationUrl = initializer.RegionalCredentialVerificationUrl;
             SecurityCredentialsUrl = initializer.SecurityCredentialsUrl;
