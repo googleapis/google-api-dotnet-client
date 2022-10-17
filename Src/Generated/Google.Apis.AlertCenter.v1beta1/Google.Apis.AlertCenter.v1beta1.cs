@@ -1028,6 +1028,39 @@ namespace Google.Apis.AlertCenter.v1beta1
 }
 namespace Google.Apis.AlertCenter.v1beta1.Data
 {
+    /// <summary>A generic alert for abusive user activity occurring with a customer.</summary>
+    public class AbuseDetected : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of abusive users/entities to be displayed in a table in the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalDetails")]
+        public virtual EntityList AdditionalDetails { get; set; }
+
+        /// <summary>
+        /// Displayed after Customer abuse detected - {alert_descriptor}. If missing, alert name will be displayed as
+        /// Customer abuse detected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertDescriptor")]
+        public virtual string AlertDescriptor { get; set; }
+
+        /// <summary>Product that the abuse is originating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; }
+
+        /// <summary>Unique identifier of each alert that is onboarded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subAlertId")]
+        public virtual string SubAlertId { get; set; }
+
+        /// <summary>
+        /// Customizable text to display in the summary section of the alert. Will be parsed as HTML to allow new
+        /// paragraphs and hyperlinks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about why an account is receiving an account suspension warning.</summary>
     public class AccountSuspensionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1658,6 +1691,48 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Individual entity affected by, or related to, an alert.</summary>
+    public class Entity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Link to a Security Investigation Tool search based on this entity, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual string Link { get; set; }
+
+        /// <summary>Human-readable name of this entity, such as an email address, file ID, or device name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Extra values beyond name. The order of values should align with headers in EntityList.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityList stores entities in a format that can be translated to a table in the Alert Center UI.
+    /// </summary>
+    public class EntityList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entities affected by the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
+
+        /// <summary>
+        /// Headers of the values in entities. If no value is defined in Entity, this field should be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>Name of the key detail used to display this entity list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

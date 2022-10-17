@@ -6234,6 +6234,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpFilestoreCsiDriverConfig")]
         public virtual GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfig { get; set; }
 
+        /// <summary>Configuration for the Backup for GKE agent addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeBackupAgentConfig")]
+        public virtual GkeBackupAgentConfig GkeBackupAgentConfig { get; set; }
+
         /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica
         /// pods a replication controller has based on the resource usage of the existing pods.
@@ -6602,6 +6606,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
+
+        /// <summary>Configuration for the fine-grained cost management feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costManagementConfig")]
+        public virtual CostManagementConfig CostManagementConfig { get; set; }
 
         /// <summary>
         /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
@@ -6996,6 +7004,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
         public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; }
 
+        /// <summary>The desired configuration for the fine-grained cost management feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredCostManagementConfig")]
+        public virtual CostManagementConfig DesiredCostManagementConfig { get; set; }
+
         /// <summary>Configuration of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
         public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; }
@@ -7242,6 +7254,17 @@ namespace Google.Apis.Container.v1.Data
         /// Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created
         /// to hold resource consumption records.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for fine-grained cost management feature.</summary>
+    public class CostManagementConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the feature is enabled or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -7543,6 +7566,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Backup for GKE Agent.</summary>
+    public class GkeBackupAgentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Backup for GKE agent is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of
     /// replica pods a replication controller has based on the resource usage of the existing pods.
@@ -7642,6 +7676,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; }
 
+        /// <summary>The ipv6 access type (internal or external) when create_subnetwork is true</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessType")]
+        public virtual string Ipv6AccessType { get; set; }
+
         /// <summary>This field is deprecated, use node_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
         public virtual string NodeIpv4Cidr { get; set; }
@@ -7679,6 +7717,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; }
+
+        /// <summary>The IP stack type of the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
+        public virtual string StackType { get; set; }
 
         /// <summary>
         /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an

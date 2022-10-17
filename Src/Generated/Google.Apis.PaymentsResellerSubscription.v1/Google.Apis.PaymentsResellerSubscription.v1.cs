@@ -1105,8 +1105,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. If true, the subscription will be cancelled immediately. Otherwise, the subscription will be
-        /// cancelled at renewal_time, and therefore no prorated refund will be issued for the rest of the cycle.
+        /// Optional. If true, Google will cancel the subscription immediately, and issue a prorated refund for the
+        /// remainder of the billing cycle. Otherwise, Google defers the cancelation at renewal_time, and therefore,
+        /// will not issue a refund.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelImmediately")]
         public virtual System.Nullable<bool> CancelImmediately { get; set; }
@@ -1472,6 +1473,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. Output Only. The duration of an introductory offer in billing cycles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrenceCount")]
         public virtual System.Nullable<int> RecurrenceCount { get; set; }
+
+        /// <summary>Output only. 2-letter ISO region code where the product is available in. Ex. "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

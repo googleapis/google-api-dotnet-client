@@ -7388,8 +7388,8 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The time at which this permission will expire (RFC 3339 date-time). Expiration times have the following
-        /// restrictions:   - They can only be set on user and group permissions  - The time must be in the future  -
-        /// The time cannot be more than a year in the future
+        /// restrictions:   - They cannot be set on shared drive items  - They can only be set on user and group
+        /// permissions  - The time must be in the future  - The time cannot be more than a year in the future
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw { get; set; }

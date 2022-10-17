@@ -567,20 +567,9 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
     /// <summary>A storage bucket and its relation to a parent Firebase project.</summary>
     public class Bucket : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Location of the storage bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; }
-
         /// <summary>Resource name of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. Represents whether a bucket is being moved to a new location, in which case reconciling is set
-        /// to true.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
-        public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

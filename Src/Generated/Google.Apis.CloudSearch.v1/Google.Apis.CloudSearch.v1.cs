@@ -2923,6 +2923,16 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
+                /// <summary>
+                /// Update mask to control which fields to update. If update_mask is non-empty then only the fields
+                /// specified in the update_mask are updated. If you specify a field in the update_mask, but don't
+                /// specify its value in the source that field will be cleared. If the update_mask is not present or
+                /// empty or has the value * then all fields will be updated. Some example field paths: name,
+                /// display_name
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.DataSource Body { get; set; }
 
@@ -2953,6 +2963,14 @@ namespace Google.Apis.CloudSearch.v1
                     RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                     {
                         Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3317,6 +3335,16 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Update mask to control which fields to update. If update_mask is non-empty then only the fields
+                /// specified in the update_mask are updated. If you specify a field in the update_mask, but don't
+                /// specify its value in the search_application then that field will be cleared. If the update_mask is
+                /// not present or empty or has the value * then all fields will be updated. Some example field paths:
+                /// search_application.name, search_application.display_name
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.SearchApplication Body { get; set; }
 
@@ -3343,6 +3371,14 @@ namespace Google.Apis.CloudSearch.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^searchapplications/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3439,6 +3475,16 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Update mask to control which fields to update. If update_mask is non-empty then only the fields
+                /// specified in the update_mask are updated. If you specify a field in the update_mask, but don't
+                /// specify its value in the search_application then that field will be cleared. If the update_mask is
+                /// not present or empty or has the value * then all fields will be updated. Some example field paths:
+                /// search_application.name, search_application.display_name
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.SearchApplication Body { get; set; }
 
@@ -3465,6 +3511,14 @@ namespace Google.Apis.CloudSearch.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^searchapplications/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -7943,13 +7997,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Indicates whether the present lock is currently on or off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentLock")]
         public virtual System.Nullable<bool> PresentLock { get; set; }
-
-        /// <summary>
-        /// Indicates whether project Dino is currently on or off. WARNING: This is currently an experimental field. It
-        /// should not be used without getting an explicit review and approval from the Meet team.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectDinoEnabled")]
-        public virtual System.Nullable<bool> ProjectDinoEnabled { get; set; }
 
         /// <summary>Indicates whether the reactions lock is currently on or off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionsLock")]
@@ -13750,12 +13797,23 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("botAttachmentState")]
         public virtual string BotAttachmentState { get; set; }
 
+        /// <summary>Output only. Time when the quoted message was posted in microseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTimeMicros")]
+        public virtual System.Nullable<long> CreateTimeMicros { get; set; }
+
         /// <summary>
         /// Output only. ID of the User who posted the quoted message. This includes information to identify if the
         /// quoted message was posted by an App on behalf of a user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorId")]
         public virtual UserId CreatorId { get; set; }
+
+        /// <summary>
+        /// Output only. Time when the quoted message was last edited by a user at the time when quoting action happens.
+        /// Time is in microseconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEditTimeMicros")]
+        public virtual System.Nullable<long> LastEditTimeMicros { get; set; }
 
         /// <summary>
         /// The `last_update_time` of the original message when the client initiated the quote creation. This is derived
@@ -13787,7 +13845,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textBody")]
         public virtual string TextBody { get; set; }
 
-        /// <summary>Output only. Upload metadata of the quoted message. NEXT TAG: 11</summary>
+        /// <summary>
+        /// Output only. ID of the User who last updated (created/edited/deleted) the quoted message at the time when
+        /// quoting action happens. This includes information to identify if the quoted message was posted by an App on
+        /// behalf of a user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updaterId")]
+        public virtual UserId UpdaterId { get; set; }
+
+        /// <summary>Output only. Upload metadata of the quoted message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadata")]
         public virtual System.Collections.Generic.IList<UploadMetadata> UploadMetadata { get; set; }
 
@@ -15881,6 +15947,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual DataSource Source { get; set; }
 
+        /// <summary>
+        /// Update mask to control which fields to update. If update_mask is non-empty then only the fields specified in
+        /// the update_mask are updated. If you specify a field in the update_mask, but don't specify its value in the
+        /// source that field will be cleared. If the update_mask is not present or empty or has the value * then all
+        /// fields will be updated. Some example field paths: name, display_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16211,8 +16286,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// Avatar url of the user who triggered the Drive Notification email. This field will be populated if we can
         /// extract such information from the Drive Notification email. This should only be used to fetch user avatars
-        /// when updater_to_show_email is not populated. This field is not set for non-Drive Notification items. This is
-        /// not the actual sender of the email, as the sender is always comments-noreply@docs.google.com.
+        /// when updater_to_show_email is not populated. This field is not set for non-Drive Notification items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveNotificationAvatarUrl")]
         public virtual string DriveNotificationAvatarUrl { get; set; }
@@ -16244,10 +16318,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// The display name of the updater for clients to show used for Gmail items. For non-Drive Notification items,
         /// this field will always be populated. If the display name cannot be found for the user, the fallback string
-        /// will be the email address. For Drive Notification items, this is the email of the user who triggered the
+        /// will be the email address. For Drive Notification items, this is the name of the user who triggered the
         /// Drive notification email. This field will be populated if we can extract such information from the Drive
-        /// Notification email. This is not the actual sender of the email, as the sender is always
-        /// comments-noreply@docs.google.com.
+        /// Notification email. If the name cannot be extracted, then the email will be the fallback string, which is
+        /// used as the display name text in the UI when needed. This is not the actual sender of the email, as the
+        /// sender is always comments-noreply@docs.google.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowName")]
         public virtual string UpdaterToShowName { get; set; }
