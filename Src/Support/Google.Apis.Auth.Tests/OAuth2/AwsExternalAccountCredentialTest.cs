@@ -21,7 +21,6 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -29,18 +28,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class AwsExternalAccountCredentialsTests : ExternalAccountCredentialTestsBase
     {
-        private const string Imdsv2Url = "http://dummy.imdsv2.url/";
+        private const string Imdsv2Url = "http://169.254.169.254/dummy-imds/";
         private const string ImdsV2TokenTtlHeaderName = "X-aws-ec2-metadata-token-ttl-seconds";
         private const string ImdsV2TokenTtlSeconds = "3600";
 
         private const string ImdsV2Token = "dummy_imdsv2_token";
         private const string ImdsV2TokenHeaderName = "X-aws-ec2-metadata-token";
 
-        private const string RegionUrl = "http://dummy.region.url/";
+        private const string RegionUrl = "http://169.254.169.254/dummy-region/";
         private const string MetadateRegion = "us-central-a1";
         private const string Region = "us-central-a";
 
-        private const string SecurityCredentialsUrl = "http://dummy.security.credentials.url/";
+        private const string SecurityCredentialsUrl = "http://169.254.169.254/dummy-security-credentials/";
         private const string SecurityCredentialsRole = "dummy_role";
 
         private const string SecurityCredentialsAccessKeyId = "dummy_credentials_key_id";
@@ -53,6 +52,29 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private const string ServiceName = "iam";
 
         private static readonly DateTime MockUtcNow = new DateTime(2022, 9, 29, 5, 47, 56, DateTimeKind.Utc);
+
+        [Theory]
+        [InlineData("https://dummy-host/", RegionUrl, SecurityCredentialsUrl, "IMDS")]
+        [InlineData("https://dummy-host/", null, null, "IMDS")]
+        [InlineData(Imdsv2Url, "https://dummy-host/", SecurityCredentialsUrl, "Region")]
+        [InlineData(null, "https://dummy-host/", null, "Region")]
+        [InlineData(Imdsv2Url, RegionUrl, "https://dummy-host/", "Security Credentials")]
+        [InlineData(null, null, "https://dummy-host/", "Security Credentials")]
+        public void ValidatesAwsMetadataServerUrls(string imdsV2TokenUrl, string regionUrl, string securityCredentials, string inMessage)
+        {
+            var exception = Assert.Throws<InvalidOperationException>(() => new AwsExternalAccountCredential(
+                new AwsExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+                {
+                    ClientId = ClientId,
+                    ClientSecret = ClientSecret,
+                    Scopes = new string[] { Scope },
+                    QuotaProject = QuotaProject,
+                    ImdsV2SessionTokenUrl = imdsV2TokenUrl,
+                    RegionUrl = regionUrl,
+                    SecurityCredentialsUrl = securityCredentials,
+                }));
+            Assert.Contains(inMessage, exception.Message);
+        }
 
         [Fact]
         public async Task FetchesAccessToken()

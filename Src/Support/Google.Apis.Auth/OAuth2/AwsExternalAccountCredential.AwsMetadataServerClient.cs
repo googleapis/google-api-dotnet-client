@@ -30,6 +30,9 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         private sealed class AwsMetadataServerClient
         {
+            private const string AwsMetadataServerHostV4 = "169.254.169.254";
+            private const string AwsMetadataServerHostV6 = "fd00:ec2::254";
+
             private const string ImdsV2SessionTokenTtlHeaderName = "X-aws-ec2-metadata-token-ttl-seconds";
             // Only one hour which should be enough for accessing the metadata server to obtaine the data
             // we need to generate one subject token. It could possibly be way less, but let's be conservatives
@@ -87,6 +90,23 @@ namespace Google.Apis.Auth.OAuth2
                 var response = await _httpClient.SendAsync(request, _cancellationToken).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            }
+
+            internal static void ValidateMetadataServerUrlIfAny(string url, string nameOfData)
+            {
+                if (string.IsNullOrEmpty(url))
+                {
+                    return;
+                }
+
+                var uri = new Uri(url);
+                if (uri.Host != AwsMetadataServerHostV4 && uri.Host != AwsMetadataServerHostV6)
+                {
+                    throw new InvalidOperationException(
+                        $"The host of the URL given for fetching the {nameOfData} does not match one of the expected hosts. " +
+                        $"Given URL: {url} " +
+                        $"Expected hosts: {AwsMetadataServerHostV4} or {AwsMetadataServerHostV6}");
+                }
             }
         }
     }
