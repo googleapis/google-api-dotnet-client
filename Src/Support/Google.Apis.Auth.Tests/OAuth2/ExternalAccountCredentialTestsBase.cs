@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected const string SubjectTokenJsonField = "subject_token_field";
         protected static readonly string SubjectTokenJson = $@"{{""{SubjectTokenJsonField}"": ""{SubjectTokenText}""}}";
 
-        protected const string TokenUrl = "https://dummy.token.url/";
+        protected const string TokenUrl = "https://sts.googleapis.com/";
         protected const string GrantTypeClaim = "grant_type=urn:ietf:params:oauth:grant-type:token-exchange";
         protected const string RequestedTokenTypeClaim = "requested_token_type=urn:ietf:params:oauth:token-type:access_token";
         protected const string Audience = "dummy_audience";
@@ -43,7 +43,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected const string ClientId = "dummy_client_ID";
         protected const string ClientSecret = "dummy_client_secret";
         protected const string WorkforcePoolUserProject = "dummy_workforce_project";
-        protected const string ImpersonationUrl = "https://dummy.impersonation.url/";
+        protected const string ImpersonationUrl = "https://iamcredentials.googleapis.com/";
 
         protected const string AccessToken = "dummy_access_token";
         protected const string RefreshedAccessToken = "dummy_refreshed_access_token";
