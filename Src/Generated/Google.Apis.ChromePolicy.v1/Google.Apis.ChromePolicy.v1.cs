@@ -345,7 +345,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// ID of the Google Workspace account or literal "my_customer" for the customer associated to the
                 /// request.
                 /// </param>
-                public virtual BatchDeleteRequest BatchDelete(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest body, string customer)
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest body, string customer)
                 {
                     return new BatchDeleteRequest(service, body, customer);
                 }
@@ -359,7 +359,7 @@ namespace Google.Apis.ChromePolicy.v1
                 public class BatchDeleteRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest body, string customer) : base(service)
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -374,7 +374,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -414,7 +414,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// ID of the Google Workspace account or literal "my_customer" for the customer associated to the
                 /// request.
                 /// </param>
-                public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyGroupPoliciesRequest body, string customer)
+                public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest body, string customer)
                 {
                     return new BatchModifyRequest(service, body, customer);
                 }
@@ -428,7 +428,7 @@ namespace Google.Apis.ChromePolicy.v1
                 public class BatchModifyRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchModify request.</summary>
-                    public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyGroupPoliciesRequest body, string customer) : base(service)
+                    public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -443,7 +443,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyGroupPoliciesRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -482,7 +482,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to
                 /// the request.
                 /// </param>
-                public virtual ListGroupPriorityOrderingRequest ListGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingRequest body, string customer)
+                public virtual ListGroupPriorityOrderingRequest ListGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest body, string customer)
                 {
                     return new ListGroupPriorityOrderingRequest(service, body, customer);
                 }
@@ -492,10 +492,10 @@ namespace Google.Apis.ChromePolicy.v1
                 /// `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error
                 /// details as part of the google.rpc.Status.
                 /// </summary>
-                public class ListGroupPriorityOrderingRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingResponse>
+                public class ListGroupPriorityOrderingRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse>
                 {
                     /// <summary>Constructs a new ListGroupPriorityOrdering request.</summary>
-                    public ListGroupPriorityOrderingRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingRequest body, string customer) : base(service)
+                    public ListGroupPriorityOrderingRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -510,7 +510,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ListGroupPriorityOrderingRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -549,7 +549,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to
                 /// the request.
                 /// </param>
-                public virtual UpdateGroupPriorityOrderingRequest UpdateGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest body, string customer)
+                public virtual UpdateGroupPriorityOrderingRequest UpdateGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest body, string customer)
                 {
                     return new UpdateGroupPriorityOrderingRequest(service, body, customer);
                 }
@@ -562,7 +562,7 @@ namespace Google.Apis.ChromePolicy.v1
                 public class UpdateGroupPriorityOrderingRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new UpdateGroupPriorityOrdering request.</summary>
-                    public UpdateGroupPriorityOrderingRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest body, string customer) : base(service)
+                    public UpdateGroupPriorityOrderingRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -577,7 +577,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -627,16 +627,16 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <summary>Creates a certificate at a specified OU for a customer.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customer">Required. The customer for which the certificate will apply.</param>
-                public virtual DefineCertificateRequest DefineCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateRequest body, string customer)
+                public virtual DefineCertificateRequest DefineCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineCertificateRequest body, string customer)
                 {
                     return new DefineCertificateRequest(service, body, customer);
                 }
 
                 /// <summary>Creates a certificate at a specified OU for a customer.</summary>
-                public class DefineCertificateRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateResponse>
+                public class DefineCertificateRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineCertificateResponse>
                 {
                     /// <summary>Constructs a new DefineCertificate request.</summary>
-                    public DefineCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateRequest body, string customer) : base(service)
+                    public DefineCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineCertificateRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -648,7 +648,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineCertificateRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineCertificateRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -680,16 +680,16 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <summary>Define a new network.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customer">Required. The customer who will own this new network.</param>
-                public virtual DefineNetworkRequest DefineNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkRequest body, string customer)
+                public virtual DefineNetworkRequest DefineNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineNetworkRequest body, string customer)
                 {
                     return new DefineNetworkRequest(service, body, customer);
                 }
 
                 /// <summary>Define a new network.</summary>
-                public class DefineNetworkRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkResponse>
+                public class DefineNetworkRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineNetworkResponse>
                 {
                     /// <summary>Constructs a new DefineNetwork request.</summary>
-                    public DefineNetworkRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkRequest body, string customer) : base(service)
+                    public DefineNetworkRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineNetworkRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -701,7 +701,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1DefineNetworkRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineNetworkRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -733,16 +733,16 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <summary>Remove an existing certificate by guid.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customer">Required. The customer whose certificate will be removed.</param>
-                public virtual RemoveCertificateRequest RemoveCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateRequest body, string customer)
+                public virtual RemoveCertificateRequest RemoveCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveCertificateRequest body, string customer)
                 {
                     return new RemoveCertificateRequest(service, body, customer);
                 }
 
                 /// <summary>Remove an existing certificate by guid.</summary>
-                public class RemoveCertificateRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateResponse>
+                public class RemoveCertificateRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveCertificateResponse>
                 {
                     /// <summary>Constructs a new RemoveCertificate request.</summary>
-                    public RemoveCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateRequest body, string customer) : base(service)
+                    public RemoveCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveCertificateRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -754,7 +754,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveCertificateRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveCertificateRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -786,16 +786,16 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <summary>Remove an existing network by guid.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customer">Required. The customer whose network will be removed.</param>
-                public virtual RemoveNetworkRequest RemoveNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkRequest body, string customer)
+                public virtual RemoveNetworkRequest RemoveNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveNetworkRequest body, string customer)
                 {
                     return new RemoveNetworkRequest(service, body, customer);
                 }
 
                 /// <summary>Remove an existing network by guid.</summary>
-                public class RemoveNetworkRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkResponse>
+                public class RemoveNetworkRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveNetworkResponse>
                 {
                     /// <summary>Constructs a new RemoveNetwork request.</summary>
-                    public RemoveNetworkRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkRequest body, string customer) : base(service)
+                    public RemoveNetworkRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveNetworkRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -807,7 +807,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1RemoveNetworkRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveNetworkRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -865,7 +865,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <param name="customer">
                 /// ID of the G Suite account or literal "my_customer" for the customer associated to the request.
                 /// </param>
-                public virtual BatchInheritRequest BatchInherit(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest body, string customer)
+                public virtual BatchInheritRequest BatchInherit(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest body, string customer)
                 {
                     return new BatchInheritRequest(service, body, customer);
                 }
@@ -880,7 +880,7 @@ namespace Google.Apis.ChromePolicy.v1
                 public class BatchInheritRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchInherit request.</summary>
-                    public BatchInheritRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest body, string customer) : base(service)
+                    public BatchInheritRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -894,7 +894,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -933,7 +933,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <param name="customer">
                 /// ID of the G Suite account or literal "my_customer" for the customer associated to the request.
                 /// </param>
-                public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest body, string customer)
+                public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest body, string customer)
                 {
                     return new BatchModifyRequest(service, body, customer);
                 }
@@ -947,7 +947,7 @@ namespace Google.Apis.ChromePolicy.v1
                 public class BatchModifyRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchModify request.</summary>
-                    public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest body, string customer) : base(service)
+                    public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest body, string customer) : base(service)
                     {
                         Customer = customer;
                         Body = body;
@@ -961,7 +961,7 @@ namespace Google.Apis.ChromePolicy.v1
                     public virtual string Customer { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest Body { get; set; }
+                    Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -996,16 +996,16 @@ namespace Google.Apis.ChromePolicy.v1
             /// <param name="customer">
             /// ID of the G Suite account or literal "my_customer" for the customer associated to the request.
             /// </param>
-            public virtual ResolveRequest Resolve(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ResolveRequest body, string customer)
+            public virtual ResolveRequest Resolve(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ResolveRequest body, string customer)
             {
                 return new ResolveRequest(service, body, customer);
             }
 
             /// <summary>Gets the resolved policy values for a list of policies that match a search query.</summary>
-            public class ResolveRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ResolveResponse>
+            public class ResolveRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ResolveResponse>
             {
                 /// <summary>Constructs a new Resolve request.</summary>
-                public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ResolveRequest body, string customer) : base(service)
+                public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ResolveRequest body, string customer) : base(service)
                 {
                     Customer = customer;
                     Body = body;
@@ -1019,7 +1019,7 @@ namespace Google.Apis.ChromePolicy.v1
                 public virtual string Customer { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1ResolveRequest Body { get; set; }
+                Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ResolveRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1436,519 +1436,6 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for specifying that multiple policy values will be deleted.</summary>
-    public class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of policies that will be deleted as defined by the `requests`. All requests in the list must follow
-        /// these restrictions: 1. All schemas in the list must have the same root namespace. 2. All
-        /// `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must
-        /// have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference
-        /// the same `policySchema` + ` policyTargetKey` pair.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1DeleteGroupPolicyRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request message for specifying that multiple policy values inherit their value from their parents.
-    /// </summary>
-    public class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of policies that have to inherit their values as defined by the `requests`. All requests in the list
-        /// must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All
-        /// `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values
-        /// must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an
-        /// empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No
-        /// two modification requests can reference the same `policySchema` + ` policyTargetKey` pair.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1InheritOrgUnitPolicyRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for modifying multiple policy values for a specific group-based target.</summary>
-    public class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of policies to modify as defined by the `requests`. All requests in the list must follow these
-        /// restrictions: 1. All schemas in the list must have the same root namespace. 2. All
-        /// `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must
-        /// have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference
-        /// the same `policySchema` + ` policyTargetKey` pair.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1ModifyGroupPolicyRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for modifying multiple policy values for a specific target.</summary>
-    public class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of policies to modify as defined by the `requests`. All requests in the list must follow these
-        /// restrictions: 1. All schemas in the list must have the same root namespace. 2. All
-        /// `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values
-        /// must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an
-        /// empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No
-        /// two modification requests can reference the same `policySchema` + ` policyTargetKey` pair.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1ModifyOrgUnitPolicyRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request object for creating a certificate.</summary>
-    public class GoogleChromePolicyV1DefineCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The optional name of the certificate. If not specified, the certificate issuer will be used as the
-        /// name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ceritificateName")]
-        public virtual string CeritificateName { get; set; }
-
-        /// <summary>Required. The raw contents of the .PEM, .CRT, or .CER file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
-        public virtual string Certificate { get; set; }
-
-        /// <summary>Optional. Certificate settings within the chrome.networks.certificates namespace.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
-
-        /// <summary>
-        /// Required. The target resource on which this certificate is applied. The following resources are supported: *
-        /// Organizational Unit ("orgunits/{orgunit_id}")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response object for creating a certificate.</summary>
-    public class GoogleChromePolicyV1DefineCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The guid of the certificate created by the action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
-        public virtual string NetworkId { get; set; }
-
-        /// <summary>the affiliated settings of the certificate (NOT IMPLEMENTED)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
-
-        /// <summary>the resource at which the certificate is defined.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request object for creating a new network.</summary>
-    public class GoogleChromePolicyV1DefineNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Name of the new created network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Required. Detailed network settings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
-
-        /// <summary>
-        /// Required. The target resource on which this new network will be defined. The following resources are
-        /// supported: * Organizational Unit ("orgunits/{orgunit_id}")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response object for creating a network.</summary>
-    public class GoogleChromePolicyV1DefineNetworkResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Network ID of the new created network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
-        public virtual string NetworkId { get; set; }
-
-        /// <summary>Detailed network settings of the new created network</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1NetworkSetting> Settings { get; set; }
-
-        /// <summary>
-        /// The target resource on which this new network will be defined. The following resources are supported: *
-        /// Organizational Unit ("orgunits/{orgunit_id}")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request parameters for deleting the policy value of a specific group target.</summary>
-    public class GoogleChromePolicyV1DeleteGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The fully qualified name of the policy schema that is being inherited.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
-        public virtual string PolicySchema { get; set; }
-
-        /// <summary>
-        /// Required. The key of the target for which we want to modify a policy. The target resource must point to a
-        /// Group.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request parameters for inheriting policy value of a specific org unit target from the policy value of its parent
-    /// org unit.
-    /// </summary>
-    public class GoogleChromePolicyV1InheritOrgUnitPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The fully qualified name of the policy schema that is being inherited.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
-        public virtual string PolicySchema { get; set; }
-
-        /// <summary>
-        /// Required. The key of the target for which we want to modify a policy. The target resource must point to an
-        /// Org Unit.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for listing the group priority ordering of an app.</summary>
-    public class GoogleChromePolicyV1ListGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The namespace of the policy type for the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
-        public virtual string PolicyNamespace { get; set; }
-
-        /// <summary>
-        /// Required. The key of the target for which we want to retrieve the group priority ordering. The target
-        /// resource must point to an app.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for listing the group priority ordering of an app.</summary>
-    public class GoogleChromePolicyV1ListGroupPriorityOrderingResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The group IDs, in priority ordering.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
-        public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
-
-        /// <summary>Output only. The namespace of the policy type of the group IDs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
-        public virtual string PolicyNamespace { get; set; }
-
-        /// <summary>
-        /// Output only. The target resource for which the group priority ordering has been retrieved.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request parameters for modifying a policy value for a specific group target.</summary>
-    public class GoogleChromePolicyV1ModifyGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The key of the target for which we want to modify a policy. The target resource must point to a
-        /// Group.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The new value for the policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyValue")]
-        public virtual GoogleChromePolicyV1PolicyValue PolicyValue { get; set; }
-
-        /// <summary>
-        /// Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value`
-        /// will be ignored (even if they have values). If a field is in this list it must have a value in
-        /// 'policy_value'.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request parameters for modifying a policy value for a specific org unit target.</summary>
-    public class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The key of the target for which we want to modify a policy. The target resource must point to an
-        /// Org Unit.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The new value for the policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyValue")]
-        public virtual GoogleChromePolicyV1PolicyValue PolicyValue { get; set; }
-
-        /// <summary>
-        /// Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value`
-        /// will be ignored (even if they have values). If a field is in this list it must have a value in
-        /// 'policy_value'.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A network setting contains network configurations.</summary>
-    public class GoogleChromePolicyV1NetworkSetting : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The fully qualified name of the network setting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
-        public virtual string PolicySchema { get; set; }
-
-        /// <summary>The value of the network setting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Error information for a modification request of a specific field on a specific policy.</summary>
-    public class GoogleChromePolicyV1PolicyModificationFieldError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The error message related to the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual string Error { get; set; }
-
-        /// <summary>Output only. The name of the field with the error.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The key used to identify the target on which the policy will be applied.</summary>
-    public class GoogleChromePolicyV1PolicyTargetKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Map containing the additional target key name and value pairs used to further identify the target of the
-        /// policy.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalTargetKeys")]
-        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalTargetKeys { get; set; }
-
-        /// <summary>
-        /// The target resource on which this policy is applied. The following resources are supported: * Organizational
-        /// Unit ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A particular value for a policy managed by the service.</summary>
-    public class GoogleChromePolicyV1PolicyValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The fully qualified name of the policy schema associated with this policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
-        public virtual string PolicySchema { get; set; }
-
-        /// <summary>The value of the policy that is compatible with the schema that it is associated with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request object for removing a certificate.</summary>
-    public class GoogleChromePolicyV1RemoveCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The GUID of the certificate to remove.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
-        public virtual string NetworkId { get; set; }
-
-        /// <summary>
-        /// Required. The target resource on which this certificate will be removed. The following resources are
-        /// supported: * Organizational Unit ("orgunits/{orgunit_id}")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response object for removing a certificate.</summary>
-    public class GoogleChromePolicyV1RemoveCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request object for removing a network</summary>
-    public class GoogleChromePolicyV1RemoveNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The GUID of the network to remove.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
-        public virtual string NetworkId { get; set; }
-
-        /// <summary>
-        /// Required. The target resource on which this network will be removed. The following resources are supported:
-        /// * Organizational Unit ("orgunits/{orgunit_id}")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
-        public virtual string TargetResource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response object for removing a network.</summary>
-    public class GoogleChromePolicyV1RemoveNetworkResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for getting the resolved policy value for a specific target.</summary>
-    public class GoogleChromePolicyV1ResolveRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The maximum number of policies to return, defaults to 100 and has a maximum of 1000.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; }
-
-        /// <summary>The page token used to retrieve a specific page of the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; }
-
-        /// <summary>
-        /// The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for
-        /// example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema
-        /// name. Wildcards cannot be used in namespace directly. Please read
-        /// https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
-        /// example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
-        /// "chrome.*", "chrome.*.apps.*"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policySchemaFilter")]
-        public virtual string PolicySchemaFilter { get; set; }
-
-        /// <summary>
-        /// Required. The key of the target resource on which the policies should be resolved. The target resource must
-        /// point to an Org Unit.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for getting the resolved policy value for a specific target.</summary>
-    public class GoogleChromePolicyV1ResolveResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The page token used to get the next set of resolved policies found by the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The list of resolved policies found by the resolve request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resolvedPolicies")]
-        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1ResolvedPolicy> ResolvedPolicies { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The resolved value of a policy for a given target.</summary>
-    public class GoogleChromePolicyV1ResolvedPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The added source key establishes at which level an entity was explicitly added for management.
-        /// This is useful for certain type of policies that are only applied if they are explicitly added for
-        /// management. For example: apps and networks. An entity can only be deleted from management in an
-        /// Organizational Unit that it was explicitly added to. If this is not present it means that the policy is
-        /// managed without the need to explicitly add an entity, for example: standard user or device policies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addedSourceKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey AddedSourceKey { get; set; }
-
-        /// <summary>
-        /// Output only. The source resource from which this policy value is obtained. May be the same as `targetKey` if
-        /// the policy is directly modified on the target, otherwise it would be another resource from which the policy
-        /// gets its value (if applicable). If not present, the source is the default value for the customer.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey SourceKey { get; set; }
-
-        /// <summary>Output only. The target resource for which the resolved policy value applies.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey TargetKey { get; set; }
-
-        /// <summary>Output only. The resolved value of the policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual GoogleChromePolicyV1PolicyValue Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for updating the group priority ordering of an app.</summary>
-    public class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The group IDs, in desired priority ordering.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
-        public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
-
-        /// <summary>Required. The namespace of the policy type for the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
-        public virtual string PolicyNamespace { get; set; }
-
-        /// <summary>
-        /// Required. The key of the target for which we want to update the group priority ordering. The target resource
-        /// must point to an app.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
-        public virtual GoogleChromePolicyV1PolicyTargetKey PolicyTargetKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Additional key names that will be used to identify the target of the policy value.</summary>
     public class GoogleChromePolicyVersionsV1AdditionalTargetKeyName : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1964,6 +1451,248 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for specifying that multiple policy values will be deleted.</summary>
+    public class GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of policies that will be deleted as defined by the `requests`. All requests in the list must follow
+        /// these restrictions: 1. All schemas in the list must have the same root namespace. 2. All
+        /// `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must
+        /// have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference
+        /// the same `policySchema` + ` policyTargetKey` pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for specifying that multiple policy values inherit their value from their parents.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of policies that have to inherit their values as defined by the `requests`. All requests in the list
+        /// must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All
+        /// `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values
+        /// must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an
+        /// empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No
+        /// two modification requests can reference the same `policySchema` + ` policyTargetKey` pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for modifying multiple policy values for a specific group-based target.</summary>
+    public class GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of policies to modify as defined by the `requests`. All requests in the list must follow these
+        /// restrictions: 1. All schemas in the list must have the same root namespace. 2. All
+        /// `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must
+        /// have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference
+        /// the same `policySchema` + ` policyTargetKey` pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for modifying multiple policy values for a specific target.</summary>
+    public class GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of policies to modify as defined by the `requests`. All requests in the list must follow these
+        /// restrictions: 1. All schemas in the list must have the same root namespace. 2. All
+        /// `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values
+        /// must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an
+        /// empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No
+        /// two modification requests can reference the same `policySchema` + ` policyTargetKey` pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for creating a certificate.</summary>
+    public class GoogleChromePolicyVersionsV1DefineCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The optional name of the certificate. If not specified, the certificate issuer will be used as the
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ceritificateName")]
+        public virtual string CeritificateName { get; set; }
+
+        /// <summary>Required. The raw contents of the .PEM, .CRT, or .CER file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; }
+
+        /// <summary>Optional. Certificate settings within the chrome.networks.certificates namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this certificate is applied. The following resources are supported: *
+        /// Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for creating a certificate.</summary>
+    public class GoogleChromePolicyVersionsV1DefineCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The guid of the certificate created by the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>the affiliated settings of the certificate (NOT IMPLEMENTED)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>the resource at which the certificate is defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for creating a new network.</summary>
+    public class GoogleChromePolicyVersionsV1DefineNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the new created network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Detailed network settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this new network will be defined. The following resources are
+        /// supported: * Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for creating a network.</summary>
+    public class GoogleChromePolicyVersionsV1DefineNetworkResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Network ID of the new created network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>Detailed network settings of the new created network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1NetworkSetting> Settings { get; set; }
+
+        /// <summary>
+        /// The target resource on which this new network will be defined. The following resources are supported: *
+        /// Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request parameters for deleting the policy value of a specific group target.</summary>
+    public class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully qualified name of the policy schema that is being inherited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to modify a policy. The target resource must point to a
+        /// Group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request parameters for inheriting policy value of a specific org unit target from the policy value of its parent
+    /// org unit.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully qualified name of the policy schema that is being inherited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to modify a policy. The target resource must point to an
+        /// Org Unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for listing the group priority ordering of an app.</summary>
+    public class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The namespace of the policy type for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
+        public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to retrieve the group priority ordering. The target
+        /// resource must point to an app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing the group priority ordering of an app.</summary>
+    public class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The group IDs, in priority ordering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
+        public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
+
+        /// <summary>Output only. The namespace of the policy type of the group IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
+        public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>
+        /// Output only. The target resource for which the group priority ordering has been retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing policy schemas that match a filter.</summary>
     public class GoogleChromePolicyVersionsV1ListPolicySchemasResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1974,6 +1703,88 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>The list of policy schemas that match the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policySchemas")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchema> PolicySchemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request parameters for modifying a policy value for a specific group target.</summary>
+    public class GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The key of the target for which we want to modify a policy. The target resource must point to a
+        /// Group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The new value for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyValue")]
+        public virtual GoogleChromePolicyVersionsV1PolicyValue PolicyValue { get; set; }
+
+        /// <summary>
+        /// Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value`
+        /// will be ignored (even if they have values). If a field is in this list it must have a value in
+        /// 'policy_value'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request parameters for modifying a policy value for a specific org unit target.</summary>
+    public class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The key of the target for which we want to modify a policy. The target resource must point to an
+        /// Org Unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The new value for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyValue")]
+        public virtual GoogleChromePolicyVersionsV1PolicyValue PolicyValue { get; set; }
+
+        /// <summary>
+        /// Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value`
+        /// will be ignored (even if they have values). If a field is in this list it must have a value in
+        /// 'policy_value'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A network setting contains network configurations.</summary>
+    public class GoogleChromePolicyVersionsV1NetworkSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully qualified name of the network setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
+
+        /// <summary>The value of the network setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error information for a modification request of a specific field on a specific policy.</summary>
+    public class GoogleChromePolicyVersionsV1PolicyModificationFieldError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error message related to the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>Output only. The name of the field with the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2180,6 +1991,195 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>The fields that are required as a consequence of the field conditions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFields")]
         public virtual System.Collections.Generic.IList<string> RequiredFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The key used to identify the target on which the policy will be applied.</summary>
+    public class GoogleChromePolicyVersionsV1PolicyTargetKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map containing the additional target key name and value pairs used to further identify the target of the
+        /// policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTargetKeys")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalTargetKeys { get; set; }
+
+        /// <summary>
+        /// The target resource on which this policy is applied. The following resources are supported: * Organizational
+        /// Unit ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A particular value for a policy managed by the service.</summary>
+    public class GoogleChromePolicyVersionsV1PolicyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully qualified name of the policy schema associated with this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
+
+        /// <summary>The value of the policy that is compatible with the schema that it is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for removing a certificate.</summary>
+    public class GoogleChromePolicyVersionsV1RemoveCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GUID of the certificate to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this certificate will be removed. The following resources are
+        /// supported: * Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for removing a certificate.</summary>
+    public class GoogleChromePolicyVersionsV1RemoveCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request object for removing a network</summary>
+    public class GoogleChromePolicyVersionsV1RemoveNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GUID of the network to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual string NetworkId { get; set; }
+
+        /// <summary>
+        /// Required. The target resource on which this network will be removed. The following resources are supported:
+        /// * Organizational Unit ("orgunits/{orgunit_id}")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response object for removing a network.</summary>
+    public class GoogleChromePolicyVersionsV1RemoveNetworkResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for getting the resolved policy value for a specific target.</summary>
+    public class GoogleChromePolicyVersionsV1ResolveRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of policies to return, defaults to 100 and has a maximum of 1000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>The page token used to retrieve a specific page of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for
+        /// example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema
+        /// name. Wildcards cannot be used in namespace directly. Please read
+        /// https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
+        /// example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
+        /// "chrome.*", "chrome.*.apps.*"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchemaFilter")]
+        public virtual string PolicySchemaFilter { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target resource on which the policies should be resolved. The target resource must
+        /// point to an Org Unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for getting the resolved policy value for a specific target.</summary>
+    public class GoogleChromePolicyVersionsV1ResolveResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The page token used to get the next set of resolved policies found by the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of resolved policies found by the resolve request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1ResolvedPolicy> ResolvedPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The resolved value of a policy for a given target.</summary>
+    public class GoogleChromePolicyVersionsV1ResolvedPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The added source key establishes at which level an entity was explicitly added for management.
+        /// This is useful for certain type of policies that are only applied if they are explicitly added for
+        /// management. For example: apps and networks. An entity can only be deleted from management in an
+        /// Organizational Unit that it was explicitly added to. If this is not present it means that the policy is
+        /// managed without the need to explicitly add an entity, for example: standard user or device policies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedSourceKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey AddedSourceKey { get; set; }
+
+        /// <summary>
+        /// Output only. The source resource from which this policy value is obtained. May be the same as `targetKey` if
+        /// the policy is directly modified on the target, otherwise it would be another resource from which the policy
+        /// gets its value (if applicable). If not present, the source is the default value for the customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey SourceKey { get; set; }
+
+        /// <summary>Output only. The target resource for which the resolved policy value applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey TargetKey { get; set; }
+
+        /// <summary>Output only. The resolved value of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleChromePolicyVersionsV1PolicyValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for updating the group priority ordering of an app.</summary>
+    public class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The group IDs, in desired priority ordering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
+        public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
+
+        /// <summary>Required. The namespace of the policy type for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
+        public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>
+        /// Required. The key of the target for which we want to update the group priority ordering. The target resource
+        /// must point to an app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

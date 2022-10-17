@@ -4029,6 +4029,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Determines whether to _immediately_ delete the App. If set to true, the App is immediately deleted from the
+        /// Project and cannot be restored to the Project. If not set, defaults to false, which means that the App may
+        /// be restored to the Project within 30 days using UndeleteAndroidApp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("immediate")]
+        public virtual System.Nullable<bool> Immediate { get; set; }
+
         /// <summary>If set to true, the request is only validated. The App will _not_ be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4050,6 +4058,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Determines whether to _immediately_ delete the App. If set to true, the App is immediately deleted from the
+        /// Project and cannot be restored to the Project. If not set, defaults to false, which means that the App may
+        /// be restored to the Project within 30 days using UndeleteIosApp
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("immediate")]
+        public virtual System.Nullable<bool> Immediate { get; set; }
+
         /// <summary>If set to true, the request is only validated. The App will _not_ be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4070,6 +4086,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Determines whether to _immediately_ delete the App. If set to true, the App is immediately deleted from the
+        /// Project and cannot be restored to the Project. If not set, defaults to false, which means that the App may
+        /// be restored to the Project within 30 days using UndeleteWebApp
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("immediate")]
+        public virtual System.Nullable<bool> Immediate { get; set; }
 
         /// <summary>If set to true, the request is only validated. The App will _not_ be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]

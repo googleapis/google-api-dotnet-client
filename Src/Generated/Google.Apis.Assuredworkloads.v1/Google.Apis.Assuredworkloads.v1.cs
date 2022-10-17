@@ -1197,14 +1197,6 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
-        /// <summary>
-        /// Optional. Name of the OrgPolicy which was modified with non-compliant change and resulted in this violation.
-        /// Format: projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name}
-        /// organizations/{organization_id}/policies/{constraint_name}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
-        public virtual string NonCompliantOrgPolicy { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1326,6 +1318,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Audit Log link to find business justification provided for violation exception.
+        /// Format:
+        /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptionAuditLogLink")]
+        public virtual string ExceptionAuditLogLink { get; set; }
 
         /// <summary>
         /// Output only. Immutable. Name of the Violation. Format:

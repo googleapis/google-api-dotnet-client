@@ -356,7 +356,7 @@ namespace Google.Apis.Verifiedaccess.v2
 }
 namespace Google.Apis.Verifiedaccess.v2.Data
 {
-    /// <summary>Result message for VerifiedAccess.CreateChallenge.</summary>
+    /// <summary>Result message for VerifiedAccess.GenerateChallenge.</summary>
     public class Challenge : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -410,6 +410,13 @@ namespace Google.Apis.Verifiedaccess.v2.Data
     /// <summary>Result message for VerifiedAccess.VerifyChallengeResponse.</summary>
     public class VerifyChallengeResponseResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Unique customer id that this device belongs to, as defined by the Google Admin SDK at
+        /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; }
+
         /// <summary>Device permanent id is returned in this field (for the machine response only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePermanentId")]
         public virtual string DevicePermanentId { get; set; }
@@ -429,6 +436,12 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedPublicKeyAndChallenge")]
         public virtual string SignedPublicKeyAndChallenge { get; set; }
+
+        /// <summary>
+        /// Virtual device id of the device. The definition of virtual device id is platform-specific.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualDeviceId")]
+        public virtual string VirtualDeviceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

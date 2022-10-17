@@ -971,6 +971,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given an Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual DiagnoseRequest Diagnose(Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseInstanceRequest body, string name)
+                {
+                    return new DiagnoseRequest(service, body, name);
+                }
+
+                /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given an Instance.</summary>
+                public class DiagnoseRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Diagnose request.</summary>
+                    public DiagnoseRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "diagnose";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:diagnose";
+
+                    /// <summary>Initializes Diagnose parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Instance.</summary>
                 /// <param name="name">
                 /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
@@ -2707,6 +2764,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given a Runtime.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtimes_id}`
+                /// </param>
+                public virtual DiagnoseRequest Diagnose(Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseRuntimeRequest body, string name)
+                {
+                    return new DiagnoseRequest(service, body, name);
+                }
+
+                /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given a Runtime.</summary>
+                public class DiagnoseRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Diagnose request.</summary>
+                    public DiagnoseRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtimes_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "diagnose";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:diagnose";
+
+                    /// <summary>Initializes Diagnose parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
                 /// </summary>
@@ -3504,6 +3618,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                         });
                     }
                 }
+
+                /// <summary>Upgrades a Managed Notebook Runtime to the latest version.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual UpgradeRequest Upgrade(Google.Apis.AIPlatformNotebooks.v1.Data.UpgradeRuntimeRequest body, string name)
+                {
+                    return new UpgradeRequest(service, body, name);
+                }
+
+                /// <summary>Upgrades a Managed Notebook Runtime to the latest version.</summary>
+                public class UpgradeRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Upgrade request.</summary>
+                    public UpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.UpgradeRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.UpgradeRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:upgrade";
+
+                    /// <summary>Initializes Upgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Schedules resource.</summary>
@@ -4089,6 +4260,66 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for creating a notebook instance diagnostic file.</summary>
+    public class DiagnoseInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Defines flags that are used to run the diagnostic tool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticConfig")]
+        public virtual DiagnosticConfig DiagnosticConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for creating a notebook instance diagnostic file.</summary>
+    public class DiagnoseRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Defines flags that are used to run the diagnostic tool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticConfig")]
+        public virtual DiagnosticConfig DiagnosticConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines flags that are used to run the diagnostic tool</summary>
+    public class DiagnosticConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enables flag to copy all `/home/jupyter` folder contents</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyHomeFilesFlagEnabled")]
+        public virtual System.Nullable<bool> CopyHomeFilesFlagEnabled { get; set; }
+
+        /// <summary>
+        /// Required. User Cloud Storage bucket location (REQUIRED) ## Must be formatted with path prefix
+        /// (gs://$GCS_BUCKET) Permissions: User Managed Notebooks: - storage.buckets.writer: Must be given to the
+        /// project's service account attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be given
+        /// to the project's service account or ## user credentials attached to VM depending on authentication mode.
+        /// Cloud Storage bucket Log file will be written to gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
+        public virtual string GcsBucket { get; set; }
+
+        /// <summary>Optional. Enables flag to capture packets from the instance for 30 seconds</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packetCaptureFlagEnabled")]
+        public virtual System.Nullable<bool> PacketCaptureFlagEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the relative storage path in the Cloud Storage bucket where the diagnostic logs will be
+        /// written: Default path will be the root directory of the Cloud Storage bucket
+        /// (gs://$GCS_BUCKET/$DATE_$TIME.tar.gz) Example of full path where Log file will be written:
+        /// gs://$GCS_BUCKET/$RELATIVE_PATH/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
+        public virtual string RelativePath { get; set; }
+
+        /// <summary>Optional. Enables flag to repair service for instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairFlagEnabled")]
+        public virtual System.Nullable<bool> RepairFlagEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5995,6 +6226,20 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request for upgrading a Managed Notebook Runtime to the latest version. option
+    /// (google.api.message_visibility).restriction = "TRUSTED_TESTER,SPECIAL_TESTER";
+    /// </summary>
+    public class UpgradeRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Idempotent request UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

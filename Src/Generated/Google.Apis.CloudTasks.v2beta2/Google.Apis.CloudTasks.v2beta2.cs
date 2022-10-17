@@ -34,6 +34,7 @@ namespace Google.Apis.CloudTasks.v2beta2
         /// <param name="initializer">The service initializer.</param>
         public CloudTasksService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Api = new ApiResource(this);
             Projects = new ProjectsResource(this);
         }
 
@@ -81,6 +82,9 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Api resource.</summary>
+        public virtual ApiResource Api { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -264,6 +268,103 @@ namespace Google.Apis.CloudTasks.v2beta2
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "api" collection of methods.</summary>
+    public class ApiResource
+    {
+        private const string Resource = "api";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ApiResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Queue = new QueueResource(service);
+        }
+
+        /// <summary>Gets the Queue resource.</summary>
+        public virtual QueueResource Queue { get; }
+
+        /// <summary>The "queue" collection of methods.</summary>
+        public class QueueResource
+        {
+            private const string Resource = "queue";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public QueueResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Update queue list by uploading a queue.yaml file. The queue.yaml file is supplied in the request body as
+            /// a YAML encoded string. This method was added to support gcloud clients versions before 322.0.0. New
+            /// clients should use CreateQueue instead of this method.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            public virtual UpdateRequest Update(Google.Apis.CloudTasks.v2beta2.Data.HttpBody body)
+            {
+                return new UpdateRequest(service, body);
+            }
+
+            /// <summary>
+            /// Update queue list by uploading a queue.yaml file. The queue.yaml file is supplied in the request body as
+            /// a YAML encoded string. This method was added to support gcloud clients versions before 322.0.0. New
+            /// clients should use CreateQueue instead of this method.
+            /// </summary>
+            public class UpdateRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Empty>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.HttpBody body) : base(service)
+                {
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The App ID is supplied as an HTTP parameter. Unlike internal usage of App ID, it does not
+                /// include a region prefix. Rather, the App ID represents the Project ID against which to make the
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AppId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudTasks.v2beta2.Data.HttpBody Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "update";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "api/queue/update";
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("appId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -2415,7 +2516,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for BufferTask.</summary>
+    /// <summary>LINT.IfChange Request message for BufferTask.</summary>
     public class BufferTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -9432,6 +9432,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workloadConfig")]
         public virtual WorkloadConfig WorkloadConfig { get; set; }
 
+        /// <summary>Sets which mode to use for Protect workload vulnerability scanning feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadVulnerabilityMode")]
+        public virtual string WorkloadVulnerabilityMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

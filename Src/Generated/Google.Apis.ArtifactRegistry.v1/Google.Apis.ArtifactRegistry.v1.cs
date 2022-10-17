@@ -4720,7 +4720,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// Output only. Repository-specific Metadata stored against this version. The fields returned are defined by
-        /// the underlying repository-specific resource. Currently, the only resource in use is DockerImage
+        /// the underlying repository-specific resource. Currently, the resources could be: DockerImage MavenArtifact
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }

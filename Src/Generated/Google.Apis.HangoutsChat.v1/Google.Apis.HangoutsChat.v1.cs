@@ -65,6 +65,20 @@ namespace Google.Apis.HangoutsChat.v1
         public override string BatchPath => "batch";
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Chat API.</summary>
+        public class Scope
+        {
+            /// <summary>View, add, and remove members from conversations in Google Chat</summary>
+            public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Chat API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>View, add, and remove members from conversations in Google Chat</summary>
+            public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+        }
+
         /// <summary>Gets the Dms resource.</summary>
         public virtual DmsResource Dms { get; }
 
@@ -319,6 +333,16 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and
+                /// contain only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this
+                /// field to get, update, or delete the message with the specified value. For example usage, see [Name a
+                /// created
+                /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MessageId { get; set; }
+
+                /// <summary>
                 /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
                 /// message created with that ID instead of creating a new message.
                 /// </summary>
@@ -360,6 +384,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^dms/[^/]+/conversations/[^/]+$",
+                    });
+                    RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "messageId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                     {
@@ -407,6 +439,15 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and contain
+            /// only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this field to get,
+            /// update, or delete the message with the specified value. For example usage, see [Name a created
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MessageId { get; set; }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -448,6 +489,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^dms/[^/]+$",
+                });
+                RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -494,6 +543,15 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and contain
+            /// only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this field to get,
+            /// update, or delete the message with the specified value. For example usage, see [Name a created
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MessageId { get; set; }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -535,6 +593,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^dms/[^/]+$",
+                });
+                RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -774,6 +840,16 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and
+                /// contain only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this
+                /// field to get, update, or delete the message with the specified value. For example usage, see [Name a
+                /// created
+                /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MessageId { get; set; }
+
+                /// <summary>
                 /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
                 /// message created with that ID instead of creating a new message.
                 /// </summary>
@@ -815,6 +891,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^rooms/[^/]+/conversations/[^/]+$",
+                    });
+                    RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "messageId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                     {
@@ -862,6 +946,15 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and contain
+            /// only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this field to get,
+            /// update, or delete the message with the specified value. For example usage, see [Name a created
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MessageId { get; set; }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -903,6 +996,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^rooms/[^/]+$",
+                });
+                RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -949,6 +1050,15 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and contain
+            /// only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this field to get,
+            /// update, or delete the message with the specified value. For example usage, see [Name a created
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MessageId { get; set; }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -990,6 +1100,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^rooms/[^/]+$",
+                });
+                RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -1100,7 +1218,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists human memberships in a space. Requires [service account
+            /// Lists human memberships in a space for joined members. Requires [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             /// <param name="parent">
@@ -1112,7 +1230,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists human memberships in a space. Requires [service account
+            /// Lists human memberships in a space for joined members. Requires [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
@@ -1310,6 +1428,16 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and
+                /// contain only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this
+                /// field to get, update, or delete the message with the specified value. For example usage, see [Name a
+                /// created
+                /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MessageId { get; set; }
+
+                /// <summary>
                 /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
                 /// message created with that ID instead of creating a new message.
                 /// </summary>
@@ -1351,6 +1479,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+$",
+                    });
+                    RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "messageId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                     {
@@ -1433,8 +1569,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
-            /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
+            /// Required. Resource name of the message to retrieve. Format: spaces/{space}/messages/{message} If the
+            /// message begins with `client-`, then it has a custom name assigned by a Chat app that created it with the
+            /// Chat REST API. That Chat app (but not others) can pass the custom name to get, update, or delete the
+            /// message. To learn more, see [create and name a message]
+            /// (https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1455,8 +1594,11 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
-                /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
+                /// Required. Resource name of the message to retrieve. Format: spaces/{space}/messages/{message} If the
+                /// message begins with `client-`, then it has a custom name assigned by a Chat app that created it with
+                /// the Chat REST API. That Chat app (but not others) can pass the custom name to get, update, or delete
+                /// the message. To learn more, see [create and name a message]
+                /// (https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1521,6 +1663,15 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. If `true` and the message is not found, a new message is created and `updateMask` is
+                /// ignored. The specified message ID must be
+                /// [client-assigned](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+                /// or the request fails.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
                 /// paths: - text - cards (Requires [service account
                 /// authentication](/chat/api/guides/auth/service-accounts).) - cards_v2
@@ -1554,6 +1705,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                    });
+                    RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allowMissing",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -1710,6 +1869,15 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A custom name for a Chat message assigned at creation. Must start with `client-` and contain
+            /// only lowercase letters, numbers, and hyphens up to 63 characters in length. Specify this field to get,
+            /// update, or delete the message with the specified value. For example usage, see [Name a created
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MessageId { get; set; }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -1751,6 +1919,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^spaces/[^/]+$",
+                });
+                RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -1970,7 +2146,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A card action is the action associated with the card. For an invoice card, a typical action would be: delete
-    /// invoice, email invoice or open the invoice in browser.
+    /// invoice, email invoice or open the invoice in browser. Not supported by Google Chat apps.
     /// </summary>
     public class CardAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2484,28 +2660,32 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A card is a UI element that can contain UI widgets such as text and images. For more information, see Cards .
-    /// For example, the following JSON creates a card that has a header with the name, position, icons, and link for a
-    /// contact, followed by a section with contact information like email and phone number. ``` { "header": { "title":
-    /// "Sasha", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
-    /// "https://example.com/sasha.png", "imageAltText": "Avatar for Sasha" }, "sections" : [ { "header": "Contact
-    /// Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content": "sasha@example.com" } },
-    /// { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, { "decoratedText": { "icon": {
-    /// "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ { "textButton": { "text": "Share", },
-    /// "onClick": { "openLink": { "url": "https://example.com/share" } } }, { "textButton": { "text": "Edit", },
-    /// "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" } ],
-    /// "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true, "uncollapsibleWidgetsCount": 3 } ],
-    /// "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink": { "url":
-    /// "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
+    /// Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to
+    /// present detailed information, gather information from users, and guide users to take a next step. In Google
+    /// Chat, cards appear in several places: - As stand-alone messages. - Accompanying a text message, just beneath the
+    /// text message. - As a [dialog](https://developers.google.com/chat/how-tos/dialogs). The following example JSON
+    /// creates a "contact card" that features: - A header with the contact's name, job title, avatar picture. - A
+    /// section with the contact information, including formatted text. - Buttons that users can click to share the
+    /// contact or see more or less info. ![Example contact card](/chat/images/card_api_reference.png) ``` { "cardsV2":
+    /// [ { "cardId": "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer",
+    /// "imageUrl": "https://developers.google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE",
+    /// "imageAltText": "Avatar for Sasha", }, "sections": [ { "header": "Contact Info", "collapsible": true,
+    /// "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL", },
+    /// "text": "sasha@example.com", } }, { "decoratedText": { "startIcon": { "knownIcon": "PERSON", }, "text":
+    /// "Online", }, }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE", }, "text": "+1 (555) 555-1234", } }, {
+    /// "buttonList": { "buttons": [ { "text": "Share", "onClick": { "openLink": { "url": "https://example.com/share", }
+    /// } }, { "text": "Edit", "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType",
+    /// "value": "EDIT", } ], } } }, ], } }, ], }, ], }, } ], } ```
     /// </summary>
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The card's actions. Actions are added to the card's generated toolbar menu. For example, the following JSON
-        /// constructs a card action menu with Settings and Send Feedback options: ``` "card_actions": [ {
-        /// "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
-        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
-        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ```
+        /// The card's actions. Actions are added to the card's generated toolbar menu. Not supported by Google Chat
+        /// apps. For example, the following JSON constructs a card action menu with Settings and Send Feedback options:
+        /// ``` "card_actions": [ { "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView",
+        /// "parameters": [ { "key": "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } },
+        /// { "actionLabel": "Send Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ]
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
@@ -2543,7 +2723,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A card action is the action associated with the card. For example, an invoice card might include actions such as
-    /// delete invoice, email invoice, or open the invoice in a browser.
+    /// delete invoice, email invoice, or open the invoice in a browser. Not supported by Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1CardAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3434,8 +3614,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; }
 
         /// <summary>
-        /// Rich, formatted and interactive cards that can be used to display UI elements such as: formatted texts,
-        /// buttons, clickable images. Cards are normally displayed below the plain-text body of the message.
+        /// Deprecated: Use `cards_v2` instead. Rich, formatted and interactive cards that can be used to display UI
+        /// elements such as: formatted texts, buttons, clickable images. Cards are normally displayed below the
+        /// plain-text body of the message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
         public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
@@ -3446,10 +3627,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// below the text-body of a Chat message, but can situationally appear other places, such as
         /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique identifier among
         /// cards in the same message and for identifying user input values. Currently supported widgets include: -
-        /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList`
+        /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` - `Divider`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
         public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
+
+        /// <summary>
+        /// A custom name for a Chat message assigned at creation. Must start with `client-` and contain only lowercase
+        /// letters, numbers, and hyphens up to 63 characters in length. Specify this field to get, update, or delete
+        /// the message with the specified value. For example usage, see [Name a created
+        /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAssignedMessageId")]
+        public virtual string ClientAssignedMessageId { get; set; }
 
         /// <summary>Output only. The time at which the message was created in Google Chat server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -3777,10 +3967,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
         /// <summary>
-        /// Resource name for a Google Chat user. Represents a
-        /// [person](https://developers.google.com/people/api/rest/v1/people#Person) in the People API or a
-        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API. Formatted as: `users/{user}`
+        /// Resource name for a Google Chat user. For human users, represents a person in the People API or a user in
+        /// the Admin SDK Directory API. Format: `users/{user}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

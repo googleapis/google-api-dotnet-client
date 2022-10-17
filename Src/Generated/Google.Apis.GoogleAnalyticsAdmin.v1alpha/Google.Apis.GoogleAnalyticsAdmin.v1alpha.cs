@@ -7529,6 +7529,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLinkProposal")]
         public virtual GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal DisplayVideo360AdvertiserLinkProposal { get; set; }
 
+        /// <summary>A snapshot of an ExpandedDataSet resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedDataSet")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSet ExpandedDataSet { get; set; }
+
         /// <summary>A snapshot of a FirebaseLink resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseLink")]
         public virtual GoogleAnalyticsAdminV1alphaFirebaseLink FirebaseLink { get; set; }
@@ -8055,6 +8059,152 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationEmail")]
         public virtual string ValidationEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource message representing a GA4 ExpandedDataSet.</summary>
+    public class GoogleAnalyticsAdminV1alphaExpandedDataSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time when expanded data set began (or will begin) collecing data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCollectionStartTime")]
+        public virtual object DataCollectionStartTime { get; set; }
+
+        /// <summary>Optional. The description of the ExpandedDataSet. Max 50 chars.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Immutable. A logical expression of ExpandedDataSet filters applied to dimension included in the
+        /// ExpandedDataSet. This filter is used to reduce the number of rows and thus the change of encountering `other
+        /// row`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression DimensionFilterExpression { get; set; }
+
+        /// <summary>
+        /// Immutable. The list of dimensions included in the ExpandedDataSet. See the [API
+        /// Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for
+        /// the list of dimension names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionNames")]
+        public virtual System.Collections.Generic.IList<string> DimensionNames { get; set; }
+
+        /// <summary>Required. The display name of the ExpandedDataSet. Max 200 chars.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. The list of metrics included in the ExpandedDataSet. See the [API
+        /// Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the
+        /// list of dimension names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
+        public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for this ExpandedDataSet resource. Format:
+        /// properties/{property_id}/expandedDataSets/{expanded_data_set}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific filter for a single dimension</summary>
+    public class GoogleAnalyticsAdminV1alphaExpandedDataSetFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The dimension name to filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>A filter for a string dimension that matches a particular list of options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inListFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter InListFilter { get; set; }
+
+        /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter StringFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A logical expression of EnhancedDataSet dimension filters.</summary>
+    public class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of expressions to be AND’ed together. It must contain a ExpandedDataSetFilterExpression with either
+        /// not_expression or dimension_filter. This must be set for the top level ExpandedDataSetFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("andGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList AndGroup { get; set; }
+
+        /// <summary>
+        /// A filter on a single dimension. This cannot be set on the top level ExpandedDataSetFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilter Filter { get; set; }
+
+        /// <summary>
+        /// A filter expression to be NOT'ed (i.e., inverted, complemented). It must include a dimension_filter. This
+        /// cannot be set on the top level ExpandedDataSetFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression NotExpression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of ExpandedDataSet filter expressions.</summary>
+    public class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of ExpandedDataSet filter expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpressions")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression> FilterExpressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for a string dimension that matches a particular list of options.</summary>
+    public class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. Must be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
+
+        /// <summary>Required. The list of possible string values to match against. Must be non-empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+    public class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. Must be true when
+        /// match_type is EXACT. Must be false when match_type is CONTAINS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
+
+        /// <summary>Required. The match type for the string filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>Required. The string value to be matched against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

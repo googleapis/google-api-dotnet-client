@@ -7413,11 +7413,17 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`</summary>
+        /// <summary>
+        /// The recommended deployment of the API. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedDeployment")]
         public virtual string RecommendedDeployment { get; set; }
 
-        /// <summary>The recommended version of the API. Format: `apis/{api}/versions/{version}`</summary>
+        /// <summary>
+        /// The recommended version of the API. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedVersion")]
         public virtual string RecommendedVersion { get; set; }
 
