@@ -18,6 +18,9 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Util;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -157,7 +160,6 @@ namespace Google.Apis.Auth.OAuth2
         /// </remarks>
         public string WorkforcePoolUserProject { get; }
 
-
         /// <summary>
         /// The Client ID.
         /// </summary>
@@ -203,6 +205,9 @@ namespace Google.Apis.Auth.OAuth2
 
         internal ExternalAccountCredential(Initializer initializer) : base(initializer)
         {
+            ValidateTokenUrl(initializer.TokenServerUrl);
+            ValidateImpersonationUrl(initializer.ServiceAccountImpersonationUrl);
+
             Audience = initializer.Audience;
             SubjectTokenType = initializer.SubjectTokenType;
             ServiceAccountImpersonationUrl = initializer.ServiceAccountImpersonationUrl;
@@ -335,5 +340,55 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         private protected IGoogleCredential WithUserForDomainWideDelegation(string user) =>
             throw new InvalidOperationException($"{nameof(ExternalAccountCredential)} does not support Domain-Wide Delegation");
+
+        private static readonly IEnumerable<Regex> ValidTokenUrlHostRegexes = new List<Regex>
+        {
+            // sts.xyz123.googleapis.com or exactly sts.googleapis.com
+            new Regex(@"^sts\.([^\.]+\.)?googleapis\.com$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+            // xyz123.sts.googleapis.com or xyz123-sts.googleapis.com
+            new Regex(@"^[^\.]+[\.\-]sts\.googleapis\.com$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+            // sts-xyz123.p.googleapis.com
+            new Regex(@"^sts\-[^\.]+\.p\.googleapis\.com$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        };
+
+        private static readonly IEnumerable<Regex> ValidImpersonationUrlHostRegexes = new List<Regex>
+        {
+            // iamcredentials.xyz123.googleapis.com or exactly iamcredentials.googleapis.com
+            new Regex(@"^iamcredentials\.([^\.]+\.)?googleapis\.com$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+            // xyz123.iamcredentials.googleapis.com or xyz123-iamcredentials.googleapis.com
+            new Regex(@"^[^\.]+[\.\-]iamcredentials\.googleapis\.com$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+            // iamcredentials-xyz123.p.googleapis.com
+            new Regex(@"^iamcredentials\-[^\.]+\.p\.googleapis\.com$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        };
+
+        private static void ValidateTokenUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                throw new InvalidOperationException("The token URL is required.");
+            }
+            ValidateHttpsUrl(url, ValidTokenUrlHostRegexes, "token");
+        }
+
+        private static void ValidateImpersonationUrl(string url)
+        {
+            // The impersonation URL is optional.
+            if (string.IsNullOrEmpty(url))
+            {
+                return;
+            }
+            ValidateHttpsUrl(url, ValidImpersonationUrlHostRegexes, "service account impersonation");
+        }
+
+        private static void ValidateHttpsUrl(string url, IEnumerable<Regex> urlHostRegexes, string urlName)
+        {
+            var uri = new Uri(url);
+            if (uri.Scheme.Equals("https", StringComparison.OrdinalIgnoreCase)
+                && urlHostRegexes.Any(regex => regex.IsMatch(uri.Host)))
+            {
+                return;
+            }
+            throw new InvalidOperationException($"The {urlName} URL is invalid.");
+        }
     }
 }
