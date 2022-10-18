@@ -663,7 +663,10 @@ namespace Google.Apis.AndroidManagement.v1
                 }
             }
 
-            /// <summary>Deletes a device. This operation wipes the device.</summary>
+            /// <summary>
+            /// Deletes a device. This operation wipes the device. Deleted devices do not show up in
+            /// enterprises.devices.list calls and a 404 is returned from enterprises.devices.get.
+            /// </summary>
             /// <param name="name">
             /// The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.
             /// </param>
@@ -672,7 +675,10 @@ namespace Google.Apis.AndroidManagement.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a device. This operation wipes the device.</summary>
+            /// <summary>
+            /// Deletes a device. This operation wipes the device. Deleted devices do not show up in
+            /// enterprises.devices.list calls and a 404 is returned from enterprises.devices.get.
+            /// </summary>
             public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -765,7 +771,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
             }
 
-            /// <summary>Gets a device.</summary>
+            /// <summary>Gets a device. Deleted devices will respond with a 404 error.</summary>
             /// <param name="name">
             /// The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.
             /// </param>
@@ -774,7 +780,7 @@ namespace Google.Apis.AndroidManagement.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a device.</summary>
+            /// <summary>Gets a device. Deleted devices will respond with a 404 error.</summary>
             public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Device>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -873,14 +879,18 @@ namespace Google.Apis.AndroidManagement.v1
                 }
             }
 
-            /// <summary>Lists devices for a given enterprise.</summary>
+            /// <summary>
+            /// Lists devices for a given enterprise. Deleted devices are not returned in the response.
+            /// </summary>
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists devices for a given enterprise.</summary>
+            /// <summary>
+            /// Lists devices for a given enterprise. Deleted devices are not returned in the response.
+            /// </summary>
             public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListDevicesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4932,7 +4942,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountTypesWithManagementDisabled")]
         public virtual System.Collections.Generic.IList<string> AccountTypesWithManagementDisabled { get; set; }
 
-        /// <summary>Whether camera is disabled.</summary>
+        /// <summary>If true, the camera is disabled on the personal profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; }
 
@@ -4950,7 +4960,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personalPlayStoreMode")]
         public virtual string PersonalPlayStoreMode { get; set; }
 
-        /// <summary>Whether screen capture is disabled.</summary>
+        /// <summary>If true, screen capture is disabled for all users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; }
 

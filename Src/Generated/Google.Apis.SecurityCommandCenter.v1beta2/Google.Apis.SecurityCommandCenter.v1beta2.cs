@@ -4745,8 +4745,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// user name if the finding is VM-related, or this may be some type of application login user name, depending
         /// on the type of finding.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
+        public virtual string UserName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4791,6 +4791,23 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Version is the API Version of the Resource. "*" means all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A finding that is associated with this node in the exposure path.</summary>
+    public class AssociatedFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Canonical name of the associated findings. Example: organizations/123/sources/456/findings/789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFindingName")]
+        public virtual string CanonicalFindingName { get; set; }
+
+        /// <summary>The additional taxonomy group within findings from a given source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
+        public virtual string FindingCategory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5110,6 +5127,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The percentage of memory page hashes in the signature that were matched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentPagesMatched")]
         public virtual System.Nullable<double> PercentPagesMatched { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a connection between a source node and a destination node in this exposure path.</summary>
+    public class Edge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is the resource name of the destination node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>This is the resource name of the source node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5596,6 +5628,38 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>A resource that is exposed as a result of a finding.</summary>
     public class GoogleCloudSecuritycenterV1ExposedResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Human readable name of the resource that is exposed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ways in which this resource is exposed. Examples: Read, Write</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<string> Methods { get; set; }
+
+        /// <summary>
+        /// Exposed Resource Name e.g.: `organizations/123/attackExposureResults/456/exposedResources/789`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The name of the resource that is exposed. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// The resource type of the exposed resource. See:
+        /// https://cloud.google.com/asset-inventory/docs/supported-asset-types
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>How valuable this resource is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
+        public virtual string ResourceValue { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5603,6 +5667,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>A path that an attacker could take to reach an exposed resource.</summary>
     public class GoogleCloudSecuritycenterV1ExposurePath : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of the edges between nodes in this exposure path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edges")]
+        public virtual System.Collections.Generic.IList<Edge> Edges { get; set; }
+
+        /// <summary>The leaf node of this exposure path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedResource")]
+        public virtual GoogleCloudSecuritycenterV1ExposedResource ExposedResource { get; set; }
+
+        /// <summary>Exposure Path Name e.g.: `organizations/123/attackExposureResults/456/exposurePaths/789`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>A list of nodes that exist in this exposure path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathNodes")]
+        public virtual System.Collections.Generic.IList<PathNode> PathNodes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6251,6 +6331,34 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingLevel")]
         public virtual string OnboardingLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents one point that an attacker passes through in this exposure path.</summary>
+    public class PathNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The findings associated with this node in the exposure path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedFindings")]
+        public virtual System.Collections.Generic.IList<AssociatedFinding> AssociatedFindings { get; set; }
+
+        /// <summary>Human readable name of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The name of the resource at this point in the exposure path. The format of the name is:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// The resource type of this resource. See: https://cloud.google.com/asset-inventory/docs/supported-asset-types
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
