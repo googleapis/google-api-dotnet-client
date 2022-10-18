@@ -1,6 +1,8 @@
 # This is intended to be imported using the "source" function
 # from any script that wants to invoke the C#-based generator.
 
+declare -r GAPIC_GENERATOR_VERSION=1.4.8
+
 TMP_CSHARP_GENERATOR_DIR=tmp-gapic-generator-csharp
 if [[ $CSHARP_GENERATOR_DIR == "" ]]
 then
@@ -8,18 +10,21 @@ then
 fi
 
 # Installs the C# generator in a tmp-gapic-generator-csharp directory,
-# unless it an existing generator directory is specified via the
+# unless an existing generator directory is specified via the
 # CSHARP_GENERATOR_DIR environment variable.
 # When installing, if the directory already exists, it is deleted first.
+# The tag for GAPIC_GENERATOR_VERSION (declared at the top of this file)
+# is checked out.
 install_csharp_generator() {
   if [[ $CSHARP_GENERATOR_DIR == $TMP_CSHARP_GENERATOR_DIR ]]
   then
     echo "Installing C# generator in $CSHARP_GENERATOR_DIR"
     rm -rf $CSHARP_GENERATOR_DIR
-  
-    git clone --quiet --recursive --depth=1 \
+
+    git clone --quiet --recursive \
       https://github.com/googleapis/gapic-generator-csharp.git \
       $CSHARP_GENERATOR_DIR
+    git -C $CSHARP_GENERATOR_DIR checkout -q v$GAPIC_GENERATOR_VERSION
   else
     echo "Using C# generator in $CSHARP_GENERATOR_DIR"
   fi
