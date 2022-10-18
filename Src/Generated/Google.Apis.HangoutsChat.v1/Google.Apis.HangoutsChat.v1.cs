@@ -1250,13 +1250,18 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Requested page size. The value is capped at 1000. Server may return fewer results than requested. If
-                /// unspecified, server will default to 100.
+                /// The maximum number of memberships to return. The service may return fewer than this value. If
+                /// unspecified, at most 100 memberships are returned. The maximum value is 1000; values above 1000 are
+                /// coerced to 1000. Negative values return an INVALID_ARGUMENT error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A token identifying a page of results the server should return.</summary>
+                /// <summary>
+                /// A page token, received from a previous list memberships call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided must match the call that provided
+                /// the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1801,13 +1806,18 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Optional. Requested page size. The value is capped at 1000. Server may return fewer results than
-            /// requested. If unspecified, server will default to 100.
+            /// Optional. The maximum number of spaces to return. The service may return fewer than this value. If
+            /// unspecified, at most 100 spaces are returned. The maximum value is 1000; values above 1000 are coerced
+            /// to 1000. Negative values return an INVALID_ARGUMENT error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+            /// <summary>
+            /// Optional. A page token, received from a previous list spaces call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided must match the call that provided the
+            /// page token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -3503,7 +3513,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
 
         /// <summary>
-        /// Continuation token to retrieve the next page of results. It will be empty for the last page of results.
+        /// A token that can be sent as `pageToken` to retrieve the next page of results. If empty, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3515,8 +3526,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class ListSpacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Continuation token to retrieve the next page of results. It will be empty for the last page of results.
-        /// Tokens expire in an hour. An error is thrown if an expired token is passed.
+        /// A token that can be sent as `pageToken` to retrieve the next page of results. If empty, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

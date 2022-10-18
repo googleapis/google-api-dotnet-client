@@ -845,9 +845,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// ################################################################ # Represents the input to API methods.
-    /// </summary>
+    /// <summary>Represents the input to API methods.</summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -359,7 +359,7 @@ namespace Google.Apis.WebRisk.v1
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
 
-                /// <summary>Extended Coverage Social Engineering list targeting any platform.</summary>
+                /// <summary>A list of extended coverage social engineering URIs targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING_EXTENDED_COVERAGE")]
                 SOCIALENGINEERINGEXTENDEDCOVERAGE = 5,
             }
@@ -995,7 +995,7 @@ namespace Google.Apis.WebRisk.v1
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
 
-                /// <summary>Extended Coverage Social Engineering list targeting any platform.</summary>
+                /// <summary>A list of extended coverage social engineering URIs targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING_EXTENDED_COVERAGE")]
                 SOCIALENGINEERINGEXTENDEDCOVERAGE = 5,
             }
@@ -1137,7 +1137,7 @@ namespace Google.Apis.WebRisk.v1
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
 
-                /// <summary>Extended Coverage Social Engineering list targeting any platform.</summary>
+                /// <summary>A list of extended coverage social engineering URIs targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING_EXTENDED_COVERAGE")]
                 SOCIALENGINEERINGEXTENDEDCOVERAGE = 5,
             }
@@ -1354,7 +1354,7 @@ namespace Google.Apis.WebRisk.v1.Data
 
     public class GoogleCloudWebriskV1SearchUrisResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The threat list matches. This may be empty if the URI is on no list.</summary>
+        /// <summary>The threat list matches. This might be empty if the URI is on no list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threat")]
         public virtual GoogleCloudWebriskV1SearchUrisResponseThreatUri Threat { get; set; }
 
@@ -1384,7 +1384,7 @@ namespace Google.Apis.WebRisk.v1.Data
     public class GoogleCloudWebriskV1Submission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// ThreatTypes found to be associated with the submitted URI after reviewing it. This may be empty if the URI
+        /// ThreatTypes found to be associated with the submitted URI after reviewing it. This might be empty if the URI
         /// was not added to any list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatTypes")]
@@ -1506,11 +1506,11 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
-        /// <summary>This field will contain a `SubmitUriMetadata` object.</summary>
+        /// <summary>Contains a `SubmitUriMetadata` object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>This will match the pattern `/v1/{project-name}/operations/{operation-id}`.</summary>
+        /// <summary>Matches the `/v1/{project-name}/operations/{operation-id}` pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
