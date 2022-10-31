@@ -2482,6 +2482,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureSpec Appdevexperience { get; set; }
 
+        /// <summary>FleetObservability feature spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
+        public virtual FleetObservabilityFeatureSpec Fleetobservability { get; set; }
+
         /// <summary>Multicluster Ingress-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiclusteringress")]
         public virtual MultiClusterIngressFeatureSpec Multiclusteringress { get; set; }
@@ -2496,6 +2500,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Appdevexperience specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
+
+        /// <summary>FleetObservability feature state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
+        public virtual FleetObservabilityFeatureState Fleetobservability { get; set; }
 
         /// <summary>Output only. The "running state" of the Feature in this Hub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3223,6 +3231,27 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual FeatureResourceState ResourceState { get; set; }
 
         /// <summary>
+        /// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope
+        /// configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the
+        /// form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this
+        /// project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the
+        /// project ID is also accepted during input. If the same Scope is specified in the map twice (using the project
+        /// ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to
+        /// which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeSpecs")]
+        public virtual System.Collections.Generic.IDictionary<string, ScopeFeatureSpec> ScopeSpecs { get; set; }
+
+        /// <summary>
+        /// Output only. Scope-specific Feature status. If this Feature does report any per-Scope status, this field may
+        /// be unused. The keys indicate which Scope the state is for, in the form:
+        /// `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project.
+        /// {p} WILL match the Feature's project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeStates")]
+        public virtual System.Collections.Generic.IDictionary<string, ScopeFeatureState> ScopeStates { get; set; }
+
+        /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this
         /// field may be unused.
         /// </summary>
@@ -3273,6 +3302,34 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Fleet Observability**: The Hub-wide input for the FleetObservability feature.</summary>
+    public class FleetObservabilityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**FleetObservability**: An empty state left as an example Hub-wide Feature state.</summary>
+    public class FleetObservabilityFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**FleetObservability**: The membership-specific input for FleetObservability feature.</summary>
+    public class FleetObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**FleetObservability**: An empty state left as an example membership-specific Feature state.</summary>
+    public class FleetObservabilityMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3828,6 +3885,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
 
+        /// <summary>Fleet observability membership spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
+        public virtual FleetObservabilityMembershipSpec Fleetobservability { get; set; }
+
         /// <summary>Identity Service-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipSpec Identityservice { get; set; }
@@ -3854,6 +3915,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Config Management-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipState Configmanagement { get; set; }
+
+        /// <summary>Fleet observability membership state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
+        public virtual FleetObservabilityMembershipState Fleetobservability { get; set; }
 
         /// <summary>Identity Service-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
@@ -4155,6 +4220,24 @@ namespace Google.Apis.GKEHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("v1beta1Crd")]
         public virtual System.Nullable<bool> V1beta1Crd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ScopeFeatureSpec contains feature specs for a fleet scope.</summary>
+    public class ScopeFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ScopeFeatureState contains Scope-wide Feature status information.</summary>
+    public class ScopeFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The "running state" of the Feature in this Scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual FeatureState State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

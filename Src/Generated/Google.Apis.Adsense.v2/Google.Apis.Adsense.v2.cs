@@ -327,9 +327,8 @@ namespace Google.Apis.Adsense.v2
                 /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for
                 /// Platforms](https://developers.google.com/adsense/platforms/) product. Note that ad units can only be
                 /// created for ad clients with an "AFC" product code. For more info see the [AdClient
-                /// resource](https://developers.google.com/adsense/management/reference/rest/v2/accounts.adclients).
-                /// For now, this method can only be used to create `DISPLAY` ad units. See:
-                /// https://support.google.com/adsense/answer/9183566
+                /// resource](/adsense/management/reference/rest/v2/accounts.adclients). For now, this method can only
+                /// be used to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -344,9 +343,8 @@ namespace Google.Apis.Adsense.v2
                 /// Creates an ad unit. This method can only be used by projects enabled for the [AdSense for
                 /// Platforms](https://developers.google.com/adsense/platforms/) product. Note that ad units can only be
                 /// created for ad clients with an "AFC" product code. For more info see the [AdClient
-                /// resource](https://developers.google.com/adsense/management/reference/rest/v2/accounts.adclients).
-                /// For now, this method can only be used to create `DISPLAY` ad units. See:
-                /// https://support.google.com/adsense/answer/9183566
+                /// resource](/adsense/management/reference/rest/v2/accounts.adclients). For now, this method can only
+                /// be used to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
                 /// </summary>
                 public class CreateRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.AdUnit>
                 {
@@ -2683,7 +2681,10 @@ namespace Google.Apis.Adsense.v2
                 [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> EndDateYear { get; set; }
 
-                /// <summary>Filters to be run on the report.</summary>
+                /// <summary>
+                /// A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided
+                /// filters must match in order for the data to be included in the report.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Filters { get; set; }
 
@@ -3473,7 +3474,10 @@ namespace Google.Apis.Adsense.v2
                 [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> EndDateYear { get; set; }
 
-                /// <summary>Filters to be run on the report.</summary>
+                /// <summary>
+                /// A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided
+                /// filters must match in order for the data to be included in the report.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Filters { get; set; }
 

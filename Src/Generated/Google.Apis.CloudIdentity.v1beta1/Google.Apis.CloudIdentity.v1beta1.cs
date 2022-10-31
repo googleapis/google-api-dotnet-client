@@ -3902,10 +3902,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
             /// <summary>
-            /// A CEL expression to filter the results. The only currently-supported filter is filtering by customer.
-            /// For example: `customer==customers/C0123abc`. Omitting the filter or specifying a filter of
-            /// `customer==customers/my_customer` will return the profiles for the customer that the caller
-            /// (authenticated user) belongs to.
+            /// A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The
+            /// only currently-supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`.
+            /// Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the
+            /// profiles for the customer that the caller (authenticated user) belongs to.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3913,8 +3913,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// <summary>
             /// The maximum number of InboundSamlSsoProfiles to return. The service may return fewer than this value. If
             /// omitted (or defaulted to zero) the server will use a sensible default. This default may change over
-            /// time. The maximum allowed value is 100, though requests with page_size greater than that will be
-            /// silently interpreted as having this maximum value. This may increase in the futue.
+            /// time. The maximum allowed value is 100. Requests with page_size greater than that will be silently
+            /// interpreted as having this maximum value.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -4627,7 +4627,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// </summary>
     public class AddIdpCredentialRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>PEM encoded x509 certificate containing the public signing key.</summary>
+        /// <summary>PEM encoded x509 certificate containing the public key for verifying IdP signatures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemData")]
         public virtual string PemData { get; set; }
 
@@ -5878,7 +5878,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The identity provider's credentials (for signing assertions, etc).</summary>
+    /// <summary>Credential for verifying signatures produced by the Identity Provider.</summary>
     public class IdpCredential : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Information of a DSA public key.</summary>

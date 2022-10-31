@@ -1196,8 +1196,9 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
 
         /// <summary>
         /// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all
-        /// build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD:
-        /// time to set up build. If the build does not specify source or images, these keys will not be included.
+        /// build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. *
+        /// FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source
+        /// or images, these keys will not be included.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual System.Collections.Generic.IDictionary<string, TimeSpan> Timing { get; set; }
@@ -2226,11 +2227,14 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
     /// <summary>Artifacts created by the build pipeline.</summary>
     public class Results : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Path to the artifact manifest. Only populated when artifacts are uploaded.</summary>
+        /// <summary>
+        /// Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when
+        /// artifacts are uploaded to Cloud Storage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactManifest")]
         public virtual string ArtifactManifest { get; set; }
 
-        /// <summary>Time to push all non-container artifacts.</summary>
+        /// <summary>Time to push all non-container artifacts to Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactTiming")]
         public virtual TimeSpan ArtifactTiming { get; set; }
 
@@ -2254,7 +2258,10 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
         public virtual System.Collections.Generic.IList<UploadedMavenArtifact> MavenArtifacts { get; set; }
 
-        /// <summary>Number of artifacts uploaded. Only populated when artifacts are uploaded.</summary>
+        /// <summary>
+        /// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to
+        /// Cloud Storage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numArtifacts")]
         public virtual System.Nullable<long> NumArtifacts { get; set; }
 

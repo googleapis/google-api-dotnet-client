@@ -1691,10 +1691,6 @@ namespace Google.Apis.Integrations.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("filterParams.taskStatuses", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> FilterParamsTaskStatuses { get; set; }
 
-                        /// <summary>Trigger id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterParams.triggerId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string FilterParamsTriggerId { get; set; }
-
                         /// <summary>Workflow name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterParams.workflowName", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string FilterParamsWorkflowName { get; set; }
@@ -1855,14 +1851,6 @@ namespace Google.Apis.Integrations.v1alpha
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                            RequestParameters.Add("filterParams.triggerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterParams.triggerId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                             RequestParameters.Add("filterParams.workflowName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filterParams.workflowName",
@@ -1952,7 +1940,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The version to archive. Format:
-                    /// projects/{project}/integrations/{integration}/versions/{version}
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                     /// </param>
                     public virtual ArchiveRequest Archive(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest body, string name)
                     {
@@ -1980,7 +1968,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The version to archive. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2019,7 +2007,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource where this version will be created. Format:
-                    /// projects/{project}/integrations/{integration}
+                    /// projects/{project}/locations/{location}/integrations/{integration}
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaIntegrationVersion body, string parent)
                     {
@@ -2039,7 +2027,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The parent resource where this version will be created. Format:
-                        /// projects/{project}/integrations/{integration}
+                        /// projects/{project}/locations/{location}/integrations/{integration}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2100,7 +2088,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The version to deactivate. Format:
-                    /// projects/{project}/integrations/{integration}/versions/{version}
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                     /// </param>
                     public virtual DeactivateRequest Deactivate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest body, string name)
                     {
@@ -2125,7 +2113,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The version to deactivate. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2163,7 +2151,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <summary>Get a integration in the specified project.</summary>
                     /// <param name="name">
                     /// Required. The version to retrieve. Format:
-                    /// projects/{project}/integrations/{integration}/versions/{version}
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2182,7 +2170,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The version to retrieve. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2214,11 +2202,11 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <summary>Returns the list of all integration versions in the specified project.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource where this version will be created. Format:
-                    /// projects/{project}/integrations/{integration} Specifically, when parent equals: 1.
-                    /// projects//locations//integrations/, Meaning: "List versions (with filter) for a particular
-                    /// integration". 2. projects//locations//integrations/- Meaning: "List versions (with filter) for a
-                    /// client within a particular region". 3. projects//locations/-/integrations/- Meaning: "List
-                    /// versions (with filter) for a client".
+                    /// projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent
+                    /// equals: 1. projects//locations//integrations/, Meaning: "List versions (with filter) for a
+                    /// particular integration". 2. projects//locations//integrations/- Meaning: "List versions (with
+                    /// filter) for a client within a particular region". 3. projects//locations/-/integrations/-
+                    /// Meaning: "List versions (with filter) for a client".
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2237,11 +2225,11 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The parent resource where this version will be created. Format:
-                        /// projects/{project}/integrations/{integration} Specifically, when parent equals: 1.
-                        /// projects//locations//integrations/, Meaning: "List versions (with filter) for a particular
-                        /// integration". 2. projects//locations//integrations/- Meaning: "List versions (with filter)
-                        /// for a client within a particular region". 3. projects//locations/-/integrations/- Meaning:
-                        /// "List versions (with filter) for a client".
+                        /// projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent
+                        /// equals: 1. projects//locations//integrations/, Meaning: "List versions (with filter) for a
+                        /// particular integration". 2. projects//locations//integrations/- Meaning: "List versions
+                        /// (with filter) for a client within a particular region". 3.
+                        /// projects//locations/-/integrations/- Meaning: "List versions (with filter) for a client".
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2427,7 +2415,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The version to publish. Format:
-                    /// projects/{project}/integrations/{integration}/versions/{version}
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                     /// </param>
                     public virtual PublishRequest Publish(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest body, string name)
                     {
@@ -2453,7 +2441,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The version to publish. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2502,7 +2490,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="integrationVersion">
                     /// Required. The version to take over edit lock. Format:
-                    /// projects/{project}/integrations/{integration}/versions/{version}
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                     /// </param>
                     public virtual TakeoverEditLockRequest TakeoverEditLock(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest body, string integrationVersion)
                     {
@@ -2532,7 +2520,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The version to take over edit lock. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("integrationVersion", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string IntegrationVersion { get; private set; }
@@ -2575,7 +2563,7 @@ namespace Google.Apis.Integrations.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The version to validate. Format:
-                    /// projects/{project}/integrations/{integration}/versions/{version}
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                     /// </param>
                     public virtual ValidateRequest Validate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest body, string name)
                     {
@@ -2599,7 +2587,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Required. The version to validate. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4286,10 +4274,6 @@ namespace Google.Apis.Integrations.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("filterParams.taskStatuses", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> FilterParamsTaskStatuses { get; set; }
 
-                            /// <summary>Trigger id.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filterParams.triggerId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string FilterParamsTriggerId { get; set; }
-
                             /// <summary>Workflow name.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filterParams.workflowName", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string FilterParamsWorkflowName { get; set; }
@@ -4445,14 +4429,6 @@ namespace Google.Apis.Integrations.v1alpha
                                 RequestParameters.Add("filterParams.taskStatuses", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filterParams.taskStatuses",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("filterParams.triggerId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterParams.triggerId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4670,7 +4646,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The version to archive. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual ArchiveRequest Archive(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest body, string name)
                         {
@@ -4698,7 +4674,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to archive. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -4737,7 +4713,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The parent resource where this version will be created. Format:
-                        /// projects/{project}/integrations/{integration}
+                        /// projects/{project}/locations/{location}/integrations/{integration}
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaIntegrationVersion body, string parent)
                         {
@@ -4757,7 +4733,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The parent resource where this version will be created. Format:
-                            /// projects/{project}/integrations/{integration}
+                            /// projects/{project}/locations/{location}/integrations/{integration}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -4818,7 +4794,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The version to deactivate. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual DeactivateRequest Deactivate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest body, string name)
                         {
@@ -4843,7 +4819,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to deactivate. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -4884,7 +4860,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// </summary>
                         /// <param name="name">
                         /// Required. The version to download. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual DownloadRequest Download(string name)
                         {
@@ -4906,7 +4882,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to download. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -4966,7 +4942,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <summary>Get a integration in the specified project.</summary>
                         /// <param name="name">
                         /// Required. The version to retrieve. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -4985,7 +4961,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to retrieve. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -5068,11 +5044,11 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <summary>Returns the list of all integration versions in the specified project.</summary>
                         /// <param name="parent">
                         /// Required. The parent resource where this version will be created. Format:
-                        /// projects/{project}/integrations/{integration} Specifically, when parent equals: 1.
-                        /// projects//locations//integrations/, Meaning: "List versions (with filter) for a particular
-                        /// integration". 2. projects//locations//integrations/- Meaning: "List versions (with filter)
-                        /// for a client within a particular region". 3. projects//locations/-/integrations/- Meaning:
-                        /// "List versions (with filter) for a client".
+                        /// projects/{project}/locations/{location}/integrations/{integration} Specifically, when parent
+                        /// equals: 1. projects//locations//integrations/, Meaning: "List versions (with filter) for a
+                        /// particular integration". 2. projects//locations//integrations/- Meaning: "List versions
+                        /// (with filter) for a client within a particular region". 3.
+                        /// projects//locations/-/integrations/- Meaning: "List versions (with filter) for a client".
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -5091,10 +5067,10 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The parent resource where this version will be created. Format:
-                            /// projects/{project}/integrations/{integration} Specifically, when parent equals: 1.
-                            /// projects//locations//integrations/, Meaning: "List versions (with filter) for a
-                            /// particular integration". 2. projects//locations//integrations/- Meaning: "List versions
-                            /// (with filter) for a client within a particular region". 3.
+                            /// projects/{project}/locations/{location}/integrations/{integration} Specifically, when
+                            /// parent equals: 1. projects//locations//integrations/, Meaning: "List versions (with
+                            /// filter) for a particular integration". 2. projects//locations//integrations/- Meaning:
+                            /// "List versions (with filter) for a client within a particular region". 3.
                             /// projects//locations/-/integrations/- Meaning: "List versions (with filter) for a
                             /// client".
                             /// </summary>
@@ -5282,7 +5258,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The version to publish. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual PublishRequest Publish(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest body, string name)
                         {
@@ -5308,7 +5284,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to publish. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -5357,7 +5333,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="integrationVersion">
                         /// Required. The version to take over edit lock. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual TakeoverEditLockRequest TakeoverEditLock(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest body, string integrationVersion)
                         {
@@ -5387,7 +5363,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to take over edit lock. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("integrationVersion", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string IntegrationVersion { get; private set; }
@@ -5482,7 +5458,8 @@ namespace Google.Apis.Integrations.v1alpha
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The version to upload. Format: projects/{project}/integrations/{integration}
+                        /// Required. The version to upload. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}
                         /// </param>
                         public virtual UploadRequest Upload(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest body, string parent)
                         {
@@ -5505,7 +5482,8 @@ namespace Google.Apis.Integrations.v1alpha
                             }
 
                             /// <summary>
-                            /// Required. The version to upload. Format: projects/{project}/integrations/{integration}
+                            /// Required. The version to upload. Format:
+                            /// projects/{project}/locations/{location}/integrations/{integration}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -5548,7 +5526,7 @@ namespace Google.Apis.Integrations.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The version to validate. Format:
-                        /// projects/{project}/integrations/{integration}/versions/{version}
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                         /// </param>
                         public virtual ValidateRequest Validate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest body, string name)
                         {
@@ -5572,7 +5550,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Required. The version to validate. Format:
-                            /// projects/{project}/integrations/{integration}/versions/{version}
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -5614,7 +5592,8 @@ namespace Google.Apis.Integrations.v1alpha
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. The bundle to archive. Format: projects/{project}/integrations/{integration}
+                    /// Required. The bundle to archive. Format:
+                    /// projects/{project}/locations/{location}/integrations/{integration}
                     /// </param>
                     public virtual ArchiveBundleRequest ArchiveBundle(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveBundleRequest body, string name)
                     {
@@ -5636,7 +5615,8 @@ namespace Google.Apis.Integrations.v1alpha
                         }
 
                         /// <summary>
-                        /// Required. The bundle to archive. Format: projects/{project}/integrations/{integration}
+                        /// Required. The bundle to archive. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -8079,6 +8059,34 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Title of the issue to be created. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Scheduler Trigger configuration</summary>
+    public class EnterpriseCrmEventbusProtoCloudSchedulerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The cron tab of cloud scheduler trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cronTab")]
+        public virtual string CronTab { get; set; }
+
+        /// <summary>
+        /// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List
+        /// integrations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Required. The location where associated cloud scheduler job will be created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Required. Service account used by Cloud Scheduler to trigger the integration at scheduled time
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10547,7 +10555,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration detail of a trigger. Next available id: 16</summary>
+    /// <summary>Configuration detail of a trigger. Next available id: 17</summary>
     public class EnterpriseCrmFrontendsEventbusProtoTriggerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10557,6 +10565,9 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertConfig")]
         public virtual System.Collections.Generic.IList<EnterpriseCrmEventbusProtoWorkflowAlertConfig> AlertConfig { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSchedulerConfig")]
+        public virtual EnterpriseCrmEventbusProtoCloudSchedulerConfig CloudSchedulerConfig { get; set; }
 
         /// <summary>User-provided description intended to give more business context about the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -10876,10 +10887,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Format of SSH Client cert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certType")]
         public virtual string CertType { get; set; }
-
-        /// <summary>This is an optional field used in case client has enabled multi-factor authentication</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual GoogleCloudConnectorsV1Secret Password { get; set; }
 
         /// <summary>SSH Client Cert. It should contain both public and private key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshClientCert")]
@@ -11439,6 +11446,34 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificate")]
         public virtual string SslCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Scheduler Trigger configuration</summary>
+    public class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The cron tab of cloud scheduler trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cronTab")]
+        public virtual string CronTab { get; set; }
+
+        /// <summary>
+        /// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List
+        /// integrations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Required. The location where associated cloud scheduler job will be created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Required. Service account used by Cloud Scheduler to trigger the integration at scheduled time
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13534,6 +13569,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertConfig")]
         public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig> AlertConfig { get; set; }
+
+        /// <summary>Optional. Cloud Scheduler Trigger related metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSchedulerConfig")]
+        public virtual GoogleCloudIntegrationsV1alphaCloudSchedulerConfig CloudSchedulerConfig { get; set; }
 
         /// <summary>
         /// Optional. User-provided description intended to give additional business context about the task.

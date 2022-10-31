@@ -1202,8 +1202,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// <param name="name">
             /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be
             /// * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-            /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and
-            /// the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not
+            /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the
+            /// min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not
             /// counted.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name)
@@ -1228,9 +1228,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 /// <summary>
                 /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should
                 /// be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-                /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters
-                /// and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/"
-                /// is not counted.
+                /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and
+                /// the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is
+                /// not counted.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2345,8 +2345,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// <summary>
         /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
         /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-        /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the
-        /// min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+        /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min
+        /// length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

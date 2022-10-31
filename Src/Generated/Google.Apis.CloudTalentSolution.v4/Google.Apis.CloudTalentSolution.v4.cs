@@ -2412,10 +2412,11 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         public virtual string ImageUri { get; set; }
 
         /// <summary>
-        /// A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword
-        /// searches. Jobs with `string_values` under these specified field keys are returned if any of the values match
-        /// the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable
-        /// as-is, and those keyword queries must be surrounded by quotes.
+        /// This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes
+        /// going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are
+        /// used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of
+        /// the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are
+        /// not searchable as-is, and those keyword queries must be surrounded by quotes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordSearchableJobCustomAttributes")]
         public virtual System.Collections.Generic.IList<string> KeywordSearchableJobCustomAttributes { get; set; }
@@ -3845,8 +3846,8 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         /// functions: * bucket(start, end[, label]): bucket built-in function creates a bucket with range of start,
         /// end). Note that the end is exclusive, for example, bucket(1, MAX, "positive number") or bucket(1, 10). Job
         /// histogram facets: * company_display_name: histogram by [Job.company_display_name. * employment_type:
-        /// histogram by Job.employment_types, for example, "FULL_TIME", "PART_TIME". * company_size: histogram by
-        /// CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day: histogram by the
+        /// histogram by Job.employment_types, for example, "FULL_TIME", "PART_TIME". * company_size (DEPRECATED):
+        /// histogram by CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day: histogram by the
         /// Job.posting_publish_time in days. Must specify list of numeric buckets in spec. * publish_time_in_month:
         /// histogram by the Job.posting_publish_time in months. Must specify list of numeric buckets in spec. *
         /// publish_time_in_year: histogram by the Job.posting_publish_time in years. Must specify list of numeric

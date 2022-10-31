@@ -2690,7 +2690,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
-        /// <summary>The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.</summary>
+        /// <summary>The Google Cloud Platform zone where your Cloud SQL database instance is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 

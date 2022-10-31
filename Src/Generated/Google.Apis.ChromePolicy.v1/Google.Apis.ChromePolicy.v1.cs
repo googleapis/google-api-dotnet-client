@@ -1523,6 +1523,23 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Error information for removing of a specific certificate on a specific target. A reference to a certificate.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1CertificateReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the referencing network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. The obfuscated id of the org unit the referencing network is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request object for creating a certificate.</summary>
     public class GoogleChromePolicyVersionsV1DefineCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2027,6 +2044,23 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>The value of the policy that is compatible with the schema that it is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details of the errors encountered during a remove certificate request. This message will be returned as part of
+    /// the details of a google.rpc.Status returned to the user when there is an error in their request.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If the certificate was not removed, a list of references to the certificate that prevented it
+        /// from being removed. Only unreferenced certificates can be removed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateReferences")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1CertificateReference> CertificateReferences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

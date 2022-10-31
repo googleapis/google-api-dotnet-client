@@ -1031,10 +1031,10 @@ namespace Google.Apis.Connectors.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Connection resource
-                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
-                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
-                    /// mask then all fields will be overwritten.
+                    /// Required. You can modify only the fields listed below. To lock/unlock a connection: *
+                    /// `lock_config` To suspend/resume a connection: * `suspended` To update the connection details: *
+                    /// `description` * `labels` * `connector_version` * `config_variables` * `auth_config` *
+                    /// `destination_configs` * `node_config`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2773,7 +2773,10 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata of connection schema.</summary>
+    /// <summary>
+    /// ConnectionSchemaMetadata is the singleton resource of each connection. It includes the entity and action names
+    /// of runtime resources exposed by a connection backend.
+    /// </summary>
     public class ConnectionSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. List of actions.</summary>
@@ -2783,6 +2786,25 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. List of entity names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<string> Entities { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name. Format:
+        /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Timestamp when the connection runtime schema refresh was triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshTime")]
+        public virtual object RefreshTime { get; set; }
+
+        /// <summary>Output only. The current state of runtime schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Timestamp when the connection runtime schema was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3844,10 +3866,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Format of SSH Client cert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certType")]
         public virtual string CertType { get; set; }
-
-        /// <summary>This is an optional field used in case client has enabled multi-factor authentication</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual Secret Password { get; set; }
 
         /// <summary>SSH Client Cert. It should contain both public and private key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshClientCert")]

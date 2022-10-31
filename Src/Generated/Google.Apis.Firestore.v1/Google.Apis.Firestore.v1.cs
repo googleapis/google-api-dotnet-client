@@ -3855,6 +3855,15 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
         /// <summary>
+        /// An empty list represents all namespaces. This is the preferred usage for databases that don't use
+        /// namespaces. An empty string element represents the default namespace. This should be used if the database
+        /// has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// unique.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
+
+        /// <summary>
         /// The output URI. Currently only supports Google Cloud Storage URIs of the form:
         /// `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and
         /// `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to
@@ -4016,6 +4025,15 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
         public virtual string InputUriPrefix { get; set; }
+
+        /// <summary>
+        /// An empty list represents all namespaces. This is the preferred usage for databases that don't use
+        /// namespaces. An empty string element represents the default namespace. This should be used if the database
+        /// has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// unique.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1184,6 +1184,65 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
                         }
                     }
 
+                    /// <summary>AuditMigration API gets the current state of DomainMigration</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                    /// </param>
+                    public virtual CheckMigrationPermissionRequest CheckMigrationPermission(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.CheckMigrationPermissionRequest body, string domain)
+                    {
+                        return new CheckMigrationPermissionRequest(service, body, domain);
+                    }
+
+                    /// <summary>AuditMigration API gets the current state of DomainMigration</summary>
+                    public class CheckMigrationPermissionRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.CheckMigrationPermissionResponse>
+                    {
+                        /// <summary>Constructs a new CheckMigrationPermission request.</summary>
+                        public CheckMigrationPermissionRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.CheckMigrationPermissionRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.CheckMigrationPermissionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "checkMigrationPermission";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+domain}:checkMigrationPermission";
+
+                        /// <summary>Initializes CheckMigrationPermission parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a Microsoft AD Domain in a given project. Operation</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1362,6 +1421,124 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Disable Domain Migration</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                    /// </param>
+                    public virtual DisableMigrationRequest DisableMigration(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DisableMigrationRequest body, string domain)
+                    {
+                        return new DisableMigrationRequest(service, body, domain);
+                    }
+
+                    /// <summary>Disable Domain Migration</summary>
+                    public class DisableMigrationRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new DisableMigration request.</summary>
+                        public DisableMigrationRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DisableMigrationRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DisableMigrationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "disableMigration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+domain}:disableMigration";
+
+                        /// <summary>Initializes DisableMigration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Enable Domain Migration</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                    /// </param>
+                    public virtual EnableMigrationRequest EnableMigration(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.EnableMigrationRequest body, string domain)
+                    {
+                        return new EnableMigrationRequest(service, body, domain);
+                    }
+
+                    /// <summary>Enable Domain Migration</summary>
+                    public class EnableMigrationRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new EnableMigration request.</summary>
+                        public EnableMigrationRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.EnableMigrationRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.EnableMigrationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "enableMigration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+domain}:enableMigration";
+
+                        /// <summary>Initializes EnableMigration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -3407,6 +3584,28 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CheckMigrationPermissionRequest is the request message for CheckMigrationPermission method.</summary>
+    public class CheckMigrationPermissionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CheckMigrationPermissionResponse is the response message for CheckMigrationPermission method.</summary>
+    public class CheckMigrationPermissionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of SID filtering of all the domains which has trust established.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onpremDomains")]
+        public virtual System.Collections.Generic.IList<OnPremDomainSIDDetails> OnpremDomains { get; set; }
+
+        /// <summary>The state of DomainMigration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Time window specified for daily operations.</summary>
     public class DailyCycle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3490,6 +3689,13 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
         public virtual Trust Trust { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DisableMigrationRequest is the request message for DisableMigration method.</summary>
+    public class DisableMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3592,6 +3798,17 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EnableMigrationRequest is the request message for EnableMigration method.</summary>
+    public class EnableMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of the on-prem domains to be migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migratingDomains")]
+        public virtual System.Collections.Generic.IList<OnPremDomainDetails> MigratingDomains { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4340,6 +4557,42 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         /// <summary>Weekly cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyCycle")]
         public virtual WeeklyCycle WeeklyCycle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be
+    /// migrated.
+    /// </summary>
+    public class OnPremDomainDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Option to disable SID filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSidFiltering")]
+        public virtual System.Nullable<bool> DisableSidFiltering { get; set; }
+
+        /// <summary>Required. FQDN of the on-prem domain being migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be
+    /// migrated.
+    /// </summary>
+    public class OnPremDomainSIDDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>FQDN of the on-prem domain being migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Current SID filtering state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sidFilteringState")]
+        public virtual string SidFilteringState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

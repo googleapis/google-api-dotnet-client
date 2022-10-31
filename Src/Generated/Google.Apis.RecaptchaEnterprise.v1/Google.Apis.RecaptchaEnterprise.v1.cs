@@ -1649,7 +1649,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     {
         /// <summary>
         /// Action-based metrics. The map key is the action name which specified by the site owners at time of the
-        /// "execute" client-side call. Populated only for SCORE keys.
+        /// "execute" client-side call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionMetrics")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRecaptchaenterpriseV1ScoreDistribution> ActionMetrics { get; set; }

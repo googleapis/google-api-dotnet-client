@@ -2139,6 +2139,21 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata returned by the CLH during resource state reconciliation.</summary>
+    public class ReconciliationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DEPRECATED. Use exclusive_action instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
+        public virtual System.Nullable<bool> DeleteResource { get; set; }
+
+        /// <summary>Excluisive action returned by the CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
+        public virtual string ExclusiveAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for RescheduleMaintenance.</summary>
     public class RescheduleMaintenanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {

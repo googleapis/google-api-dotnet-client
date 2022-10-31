@@ -1042,6 +1042,13 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alertDescriptor")]
         public virtual string AlertDescriptor { get; set; }
 
+        /// <summary>
+        /// Customizable text to display in the next steps section of the alert. Will be parsed as HTML to allow new
+        /// paragraphs and hyperlinks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
+        public virtual string NextSteps { get; set; }
+
         /// <summary>Product that the abuse is originating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual string Product { get; set; }

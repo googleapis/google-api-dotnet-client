@@ -1009,7 +1009,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string CustomerId { get; private set; }
 
             /// <summary>
-            /// Return devices from all child orgunits, as well as the specified org unit. If this is set to true
+            /// Return devices from all child orgunits, as well as the specified org unit. If this is set to true,
             /// 'orgUnitPath' must be provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includeChildOrgunits", Google.Apis.Util.RequestParameterType.Query)]
@@ -10793,7 +10793,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// </summary>
     public class ChromeOsDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of active time ranges (Read-only).</summary>
+        /// <summary>A list of active time ranges (Read-only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRanges")]
         public virtual System.Collections.Generic.IList<ActiveTimeRangesData> ActiveTimeRanges { get; set; }
 
@@ -10838,7 +10838,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuStatusReports")]
         public virtual System.Collections.Generic.IList<CpuStatusReportsData> CpuStatusReports { get; set; }
 
-        /// <summary>List of device files to download (Read-only)</summary>
+        /// <summary>A list of device files to download (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceFiles")]
         public virtual System.Collections.Generic.IList<DeviceFilesData> DeviceFiles { get; set; }
 
@@ -10997,11 +10997,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformVersion")]
         public virtual string PlatformVersion { get; set; }
 
-        /// <summary>List of recent device users, in descending order, by last login time.</summary>
+        /// <summary>A list of recent device users, in descending order, by last login time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentUsers")]
         public virtual System.Collections.Generic.IList<RecentUsersData> RecentUsers { get; set; }
 
-        /// <summary>List of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-only)</summary>
+        /// <summary>A list of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenshotFiles")]
         public virtual System.Collections.Generic.IList<ScreenshotFilesData> ScreenshotFiles { get; set; }
 
@@ -11047,7 +11047,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("willAutoRenew")]
         public virtual System.Nullable<bool> WillAutoRenew { get; set; }
 
-        /// <summary>List of active time ranges (Read-only).</summary>
+        /// <summary>A list of active time ranges (Read-only).</summary>
         public class ActiveTimeRangesData
         {
             /// <summary>Duration of usage in milliseconds.</summary>
@@ -11120,7 +11120,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Reports of CPU utilization and temperature (Read-only)</summary>
         public class CpuStatusReportsData
         {
-            /// <summary>List of CPU temperature samples.</summary>
+            /// <summary>A list of CPU temperature samples.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("cpuTemperatureInfo")]
             public virtual System.Collections.Generic.IList<CpuTemperatureInfoData> CpuTemperatureInfo { get; set; }
 
@@ -11139,7 +11139,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
                 set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
 
-            /// <summary>List of CPU temperature samples.</summary>
+            /// <summary>A list of CPU temperature samples.</summary>
             public class CpuTemperatureInfoData
             {
                 /// <summary>CPU label</summary>
@@ -11152,7 +11152,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
-        /// <summary>List of device files to download (Read-only)</summary>
+        /// <summary>A list of device files to download (Read-only)</summary>
         public class DeviceFilesData
         {
             /// <summary>Date and time the file was created</summary>
@@ -11216,7 +11216,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             public virtual string WanIpAddress { get; set; }
         }
 
-        /// <summary>List of recent device users, in descending order, by last login time.</summary>
+        /// <summary>A list of recent device users, in descending order, by last login time.</summary>
         public class RecentUsersData
         {
             /// <summary>
@@ -11230,7 +11230,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             public virtual string Type { get; set; }
         }
 
-        /// <summary>List of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-only)</summary>
+        /// <summary>A list of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-only)</summary>
         public class ScreenshotFilesData
         {
             /// <summary>Date and time the file was created</summary>
@@ -11311,7 +11311,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
     }
 
-    /// <summary>The data regarding an action to update the status of a Chrome OS device.</summary>
+    /// <summary>Data about an update to the status of a Chrome OS device.</summary>
     public class ChromeOsDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Action to be taken on the Chrome OS device.</summary>
@@ -11332,7 +11332,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     public class ChromeOsDevices : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Chrome OS Device objects.</summary>
+        /// <summary>A list of Chrome OS Device objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chromeosdevices")]
         public virtual System.Collections.Generic.IList<ChromeOsDevice> Chromeosdevices { get; set; }
 
@@ -11632,7 +11632,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     public class DomainAliases : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of domain alias objects.</summary>
+        /// <summary>A list of domain alias objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainAliases")]
         public virtual System.Collections.Generic.IList<DomainAlias> DomainAliasesValue { get; set; }
 
@@ -11654,7 +11654,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
 
-        /// <summary>List of domain alias objects. (Read-only)</summary>
+        /// <summary>A list of domain alias objects. (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainAliases")]
         public virtual System.Collections.Generic.IList<DomainAlias> DomainAliases { get; set; }
 
@@ -11681,7 +11681,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     public class Domains2 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of domain objects.</summary>
+        /// <summary>A list of domain objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<Domains> Domains { get; set; }
 
@@ -11807,7 +11807,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Nullable<bool> AdminCreated { get; set; }
 
         /// <summary>
-        /// Read-only. A list of a group's alias email addresses. To add, update, or remove a group's aliases, use the
+        /// Read-only. The list of a group's alias email addresses. To add, update, or remove a group's aliases, use the
         /// `groups.aliases` methods. If edited in a group's POST or PUT request, the edit is ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
@@ -11857,7 +11857,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Read-only. A list of the group's non-editable alias email addresses that are outside of the account's
+        /// Read-only. The list of the group's non-editable alias email addresses that are outside of the account's
         /// primary domain or subdomains. These are functioning email addresses used by the group. This is a read-only
         /// property returned in the API's response for a group. If edited in a group's POST or PUT request, the edit is
         /// ignored.
@@ -11896,7 +11896,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>List of group objects.</summary>
+        /// <summary>A list of group objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
         public virtual System.Collections.Generic.IList<Group> GroupsValue { get; set; }
 
@@ -12030,7 +12030,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of member objects.</summary>
+        /// <summary>A list of member objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<Member> MembersValue { get; set; }
 
@@ -12113,7 +12113,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string DevicePasswordStatus { get; set; }
 
         /// <summary>
-        /// List of owner's email addresses. If your application needs the current list of user emails, use the
+        /// The list of the owner's email addresses. If your application needs the current list of user emails, use the
         /// [get](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method. For additional information, see the
         /// [retrieve a user](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
         /// </summary>
@@ -12205,8 +12205,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Model { get; set; }
 
         /// <summary>
-        /// List of the owner's user names. If your application needs the current list of device owner names, use the
-        /// [get](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method. For more information about
+        /// The list of the owner's user names. If your application needs the current list of device owner names, use
+        /// the [get](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method. For more information about
         /// retrieving mobile device user information, see the [Developer's
         /// Guide](/admin-sdk/directory/v1/guides/manage-users#get_user).
         /// </summary>
@@ -12225,7 +12225,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("os")]
         public virtual string Os { get; set; }
 
-        /// <summary>List of accounts added on device (Read-only)</summary>
+        /// <summary>The list of accounts added on device (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherAccountsInfo")]
         public virtual System.Collections.Generic.IList<string> OtherAccountsInfo { get; set; }
 
@@ -12333,7 +12333,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of Mobile Device objects.</summary>
+        /// <summary>A list of Mobile Device objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobiledevices")]
         public virtual System.Collections.Generic.IList<MobileDevice> Mobiledevices { get; set; }
 
@@ -12424,7 +12424,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of organizational unit objects.</summary>
+        /// <summary>A list of organizational unit objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationUnits")]
         public virtual System.Collections.Generic.IList<OrgUnit> OrganizationUnits { get; set; }
     }
@@ -12902,7 +12902,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of UserSchema objects.</summary>
+        /// <summary>A list of UserSchema objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
         public virtual System.Collections.Generic.IList<Schema> SchemasValue { get; set; }
     }
@@ -12973,7 +12973,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of the user's addresses. The maximum allowed data size for this field is 10Kb.</summary>
+        /// <summary>The list of the user's addresses. The maximum allowed data size for this field is 10Kb.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<UserAddress> Addresses { get; set; }
 
@@ -12984,7 +12984,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agreedToTerms")]
         public virtual System.Nullable<bool> AgreedToTerms { get; set; }
 
-        /// <summary>Output only. A list of the user's alias email addresses.</summary>
+        /// <summary>Output only. The list of the user's alias email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
@@ -13039,7 +13039,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
 
         /// <summary>
-        /// A list of the user's email addresses. The maximum allowed data size for this field is 10Kb.
+        /// The list of the user's email addresses. The maximum allowed data size for this field is 10Kb.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<UserEmail> Emails { get; set; }
@@ -13049,7 +13049,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// A list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for
+        /// The list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for
         /// this field is 2Kb.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
@@ -13074,8 +13074,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// The user's Instant Messenger (IM) accounts. A user account can have multiple ims properties. But, only one
-        /// of these ims properties can be the primary IM contact. The maximum allowed data size for this field is 2Kb.
+        /// The list of the user's Instant Messenger (IM) accounts. A user account can have multiple ims properties.
+        /// But, only one of these ims properties can be the primary IM contact. The maximum allowed data size for this
+        /// field is 2Kb.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ims")]
         public virtual System.Collections.Generic.IList<UserIm> Ims { get; set; }
@@ -13129,7 +13130,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isMailboxSetup")]
         public virtual System.Nullable<bool> IsMailboxSetup { get; set; }
 
-        /// <summary>The user's keywords. The maximum allowed data size for this field is 1Kb.</summary>
+        /// <summary>The list of the user's keywords. The maximum allowed data size for this field is 1Kb.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
         public virtual object Keywords { get; set; }
 
@@ -13170,7 +13171,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual UserName Name { get; set; }
 
         /// <summary>
-        /// Output only. List of the user's non-editable alias email addresses. These are typically outside the
+        /// Output only. The list of the user's non-editable alias email addresses. These are typically outside the
         /// account's primary domain or sub-domain.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonEditableAliases")]
@@ -13188,7 +13189,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string OrgUnitPath { get; set; }
 
         /// <summary>
-        /// A list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.
+        /// The list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
         public virtual System.Collections.Generic.IList<UserOrganization> Organizations { get; set; }
@@ -13197,12 +13198,15 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
-        /// <summary>A list of the user's phone numbers. The maximum allowed data size for this field is 1Kb.</summary>
+        /// <summary>
+        /// The list of the user's phone numbers. The maximum allowed data size for this field is 1Kb.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phones")]
         public virtual System.Collections.Generic.IList<UserPhone> Phones { get; set; }
 
         /// <summary>
-        /// A list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html) account information for the user.
+        /// The list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html) account information for the
+        /// user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
         public virtual object PosixAccounts { get; set; }
@@ -13226,7 +13230,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string RecoveryPhone { get; set; }
 
         /// <summary>
-        /// A list of the user's relationships to other users. The maximum allowed data size for this field is 2Kb.
+        /// The list of the user's relationships to other users. The maximum allowed data size for this field is 2Kb.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; }
@@ -13872,7 +13876,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trigger_event")]
         public virtual string TriggerEvent { get; set; }
 
-        /// <summary>List of user objects.</summary>
+        /// <summary>A list of user objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
         public virtual System.Collections.Generic.IList<User> UsersValue { get; set; }
     }
@@ -13902,7 +13906,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string VerificationCodeValue { get; set; }
     }
 
-    /// <summary>JSON response template for List verification codes operation in Directory API.</summary>
+    /// <summary>JSON response template for list verification codes operation in Directory API.</summary>
     public class VerificationCodes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>

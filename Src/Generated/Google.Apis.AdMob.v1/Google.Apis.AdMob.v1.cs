@@ -497,7 +497,7 @@ namespace Google.Apis.AdMob.v1
             }
 
             /// <summary>
-            /// Generates an AdMob Mediation report based on the provided report specification. Returns result of a
+            /// Generates an AdMob mediation report based on the provided report specification. Returns result of a
             /// server-side streaming RPC. The result is returned in a sequence of responses.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -510,7 +510,7 @@ namespace Google.Apis.AdMob.v1
             }
 
             /// <summary>
-            /// Generates an AdMob Mediation report based on the provided report specification. Returns result of a
+            /// Generates an AdMob mediation report based on the provided report specification. Returns result of a
             /// server-side streaming RPC. The result is returned in a sequence of responses.
             /// </summary>
             public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateMediationReportResponse[]>
@@ -761,12 +761,13 @@ namespace Google.Apis.AdMob.v1.Data
     public class AdUnit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// AdFormat of the ad unit. Possible values are as follows: "BANNER" - Banner ad format. "BANNER_INTERSTITIAL"
-        /// - Legacy format that can be used as either banner or interstitial. This format can no longer be created but
-        /// can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types are "RICH_MEDIA"
-        /// and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An ad that, once viewed, gets a callback verifying
-        /// the view so that a reward can be given to the user. Supported ad types are "RICH_MEDIA" (interactive) and
-        /// video where video can not be excluded.
+        /// AdFormat of the ad unit. Possible values are as follows: "APP_OPEN" - App Open ad format. "BANNER" - Banner
+        /// ad format. "BANNER_INTERSTITIAL" - Legacy format that can be used as either banner or interstitial. This
+        /// format can no longer be created but can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad.
+        /// Supported ad types are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An ad that, once
+        /// viewed, gets a callback verifying the view so that a reward can be given to the user. Supported ad types are
+        /// "RICH_MEDIA" (interactive) and video where video can not be excluded. "REWARDED_INTERSTITIAL" - Rewarded
+        /// Interstitial ad format. Only supports video ad type. See https://support.google.com/admob/answer/9884467.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adFormat")]
         public virtual string AdFormat { get; set; }
@@ -934,7 +935,7 @@ namespace Google.Apis.AdMob.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to generate an AdMob Mediation report.</summary>
+    /// <summary>Request to generate an AdMob mediation report.</summary>
     public class GenerateMediationReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Network report specification.</summary>
@@ -946,7 +947,7 @@ namespace Google.Apis.AdMob.v1.Data
     }
 
     /// <summary>
-    /// The streaming response for the AdMob Mediation report where the first response contains the report header, then
+    /// The streaming response for the AdMob mediation report where the first response contains the report header, then
     /// a stream of row responses, and finally a footer as the last response message. For example: [{ "header": {
     /// "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9,
     /// "day": 1} }, "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } }, { "row": {

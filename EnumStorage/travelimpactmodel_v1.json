@@ -1,0 +1,11 @@
+{
+  "Google.Apis.TravelImpactModel.v1.TravelImpactModelBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.TravelImpactModel.v1.TravelImpactModelBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

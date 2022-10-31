@@ -12542,6 +12542,65 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 }
 namespace Google.Apis.CloudHealthcare.v1beta1.Data
 {
+    /// <summary>Specifies a selection of tags and an `Action` to apply to each one.</summary>
+    public class Action : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which
+        /// revert to `Keep`. Supported
+        /// [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanImageTag")]
+        public virtual ImageConfig CleanImageTag { get; set; }
+
+        /// <summary>
+        /// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE,
+        /// LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanTextTag")]
+        public virtual CleanTextTag CleanTextTag { get; set; }
+
+        /// <summary>Delete tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTag")]
+        public virtual DeleteTag DeleteTag { get; set; }
+
+        /// <summary>Keep tag unchanged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepTag")]
+        public virtual KeepTag KeepTag { get; set; }
+
+        /// <summary>
+        /// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010"
+        /// Keyword: "PatientName" VR: "PN"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
+        public virtual System.Collections.Generic.IList<string> Queries { get; set; }
+
+        /// <summary>
+        /// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation]
+        /// (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurseTag")]
+        public virtual RecurseTag RecurseTag { get; set; }
+
+        /// <summary>
+        /// Replace UID with a new generated UID. Supported [Value Representation]
+        /// (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regenUidTag")]
+        public virtual RegenUidTag RegenUidTag { get; set; }
+
+        /// <summary>Replace with empty tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeTag")]
+        public virtual RemoveTag RemoveTag { get; set; }
+
+        /// <summary>Reset tag to a placeholder value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resetTag")]
+        public virtual ResetTag ResetTag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Activates the latest revision of the specified Consent by committing a new revision with `state` updated to
     /// `ACTIVE`. If the latest revision of the given Consent is in the `ACTIVE` state, no new revision is committed. A
@@ -12946,6 +13005,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
+    /// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code,
+    /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// </summary>
+    public class CharacterMaskField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Checks if a particular data_id of a User data mapping in the given consent store is consented for a given use.
     /// </summary>
     public class CheckDataAccessRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -12995,6 +13064,42 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consented")]
         public virtual System.Nullable<bool> Consented { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This option is based on the DICOM Standard's [Clean Descriptors
+    /// Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText`
+    /// `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases
+    /// matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic
+    /// Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases
+    /// are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+    /// </summary>
+    public class CleanDescriptorsOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported
+    /// [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode,
+    /// Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// </summary>
+    public class CleanTextField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations]
+    /// (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH,
+    /// ST, UC, UT, DA, DT, AS
+    /// </summary>
+    public class CleanTextTag : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13210,6 +13315,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual
+    /// phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual
+    /// entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType
+    /// during inspection.
+    /// </summary>
+    public class ContextualDeidConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Creates a new message.</summary>
     public class CreateMessageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13239,6 +13356,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
         public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code,
+    /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// </summary>
+    public class CryptoHashField : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13291,6 +13418,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Shift the date by a randomized number of days. See [date
+    /// shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported
+    /// [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+    /// </summary>
+    public class DateShiftField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains configuration for streaming de-identified FHIR export.</summary>
     public class DeidentifiedStoreDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13328,11 +13466,19 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dicom")]
         public virtual DicomConfig Dicom { get; set; }
 
+        /// <summary>Configures de-id of application/DICOM content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dicomTagConfig")]
+        public virtual DicomTagConfig DicomTagConfig { get; set; }
+
         /// <summary>
         /// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhir")]
         public virtual FhirConfig Fhir { get; set; }
+
+        /// <summary>Configures de-id of application/FHIR content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirFieldConfig")]
+        public virtual FhirFieldConfig FhirFieldConfig { get; set; }
 
         /// <summary>
         /// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use
@@ -13477,6 +13623,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Delete tag.</summary>
+    public class DeleteTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains multiple sensitive information findings for each resource slice.</summary>
     public class Detail : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13566,6 +13719,28 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1beta1DicomStreamConfig> StreamConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the parameters needed for the de-identification of DICOM stores.</summary>
+    public class DicomTagConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`.
+        /// Conflicting `Actions` are applied in the order given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<Action> Actions { get; set; }
+
+        /// <summary>Specifies additional options to apply, overriding the base `profile`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual Options Options { get; set; }
+
+        /// <summary>Base profile type for handling DICOM tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
+        public virtual string ProfileType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14041,6 +14216,30 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies how to handle the de-identification of a FHIR store.</summary>
+    public class FhirFieldConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata`
+        /// is passed through to the output dataset unmodified. All extensions will be processed according to
+        /// `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first
+        /// `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMetadataList")]
+        public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata> FieldMetadataList { get; set; }
+
+        /// <summary>Specifies additional options, overriding the base `profile`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GoogleCloudHealthcareV1beta1DeidentifyOptions Options { get; set; }
+
+        /// <summary>Base profile type for handling FHIR fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
+        public virtual string ProfileType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Filter configuration.</summary>
     public class FhirFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14492,6 +14691,95 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the FHIR paths to match and how to handle the de-identification of matching fields.</summary>
+    public class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Replace the field's value with a masking character. Supported
+        /// [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
+        /// String, Uri, Uuid, Xhtml
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("characterMaskField")]
+        public virtual CharacterMaskField CharacterMaskField { get; set; }
+
+        /// <summary>
+        /// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported
+        /// [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id,
+        /// LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanTextField")]
+        public virtual CleanTextField CleanTextField { get; set; }
+
+        /// <summary>
+        /// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html):
+        /// Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashField")]
+        public virtual CryptoHashField CryptoHashField { get; set; }
+
+        /// <summary>
+        /// Shift the date by a randomized number of days. See [date
+        /// shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported
+        /// [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateShiftField")]
+        public virtual DateShiftField DateShiftField { get; set; }
+
+        /// <summary>Keep the field unchanged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepField")]
+        public virtual KeepField KeepField { get; set; }
+
+        /// <summary>
+        /// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either
+        /// a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field
+        /// "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also
+        /// supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient
+        /// omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be
+        /// matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]),
+        /// use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported
+        /// [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code,
+        /// Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String,
+        /// UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family)
+        /// can be omitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
+
+        /// <summary>Remove the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeField")]
+        public virtual RemoveField RemoveField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies additional options to apply to the base `profile`.</summary>
+    public class GoogleCloudHealthcareV1beta1DeidentifyOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Character mask config for `CharacterMaskField` `FieldMetadatas`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("characterMaskConfig")]
+        public virtual CharacterMaskConfig CharacterMaskConfig { get; set; }
+
+        /// <summary>Configure contextual de-id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualDeid")]
+        public virtual ContextualDeidConfig ContextualDeid { get; set; }
+
+        /// <summary>Crypo hash config for `CharacterMaskField` `FieldMetadatas`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashConfig")]
+        public virtual CryptoHashConfig CryptoHashConfig { get; set; }
+
+        /// <summary>Date shifting config for `CharacterMaskField` `FieldMetadatas`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
+        public virtual DateShiftConfig DateShiftConfig { get; set; }
+
+        /// <summary>Configure keeping extensions by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepExtensions")]
+        public virtual KeepExtensionsConfig KeepExtensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The BigQuery table where the server writes output.</summary>
     public class GoogleCloudHealthcareV1beta1DicomBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14930,6 +15218,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Specifies how to handle de-identification of image pixels.</summary>
     public class ImageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be
+        /// used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`
+        /// or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalInfoTypes")]
+        public virtual System.Collections.Generic.IList<string> AdditionalInfoTypes { get; set; }
+
+        /// <summary>
+        /// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when
+        /// `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
+        public virtual System.Collections.Generic.IList<string> ExcludeInfoTypes { get; set; }
+
         /// <summary>Determines how to redact text from image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRedactionMode")]
         public virtual string TextRedactionMode { get; set; }
@@ -15116,6 +15419,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided,
+    /// all extensions are preserved during de-identification by default. If unspecified, all extensions are removed
+    /// during de-identification by default.
+    /// </summary>
+    public class KeepExtensionsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Keep field unchanged.</summary>
+    public class KeepField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Keep tag unchanged.</summary>
+    public class KeepTag : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15641,6 +15969,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies additional options to apply to the base profile.</summary>
+    public class Options : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set Clean Descriptors Option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanDescriptors")]
+        public virtual CleanDescriptorsOption CleanDescriptors { get; set; }
+
+        /// <summary>
+        /// Apply `Action.clean_image` to
+        /// [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanImage")]
+        public virtual ImageConfig CleanImage { get; set; }
+
+        /// <summary>
+        /// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and
+        /// `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryIds")]
+        public virtual string PrimaryIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The content of an HL7v2 message in a structured format.</summary>
     public class ParsedData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15833,10 +16186,30 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
+    /// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation]
+    /// (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+    /// </summary>
+    public class RecurseTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My
     /// name is ."
     /// </summary>
     public class RedactConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Replace UID with a new generated UID. Supported [Value Representation]
+    /// (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+    /// </summary>
+    public class RegenUidTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15862,11 +16235,32 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Remove field.</summary>
+    public class RemoveField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Replace with empty tag.</summary>
+    public class RemoveTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example,
     /// "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
     /// </summary>
     public class ReplaceWithInfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reset tag to a placeholder value.</summary>
+    public class ResetTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16324,6 +16718,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Configures how to transform sensitive text `InfoTypes`.</summary>
     public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Additional transformations to apply to the detected data, overriding `profile`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTransformations")]
+        public virtual System.Collections.Generic.IList<InfoTypeTransformation> AdditionalTransformations { get; set; }
+
+        /// <summary>InfoTypes to skip transforming, overriding `profile`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
+        public virtual System.Collections.Generic.IList<string> ExcludeInfoTypes { get; set; }
+
+        /// <summary>Base profile type for text transformation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
+        public virtual string ProfileType { get; set; }
+
         /// <summary>
         /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>

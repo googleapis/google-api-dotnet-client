@@ -283,6 +283,380 @@ namespace Google.Apis.Doubleclicksearch.v2
             this.service = service;
         }
 
+        /// <summary>Retrieves a list of conversions from a DoubleClick Search engine account.</summary>
+        /// <param name="customerId">Customer ID of a client account in the new Search Ads 360 experience.</param>
+        /// <param name="endDate">Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</param>
+        /// <param name="rowCount">The number of conversions to return per call.</param>
+        /// <param name="startDate">First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</param>
+        /// <param name="startRow">The 0-based starting index for retrieving conversions results.</param>
+        public virtual GetCustomerIdRequest GetCustomerId(string customerId, int endDate, int rowCount, int startDate, long startRow)
+        {
+            return new GetCustomerIdRequest(service, customerId, endDate, rowCount, startDate, startRow);
+        }
+
+        /// <summary>Retrieves a list of conversions from a DoubleClick Search engine account.</summary>
+        public class GetCustomerIdRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.ConversionList>
+        {
+            /// <summary>Constructs a new GetCustomerId request.</summary>
+            public GetCustomerIdRequest(Google.Apis.Services.IClientService service, string customerId, int endDate, int rowCount, int startDate, long startRow) : base(service)
+            {
+                CustomerId = customerId;
+                EndDate = endDate;
+                RowCount = rowCount;
+                StartDate = startDate;
+                StartRow = startRow;
+                InitParameters();
+            }
+
+            /// <summary>Customer ID of a client account in the new Search Ads 360 experience.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CustomerId { get; private set; }
+
+            /// <summary>Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual int EndDate { get; private set; }
+
+            /// <summary>The number of conversions to return per call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rowCount", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual int RowCount { get; private set; }
+
+            /// <summary>First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual int StartDate { get; private set; }
+
+            /// <summary>The 0-based starting index for retrieving conversions results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startRow", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual long StartRow { get; private set; }
+
+            /// <summary>Numeric ID of the ad group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdGroupId { get; set; }
+
+            /// <summary>Numeric ID of the ad.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("adId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdId { get; set; }
+
+            /// <summary>Numeric ID of the advertiser.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>Numeric ID of the agency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("agencyId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AgencyId { get; set; }
+
+            /// <summary>Numeric ID of the campaign.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("campaignId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> CampaignId { get; set; }
+
+            /// <summary>Numeric ID of the criterion.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("criterionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> CriterionId { get; set; }
+
+            /// <summary>Numeric ID of the engine account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("engineAccountId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> EngineAccountId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "GetCustomerId";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "doubleclicksearch/v2/customer/{customerId}/conversion";
+
+            /// <summary>Initializes GetCustomerId parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rowCount", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rowCount",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startRow", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startRow",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adGroupId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("agencyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agencyId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("criterionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "criterionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("engineAccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "engineAccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a list of conversions from a DoubleClick Search engine account.</summary>
+        /// <param name="agencyId">Numeric ID of the agency.</param>
+        /// <param name="advertiserId">Numeric ID of the advertiser.</param>
+        /// <param name="engineAccountId">Numeric ID of the engine account.</param>
+        /// <param name="endDate">Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</param>
+        /// <param name="rowCount">The number of conversions to return per call.</param>
+        /// <param name="startDate">First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</param>
+        /// <param name="startRow">The 0-based starting index for retrieving conversions results.</param>
+        public virtual GetRequest Get(long agencyId, long advertiserId, long engineAccountId, int endDate, int rowCount, int startDate, long startRow)
+        {
+            return new GetRequest(service, agencyId, advertiserId, engineAccountId, endDate, rowCount, startDate, startRow);
+        }
+
+        /// <summary>Retrieves a list of conversions from a DoubleClick Search engine account.</summary>
+        public class GetRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.ConversionList>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long agencyId, long advertiserId, long engineAccountId, int endDate, int rowCount, int startDate, long startRow) : base(service)
+            {
+                AgencyId = agencyId;
+                AdvertiserId = advertiserId;
+                EngineAccountId = engineAccountId;
+                EndDate = endDate;
+                RowCount = rowCount;
+                StartDate = startDate;
+                StartRow = startRow;
+                InitParameters();
+            }
+
+            /// <summary>Numeric ID of the agency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("agencyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AgencyId { get; private set; }
+
+            /// <summary>Numeric ID of the advertiser.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+            /// <summary>Numeric ID of the engine account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("engineAccountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long EngineAccountId { get; private set; }
+
+            /// <summary>Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual int EndDate { get; private set; }
+
+            /// <summary>The number of conversions to return per call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rowCount", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual int RowCount { get; private set; }
+
+            /// <summary>First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual int StartDate { get; private set; }
+
+            /// <summary>The 0-based starting index for retrieving conversions results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startRow", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual long StartRow { get; private set; }
+
+            /// <summary>Numeric ID of the ad group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdGroupId { get; set; }
+
+            /// <summary>Numeric ID of the ad.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("adId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdId { get; set; }
+
+            /// <summary>Numeric ID of the campaign.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("campaignId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> CampaignId { get; set; }
+
+            /// <summary>Numeric ID of the criterion.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("criterionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> CriterionId { get; set; }
+
+            /// <summary>Customer ID of a client account in the new Search Ads 360 experience.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("agencyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agencyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("engineAccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "engineAccountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rowCount", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rowCount",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startRow", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startRow",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adGroupId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("criterionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "criterionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Inserts a batch of new conversions into DoubleClick Search.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Doubleclicksearch.v2.Data.ConversionList body)

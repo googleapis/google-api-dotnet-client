@@ -7094,6 +7094,96 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// These messages contain information about the execution of a datascan. The monitored resource is 'DataScan'
+    /// </summary>
+    public class GoogleCloudDataplexV1DataScanEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data profile result for data profile type data scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
+        public virtual GoogleCloudDataplexV1DataScanEventDataProfileResult DataProfile { get; set; }
+
+        /// <summary>Data quality result for data quality type data scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataQuality")]
+        public virtual GoogleCloudDataplexV1DataScanEventDataQualityResult DataQuality { get; set; }
+
+        /// <summary>The data source of the data scan</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>The time when the data scan job finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The identifier of the specific data scan job this log entry is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>The message describing the data scan job event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The scope of the data scan (e.g. full, incremental).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>A version identifier of the spec which was used to execute this job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specVersion")]
+        public virtual string SpecVersion { get; set; }
+
+        /// <summary>The time when the data scan job started to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The status of the data scan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The trigger type of the data scan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; }
+
+        /// <summary>The type of the data scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data profile result for data scan job.</summary>
+    public class GoogleCloudDataplexV1DataScanEventDataProfileResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of rows processed in the data scan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<long> RowCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data quality result for data scan job.</summary>
+    public class GoogleCloudDataplexV1DataScanEventDataQualityResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The result of each dimension for data quality result. The key of the map is the name of the dimension. The
+        /// value is the bool value depicting whether the dimension result was pass or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionPassed")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<bool>> DimensionPassed { get; set; }
+
+        /// <summary>Whether the data quality result was pass or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passed")]
+        public virtual System.Nullable<bool> Passed { get; set; }
+
+        /// <summary>The count of rows processed in the data scan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<long> RowCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The payload associated with Discovery data processing.</summary>
     public class GoogleCloudDataplexV1DiscoveryEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8103,6 +8193,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventSucceeded")]
         public virtual System.Nullable<bool> EventSucceeded { get; set; }
 
+        /// <summary>
+        /// If the session is associated with an environment with fast startup enabled, and was created before being
+        /// assigned to a user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fastStartupEnabled")]
+        public virtual System.Nullable<bool> FastStartupEnabled { get; set; }
+
         /// <summary>The log message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
@@ -8128,10 +8225,6 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
-
-        /// <summary>If the session is a warm pooled session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warmPoolEnabled")]
-        public virtual System.Nullable<bool> WarmPoolEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8472,13 +8565,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1TaskNotebookTaskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file
-        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor.
+        /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
 
-        /// <summary>Optional. GCS URIs of files to be placed in the working directory of each executor.</summary>
+        /// <summary>
+        /// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
 
@@ -8487,8 +8582,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1TaskInfrastructureSpec InfrastructureSpec { get; set; }
 
         /// <summary>
-        /// Required. Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook
-        /// Content. The execution args are accessible as environment variables (TASK_key=value).
+        /// Required. Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a
+        /// Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebook")]
         public virtual string Notebook { get; set; }

@@ -308,7 +308,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
             /// </param>
             public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
@@ -327,7 +327,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+                /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -343,6 +343,38 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string MessageId { get; set; }
 
                 /// <summary>
+                /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
+                /// spaces.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+                /// <summary>
+                /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
+                /// spaces.
+                /// </summary>
+                public enum MessageReplyOptionEnum
+                {
+                    /// <summary>Default. Starts a thread.</summary>
+                    [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                    MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails,
+                    /// the message starts a new thread instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                    REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                    /// <summary>
+                    /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails,
+                    /// a NOT_FOUND error is returned instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                    REPLYMESSAGEORFAIL = 2,
+                }
+
+                /// <summary>
                 /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
                 /// message created with that ID instead of creating a new message.
                 /// </summary>
@@ -350,10 +382,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-                /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a
-                /// given `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the
-                /// same thread.
+                /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+                /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start
+                /// or reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -393,6 +424,14 @@ namespace Google.Apis.HangoutsChat.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "messageReplyOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
@@ -416,7 +455,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+        /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
         /// </param>
         public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -434,7 +473,9 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
+            /// <summary>
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -448,6 +489,36 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string MessageId { get; set; }
 
             /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            public enum MessageReplyOptionEnum
+            {
+                /// <summary>Default. Starts a thread.</summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, the
+                /// message starts a new thread instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, a
+                /// NOT_FOUND error is returned instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                REPLYMESSAGEORFAIL = 2,
+            }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -455,10 +526,9 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
-            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
-            /// thread.
+            /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+            /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start or
+            /// reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -498,6 +568,14 @@ namespace Google.Apis.HangoutsChat.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageReplyOption",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "requestId",
@@ -520,7 +598,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+        /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
         /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -538,7 +616,9 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
+            /// <summary>
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -552,6 +632,36 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string MessageId { get; set; }
 
             /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            public enum MessageReplyOptionEnum
+            {
+                /// <summary>Default. Starts a thread.</summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, the
+                /// message starts a new thread instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, a
+                /// NOT_FOUND error is returned instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                REPLYMESSAGEORFAIL = 2,
+            }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -559,10 +669,9 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
-            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
-            /// thread.
+            /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+            /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start or
+            /// reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -597,6 +706,14 @@ namespace Google.Apis.HangoutsChat.v1
                 RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageReplyOption",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -815,7 +932,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
             /// </param>
             public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
@@ -834,7 +951,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+                /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -850,6 +967,38 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string MessageId { get; set; }
 
                 /// <summary>
+                /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
+                /// spaces.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+                /// <summary>
+                /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
+                /// spaces.
+                /// </summary>
+                public enum MessageReplyOptionEnum
+                {
+                    /// <summary>Default. Starts a thread.</summary>
+                    [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                    MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails,
+                    /// the message starts a new thread instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                    REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                    /// <summary>
+                    /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails,
+                    /// a NOT_FOUND error is returned instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                    REPLYMESSAGEORFAIL = 2,
+                }
+
+                /// <summary>
                 /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
                 /// message created with that ID instead of creating a new message.
                 /// </summary>
@@ -857,10 +1006,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-                /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a
-                /// given `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the
-                /// same thread.
+                /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+                /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start
+                /// or reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -900,6 +1048,14 @@ namespace Google.Apis.HangoutsChat.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "messageReplyOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
@@ -923,7 +1079,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+        /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
         /// </param>
         public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -941,7 +1097,9 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
+            /// <summary>
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -955,6 +1113,36 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string MessageId { get; set; }
 
             /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            public enum MessageReplyOptionEnum
+            {
+                /// <summary>Default. Starts a thread.</summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, the
+                /// message starts a new thread instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, a
+                /// NOT_FOUND error is returned instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                REPLYMESSAGEORFAIL = 2,
+            }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -962,10 +1150,9 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
-            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
-            /// thread.
+            /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+            /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start or
+            /// reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -1005,6 +1192,14 @@ namespace Google.Apis.HangoutsChat.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageReplyOption",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "requestId",
@@ -1027,7 +1222,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+        /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
         /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -1045,7 +1240,9 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
+            /// <summary>
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -1059,6 +1256,36 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string MessageId { get; set; }
 
             /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            public enum MessageReplyOptionEnum
+            {
+                /// <summary>Default. Starts a thread.</summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, the
+                /// message starts a new thread instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, a
+                /// NOT_FOUND error is returned instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                REPLYMESSAGEORFAIL = 2,
+            }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -1066,10 +1293,9 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
-            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
-            /// thread.
+            /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+            /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start or
+            /// reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -1104,6 +1330,14 @@ namespace Google.Apis.HangoutsChat.v1
                 RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageReplyOption",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1400,12 +1634,19 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Creates a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Creates a message. For example usage, see [Create a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#create_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// or `chat.messages.create` authorization scope.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
             /// </param>
             public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
@@ -1413,8 +1654,15 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Creates a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Creates a message. For example usage, see [Create a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#create_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// or `chat.messages.create` authorization scope.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -1427,7 +1675,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+                /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1443,6 +1691,38 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string MessageId { get; set; }
 
                 /// <summary>
+                /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
+                /// spaces.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+                /// <summary>
+                /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
+                /// spaces.
+                /// </summary>
+                public enum MessageReplyOptionEnum
+                {
+                    /// <summary>Default. Starts a thread.</summary>
+                    [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                    MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails,
+                    /// the message starts a new thread instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                    REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                    /// <summary>
+                    /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails,
+                    /// a NOT_FOUND error is returned instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                    REPLYMESSAGEORFAIL = 2,
+                }
+
+                /// <summary>
                 /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
                 /// message created with that ID instead of creating a new message.
                 /// </summary>
@@ -1450,10 +1730,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-                /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a
-                /// given `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the
-                /// same thread.
+                /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+                /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start
+                /// or reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -1493,6 +1772,14 @@ namespace Google.Apis.HangoutsChat.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "messageReplyOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
@@ -1513,8 +1800,15 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Deletes a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Deletes a message. For example usage, see [Delete a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#delete_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// authorization scope.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the message to be deleted, in the form "spaces/*/messages/*" Example:
@@ -1526,8 +1820,15 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Deletes a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Deletes a message. For example usage, see [Delete a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#delete_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// authorization scope.
             /// </summary>
             public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
             {
@@ -1570,8 +1871,16 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Returns a message. For example usage, see [Read a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#read_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [Service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// or `chat.messages.readonly` authorization scope. Note: Might return a message from a blocked member or
+            /// space.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the message to retrieve. Format: spaces/{space}/messages/{message} If the
@@ -1586,8 +1895,16 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Returns a message. For example usage, see [Read a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#read_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [Service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// or `chat.messages.readonly` authorization scope. Note: Might return a message from a blocked member or
+            /// space.
             /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -1633,8 +1950,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Updates a message. For example usage, see [Update a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
+            /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1647,8 +1965,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a message. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// Updates a message. For example usage, see [Update a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
+            /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             public class UpdateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -1856,7 +2175,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
+        /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
         /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -1874,7 +2193,9 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
+            /// <summary>
+            /// Required. The resource name of the space in which to create a message. Format: spaces/{space}
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -1888,6 +2209,36 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string MessageId { get; set; }
 
             /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named spaces.
+            /// </summary>
+            public enum MessageReplyOptionEnum
+            {
+                /// <summary>Default. Starts a thread.</summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
+                MESSAGEREPLYOPTIONUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, the
+                /// message starts a new thread instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD")]
+                REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
+
+                /// <summary>
+                /// Creates the message as a reply to the thread specified by thread ID or thread_key. If it fails, a
+                /// NOT_FOUND error is returned instead.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
+                REPLYMESSAGEORFAIL = 2,
+            }
+
+            /// <summary>
             /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
             /// created with that ID instead of creating a new message.
             /// </summary>
@@ -1895,10 +2246,9 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
-            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
-            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
-            /// thread.
+            /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
+            /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start or
+            /// reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -1933,6 +2283,14 @@ namespace Google.Apis.HangoutsChat.v1
                 RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "messageId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("messageReplyOption", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "messageReplyOption",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3692,7 +4050,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("slashCommand")]
         public virtual SlashCommand SlashCommand { get; set; }
 
-        /// <summary>The space the message belongs to.</summary>
+        /// <summary>
+        /// The space the message belongs to. When accessed with [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users), only the name of the Space is
+        /// populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 
@@ -3703,9 +4065,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
-        /// <summary>The thread the message belongs to.</summary>
+        /// <summary>
+        /// The thread the message belongs to. For example usage, see [Start or reply to a message
+        /// thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thread")]
         public virtual Thread Thread { get; set; }
+
+        /// <summary>
+        /// Output only. When `true`, the message is a response in a reply thread. When `false`, the message is visible
+        /// in the space's top-level conversation as either the first message of a thread or a message with no threaded
+        /// replies. If the space doesn't support reply in threads, this field is always `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadReply")]
+        public virtual System.Nullable<bool> ThreadReply { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3816,7 +4189,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spaceDetails")]
         public virtual SpaceDetails SpaceDetails { get; set; }
 
-        /// <summary>Output only. Whether messages are threaded in this space.</summary>
+        /// <summary>Output only. The threading state in the Chat space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceThreadingState")]
+        public virtual string SpaceThreadingState { get; set; }
+
+        /// <summary>
+        /// Output only. Deprecated: Use `spaceThreadingState` instead. Whether messages are threaded in this space.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
         public virtual System.Nullable<bool> Threaded { get; set; }
 
@@ -3920,11 +4299,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A thread in Google Chat.</summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAAAAAAAA/threads/TTTTTTTTTTT
-        /// </summary>
+        /// <summary>Resource name of the thread. Example: spaces/{space}/threads/{thread}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a `threadKey`
+        /// or the thread.name. For example usage, see [Start or reply to a message
+        /// thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread). For other requests, this is an
+        /// output only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
+        public virtual string ThreadKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

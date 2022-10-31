@@ -2232,6 +2232,7 @@ namespace Google.Apis.Baremetalsolution.v2
                 {
                     this.service = service;
                     Luns = new LunsResource(service);
+                    Snapshots = new SnapshotsResource(service);
                 }
 
                 /// <summary>Gets the Luns resource.</summary>
@@ -2364,6 +2365,322 @@ namespace Google.Apis.Baremetalsolution.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Snapshots resource.</summary>
+                public virtual SnapshotsResource Snapshots { get; }
+
+                /// <summary>The "snapshots" collection of methods.</summary>
+                public class SnapshotsResource
+                {
+                    private const string Resource = "snapshots";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SnapshotsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Takes a snapshot of a boot volume. Returns INVALID_ARGUMENT if called for a non-boot volume.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The volume to snapshot.</param>
+                    public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Takes a snapshot of a boot volume. Returns INVALID_ARGUMENT if called for a non-boot volume.
+                    /// </summary>
+                    public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The volume to snapshot.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/snapshots";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a volume snapshot. Returns INVALID_ARGUMENT if called for a non-boot volume.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the snapshot to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a volume snapshot. Returns INVALID_ARGUMENT if called for a non-boot volume.
+                    /// </summary>
+                    public class DeleteRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the snapshot to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot
+                    /// volume.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the snapshot.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot
+                    /// volume.
+                    /// </summary>
+                    public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the snapshot.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Retrieves the list of snapshots for the specified volume. Returns a response with an empty list
+                    /// of snapshots if called for a non-boot volume.
+                    /// </summary>
+                    /// <param name="parent">Required. Parent value for ListVolumesRequest.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Retrieves the list of snapshots for the specified volume. Returns a response with an empty list
+                    /// of snapshots if called for a non-boot volume.
+                    /// </summary>
+                    public class ListRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ListVolumeSnapshotsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Parent value for ListVolumesRequest.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Requested page size. The server might return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A token identifying a page of results from the server.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/snapshots";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Uses the specified snapshot to restore its parent volume. Returns INVALID_ARGUMENT if called for
+                    /// a non-boot volume.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="volumeSnapshot">
+                    /// Required. Name of the snapshot which will be used to restore its parent volume.
+                    /// </param>
+                    public virtual RestoreVolumeSnapshotRequest RestoreVolumeSnapshot(Google.Apis.Baremetalsolution.v2.Data.RestoreVolumeSnapshotRequest body, string volumeSnapshot)
+                    {
+                        return new RestoreVolumeSnapshotRequest(service, body, volumeSnapshot);
+                    }
+
+                    /// <summary>
+                    /// Uses the specified snapshot to restore its parent volume. Returns INVALID_ARGUMENT if called for
+                    /// a non-boot volume.
+                    /// </summary>
+                    public class RestoreVolumeSnapshotRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new RestoreVolumeSnapshot request.</summary>
+                        public RestoreVolumeSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RestoreVolumeSnapshotRequest body, string volumeSnapshot) : base(service)
+                        {
+                            VolumeSnapshot = volumeSnapshot;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the snapshot which will be used to restore its parent volume.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("volumeSnapshot", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string VolumeSnapshot { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Baremetalsolution.v2.Data.RestoreVolumeSnapshotRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "restoreVolumeSnapshot";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+volumeSnapshot}:restoreVolumeSnapshot";
+
+                        /// <summary>Initializes RestoreVolumeSnapshot parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("volumeSnapshot", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "volumeSnapshot",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
                             });
                         }
                     }
@@ -3260,6 +3577,25 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message containing the list of volume snapshots.</summary>
+    public class ListVolumeSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results from the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The list of snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeSnapshots")]
+        public virtual System.Collections.Generic.IList<VolumeSnapshot> VolumeSnapshots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message containing the list of storage volumes.</summary>
     public class ListVolumesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3967,6 +4303,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for restoring a volume snapshot.</summary>
+    public class RestoreVolumeSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An SSH key, used for authorizing with the interactive serial console feature.</summary>
     public class SSHKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4331,6 +4674,39 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userNote")]
         public virtual string UserNote { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A snapshot of a volume. Only boot volumes can have snapshots.</summary>
+    public class VolumeSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The creation time of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The description of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. An identifier for the snapshot, generated by the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The name of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The name of the volume which this snapshot belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageVolume")]
+        public virtual string StorageVolume { get; set; }
+
+        /// <summary>
+        /// Output only. The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

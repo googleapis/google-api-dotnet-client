@@ -2924,11 +2924,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
                 /// <summary>
-                /// Update mask to control which fields to update. If update_mask is non-empty then only the fields
-                /// specified in the update_mask are updated. If you specify a field in the update_mask, but don't
-                /// specify its value in the source that field will be cleared. If the update_mask is not present or
-                /// empty or has the value * then all fields will be updated. Some example field paths: name,
-                /// display_name
+                /// Only applies to
+                /// [`settings.datasources.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+                /// Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If
+                /// `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If
+                /// you specify a field in the `update_mask`, but don't specify its value in the source, that field is
+                /// cleared. * If the `update_mask` is not present or empty or has the value `*`, then all fields are
+                /// updated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3336,11 +3338,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Update mask to control which fields to update. If update_mask is non-empty then only the fields
-                /// specified in the update_mask are updated. If you specify a field in the update_mask, but don't
-                /// specify its value in the search_application then that field will be cleared. If the update_mask is
-                /// not present or empty or has the value * then all fields will be updated. Some example field paths:
-                /// search_application.name, search_application.display_name
+                /// Only applies to
+                /// [`settings.searchapplications.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+                /// Update mask to control which fields to update. Example field paths: `search_application.name`,
+                /// `search_application.displayName`. * If `update_mask` is non-empty, then only the fields specified in
+                /// the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its
+                /// value in the `search_application`, then that field is cleared. * If the `update_mask` is not present
+                /// or empty or has the value `*`, then all fields are updated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3476,11 +3480,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Update mask to control which fields to update. If update_mask is non-empty then only the fields
-                /// specified in the update_mask are updated. If you specify a field in the update_mask, but don't
-                /// specify its value in the search_application then that field will be cleared. If the update_mask is
-                /// not present or empty or has the value * then all fields will be updated. Some example field paths:
-                /// search_application.name, search_application.display_name
+                /// Only applies to
+                /// [`settings.searchapplications.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+                /// Update mask to control which fields to update. Example field paths: `search_application.name`,
+                /// `search_application.displayName`. * If `update_mask` is non-empty, then only the fields specified in
+                /// the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its
+                /// value in the `search_application`, then that field is cleared. * If the `update_mask` is not present
+                /// or empty or has the value `*`, then all fields are updated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -5023,6 +5029,15 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AddonComposeUiActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6645,6 +6660,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual AppsDynamiteSharedAction Action { get; set; }
 
         /// <summary>
+        /// Triggers host app action on click directly without invoking form actions. This is currently not available to
+        /// end-users and is used internal only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostAppAction")]
+        public virtual HostAppActionMarkup HostAppAction { get; set; }
+
+        /// <summary>
         /// An add-on triggers this action when the action needs to open a link. This differs from the open_link above
         /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
         /// to do before the open link action response comes back.
@@ -7458,6 +7480,184 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("addonAttachments")]
+        public virtual System.Collections.Generic.IList<AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment> AddonAttachments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Link to the resource's icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>MIME type of the content in resource_url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
+        public virtual string ResourceUrl { get; set; }
+
+        /// <summary>Title of the attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Markup that defines conference data associated to a Google Calendar event.</summary>
+    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for this conference data. Maximum 512 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
+        public virtual string ConferenceId { get; set; }
+
+        /// <summary>
+        /// An identifier of the conferencing solution. Must match a value from the deployment's
+        /// `calendar.conferenceSolution.id` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolutionId")]
+        public virtual string ConferenceSolutionId { get; set; }
+
+        /// <summary>Entry points to the conference. Maximum 300 entry points are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
+        public virtual System.Collections.Generic.IList<AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup> EntryPoints { get; set; }
+
+        /// <summary>If set, it means an error occurred during conference creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError Error { get; set; }
+
+        /// <summary>
+        /// Additional notes (such as instructions from the administrator, legal notices) to display to the user. Can
+        /// contain HTML. Max length 2048 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string Note { get; set; }
+
+        /// <summary>Additional add-on parameters. Maximum 300 parameters are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A way to join the conference.</summary>
+    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An access code for accessing the conference. Maximum 128 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessCode")]
+        public virtual string AccessCode { get; set; }
+
+        /// <summary>
+        /// Features of the entry point, such as being toll or toll-free. One entry point can have multiple features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<string> Features { get; set; }
+
+        /// <summary>The label of the entry point to display to the user. Maximum 512 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>A meeting code for accessing the conference. Maximum 128 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
+        public virtual string MeetingCode { get; set; }
+
+        /// <summary>A passcode for accessing the conference. Maximum 128 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passcode")]
+        public virtual string Passcode { get; set; }
+
+        /// <summary>A password for accessing the conference. Maximum 128 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>A PIN for accessing the conference. Maximum 128 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
+        public virtual string Pin { get; set; }
+
+        /// <summary>
+        /// The CLDR/ISO 3166 region code for the country associated with this entry point. Applicable only to
+        /// `Type.PHONE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The type of the entry point. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// A URI for joining the conference. Supports tel: and http(s): and should be at most 1300 characters long.
+        /// Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an error that occurred during conference creation.</summary>
+    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the error type is `AUTHENTICATION`, the add-on can provide a URL allowing users to log in. Maximum 1300
+        /// characters long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationUrl")]
+        public virtual string AuthenticationUrl { get; set; }
+
+        /// <summary>The type of error. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Solution-specific parameters that are persisted with the event data and, if an update or delete is needed, are
+    /// passed to the add-on. For example: `[{key: 'sessionKey', value: '123'}, {key: 'meetingId', value: '456'}]`
+    /// </summary>
+    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the parameter. Maximum 50 characters long. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The value of the parameter. Maximum 1024 characters long. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of attendees to add to the Google Calendar event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addAttendeeEmails")]
+        public virtual System.Collections.Generic.IList<string> AddAttendeeEmails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conference data to add to the Google Calendar event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceData")]
+        public virtual AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup ConferenceData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Attachments that follow the message text.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7822,6 +8022,24 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class CalendarClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An action that adds attachments to the Google Calendar event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addAttachmentsActionMarkup")]
+        public virtual AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup AddAttachmentsActionMarkup { get; set; }
+
+        /// <summary>An action that adds attendees to the Google Calendar event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editAttendeesActionMarkup")]
+        public virtual AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup EditAttendeesActionMarkup { get; set; }
+
+        /// <summary>An action that adds conference data to the Google Calendar event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editConferenceDataActionMarkup")]
+        public virtual AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup EditConferenceDataActionMarkup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information regarding an ongoing conference (aka call) for a meeting space.</summary>
     public class CallInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7974,6 +8192,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessLock")]
         public virtual System.Nullable<bool> AccessLock { get; set; }
 
+        /// <summary>The current access type of the conference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
+        public virtual string AccessType { get; set; }
+
+        /// <summary>Whether users can join this conference before a host (Host or Cohost).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowJoiningBeforeHost")]
+        public virtual System.Nullable<bool> AllowJoiningBeforeHost { get; set; }
+
         /// <summary>Indicates whether the attendance report is currently enabled or disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attendanceReportEnabled")]
         public virtual System.Nullable<bool> AttendanceReportEnabled { get; set; }
@@ -7990,7 +8216,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cseEnabled")]
         public virtual System.Nullable<bool> CseEnabled { get; set; }
 
-        /// <summary>Indicates whether the current call is moderated.</summary>
+        /// <summary>Indicates whether moderation is currently on or off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderationEnabled")]
         public virtual System.Nullable<bool> ModerationEnabled { get; set; }
 
@@ -8112,6 +8338,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Actions handled by Chat Clients.</summary>
+    public class ChatClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8688,6 +8921,21 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
         public virtual AppsDynamiteSharedCustomEmoji CustomEmoji { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a user running a custom function.</summary>
+    public class CustomFunctionReturnValueMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error message to show to the user if something went wrong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The value that resulted from running the custom function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9282,6 +9530,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DriveClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("requestFileScope")]
+        public virtual RequestFileScope RequestFileScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Drive follow-up search restricts (e.g. "followup:suggestions").</summary>
     public class DriveFollowUpRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9514,6 +9771,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>A message edit in Dynamite inserts a Babel-only item containing this field.</summary>
     public class EditMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EditorClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("requestFileScopeForActiveDocument")]
+        public virtual RequestFileScopeForActiveDocument RequestFileScopeForActiveDocument { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10235,6 +10501,24 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GmailClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("addonComposeUiActionMarkup")]
+        public virtual AddonComposeUiActionMarkup AddonComposeUiActionMarkup { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("openCreatedDraftActionMarkup")]
+        public virtual OpenCreatedDraftActionMarkup OpenCreatedDraftActionMarkup { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskAction")]
+        public virtual TaskActionMarkup TaskAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDraftActionMarkup")]
+        public virtual UpdateDraftActionMarkup UpdateDraftActionMarkup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of the Google Chat in Meet.</summary>
     public class GoogleChatConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10282,7 +10566,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// A card action is the action associated with the card. For an invoice card, a typical action would be: delete
-    /// invoice, email invoice or open the invoice in browser.
+    /// invoice, email invoice or open the invoice in browser. Not supported by Google Chat apps.
     /// </summary>
     public class GoogleChatV1ContextualAddOnMarkupCardCardAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10852,6 +11136,37 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Actions handled by individual host apps.</summary>
+    public class HostAppActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Actions handled by Calendar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarAction")]
+        public virtual CalendarClientActionMarkup CalendarAction { get; set; }
+
+        /// <summary>Actions handled by Chat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatAction")]
+        public virtual ChatClientActionMarkup ChatAction { get; set; }
+
+        /// <summary>Actions handled by Drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveAction")]
+        public virtual DriveClientActionMarkup DriveAction { get; set; }
+
+        /// <summary>Actions handled by Docs, Sheets, or Slides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editorAction")]
+        public virtual EditorClientActionMarkup EditorAction { get; set; }
+
+        /// <summary>Actions handled by Gmail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailAction")]
+        public virtual GmailClientActionMarkup GmailAction { get; set; }
+
+        /// <summary>Actions handled by Sheets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetsAction")]
+        public virtual SheetsClientActionMarkup SheetsAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a single host. Optionally, the MDB owner of the host can be specified.</summary>
     public class HostProto : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11163,6 +11478,23 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Request message for `InitializeCustomer` method.</summary>
     public class InitializeCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class InsertContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content to be inserted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The type of inserted content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12115,7 +12447,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Annotation metadata to display system messages for membership changes.</summary>
+    /// <summary>Annotation metadata to display system messages for membership changes. Next Tag: 8</summary>
     public class MembershipChangedMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("affectedMemberProfiles")]
@@ -12138,6 +12470,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initiatorProfile")]
         public virtual User InitiatorProfile { get; set; }
+
+        /// <summary>The type of the user who initiated this membership change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initiatorType")]
+        public virtual string InitiatorType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -12762,6 +13098,31 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openLinkAction")]
         public virtual FormAction OpenLinkAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class OpenCreatedDraftActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the newly created draft in the form "r123".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftId")]
+        public virtual string DraftId { get; set; }
+
+        /// <summary>The server storage ID in hex format, for example,"15e9fa622ce1029d".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftStorageId")]
+        public virtual string DraftStorageId { get; set; }
+
+        /// <summary>The ID of the thread containing the newly created draft, for example, "15e9fa622ce1029d".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftThreadId")]
+        public virtual string DraftThreadId { get; set; }
+
+        /// <summary>
+        /// The server permanent ID for the draft's thread. This field isn't set anywhere, and it's ignored when
+        /// processing OpenCreatedDraftActionMarkup. Supply and use draftThreadStorageId instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftThreadServerPermId")]
+        public virtual string DraftThreadServerPermId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13923,6 +14284,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Recipient : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A recording event is something that happens to the recording in a conference.</summary>
     public class RecordingEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14046,6 +14416,21 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class RequestFileScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RequestFileScopeForActiveDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Shared request options for all RPC methods.</summary>
     public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14132,10 +14517,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Debugging information about the response.</summary>
     public class ResponseDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Experiments enabled in QAPI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabledExperiments")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledExperiments { get; set; }
-
         /// <summary>General debug info formatted for display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedDebugInfo")]
         public virtual string FormattedDebugInfo { get; set; }
@@ -14301,6 +14682,10 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual RosterId Id { get; set; }
+
+        /// <summary>Whether caller has visibility into members of the roster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isMembershipVisibleToCaller")]
+        public virtual System.Nullable<bool> IsMembershipVisibleToCaller { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("membershipCount")]
         public virtual System.Nullable<int> MembershipCount { get; set; }
@@ -14893,17 +15278,22 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// Settings of a meeting space that can be viewed and edited by users with permissions. These settings are always
-    /// populated for output.
+    /// Settings of a meeting space that can be edited by users with corresponding manage privilege. These settings are
+    /// always populated in responses.
     /// </summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The access lock of the meeting space that lets owner control who can join the meeting. True if the access
-        /// lock feature is enabled for the meeting space.
-        /// </summary>
+        /// <summary>The access lock of the meeting space that lets hosts control who can join the meeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLock")]
         public virtual System.Nullable<bool> AccessLock { get; set; }
+
+        /// <summary>The access type of the meeting space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
+        public virtual string AccessType { get; set; }
+
+        /// <summary>Whether users can join before host in the conferences of this meeting space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowJoiningBeforeHost")]
+        public virtual System.Nullable<bool> AllowJoiningBeforeHost { get; set; }
 
         /// <summary>Whether attendance report is enabled for the meeting space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attendanceReportEnabled")]
@@ -14911,7 +15301,6 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// The chat lock of the meeting space that lets owner control whether the participants can send chat messages.
-        /// True if the chat lock feature is enabled for the meeting space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatLock")]
         public virtual System.Nullable<bool> ChatLock { get; set; }
@@ -14934,14 +15323,13 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// The present lock of the meeting space that lets owner control whether the participants can present their
-        /// screen. True if the present lock feature is enabled for the meeting space.
+        /// screen.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentLock")]
         public virtual System.Nullable<bool> PresentLock { get; set; }
 
         /// <summary>
         /// The reactions lock of the meeting space that lets owner control whether the participants can send reactions.
-        /// True if the reactions lock feature is enabled for the meeting space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionsLock")]
         public virtual System.Nullable<bool> ReactionsLock { get; set; }
@@ -14959,6 +15347,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The scope to which the content was shared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SheetsClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customFunctionReturnValueMarkup")]
+        public virtual CustomFunctionReturnValueMarkup CustomFunctionReturnValueMarkup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15560,6 +15957,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class TaskActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("reloadTasks")]
+        public virtual System.Nullable<bool> ReloadTasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class TextButton : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alternative text used for accessibility Next field number: 7.</summary>
@@ -15938,6 +16344,40 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class UpdateBccRecipients : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bccRecipients")]
+        public virtual System.Collections.Generic.IList<Recipient> BccRecipients { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class UpdateBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A repeated field that contains a series of content to insert into the draft that the user is currently
+        /// editing. The content can contain HTML content or plain text content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertContents")]
+        public virtual System.Collections.Generic.IList<InsertContent> InsertContents { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class UpdateCcRecipients : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ccRecipients")]
+        public virtual System.Collections.Generic.IList<Recipient> CcRecipients { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class UpdateDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Common debug options.</summary>
@@ -15948,13 +16388,44 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual DataSource Source { get; set; }
 
         /// <summary>
-        /// Update mask to control which fields to update. If update_mask is non-empty then only the fields specified in
-        /// the update_mask are updated. If you specify a field in the update_mask, but don't specify its value in the
-        /// source that field will be cleared. If the update_mask is not present or empty or has the value * then all
-        /// fields will be updated. Some example field paths: name, display_name
+        /// Only applies to
+        /// [`settings.datasources.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+        /// Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If
+        /// `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you
+        /// specify a field in the `update_mask`, but don't specify its value in the source, that field is cleared. * If
+        /// the `update_mask` is not present or empty or has the value `*`, then all fields are updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class UpdateDraftActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, replaces the existing Bcc recipients of the draft the user is currently editing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateBccRecipients")]
+        public virtual UpdateBccRecipients UpdateBccRecipients { get; set; }
+
+        /// <summary>
+        /// A field that contains a series of update actions to perform on the draft body that the user is currently
+        /// editing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateBody")]
+        public virtual UpdateBody UpdateBody { get; set; }
+
+        /// <summary>If set, replaces the existing Cc recipients of the draft the user is currently editing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateCcRecipients")]
+        public virtual UpdateCcRecipients UpdateCcRecipients { get; set; }
+
+        /// <summary>If set, replaces the existing subject of the draft the user is currently editing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateSubject")]
+        public virtual UpdateSubject UpdateSubject { get; set; }
+
+        /// <summary>If set, replaces the existing To recipients of the draft the user is currently editing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateToRecipients")]
+        public virtual UpdateToRecipients UpdateToRecipients { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15976,6 +16447,24 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class UpdateSubject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class UpdateToRecipients : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("toRecipients")]
+        public virtual System.Collections.Generic.IList<Recipient> ToRecipients { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16116,6 +16605,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intImageWidth")]
         public virtual System.Nullable<int> IntImageWidth { get; set; }
 
+        /// <summary>NEXT TAG : 18</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
+        public virtual string LinkType { get; set; }
+
         /// <summary>
         /// Mime type of the content (Currently mapped from Page Render Service ItemType) Note that this is not
         /// necessarily the mime type of the http resource. For example a text/html from youtube or vimeo may actually
@@ -16147,7 +16640,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual SafeUrlProto Url { get; set; }
 
-        /// <summary>NEXT TAG : 17</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlSource")]
         public virtual string UrlSource { get; set; }
 

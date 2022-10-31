@@ -1844,10 +1844,11 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         public virtual string ImageUri { get; set; }
 
         /// <summary>
-        /// Optional. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used
-        /// in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the
-        /// values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't
-        /// be properly searchable, and those keyword queries need to be surrounded by quotes.
+        /// Optional. This field is deprecated. Please set the searchability of the custom attribute in the
+        /// Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding
+        /// `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are
+        /// returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and
+        /// special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordSearchableJobCustomAttributes")]
         public virtual System.Collections.Generic.IList<string> KeywordSearchableJobCustomAttributes { get; set; }
@@ -2309,33 +2310,34 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         /// function creates a bucket with range of start, end). Note that the end is exclusive. For example, bucket(1,
         /// MAX, "positive number") or bucket(1, 10). Job histogram facets: * company_id: histogram by
         /// [Job.distributor_company_id. * company_display_name: histogram by Job.company_display_name. *
-        /// employment_type: histogram by Job.employment_types. For example, "FULL_TIME", "PART_TIME". * company_size:
-        /// histogram by CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day: histogram by the
-        /// Job.publish_time in days. Must specify list of numeric buckets in spec. * publish_time_in_month: histogram
-        /// by the Job.publish_time in months. Must specify list of numeric buckets in spec. * publish_time_in_year:
-        /// histogram by the Job.publish_time in years. Must specify list of numeric buckets in spec. * degree_type:
-        /// histogram by the Job.degree_type. For example, "Bachelors", "Masters". * job_level: histogram by the
-        /// Job.job_level. For example, "Entry Level". * country: histogram by the country code of jobs. For example,
-        /// "US", "FR". * admin1: histogram by the admin1 code of jobs, which is a global placeholder referring to the
-        /// state, province, or the particular term a country uses to define the geographic structure below the country
-        /// level. For example, "CA", "IL". * city: histogram by a combination of the "city name, admin1 code". For
-        /// example, "Mountain View, CA", "New York, NY". * admin1_country: histogram by a combination of the "admin1
-        /// code, country". For example, "CA, US", "IL, US". * city_coordinate: histogram by the city center's GPS
-        /// coordinates (latitude and longitude). For example, 37.4038522,-122.0987765. Since the coordinates of a city
-        /// center can change, customers may need to refresh them periodically. * locale: histogram by the
-        /// Job.language_code. For example, "en-US", "fr-FR". * language: histogram by the language subtag of the
-        /// Job.language_code. For example, "en", "fr". * category: histogram by the JobCategory. For example,
-        /// "COMPUTER_AND_IT", "HEALTHCARE". * base_compensation_unit: histogram by the CompensationUnit of base salary.
-        /// For example, "WEEKLY", "MONTHLY". * base_compensation: histogram by the base salary. Must specify list of
-        /// numeric buckets to group results by. * annualized_base_compensation: histogram by the base annualized
-        /// salary. Must specify list of numeric buckets to group results by. * annualized_total_compensation: histogram
-        /// by the total annualized salary. Must specify list of numeric buckets to group results by. *
-        /// string_custom_attribute: histogram by string Job.custom_attributes. Values can be accessed via square
-        /// bracket notations like string_custom_attribute["key1"]. * numeric_custom_attribute: histogram by numeric
-        /// Job.custom_attributes. Values can be accessed via square bracket notations like
-        /// numeric_custom_attribute["key1"]. Must specify list of numeric buckets to group results by. Example
-        /// expressions: * count(admin1) * count(base_compensation, [bucket(1000, 10000), bucket(10000, 100000),
-        /// bucket(100000, MAX)]) * count(string_custom_attribute["some-string-custom-attribute"]) *
+        /// employment_type: histogram by Job.employment_types. For example, "FULL_TIME", "PART_TIME". * company_size
+        /// (DEPRECATED): histogram by CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day:
+        /// histogram by the Job.publish_time in days. Must specify list of numeric buckets in spec. *
+        /// publish_time_in_month: histogram by the Job.publish_time in months. Must specify list of numeric buckets in
+        /// spec. * publish_time_in_year: histogram by the Job.publish_time in years. Must specify list of numeric
+        /// buckets in spec. * degree_type: histogram by the Job.degree_type. For example, "Bachelors", "Masters". *
+        /// job_level: histogram by the Job.job_level. For example, "Entry Level". * country: histogram by the country
+        /// code of jobs. For example, "US", "FR". * admin1: histogram by the admin1 code of jobs, which is a global
+        /// placeholder referring to the state, province, or the particular term a country uses to define the geographic
+        /// structure below the country level. For example, "CA", "IL". * city: histogram by a combination of the "city
+        /// name, admin1 code". For example, "Mountain View, CA", "New York, NY". * admin1_country: histogram by a
+        /// combination of the "admin1 code, country". For example, "CA, US", "IL, US". * city_coordinate: histogram by
+        /// the city center's GPS coordinates (latitude and longitude). For example, 37.4038522,-122.0987765. Since the
+        /// coordinates of a city center can change, customers may need to refresh them periodically. * locale:
+        /// histogram by the Job.language_code. For example, "en-US", "fr-FR". * language: histogram by the language
+        /// subtag of the Job.language_code. For example, "en", "fr". * category: histogram by the JobCategory. For
+        /// example, "COMPUTER_AND_IT", "HEALTHCARE". * base_compensation_unit: histogram by the CompensationUnit of
+        /// base salary. For example, "WEEKLY", "MONTHLY". * base_compensation: histogram by the base salary. Must
+        /// specify list of numeric buckets to group results by. * annualized_base_compensation: histogram by the base
+        /// annualized salary. Must specify list of numeric buckets to group results by. *
+        /// annualized_total_compensation: histogram by the total annualized salary. Must specify list of numeric
+        /// buckets to group results by. * string_custom_attribute: histogram by string Job.custom_attributes. Values
+        /// can be accessed via square bracket notations like string_custom_attribute["key1"]. *
+        /// numeric_custom_attribute: histogram by numeric Job.custom_attributes. Values can be accessed via square
+        /// bracket notations like numeric_custom_attribute["key1"]. Must specify list of numeric buckets to group
+        /// results by. Example expressions: * count(admin1) * count(base_compensation, [bucket(1000, 10000),
+        /// bucket(10000, 100000), bucket(100000, MAX)]) *
+        /// count(string_custom_attribute["some-string-custom-attribute"]) *
         /// count(numeric_custom_attribute["some-numeric-custom-attribute"], [bucket(MIN, 0, "negative"), bucket(0, MAX,
         /// "non-negative")])
         /// </summary>

@@ -2857,7 +2857,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
         public virtual OidcToken OidcToken { get; set; }
 
-        /// <summary>Uri override. When specified modifies the execution Uri for all the tasks in the queue.</summary>
+        /// <summary>Uri override. When specified, modifies the execution Uri for all the tasks in the queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriOverride")]
         public virtual UriOverride UriOverride { get; set; }
 
@@ -3692,6 +3692,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Scheme override. When specified, the Uri scheme is replaced by the provided value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
         public virtual string Scheme { get; set; }
+
+        /// <summary>Uri Override Enforce Mode Determines the Target UriOverride mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriOverrideEnforceMode")]
+        public virtual string UriOverrideEnforceMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

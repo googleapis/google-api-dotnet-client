@@ -381,10 +381,14 @@ namespace Google.Apis.DriveLabels.v2beta
             /// not require publishing.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="labelsId"><c>null</c></param>
-            public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string labelsId)
+            /// <param name="parent">
+            /// Required. The parent Label resource name shared by all permissions being deleted. Format: labels/{label}
+            /// If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or
+            /// match this field.
+            /// </param>
+            public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, labelsId);
+                return new BatchDeleteRequest(service, body, parent);
             }
 
             /// <summary>
@@ -394,15 +398,20 @@ namespace Google.Apis.DriveLabels.v2beta
             public class BatchDeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new BatchDelete request.</summary>
-                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string labelsId) : base(service)
+                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string parent) : base(service)
                 {
-                    LabelsId = labelsId;
+                    Parent = parent;
                     Body = body;
                     InitParameters();
                 }
 
-                [Google.Apis.Util.RequestParameterAttribute("labelsId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LabelsId { get; private set; }
+                /// <summary>
+                /// Required. The parent Label resource name shared by all permissions being deleted. Format:
+                /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must
+                /// either be empty or match this field.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest Body { get; set; }
@@ -417,19 +426,19 @@ namespace Google.Apis.DriveLabels.v2beta
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2beta/labels/{labelsId}/permissions:batchDelete";
+                public override string RestPath => "v2beta/{+parent}/permissions:batchDelete";
 
                 /// <summary>Initializes BatchDelete parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-                    RequestParameters.Add("labelsId", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "labelsId",
+                        Name = "parent",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^labels/[^/]+$",
                     });
                 }
             }
@@ -737,82 +746,6 @@ namespace Google.Apis.DriveLabels.v2beta
                     });
                 }
             }
-
-            /// <summary>
-            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent Label resource name.</param>
-            public virtual PatchRequest Patch(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent)
-            {
-                return new PatchRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
-            /// </summary>
-            public class PatchRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The parent Label resource name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an
-                /// admin for the Label before allowing access.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UseAdminAccess { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2beta/{+parent}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^labels/[^/]+/permissions/[^/]+$",
-                    });
-                    RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
         }
 
         /// <summary>Gets the Revisions resource.</summary>
@@ -943,11 +876,14 @@ namespace Google.Apis.DriveLabels.v2beta
                 /// do not require publishing.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="labelsId"><c>null</c></param>
-                /// <param name="revisionsId"><c>null</c></param>
-                public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string labelsId, string revisionsId)
+                /// <param name="parent">
+                /// Required. The parent Label resource name shared by all permissions being deleted. Format:
+                /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must
+                /// either be empty or match this field.
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string parent)
                 {
-                    return new BatchDeleteRequest(service, body, labelsId, revisionsId);
+                    return new BatchDeleteRequest(service, body, parent);
                 }
 
                 /// <summary>
@@ -957,19 +893,20 @@ namespace Google.Apis.DriveLabels.v2beta
                 public class BatchDeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string labelsId, string revisionsId) : base(service)
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest body, string parent) : base(service)
                     {
-                        LabelsId = labelsId;
-                        RevisionsId = revisionsId;
+                        Parent = parent;
                         Body = body;
                         InitParameters();
                     }
 
-                    [Google.Apis.Util.RequestParameterAttribute("labelsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LabelsId { get; private set; }
-
-                    [Google.Apis.Util.RequestParameterAttribute("revisionsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string RevisionsId { get; private set; }
+                    /// <summary>
+                    /// Required. The parent Label resource name shared by all permissions being deleted. Format:
+                    /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages
+                    /// must either be empty or match this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest Body { get; set; }
@@ -984,27 +921,19 @@ namespace Google.Apis.DriveLabels.v2beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions:batchDelete";
+                    public override string RestPath => "v2beta/{+parent}/permissions:batchDelete";
 
                     /// <summary>Initializes BatchDelete parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-                        RequestParameters.Add("labelsId", new Google.Apis.Discovery.Parameter
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "labelsId",
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("revisionsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "revisionsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^labels/[^/]+/revisions/[^/]+$",
                         });
                     }
                 }
@@ -1314,81 +1243,81 @@ namespace Google.Apis.DriveLabels.v2beta
                         });
                     }
                 }
+            }
 
-                /// <summary>
-                /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new
-                /// Label Permission is created, otherwise the existing permission is updated. Permissions affect the
-                /// Label resource as a whole, are not revisioned, and do not require publishing.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent Label resource name.</param>
-                public virtual PatchRequest Patch(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent)
+            /// <summary>
+            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
+            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
+            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent Label resource name.</param>
+            public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent)
+            {
+                return new UpdatePermissionsRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
+            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
+            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// </summary>
+            public class UpdatePermissionsRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission>
+            {
+                /// <summary>Constructs a new UpdatePermissions request.</summary>
+                public UpdatePermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent) : base(service)
                 {
-                    return new PatchRequest(service, body, parent);
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
                 }
 
+                /// <summary>Required. The parent Label resource name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
                 /// <summary>
-                /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new
-                /// Label Permission is created, otherwise the existing permission is updated. Permissions affect the
-                /// Label resource as a whole, are not revisioned, and do not require publishing.
+                /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an
+                /// admin for the Label before allowing access.
                 /// </summary>
-                public class PatchRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission>
+                [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UseAdminAccess { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updatePermissions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+parent}/permissions";
+
+                /// <summary>Initializes UpdatePermissions parameter list.</summary>
+                protected override void InitParameters()
                 {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent) : base(service)
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent Label resource name.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Set to `true` in order to use the user's admin credentials. The server will verify the user is
-                    /// an admin for the Label before allowing access.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> UseAdminAccess { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2beta/{+parent}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^labels/[^/]+/revisions/[^/]+$",
+                    });
+                    RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
                     {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^labels/[^/]+/revisions/[^/]+/permissions/[^/]+$",
-                        });
-                        RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "useAdminAccess",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
+                        Name = "useAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
         }
@@ -2148,6 +2077,82 @@ namespace Google.Apis.DriveLabels.v2beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^labels/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
+        /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource
+        /// as a whole, are not revisioned, and do not require publishing.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. The parent Label resource name.</param>
+        public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent)
+        {
+            return new UpdatePermissionsRequest(service, body, parent);
+        }
+
+        /// <summary>
+        /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
+        /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource
+        /// as a whole, are not revisioned, and do not require publishing.
+        /// </summary>
+        public class UpdatePermissionsRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission>
+        {
+            /// <summary>Constructs a new UpdatePermissions request.</summary>
+            public UpdatePermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The parent Label resource name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin
+            /// for the Label before allowing access.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseAdminAccess { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabelPermission Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updatePermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+parent}/permissions";
+
+            /// <summary>Initializes UpdatePermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^labels/[^/]+$",
+                });
+                RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }

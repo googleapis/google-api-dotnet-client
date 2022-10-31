@@ -1,4 +1,19 @@
 {
+  "Google.Apis.HangoutsChat.v1.DmsResource+ConversationsResource+MessagesRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
+  "Google.Apis.HangoutsChat.v1.DmsResource+MessagesRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
+  "Google.Apis.HangoutsChat.v1.DmsResource+WebhooksRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
   "Google.Apis.HangoutsChat.v1.HangoutsChatBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",
@@ -7,5 +22,30 @@
   "Google.Apis.HangoutsChat.v1.HangoutsChatBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.HangoutsChat.v1.RoomsResource+ConversationsResource+MessagesRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
+  "Google.Apis.HangoutsChat.v1.RoomsResource+MessagesRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
+  "Google.Apis.HangoutsChat.v1.RoomsResource+WebhooksRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
+  "Google.Apis.HangoutsChat.v1.SpacesResource+MessagesResource+CreateRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
+  ],
+  "Google.Apis.HangoutsChat.v1.SpacesResource+WebhooksRequest.MessageReplyOptionEnum": [
+    "MESSAGE_REPLY_OPTION_UNSPECIFIED",
+    "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
+    "REPLY_MESSAGE_OR_FAIL"
   ]
 }

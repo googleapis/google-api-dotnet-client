@@ -733,7 +733,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location and project in which this Job should be created. Format:
-                /// projects/{projectnumber}/locations/{location}
+                /// projects/{project}/locations/{location}
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job body, string parent)
                 {
@@ -753,7 +753,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project in which this Job should be created. Format:
-                    /// projects/{projectnumber}/locations/{location}
+                    /// projects/{project}/locations/{location}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -819,7 +819,7 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Deletes a Job.</summary>
                 /// <param name="name">
-                /// Required. The full name of the Job. Format: projects/{projectnumber}/locations/{location}/jobs/{job}
+                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -837,8 +837,7 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The full name of the Job. Format:
-                    /// projects/{projectnumber}/locations/{location}/jobs/{job}
+                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -849,14 +848,6 @@ namespace Google.Apis.CloudRun.v2
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
-
-                    /// <summary>
-                    /// If set to true, the Job and its Executions will be deleted no matter whether any Executions are
-                    /// still running or not. If set to false or unset, the Job and its Executions can only be deleted
-                    /// if there are no running Executions. Any running Execution will fail the deletion.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
                     /// Indicates that the request should be validated without actually deleting any resources.
@@ -893,14 +884,6 @@ namespace Google.Apis.CloudRun.v2
                             DefaultValue = null,
                             Pattern = null,
                         });
-                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "force",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                         RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
                         {
                             Name = "validateOnly",
@@ -914,7 +897,7 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Gets information about a Job.</summary>
                 /// <param name="name">
-                /// Required. The full name of the Job. Format: projects/{projectnumber}/locations/{location}/jobs/{job}
+                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -932,8 +915,7 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The full name of the Job. Format:
-                    /// projects/{projectnumber}/locations/{location}/jobs/{job}
+                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1045,7 +1027,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>List Jobs.</summary>
                 /// <param name="parent">
                 /// Required. The location and project to list resources on. Format:
-                /// projects/{projectnumber}/locations/{location}
+                /// projects/{project}/locations/{location}
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1064,7 +1046,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project to list resources on. Format:
-                    /// projects/{projectnumber}/locations/{location}
+                    /// projects/{project}/locations/{location}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1221,7 +1203,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Triggers creation of a new Execution of this Job.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The full name of the Job. Format: projects/{projectnumber}/locations/{location}/jobs/{job}
+                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2RunJobRequest body, string name)
                 {
@@ -1240,8 +1222,7 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The full name of the Job. Format:
-                    /// projects/{projectnumber}/locations/{location}/jobs/{job}
+                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1903,8 +1884,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location and project in which this service should be created. Format:
-                /// projects/{projectnumber}/locations/{location} Only lowercase, digits, and hyphens; must begin with
-                /// letter, and may not end with hyphen; must contain fewer than 50 characters.
+                /// projects/{project}/locations/{location} Only lowercase characters, digits, and hyphens.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string parent)
                 {
@@ -1924,14 +1904,14 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project in which this service should be created. Format:
-                    /// projects/{projectnumber}/locations/{location} Only lowercase, digits, and hyphens; must begin
-                    /// with letter, and may not end with hyphen; must contain fewer than 50 characters.
+                    /// projects/{project}/locations/{location} Only lowercase characters, digits, and hyphens.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The unique identifier for the Service. The name of the service becomes
+                    /// Required. The unique identifier for the Service. It must begin with letter, and may not end with
+                    /// hyphen; must contain fewer than 50 characters. The name of the service becomes
                     /// {parent}/services/{service_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1996,7 +1976,7 @@ namespace Google.Apis.CloudRun.v2
                 /// </summary>
                 /// <param name="name">
                 /// Required. The full name of the Service. Format:
-                /// projects/{projectnumber}/locations/{location}/services/{service}
+                /// projects/{project}/locations/{location}/services/{service}
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2018,7 +1998,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The full name of the Service. Format:
-                    /// projects/{projectnumber}/locations/{location}/services/{service}
+                    /// projects/{project}/locations/{location}/services/{service}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2079,7 +2059,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Gets information about a Service.</summary>
                 /// <param name="name">
                 /// Required. The full name of the Service. Format:
-                /// projects/{projectnumber}/locations/{location}/services/{service}
+                /// projects/{project}/locations/{location}/services/{service}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2098,7 +2078,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The full name of the Service. Format:
-                    /// projects/{projectnumber}/locations/{location}/services/{service}
+                    /// projects/{project}/locations/{location}/services/{service}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2210,7 +2190,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>List Services.</summary>
                 /// <param name="parent">
                 /// Required. The location and project to list resources on. Location must be a valid GCP region, and
-                /// may not be the "-" wildcard. Format: projects/{projectnumber}/locations/{location}
+                /// may not be the "-" wildcard. Format: projects/{project}/locations/{location}
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2229,7 +2209,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project to list resources on. Location must be a valid GCP region,
-                    /// and may not be the "-" wildcard. Format: projects/{projectnumber}/locations/{location}
+                    /// and may not be the "-" wildcard. Format: projects/{project}/locations/{location}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2887,7 +2867,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<int> TaskCount { get; set; }
 
-        /// <summary>Output only. Describes the task(s) that will be created when executing an execution.</summary>
+        /// <summary>Output only. The template used to create tasks for this execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual GoogleCloudRunV2TaskTemplate Template { get; set; }
 
@@ -2962,34 +2942,9 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GRPCAction describes an action involving a GRPC port.</summary>
-    public class GoogleCloudRunV2GRPCAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Port number of the gRPC service. Number must be in the range 1 to 65535.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; }
-
-        /// <summary>
-        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
-        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
-        /// behavior is defined by gRPC.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>HTTPGetAction describes an action based on HTTP Get requests.</summary>
     public class GoogleCloudRunV2HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; }
-
         /// <summary>Custom headers to set in the request. HTTP allows repeated headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2HTTPHeader> HttpHeaders { get; set; }
@@ -2997,10 +2952,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Path to access on the HTTP server. Defaults to '/'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
-
-        /// <summary>Scheme to use for connecting to the host. Defaults to HTTP.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
-        public virtual string Scheme { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3013,7 +2964,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The header field value</summary>
+        /// <summary>The header field value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3270,14 +3221,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> FailureThreshold { get; set; }
 
         /// <summary>
-        /// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be
-        /// specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
-        public virtual GoogleCloudRunV2GRPCAction Grpc { get; set; }
-
-        /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
         public virtual GoogleCloudRunV2HTTPGetAction HttpGet { get; set; }
@@ -3299,8 +3243,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
 
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be
-        /// specified. TCP hooks not yet supported
+        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
         public virtual GoogleCloudRunV2TCPSocketAction TcpSocket { get; set; }
@@ -3839,14 +3782,8 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>TCPSocketAction describes an action based on opening a socket</summary>
     public class GoogleCloudRunV2TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Host name to connect to, defaults to the pod IP.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; }
-
         /// <summary>
-        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be
-        /// an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to
-        /// properly support the IntOrString golang type.
+        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }

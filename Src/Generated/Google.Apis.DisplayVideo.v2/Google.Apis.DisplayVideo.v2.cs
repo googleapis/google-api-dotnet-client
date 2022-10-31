@@ -3230,6 +3230,724 @@ namespace Google.Apis.DisplayVideo.v2
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Assigns a targeting option to an insertion order. Returns the assigned targeting option if
+                    /// successful. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` *
+                    /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="advertiserId">
+                    /// Required. The ID of the advertiser the insertion order belongs to.
+                    /// </param>
+                    /// <param name="insertionOrderId">
+                    /// Required. The ID of the insertion order the assigned targeting option will belong to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v2.Data.AssignedTargetingOption body, long advertiserId, long insertionOrderId, CreateRequest.TargetingTypeEnum targetingType)
+                    {
+                        return new CreateRequest(service, body, advertiserId, insertionOrderId, targetingType);
+                    }
+
+                    /// <summary>
+                    /// Assigns a targeting option to an insertion order. Returns the assigned targeting option if
+                    /// successful. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` *
+                    /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.AssignedTargetingOption>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.AssignedTargetingOption body, long advertiserId, long insertionOrderId, TargetingTypeEnum targetingType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            InsertionOrderId = insertionOrderId;
+                            TargetingType = targetingType;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the insertion order belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the insertion order the assigned targeting option will belong to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long InsertionOrderId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>Target ads to ads.txt authorized sellers.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+                        }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DisplayVideo.v2.Data.AssignedTargetingOption Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "insertionOrderId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes an assigned targeting option from an insertion order. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    /// <param name="advertiserId">
+                    /// Required. The ID of the advertiser the insertion order belongs to.
+                    /// </param>
+                    /// <param name="insertionOrderId">
+                    /// Required. The ID of the insertion order the assigned targeting option belongs to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </param>
+                    /// <param name="assignedTargetingOptionId">
+                    /// Required. The ID of the assigned targeting option to delete.
+                    /// </param>
+                    public virtual DeleteRequest Delete(long advertiserId, long insertionOrderId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                    {
+                        return new DeleteRequest(service, advertiserId, insertionOrderId, targetingType, assignedTargetingOptionId);
+                    }
+
+                    /// <summary>
+                    /// Deletes an assigned targeting option from an insertion order. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            InsertionOrderId = insertionOrderId;
+                            TargetingType = targetingType;
+                            AssignedTargetingOptionId = assignedTargetingOptionId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the insertion order belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the insertion order the assigned targeting option belongs to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long InsertionOrderId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>Target ads to ads.txt authorized sellers.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+                        }
+
+                        /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("assignedTargetingOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AssignedTargetingOptionId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "insertionOrderId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets a single targeting option assigned to an insertion order.</summary>
                     /// <param name="advertiserId">
                     /// Required. The ID of the advertiser the insertion order belongs to.
@@ -6410,6 +7128,73 @@ namespace Google.Apis.DisplayVideo.v2
                 public override string RestPath => "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Duplicates a line item. Returns the newly created line item id if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
+            /// <param name="lineItemId">Required. The ID of the line item to duplicate.</param>
+            public virtual DuplicateRequest Duplicate(Google.Apis.DisplayVideo.v2.Data.DuplicateLineItemRequest body, long advertiserId, long lineItemId)
+            {
+                return new DuplicateRequest(service, body, advertiserId, lineItemId);
+            }
+
+            /// <summary>Duplicates a line item. Returns the newly created line item id if successful.</summary>
+            public class DuplicateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.DuplicateLineItemResponse>
+            {
+                /// <summary>Constructs a new Duplicate request.</summary>
+                public DuplicateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.DuplicateLineItemRequest body, long advertiserId, long lineItemId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    LineItemId = lineItemId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this line item belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the line item to duplicate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long LineItemId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v2.Data.DuplicateLineItemRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "duplicate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}:duplicate";
+
+                /// <summary>Initializes Duplicate parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -21923,6 +22708,30 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Target web inventory to maximize fully viewable rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoViewableRate")]
         public virtual string VideoViewableRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for LineItemService.DuplicateLineItem.</summary>
+    public class DuplicateLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The display name of the resulting line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetDisplayName")]
+        public virtual string TargetDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LineItemService.DuplicateLineItem.</summary>
+    public class DuplicateLineItemResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the successfully created line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateLineItemId")]
+        public virtual System.Nullable<long> DuplicateLineItemId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

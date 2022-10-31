@@ -5943,7 +5943,7 @@ namespace Google.Apis.Iam.v1.Data
         /// The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document
         /// should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at
         /// least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than
-        /// 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are
+        /// 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Upto 3 IdP signing keys are
         /// allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key
         /// must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing
         /// keys present in the existing metadata
@@ -5960,7 +5960,7 @@ namespace Google.Apis.Iam.v1.Data
     /// not a person. You can use a service account to call Google APIs. To learn more, read the [overview of service
     /// accounts](https://cloud.google.com/iam/help/service-accounts/overview). When you create a service account, you
     /// specify the project ID that owns the service account, as well as a name that must be unique within the project.
-    /// IAM uses these values to create an email address that identifies the service account.
+    /// IAM uses these values to create an email address that identifies the service //
     /// </summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {

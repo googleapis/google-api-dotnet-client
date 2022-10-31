@@ -4482,6 +4482,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. If set, the repository satisfies physical zone separation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally
         /// available or in public preview use this to calculate storage costs.
