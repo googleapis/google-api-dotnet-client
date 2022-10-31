@@ -6199,7 +6199,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<int> TaskCount { get; set; }
 
-        /// <summary>Optional. Describes the task(s) that will be created when executing an execution.</summary>
+        /// <summary>Optional. The template used to create tasks for this execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual TaskTemplateSpec Template { get; set; }
 
@@ -6456,7 +6456,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>HTTPHeader describes a custom header to be used in HTTP probes</summary>
     public class HTTPHeader : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The header field name</summary>
+        /// <summary>Required. The header field name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -8133,7 +8133,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration
         /// should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty;
-        /// it must be false when RevisionName is non-empty.
+        /// it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the
+        /// RevisionName was resolved from a spec's ConfigurationName.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRevision")]
         public virtual System.Nullable<bool> LatestRevision { get; set; }

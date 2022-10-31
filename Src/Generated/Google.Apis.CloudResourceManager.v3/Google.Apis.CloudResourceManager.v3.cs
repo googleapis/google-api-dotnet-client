@@ -323,13 +323,17 @@ namespace Google.Apis.CloudResourceManager.v3
             this.service = service;
         }
 
-        /// <summary>Return a list of effective tags for the given cloud resource, as specified in `parent`.</summary>
+        /// <summary>
+        /// Return a list of effective tags for the given Google Cloud resource, as specified in `parent`.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Return a list of effective tags for the given cloud resource, as specified in `parent`.</summary>
+        /// <summary>
+        /// Return a list of effective tags for the given Google Cloud resource, as specified in `parent`.
+        /// </summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListEffectiveTagsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2743,18 +2747,14 @@ namespace Google.Apis.CloudResourceManager.v3
             this.service = service;
         }
 
-        /// <summary>
-        /// Creates a TagBinding between a TagValue and a cloud resource (currently project, folder, or organization).
-        /// </summary>
+        /// <summary>Creates a TagBinding between a TagValue and a Google Cloud resource.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.TagBinding body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>
-        /// Creates a TagBinding between a TagValue and a cloud resource (currently project, folder, or organization).
-        /// </summary>
+        /// <summary>Creates a TagBinding between a TagValue and a Google Cloud resource.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2853,8 +2853,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Lists the TagBindings for the given cloud resource, as specified with `parent`. NOTE: The `parent` field is
-        /// expected to be a full resource name: https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// Lists the TagBindings for the given Google Cloud resource, as specified with `parent`. NOTE: The `parent`
+        /// field is expected to be a full resource name:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2862,8 +2863,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Lists the TagBindings for the given cloud resource, as specified with `parent`. NOTE: The `parent` field is
-        /// expected to be a full resource name: https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// Lists the TagBindings for the given Google Cloud resource, as specified with `parent`. NOTE: The `parent`
+        /// field is expected to be a full resource name:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
         /// </summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListTagBindingsResponse>
         {
@@ -5455,9 +5457,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A TagBinding represents a connection between a TagValue and a cloud resource (currently project, folder, or
-    /// organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud
-    /// resource.
+    /// A TagBinding represents a connection between a TagValue and a cloud resource Once a TagBinding is created, the
+    /// TagValue is applied to all the descendants of the Google Cloud resource.
     /// </summary>
     public class TagBinding : Google.Apis.Requests.IDirectResponseSchema
     {

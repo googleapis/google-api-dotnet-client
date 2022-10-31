@@ -57,6 +57,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Productstatuses = new ProductstatusesResource(this);
             Promotions = new PromotionsResource(this);
             Pubsubnotificationsettings = new PubsubnotificationsettingsResource(this);
+            Quotas = new QuotasResource(this);
             Regionalinventory = new RegionalinventoryResource(this);
             Regions = new RegionsResource(this);
             Reports = new ReportsResource(this);
@@ -177,6 +178,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Pubsubnotificationsettings resource.</summary>
         public virtual PubsubnotificationsettingsResource Pubsubnotificationsettings { get; }
+
+        /// <summary>Gets the Quotas resource.</summary>
+        public virtual QuotasResource Quotas { get; }
 
         /// <summary>Gets the Regionalinventory resource.</summary>
         public virtual RegionalinventoryResource Regionalinventory { get; }
@@ -9756,7 +9760,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the
-        /// promotion instead.
+        /// promotion instead. To [end or delete]
+        /// (https://developers.google.com/shopping-content/guides/promotions#end_a_promotion) a promotion update the
+        /// time period of the promotion to a time that has already passed.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
@@ -9767,7 +9773,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the
-        /// promotion instead.
+        /// promotion instead. To [end or delete]
+        /// (https://developers.google.com/shopping-content/guides/promotions#end_a_promotion) a promotion update the
+        /// time period of the promotion to a time that has already passed.
         /// </summary>
         public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Promotion>
         {
@@ -9985,6 +9993,98 @@ namespace Google.Apis.ShoppingContent.v2_1
                     Name = "merchantId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "quotas" collection of methods.</summary>
+    public class QuotasResource
+    {
+        private const string Resource = "quotas";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public QuotasResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Lists the quota limit and quota usage per method for your Merchant Center account.</summary>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that has quota. This account must be an admin.
+        /// </param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists the quota limit and quota usage per method for your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListMethodQuotasResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that has quota. This account must be an admin.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above
+            /// 1000 will be coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Token (if provided) to retrieve the subsequent page. All other parameters must match the original call
+            /// that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/quotas";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -16125,6 +16225,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the ListMethodQuotas method.</summary>
+    public class ListMethodQuotasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current quota usage and limits per each method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodQuotas")]
+        public virtual System.Collections.Generic.IList<MethodQuota> MethodQuotas { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `ListRegions` method.</summary>
     public class ListRegionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16492,6 +16610,28 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Code of the rejection reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
         public virtual string ReasonCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The quota information per method in the Content API.</summary>
+    public class MethodQuota : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The method name, for example “products.list”. Method name does not contain version because quota can be
+        /// shared between different API versions of the same method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>The current quota limit, for example the maximum number of calls for the method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaLimit")]
+        public virtual System.Nullable<long> QuotaLimit { get; set; }
+
+        /// <summary>The current quota usage, for example the number of calls for the method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
+        public virtual System.Nullable<long> QuotaUsage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20796,7 +20936,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Product fields. Values are only set for fields requested explicitly in the request's search query.
+    /// Product fields. Values are only set for fields requested explicitly in the request's search query. Available
+    /// only to selected merchants. Submit the [interest form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
     /// </summary>
     public class ProductView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21705,8 +21846,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Product fields requested by the merchant in the query. Field values are only set if the merchant queries
-        /// `ProductView`. `product_view` field is available only to allowlisted users who can query the `ProductView`
-        /// table.
+        /// `ProductView`. Available only to selected merchants. Submit the [interest
+        /// form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productView")]
         public virtual ProductView ProductView { get; set; }

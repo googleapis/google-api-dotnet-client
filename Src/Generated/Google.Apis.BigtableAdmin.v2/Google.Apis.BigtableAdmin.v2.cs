@@ -1096,6 +1096,73 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
+                    /// Copy a Cloud Bigtable backup to a new backup in the destination cluster located in the
+                    /// destination instance and project.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the destination cluster that will contain the backup copy. The cluster
+                    /// must already exists. Values are of the form:
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+                    /// </param>
+                    public virtual CopyRequest Copy(Google.Apis.BigtableAdmin.v2.Data.CopyBackupRequest body, string parent)
+                    {
+                        return new CopyRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Copy a Cloud Bigtable backup to a new backup in the destination cluster located in the
+                    /// destination instance and project.
+                    /// </summary>
+                    public class CopyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Copy request.</summary>
+                        public CopyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.CopyBackupRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the destination cluster that will contain the backup copy. The cluster
+                        /// must already exists. Values are of the form:
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.CopyBackupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "copy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/backups:copy";
+
+                        /// <summary>Initializes Copy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be
                     /// used to track creation of the backup. The metadata field type is CreateBackupMetadata. The
                     /// response field type is Backup, if successful. Cancelling the returned operation will stop the
@@ -4057,6 +4124,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>
+        /// Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a
+        /// backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
+        public virtual string SourceBackup { get; set; }
+
+        /// <summary>
         /// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same
         /// instance as the backup. Values are of the form
         /// `projects/{project}/instances/{instance}/tables/{source_table}`.
@@ -4092,6 +4166,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a
+        /// backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
+        public virtual string SourceBackup { get; set; }
 
         /// <summary>Output only. Name of the table the backup was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
@@ -4290,6 +4371,61 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
         public virtual GcRule GcRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the google.longrunning.Operation returned by CopyBackup.</summary>
+    public class CopyBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the backup being created through the copy operation. Values are of the form
+        /// `projects//instances//clusters//backups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The progress of the CopyBackup operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
+
+        /// <summary>Information about the source backup that is being copied from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackupInfo")]
+        public virtual BackupInfo SourceBackupInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for CopyBackup.</summary>
+    public class CopyBackupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The id of the new backup. The `backup_id` along with `parent` are combined as
+        /// {parent}/backups/{backup_id} to create the full backup name, of the form:
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be
+        /// between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
+
+        /// <summary>
+        /// Required. Required. The expiration time of the copied backup with microsecond granularity that must be at
+        /// least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed,
+        /// Cloud Bigtable will delete the backup and free the resources used by the backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Required. The source backup to be copied from. The source backup needs to be in READY state for it to be
+        /// copied. Copying a copied backup is not allowed. Once CopyBackup is in progress, the source backup cannot be
+        /// deleted or cleaned up on expiration until CopyBackup is finished. Values are of the form:
+        /// `projects//instances//clusters//backups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
+        public virtual string SourceBackup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

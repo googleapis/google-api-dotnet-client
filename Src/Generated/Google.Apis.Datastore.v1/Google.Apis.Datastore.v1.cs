@@ -1318,6 +1318,59 @@ namespace Google.Apis.Datastore.v1
             }
         }
 
+        /// <summary>Runs an aggregation query.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
+        public virtual RunAggregationQueryRequest RunAggregationQuery(Google.Apis.Datastore.v1.Data.RunAggregationQueryRequest body, string projectId)
+        {
+            return new RunAggregationQueryRequest(service, body, projectId);
+        }
+
+        /// <summary>Runs an aggregation query.</summary>
+        public class RunAggregationQueryRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.RunAggregationQueryResponse>
+        {
+            /// <summary>Constructs a new RunAggregationQuery request.</summary>
+            public RunAggregationQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.RunAggregationQueryRequest body, string projectId) : base(service)
+            {
+                ProjectId = projectId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Datastore.v1.Data.RunAggregationQueryRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "runAggregationQuery";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{projectId}:runAggregationQuery";
+
+            /// <summary>Initializes RunAggregationQuery parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Queries for entities.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
@@ -1374,6 +1427,90 @@ namespace Google.Apis.Datastore.v1
 }
 namespace Google.Apis.Datastore.v1.Data
 {
+    /// <summary>Defines a aggregation that produces a single result.</summary>
+    public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional name of the property to store the result of the aggregation. If not provided, Datastore
+        /// will pick a default name following the format `property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS
+        /// count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ... ); ``` becomes:
+        /// ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS property_1, COUNT_UP_TO(3) AS
+        /// count_up_to_3, COUNT_UP_TO(4) AS property_2 OVER ( ... ); ``` Requires: * Must be unique across all
+        /// aggregation aliases. * Conform to entity property name limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>Count aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual Count Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Datastore query for running an aggregation over a Query.</summary>
+    public class AggregationQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Series of aggregations to apply over the results of the `nested_query`. Requires: * A minimum of
+        /// one and maximum of five aggregations per query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
+
+        /// <summary>Nested query for aggregation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestedQuery")]
+        public virtual Query NestedQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of a single bucket from a Datastore aggregation query. The keys of `aggregate_properties` are the
+    /// same for all results in an aggregation query, unlike entity queries which can have different fields present for
+    /// each result.
+    /// </summary>
+    public class AggregationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The result of the aggregation functions, ex: `COUNT(*) AS total_entities`. The key is the alias assigned to
+        /// the aggregation function on input and the size of this map equals the number of aggregation functions in the
+        /// query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, Value> AggregateProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A batch of aggregation results produced by an aggregation query.</summary>
+    public class AggregationResultBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aggregation results for this batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationResults")]
+        public virtual System.Collections.Generic.IList<AggregationResult> AggregationResults { get; set; }
+
+        /// <summary>
+        /// The state of the query after the current batch. Only COUNT(*) aggregations are supported in the initial
+        /// launch. Therefore, expected result type is limited to `NO_MORE_RESULTS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moreResults")]
+        public virtual string MoreResults { get; set; }
+
+        /// <summary>
+        /// Read timestamp this batch was returned from. In a single transaction, subsequent query result batches for
+        /// the same query can have a greater timestamp. Each batch's read timestamp is valid for all preceding batches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Datastore.AllocateIds.</summary>
     public class AllocateIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1518,6 +1655,25 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The operator for combining multiple filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
         public virtual string Op { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Count of entities that match the query. The `COUNT(*)` aggregation function operates on the entire entity so it
+    /// does not require a field reference.
+    /// </summary>
+    public class Count : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional constraint on the maximum number of entities to count. This provides a way to set an
+        /// upper bound on the number of entities to scan, limiting latency and cost. Unspecified is interpreted as no
+        /// bound. If a zero value is provided, a count result of zero should always be expected. High-Level Example:
+        /// ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be non-negative when present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upTo")]
+        public virtual System.Nullable<long> UpTo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2772,6 +2928,54 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The response for Datastore.Rollback. (an empty message).</summary>
     public class RollbackResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for Datastore.RunAggregationQuery.</summary>
+    public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The query to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationQuery")]
+        public virtual AggregationQuery AggregationQuery { get; set; }
+
+        /// <summary>
+        /// The ID of the database against which to make the request. '(default)' is not allowed; please use empty
+        /// string '' to refer the default database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>The GQL query to run. This query must be an aggregation query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
+        public virtual GqlQuery GqlQuery { get; set; }
+
+        /// <summary>
+        /// Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single
+        /// partition. This partition ID is normalized with the standard default context partition ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
+        public virtual PartitionId PartitionId { get; set; }
+
+        /// <summary>The options for this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
+        public virtual ReadOptions ReadOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for Datastore.RunAggregationQuery.</summary>
+    public class RunAggregationQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A batch of aggregation results. Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batch")]
+        public virtual AggregationResultBatch Batch { get; set; }
+
+        /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual AggregationQuery Query { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -890,7 +890,7 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
                 /// <param name="name">
-                /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in the
+                /// Required. The resource name of the Workload to fetch. This is the workload's relative path in the
                 /// API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
                 /// For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
                 /// </param>
@@ -910,7 +910,7 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in
+                    /// Required. The resource name of the Workload to fetch. This is the workload's relative path in
                     /// the API, formatted as
                     /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example,
                     /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
@@ -1197,6 +1197,15 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
+        /// <summary>
+        /// Optional. This field is deprecated and will be removed in future version of the API. Name of the OrgPolicy
+        /// which was modified with non-compliant change and resulted in this violation. Format:
+        /// projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name}
+        /// organizations/{organization_id}/policies/{constraint_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
+        public virtual string NonCompliantOrgPolicy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1446,7 +1455,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
+    /// <summary>A Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1461,6 +1470,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
+
+        /// <summary>Output only. Count of active Violations in the Workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStatus")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus ComplianceStatus { get; set; }
 
         /// <summary>
         /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
@@ -1553,7 +1566,25 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
     }
 
-    /// <summary>Settings specific to the Key Management Service.</summary>
+    /// <summary>Represents the Compliance Status of this workload</summary>
+    public class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of active Violations which are acknowledged in the Workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedViolationCount")]
+        public virtual System.Nullable<int> AcknowledgedViolationCount { get; set; }
+
+        /// <summary>Count of active Violations which haven't been acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
+        public virtual System.Nullable<int> ActiveViolationCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring,
+    /// callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+    /// </summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1608,8 +1639,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ResourceId { get; set; }
 
         /// <summary>
-        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
-        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        /// Indicates the type of resource. This field should be specified to correspond the id to the right resource
+        /// type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }

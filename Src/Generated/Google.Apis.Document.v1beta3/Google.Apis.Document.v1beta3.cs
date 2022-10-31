@@ -3569,6 +3569,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; }
 
+        /// <summary>The history of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4815,6 +4819,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; }
 
+        /// <summary>The history of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5833,7 +5841,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The configuration used when outputting documents.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies which fields to include in the output documents.</summary>
+        /// <summary>
+        /// Specifies which fields to include in the output documents. Only supports top level document and pages field
+        /// so it must be in the form of `{document_field_name}` or `pages.{page_field_name}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
         public virtual object FieldMask { get; set; }
 
@@ -6294,6 +6305,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Layout for Table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentPageLayout Layout { get; set; }
+
+        /// <summary>The history of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentProvenance Provenance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6987,7 +7002,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
 
-        /// <summary>Specifies which fields to include in ProcessResponse's document.</summary>
+        /// <summary>
+        /// Specifies which fields to include in ProcessResponse's document. Only supports top level document and pages
+        /// field so it must be in the form of `{document_field_name}` or `pages.{page_field_name}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
         public virtual object FieldMask { get; set; }
 

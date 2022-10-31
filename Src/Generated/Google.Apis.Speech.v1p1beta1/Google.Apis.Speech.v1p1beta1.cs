@@ -1525,6 +1525,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
 
+        /// <summary>Provides information on speech adaptation behavior in response</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechAdaptationInfo")]
+        public virtual SpeechAdaptationInfo SpeechAdaptationInfo { get; set; }
+
         /// <summary>When available, billed audio seconds for the corresponding request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBilledTime")]
         public virtual object TotalBilledTime { get; set; }
@@ -1693,10 +1697,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
         /// <summary>
         /// The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values
-        /// for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR,
-        /// AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We
-        /// only recognize the first channel by default. To perform independent recognition on each channel set
-        /// `enable_separate_recognition_per_channel` to 'true'.
+        /// for LINEAR16, OGG_OPUS and FLAC are `1`-`8`. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE
+        /// is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We only recognize the first channel by
+        /// default. To perform independent recognition on each channel set `enable_separate_recognition_per_channel` to
+        /// 'true'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioChannelCount")]
         public virtual System.Nullable<int> AudioChannelCount { get; set; }
@@ -1955,6 +1959,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
 
+        /// <summary>Provides information on adaptation behavior in response</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechAdaptationInfo")]
+        public virtual SpeechAdaptationInfo SpeechAdaptationInfo { get; set; }
+
         /// <summary>When available, billed audio seconds for the corresponding request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBilledTime")]
         public virtual object TotalBilledTime { get; set; }
@@ -2016,6 +2024,26 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
         public virtual System.Collections.Generic.IList<PhraseSet> PhraseSets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information on speech adaptation use in results</summary>
+    public class SpeechAdaptationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether there was a timeout when applying speech adaptation. If true, adaptation had no effect in the
+        /// response transcript.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptationTimeout")]
+        public virtual System.Nullable<bool> AdaptationTimeout { get; set; }
+
+        /// <summary>
+        /// If set, returns a message specifying which part of the speech adaptation request timed out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutMessage")]
+        public virtual string TimeoutMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

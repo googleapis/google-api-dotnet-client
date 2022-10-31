@@ -3919,9 +3919,10 @@ namespace Google.Apis.Pubsub.v1.Data
     public class PullResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Received Pub/Sub messages. The list will be empty if there are no more messages available in the backlog.
-        /// For JSON, the response can be entirely empty. The Pub/Sub system may return fewer than the `maxMessages`
-        /// requested even if there are more messages available in the backlog.
+        /// Received Pub/Sub messages. The list will be empty if there are no more messages available in the backlog, or
+        /// if no messages could be returned before the request timeout. For JSON, the response can be entirely empty.
+        /// The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages
+        /// available in the backlog.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receivedMessages")]
         public virtual System.Collections.Generic.IList<ReceivedMessage> ReceivedMessages { get; set; }

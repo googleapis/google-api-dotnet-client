@@ -2084,13 +2084,11 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashDigest")]
         public virtual string HashDigest { get; set; }
 
-        /// <summary>
-        /// The OS affected by a vulnerability This field is deprecated and the information is in cpe_uri
-        /// </summary>
+        /// <summary>The OS affected by a vulnerability Used to generate the cpe_uri for OS packages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("os")]
         public virtual string Os { get; set; }
 
-        /// <summary>The version of the OS This field is deprecated and the information is in cpe_uri</summary>
+        /// <summary>The version of the OS Used to generate the cpe_uri for OS packages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; }
 

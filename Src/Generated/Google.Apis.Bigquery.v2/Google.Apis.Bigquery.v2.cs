@@ -4909,6 +4909,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
+        /// <summary>
+        /// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default
+        /// is LOGICAL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageBillingModel")]
+        public virtual string StorageBillingModel { get; set; }
+
         /// <summary>[Optional]The tags associated with this dataset. Tag keys are globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<TagsData> Tags { get; set; }
@@ -5590,6 +5597,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; }
+
+        /// <summary>
+        /// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data
+        /// source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataCacheMode")]
+        public virtual string MetadataCacheMode { get; set; }
+
+        /// <summary>
+        /// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their
+        /// metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently
+        /// SIMPLE is the only supported Object Metadata type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectMetadata")]
+        public virtual string ObjectMetadata { get; set; }
 
         /// <summary>Additional properties to set if sourceFormat is set to Parquet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parquetOptions")]

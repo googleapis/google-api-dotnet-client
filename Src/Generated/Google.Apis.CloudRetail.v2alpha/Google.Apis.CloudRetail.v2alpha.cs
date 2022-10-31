@@ -3813,6 +3813,21 @@ namespace Google.Apis.CloudRetail.v2alpha
                         public virtual System.Nullable<long> Ets { get; set; }
 
                         /// <summary>
+                        /// The prebuilt rule name that can convert a specific type of raw_json. For example:
+                        /// "default_schema/v1.0"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("prebuiltRule", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PrebuiltRule { get; set; }
+
+                        /// <summary>
+                        /// An arbitrary serialized JSON string that contains necessary information that can comprise a
+                        /// user event. When this field is specified, the user_event field will be ignored. Note:
+                        /// line-delimited JSON is not supported, a single JSON only.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("rawJson", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RawJson { get; set; }
+
+                        /// <summary>
                         /// The URL including cgi-parameters but excluding the hash fragment with a length limit of
                         /// 5,000 characters. This is often more useful than the referer URL, because many browsers only
                         /// send the domain for 3rd party requests.
@@ -3850,6 +3865,22 @@ namespace Google.Apis.CloudRetail.v2alpha
                             RequestParameters.Add("ets", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "ets",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("prebuiltRule", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "prebuiltRule",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("rawJson", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "rawJson",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4182,13 +4213,18 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual string Dataset { get; set; }
 
                     /// <summary>
-                    /// The device type context for completion suggestions. It is useful to apply different suggestions
-                    /// on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across
-                    /// all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A
-                    /// customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
+                    /// The device type context for completion suggestions. We recommend that you leave this field
+                    /// empty. It can apply different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`.
+                    /// If it is empty, the suggestions are across all device types. Supported formats: *
+                    /// `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with `OTHER_`, e.g.
+                    /// `OTHER_IPHONE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DeviceType { get; set; }
+
+                    /// <summary>If true, attribute suggestions are enabled and provided in response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("enableAttributeSuggestions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> EnableAttributeSuggestions { get; set; }
 
                     /// <summary>
                     /// Note that this field applies for `user-data` dataset only. For requests with `cloud-retail`
@@ -4258,6 +4294,14 @@ namespace Google.Apis.CloudRetail.v2alpha
                         RequestParameters.Add("deviceType", new Google.Apis.Discovery.Parameter
                         {
                             Name = "deviceType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("enableAttributeSuggestions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "enableAttributeSuggestions",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5305,8 +5349,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// The error payload that is populated on LRO import APIs. Including:
-    /// "google.cloud.retail.v2.ProductService.ImportProducts" "google.cloud.retail.v2.EventService.ImportUserEvents"
+    /// The error payload that is populated on LRO import APIs, including
+    /// "google.cloud.retail.v2.ProductService.ImportProducts" and
+    /// "google.cloud.retail.v2.EventService.ImportUserEvents".
     /// </summary>
     public class GoogleCloudRetailLoggingImportErrorContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5319,13 +5364,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string GcsPath { get; set; }
 
         /// <summary>
-        /// The detailed content which caused the error on importing an inventory activity.
-        /// http://cs/google3/google/cloud/retail/v2main/inventory_activity.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventoryActivity")]
-        public virtual string InventoryActivity { get; set; }
-
-        /// <summary>
         /// Line number of the content in file. Should be empty for permission or batch operation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
@@ -5334,41 +5372,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>The operation resource name of the LRO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
         public virtual string OperationName { get; set; }
-
-        /// <summary>
-        /// The detailed content which caused the error on importing an order.
-        /// http://cs/google3/google/cloud/retail/v2main/order.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual string Order { get; set; }
-
-        /// <summary>
-        /// The detailed content which caused the error on importing a place.
-        /// http://cs/google3/google/cloud/retail/v2main/place.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("place")]
-        public virtual string Place { get; set; }
-
-        /// <summary>
-        /// The detailed content which caused the error on importing a place asset.
-        /// http://cs/google3/google/cloud/retail/v2main/place_asset.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("placeAsset")]
-        public virtual string PlaceAsset { get; set; }
-
-        /// <summary>
-        /// The detailed content which caused the error on importing a place product price.
-        /// http://cs/google3/google/cloud/retail/v2main/place_product_price.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("placeProductPrice")]
-        public virtual string PlaceProductPrice { get; set; }
-
-        /// <summary>
-        /// The detailed content which caused the error on importing a place product settings.
-        /// http://cs/google3/google/cloud/retail/v2main/place_product_settings.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("placeProductSettings")]
-        public virtual string PlaceProductSettings { get; set; }
 
         /// <summary>The detailed content which caused the error on importing a product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
@@ -6126,6 +6129,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>Response of the auto-complete query.</summary>
     public class GoogleCloudRetailV2alphaCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A map of matched attribute suggestions. Current supported keys: * `brands` * `categories`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeResults")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult> AttributeResults { get; set; }
+
         /// <summary>
         /// A unique complete token. This should be included in the UserEvent.completion_detail for search events
         /// resulting from this completion, which enables accurate attribution of complete model performance.
@@ -6149,6 +6156,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult> RecentSearchResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource that represents attribute results.</summary>
+    public class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of suggestions for the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<string> Suggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6577,6 +6595,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Gcs output result.</summary>
+    public class GoogleCloudRetailV2alphaGcsOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uri of Gcs output</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
+        public virtual string OutputUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7310,12 +7339,16 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Output result.</summary>
+    /// <summary>Output result that stores the information about where the exported data is stored.</summary>
     public class GoogleCloudRetailV2alphaOutputResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Export result in BigQuery.</summary>
+        /// <summary>The BigQuery location where the result is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBigQueryOutputResult> BigqueryResult { get; set; }
+
+        /// <summary>The Google Cloud Storage location where the result is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaGcsOutputResult> GcsResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7383,7 +7416,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// set to true, the associated product object will be returned in the `results.metadata` field in the
         /// prediction response. * `returnScore`: Boolean. If set to true, the prediction 'score' corresponding to each
         /// returned product will be set in the `results.metadata` field in the prediction response. The given 'score'
-        /// indicates the probability of an product being clicked/purchased given the user's context and history. *
+        /// indicates the probability of a product being clicked/purchased given the user's context and history. *
         /// `strictFiltering`: Boolean. True by default. If set to false, the service will return generic (unfiltered)
         /// popular products instead of empty if your filter blocks all prediction results. * `priceRerankLevel`:
         /// String. Default empty. If set to be non-empty, then it needs to be one of {'no-price-reranking',
@@ -8905,7 +8938,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey FacetKey { get; set; }
 
         /// <summary>
-        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum
+        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum
         /// allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an
         /// INVALID_ARGUMENT is returned.
         /// </summary>
@@ -9996,6 +10029,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Gcs output result.</summary>
+    public class GoogleCloudRetailV2betaGcsOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uri of Gcs output</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
+        public virtual string OutputUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response of the ImportCompletionDataRequest. If the long running operation is done, this message is returned by
     /// the google.longrunning.Operations.response field if the operation is successful.
@@ -10232,12 +10276,16 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Output result.</summary>
+    /// <summary>Output result that stores the information about where the exported data is stored.</summary>
     public class GoogleCloudRetailV2betaOutputResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Export result in BigQuery.</summary>
+        /// <summary>The BigQuery location where the result is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaBigQueryOutputResult> BigqueryResult { get; set; }
+
+        /// <summary>The Google Cloud Storage location where the result is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaGcsOutputResult> GcsResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

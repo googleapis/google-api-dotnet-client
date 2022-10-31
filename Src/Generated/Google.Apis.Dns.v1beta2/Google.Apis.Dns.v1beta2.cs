@@ -1631,9 +1631,9 @@ namespace Google.Apis.Dns.v1beta2
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
-        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
-        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this
+        /// returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used
+        /// for building permission-aware UIs and command-line tools, not for authorization checking. This operation may
         /// "fail open" without warning.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -1647,9 +1647,9 @@ namespace Google.Apis.Dns.v1beta2
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
-        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
-        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this
+        /// returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used
+        /// for building permission-aware UIs and command-line tools, not for authorization checking. This operation may
         /// "fail open" without warning.
         /// </summary>
         public class TestIamPermissionsRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.GoogleIamV1TestIamPermissionsResponse>
@@ -3196,7 +3196,7 @@ namespace Google.Apis.Dns.v1beta2
         /// <summary>Applies a partial update to an existing Response Policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param name="responsePolicy">User assigned name of the Respones Policy addressed by this request.</param>
+        /// <param name="responsePolicy">User assigned name of the response policy addressed by this request.</param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1beta2.Data.ResponsePolicy body, string project, string responsePolicy)
         {
             return new PatchRequest(service, body, project, responsePolicy);
@@ -3218,7 +3218,7 @@ namespace Google.Apis.Dns.v1beta2
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>User assigned name of the Respones Policy addressed by this request.</summary>
+            /// <summary>User assigned name of the response policy addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResponsePolicy { get; private set; }
 
@@ -5046,7 +5046,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
 
-        /// <summary>IPv4 address to forward to.</summary>
+        /// <summary>IPv4 address to forward queries to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Address")]
         public virtual string Ipv4Address { get; set; }
 
@@ -5515,12 +5515,12 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual ResponseHeader Header { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
-        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
-        /// collection change between the first and last paginated list request, the set of all elements returned are an
-        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
-        /// the maximum page size.
+        /// The presence of this field indicates that more results exist following your last page of results in
+        /// pagination order. To fetch them, make another list request by using this value as your page token. This lets
+        /// you view the complete contents of even very large collections one page at a time. However, if the contents
+        /// of the collection change between the first and last paginated list request, the set of all elements returned
+        /// are an inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger
+        /// than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

@@ -2311,7 +2311,7 @@ namespace Google.Apis.CloudAsset.v1
             /// characters are ignored. Example: "location DESC, name". Only singular primitive fields in the response
             /// are sortable: * name * assetType * project * displayName * description * location * createTime *
             /// updateTime * state * parentFullResourceName * parentAssetType All the other fields such as repeated
-            /// fields (e.g., `networkTags`, 'kmsKeys'), map fields (e.g., `labels`) and struct fields (e.g.,
+            /// fields (e.g., `networkTags`, `kmsKeys`), map fields (e.g., `labels`) and struct fields (e.g.,
             /// `additionalAttributes`) are not supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -2345,7 +2345,7 @@ namespace Google.Apis.CloudAsset.v1
             /// to find Cloud resources that have a label "env" and its value is "prod". * `labels.env:*` to find Cloud
             /// resources that have a label "env". * `kmsKey:key` to find Cloud resources encrypted with a
             /// customer-managed encryption key whose name contains "key" as a word. This field is deprecated. Please
-            /// use the `"kmsKeys"` field to retrieve KMS key information. * `kmsKeys:key` to find Cloud resources
+            /// use the `kmsKeys` field to retrieve KMS key information. * `kmsKeys:key` to find Cloud resources
             /// encrypted with customer-managed encryption keys whose name contains the word "key". *
             /// `relationships:instance-group-1` to find Cloud resources that have relationships with "instance-group-1"
             /// in the related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find compute instances that
@@ -2372,7 +2372,8 @@ namespace Google.Apis.CloudAsset.v1
             /// snake_case and camelCase are supported. Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
             /// The read_mask paths must be valid field paths listed but not limited to (both snake_case and camelCase
             /// are supported): * name * assetType * project * displayName * description * location * tagKeys *
-            /// tagValues * tagValueIds * labels * networkTags * kmsKeys * createTime * updateTime * state *
+            /// tagValues * tagValueIds * labels * networkTags * kmsKey (This field is deprecated. Please use the
+            /// `kmsKeys` field to retrieve KMS key information.) * kmsKeys * createTime * updateTime * state *
             /// additionalAttributes * versionedResources If read_mask is not specified, all fields except
             /// versionedResources will be returned. If only '*' is specified, all fields including versionedResources
             /// will be returned. Any invalid field path will trigger INVALID_ARGUMENT error.
@@ -5424,11 +5425,16 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Collections.Generic.IList<string> Folders { get; set; }
 
         /// <summary>
-        /// This field only presents for the purpose of backward-compatibility. Please use `kms_keys` field to retrieve
-        /// KMS key information. This field will only be populated for the resource types included in this
-        /// [list](https://cloud.google.com/asset-inventory/docs/legacy-fields#resource_types_with_the_to_be_deprecated_kmskey_field)
-        /// for backward compatible purpose. To search against the `kms_key`: * Use a field query. Example: `kmsKey:key`
-        /// * Use a free text query. Example: `key`
+        /// The Cloud KMS
+        /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys) name
+        /// or
+        /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
+        /// name. This field only presents for the purpose of backward compatibility. Please use the `kms_keys` field to
+        /// retrieve KMS key information. This field is available only when the resource's Protobuf contains it and will
+        /// only be populated for [these resource
+        /// types](https://cloud.google.com/asset-inventory/docs/legacy-field-names#resource_types_with_the_to_be_deprecated_kmskey_field)
+        /// for backward compatible purposes. To search against the `kms_key`: * Use a field query. Example:
+        /// `kmsKey:key` * Use a free text query. Example: `key`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }

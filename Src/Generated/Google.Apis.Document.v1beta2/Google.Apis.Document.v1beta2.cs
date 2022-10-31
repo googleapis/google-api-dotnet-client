@@ -2417,6 +2417,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; }
 
+        /// <summary>The history of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3690,6 +3694,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Layout for Table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; }
+
+        /// <summary>The history of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

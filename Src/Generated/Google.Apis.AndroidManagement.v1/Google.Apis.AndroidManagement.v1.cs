@@ -5476,7 +5476,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class PolicyEnforcementRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An action to block access to apps and data on a fully managed device or in a work profile. This action also
+        /// An action to block access to apps and data on a company owned device or in a work profile. This action also
         /// triggers a user-facing notification with information (where possible) on how to correct the compliance
         /// issue. Note: wipeAction must also be specified.
         /// </summary>
@@ -5488,7 +5488,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string SettingName { get; set; }
 
         /// <summary>
-        /// An action to reset a fully managed device or delete a work profile. Note: blockAction must also be
+        /// An action to reset a company owned device or delete a work profile. Note: blockAction must also be
         /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wipeAction")]
@@ -6271,7 +6271,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
-    /// An action to reset a fully managed device or delete a work profile. Note: blockAction must also be specified.
+    /// An action to reset a company owned device or delete a work profile. Note: blockAction must also be specified.
     /// </summary>
     public class WipeAction : Google.Apis.Requests.IDirectResponseSchema
     {

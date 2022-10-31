@@ -1133,7 +1133,8 @@ namespace Google.Apis.OSConfig.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource name in the form: projects/{project}/locations/{location}
+                /// Required. The parent resource name in the form: projects/{project}/locations/{location}. Note:
+                /// Specify the zone of your VMs as the location.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.OSConfig.v1.Data.OSPolicyAssignment body, string parent)
                 {
@@ -1157,7 +1158,8 @@ namespace Google.Apis.OSConfig.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource name in the form: projects/{project}/locations/{location}
+                    /// Required. The parent resource name in the form: projects/{project}/locations/{location}. Note:
+                    /// Specify the zone of your VMs as the location.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3261,7 +3263,8 @@ namespace Google.Apis.OSConfig.v1.Data
     /// OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted
     /// group of Compute Engine VM instances. An OS policy is used to define the desired state configuration for a
     /// Compute Engine VM instance through a set of configuration resources that provide capabilities such as installing
-    /// or removing software packages, or executing a script. For more information, see [OS policy and OS policy
+    /// or removing software packages, or executing a script. For more information about the OS policy resource
+    /// definitions and examples, see [OS policy and OS policy
     /// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
     /// </summary>
     public class OSPolicyAssignment : Google.Apis.Requests.IDirectResponseSchema

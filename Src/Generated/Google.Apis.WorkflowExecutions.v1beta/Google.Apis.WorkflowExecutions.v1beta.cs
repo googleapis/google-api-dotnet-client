@@ -754,15 +754,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>
-        /// Output only. Status tracks the current steps and progress data of this execution. &amp;gt; **Preview:** This
-        /// field is covered by the &amp;gt; [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of
-        /// &amp;gt; the Google Cloud Terms of Service. Pre-GA features might have limited &amp;gt; support, and changes
-        /// to pre-GA features might not be compatible with &amp;gt; other pre-GA versions. For more information, see
-        /// the &amp;gt; [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). &amp;gt;
-        /// This field is usable only if your project has access. See the &amp;gt; [access request
-        /// page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
-        /// </summary>
+        /// <summary>Output only. Status tracks the current steps and progress data of this execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
 
@@ -844,16 +836,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// &amp;gt; **Preview:** This field is covered by the &amp;gt; [Pre-GA Offerings
-    /// Terms](https://cloud.google.com/terms/service-terms) of &amp;gt; the Google Cloud Terms of Service. Pre-GA
-    /// features might have limited &amp;gt; support, and changes to pre-GA features might not be compatible with
-    /// &amp;gt; other pre-GA versions. For more information, see the &amp;gt; [launch stage
-    /// descriptions](https://cloud.google.com/products#product-launch-stages). &amp;gt; This field is usable only if
-    /// your project has access. See the &amp;gt; [access request
-    /// page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
-    /// Represents the current status of this execution.
-    /// </summary>
+    /// <summary>Represents the current status of this execution.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -353,34 +353,9 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountActivity")]
         public virtual AccountActivity AccountActivity { get; set; }
 
-        /// <summary>
-        /// Details about the account risk for the user in the scope. This feature is available only to selected
-        /// developers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accountRiskVerdict")]
-        public virtual AccountRiskVerdict AccountRiskVerdict { get; set; }
-
         /// <summary>Required. Details about the licensing status of the user for the app in the scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLicensingVerdict")]
         public virtual string AppLicensingVerdict { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Contains information about account risk that indicates if the current user session seems low risk, unknown, or
-    /// risky before you allow important actions to proceed.
-    /// </summary>
-    public class AccountRiskVerdict : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Indicates the account risk level of the current user session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
-        public virtual string Risk { get; set; }
-
-        /// <summary>Required. Indicates the account risk level of the current user session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("riskLevel")]
-        public virtual string RiskLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

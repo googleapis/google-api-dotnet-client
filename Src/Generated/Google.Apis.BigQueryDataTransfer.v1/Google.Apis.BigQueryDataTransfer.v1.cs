@@ -3271,7 +3271,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("immutable")]
         public virtual System.Nullable<bool> Immutable { get; set; }
 
-        /// <summary>For integer and double values specifies maxminum allowed value.</summary>
+        /// <summary>For integer and double values specifies maximum allowed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual System.Nullable<double> MaxValue { get; set; }
 

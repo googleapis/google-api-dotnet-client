@@ -8912,7 +8912,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deidentify")]
         public virtual GooglePrivacyDlpV2Deidentify Deidentify { get; set; }
 
-        /// <summary>Enable email notification for project owners and editors on job's completion/failure.</summary>
+        /// <summary>
+        /// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential
+        /// Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobNotificationEmails")]
         public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; }
 
@@ -9576,7 +9579,6 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Container structure for the content to inspect.</summary>
     public class GooglePrivacyDlpV2ContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Content data to inspect or redact. Replaces `type` and `data`.</summary>
@@ -11191,7 +11193,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the
         /// names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When
         /// sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern
-        /// `[A-Za-z0-9$-_]{1,64}`.
+        /// `[A-Za-z0-9$_-]{1,64}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -11243,6 +11245,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Internal name of the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The default sensitivity of the infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
 
         /// <summary>Which parts of the API supports this InfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedBy")]

@@ -302,6 +302,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
             {
                 this.service = service;
                 Insights = new InsightsResource(service);
+                Subscriptions = new SubscriptionsResource(service);
             }
 
             /// <summary>Gets the Insights resource.</summary>
@@ -794,6 +795,222 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Subscriptions resource.</summary>
+            public virtual SubscriptionsResource Subscriptions { get; }
+
+            /// <summary>The "subscriptions" collection of methods.</summary>
+            public class SubscriptionsResource
+            {
+                private const string Resource = "subscriptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SubscriptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new BeyondCorp Enterprise Subscription in a given organization. Location will always be
+                /// global as BeyondCorp subscriptions are per organization.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the subscription location using the form:
+                /// `organizations/{organization_id}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new BeyondCorp Enterprise Subscription in a given organization. Location will always be
+                /// global as BeyondCorp subscriptions are per organization.
+                /// </summary>
+                public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the subscription location using the form:
+                    /// `organizations/{organization_id}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/subscriptions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Subscription.</summary>
+                /// <param name="name">
+                /// Required. The resource name of Subscription using the form:
+                /// `organizations/{organization_id}/locations/{location}/subscriptions/{subscription_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single Subscription.</summary>
+                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of Subscription using the form:
+                    /// `organizations/{organization_id}/locations/{location}/subscriptions/{subscription_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Subscriptions in a given organization and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of Subscription using the form:
+                /// `organizations/{organization_id}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Subscriptions in a given organization and location.</summary>
+                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of Subscription using the form:
+                    /// `organizations/{organization_id}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If not specified, a default value of 50 will be
+                    /// used by the service. Regardless of the page_size value, the response may include a partial list
+                    /// and a caller should only rely on response's next_page_token to determine if there are more
+                    /// instances left to be queried.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The next_page_token value returned from a previous ListSubscriptionsRequest, if any.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/subscriptions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6713,254 +6930,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Creates a new NetConnection in a given project and location.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The resource project name of the NetConnection location using the form:
-                /// `projects/{project_id}/locations/{location_id}`
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates a new NetConnection in a given project and location.</summary>
-                public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The resource project name of the NetConnection location using the form:
-                    /// `projects/{project_id}/locations/{location_id}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. User-settable NetConnection resource ID. * Must start with a letter. * Must contain
-                    /// between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("netConnectionId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string NetConnectionId { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/netConnections";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("netConnectionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "netConnectionId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Deletes a single NetConnection.</summary>
-                /// <param name="name">
-                /// Required. BeyondCorp Connector name using the form:
-                /// `projects/{project_id}/locations/{location_id}/netConnections/{net_connection_id}`
-                /// </param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Deletes a single NetConnection.</summary>
-                public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. BeyondCorp Connector name using the form:
-                    /// `projects/{project_id}/locations/{location_id}/netConnections/{net_connection_id}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/netConnections/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Gets details of a single NetConnection.</summary>
-                /// <param name="name">
-                /// Required. BeyondCorp NetConnection name using the form:
-                /// `projects/{project_id}/locations/{location_id}/netConnections/{net_connection_id}`
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets details of a single NetConnection.</summary>
-                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. BeyondCorp NetConnection name using the form:
-                    /// `projects/{project_id}/locations/{location_id}/netConnections/{net_connection_id}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/netConnections/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -7033,238 +7002,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Lists NetConnections in a given project and location.</summary>
-                /// <param name="parent">
-                /// Required. The resource name of the NetConnection location using the form:
-                /// `projects/{project_id}/locations/{location_id}`
-                /// </param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>Lists NetConnections in a given project and location.</summary>
-                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The resource name of the NetConnection location using the form:
-                    /// `projects/{project_id}/locations/{location_id}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional. A filter specifying constraints of a list operation.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>
-                    /// Optional. Specifies the ordering of results. See [Sorting
-                    /// order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Optional. The maximum number of items to return. If not specified, a default value of 50 will be
-                    /// used by the service. Regardless of the page_size value, the response may include a partial list
-                    /// and a caller should only rely on response's next_page_token to determine if there are more
-                    /// instances left to be queried.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>
-                    /// Optional. The next_page_token value returned from a previous ListNetConnectionsRequest, if any.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/netConnections";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Updates the parameters of a single NetConnection.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Unique resource name of the NetConnection. The name is ignored when creating a
-                /// NetConnection.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>Updates the parameters of a single NetConnection.</summary>
-                public class PatchRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Unique resource name of the NetConnection. The name is ignored when creating a
-                    /// NetConnection.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Optional. If set as true, will create the resource if it is not found.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> AllowMissing { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Required. Mask of fields to update. At least one path must be supplied in this field. The
-                    /// elements of the repeated paths field may only include these fields from
-                    /// [BeyondCorp.NetConnection]: * `labels` * `display_name`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/netConnections/[^/]+$",
-                        });
-                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "allowMissing",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -9241,41 +8978,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     }
 
     /// <summary>Represents the metadata of the long-running operation.</summary>
-    public class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. API version used to start the operation.</summary>
@@ -9332,128 +9034,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for BeyondCorp.ListNetConnections.</summary>
-    public class GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of BeyondCorp NetConnections in the project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("netConnections")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection> NetConnections { get; set; }
-
-        /// <summary>
-        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>A list of locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A BeyondCorp NetConnection resource represents a BeyondCorp protected connection from BeyondCorp Client
-    /// Connector to a remote application through a BeyondCorp AppConnector gateway.
-    /// </summary>
-    public class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. List of [google.cloud.beyondcorp.v1main.AppConnector.name] that are authorized to be associated
-        /// with this NetConnection. e.g. projects/{project}/locations/{location}/appConnectors/{app_connector}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectors")]
-        public virtual System.Collections.Generic.IList<string> Connectors { get; set; }
-
-        /// <summary>Output only. Timestamp when the resource was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// Required. CIDRs for the remote networks to connect to. e.g. IPv4: 198.51.100.14/24 IPv6: 2001:db8::/48
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationCidrs")]
-        public virtual System.Collections.Generic.IList<string> DestinationCidrs { get; set; }
-
-        /// <summary>
-        /// Optional. An arbitrary user-provided name for the NetConnection. Cannot exceed 64 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Required. Unique resource name of the NetConnection. The name is ignored when creating a NetConnection.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. The full name of the VPC network connected to the applications. Client Connector will send
-        /// traffic here.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkVpc")]
-        public virtual string NetworkVpc { get; set; }
-
-        /// <summary>Output only. The current state of the NetConnection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. A unique identifier for the instance generated by the system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; }
-
-        /// <summary>Output only. Timestamp when the resource was last modified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of the long-running operation.</summary>
-    public class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
@@ -9715,6 +9295,71 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BeyondCorp.ListSubscriptions.</summary>
+    public class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of BeyondCorp Subscriptions in the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A BeyondCorp Subscription resource represents BeyondCorp Enterprise Subscription. BeyondCorp Enterprise
+    /// Subscription enables BeyondCorp Enterprise permium features for an organization.
+    /// </summary>
+    public class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Represents that, if subscription will renew or end when the term ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenewEnabled")]
+        public virtual System.Nullable<bool> AutoRenewEnabled { get; set; }
+
+        /// <summary>Output only. Create time of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. End time of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Required. Unique resource name of the Subscription. The name is ignored when creating a subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Number of seats in the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
+        public virtual System.Nullable<long> SeatCount { get; set; }
+
+        /// <summary>Required. SKU of subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sku")]
+        public virtual string Sku { get; set; }
+
+        /// <summary>Output only. Start time of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Output only. The current state of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. Type of subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

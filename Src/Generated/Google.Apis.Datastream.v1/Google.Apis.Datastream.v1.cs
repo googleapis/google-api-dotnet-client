@@ -3770,7 +3770,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
         public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
 
-        /// <summary>Stream large object values.</summary>
+        /// <summary>Stream large object values. NOTE: This feature is currently experimental.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamLargeObjects")]
         public virtual StreamLargeObjects StreamLargeObjects { get; set; }
 
@@ -3922,7 +3922,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string Publication { get; set; }
 
         /// <summary>
-        /// Required. The name of the logical replication slot that's configured with the pgoutput plugin.
+        /// Required. Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationSlot")]
         public virtual string ReplicationSlot { get; set; }

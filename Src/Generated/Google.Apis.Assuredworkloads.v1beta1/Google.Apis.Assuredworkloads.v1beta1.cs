@@ -1541,6 +1541,15 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
+        /// <summary>
+        /// Optional. This field is deprecated and will be removed in future version of the API. Name of the OrgPolicy
+        /// which was modified with non-compliant change and resulted in this violation. Format:
+        /// projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name}
+        /// organizations/{organization_id}/policies/{constraint_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
+        public virtual string NonCompliantOrgPolicy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1779,7 +1788,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
+    /// <summary>A Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

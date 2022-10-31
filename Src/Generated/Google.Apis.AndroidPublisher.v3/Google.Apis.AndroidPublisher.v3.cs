@@ -11615,6 +11615,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Nullable<bool> EligibleForStreamingServiceTaxRate { get; set; }
 
         /// <summary>
+        /// To collect communications or amusement taxes in the United States, choose the appropriate tax category.
+        /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingTaxType")]
+        public virtual string StreamingTaxType { get; set; }
+
+        /// <summary>
         /// Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or
         /// audiobooks in various regions may be eligible for reduced tax rates. [Learn
         /// more](https://support.google.com/googleplay/android-developer/answer/10463498).

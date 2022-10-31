@@ -1238,7 +1238,20 @@ namespace Google.Apis.Spanner.v1
                     /// \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time &amp;lt; \"2018-03-28T14:50:00Z\")
                     /// AND` \ `(error:*)` - Returns operations where: * The operation's metadata type is
                     /// CreateBackupMetadata. * The backup name contains the string "howl". * The operation started
-                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error.
+                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error. *
+                    /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata) AND` \
+                    /// `(metadata.source_backup:test) AND` \ `(metadata.progress.start_time &amp;lt;
+                    /// \"2022-01-18T14:50:00Z\") AND` \ `(error:*)` - Returns operations where: * The operation's
+                    /// metadata type is CopyBackupMetadata. * The source backup name contains the string "test". * The
+                    /// operation started before 2022-01-18T14:50:00Z. * The operation resulted in an error. *
+                    /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
+                    /// AND` \ `(metadata.database:test_db)) OR` \
+                    /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata) AND`
+                    /// \ `(metadata.source_backup:test_bkp)) AND` \ `(error:*)` - Returns operations where: * The
+                    /// operation's metadata matches either of criteria: * The operation's metadata type is
+                    /// CreateBackupMetadata AND the source database name of the backup contains the string "test_db" *
+                    /// The operation's metadata type is CopyBackupMetadata AND the source backup name contains the
+                    /// string "test_bkp" * The operation resulted in an error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }

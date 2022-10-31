@@ -1598,7 +1598,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
             }
 
-            /// <summary>Updates reseller metadata associated with the device.</summary>
+            /// <summary>Updates reseller metadata associated with the device. Android devices only.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="metadataOwnerId">
             /// Required. The owner of the newly set metadata. Set this to the partner ID.
@@ -1609,7 +1609,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 return new MetadataRequest(service, body, metadataOwnerId, deviceId);
             }
 
-            /// <summary>Updates reseller metadata associated with the device.</summary>
+            /// <summary>Updates reseller metadata associated with the device. Android devices only.</summary>
             public class MetadataRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.DeviceMetadata>
             {
                 /// <summary>Constructs a new Metadata request.</summary>
@@ -1784,7 +1784,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             /// <summary>
             /// Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously
             /// and returns an `Operation` that can be used to track progress. Read [Long‑running batch
-            /// operations](/zero-touch/guides/how-it-works#operations).
+            /// operations](/zero-touch/guides/how-it-works#operations). Android Devices only.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="partnerId">Required. The reseller partner ID.</param>
@@ -1796,7 +1796,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             /// <summary>
             /// Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously
             /// and returns an `Operation` that can be used to track progress. Read [Long‑running batch
-            /// operations](/zero-touch/guides/how-it-works#operations).
+            /// operations](/zero-touch/guides/how-it-works#operations). Android Devices only.
             /// </summary>
             public class UpdateMetadataAsyncRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Operation>
             {
@@ -2028,7 +2028,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message to claim a device on behalf of a customer.</summary>
     public class ClaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the customer for whom the device is being claimed.</summary>
+        /// <summary>The ID of the customer for whom the device is being claimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; }
 
@@ -2039,6 +2039,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Optional. The metadata to attach to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; }
+
+        /// <summary>The Google Workspace customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceCustomerId")]
+        public virtual string GoogleWorkspaceCustomerId { get; set; }
+
+        /// <summary>Optional. Must and can only be set for Chrome OS devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preProvisioningToken")]
+        public virtual string PreProvisioningToken { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
@@ -2099,6 +2107,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>
+        /// Output only. The Google Workspace account associated with this customer. Only used for customer Companies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceAccount")]
+        public virtual GoogleWorkspaceAccount GoogleWorkspaceAccount { get; set; }
 
         /// <summary>
         /// Input only. The preferred locale of the customer represented as a BCP47 language code. This field is
@@ -2346,7 +2360,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An Android device registered for zero-touch enrollment.</summary>
+    /// <summary>An Android or Chrome OS device registered for zero-touch enrollment.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2401,7 +2415,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalService")]
         public virtual string AdditionalService { get; set; }
 
-        /// <summary>The ID of the Customer that purchased the device.</summary>
+        /// <summary>The ID of the Google Workspace account that owns the Chrome OS device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceCustomerId")]
+        public virtual string GoogleWorkspaceCustomerId { get; set; }
+
+        /// <summary>The ID of the Customer that purchased the Android device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCompanyId")]
         public virtual System.Nullable<long> OwnerCompanyId { get; set; }
 
@@ -2437,14 +2455,25 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// </summary>
     public class DeviceIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// An identifier provided by OEMs, carried through the production and sales process. Only applicable to Chrome
+        /// OS devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeOsAttestedDeviceId")]
+        public virtual string ChromeOsAttestedDeviceId { get; set; }
+
+        /// <summary>The type of the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
         /// <summary>The device’s IMEI number. Validated on input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; }
 
         /// <summary>
         /// The device manufacturer’s name. Matches the device's built-in value returned from
-        /// `android.os.Build.MANUFACTURER`. Allowed values are listed in
-        /// [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
+        /// `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android
+        /// manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; }
@@ -2454,8 +2483,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string Meid { get; set; }
 
         /// <summary>
-        /// The device model's name. Matches the device's built-in value returned from `android.os.Build.MODEL`. Allowed
-        /// values are listed in [models](/zero-touch/resources/manufacturer-names#model-names).
+        /// The device model's name. Allowed values are listed in [Android
+        /// models](/zero-touch/resources/manufacturer-names#model-names) and [Chrome OS
+        /// models](https://support.google.com/chrome/a/answer/10130175?hl=en#identify_compatible).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -2524,7 +2554,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ProcessingStatus { get; set; }
 
         /// <summary>
-        /// The processing progress of the operation. Measured as a number from 0 to 100. A value of 10O doesnt always
+        /// The processing progress of the operation. Measured as a number from 0 to 100. A value of 10O doesn't always
         /// mean the operation completed—check for the inclusion of a `done` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
@@ -2647,9 +2677,13 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to find devices by customers.</summary>
     public class FindDevicesByOwnerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of customer IDs to search for.</summary>
+        /// <summary>The list of customer IDs to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomerId { get; set; }
+
+        /// <summary>The list of IDs of Google Workspace accounts to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceCustomerId")]
+        public virtual System.Collections.Generic.IList<string> GoogleWorkspaceCustomerId { get; set; }
 
         /// <summary>
         /// Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.
@@ -2685,6 +2719,21 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Google Workspace customer.</summary>
+    public class GoogleWorkspaceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; }
+
+        /// <summary>Output only. The pre-provisioning tokens previously used to claim devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preProvisioningTokens")]
+        public virtual System.Collections.Generic.IList<string> PreProvisioningTokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2825,7 +2874,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies one claim request.</summary>
     public class PartnerClaim : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the customer for whom the device is being claimed.</summary>
+        /// <summary>The ID of the customer for whom the device is being claimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; }
 
@@ -2836,6 +2885,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Required. The metadata to attach to the device at claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; }
+
+        /// <summary>The Google Workspace customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceCustomerId")]
+        public virtual string GoogleWorkspaceCustomerId { get; set; }
+
+        /// <summary>Optional. Must and can only be set for Chrome OS devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preProvisioningToken")]
+        public virtual string PreProvisioningToken { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
@@ -2878,7 +2935,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Captures the processing status for each device in the operation.</summary>
     public class PerDeviceStatusInBatch : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If processing succeeds, the device ID of the device.</summary>
+        /// <summary>If processing succeeds, the device ID of the Android device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; }
 
