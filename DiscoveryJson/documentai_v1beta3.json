@@ -836,7 +836,7 @@
    }
   }
  },
- "revision": "20221017",
+ "revision": "20221027",
  "rootUrl": "https://documentai.googleapis.com/",
  "schemas": {
   "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata": {
@@ -6089,14 +6089,6 @@
    "description": "Metadata about an entity type.",
    "id": "GoogleCloudDocumentaiV1beta3EntityTypeMetadata",
    "properties": {
-    "humanReviewLabelingMetadata": {
-     "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata",
-     "description": "Human review labeling config on the property."
-    },
-    "humanReviewMetadata": {
-     "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata",
-     "description": "Human review config on the entity type."
-    },
     "inactive": {
      "description": "Whether the entity type should be considered as \"inactive\".",
      "type": "boolean"
@@ -6158,17 +6150,6 @@
    },
    "type": "object"
   },
-  "GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata": {
-   "description": "Metadata for human review labeling config.",
-   "id": "GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata",
-   "properties": {
-    "enableNormalizationEditing": {
-     "description": "Whether to enable normalization editing.",
-     "type": "boolean"
-    }
-   },
-   "type": "object"
-  },
   "GoogleCloudDocumentaiV1beta3HumanReviewStatus": {
    "description": "The status of human review on a processed document.",
    "id": "GoogleCloudDocumentaiV1beta3HumanReviewStatus",
@@ -6198,22 +6179,6 @@
     "stateMessage": {
      "description": "A message providing more details about the human review state.",
      "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata": {
-   "description": "Metadata for Human Review config.",
-   "id": "GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata",
-   "properties": {
-    "confidenceThreshold": {
-     "description": "The confidence threshold if human review validation is enabled.",
-     "format": "float",
-     "type": "number"
-    },
-    "enableValidation": {
-     "description": "Whether to enable human review validation.",
-     "type": "boolean"
     }
    },
    "type": "object"
@@ -6481,6 +6446,10 @@
      "description": "The display name of the processor version.",
      "type": "string"
     },
+    "documentSchema": {
+     "$ref": "GoogleCloudDocumentaiV1beta3DocumentSchema",
+     "description": "The schema of the processor version. Describes the output."
+    },
     "googleManaged": {
      "description": "Denotes that this ProcessorVersion is managed by google.",
      "type": "boolean"
@@ -6544,14 +6513,6 @@
    "description": "Metadata about a property.",
    "id": "GoogleCloudDocumentaiV1beta3PropertyMetadata",
    "properties": {
-    "humanReviewLabelingMetadata": {
-     "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata",
-     "description": "Human review labeling config on the property."
-    },
-    "humanReviewMetadata": {
-     "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata",
-     "description": "Human review validation config on the property."
-    },
     "inactive": {
      "description": "Whether the property should be considered as \"inactive\".",
      "type": "boolean"

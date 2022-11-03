@@ -7178,6 +7178,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
 
+        /// <summary>Enable/Disable private endpoint for the cluster's master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
+        public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
+
+        /// <summary>The desired config of Gateway API on this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredGatewayApiConfig")]
+        public virtual GatewayAPIConfig DesiredGatewayApiConfig { get; set; }
+
         /// <summary>The desired GCFS config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredGcfsConfig")]
         public virtual GcfsConfig DesiredGcfsConfig { get; set; }
@@ -7691,6 +7699,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The max number of containers that can share a physical GPU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSharedClientsPerGpu")]
         public virtual System.Nullable<long> MaxSharedClientsPerGpu { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GatewayAPIConfig contains the desired config of Gateway API on this cluster.</summary>
+    public class GatewayAPIConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Gateway API release channel to use for Gateway API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8428,6 +8447,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Whether master is accessbile via Google Compute Engine Public IP addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpPublicCidrsAccessEnabled")]
+        public virtual System.Nullable<bool> GcpPublicCidrsAccessEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8540,6 +8563,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether L4ILB Subsetting is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableL4ilbSubsetting")]
         public virtual System.Nullable<bool> EnableL4ilbSubsetting { get; set; }
+
+        /// <summary>GatewayAPIConfig contains the desired config of Gateway API on this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayApiConfig")]
+        public virtual GatewayAPIConfig GatewayApiConfig { get; set; }
 
         /// <summary>
         /// Output only. The relative name of the Google Compute Engine
@@ -8800,6 +8827,12 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; }
 
+        /// <summary>
+        /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabels { get; set; }
+
         /// <summary>Sandbox configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; }
@@ -8945,6 +8978,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createPodRange")]
         public virtual System.Nullable<bool> CreatePodRange { get; set; }
+
+        /// <summary>
+        /// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is
+        /// derived from cluster.privateClusterConfig.enablePrivateNodes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
+        public virtual System.Nullable<bool> EnablePrivateNodes { get; set; }
 
         /// <summary>Network bandwidth tier configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
@@ -9406,6 +9446,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
         public virtual string PrivateEndpoint { get; set; }
 
+        /// <summary>
+        /// Subnet to provision the master's private endpoint during cluster creation. Specified in
+        /// projects/*/regions/*/subnetworks/* format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateEndpointSubnetwork")]
+        public virtual string PrivateEndpointSubnetwork { get; set; }
+
         /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
         public virtual string PublicEndpoint { get; set; }
@@ -9551,6 +9598,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Corresponds to the label value(s) of reservation resource(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
+    /// </summary>
+    public class ResourceLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Map of node label keys and node label values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10365,7 +10425,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<int> BatchNodeCount { get; set; }
 
         /// <summary>
-        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        /// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchPercentage")]
         public virtual System.Nullable<float> BatchPercentage { get; set; }
@@ -10703,6 +10763,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual ResourceLabels ResourceLabels { get; set; }
 
         /// <summary>
         /// The desired network tags to be applied to all nodes in the node pool. If this field is not present, the tags

@@ -70,6 +70,17 @@ namespace Google.Apis.HangoutsChat.v1
         {
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+
+            /// <summary>
+            /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+            /// </summary>
+            public static string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
+
+            /// <summary>Compose and send messages in Google Chat</summary>
+            public static string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
+
+            /// <summary>view messages and reactions in Google Chat</summary>
+            public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Chat API.</summary>
@@ -77,6 +88,17 @@ namespace Google.Apis.HangoutsChat.v1
         {
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+
+            /// <summary>
+            /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+            /// </summary>
+            public const string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
+
+            /// <summary>Compose and send messages in Google Chat</summary>
+            public const string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
+
+            /// <summary>view messages and reactions in Google Chat</summary>
+            public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
         }
 
         /// <summary>Gets the Dms resource.</summary>
@@ -1452,7 +1474,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists human memberships in a space for joined members. Requires [service account
+            /// Lists memberships in a space. Requires [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             /// <param name="parent">
@@ -1464,7 +1486,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists human memberships in a space for joined members. Requires [service account
+            /// Lists memberships in a space. Requires [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
@@ -2913,6 +2935,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Apps Script function to invoke when the containing element is clicked/activated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; }
+
+        /// <summary>
+        /// Optional. Required when opening a [dialog](https://developers.google.com/chat/how-tos/dialogs). What to do
+        /// in response to an interaction with a user, such as a user clicking button on a card message. If unspecified,
+        /// the app responds by executing an `action` - like opening a link or running a function - as normal. By
+        /// specifying an `interaction`, the app can respond in special interactive ways. For example, by setting
+        /// `interaction` to `OPEN_DIALOG`, the app can open a
+        /// [dialog](https://developers.google.com/chat/how-tos/dialogs). When specified, a loading indicator is not
+        /// shown. Supported by Chat apps, but not Google Workspace Add-ons. If specified for an add-on, the entire card
+        /// is stripped and nothing is shown in the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interaction")]
+        public virtual string Interaction { get; set; }
 
         /// <summary>
         /// Specifies the loading indicator that the action displays while making the call to the action.

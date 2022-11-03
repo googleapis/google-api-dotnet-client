@@ -289,14 +289,14 @@ namespace Google.Apis.DriveLabels.v2beta
                 this.service = service;
             }
 
-            /// <summary>Lists the Locks on a Label.</summary>
+            /// <summary>Lists the LabelLocks on a Label.</summary>
             /// <param name="parent">Required. Label on which Locks are applied. Format: labels/{label}</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists the Locks on a Label.</summary>
+            /// <summary>Lists the LabelLocks on a Label.</summary>
             public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaListLabelLocksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -784,14 +784,14 @@ namespace Google.Apis.DriveLabels.v2beta
                     this.service = service;
                 }
 
-                /// <summary>Lists the Locks on a Label.</summary>
+                /// <summary>Lists the LabelLocks on a Label.</summary>
                 /// <param name="parent">Required. Label on which Locks are applied. Format: labels/{label}</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists the Locks on a Label.</summary>
+                /// <summary>Lists the LabelLocks on a Label.</summary>
                 public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaListLabelLocksResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3812,10 +3812,6 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         /// <summary>Output only. Resource name of this LabelLock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Output only. A URI referring to the policy that created this Lock.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyUri")]
-        public virtual string PolicyUri { get; set; }
 
         /// <summary>Output only. This LabelLock's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

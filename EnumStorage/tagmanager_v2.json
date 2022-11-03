@@ -1,4 +1,9 @@
 {
+  "Google.Apis.TagManager.v2.AccountsResource+ContainersResource+CombineRequest.SettingSourceEnum": [
+    "settingSourceUnspecified",
+    "current",
+    "other"
+  ],
   "Google.Apis.TagManager.v2.AccountsResource+ContainersResource+WorkspacesResource+BuiltInVariablesResource+CreateRequest.TypeEnum": [
     "builtInVariableTypeUnspecified",
     "pageUrl",

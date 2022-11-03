@@ -2853,7 +2853,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>List of app events. The most recent 20 events are stored in the list.</summary>
+        /// <summary>The list of app events which have occurred in the last 30 hours.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<ApplicationEvent> Events { get; set; }
 

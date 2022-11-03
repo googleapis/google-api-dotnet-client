@@ -5669,7 +5669,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
         /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
-        /// if the target is not found, or is not an GA4 Property.
+        /// if the target is not found, or is not a GA4 Property.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
@@ -5685,7 +5685,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
         /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
-        /// if the target is not found, or is not an GA4 Property.
+        /// if the target is not found, or is not a GA4 Property.
         /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty>
         {
@@ -6968,7 +6968,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ExclusionDurationMode { get; set; }
 
         /// <summary>
-        /// Required. Immutable. null Filter clauses that define the Audience. All clauses will be AND’ed together.
+        /// Required. Immutable. Unordered list. Filter clauses that define the Audience. All clauses will be AND’ed
+        /// together.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterClauses")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAudienceFilterClause> FilterClauses { get; set; }

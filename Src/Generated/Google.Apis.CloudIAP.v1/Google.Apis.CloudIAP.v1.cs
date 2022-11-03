@@ -2271,11 +2271,11 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>A TunnelDestGroup.</summary>
     public class TunnelDestGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>null List of CIDRs that this group applies to.</summary>
+        /// <summary>Unordered list. List of CIDRs that this group applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrs")]
         public virtual System.Collections.Generic.IList<string> Cidrs { get; set; }
 
-        /// <summary>null List of FQDNs that this group applies to.</summary>
+        /// <summary>Unordered list. List of FQDNs that this group applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
         public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
 

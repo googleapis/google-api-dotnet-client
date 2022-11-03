@@ -4,6 +4,15 @@
    "scopes": {
     "https://www.googleapis.com/auth/chat.memberships": {
      "description": "View, add, and remove members from conversations in Google Chat"
+    },
+    "https://www.googleapis.com/auth/chat.messages": {
+     "description": "View, compose, send, update, and delete messages, and add, view, and delete reactions to messages."
+    },
+    "https://www.googleapis.com/auth/chat.messages.create": {
+     "description": "Compose and send messages in Google Chat"
+    },
+    "https://www.googleapis.com/auth/chat.messages.readonly": {
+     "description": "view messages and reactions in Google Chat"
     }
    }
   }
@@ -303,6 +312,10 @@
      "response": {
       "$ref": "Media"
      },
+     "scopes": [
+      "https://www.googleapis.com/auth/chat.messages",
+      "https://www.googleapis.com/auth/chat.messages.readonly"
+     ],
      "supportsMediaDownload": true
     }
    }
@@ -615,7 +628,7 @@
        ]
       },
       "list": {
-       "description": "Lists human memberships in a space for joined members. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).",
+       "description": "Lists memberships in a space. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).",
        "flatPath": "v1/spaces/{spacesId}/members",
        "httpMethod": "GET",
        "id": "chat.spaces.members.list",
@@ -707,7 +720,11 @@
        },
        "response": {
         "$ref": "Message"
-       }
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/chat.messages",
+        "https://www.googleapis.com/auth/chat.messages.create"
+       ]
       },
       "delete": {
        "description": "Deletes a message. For example usage, see [Delete a message](https://developers.google.com/chat/api/guides/crudl/messages#delete_a_message). Requires [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants early access to certain features. [User authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages` authorization scope.",
@@ -729,7 +746,10 @@
        "path": "v1/{+name}",
        "response": {
         "$ref": "Empty"
-       }
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/chat.messages"
+       ]
       },
       "get": {
        "description": "Returns a message. For example usage, see [Read a message](https://developers.google.com/chat/api/guides/crudl/messages#read_a_message). Requires [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [Service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants early access to certain features. [User authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages` or `chat.messages.readonly` authorization scope. Note: Might return a message from a blocked member or space.",
@@ -751,7 +771,11 @@
        "path": "v1/{+name}",
        "response": {
         "$ref": "Message"
-       }
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/chat.messages",
+        "https://www.googleapis.com/auth/chat.messages.readonly"
+       ]
       },
       "update": {
        "description": "Updates a message. For example usage, see [Update a message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).",
@@ -787,7 +811,10 @@
        },
        "response": {
         "$ref": "Message"
-       }
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/chat.messages"
+       ]
       }
      },
      "resources": {
@@ -822,7 +849,7 @@
    }
   }
  },
- "revision": "20221025",
+ "revision": "20221029",
  "rootUrl": "https://chat.googleapis.com/",
  "schemas": {
   "ActionParameter": {
@@ -1441,6 +1468,18 @@
    "properties": {
     "function": {
      "description": "Apps Script function to invoke when the containing element is clicked/activated.",
+     "type": "string"
+    },
+    "interaction": {
+     "description": "Optional. Required when opening a [dialog](https://developers.google.com/chat/how-tos/dialogs). What to do in response to an interaction with a user, such as a user clicking button on a card message. If unspecified, the app responds by executing an `action` - like opening a link or running a function - as normal. By specifying an `interaction`, the app can respond in special interactive ways. For example, by setting `interaction` to `OPEN_DIALOG`, the app can open a [dialog](https://developers.google.com/chat/how-tos/dialogs). When specified, a loading indicator is not shown. Supported by Chat apps, but not Google Workspace Add-ons. If specified for an add-on, the entire card is stripped and nothing is shown in the client.",
+     "enum": [
+      "INTERACTION_UNSPECIFIED",
+      "OPEN_DIALOG"
+     ],
+     "enumDescriptions": [
+      "Default value. The `action` executes as normal.",
+      "Opens a [dialog](https://developers.google.com/chat/how-tos/dialogs), a windowed, card-based interface that Chat apps use to interact with users. Only supported by Chat apps in response to button-clicks on card messages. Not supported by Google Workspace Add-ons. If specified for an add-on, the entire card is stripped and nothing is shown in the client."
+     ],
      "type": "string"
     },
     "loadIndicator": {

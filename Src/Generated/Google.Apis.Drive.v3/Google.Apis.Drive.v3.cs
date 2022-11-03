@@ -6359,7 +6359,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The full file extension extracted from the name field. May contain multiple concatenated extensions, such as
         /// "tar.gz". This is only available for files with binary content in Google Drive. This is automatically
-        /// updated when the name field changes, however it is not cleared if the new name does not contain a valid
+        /// updated when the name field changes, however it isn't cleared if the new name does not contain a valid
         /// extension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
@@ -6531,14 +6531,14 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The SHA1 checksum associated with this file, if available. This field is only populated for files with
-        /// content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// content stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
         public virtual string Sha1Checksum { get; set; }
 
         /// <summary>
         /// The SHA256 checksum associated with this file, if available. This field is only populated for files with
-        /// content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// content stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Checksum")]
         public virtual string Sha256Checksum { get; set; }
@@ -6853,8 +6853,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Whether the current user can read the revisions resource of this file. For a shared drive item, whether
-            /// revisions of non-folder descendants of this item, or this item itself if it is not a folder, can be
-            /// read.
+            /// revisions of non-folder descendants of this item, or this item itself if it isn't a folder, can be read.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; }
@@ -6907,8 +6906,8 @@ namespace Google.Apis.Drive.v3.Data
         public class ContentHintsData
         {
             /// <summary>
-            /// Text to be indexed for the file to improve fullText queries. This is limited to 128KB in length and may
-            /// contain HTML elements.
+            /// Text to be indexed for the file to improve fullText queries. This is limited to 128 KB in length and may
+            /// contain HTML elements. For more information, see Manage file metadata.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
             public virtual string IndexableText { get; set; }

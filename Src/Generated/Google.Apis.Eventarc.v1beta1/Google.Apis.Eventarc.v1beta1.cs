@@ -1962,8 +1962,8 @@ namespace Google.Apis.Eventarc.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be
-        /// sent to the destination.
+        /// Required. Unordered list. The criteria by which events are filtered. Only events that match with this
+        /// criteria will be sent to the destination.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingCriteria")]
         public virtual System.Collections.Generic.IList<MatchingCriteria> MatchingCriteria { get; set; }

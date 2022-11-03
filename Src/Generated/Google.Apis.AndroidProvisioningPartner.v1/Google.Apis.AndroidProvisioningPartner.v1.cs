@@ -2052,6 +2052,13 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; }
 
+        /// <summary>
+        /// Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique
+        /// identifier of the SimLock profile (go/simlock/profiles).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simlockProfileId")]
+        public virtual System.Nullable<long> SimlockProfileId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

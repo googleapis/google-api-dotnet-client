@@ -10625,6 +10625,28 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered
+    /// hotwords. An example of this is to exclude a finding if a BigQuery column matches a specific pattern.
+    /// </summary>
+    public class GooglePrivacyDlpV2ExcludeByHotword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regular expression pattern defining what qualifies as a hotword.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotwordRegex")]
+        public virtual GooglePrivacyDlpV2Regex HotwordRegex { get; set; }
+
+        /// <summary>
+        /// Range of characters within which the entire hotword must reside. The total length of the window cannot
+        /// exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be
+        /// included in a column header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximity")]
+        public virtual GooglePrivacyDlpV2Proximity Proximity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List of excluded infoTypes.</summary>
     public class GooglePrivacyDlpV2ExcludeInfoTypes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10651,6 +10673,13 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Dictionary which defines the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
         public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; }
+
+        /// <summary>
+        /// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the
+        /// column name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeByHotword")]
+        public virtual GooglePrivacyDlpV2ExcludeByHotword ExcludeByHotword { get; set; }
 
         /// <summary>Set of infoTypes for which findings would affect this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]

@@ -3709,8 +3709,8 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided
-        /// filters are sent to the destination.
+        /// Required. Unordered list. The list of filters that applies to event attributes. Only events that match all
+        /// the provided filters are sent to the destination.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }

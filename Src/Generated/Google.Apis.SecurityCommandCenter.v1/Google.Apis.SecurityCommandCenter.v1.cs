@@ -9642,9 +9642,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
+        /// other resources. E.g. "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value
+        /// only to "storage.googleapis.com/Bucket" resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
         /// <summary>Required. Resource value level this expression represents</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
         public virtual string ResourceValue { get; set; }
+
+        /// <summary>
+        /// Project or folder to scope this config to. For example, "project/456" would apply this config only to
+        /// resources in "project/456" scope will be checked with "AND" of other resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>
         /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
