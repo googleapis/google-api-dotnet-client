@@ -9591,7 +9591,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>
         /// Short lived download URL for the file. This field is only populated for files with content stored in Google
-        /// Drive; it is not populated for Docs Editors or shortcut files.
+        /// Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
@@ -9622,7 +9622,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>
         /// The final component of fullFileExtension with trailing text that does not appear to be part of the extension
-        /// removed. This field is only populated for files with content stored in Google Drive; it is not populated for
+        /// removed. This field is only populated for files with content stored in Google Drive; it isn't populated for
         /// Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
@@ -9630,7 +9630,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>
         /// The size of the file in bytes. This field is populated for files with content stored in Google Drive and for
-        /// files in Docs Editors; it is not populated for shortcut files.
+        /// files in Docs Editors; it isn't populated for shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
@@ -9647,7 +9647,7 @@ namespace Google.Apis.Drive.v2.Data
         /// The full file extension; extracted from the title. May contain multiple concatenated extensions, such as
         /// "tar.gz". Removing an extension from the title does not clear this field; however, changing the extension on
         /// the title does update this field. This field is only populated for files with content stored in Google
-        /// Drive; it is not populated for Docs Editors or shortcut files.
+        /// Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
         public virtual string FullFileExtension { get; set; }
@@ -9668,7 +9668,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>
         /// The ID of the file's head revision. This field is only populated for files with content stored in Google
-        /// Drive; it is not populated for Docs Editors or shortcut files.
+        /// Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRevisionId")]
         public virtual string HeadRevisionId { get; set; }
@@ -9688,7 +9688,10 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageMediaMetadata")]
         public virtual ImageMediaMetadataData ImageMediaMetadata { get; set; }
 
-        /// <summary>Indexable text attributes for the file (can only be written)</summary>
+        /// <summary>
+        /// Indexable text attributes for the file (can only be written). For more information, see Manage file
+        /// metadata.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
         public virtual IndexableTextData IndexableText { get; set; }
 
@@ -9748,7 +9751,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>
         /// An MD5 checksum for the content of this file. This field is only populated for files with content stored in
-        /// Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// Google Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Checksum")]
         public virtual string Md5Checksum { get; set; }
@@ -9856,14 +9859,14 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>
         /// The SHA1 checksum associated with this file, if available. This field is only populated for files with
-        /// content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// content stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
         public virtual string Sha1Checksum { get; set; }
 
         /// <summary>
         /// The SHA256 checksum associated with this file, if available. This field is only populated for files with
-        /// content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// content stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Checksum")]
         public virtual string Sha256Checksum { get; set; }
@@ -10158,8 +10161,7 @@ namespace Google.Apis.Drive.v2.Data
 
             /// <summary>
             /// Whether the current user can read the revisions resource of this file. For a shared drive item, whether
-            /// revisions of non-folder descendants of this item, or this item itself if it is not a folder, can be
-            /// read.
+            /// revisions of non-folder descendants of this item, or this item itself if it isn't a folder, can be read.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; }
@@ -10317,7 +10319,10 @@ namespace Google.Apis.Drive.v2.Data
             }
         }
 
-        /// <summary>Indexable text attributes for the file (can only be written)</summary>
+        /// <summary>
+        /// Indexable text attributes for the file (can only be written). For more information, see Manage file
+        /// metadata.
+        /// </summary>
         public class IndexableTextData
         {
             /// <summary>The text to be indexed for this file.</summary>

@@ -6819,14 +6819,6 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata about an entity type.</summary>
     public class GoogleCloudDocumentaiV1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human review labeling config on the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
-
-        /// <summary>Human review config on the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
-
         /// <summary>Whether the entity type should be considered as "inactive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
         public virtual System.Nullable<bool> Inactive { get; set; }
@@ -6883,17 +6875,6 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for human review labeling config.</summary>
-    public class GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether to enable normalization editing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableNormalizationEditing")]
-        public virtual System.Nullable<bool> EnableNormalizationEditing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6912,21 +6893,6 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>A message providing more details about the human review state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for Human Review config.</summary>
-    public class GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The confidence threshold if human review validation is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
-        public virtual System.Nullable<float> ConfidenceThreshold { get; set; }
-
-        /// <summary>Whether to enable human review validation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableValidation")]
-        public virtual System.Nullable<bool> EnableValidation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7168,6 +7134,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
+
         /// <summary>Denotes that this ProcessorVersion is managed by google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
@@ -7213,14 +7183,6 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata about a property.</summary>
     public class GoogleCloudDocumentaiV1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human review labeling config on the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
-
-        /// <summary>Human review validation config on the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
-
         /// <summary>Whether the property should be considered as "inactive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
         public virtual System.Nullable<bool> Inactive { get; set; }

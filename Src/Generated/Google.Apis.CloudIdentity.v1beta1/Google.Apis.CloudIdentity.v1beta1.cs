@@ -4993,6 +4993,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
         public virtual string BuildNumber { get; set; }
 
+        /// <summary>List of the clients the device is reporting to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientTypes")]
+        public virtual System.Collections.Generic.IList<string> ClientTypes { get; set; }
+
         /// <summary>Output only. Represents whether the Device is compromised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
         public virtual string CompromisedState { get; set; }
@@ -5026,6 +5030,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. Attributes specific to Endpoint Verification devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointVerificationSpecificAttributes")]
         public virtual EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributes { get; set; }
+
+        /// <summary>Host name of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
 
         /// <summary>Output only. IMEI number of device if GSM device; empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]

@@ -736,7 +736,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <summary>Updates a contact. Note: A contact's email address cannot be changed.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+            /// Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string name)
             {
@@ -755,7 +755,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+                /// Output only. The identifier for the contact. Format:
+                /// {resource_type}/{resource_id}/contacts/{contact_id}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1335,7 +1336,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <summary>Updates a contact. Note: A contact's email address cannot be changed.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+            /// Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string name)
             {
@@ -1354,7 +1355,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+                /// Output only. The identifier for the contact. Format:
+                /// {resource_type}/{resource_id}/contacts/{contact_id}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1934,7 +1936,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <summary>Updates a contact. Note: A contact's email address cannot be changed.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+            /// Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string name)
             {
@@ -1953,7 +1955,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+                /// Output only. The identifier for the contact. Format:
+                /// {resource_type}/{resource_id}/contacts/{contact_id}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2100,13 +2103,14 @@ namespace Google.Apis.Essentialcontacts.v1.Data
     public class GoogleCloudEssentialcontactsV1Contact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The email address to send notifications to. This does not need to be a Google account.
+        /// Required. The email address to send notifications to. The email address does not need to be a Google
+        /// Account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
         /// <summary>
-        /// The preferred language for notifications, as a ISO 639-1 language code. See [Supported
+        /// Required. The preferred language for notifications, as a ISO 639-1 language code. See [Supported
         /// languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages)
         /// for a list of supported languages.
         /// </summary>
@@ -2114,12 +2118,14 @@ namespace Google.Apis.Essentialcontacts.v1.Data
         public virtual string LanguageTag { get; set; }
 
         /// <summary>
-        /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+        /// Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The categories of notifications that the contact will receive communications for.</summary>
+        /// <summary>
+        /// Required. The categories of notifications that the contact will receive communications for.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationCategorySubscriptions")]
         public virtual System.Collections.Generic.IList<string> NotificationCategorySubscriptions { get; set; }
 

@@ -2516,7 +2516,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Request message for BufferTask.</summary>
+    /// <summary>Request message for BufferTask.</summary>
     public class BufferTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

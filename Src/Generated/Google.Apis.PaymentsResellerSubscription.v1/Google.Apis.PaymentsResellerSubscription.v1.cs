@@ -1636,7 +1636,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Individual line item definition of a subscription. Next id: 8</summary>
+    /// <summary>Individual line item definition of a subscription. Next id: 9</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Description of this line item.</summary>
