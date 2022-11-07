@@ -3889,14 +3889,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptResult")]
         public virtual GoogleCloudRunV2TaskAttemptResult LastAttemptResult { get; set; }
 
-        /// <summary>
-        /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
-        /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
-        /// Launch Stages](https://cloud.google.com/terms/launch-stages).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; }
-
         /// <summary>Number of retries allowed per Task, before marking this Task failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
         public virtual System.Nullable<int> MaxRetries { get; set; }

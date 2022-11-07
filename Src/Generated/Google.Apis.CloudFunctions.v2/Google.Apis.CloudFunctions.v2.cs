@@ -2539,7 +2539,9 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).</summary>
+    /// <summary>
+    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
+    /// </summary>
     public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -1476,6 +1476,43 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Wrapper for app engine service version attributes.</summary>
+    public class AppEngineVersionEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An [App Engine](https://cloud.google.com/appengine) [service
+        /// version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with an App Engine version.</summary>
+    public class AppEngineVersionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of an App Engine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>App Engine execution environment for a version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>Runtime of the App Engine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual string Runtime { get; set; }
+
+        /// <summary>URI of an App Engine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -1616,6 +1653,48 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Latest successfully deployed version id of the Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual System.Nullable<long> VersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for Cloud Run revision attributes.</summary>
+    public class CloudRunRevisionEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A [Cloud Run](https://cloud.google.com/run)
+        /// [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is:
+        /// projects/{project}/locations/{location}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a Cloud Run revision.</summary>
+    public class CloudRunRevisionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud Run revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which this revision is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>ID of Cloud Run Service this revision belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>URI of Cloud Run service this revision belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
+        public virtual string ServiceUri { get; set; }
+
+        /// <summary>URI of a Cloud Run revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1796,9 +1875,23 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// An [App Engine](https://cloud.google.com/appengine) [service
+        /// version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineVersion")]
+        public virtual AppEngineVersionEndpoint AppEngineVersion { get; set; }
+
         /// <summary>A [Cloud Function](https://cloud.google.com/functions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual CloudFunctionEndpoint CloudFunction { get; set; }
+
+        /// <summary>
+        /// A [Cloud Run](https://cloud.google.com/run)
+        /// [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunRevision")]
+        public virtual CloudRunRevisionEndpoint CloudRunRevision { get; set; }
 
         /// <summary>A [Cloud SQL](https://cloud.google.com/sql) instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
@@ -2655,6 +2748,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("abort")]
         public virtual AbortInfo Abort { get; set; }
 
+        /// <summary>Display information of an App Engine service version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineVersion")]
+        public virtual AppEngineVersionInfo AppEngineVersion { get; set; }
+
         /// <summary>This is a step that leads to the final state Drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; }
@@ -2662,6 +2759,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual CloudFunctionInfo CloudFunction { get; set; }
+
+        /// <summary>Display information of a Cloud Run revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunRevision")]
+        public virtual CloudRunRevisionInfo CloudRunRevision { get; set; }
 
         /// <summary>Display information of a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]

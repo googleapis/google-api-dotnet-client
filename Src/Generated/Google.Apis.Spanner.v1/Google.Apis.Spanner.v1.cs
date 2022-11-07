@@ -1622,8 +1622,8 @@ namespace Google.Apis.Spanner.v1
                 /// of the format `projects//instances//backups//operations/` and can be used to track copying of the
                 /// backup. The operation is associated with the destination backup. The metadata field type is
                 /// CopyBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
-                /// operation will stop the copying and delete the backup. Concurrent CopyBackup requests can run on the
-                /// same source backup.
+                /// operation will stop the copying and delete the destination backup. Concurrent CopyBackup requests
+                /// can run on the same source backup.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1640,8 +1640,8 @@ namespace Google.Apis.Spanner.v1
                 /// of the format `projects//instances//backups//operations/` and can be used to track copying of the
                 /// backup. The operation is associated with the destination backup. The metadata field type is
                 /// CopyBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
-                /// operation will stop the copying and delete the backup. Concurrent CopyBackup requests can run on the
-                /// same source backup.
+                /// operation will stop the copying and delete the destination backup. Concurrent CopyBackup requests
+                /// can run on the same source backup.
                 /// </summary>
                 public class CopyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
                 {
