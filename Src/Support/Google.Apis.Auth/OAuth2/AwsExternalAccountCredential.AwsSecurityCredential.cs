@@ -30,7 +30,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         private sealed class AwsSecurityCredentials
         {
-            private const string AccessKeyIdEnvVar = "AWS_ACCESS_ACCESS_KEY_ID";
+            private const string AccessKeyIdEnvVar = "AWS_ACCESS_KEY_ID";
             private const string SecretAccessKeyEnvVar = "AWS_SECRET_ACCESS_KEY";
             private const string TokenEnvVar = "AWS_SESSION_TOKEN";
 
