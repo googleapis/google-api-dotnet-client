@@ -8253,6 +8253,13 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string TagManagerUrl { get; set; }
 
         /// <summary>
+        /// The URLs of the cloud environment for the GTM Container. @mutable tagmanager.accounts.containers.create
+        /// @mutable tagmanager.accounts.containers.update
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taggingServerUrls")]
+        public virtual System.Collections.Generic.IList<string> TaggingServerUrls { get; set; }
+
+        /// <summary>
         /// List of Usage Contexts for the Container. Valid values include: web, android, or ios. @mutable
         /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
         /// </summary>

@@ -1862,23 +1862,27 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical
     /// constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `anrRate`
     /// (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one
-    /// ANR. If your app exhibits an ANR rate equal to or higher than the threshold, it's in the bottom 25% of the top
-    /// 1,000 apps on Google Play (by number of installs). * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling
-    /// average value of `anrRate` in the last 7 days. The daily values are weighted by the count of distinct users for
-    /// the day. * `anrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28
-    /// days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers`
-    /// (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value
-    /// for the `anrRate` metric. A user is counted in this metric if they used the app in the foreground during the
-    /// aggregation period. Care must be taken not to aggregate this count further, as it may result in users being
-    /// counted multiple times. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was
-    /// running on the user's device. * `versionCode` (int64): version of the app that was running on the user's device.
-    /// * `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): the type (also
-    /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
-    /// Make of the device's primary system-on-chip, e.g., Samsung.
-    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
-    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// ANR. * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 7 days.
+    /// The daily values are weighted by the count of distinct users for the day. * `anrRate28dUserWeighted`
+    /// (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28 days. The daily values are weighted
+    /// by the count of distinct users for the day. * `userPerceivedAnrRate` (`google.type.Decimal`): Percentage of
+    /// distinct users in the aggregation period that experienced at least one user-perceived ANR. User-perceived ANRs
+    /// are currently those of 'Input dispatching' type. * `userPerceivedAnrRate7dUserWeighted` (`google.type.Decimal`):
+    /// Rolling average value of `userPerceivedAnrRate` in the last 7 days. The daily values are weighted by the count
+    /// of distinct users for the day. * `userPerceivedAnrRate28dUserWeighted` (`google.type.Decimal`): Rolling average
+    /// value of `userPerceivedAnrRate` in the last 28 days. The daily values are weighted by the count of distinct
+    /// users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period
+    /// that were used as normalization value for the `anrRate` and `userPerceivedAnrRate` metrics. A user is counted in
+    /// this metric if they used the app in the foreground during the aggregation period. Care must be taken not to
+    /// aggregate this count further, as it may result in users being counted multiple times. **Supported dimensions:**
+    /// * `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
+    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
+    /// user's device model. * `deviceType` (string): the type (also known as form factor) of the user's device. *
+    /// `countryCode` (string): the country or region of the user's device based on their IP address, represented as a
+    /// 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
+    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
+    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -1909,23 +1913,30 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// with usage data to produce a normalized metric independent of user counts. **Supported aggregation periods:** *
     /// DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported
     /// timezone is `America/Los_Angeles`. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of
-    /// distinct users in the aggregation period that experienced at least one crash. If your app exhibits a crash rate
-    /// equal to or higher than the threshold, it's in the bottom 25% of the top 1,000 apps on Google Play (by number of
-    /// installs). * `crashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last
-    /// 7 days. The daily values are weighted by the count of distinct users for the day. * `crashRate28dUserWeighted`
-    /// (`google.type.Decimal`): Rolling average value of `crashRate` in the last 28 days. The daily values are weighted
-    /// by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users
-    /// in the aggregation period that were used as normalization value for the `crashRate` metric. A user is counted in
-    /// this metric if they used the app in the foreground during the aggregation period. Care must be taken not to
-    /// aggregate this count further, as it may result in users being counted multiple times. **Supported dimensions:**
-    /// * `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
-    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
-    /// user's device model. * `deviceType` (string): the type (also known as form factor) of the user's device. *
-    /// `countryCode` (string): the country or region of the user's device based on their IP address, represented as a
-    /// 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
-    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
-    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// distinct users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted`
+    /// (`google.type.Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily values are weighted
+    /// by the count of distinct users for the day. * `crashRate28dUserWeighted` (`google.type.Decimal`): Rolling
+    /// average value of `crashRate` in the last 28 days. The daily values are weighted by the count of distinct users
+    /// for the day. * `userPerceivedCrashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation
+    /// period that experienced at least one crash while they were actively using your app (a user-perceived crash). An
+    /// app is considered to be in active use if it is displaying any activity or executing any foreground service. *
+    /// `userPerceivedCrashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of
+    /// `userPerceivedCrashRate` in the last 7 days. The daily values are weighted by the count of distinct users for
+    /// the day. * `userPerceivedCrashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of
+    /// `userPerceivedCrashRate` in the last 28 days. The daily values are weighted by the count of distinct users for
+    /// the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were
+    /// used as normalization value for the `crashRate` and `userPerceivedCrashRate` metrics. A user is counted in this
+    /// metric if they used the app actively during the aggregation period. An app is considered to be in active use if
+    /// it is displaying any activity or executing any foreground service. Care must be taken not to aggregate this
+    /// count further, as it may result in users being counted multiple times. **Supported dimensions:** * `apiLevel`
+    /// (string): the API level of Android that was running on the user's device. * `versionCode` (int64): version of
+    /// the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device
+    /// model. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
+    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
+    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
+    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2103,24 +2114,23 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical
     /// constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** *
     /// `excessiveWakeupRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had
-    /// more than 10 wakeups per hour. If your app exhibits an excessive wakeup rate equal to or higher than the
-    /// threshold, it's in the bottom 25% of the top 1,000 apps on Google Play (by number of installs). *
-    /// `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in
-    /// the last 7 days. The daily values are weighted by the count of distinct users for the day. *
-    /// `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in
-    /// the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers`
-    /// (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value
-    /// for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was doing any work on the
-    /// device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate
-    /// this count further, as it may result in users being counted multiple times. **Supported dimensions:** *
-    /// `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
-    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
-    /// user's device model. * `deviceType` (string): the type (also known as form factor) of the user's device. *
-    /// `countryCode` (string): the country or region of the user's device based on their IP address, represented as a
-    /// 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
-    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
-    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average
+    /// value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of distinct users
+    /// for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of
+    /// `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct users for the
+    /// day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used
+    /// as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was
+    /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
+    /// taken not to aggregate this count further, as it may result in users being counted multiple times. **Supported
+    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
+    /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
+    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
+    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
+    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
+    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2270,15 +2280,21 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
 
         /// <summary>
         /// Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.type.Decimal`): Percentage of distinct
-        /// users in the aggregation period that experienced at least one ANR. If your app exhibits an ANR rate equal to
-        /// or higher than the threshold, it's in the bottom 25% of the top 1,000 apps on Google Play (by number of
-        /// installs). * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last
-        /// 7 days. The daily values are weighted by the count of distinct users for the day. * `anrRate28dUserWeighted`
-        /// (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28 days. The daily values are
-        /// weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of
-        /// distinct users in the aggregation period that were used as normalization value for the `anrRate` metric. A
-        /// user is counted in this metric if they used the app in the foreground during the aggregation period. Care
-        /// must be taken not to aggregate this count further, as it may result in users being counted multiple times.
+        /// users in the aggregation period that experienced at least one ANR. * `anrRate7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `anrRate` in the last 7 days. The daily values are
+        /// weighted by the count of distinct users for the day. * `anrRate28dUserWeighted` (`google.type.Decimal`):
+        /// Rolling average value of `anrRate` in the last 28 days. The daily values are weighted by the count of
+        /// distinct users for the day. * `userPerceivedAnrRate` (`google.type.Decimal`): Percentage of distinct users
+        /// in the aggregation period that experienced at least one user-perceived ANR. User-perceived ANRs are
+        /// currently those of 'Input dispatching' type. * `userPerceivedAnrRate7dUserWeighted` (`google.type.Decimal`):
+        /// Rolling average value of `userPerceivedAnrRate` in the last 7 days. The daily values are weighted by the
+        /// count of distinct users for the day. * `userPerceivedAnrRate28dUserWeighted` (`google.type.Decimal`):
+        /// Rolling average value of `userPerceivedAnrRate` in the last 28 days. The daily values are weighted by the
+        /// count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in
+        /// the aggregation period that were used as normalization value for the `anrRate` and `userPerceivedAnrRate`
+        /// metrics. A user is counted in this metric if they used the app in the foreground during the aggregation
+        /// period. Care must be taken not to aggregate this count further, as it may result in users being counted
+        /// multiple times.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2357,16 +2373,23 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
 
         /// <summary>
         /// Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of distinct
-        /// users in the aggregation period that experienced at least one crash. If your app exhibits a crash rate equal
-        /// to or higher than the threshold, it's in the bottom 25% of the top 1,000 apps on Google Play (by number of
-        /// installs). * `crashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the
-        /// last 7 days. The daily values are weighted by the count of distinct users for the day. *
-        /// `crashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 28
-        /// days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers`
-        /// (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization
-        /// value for the `crashRate` metric. A user is counted in this metric if they used the app in the foreground
-        /// during the aggregation period. Care must be taken not to aggregate this count further, as it may result in
-        /// users being counted multiple times.
+        /// users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily values are
+        /// weighted by the count of distinct users for the day. * `crashRate28dUserWeighted` (`google.type.Decimal`):
+        /// Rolling average value of `crashRate` in the last 28 days. The daily values are weighted by the count of
+        /// distinct users for the day. * `userPerceivedCrashRate` (`google.type.Decimal`): Percentage of distinct users
+        /// in the aggregation period that experienced at least one crash while they were actively using your app (a
+        /// user-perceived crash). An app is considered to be in active use if it is displaying any activity or
+        /// executing any foreground service. * `userPerceivedCrashRate7dUserWeighted` (`google.type.Decimal`): Rolling
+        /// average value of `userPerceivedCrashRate` in the last 7 days. The daily values are weighted by the count of
+        /// distinct users for the day. * `userPerceivedCrashRate28dUserWeighted` (`google.type.Decimal`): Rolling
+        /// average value of `userPerceivedCrashRate` in the last 28 days. The daily values are weighted by the count of
+        /// distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the
+        /// aggregation period that were used as normalization value for the `crashRate` and `userPerceivedCrashRate`
+        /// metrics. A user is counted in this metric if they used the app actively during the aggregation period. An
+        /// app is considered to be in active use if it is displaying any activity or executing any foreground service.
+        /// Care must be taken not to aggregate this count further, as it may result in users being counted multiple
+        /// times.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2526,17 +2549,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
 
         /// <summary>
         /// Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of
-        /// distinct users in the aggregation period that had more than 10 wakeups per hour. If your app exhibits an
-        /// excessive wakeup rate equal to or higher than the threshold, it's in the bottom 25% of the top 1,000 apps on
-        /// Google Play (by number of installs). * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling
-        /// average value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of
-        /// distinct users for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average
-        /// value of `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct
-        /// users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation
-        /// period that were used as normalization value for the `excessiveWakeupRate` metric. A user is counted in this
-        /// metric if they app was doing any work on the device, i.e., not just active foreground usage but also
-        /// background work. Care must be taken not to aggregate this count further, as it may result in users being
-        /// counted multiple times.
+        /// distinct users in the aggregation period that had more than 10 wakeups per hour. *
+        /// `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate`
+        /// in the last 7 days. The daily values are weighted by the count of distinct users for the day. *
+        /// `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate`
+        /// in the last 28 days. The daily values are weighted by the count of distinct users for the day. *
+        /// `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as
+        /// normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was
+        /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
+        /// taken not to aggregate this count further, as it may result in users being counted multiple times.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2616,16 +2637,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>
         /// Metrics to aggregate. **Supported metrics:** * `stuckBgWakelockRate` (`google.type.Decimal`): Percentage of
         /// distinct users in the aggregation period that had a wakelock held in the background for longer than 1 hour.
-        /// If your app exhibits a stuck background wakelock rate equal to or higher than the threshold, it's in the
-        /// bottom 25% of the top 1,000 apps on Google Play (by number of installs). *
-        /// `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate`
-        /// in the last 7 days. The daily values are weighted by the count of distinct users for the day. *
-        /// `stuckBgWakelockRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate`
-        /// in the last 28 days. The daily values are weighted by the count of distinct users for the day. *
-        /// `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as
-        /// normalization value for the `stuckBgWakelockRate` metric. A user is counted in this metric if they app was
-        /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
-        /// taken not to aggregate this count further, as it may result in users being counted multiple times.
+        /// * `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// `stuckBgWakelockRate` in the last 7 days. The daily values are weighted by the count of distinct users for
+        /// the day. * `stuckBgWakelockRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// `stuckBgWakelockRate` in the last 28 days. The daily values are weighted by the count of distinct users for
+        /// the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that
+        /// were used as normalization value for the `stuckBgWakelockRate` metric. A user is counted in this metric if
+        /// they app was doing any work on the device, i.e., not just active foreground usage but also background work.
+        /// Care must be taken not to aggregate this count further, as it may result in users being counted multiple
+        /// times.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2707,23 +2727,21 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// of user counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals.
     /// Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** *
     /// `stuckBgWakelockRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a
-    /// wakelock held in the background for longer than 1 hour. If your app exhibits a stuck background wakelocks rate
-    /// equal to or higher than the threshold, it's in the bottom 25% of the top 1,000 apps on Google Play (by number of
-    /// installs). * `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of
-    /// `stuckBgWakelockRate` in the last 7 days. The daily values are weighted by the count of distinct users for the
-    /// day. * `stuckBgWakelockRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of
-    /// `stuckBgWakelockRate` in the last 28 days. The daily values are weighted by the count of distinct users for the
-    /// day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used
-    /// as normalization value for the `stuckBgWakelockRate` metric. A user is counted in this metric if their app was
-    /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
-    /// taken not to aggregate this count further, as it may result in users being counted multiple times. **Supported
-    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
-    /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
-    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
-    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
-    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
+    /// wakelock held in the background for longer than 1 hour. * `stuckBgWakelockRate7dUserWeighted`
+    /// (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate` in the last 7 days. The daily values are
+    /// weighted by the count of distinct users for the day. * `stuckBgWakelockRate28dUserWeighted`
+    /// (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate` in the last 28 days. The daily values
+    /// are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of
+    /// distinct users in the aggregation period that were used as normalization value for the `stuckBgWakelockRate`
+    /// metric. A user is counted in this metric if their app was doing any work on the device, i.e., not just active
+    /// foreground usage but also background work. Care must be taken not to aggregate this count further, as it may
+    /// result in users being counted multiple times. **Supported dimensions:** * `apiLevel` (string): the API level of
+    /// Android that was running on the user's device. * `versionCode` (int64): version of the app that was running on
+    /// the user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
+    /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country or
+    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make

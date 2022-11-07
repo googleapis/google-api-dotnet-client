@@ -1367,6 +1367,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Cloud Data Lineage integration.</summary>
+    public class CloudDataLineageIntegration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not Cloud Data Lineage integration is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1729,6 +1740,20 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>Request to load a snapshot into a Cloud Composer environment.</summary>
     public class LoadSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether or not to skip setting Airflow overrides when loading the environment's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipAirflowOverridesSetting")]
+        public virtual System.Nullable<bool> SkipAirflowOverridesSetting { get; set; }
+
+        /// <summary>
+        /// Whether or not to skip setting environment variables when loading the environment's state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipEnvironmentVariablesSetting")]
+        public virtual System.Nullable<bool> SkipEnvironmentVariablesSetting { get; set; }
+
+        /// <summary>Whether or not to skip copying Cloud Storage data when loading the environment's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipGcsDataCopying")]
+        public virtual System.Nullable<bool> SkipGcsDataCopying { get; set; }
+
         /// <summary>Whether or not to skip installing Pypi packages when loading the environment's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipPypiPackagesInstallation")]
         public virtual System.Nullable<bool> SkipPypiPackagesInstallation { get; set; }
@@ -2187,6 +2212,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airflowConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, string> AirflowConfigOverrides { get; set; }
+
+        /// <summary>Optional. The configuration for Cloud Data Lineage integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudDataLineageIntegration")]
+        public virtual CloudDataLineageIntegration CloudDataLineageIntegration { get; set; }
 
         /// <summary>
         /// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver

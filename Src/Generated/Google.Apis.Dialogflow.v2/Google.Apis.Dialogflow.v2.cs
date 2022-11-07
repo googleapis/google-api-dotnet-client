@@ -26715,6 +26715,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. Obfuscated user id that should be associated with the created participant. You can specify a user
+        /// id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow
+        /// adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or
+        /// StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow returns
+        /// an error if you try to add a user id for a non-END_USER participant. Dialogflow uses this user id for
+        /// billing and measurement purposes. For example, Dialogflow determines whether a user in one conversation
+        /// returned in a later conversation. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate
+        /// your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function
+        /// like SHA-512. * The length of the user id must be &amp;lt;= 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalUserId")]
+        public virtual string ObfuscatedExternalUserId { get; set; }
+
+        /// <summary>
         /// Immutable. The role this participant plays in the conversation. This field must be set during participant
         /// creation and is then immutable.
         /// </summary>
@@ -27253,6 +27267,14 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Configures speech transcription for ConversationProfile.</summary>
     public class GoogleCloudDialogflowV2SpeechToTextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is
+        /// not explicitly specified, then a default model is used. Refer to [Cloud Speech API
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
         /// <summary>
         /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be
         /// treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest

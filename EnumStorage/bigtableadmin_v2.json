@@ -14,7 +14,8 @@
     "SCHEMA_VIEW",
     "REPLICATION_VIEW",
     "FULL",
-    "ENCRYPTION_VIEW"
+    "ENCRYPTION_VIEW",
+    "STATS_VIEW"
   ],
   "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+ListRequest.ViewEnum": [
     "VIEW_UNSPECIFIED",
@@ -22,6 +23,7 @@
     "SCHEMA_VIEW",
     "REPLICATION_VIEW",
     "FULL",
-    "ENCRYPTION_VIEW"
+    "ENCRYPTION_VIEW",
+    "STATS_VIEW"
   ]
 }

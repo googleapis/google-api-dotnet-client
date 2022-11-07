@@ -2694,7 +2694,14 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.StringValueAttribute("ENCRYPTION_VIEW")]
                         ENCRYPTIONVIEW = 5,
 
-                        /// <summary>Populates all fields.</summary>
+                        /// <summary>
+                        /// Only populates `name` and fields related to the table's stats (e.g. TableStats and
+                        /// ColumnFamilyStats).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("STATS_VIEW")]
+                        STATSVIEW = 6,
+
+                        /// <summary>Populates all fields except for stats. See STATS_VIEW to request stats.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 4,
                     }
@@ -2874,7 +2881,14 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.StringValueAttribute("ENCRYPTION_VIEW")]
                         ENCRYPTIONVIEW = 5,
 
-                        /// <summary>Populates all fields.</summary>
+                        /// <summary>
+                        /// Only populates `name` and fields related to the table's stats (e.g. TableStats and
+                        /// ColumnFamilyStats).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("STATS_VIEW")]
+                        STATSVIEW = 6,
+
+                        /// <summary>Populates all fields except for stats. See STATS_VIEW to request stats.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 4,
                     }
@@ -2994,16 +3008,95 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
                 }
 
+                /// <summary>Updates a specified table.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The unique name of the table. Values are of the form
+                /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`,
+                /// `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.Table body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a specified table.</summary>
+                public class PatchRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.Table body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The unique name of the table. Values are of the form
+                    /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`,
+                    /// `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to update. A mask specifying which fields (e.g.
+                    /// `change_stream_config`) in the `table` field should be updated. This mask is relative to the
+                    /// `table` field, not to the request message. The wildcard (*) path is currently not supported.
+                    /// Currently UpdateTable is only supported for the following fields: * `change_stream_config` *
+                    /// `change_stream_config.retention_period` * `deletion_protection` If `column_families` is set in
+                    /// `update_mask`, it will return an UNIMPLEMENTED error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.Table Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>
-                /// Create a new table by restoring from a completed backup. The new table must be in the same project
-                /// as the instance containing the backup. The returned table long-running operation can be used to
-                /// track the progress of the operation, and to cancel it. The metadata field type is
+                /// Create a new table by restoring from a completed backup. The returned table long-running operation
+                /// can be used to track the progress of the operation, and to cancel it. The metadata field type is
                 /// RestoreTableMetadata. The response type is Table, if successful.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The name of the instance in which to create the restored table. This instance must be in
-                /// the same project as the source backup. Values are of the form `projects//instances/`.
+                /// Required. The name of the instance in which to create the restored table. Values are of the form
+                /// `projects//instances/`.
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.BigtableAdmin.v2.Data.RestoreTableRequest body, string parent)
                 {
@@ -3011,9 +3104,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Create a new table by restoring from a completed backup. The new table must be in the same project
-                /// as the instance containing the backup. The returned table long-running operation can be used to
-                /// track the progress of the operation, and to cancel it. The metadata field type is
+                /// Create a new table by restoring from a completed backup. The returned table long-running operation
+                /// can be used to track the progress of the operation, and to cancel it. The metadata field type is
                 /// RestoreTableMetadata. The response type is Table, if successful.
                 /// </summary>
                 public class RestoreRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
@@ -3027,8 +3119,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Required. The name of the instance in which to create the restored table. This instance must be
-                    /// in the same project as the source backup. Values are of the form `projects//instances/`.
+                    /// Required. The name of the instance in which to create the restored table. Values are of the form
+                    /// `projects//instances/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4372,6 +4464,52 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
         public virtual GcRule GcRule { get; set; }
 
+        /// <summary>
+        /// Only available with STATS_VIEW, this includes summary statistics about column family contents. For
+        /// statistics over an entire table, see TableStats above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ColumnFamilyStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Approximate statistics related to a single column family within a table. This information may change rapidly,
+    /// interpreting these values at a point in time may already preset out-of-date information. Everything below is
+    /// approximate, unless otherwise specified.
+    /// </summary>
+    public class ColumnFamilyStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// How many cells are present per column qualifier in this column family, averaged over all rows containing any
+        /// column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in
+        /// "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col",
+        /// 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3
+        /// cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) =
+        /// 3.66 in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCellsPerColumn")]
+        public virtual System.Nullable<double> AverageCellsPerColumn { get; set; }
+
+        /// <summary>
+        /// How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For
+        /// column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column
+        /// in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in
+        /// "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 +
+        /// 2 + 0)/3 = 1.5 in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageColumnsPerRow")]
+        public virtual System.Nullable<double> AverageColumnsPerRow { get; set; }
+
+        /// <summary>
+        /// How much space the data in the column family occupies. This is roughly how many bytes would be needed to
+        /// read the contents of the entire column family (e.g. by streaming all contents out).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalDataBytes")]
+        public virtual System.Nullable<long> LogicalDataBytes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5514,10 +5652,19 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, ClusterState> ClusterStates { get; set; }
 
         /// <summary>
-        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`,
+        /// `STATS_VIEW`, `FULL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnFamilies")]
         public virtual System.Collections.Generic.IDictionary<string, ColumnFamily> ColumnFamilies { get; set; }
+
+        /// <summary>
+        /// Set to true to make the table protected against data loss. i.e. deleting the following resources through
+        /// Admin APIs are prohibited: - The table. - The column families in the table. - The instance containing the
+        /// table. Note one can still delete the data stored in the table through Data APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
+        public virtual System.Nullable<bool> DeletionProtection { get; set; }
 
         /// <summary>
         /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not
@@ -5530,7 +5677,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// The unique name of the table. Values are of the form
         /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`,
-        /// `REPLICATION_VIEW`, `FULL`
+        /// `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5541,6 +5688,14 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreInfo")]
         public virtual RestoreInfo RestoreInfo { get; set; }
+
+        /// <summary>
+        /// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For
+        /// statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection
+        /// above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual TableStats Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5562,6 +5717,47 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously,
+    /// data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of
+    /// date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT:
+    /// Everything below is approximate, unless otherwise specified.
+    /// </summary>
+    public class TableStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// How many cells are present per column (column family, column qualifier) combinations, averaged over all
+        /// columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell
+        /// in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and
+        /// 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCellsPerColumn")]
+        public virtual System.Nullable<double> AverageCellsPerColumn { get; set; }
+
+        /// <summary>
+        /// How many (column family, column qualifier) combinations are present per row in the table, averaged over all
+        /// rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct
+        /// columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would
+        /// report (2 + 3)/2 = 2.5 in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageColumnsPerRow")]
+        public virtual System.Nullable<double> AverageColumnsPerRow { get; set; }
+
+        /// <summary>
+        /// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents
+        /// out).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalDataBytes")]
+        public virtual System.Nullable<long> LogicalDataBytes { get; set; }
+
+        /// <summary>How many rows are in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<long> RowCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5672,6 +5868,25 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>The time at which the original request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
         public virtual object RequestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the operation returned by UpdateTable.</summary>
+    public class UpdateTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation finished or was canceled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The name of the table being updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The time at which this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
