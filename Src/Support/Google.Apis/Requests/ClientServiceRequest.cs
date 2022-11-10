@@ -40,7 +40,7 @@ namespace Google.Apis.Requests
         protected List<IHttpUnsuccessfulResponseHandler> _unsuccessfulResponseHandlers;
         /// <summary>Exception handlers for this request only.</summary>
         protected List<IHttpExceptionHandler> _exceptionHandlers;
-        /// <summary>Unsuccessful response handlers for this request only.</summary>
+        /// <summary>Execute interceptors for this request only.</summary>
         protected List<IHttpExecuteInterceptor> _executeInterceptors;
 
         /// <summary>
@@ -79,9 +79,10 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Add an unsuccessful response handler for this request only.
+        /// Add an execute interceptor for this request only.
+        /// If the request is retried, the interceptor will be called on each attempt.
         /// </summary>
-        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
+        /// <param name="handler">The execute interceptor. Must not be <c>null</c>.</param>
         public void AddExecuteInterceptor(IHttpExecuteInterceptor handler)
         {
             handler.ThrowIfNull(nameof(handler));
