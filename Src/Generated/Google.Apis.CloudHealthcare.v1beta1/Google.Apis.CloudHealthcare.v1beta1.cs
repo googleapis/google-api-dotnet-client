@@ -16329,6 +16329,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class SchemaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time
+        /// column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedPartitionConfig")]
+        public virtual TimePartitioning LastUpdatedPartitionConfig { get; set; }
+
+        /// <summary>
         /// The depth for all recursive structures in the output analytics schema. For example, `concept` in the
         /// CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column
         /// called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will
@@ -16750,6 +16757,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The original text contained in this span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for FHIR BigQuery time-partitioned tables.</summary>
+    public class TimePartitioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of milliseconds for which to keep the storage for a partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
+        public virtual System.Nullable<long> ExpirationMs { get; set; }
+
+        /// <summary>Type of partitioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

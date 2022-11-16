@@ -3014,6 +3014,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interruptionData")]
         public virtual GoogleCloudContactcenterinsightsV1InterruptionData InterruptionData { get; set; }
 
+        /// <summary>Data specifying an issue match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1IssueMatchData IssueMatchData { get; set; }
+
         /// <summary>Data specifying a phrase match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchData")]
         public virtual GoogleCloudContactcenterinsightsV1PhraseMatchData PhraseMatchData { get; set; }
@@ -3797,6 +3801,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Score indicating the likelihood of the issue assignment. currently bounded on [0,1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for an issue match annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1IssueMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the issue's assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueAssignment")]
+        public virtual GoogleCloudContactcenterinsightsV1IssueAssignment IssueAssignment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

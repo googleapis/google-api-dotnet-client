@@ -7696,6 +7696,68 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An Attribute is a piece of data attached an Item. Attributes are opaque to the Starbox and have no effect on,
+    /// nor are they effected by, message storage, indexing, or search.
+    /// </summary>
+    public class Attribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the attribute. Required - If a write is attempted with an empty string, the server will return
+        /// an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual CaribouAttributeValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An attribute was deleted from some (subset of the) messages in this thread.</summary>
+    public class AttributeRemoved : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeId")]
+        public virtual string AttributeId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
+        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An attribute was added to some (subset of the) messages in this thread.</summary>
+    public class AttributeSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeId")]
+        public virtual string AttributeId { get; set; }
+
+        /// <summary>
+        /// The serialized attribute_value as persisted in the storage layer. The application is responsible for
+        /// deserializing it to an Attribute.Value if appropriate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
+        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Attributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
+        public virtual System.Collections.Generic.IList<Attribute> Attribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the settings for Cloud audit logging</summary>
     public class AuditLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8078,10 +8140,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("calendarEventId")]
         public virtual string CalendarEventId { get; set; }
 
-        /// <summary>Configuration for the chat for this conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatConfig")]
-        public virtual ChatConfig ChatConfig { get; set; }
-
         /// <summary>
         /// The current co-activity session, or unset if there is none in progress. A co-activity session can be
         /// initiated by devices in JOINED state . Initiator of the co-activity is expected to populate this field to
@@ -8115,7 +8173,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// Output only. Information about the media backend for the currently ongoing conference in the meeting space.
         /// The media backend information will only be filled in for clients that are supposed to present the
         /// information. The information should be displayed in a debug panel and is only intended for internal
-        /// debugging purposes. If the string is empty nothing should be displayed about the media backend.
+        /// debugging purposes. If the string is empty nothing should be displayed about the media backend. Deprecated
+        /// because media backend is always MEDIA_ROUTER since Dec 2018.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaBackendInfo")]
         public virtual string MediaBackendInfo { get; set; }
@@ -8342,24 +8401,37 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Actions handled by Chat Clients.</summary>
-    public class ChatClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
+    public class CaribouAttributeValue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Tags 1 through 15 are reserved for the most commonly used fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<int> IntValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
+        public virtual System.Nullable<long> LongValue { get; set; }
+
+        /// <summary>
+        /// Generally, applications should avoid storing raw bytes and instead store structured data as protocol buffer
+        /// extensions. This both reduces the amount of ad-hoc attribute parsing code as well as eliminates an
+        /// intermediate copy of the data when deserializing the value. The rawByteValue field is mainly provided for
+        /// compatibility with attributes stored before the introduction of the Attribute.Value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawByteValue")]
+        public virtual string RawByteValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration of the in meeting chat.</summary>
-    public class ChatConfig : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Actions handled by Chat Clients.</summary>
+    public class ChatClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Type of chat this Conference is currently using.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatType")]
-        public virtual string ChatType { get; set; }
-
-        /// <summary>The configuration of Google Chat when selected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleChatConfig")]
-        public virtual GoogleChatConfig GoogleChatConfig { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8598,12 +8670,71 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents the context of the client on behalf of which a HistoryRecord is produced. The ClientContext message
+    /// can be used to hold context about the service client (e.g. the internal server making fusebox requests) or the
+    /// user client (e.g. the IP address of the end user).
+    /// </summary>
+    public class ClientContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The client operation to which this history record belongs. The notion of a client operation is provided to
+        /// keep track of client operations which might span multiple transactions in the lower level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
+        public virtual string ClientOperationId { get; set; }
+
+        /// <summary>E.g. "pinto", "imap", "bigtop", "upload"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientType")]
+        public virtual string ClientType { get; set; }
+
+        /// <summary>
+        /// Contains information about the session which created this history record. This will be empty if the history
+        /// record was generated by an internal request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionContext")]
+        public virtual SessionContext SessionContext { get; set; }
+
+        /// <summary>Textual representation of the user's IP address, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIp")]
+        public virtual string UserIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Principal associated with a Cloud Principal representing third party user.</summary>
     public class CloudPrincipalProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Format: "{identity-pool}:{subject}#" Details: go/cloud-principal-identifiers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ClusterInfo contains clustering related information for a particular thread that would be sent as part of the
+    /// conversation view. Today, this information would be used by iOS notification server to identify whether the
+    /// thread belongs to a cluster. If the thread belongs to a grouped cluster, it would identify whether the cluster
+    /// is throttled.
+    /// </summary>
+    public class ClusterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// IDs of the highest priority clusters to which the thread belongs to. If this field is not present, the
+        /// thread does not belong to any cluster and would be shown in the inbox, unclustered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual System.Collections.Generic.IList<string> ClusterId { get; set; }
+
+        /// <summary>
+        /// If the thread belongs to a grouped cluster and all of those clusters are throttled, then this field is set
+        /// to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("throttled")]
+        public virtual System.Nullable<bool> Throttled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10065,6 +10196,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; }
 
+        /// <summary>Filter to be passed in the search request if the corresponding bucket is selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual Filter Filter { get; set; }
+
         /// <summary>
         /// Percent of results that match the bucket value. The returned value is between (0-100], and is rounded down
         /// to an integer if fractional. If the value is not explicitly returned, it represents a percentage value that
@@ -10087,6 +10222,14 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class FacetOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If set, describes integer faceting options for the given integer property. The corresponding integer
+        /// property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this
+        /// and num_facet_buckets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerFacetingOptions")]
+        public virtual IntegerFacetingOptions IntegerFacetingOptions { get; set; }
+
         /// <summary>
         /// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is
         /// 100.
@@ -10172,6 +10315,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A filter was created.</summary>
+    public class FilterCreated : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter was deleted.</summary>
+    public class FilterDeleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Filter options to be applied on query.</summary>
     public class FilterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10190,6 +10347,22 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>HistoryRecord for changes associated with a filter, namely: FILTER_CREATED FILTER_DELETED</summary>
+    public class FilterUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("filterCreated")]
+        public virtual FilterCreated FilterCreated { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("filterDeleted")]
+        public virtual FilterDeleted FilterDeleted { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("filterId")]
+        public virtual string FilterId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A persistent (sticky) footer that is added to the bottom of the card.</summary>
     public class FixedFooter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10201,6 +10374,31 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryButton")]
         public virtual TextButton SecondaryButton { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Folder mapping id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>One for each copy of the message in the IMAP folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual System.Collections.Generic.IList<ImapsyncFolderAttributeFolderMessage> Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This is the content of //imapsync/folder attribute.</summary>
+    public class FolderAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all IMAP folders where the message presents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
+        public virtual System.Collections.Generic.IList<Folder> Folder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10313,6 +10511,153 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessProperty")]
         public virtual string FreshnessProperty { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Item message is the read interface for user data (traditionally referred to as a "message", such as a mail
+    /// message or a chat message, but generalized to encompass other types such as tasks) and stored in Tingle. Each
+    /// Item is associated with a single Thread. An Item contains three classes of data. (1): Item "fields" are common
+    /// to items of all message types (e.g. mail, chat, task, etc.) and are identified by the ItemFieldSpec.FetchType
+    /// enum when fetching Items. (2): Item "attributes" represent data associated with an Item that is stored on behalf
+    /// of the client but to which the fusebox and storage layers are otherwise agnostic. (3): Item "parts" are
+    /// application-defined protocol buffers that affect how the Item is indexed. Item parts are referenced as
+    /// extensions to the ItemParts message. By default the application specifies the index terms associated with an
+    /// Item part. For performance sensitive applications, the storage layer can be modified to understand and index
+    /// data types natively.
+    /// </summary>
+    public class FuseboxItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual Attributes Attributes { get; set; }
+
+        /// <summary>The creation time of the Item in micro seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimeMicroseconds")]
+        public virtual System.Nullable<ulong> CreationTimeMicroseconds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("history")]
+        public virtual History History { get; set; }
+
+        /// <summary>
+        /// The key is used to refer to an item. Note that every field of the MultiKey is unique to the Item, and thus
+        /// the Item can be looked up by any of the fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemKey")]
+        public virtual MultiKey ItemKey { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual Labels Labels { get; set; }
+
+        /// <summary>
+        /// The modification time of the Item in micro seconds. Modifications to the message include label addition,
+        /// deletion, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTimeUs")]
+        public virtual System.Nullable<ulong> LastModificationTimeUs { get; set; }
+
+        /// <summary>go/lockpicker Locker counterpart of references.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockerReferences")]
+        public virtual References LockerReferences { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
+        public virtual MatchInfo MatchInfo { get; set; }
+
+        /// <summary>Type-specific data are represented as extensions to the ItemParts message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual ItemParts Parts { get; set; }
+
+        /// <summary>
+        /// The read timestamp at which this item was read. This is a temporary field used to check if two items
+        /// streamed during dual reading were read at the same timestamp. This will be populated by Fusebox RPCs. "DO
+        /// NOT USE UNLESS YOU TALK TO FUSEBOX TEAM (gmail-fusebox@)".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTs")]
+        public virtual System.Nullable<long> ReadTs { get; set; }
+
+        /// <summary>References to attachments, video attachments in Youtube and Hangout messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual References References { get; set; }
+
+        /// <summary>The snippet is a brief bit of text describing this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>The key of the Thread with which this Item is associated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
+        public virtual MultiKey ThreadKey { get; set; }
+
+        /// <summary>
+        /// A base64 encoded and encrypted string generated from the Gaia Id and the thread id. Used to generate the
+        /// permalink for this thread, exposed from Gmail API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadLocator")]
+        public virtual string ThreadLocator { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
+        public virtual Triggers Triggers { get; set; }
+
+        /// <summary>The latest history operation id that resulted in a mutation of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<ulong> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// In the context of a search, the MatchInfo contains information about which Items matched the query.
+    /// </summary>
+    public class FuseboxItemThreadMatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If SearchQuery.Options.Clustering is present, the query will be treated as a cluster query, and this field
+        /// may be populated with the cluster ID of the cluster to which this thread belongs, if any. The cluster ID
+        /// will be a label on the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// The server id of the last item that matched the query. This is always set, regardless of the
+        /// compute_matching_items_per_thread option. This is the value by which search results are sorted, in
+        /// descending (i.e. newest first) order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMatchingItemId")]
+        public virtual System.Nullable<ulong> LastMatchingItemId { get; set; }
+
+        /// <summary>
+        /// The MultiKey of the last item that matched the query. This is always set, regardless of the
+        /// compute_matching_items_per_thread option. This is the value by which search results are sorted, in
+        /// descending (i.e. newest first) order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMatchingItemKey")]
+        public virtual MultiKey LastMatchingItemKey { get; set; }
+
+        /// <summary>
+        /// If SearchQuery.Options.compute_matching_items_per_thread, this field will contain the keys of all items that
+        /// matched the query, in ascending order. Note that this option requires extra computation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingItemKey")]
+        public virtual System.Collections.Generic.IList<MultiKey> MatchingItemKey { get; set; }
+
+        /// <summary>
+        /// The rank of this ItemThread in the result set of the query. This rank may be used to sort ItemThreads in
+        /// proper order. Ranks are specific to a query, and stable for a given query at a specific time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual Rank Rank { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>If the Value field is not set this means the pref did not exist.</summary>
+    public class FuseboxPrefUpdatePreState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10514,17 +10859,6 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("updateDraftActionMarkup")]
         public virtual UpdateDraftActionMarkup UpdateDraftActionMarkup { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration of the Google Chat in Meet.</summary>
-    public class GoogleChatConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ID of the Chat group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatGroupId")]
-        public virtual string ChatGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11136,6 +11470,63 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The most recent history records associated with the item.</summary>
+    public class History : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("record")]
+        public virtual System.Collections.Generic.IList<HistoryRecord> Record { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class HistoryRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This will almost always be set, but there are corner cases in which the information is not available, and
+        /// thus applications must handle its absence appropriately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientContext")]
+        public virtual ClientContext ClientContext { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("filterUpdate")]
+        public virtual FilterUpdate FilterUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("imapUpdate")]
+        public virtual ImapUpdate ImapUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelUpdate")]
+        public virtual LabelUpdate LabelUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("prefUpdate")]
+        public virtual PrefUpdate PrefUpdate { get; set; }
+
+        /// <summary>
+        /// Each HistoryRecord has a unique id. Ids are monotonically increasing, and not necessarily contiguous.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordId")]
+        public virtual System.Nullable<ulong> RecordId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("threadUpdate")]
+        public virtual ThreadUpdate ThreadUpdate { get; set; }
+
+        /// <summary>
+        /// This will almost always be set, but there are corner cases in which the information is not available, and
+        /// thus applications must handle its absence appropriately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionContext")]
+        public virtual TransactionContext TransactionContext { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("txnDebugInfo")]
+        public virtual TransactionDebugInfo TxnDebugInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Actions handled by individual host apps.</summary>
     public class HostAppActionMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11392,6 +11783,105 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ImapSessionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual string App { get; set; }
+
+        /// <summary>User agent information</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
+        /// <summary>
+        /// As agreed with Bond team, this holds the fingerprint of any "aguid" or "guid" provided by the ID command.
+        /// The fingerprint should be calculated by fingerprint2011. Note that not all clients will provide aguid or
+        /// guid through ID command.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guidFingerprint")]
+        public virtual System.Nullable<ulong> GuidFingerprint { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("os")]
+        public virtual string Os { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual OsVersion OsVersion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("possiblyTrimmedModel")]
+        public virtual PossiblyTrimmedModel PossiblyTrimmedModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message delete history record extension that exports //imapsync/folder attribute of deleted messages which have
+    /// ^is label.
+    /// </summary>
+    public class ImapSyncDelete : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains the value of //imapsync/folder attribute of deleted message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mappings")]
+        public virtual FolderAttribute Mappings { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("msgId")]
+        public virtual System.Nullable<ulong> MsgId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ImapUidsReassign : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Label</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        /// <summary>The message Ids</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> MessageId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HistoryRecord for changes associated with IMAP, namely: IMAP_UIDS_REASSIGN</summary>
+    public class ImapUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("imapUidsReassign")]
+        public virtual ImapUidsReassign ImapUidsReassign { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ImapsyncFolderAttributeFolderMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flags of the message. Represents unseen and flagged state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual ImapsyncFolderAttributeFolderMessageFlags Flags { get; set; }
+
+        /// <summary>UID of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual System.Nullable<ulong> Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ImapsyncFolderAttributeFolderMessageFlags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flagged state of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagged")]
+        public virtual System.Nullable<bool> Flagged { get; set; }
+
+        /// <summary>Seen state of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seen")]
+        public virtual System.Nullable<bool> Seen { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Annotation metadata to display system messages for incoming webhook events. Next Tag: 7</summary>
     public class IncomingWebhookChangedMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11499,6 +11989,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Used to specify integer faceting options.</summary>
+    public class IntegerFacetingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are
+        /// (1,5,10,100), the following facet buckets will be formed {&amp;lt;1, [1,5), [5-10), [10-100), &amp;gt;=100}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerBuckets")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> IntegerBuckets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Used to provide a search operator for integer properties. This is optional. Search operators let users restrict
     /// the query to specific fields relevant to the type of item being searched.
@@ -11544,6 +12048,13 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>The options for integer properties.</summary>
     public class IntegerPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If set, describes integer faceting options for the given integer property. The corresponding integer
+        /// property should be marked isFacetable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerFacetingOptions")]
+        public virtual IntegerFacetingOptions IntegerFacetingOptions { get; set; }
+
         /// <summary>
         /// The maximum value of the property. The minimum and maximum values for the property are used to rank results
         /// according to the ordered ranking. Indexing requests with values greater than the maximum are accepted and
@@ -11932,6 +12443,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Container for type-specific extensions of an Item. This protobuf is defined in a separate file to allow types to
+    /// reference/extend the message without depending on other fusebox protobufs. See items.proto.
+    /// </summary>
+    public class ItemParts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This contains item's status and any errors.</summary>
     public class ItemStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11967,6 +12488,81 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual StructuredDataObject Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An ItemThread is an ordered list of Items. An ItemThread corresponds to a "conversation" in the context of mail.
+    /// An Item belongs to exactly one ItemThread.
+    /// </summary>
+    public class ItemThread : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterInfo")]
+        public virtual ClusterInfo ClusterInfo { get; set; }
+
+        /// <summary>
+        /// The Items in the ItemThread. In the context of a search, the list of Items may be a subset of those that
+        /// logically belong to the ItemThread. The details of which items are included are available in the
+        /// ItemThreadView returned in the overall rpc response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual System.Collections.Generic.IList<FuseboxItem> Item { get; set; }
+
+        /// <summary>
+        /// The server id of the last item returned in the ItemThread. This can be deduced from the [item] list but is
+        /// provided for convenience. When manually constructing an ItemThreadViewSpec to perform operations on the
+        /// ItemThread, this value can be used as the [high_item_id_watermark].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastItemId")]
+        public virtual System.Nullable<ulong> LastItemId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
+        public virtual FuseboxItemThreadMatchInfo MatchInfo { get; set; }
+
+        /// <summary>A snippet summarizing the thread. This field is only populated for searches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>
+        /// The MultiKey that identifies this thread. This value never changes, i.e. remains constant across
+        /// modifications to the thread, including addition, relabeling, or deletion of contained Items. As such, the
+        /// thread key may not necessarily correspond to the key of an contained Item. Legacy note: The "server_id" of
+        /// the thread key is equivalent to the notion of the "original thread id" in the CSS API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
+        public virtual MultiKey ThreadKey { get; set; }
+
+        /// <summary>
+        /// A base64 encoded and encrypted string generated from the Gaia Id and the thread id. Used to generate the
+        /// permalink for this thread, exposed from Gmail API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadLocator")]
+        public virtual string ThreadLocator { get; set; }
+
+        /// <summary>Next available id : 10</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicState")]
+        public virtual TopicState TopicState { get; set; }
+
+        /// <summary>The latest history operation id that resulted in a mutation of any item in the thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<ulong> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a jobsetted server as a target for Trigger dispatch.</summary>
+    public class JobsettedServerSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>E.g. "gateway", "stubby" etc. Leave unset to use the default unnamed port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
+        public virtual string PortName { get; set; }
+
+        /// <summary>E.g. "satellite-server", "bigtop-sync", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverName")]
+        public virtual string ServerName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12018,6 +12614,123 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Formatted text supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label was added to some (subset of the) messages in this thread.</summary>
+    public class LabelAdded : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
+        public virtual string LabelName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
+        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("syncId")]
+        public virtual System.Nullable<long> SyncId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label was created.</summary>
+    public class LabelCreated : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label was deleted.</summary>
+    public class LabelDeleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label was removed from some (subset of the) messages in this thread.</summary>
+    public class LabelRemoved : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
+        public virtual string LabelName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
+        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("syncId")]
+        public virtual System.Nullable<long> SyncId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label was renamed.</summary>
+    public class LabelRenamed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("oldCanonicalName")]
+        public virtual string OldCanonicalName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HistoryRecord for changes associated with a label, namely: LABEL_CREATED LABEL_DELETED LABEL_RENAMED
+    /// LABEL_UPDATED
+    /// </summary>
+    public class LabelUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
+        public virtual string CanonicalName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelCreated")]
+        public virtual LabelCreated LabelCreated { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelDeleted")]
+        public virtual LabelDeleted LabelDeleted { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelRenamed")]
+        public virtual LabelRenamed LabelRenamed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelUpdated")]
+        public virtual LabelUpdated LabelUpdated { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("syncId")]
+        public virtual System.Nullable<long> SyncId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label pref was updated outside of a rename, create, or delete.</summary>
+    public class LabelUpdated : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Labels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The display name of the labels. This is populated (instead of the id) when the request fetch_spec has
+        /// LABEL_DISPLAY_NAMES.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual System.Collections.Generic.IList<string> DisplayName { get; set; }
+
+        /// <summary>The ids of the labels attached to the Item, e.g. "^i", "^x_1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Collections.Generic.IList<string> Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12235,6 +12948,16 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("unmappedIdentities")]
         public virtual System.Collections.Generic.IList<UnmappedIdentity> UnmappedIdentities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class MatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference keys for image attachments that matches search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingImageReferenceKey")]
+        public virtual System.Collections.Generic.IList<string> MatchingImageReferenceKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12772,12 +13495,49 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A message was added. Specifying id and initial labels.</summary>
+    public class MessageAdded : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeIds")]
+        public virtual System.Collections.Generic.IList<string> AttributeIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
+        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
+        public virtual MultiKey MessageKey { get; set; }
+
+        /// <summary>Note that there can be fewer sync ids than label ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SyncIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Stores tombstone message attributes: go/tombstone-message-attributes-overview</summary>
     public class MessageAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true: message is a tombstone in the client. Default false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTombstone")]
         public virtual System.Nullable<bool> IsTombstone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Some (subset of the) messages in this thread were deleted.</summary>
+    public class MessageDeleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Value of coproc's message delete history record extension that exports /imapsync/folder attribute of deleted
+        /// messages which have ^is label.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imapSyncMappings")]
+        public virtual System.Collections.Generic.IList<ImapSyncDelete> ImapSyncMappings { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
+        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12843,6 +13603,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This is proto2's version of MessageSet.</summary>
+    public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata of a matched search result.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12898,6 +13665,44 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The list of displayed properties for the metaline. The maximum number of properties is 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<DisplayedProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A union-like type for identifiying an object in storage. MultiKeys contain multiple key fields, each in a
+    /// separate key space. At least one key field must be set. More than one key field may be set as long as all key
+    /// values refer to the same object. All objects in storage have unique server_id keys. All MultiKeys returned from
+    /// storage to storage clients will always have the server_id field set. When creating an object, if a MultiKey
+    /// without a server_id is supplied to storage, the storage system will auto-assign a server ID to the new object.
+    /// For all other storage requests (i.e. those not creating new objects), clients may omit server_id (as long as
+    /// they supply another key). Instead of server ids, clients can specify string based client_assigned_perm_id keys.
+    /// Mail message drafts are a prime example of these kinds of objects. Each time a user saves a new version of a
+    /// draft, the storage system needs to create a new object with the updated draft content and needs to delete the
+    /// object containing the old content. The new object gets a new SERVER_ID but should get the same
+    /// CLIENT_ASSIGNED_PERM_ID as the now-deleted object containing the old content. Carrying forward the perm ID
+    /// allows it to be used to consistently refer to the same logical object across revisions. These perm IDs save sync
+    /// clients from having to deal with changing object IDs. For example, assume there's a mail message in storage with
+    /// SERVER_ID = 123 and CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of addressing the object
+    /// using MultiKeys: 1) MultiKey { server_id = 123 } 2) MultiKey { server_id = 123, client_assigned_perm_id = "foo"
+    /// } 3) MultiKey { client_assigned_perm_id = "foo" } Multikeys are never serialized in the storage. The individual
+    /// keys are extracted and processed separately. Both the integer ids as well as string ids are indexed for
+    /// efficient retrieval using the same fields in the backend. See go/tingle-multikeys for more information on
+    /// background and motivation.
+    /// </summary>
+    public class MultiKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A client-assigned string based key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAssignedPermId")]
+        public virtual string ClientAssignedPermId { get; set; }
+
+        /// <summary>
+        /// A server-assigned ID. This ID must be used only by Gmail and is constructed using millesecond ts
+        /// &amp;lt;&amp;lt; 20 + randomness. The ID affects the sort order of the index.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverId")]
+        public virtual System.Nullable<ulong> ServerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13190,6 +13995,21 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class OsVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
+        public virtual System.Nullable<int> MajorVersion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
+        public virtual System.Nullable<int> MinorVersion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tertiaryVersion")]
+        public virtual System.Nullable<int> TertiaryVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class OtrChatMessageEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTimestampUsec")]
@@ -13465,11 +14285,87 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This message contains either the device model, or a prefix of the device model (AKA a trimmed device model). The
+    /// "is_trimmed" field indicates which one it is.
+    /// </summary>
+    public class PossiblyTrimmedModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("isTrimmed")]
+        public virtual System.Nullable<bool> IsTrimmed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>See http://s/?fileprint=//depot/google3/security/authentication/postini/auth_token.proto</summary>
     public class PostiniUserProto : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("postiniUserId")]
         public virtual System.Nullable<long> PostiniUserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// State of the thread previous to the update. This really just describes the label state of all messages before
+    /// the update.
+    /// </summary>
+    public class PreState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
+        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
+        public virtual MultiKey MessageKey { get; set; }
+
+        /// <summary>Note that there can be fewer sync ids than label ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SyncIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
+        public virtual MultiKey ThreadKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PREF_DELETED</summary>
+    public class PrefDeleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HistoryRecord for changes associated with prefs, namely: PREF_WRITTEN PREF_DELETED</summary>
+    public class PrefUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the affected preference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("preState")]
+        public virtual FuseboxPrefUpdatePreState PreState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("prefDeleted")]
+        public virtual PrefDeleted PrefDeleted { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("prefWritten")]
+        public virtual PrefWritten PrefWritten { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PREF_WRITTEN</summary>
+    public class PrefWritten : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13646,7 +14542,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Private message information specific to a given user.</summary>
+    /// <summary>
+    /// Private message information specific to a given user. DEPRECATED: Use the privateMessageViewer field in
+    /// CreateMessageInfo instead.
+    /// </summary>
     public class PrivateMessageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Annotations private to {@code userId}.</summary>
@@ -14223,6 +15122,32 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
+    /// The rank contains a tuple of numbers which may be used as a general sort order. The rank should be treated as an
+    /// ordered set of numbers, where the ordering is done in descending order of the most significant rank member. For
+    /// example, given the following ranks described as (primary, secondary): (1,1), (1,2), (2,2) (2,1) The descending
+    /// rank-order is: (2,2) &amp;gt; (2,1) &amp;gt; (1,2) &amp;gt; (1,1)
+    /// </summary>
+    public class Rank : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The primary rank is the most significant rank member. This rank element should always be present. Items with
+        /// higher primary rank are always considered of higher rank than those of lower primary rank.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+        public virtual System.Nullable<long> Primary { get; set; }
+
+        /// <summary>
+        /// The secondary rank may be used to rank items of identical primary rank. This rank element should always be
+        /// present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondary")]
+        public virtual System.Nullable<long> Secondary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Principal associated with a given RBAC role. This principal is used by Sphinx Provisioning Service for RBAC
     /// (go/cedi-auth) provisionable (go/sphinx-rbacz-design).
     /// </summary>
@@ -14378,6 +15303,45 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Recording session's state information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionStateInfo")]
         public virtual SessionStateInfo SessionStateInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// All fields in this proto are now columns in spanner see
+    /// google3/storage/slice/production/gmail/user_data_tables.pi for documentation.
+    /// </summary>
+    public class Reference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
+        public virtual string BlobId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hash")]
+        public virtual string Hash { get; set; }
+
+        /// <summary>LINT.IfChange</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>LINT.ThenChange(//depot/google3/storage/slice/production/gmail/ user_data_tables.pi)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<long> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class References : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<Reference> ReferencesValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14715,6 +15679,25 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Opaque, server-assigned ID of the Roster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for Triggers dispatched via RPC.</summary>
+    public class RpcOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The RPC's request extensions (i.e. RPC::request_extensions(), a.k.a. the Stubby side channel) will be merged
+        /// with the specified [request_extensions]. When Triggers are batched, the RPC's request extensions will be
+        /// merged with all of the [request_extensions] of the Triggers in the batch. Note that merging of request
+        /// extensions follows standard protocol buffer semantics; values of singular fields override previous values,
+        /// and values of repeated fields are appended (In the case of Triggers, Triggers with later fire times will be
+        /// merged after Triggers with earlier fire times in the same batch). It is not advised to specify extensions
+        /// with repeated fields on batchable Triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestExtensions")]
+        public virtual MessageSet RequestExtensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15212,6 +16195,39 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SessionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time at which this activity's session was authenticated, in seconds since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authTime")]
+        public virtual System.Nullable<long> AuthTime { get; set; }
+
+        /// <summary>
+        /// Gaia ID of the authenticated user when delegate access is active. In such sessions the main gaia ID is that
+        /// of the delegator, i.e. the account being accessed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegateUserId")]
+        public virtual System.Nullable<long> DelegateUserId { get; set; }
+
+        /// <summary>Device User Session ID, see go/dusi.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dusi")]
+        public virtual string Dusi { get; set; }
+
+        /// <summary>Imap session context for Bond/Gmail integration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imapSessionContext")]
+        public virtual ImapSessionContext ImapSessionContext { get; set; }
+
+        /// <summary>OAuth login ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthLoginId")]
+        public virtual System.Nullable<int> OauthLoginId { get; set; }
+
+        /// <summary>The devconsole project ID of the developer who authenticated with OAuth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthProjectId")]
+        public virtual System.Nullable<long> OauthProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16126,6 +17142,82 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The ThreadKey was set on some (subset of the) messages in this thread.</summary>
+    public class ThreadKeySet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Messages on which the thread_key was changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
+        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
+
+        /// <summary>The new thread_key for this thread</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newThreadKey")]
+        public virtual MultiKey NewThreadKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HistoryRecord for changes associated with a thread, namely: MESSAGE_ADDED MESSAGE_DELETED LABEL_ADDED
+    /// LABEL_REMOVED ATTRIBUTE_SET ATTRIBUTE_REMOVED THREAD_KEY_SET All label_ids refer to the (unchanging) value as
+    /// defined by the Label.id field in labels.proto. In particular, it is *not* the canonical_name.
+    /// </summary>
+    public class ThreadUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeRemoved")]
+        public virtual AttributeRemoved AttributeRemoved { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeSet")]
+        public virtual AttributeSet AttributeSet { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelAdded")]
+        public virtual LabelAdded LabelAdded { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labelRemoved")]
+        public virtual LabelRemoved LabelRemoved { get; set; }
+
+        /// <summary>Indicates the record id of the last operation that modified this thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastHistoryRecordId")]
+        public virtual System.Nullable<ulong> LastHistoryRecordId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageAdded")]
+        public virtual MessageAdded MessageAdded { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageDeleted")]
+        public virtual MessageDeleted MessageDeleted { get; set; }
+
+        /// <summary>
+        /// The first non-empty thread-key on any message in the thread (including deleted messages). This field has
+        /// been introduced to maintain backward compatibility for clients that are not subthread aware.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalThreadKey")]
+        public virtual MultiKey OriginalThreadKey { get; set; }
+
+        /// <summary>
+        /// The PreStates of all messages before the transaction. These are suppressed if the client requested that
+        /// prestates not be included in the output of the GetHistoryRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preState")]
+        public virtual System.Collections.Generic.IList<PreState> PreState { get; set; }
+
+        /// <summary>Affected thread</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
+        public virtual MultiKey ThreadKey { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("threadKeySet")]
+        public virtual ThreadKeySet ThreadKeySet { get; set; }
+
+        /// <summary>Thread PLID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadLocator")]
+        public virtual string ThreadLocator { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("topicStateUpdate")]
+        public virtual TopicStateUpdate TopicStateUpdate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Used to provide a search operator for timestamp properties. This is optional. Search operators let users
     /// restrict the query to specific fields relevant to the type of item being searched.
@@ -16238,6 +17330,70 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>State of an topic thread as maintained within Tingle.</summary>
+    public class TopicState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map of label =&amp;gt; count of topic constituent messages with label These only contain counts of labels
+        /// that are relevant for topic normalization/denormalization. Eg. If a topic thread has 5 constituents, 4 of
+        /// which are in inbox, this will contain ^i =&amp;gt; 4. Some labels of interest are archive, inbox, trash,
+        /// spam, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIdMessageCount")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> LabelIdMessageCount { get; set; }
+
+        /// <summary>Number of constituents for this entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numConstituents")]
+        public virtual System.Nullable<int> NumConstituents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TopicStateUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("topicState")]
+        public virtual TopicState TopicState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Storage information pertaining to the transaction with which a HistoryRecord is associated.</summary>
+    public class TransactionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The last HistoryRecord of the transaction. Note that this may correspond to a record that is filtered by
+        /// Tingle (and thus not returned to the client). See http://b/9513464.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endingRecordId")]
+        public virtual System.Nullable<ulong> EndingRecordId { get; set; }
+
+        /// <summary>
+        /// The first HistoryRecord of the transaction. Note that this may be a record of type INTERNAL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingRecordId")]
+        public virtual System.Nullable<ulong> StartingRecordId { get; set; }
+
+        /// <summary>The microsecond timestamp of the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeTimestampUs")]
+        public virtual System.Nullable<long> WriteTimestampUs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HistoryRecord for debug info associated with the transaction, namely: TXN_DEBUG_INFO TODO(b/143845917) This is a
+    /// short-term workaround for unblocking fusebox writes migration. Clean up the code or land a long-term solution
+    /// after the rollout. go/diff-to-historyrecord
+    /// </summary>
+    public class TransactionDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about a transcription session.</summary>
     public class TranscriptionSessionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16256,6 +17412,124 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Transient generic data that will not be saved on the server.</summary>
     public class TransientData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Trigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Each dispatcher should use an enum to for the actions that it supports. If a dispatcher has only one action,
+        /// this does not need to be set. (It can be expanded later, defining the default behaviour as type 0.) For
+        /// purposes such as batching, the type of a trigger is (dispatcher, action_type).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual System.Nullable<long> ActionType { get; set; }
+
+        /// <summary>
+        /// Maximum possible delay in micros that can be tolerated so triggers can be batched, which makes processing
+        /// more efficient compared to firing triggers individually. Note that the actual fire time will be somewhere in
+        /// the timerange interval [fire_time_us, fire_time_us + batch_time_us).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchTimeUs")]
+        public virtual System.Nullable<long> BatchTimeUs { get; set; }
+
+        /// <summary>Must be set for DISPATCHER_STUBBY_DISPATCHER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispatchId")]
+        public virtual System.Nullable<long> DispatchId { get; set; }
+
+        /// <summary>Which server should interpret action_type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispatcher")]
+        public virtual string Dispatcher { get; set; }
+
+        /// <summary>
+        /// Earliest time to fire at in microseconds. The actual time that the trigger will fire will be in the
+        /// timerange: [fire_time_us, fire_time_us + batch_time_us).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fireTimeUs")]
+        public virtual System.Nullable<long> FireTimeUs { get; set; }
+
+        /// <summary>Must be set for DISPATCHER_JOBSETTED_PRIMARY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobsettedServerSpec")]
+        public virtual JobsettedServerSpec JobsettedServerSpec { get; set; }
+
+        /// <summary>The trigger key, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rpcOptions")]
+        public virtual RpcOptions RpcOptions { get; set; }
+
+        /// <summary>
+        /// The slice_fire_time_us is automatically computed and stored as part of the trigger write. It represents the
+        /// exact fire time at which the trigger will be queued to fire and will satisfy fire_time_us &amp;lt;
+        /// slice_fire_time_us &amp;lt;= fire_time_us + batch_time_us Triggers have an index row in the slice trigger
+        /// index with the row prefix matching this time. Note that this field is internal to gmail_cp and is ignored if
+        /// set by external clients when adding / updating triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sliceFireTimeUs")]
+        public virtual System.Nullable<long> SliceFireTimeUs { get; set; }
+
+        /// <summary>Trigger action to perform. This should always be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerAction")]
+        public virtual TriggerAction TriggerAction { get; set; }
+
+        /// <summary>
+        /// The TriggerKey will uniquely determine a trigger within a given context. A context is a single message for
+        /// message triggers or a single account for account triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerKey")]
+        public virtual TriggerKey TriggerKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TriggerAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Clients should use extensions on the Trigger message instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dataInt")]
+        public virtual System.Nullable<long> DataInt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A TriggerKey (type + instance_id) uniquely identifies a trigger within a message for a message-trigger and
+    /// within an account for an account-trigger.
+    /// </summary>
+    public class TriggerKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier to distinguish multiple Triggers of the same type (per message or per account).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>
+        /// A non-empty string that identifies the type of Trigger. Triggers of the same type may be batched together.
+        /// The universe of values for the type field should be finite as it is used as a stats key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Triggers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of triggers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
+        public virtual System.Collections.Generic.IList<Trigger> TriggersValue { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16537,6 +17811,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The metrics metadata of the Data Loss Prevention attachment scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dlpMetricsMetadata")]
         public virtual AppsDynamiteSharedDlpMetricsMetadata DlpMetricsMetadata { get; set; }
+
+        /// <summary>The timestamp of the most recent virus scan completed (in microseconds).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestVirusScanTimestamp")]
+        public virtual System.Nullable<long> LatestVirusScanTimestamp { get; set; }
 
         /// <summary>A copy of the LocalId in Annotation. This field is supposed to be filled by server only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localId")]

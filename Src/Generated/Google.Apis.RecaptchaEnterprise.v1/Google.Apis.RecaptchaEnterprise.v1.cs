@@ -1737,6 +1737,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
+        /// <summary>The name of the Android package with which the token was generated (Android keys only).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
+        public virtual string AndroidPackageName { get; set; }
+
         /// <summary>The timestamp corresponding to the generation of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -1748,6 +1752,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Reason associated with the response when valid = false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidReason")]
         public virtual string InvalidReason { get; set; }
+
+        /// <summary>The ID of the iOS bundle with which the token was generated (iOS keys only).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosBundleId")]
+        public virtual string IosBundleId { get; set; }
 
         /// <summary>
         /// Whether the provided user response token is valid. When valid = false, the reason could be specified in

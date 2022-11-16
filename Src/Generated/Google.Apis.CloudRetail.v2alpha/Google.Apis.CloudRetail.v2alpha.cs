@@ -4222,7 +4222,10 @@ namespace Google.Apis.CloudRetail.v2alpha
                     [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DeviceType { get; set; }
 
-                    /// <summary>If true, attribute suggestions are enabled and provided in response.</summary>
+                    /// <summary>
+                    /// If true, attribute suggestions are enabled and provided in response. This field is only
+                    /// available for "cloud-retail" dataset.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("enableAttributeSuggestions", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> EnableAttributeSuggestions { get; set; }
 
@@ -6129,7 +6132,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>Response of the auto-complete query.</summary>
     public class GoogleCloudRetailV2alphaCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A map of matched attribute suggestions. Current supported keys: * `brands` * `categories`</summary>
+        /// <summary>
+        /// A map of matched attribute suggestions. This field is only available for "cloud-retail" dataset. Current
+        /// supported keys: * `brands` * `categories`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeResults")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult> AttributeResults { get; set; }
 
@@ -8622,7 +8628,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and
-    /// "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+    /// "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
     /// </summary>
     public class GoogleCloudRetailV2alphaRuleTwowaySynonymsAction : Google.Apis.Requests.IDirectResponseSchema
     {

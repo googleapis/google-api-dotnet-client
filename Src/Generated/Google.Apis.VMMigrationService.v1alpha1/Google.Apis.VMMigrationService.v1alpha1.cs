@@ -4549,7 +4549,9 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySecurityGroupNames")]
         public virtual System.Collections.Generic.IList<string> InventorySecurityGroupNames { get; set; }
 
-        /// <summary>AWS resource tags to limit the scope of the source inventory.</summary>
+        /// <summary>
+        /// Deprecated: AWS resource tags to limit the scope of the source inventory. Use inventory_tag_list instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> InventoryTags { get; set; }
 
@@ -4597,6 +4599,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>AwsVmDetails describes a VM in AWS.</summary>
     public class AwsVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The CPU architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
         /// <summary>The VM Boot Option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
@@ -4648,6 +4654,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The tags of the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The virtualization type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualizationType")]
+        public virtual string VirtualizationType { get; set; }
 
         /// <summary>The VM ID in AWS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
@@ -5924,7 +5934,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; }
 
-        /// <summary>The current progress in percentage of this cycle.</summary>
+        /// <summary>
+        /// The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle
+        /// progression more accurately.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; }
 
@@ -5932,7 +5945,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>State of the MigratingVm.</summary>
+        /// <summary>State of the ReplicationCycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 

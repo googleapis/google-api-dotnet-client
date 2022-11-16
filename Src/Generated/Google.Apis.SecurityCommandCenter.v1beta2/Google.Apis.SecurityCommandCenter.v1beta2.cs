@@ -5377,6 +5377,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
+        /// <summary>File associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
+
         /// <summary>The class of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }

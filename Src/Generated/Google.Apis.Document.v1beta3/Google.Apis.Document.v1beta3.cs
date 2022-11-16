@@ -739,6 +739,157 @@ namespace Google.Apis.Document.v1beta3
                     public ProcessorVersionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Evaluations = new EvaluationsResource(service);
+                    }
+
+                    /// <summary>Gets the Evaluations resource.</summary>
+                    public virtual EvaluationsResource Evaluations { get; }
+
+                    /// <summary>The "evaluations" collection of methods.</summary>
+                    public class EvaluationsResource
+                    {
+                        private const string Resource = "evaluations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public EvaluationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Retrieves a specific evaluation.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the Evaluation to get.
+                        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}/evaluations/{evaluation}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Retrieves a specific evaluation.</summary>
+                        public class GetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3Evaluation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Evaluation to get.
+                            /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}/evaluations/{evaluation}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta3/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+/evaluations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Retrieves a set of evaluations for a given processor version.</summary>
+                        /// <param name="parent">
+                        /// Required. The resource name of the ProcessorVersion to list evaluations for.
+                        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Retrieves a set of evaluations for a given processor version.</summary>
+                        public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ListEvaluationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ProcessorVersion to list evaluations for.
+                            /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The standard list page size. If unspecified, at most 5 evaluations will be returned. The
+                            /// maximum value is 100; values above 100 will be coerced to 100.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListEvaluations` call. Provide this to retrieve
+                            /// the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta3/{+parent}/evaluations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -902,6 +1053,69 @@ namespace Google.Apis.Document.v1beta3
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Evaluates a ProcessorVersion against annotated documents, producing an Evaluation.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="processorVersion">
+                    /// Required. The resource name of the ProcessorVersion to evaluate.
+                    /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+                    /// </param>
+                    public virtual EvaluateProcessorVersionRequest EvaluateProcessorVersion(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest body, string processorVersion)
+                    {
+                        return new EvaluateProcessorVersionRequest(service, body, processorVersion);
+                    }
+
+                    /// <summary>
+                    /// Evaluates a ProcessorVersion against annotated documents, producing an Evaluation.
+                    /// </summary>
+                    public class EvaluateProcessorVersionRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new EvaluateProcessorVersion request.</summary>
+                        public EvaluateProcessorVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest body, string processorVersion) : base(service)
+                        {
+                            ProcessorVersion = processorVersion;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ProcessorVersion to evaluate.
+                        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("processorVersion", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProcessorVersion { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "evaluateProcessorVersion";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+processorVersion}:evaluateProcessorVersion";
+
+                        /// <summary>Initializes EvaluateProcessorVersion parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("processorVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "processorVersion",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1095,6 +1309,71 @@ namespace Google.Apis.Document.v1beta3
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Trains a new processor version. Operation metadata is returned as
+                    /// cloud_documentai_core.TrainProcessorVersionMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent (project, location and processor) to create the new version for. Format:
+                    /// `projects/{project}/locations/{location}/processors/{processor}`.
+                    /// </param>
+                    public virtual TrainRequest Train(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest body, string parent)
+                    {
+                        return new TrainRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Trains a new processor version. Operation metadata is returned as
+                    /// cloud_documentai_core.TrainProcessorVersionMetadata.
+                    /// </summary>
+                    public class TrainRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Train request.</summary>
+                        public TrainRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project, location and processor) to create the new version for.
+                        /// Format: `projects/{project}/locations/{location}/processors/{processor}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "train";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+parent}/processorVersions:train";
+
+                        /// <summary>Initializes Train parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
                             });
                         }
                     }
@@ -2846,25 +3125,27 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta1Barcode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93:
-        /// Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type.
-        /// EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type.
-        /// AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        /// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. -
+        /// `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type.
+        /// - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. -
+        /// `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code
+        /// type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
         /// <summary>
-        /// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        /// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
         public virtual string RawValue { get; set; }
 
         /// <summary>
-        /// Value format describes the format of the value that a barcode encodes. The supported formats are:
-        /// CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number.
-        /// PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO:
-        /// Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        /// Value format describes the format of the value that a barcode encodes. The supported formats are: -
+        /// `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone
+        /// number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`:
+        /// Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`:
+        /// Driver's license.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFormat")]
         public virtual string ValueFormat { get; set; }
@@ -2958,7 +3239,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating
+        /// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating
         /// corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
@@ -2986,7 +3267,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Confidence of detected Schema entity. Range [0, 1].</summary>
+        /// <summary>Optional. Confidence of detected Schema entity. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -3232,7 +3513,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta1BoundingPoly BoundingPoly { get; set; }
 
-        /// <summary>Optional. Confidence of detected page element, if applicable. Range [0, 1].</summary>
+        /// <summary>Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -3295,12 +3576,12 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Detected language for a structural component.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Confidence of detected language. Range [0, 1].</summary>
+        /// <summary>Confidence of detected language. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
         /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
@@ -3409,7 +3690,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range [0, 1] where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -3421,15 +3702,15 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy",
-        /// "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small",
-        /// "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        /// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` -
+        /// `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` -
+        /// `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -3447,7 +3728,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for
-        /// a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+        /// a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -3807,7 +4088,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleTypeColor Color { get; set; }
 
         /// <summary>
-        /// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
         public virtual string FontFamily { get; set; }
@@ -4063,25 +4344,27 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta2Barcode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93:
-        /// Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type.
-        /// EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type.
-        /// AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        /// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. -
+        /// `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type.
+        /// - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. -
+        /// `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code
+        /// type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
         /// <summary>
-        /// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        /// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
         public virtual string RawValue { get; set; }
 
         /// <summary>
-        /// Value format describes the format of the value that a barcode encodes. The supported formats are:
-        /// CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number.
-        /// PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO:
-        /// Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        /// Value format describes the format of the value that a barcode encodes. The supported formats are: -
+        /// `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone
+        /// number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`:
+        /// Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`:
+        /// Driver's license.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFormat")]
         public virtual string ValueFormat { get; set; }
@@ -4179,7 +4462,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating
+        /// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating
         /// corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
@@ -4207,7 +4490,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Confidence of detected Schema entity. Range [0, 1].</summary>
+        /// <summary>Optional. Confidence of detected Schema entity. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -4482,7 +4765,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta2BoundingPoly BoundingPoly { get; set; }
 
-        /// <summary>Optional. Confidence of detected page element, if applicable. Range [0, 1].</summary>
+        /// <summary>Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -4545,12 +4828,12 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Detected language for a structural component.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Confidence of detected language. Range [0, 1].</summary>
+        /// <summary>Confidence of detected language. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
         /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
@@ -4659,7 +4942,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range [0, 1] where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -4671,15 +4954,15 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy",
-        /// "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small",
-        /// "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        /// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` -
+        /// `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` -
+        /// `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4697,7 +4980,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for
-        /// a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+        /// a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -5057,7 +5340,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleTypeColor Color { get; set; }
 
         /// <summary>
-        /// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
         public virtual string FontFamily { get; set; }
@@ -5321,25 +5604,27 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3Barcode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93:
-        /// Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type.
-        /// EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type.
-        /// AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        /// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. -
+        /// `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type.
+        /// - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. -
+        /// `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code
+        /// type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
         /// <summary>
-        /// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        /// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
         public virtual string RawValue { get; set; }
 
         /// <summary>
-        /// Value format describes the format of the value that a barcode encodes. The supported formats are:
-        /// CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number.
-        /// PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO:
-        /// Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        /// Value format describes the format of the value that a barcode encodes. The supported formats are: -
+        /// `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone
+        /// number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`:
+        /// Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`:
+        /// Driver's license.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFormat")]
         public virtual string ValueFormat { get; set; }
@@ -5355,7 +5640,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDocuments")]
         public virtual GoogleCloudDocumentaiV1beta3GcsDocuments GcsDocuments { get; set; }
 
-        /// <summary>The set of documents that match the specified Cloud Storage [gcs_prefix].</summary>
+        /// <summary>The set of documents that match the specified Cloud Storage `gcs_prefix`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual GoogleCloudDocumentaiV1beta3GcsPrefix GcsPrefix { get; set; }
 
@@ -5666,7 +5951,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating
+        /// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating
         /// corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
@@ -5694,7 +5979,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Confidence of detected Schema entity. Range [0, 1].</summary>
+        /// <summary>Optional. Confidence of detected Schema entity. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -5969,7 +6254,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta3BoundingPoly BoundingPoly { get; set; }
 
-        /// <summary>Optional. Confidence of detected page element, if applicable. Range [0, 1].</summary>
+        /// <summary>Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -6032,12 +6317,12 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Detected language for a structural component.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Confidence of detected language. Range [0, 1].</summary>
+        /// <summary>Confidence of detected language. Range `[0, 1]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
         /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
@@ -6146,7 +6431,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range [0, 1] where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -6158,15 +6443,15 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy",
-        /// "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small",
-        /// "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        /// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` -
+        /// `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` -
+        /// `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -6184,7 +6469,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for
-        /// a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+        /// a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -6545,10 +6830,6 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Metadata for the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3EntityTypeMetadata EntityTypeMetadata { get; set; }
-
         /// <summary>
         /// If specified, lists all the possible values for this entity. This should not be more than a handful of
         /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
@@ -6559,10 +6840,10 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Name of the type. It must be unique within the schema file and cannot be a 'Common Type'. Besides that we
-        /// use the following naming conventions: - *use snake_casing* - name matching is case-insensitive - Maximum 64
-        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        /// compatibility internal infrastructure and tooling can handle any ascii character) - The '/' is sometimes
-        /// used to denote a property of a type. For example line_item/amount. This convention is deprecated, but will
+        /// use the following naming conventions: - *use `snake_casing`* - name matching is case-insensitive - Maximum
+        /// 64 characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        /// compatibility internal infrastructure and tooling can handle any ascii character) - The `/` is sometimes
+        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
         /// still be honored for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6597,10 +6878,6 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Occurrence type limits the number of instances an entity type appears in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
         public virtual string OccurrenceType { get; set; }
-
-        /// <summary>Any additional metadata about the property can be added here.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("propertyMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3PropertyMetadata PropertyMetadata { get; set; }
 
         /// <summary>
         /// A reference to the value type of the property. This type is subject to the same conventions as the
@@ -6678,7 +6955,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleTypeColor Color { get; set; }
 
         /// <summary>
-        /// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
         public virtual string FontFamily { get; set; }
@@ -6816,20 +7093,206 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata about an entity type.</summary>
-    public class GoogleCloudDocumentaiV1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human review labeling config on the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
-        /// <summary>Human review config on the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
 
-        /// <summary>Whether the entity type should be considered as "inactive".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
-        public virtual System.Nullable<bool> Inactive { get; set; }
+    /// <summary>Evaluates the given ProcessorVersion against the supplied documents.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The documents used in the evaluation. If unspecified, use the processor's dataset as evaluation
+        /// input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationDocuments")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig EvaluationDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the created evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An evaluation of a ProcessorVersion's performance.</summary>
+    public class GoogleCloudDocumentaiV1beta3Evaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metrics for all the entities in aggregate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allEntitiesMetrics")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics AllEntitiesMetrics { get; set; }
+
+        /// <summary>The time that the evaluation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Counters for the documents used in the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentCounters")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationCounters DocumentCounters { get; set; }
+
+        /// <summary>Metrics across confidence levels, for different entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics> EntityMetrics { get; set; }
+
+        /// <summary>The KMS key name used for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The KMS key version with which data is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
+
+        /// <summary>
+        /// The resource name of the evaluation. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluations metrics, at a specific confidence level.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevel")]
+        public virtual System.Nullable<float> ConfidenceLevel { get; set; }
+
+        /// <summary>The metrics at the specific confidence level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationMetrics Metrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation counters for the documents that were used.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationCounters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How many documents were used in the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatedDocumentsCount")]
+        public virtual System.Nullable<int> EvaluatedDocumentsCount { get; set; }
+
+        /// <summary>
+        /// How many documents were not included in the evaluation as Document AI failed to process them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedDocumentsCount")]
+        public virtual System.Nullable<int> FailedDocumentsCount { get; set; }
+
+        /// <summary>How many documents were sent for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDocumentsCount")]
+        public virtual System.Nullable<int> InputDocumentsCount { get; set; }
+
+        /// <summary>How many documents were not included in the evaluation as they didn't pass validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidDocumentsCount")]
+        public virtual System.Nullable<int> InvalidDocumentsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The calculated f1 score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>The amount of false negatives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativesCount")]
+        public virtual System.Nullable<int> FalseNegativesCount { get; set; }
+
+        /// <summary>The amount of false positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositivesCount")]
+        public virtual System.Nullable<int> FalsePositivesCount { get; set; }
+
+        /// <summary>The amount of documents with a ground truth occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthDocumentCount")]
+        public virtual System.Nullable<int> GroundTruthDocumentCount { get; set; }
+
+        /// <summary>The amount of occurrences in ground truth documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthOccurrencesCount")]
+        public virtual System.Nullable<int> GroundTruthOccurrencesCount { get; set; }
+
+        /// <summary>The calculated precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>The amount of documents with a predicted occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedDocumentCount")]
+        public virtual System.Nullable<int> PredictedDocumentCount { get; set; }
+
+        /// <summary>The amount of occurrences in predicted documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedOccurrencesCount")]
+        public virtual System.Nullable<int> PredictedOccurrencesCount { get; set; }
+
+        /// <summary>The calculated recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The amount of documents that had an occurrence of this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentsCount")]
+        public virtual System.Nullable<int> TotalDocumentsCount { get; set; }
+
+        /// <summary>The amount of true positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositivesCount")]
+        public virtual System.Nullable<int> TruePositivesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics across multiple confidence levels.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The calculated area under the precision recall curve (AUPRC), computed by integrating over all confidence
+        /// thresholds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auprc")]
+        public virtual System.Nullable<float> Auprc { get; set; }
+
+        /// <summary>The AUPRC for metrics with fuzzy matching disabled, i.e., exact matching only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auprcExact")]
+        public virtual System.Nullable<float> AuprcExact { get; set; }
+
+        /// <summary>Metrics across confidence levels with fuzzy matching enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevelMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics> ConfidenceLevelMetrics { get; set; }
+
+        /// <summary>Metrics across confidence levels with only exact matching.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevelMetricsExact")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics> ConfidenceLevelMetricsExact { get; set; }
+
+        /// <summary>The Estimated Calibration Error (ECE) of the confidence of the predicted entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedCalibrationError")]
+        public virtual System.Nullable<float> EstimatedCalibrationError { get; set; }
+
+        /// <summary>
+        /// The ECE for the predicted entities with fuzzy matching disabled, i.e., exact matching only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedCalibrationErrorExact")]
+        public virtual System.Nullable<float> EstimatedCalibrationErrorExact { get; set; }
+
+        /// <summary>The metrics type for the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsType")]
+        public virtual string MetricsType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6883,17 +7346,6 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for human review labeling config.</summary>
-    public class GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether to enable normalization editing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableNormalizationEditing")]
-        public virtual System.Nullable<bool> EnableNormalizationEditing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6917,16 +7369,19 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for Human Review config.</summary>
-    public class GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The response from ListEvaluations.</summary>
+    public class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The confidence threshold if human review validation is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
-        public virtual System.Nullable<float> ConfidenceThreshold { get; set; }
+        /// <summary>The evaluations requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3Evaluation> Evaluations { get; set; }
 
-        /// <summary>Whether to enable human review validation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableValidation")]
-        public virtual System.Nullable<bool> EnableValidation { get; set; }
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7089,7 +7544,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see
+        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see
         /// FetchProcessorTypes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -7125,12 +7580,12 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string LaunchStage { get; set; }
 
         /// <summary>
-        /// The resource name of the processor type. Format: projects/{project}/processorTypes/{processor_type}
+        /// The resource name of the processor type. Format: `projects/{project}/processorTypes/{processor_type}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The type of the processor, e.g., "invoice_parsing".</summary>
+        /// <summary>The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -7167,6 +7622,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The display name of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
 
         /// <summary>Denotes that this ProcessorVersion is managed by google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
@@ -7210,25 +7669,6 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata about a property.</summary>
-    public class GoogleCloudDocumentaiV1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Human review labeling config on the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
-
-        /// <summary>Human review validation config on the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
-        public virtual GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
-
-        /// <summary>Whether the property should be considered as "inactive".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
-        public virtual System.Nullable<bool> Inactive { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Payload message of raw document content (bytes).</summary>
     public class GoogleCloudDocumentaiV1beta3RawDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7236,7 +7676,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>An IANA MIME type (RFC6838) indicating the nature and format of the [content].</summary>
+        /// <summary>An IANA MIME type (RFC6838) indicating the nature and format of the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -7352,6 +7792,109 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Response message for set default processor version method.</summary>
     public class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata that represents a processor version being created.</summary>
+    public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The test dataset validation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testDatasetValidation")]
+        public virtual GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation TestDatasetValidation { get; set; }
+
+        /// <summary>The training dataset validation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingDatasetValidation")]
+        public virtual GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation TrainingDatasetValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The dataset validation information. This includes any and all errors with documents and the dataset.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of dataset errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetErrorCount")]
+        public virtual System.Nullable<int> DatasetErrorCount { get; set; }
+
+        /// <summary>
+        /// Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single
+        /// dataset error is terminal for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> DatasetErrors { get; set; }
+
+        /// <summary>The total number of document errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentErrorCount")]
+        public virtual System.Nullable<int> DocumentErrorCount { get; set; }
+
+        /// <summary>
+        /// Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any
+        /// document with errors will not be used throughout training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> DocumentErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the create processor version method.</summary>
+    public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The processor version to use as a base for training. This processor version must be a child of
+        /// `parent`. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseProcessorVersion")]
+        public virtual string BaseProcessorVersion { get; set; }
+
+        /// <summary>Optional. The schema the processor version will be trained with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
+
+        /// <summary>Optional. The input data used to train the `ProcessorVersion`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputData")]
+        public virtual GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData InputData { get; set; }
+
+        /// <summary>Required. The processor version to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersion ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The input data used to train a new `ProcessorVersion`.</summary>
+    public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The documents used for testing the trained version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testDocuments")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig TestDocuments { get; set; }
+
+        /// <summary>The documents used for training the new version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingDocuments")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig TrainingDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for the TrainProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the processor version produced by training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

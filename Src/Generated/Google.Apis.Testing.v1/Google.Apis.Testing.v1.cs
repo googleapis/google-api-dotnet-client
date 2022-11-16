@@ -1160,6 +1160,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxSdkVersion")]
         public virtual System.Nullable<int> MaxSdkVersion { get; set; }
 
+        /// <summary>Meta-data tags defined in the manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IList<Metadata> Metadata { get; set; }
+
         /// <summary>Minimum API level required for the application to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSdkVersion")]
         public virtual System.Nullable<int> MinSdkVersion { get; set; }
@@ -1171,6 +1175,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Specifies the API Level on which the application is designed to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
         public virtual System.Nullable<int> TargetSdkVersion { get; set; }
+
+        /// <summary>Feature usage tags defined in the manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usesFeature")]
+        public virtual System.Collections.Generic.IList<UsesFeature> UsesFeature { get; set; }
 
         /// <summary>Permissions declared to be used by the application</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usesPermission")]
@@ -1788,6 +1796,23 @@ namespace Google.Apis.Testing.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A tag within a manifest. https://developer.android.com/guide/topics/manifest/meta-data-element.html
+    /// </summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The android:name value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The android:value value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2429,6 +2454,23 @@ namespace Google.Apis.Testing.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
         public virtual System.Nullable<int> NumShards { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A tag within a manifest. https://developer.android.com/guide/topics/manifest/uses-feature-element.html
+    /// </summary>
+    public class UsesFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The android:required value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRequired")]
+        public virtual System.Nullable<bool> IsRequired { get; set; }
+
+        /// <summary>The android:name value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

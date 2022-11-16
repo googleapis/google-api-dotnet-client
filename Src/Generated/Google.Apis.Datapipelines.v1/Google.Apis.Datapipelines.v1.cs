@@ -298,6 +298,7 @@ namespace Google.Apis.Datapipelines.v1
             {
                 this.service = service;
                 Pipelines = new PipelinesResource(service);
+                TransformDescriptions = new TransformDescriptionsResource(service);
             }
 
             /// <summary>Gets the Pipelines resource.</summary>
@@ -832,6 +833,231 @@ namespace Google.Apis.Datapipelines.v1
                 }
             }
 
+            /// <summary>Gets the TransformDescriptions resource.</summary>
+            public virtual TransformDescriptionsResource TransformDescriptions { get; }
+
+            /// <summary>The "transformDescriptions" collection of methods.</summary>
+            public class TransformDescriptionsResource
+            {
+                private const string Resource = "transformDescriptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TransformDescriptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets transform descriptions in a batch, associated with a list of provided uniform resource names.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The project and location shared by all transform descriptions being retrieved, formatted
+                /// as "projects/{project}/locations/{location}".
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Gets transform descriptions in a batch, associated with a list of provided uniform resource names.
+                /// </summary>
+                public class BatchGetRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location shared by all transform descriptions being retrieved,
+                    /// formatted as "projects/{project}/locations/{location}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The names of the transform descriptions being retrieved, formatted as
+                    /// "projects/{project}/locations/{location}/transformdescriptions/{transform_description}". If no
+                    /// name is provided, all of the transform descriptions will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/transformDescriptions:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the transform description associated with the provided uniform resource name.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The full name formatted as
+                /// "projects/{your-project}/locations/{google-cloud-region}/transformdescriptions/{uniform-resource-name}".
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the transform description associated with the provided uniform resource name.
+                /// </summary>
+                public class GetRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1TransformDescription>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name formatted as
+                    /// "projects/{your-project}/locations/{google-cloud-region}/transformdescriptions/{uniform-resource-name}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transformDescriptions/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Computes the schema for the transform. Computation from `raw_schema` will always occur if it is set.
+            /// This requires that the transform supports that encoding. If no raw schema is provided and if the
+            /// transform is for an IO, then this will attempt to connect to the resource using the details provided in
+            /// `config` and infer the schema from that. If the transform is not an IO, is a sink that doesn't exist
+            /// yet, or is a sink with no schema requirement, then this will fall back to basing the schema off the one
+            /// provided in `input_schemas`. The computed schema will be validated.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The full location formatted as "projects/{your-project}/locations/{google-cloud-region}". If
+            /// attempting to infer the schema from an existing Google Cloud resource, the default Data Pipelines
+            /// service account for this project will be used in making requests for the resource. If the region given
+            /// for "{google-cloud-region}" is different than the region where the resource is stored, then the data
+            /// will be transferred to and processed in the region specified here, but it will not be persistently
+            /// stored in this region.
+            /// </param>
+            public virtual ComputeSchemaRequest ComputeSchema(Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ComputeSchemaRequest body, string location)
+            {
+                return new ComputeSchemaRequest(service, body, location);
+            }
+
+            /// <summary>
+            /// Computes the schema for the transform. Computation from `raw_schema` will always occur if it is set.
+            /// This requires that the transform supports that encoding. If no raw schema is provided and if the
+            /// transform is for an IO, then this will attempt to connect to the resource using the details provided in
+            /// `config` and infer the schema from that. If the transform is not an IO, is a sink that doesn't exist
+            /// yet, or is a sink with no schema requirement, then this will fall back to basing the schema off the one
+            /// provided in `input_schemas`. The computed schema will be validated.
+            /// </summary>
+            public class ComputeSchemaRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1Schema>
+            {
+                /// <summary>Constructs a new ComputeSchema request.</summary>
+                public ComputeSchemaRequest(Google.Apis.Services.IClientService service, Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ComputeSchemaRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full location formatted as "projects/{your-project}/locations/{google-cloud-region}".
+                /// If attempting to infer the schema from an existing Google Cloud resource, the default Data Pipelines
+                /// service account for this project will be used in making requests for the resource. If the region
+                /// given for "{google-cloud-region}" is different than the region where the resource is stored, then
+                /// the data will be transferred to and processed in the region specified here, but it will not be
+                /// persistently stored in this region.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ComputeSchemaRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "computeSchema";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+location}:computeSchema";
+
+                /// <summary>Initializes ComputeSchema parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
             /// </summary>
@@ -940,6 +1166,127 @@ namespace Google.Apis.Datapipelines.v1
 }
 namespace Google.Apis.Datapipelines.v1.Data
 {
+    /// <summary>Represents an array of values. The elements can be of any type.</summary>
+    public class GoogleCloudDatapipelinesV1ArrayValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The elements of the array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1FieldValue> Elements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a non-dividable value.</summary>
+    public class GoogleCloudDatapipelinesV1AtomicValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
+        /// <summary>An 8-bit signed value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("byteValue")]
+        public virtual System.Nullable<int> ByteValue { get; set; }
+
+        /// <summary>An array of raw bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
+        public virtual string BytesValue { get; set; }
+
+        /// <summary>A datetime value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
+        public virtual GoogleTypeDateTime DatetimeValue { get; set; }
+
+        /// <summary>A large decimal value, equivalent to Java BigDecimal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decimalValue")]
+        public virtual GoogleTypeDecimal DecimalValue { get; set; }
+
+        /// <summary>A 64-bit floating point value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>A 32-bit floating point value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>A 16-bit signed value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int16Value")]
+        public virtual System.Nullable<int> Int16Value { get; set; }
+
+        /// <summary>A 32-bit signed value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int32Value")]
+        public virtual System.Nullable<int> Int32Value { get; set; }
+
+        /// <summary>A 64-bit signed value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>A string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchGetTransformDescriptions</summary>
+    public class GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of requested transform descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformDescriptions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1TransformDescription> TransformDescriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ComputeSchema</summary>
+    public class GoogleCloudDatapipelinesV1ComputeSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The configuration for the transform. If this is not a source, then each input with its schema must
+        /// be set. It is not required to have any outputs set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDatapipelinesV1ConfiguredTransform Config { get; set; }
+
+        /// <summary>
+        /// Optional. In relation to the full pipeline graph, the schemas of the transforms that are used as inputs to
+        /// the one for `config`. If `config` represents a transform for reading from some resource, then this should be
+        /// empty. For all other transforms, at least one value must be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputSchemas")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1Schema> InputSchemas { get; set; }
+
+        /// <summary>
+        /// Optional. If set, this will use the provided raw schema to compute the schema rather than connecting to any
+        /// resources. Validation will still occur to make sure it is compatible with all input schemas. If the
+        /// transform is an IO, the IO must support that schema type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawSchema")]
+        public virtual GoogleCloudDatapipelinesV1RawSchemaInfo RawSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A fully configured transform that can be validated.</summary>
+    public class GoogleCloudDatapipelinesV1ConfiguredTransform : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration values provided. These must match the schema provided in the row's schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDatapipelinesV1Row Config { get; set; }
+
+        /// <summary>
+        /// Unique resource name of the transform. This should be the same as the equivalent `TransformDescription`
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniformResourceName")]
+        public virtual string UniformResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Pipeline job details specific to the Dataflow API. This is encapsulated here to allow for more executors to
     /// store their specific details separately.
@@ -963,6 +1310,125 @@ namespace Google.Apis.Datapipelines.v1.Data
         /// <summary>Output only. The SDK version used to run the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
         public virtual GoogleCloudDatapipelinesV1SdkVersion SdkVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a selected value from an EnumerationType.</summary>
+    public class GoogleCloudDatapipelinesV1EnumerationValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the enum option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Info for a single field in the schema.</summary>
+    public class GoogleCloudDatapipelinesV1Field : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Type info for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual GoogleCloudDatapipelinesV1FieldType Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type info about a field.</summary>
+    public class GoogleCloudDatapipelinesV1FieldType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If `type` is an array or iterable, this is the type contained in that array or iterable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionElementType")]
+        public virtual GoogleCloudDatapipelinesV1FieldType CollectionElementType { get; set; }
+
+        /// <summary>If `type` is a logical type, this is the info for the specific logical type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalType")]
+        public virtual GoogleCloudDatapipelinesV1LogicalType LogicalType { get; set; }
+
+        /// <summary>If `type` is a map, this is the key and value types for that map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapType")]
+        public virtual GoogleCloudDatapipelinesV1MapType MapType { get; set; }
+
+        /// <summary>Whether or not this field is nullable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
+
+        /// <summary>If `type` is a row, this is the schema of that row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSchema")]
+        public virtual GoogleCloudDatapipelinesV1Schema RowSchema { get; set; }
+
+        /// <summary>
+        /// Specific type of the field. For non-atomic types, the corresponding type info for that non-atomic must be
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single value in a row. The value set must correspond to the correct type from the row's schema.
+    /// </summary>
+    public class GoogleCloudDatapipelinesV1FieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The array value of this field. Corresponds to TYPE_NAME_ARRAY in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
+        public virtual GoogleCloudDatapipelinesV1ArrayValue ArrayValue { get; set; }
+
+        /// <summary>The atomic value of this field. Must correspond to the correct atomic type in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("atomicValue")]
+        public virtual GoogleCloudDatapipelinesV1AtomicValue AtomicValue { get; set; }
+
+        /// <summary>
+        /// The enum value of this field. Corresponds to TYPE_NAME_LOGICAL_TYPE in the schema if that logical type
+        /// represents an `EnumerationType` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValue")]
+        public virtual GoogleCloudDatapipelinesV1EnumerationValue EnumValue { get; set; }
+
+        /// <summary>
+        /// The fixed-length byte collection of this field. Corresponds to TYPE_NAME_LOGICAL_TYPE in the schema if that
+        /// logical type represents a `FixedBytes` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedBytesValue")]
+        public virtual GoogleCloudDatapipelinesV1FixedBytesValue FixedBytesValue { get; set; }
+
+        /// <summary>The iterable value of this field. Corresponds to TYPE_NAME_ITERABLE in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iterableValue")]
+        public virtual GoogleCloudDatapipelinesV1IterableValue IterableValue { get; set; }
+
+        /// <summary>The map value of this field. Corresponds to TYPE_NAME_MAP in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapValue")]
+        public virtual GoogleCloudDatapipelinesV1MapValue MapValue { get; set; }
+
+        /// <summary>
+        /// The row value of this field. Corresponds to TYPE_NAME_ROW in the schema. This row also holds to its own
+        /// schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowValue")]
+        public virtual GoogleCloudDatapipelinesV1Row RowValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a collection of bytes whose size is the same as the associated FixedBytes size value.
+    /// </summary>
+    public class GoogleCloudDatapipelinesV1FixedBytesValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw bytes. It must be exactly the size specified in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1068,6 +1534,17 @@ namespace Google.Apis.Datapipelines.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an iterable of values. The elements can be of any type.</summary>
+    public class GoogleCloudDatapipelinesV1IterableValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The elements of the iterable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1FieldValue> Elements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1293,6 +1770,84 @@ namespace Google.Apis.Datapipelines.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the input for creating a specified logical type.</summary>
+    public class GoogleCloudDatapipelinesV1LogicalType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The enum represented by this logical type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumerationType")]
+        public virtual GoogleCloudDatapipelinesV1LogicalTypeEnumerationType EnumerationType { get; set; }
+
+        /// <summary>The fixed-size byte collection represented by this logical type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedBytes")]
+        public virtual GoogleCloudDatapipelinesV1LogicalTypeFixedBytes FixedBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Beam EnumerationType logical type.</summary>
+    public class GoogleCloudDatapipelinesV1LogicalTypeEnumerationType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Names of the values. The numeric value is the same as the index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Beam FixedBytes logical type.</summary>
+    public class GoogleCloudDatapipelinesV1LogicalTypeFixedBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of bytes to allocate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<int> SizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a map in a schema.</summary>
+    public class GoogleCloudDatapipelinesV1MapType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key type of the map. Only atomic types are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapKeyType")]
+        public virtual GoogleCloudDatapipelinesV1FieldType MapKeyType { get; set; }
+
+        /// <summary>Value type of the map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapValueType")]
+        public virtual GoogleCloudDatapipelinesV1FieldType MapValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a key/value pairing.</summary>
+    public class GoogleCloudDatapipelinesV1MapValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entries in the map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1MapValueEntry> Entries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single entry in the map. Each entry must have a unique key.</summary>
+    public class GoogleCloudDatapipelinesV1MapValueEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key value. Only atomic values are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual GoogleCloudDatapipelinesV1FieldValue Key { get; set; }
+
+        /// <summary>The value associated with the key. It may be of any type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleCloudDatapipelinesV1FieldValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The main pipeline entity and all the necessary metadata for launching and managing linked jobs.
     /// </summary>
@@ -1376,6 +1931,41 @@ namespace Google.Apis.Datapipelines.v1.Data
         /// <summary>Workload information for creating new jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workload")]
         public virtual GoogleCloudDatapipelinesV1Workload Workload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The raw schema and its type.</summary>
+    public class GoogleCloudDatapipelinesV1RawSchemaInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawSchema")]
+        public virtual string RawSchema { get; set; }
+
+        /// <summary>The type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an Apache Beam row, though the `Any` nature of values is replaced with more concrete representations
+    /// of valid values.
+    /// </summary>
+    public class GoogleCloudDatapipelinesV1Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema of the row's data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDatapipelinesV1SchemaSource Schema { get; set; }
+
+        /// <summary>
+        /// Required. The values of this Row. A fully built row is required to hold to the schema specified by `schema`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1FieldValue> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1527,6 +2117,39 @@ namespace Google.Apis.Datapipelines.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a simplified Apache Beam schema.</summary>
+    public class GoogleCloudDatapipelinesV1Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fields in the schema. Every field within a schema must have a unique name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1Field> Fields { get; set; }
+
+        /// <summary>
+        /// An identifier of the schema for looking it up in a repository. This only needs to be set if the schema is
+        /// stored in a repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
+        public virtual string ReferenceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Holds a schema or a reference to a schema in some repository.</summary>
+    public class GoogleCloudDatapipelinesV1SchemaSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Schema located locally with the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSchema")]
+        public virtual GoogleCloudDatapipelinesV1Schema LocalSchema { get; set; }
+
+        /// <summary>The `reference_id` value of a schema in a repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
+        public virtual string ReferenceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The version of the SDK used to run the job.</summary>
     public class GoogleCloudDatapipelinesV1SdkVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1549,6 +2172,29 @@ namespace Google.Apis.Datapipelines.v1.Data
     /// <summary>Request message for StopPipeline.</summary>
     public class GoogleCloudDatapipelinesV1StopPipelineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description of a schema-aware transform, which provides info on how it can be configured.</summary>
+    public class GoogleCloudDatapipelinesV1TransformDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The full name of this resource formatted as:
+        /// projects/{project}/locations/{location}/transformDescriptions/{transform_description}
+        /// `transform_description` is the same as the `uniform_resource_name` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Available options for configuring the transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GoogleCloudDatapipelinesV1Schema Options { get; set; }
+
+        /// <summary>Unique resource name of the transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniformResourceName")]
+        public virtual string UniformResourceName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1608,6 +2254,136 @@ namespace Google.Apis.Datapipelines.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few
+    /// possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular
+    /// offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular
+    /// time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The
+    /// date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered
+    /// not to have a specific year, month, or day respectively. This type may also be used to represent a physical time
+    /// if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using
+    /// `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone,
+    /// that can be done in another field. This type is more flexible than some applications may want. Make sure to
+    /// document and validate your application's limitations.
+    /// </summary>
+    public class GoogleTypeDateTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime
+        /// without a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>
+        /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may
+        /// choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>
+        /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>
+        /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the
+        /// value 60 if it allows leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>Time zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual GoogleTypeTimeZone TimeZone { get; set; }
+
+        /// <summary>
+        /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would
+        /// be represented as { seconds: -14400 }.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
+        public virtual object UtcOffset { get; set; }
+
+        /// <summary>
+        /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal
+    /// formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]:
+    /// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]:
+    /// https://docs.python.org/3/library/decimal.html
+    /// </summary>
+    public class GoogleTypeDecimal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or
+        /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed
+        /// by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The
+        /// fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at
+        /// least one digit in either the integer or the fraction. The number formed by the sign, the integer and the
+        /// fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E`
+        /// (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before
+        /// storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -&amp;gt; `2.5`). - Replacing a
+        /// zero-length integer value with `0` (`.5` -&amp;gt; `0.5`). - Coercing the exponent character to upper-case,
+        /// with explicit sign (`2.5e8` -&amp;gt; `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
+        /// -&amp;gt; `2.5`). Services **may** perform additional normalization based on its own needs and the internal
+        /// decimal implementation selected, such as shifting the decimal point and exponent value together (example:
+        /// `2.5E-1` &amp;lt;-&amp;gt; `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction
+        /// to indicate increased precision, but are not required to do so. Note that only the `.` character is
+        /// supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale.
+        /// Additionally, thousand separators **should not** be supported. If a service does support them, values
+        /// **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+'
+        /// | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0'
+        /// | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of
+        /// supported values, the maximum supported precision (total number of digits), and, if applicable, the scale
+        /// (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values.
+        /// Services **may** choose to accept values passed as input even when the value has a higher precision or scale
+        /// than the service supports, and **should** round the value to fit the supported scale. Alternatively, the
+        /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost.
+        /// Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a
+        /// value outside of the supported range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
+    public class GoogleTypeTimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -12973,7 +12973,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of the user's addresses. The maximum allowed data size for this field is 10Kb.</summary>
+        /// <summary>The list of the user's addresses. The maximum allowed data size for this field is 10KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<UserAddress> Addresses { get; set; }
 
@@ -13039,7 +13039,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
 
         /// <summary>
-        /// The list of the user's email addresses. The maximum allowed data size for this field is 10Kb.
+        /// The list of the user's email addresses. The maximum allowed data size for this field is 10KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<UserEmail> Emails { get; set; }
@@ -13050,12 +13050,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// The list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for
-        /// this field is 2Kb.
+        /// this field is 2KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
         public virtual System.Collections.Generic.IList<UserExternalId> ExternalIds { get; set; }
 
-        /// <summary>The user's gender. The maximum allowed data size for this field is 1Kb.</summary>
+        /// <summary>The user's gender. The maximum allowed data size for this field is 1KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual object Gender { get; set; }
 
@@ -13076,7 +13076,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>
         /// The list of the user's Instant Messenger (IM) accounts. A user account can have multiple ims properties.
         /// But, only one of these ims properties can be the primary IM contact. The maximum allowed data size for this
-        /// field is 2Kb.
+        /// field is 2KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ims")]
         public virtual System.Collections.Generic.IList<UserIm> Ims { get; set; }
@@ -13130,7 +13130,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isMailboxSetup")]
         public virtual System.Nullable<bool> IsMailboxSetup { get; set; }
 
-        /// <summary>The list of the user's keywords. The maximum allowed data size for this field is 1Kb.</summary>
+        /// <summary>The list of the user's keywords. The maximum allowed data size for this field is 1KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
         public virtual object Keywords { get; set; }
 
@@ -13140,7 +13140,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The user's languages. The maximum allowed data size for this field is 1Kb.</summary>
+        /// <summary>The user's languages. The maximum allowed data size for this field is 1KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual object Languages { get; set; }
 
@@ -13156,7 +13156,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             set => LastLoginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>The user's locations. The maximum allowed data size for this field is 10Kb.</summary>
+        /// <summary>The user's locations. The maximum allowed data size for this field is 10KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual object Locations { get; set; }
 
@@ -13165,7 +13165,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// characters in the `givenName` and in the `familyName` values is 60. In addition, name values support
         /// unicode/UTF-8 characters, and can contain spaces, letters (a-z), numbers (0-9), dashes (-), forward slashes
         /// (/), and periods (.). For more information about character usage rules, see the [administration help
-        /// center](https://support.google.com/a/answer/9193374). Maximum allowed data size for this field is 1Kb.
+        /// center](https://support.google.com/a/answer/9193374). Maximum allowed data size for this field is 1KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual UserName Name { get; set; }
@@ -13189,7 +13189,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string OrgUnitPath { get; set; }
 
         /// <summary>
-        /// The list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.
+        /// The list of organizations the user belongs to. The maximum allowed data size for this field is 10KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
         public virtual System.Collections.Generic.IList<UserOrganization> Organizations { get; set; }
@@ -13199,7 +13199,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Password { get; set; }
 
         /// <summary>
-        /// The list of the user's phone numbers. The maximum allowed data size for this field is 1Kb.
+        /// The list of the user's phone numbers. The maximum allowed data size for this field is 1KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phones")]
         public virtual System.Collections.Generic.IList<UserPhone> Phones { get; set; }
@@ -13230,7 +13230,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string RecoveryPhone { get; set; }
 
         /// <summary>
-        /// The list of the user's relationships to other users. The maximum allowed data size for this field is 2Kb.
+        /// The list of the user's relationships to other users. The maximum allowed data size for this field is 2KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; }
@@ -13258,7 +13258,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailPhotoUrl")]
         public virtual string ThumbnailPhotoUrl { get; set; }
 
-        /// <summary>The user's websites. The maximum allowed data size for this field is 2Kb.</summary>
+        /// <summary>The user's websites. The maximum allowed data size for this field is 2KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websites")]
         public virtual System.Collections.Generic.IList<UserWebsite> Websites { get; set; }
     }
@@ -13586,6 +13586,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     public class UserName : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The user's display name. Limit: 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>The user's last name. Required when creating a user account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
         public virtual string FamilyName { get; set; }

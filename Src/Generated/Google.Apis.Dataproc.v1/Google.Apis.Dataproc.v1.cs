@@ -7038,8 +7038,9 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the
-        /// session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of
-        /// Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of
+        /// Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 10 minutes if not
+        /// set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTtl")]
         public virtual object IdleTtl { get; set; }
@@ -9043,7 +9044,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Runtime information about workload execution.</summary>
     public class RuntimeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Approximate workload resource usage calculated after workload finishes.</summary>
+        /// <summary>
+        /// Output only. Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless
+        /// pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approximateUsage")]
         public virtual UsageMetrics ApproximateUsage { get; set; }
 
@@ -9732,14 +9736,20 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Usage metrics represent total resources consumed by a workload.</summary>
+    /// <summary>Usage metrics represent approximate total resources consumed by a workload.</summary>
     public class UsageMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. DCU usage in milliDCU*seconds.</summary>
+        /// <summary>
+        /// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("milliDcuSeconds")]
         public virtual System.Nullable<long> MilliDcuSeconds { get; set; }
 
-        /// <summary>Optional. Shuffle storage usage in GB*Seconds</summary>
+        /// <summary>
+        /// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleStorageGbSeconds")]
         public virtual System.Nullable<long> ShuffleStorageGbSeconds { get; set; }
 

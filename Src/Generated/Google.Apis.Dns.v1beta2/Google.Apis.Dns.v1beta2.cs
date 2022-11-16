@@ -4632,6 +4632,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// IPv6 address of a target name server. Does not accept both fields (ipv4 &amp;amp; ipv6) being populated.
+        /// Public preview as of November 2022.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
         public virtual string Ipv6Address { get; set; }
@@ -5051,7 +5052,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string Ipv4Address { get; set; }
 
         /// <summary>
-        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp;amp; ipv6) being populated.
+        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp;amp; ipv6) being populated. Public
+        /// preview as of November 2022.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
         public virtual string Ipv6Address { get; set; }

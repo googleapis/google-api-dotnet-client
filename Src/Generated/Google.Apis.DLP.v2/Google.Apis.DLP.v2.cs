@@ -10319,7 +10319,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
         public virtual string InspectTemplateName { get; set; }
 
-        /// <summary>The item to de-identify. Will be treated as text.</summary>
+        /// <summary>
+        /// The item to de-identify. Will be treated as text. This value must be of type Table if your deidentify_config
+        /// is a RecordTransformations object.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
@@ -10627,7 +10630,8 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered
-    /// hotwords. An example of this is to exclude a finding if a BigQuery column matches a specific pattern.
+    /// hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific
+    /// pattern.
     /// </summary>
     public class GooglePrivacyDlpV2ExcludeByHotword : Google.Apis.Requests.IDirectResponseSchema
     {

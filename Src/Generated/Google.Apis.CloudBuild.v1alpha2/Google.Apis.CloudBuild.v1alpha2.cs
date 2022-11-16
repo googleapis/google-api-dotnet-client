@@ -960,6 +960,17 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response of creating repositories in batch.</summary>
+    public class BatchCreateRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Repository resources created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositories")]
+        public virtual System.Collections.Generic.IList<Repository> Repositories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>/ BitbucketServerConnectedRepository represents a connected Bitbucket Server / repository.</summary>
     public class BitbucketServerConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2184,6 +2195,40 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A repository associated to a parent connection.</summary>
+    public class Repository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allows clients to store small amounts of arbitrary data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Output only. Server assigned timestamp for when the connection was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the repository, in the format
+        /// `projects/*/locations/*/connections/*/repositories/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Git Clone HTTPS URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteUri")]
+        public virtual string RemoteUri { get; set; }
+
+        /// <summary>Output only. Server assigned timestamp for when the connection was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>Artifacts created by the build pipeline.</summary>

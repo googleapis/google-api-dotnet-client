@@ -4218,16 +4218,24 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong DatafeedId { get; private set; }
 
             /// <summary>
-            /// The country for which to get the datafeed status. If this parameter is provided then language must also
-            /// be provided. Note that this parameter is required for feeds targeting multiple countries and languages,
-            /// since a feed may have a different status for each target.
+            /// Deprecated. Use `feedLabel` instead. The country to get the datafeed status for. If this parameter is
+            /// provided then `language` must also be provided. Note that this parameter is required for feeds targeting
+            /// multiple countries and languages, since a feed may have a different status for each target.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Country { get; set; }
 
             /// <summary>
-            /// The language for which to get the datafeed status. If this parameter is provided then country must also
+            /// The feed label to get the datafeed status for. If this parameter is provided then `language` must also
             /// be provided. Note that this parameter is required for feeds targeting multiple countries and languages,
+            /// since a feed may have a different status for each target.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("feedLabel", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FeedLabel { get; set; }
+
+            /// <summary>
+            /// The language to get the datafeed status for. If this parameter is provided then `country` must also be
+            /// provided. Note that this parameter is required for feeds targeting multiple countries and languages,
             /// since a feed may have a different status for each target.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -4265,6 +4273,14 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
                 {
                     Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("feedLabel", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "feedLabel",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4369,14 +4385,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             this.service = service;
         }
 
-        /// <summary>Retrieves the status and review eligibility for the free listing program.</summary>
+        /// <summary>
+        /// Retrieves the status and review eligibility for the free listing program. Returns errors and warnings if
+        /// they require action to resolve, will become disapprovals, or impact impressions. Use `accountstatuses` to
+        /// view all issues for an account.
+        /// </summary>
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual GetRequest Get(long merchantId)
         {
             return new GetRequest(service, merchantId);
         }
 
-        /// <summary>Retrieves the status and review eligibility for the free listing program.</summary>
+        /// <summary>
+        /// Retrieves the status and review eligibility for the free listing program. Returns errors and warnings if
+        /// they require action to resolve, will become disapprovals, or impact impressions. Use `accountstatuses` to
+        /// view all issues for an account.
+        /// </summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.FreeListingsProgramStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9312,8 +9336,9 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>
             /// The comma-separated list of product attributes to be updated. Example: `"title,salePrice"`. Attributes
             /// specified in the update mask without a value specified in the body will be deleted from the product.
-            /// Only top-level product attributes can be updated. If not defined, product attributes with set values
-            /// will be updated and other attributes will stay unchanged.
+            /// *You must specify the update mask to delete attributes.* Only top-level product attributes can be
+            /// updated. If not defined, product attributes with set values will be updated and other attributes will
+            /// stay unchanged.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -12778,14 +12803,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             this.service = service;
         }
 
-        /// <summary>Retrieves the status and review eligibility for the Shopping Ads program.</summary>
+        /// <summary>
+        /// Retrieves the status and review eligibility for the Shopping Ads program. Returns errors and warnings if
+        /// they require action to resolve, will become disapprovals, or impact impressions. Use `accountstatuses` to
+        /// view all issues for an account.
+        /// </summary>
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual GetRequest Get(long merchantId)
         {
             return new GetRequest(service, merchantId);
         }
 
-        /// <summary>Retrieves the status and review eligibility for the Shopping Ads program.</summary>
+        /// <summary>
+        /// Retrieves the status and review eligibility for the Shopping Ads program. Returns errors and warnings if
+        /// they require action to resolve, will become disapprovals, or impact impressions. Use `accountstatuses` to
+        /// view all issues for an account.
+        /// </summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShoppingAdsProgramStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -14199,6 +14232,78 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Fields related to the [Best Sellers reports](https://support.google.com/merchants/answer/9488679).
+    /// </summary>
+    public class BestSellers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google product category ID to calculate the ranking for, represented in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
+        public virtual System.Nullable<long> CategoryId { get; set; }
+
+        /// <summary>Country where the ranking is calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>Popularity rank in the previous week or month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousRank")]
+        public virtual System.Nullable<long> PreviousRank { get; set; }
+
+        /// <summary>
+        /// Estimated demand in relation to the item with the highest popularity rank in the same category and country
+        /// in the previous week or month.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousRelativeDemand")]
+        public virtual string PreviousRelativeDemand { get; set; }
+
+        /// <summary>
+        /// Popularity on Shopping ads and free listings, in the selected category and country, based on the estimated
+        /// number of units sold.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<long> Rank { get; set; }
+
+        /// <summary>
+        /// Estimated demand in relation to the item with the highest popularity rank in the same category and country.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDemand")]
+        public virtual string RelativeDemand { get; set; }
+
+        /// <summary>Change in the estimated demand. Whether it rose, sank or remained flat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDemandChange")]
+        public virtual string RelativeDemandChange { get; set; }
+
+        /// <summary>
+        /// Report date. The value of this field can only be one of the following: * The first day of the week (Monday)
+        /// for weekly reports. * The first day of the month for monthly reports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportDate")]
+        public virtual Date ReportDate { get; set; }
+
+        /// <summary>Granularity of the report. The ranking can be done over a week or a month timeframe.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportGranularity")]
+        public virtual string ReportGranularity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Brand fields. Values are only set for fields requested explicitly in the request's search query.
+    /// </summary>
+    public class Brand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Regular business days, such as '"monday"'. May not be empty.</summary>
@@ -14822,6 +14927,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<DatafeedStatusError> Errors { get; set; }
 
+        /// <summary>The feed label status is reported for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
+
         /// <summary>The number of items in the feed that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsTotal")]
         public virtual System.Nullable<ulong> ItemsTotal { get; set; }
@@ -14906,8 +15015,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class DatafeedTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The country where the items in the feed will be included in the search index, represented as a CLDR
-        /// territory code.
+        /// Deprecated. Use `feedLabel` instead. The country where the items in the feed will be included in the search
+        /// index, represented as a CLDR territory code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
@@ -14917,6 +15026,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
+
+        /// <summary>
+        /// Feed label for the DatafeedTarget. Either `country` or `feedLabel` is required. If both `feedLabel` and
+        /// `country` is specified, the values must match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
 
         /// <summary>
         /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
@@ -14931,6 +15047,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
+
+        /// <summary>
+        /// The countries where the items may be displayed. Represented as a CLDR territory code. Will be ignored for
+        /// "product inventory" feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountries")]
+        public virtual System.Collections.Generic.IList<string> TargetCountries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15062,8 +15185,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>
-        /// The country for which to get the datafeed status. If this parameter is provided then language must also be
-        /// provided. Note that for multi-target datafeeds this parameter is required.
+        /// Deprecated. Use `feedLabel` instead. The country to get the datafeed status for. If this parameter is
+        /// provided, then `language` must also be provided. Note that for multi-target datafeeds this parameter is
+        /// required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
@@ -15073,7 +15197,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<ulong> DatafeedId { get; set; }
 
         /// <summary>
-        /// The language for which to get the datafeed status. If this parameter is provided then country must also be
+        /// The feed label to get the datafeed status for. If this parameter is provided, then `language` must also be
+        /// provided. Note that for multi-target datafeeds this parameter is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
+
+        /// <summary>
+        /// The language to get the datafeed status for. If this parameter is provided then `country` must also be
         /// provided. Note that for multi-target datafeeds this parameter is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
@@ -20046,6 +20177,87 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
+    /// Price Competitiveness fields requested by the merchant in the query. Field values are only set if the merchant
+    /// queries `PriceCompetitivenessProductView`. https://support.google.com/merchants/answer/9626903
+    /// </summary>
+    public class PriceCompetitiveness : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The price benchmark currency (ISO 4217 code).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benchmarkPriceCurrencyCode")]
+        public virtual string BenchmarkPriceCurrencyCode { get; set; }
+
+        /// <summary>
+        /// The latest available price benchmark in micros for the product's catalog in the benchmark country.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benchmarkPriceMicros")]
+        public virtual System.Nullable<long> BenchmarkPriceMicros { get; set; }
+
+        /// <summary>The country of the price benchmark (ISO 3166 code).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Price Insights fields requested by the merchant in the query. Field values are only set if the merchant queries
+    /// `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926
+    /// </summary>
+    public class PriceInsights : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The predicted change in clicks as a fraction after introducing the suggested price compared to current
+        /// active price. For example, 0.05 is a 5% predicted increase in clicks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedClicksChangeFraction")]
+        public virtual System.Nullable<double> PredictedClicksChangeFraction { get; set; }
+
+        /// <summary>
+        /// The predicted change in conversions as a fraction after introducing the suggested price compared to current
+        /// active price. For example, 0.05 is a 5% predicted increase in conversions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedConversionsChangeFraction")]
+        public virtual System.Nullable<double> PredictedConversionsChangeFraction { get; set; }
+
+        /// <summary>
+        /// The predicted change in gross profit as a fraction after introducing the suggested price compared to current
+        /// active price. For example, 0.05 is a 5% predicted increase in gross profit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedGrossProfitChangeFraction")]
+        public virtual System.Nullable<double> PredictedGrossProfitChangeFraction { get; set; }
+
+        /// <summary>
+        /// The predicted change in impressions as a fraction after introducing the suggested price compared to current
+        /// active price. For example, 0.05 is a 5% predicted increase in impressions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedImpressionsChangeFraction")]
+        public virtual System.Nullable<double> PredictedImpressionsChangeFraction { get; set; }
+
+        /// <summary>The predicted monthly gross profit change currency (ISO 4217 code).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedMonthlyGrossProfitChangeCurrencyCode")]
+        public virtual string PredictedMonthlyGrossProfitChangeCurrencyCode { get; set; }
+
+        /// <summary>
+        /// The predicted change in gross profit in micros after introducing the suggested price for a month compared to
+        /// current active price.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedMonthlyGrossProfitChangeMicros")]
+        public virtual System.Nullable<long> PredictedMonthlyGrossProfitChangeMicros { get; set; }
+
+        /// <summary>The suggested price currency (ISO 4217 code).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedPriceCurrencyCode")]
+        public virtual string SuggestedPriceCurrencyCode { get; set; }
+
+        /// <summary>The latest suggested price in micros for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedPriceMicros")]
+        public virtual System.Nullable<long> SuggestedPriceMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     ///  Required product attributes are primarily defined by the products data specification. See the Products Data
     /// Specification Help Center article for information. Product data. After inserting, updating, or deleting a
     /// product, it may take several minutes before changes take effect.
@@ -20516,6 +20728,74 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Tax value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
         public virtual Price TaxAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Product cluster fields. A product cluster is a grouping for different offers that represent the same product.
+    /// Values are only set for fields requested explicitly in the request's search query.
+    /// </summary>
+    public class ProductCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Brand of the product cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>
+        /// Tells if there is at least one product of the brand currently `IN_STOCK` in your product feed across
+        /// multiple countries, all products are `OUT_OF_STOCK` in your product feed, or `NOT_IN_INVENTORY`. The field
+        /// doesn't take the Best Sellers report country filter into account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandInventoryStatus")]
+        public virtual string BrandInventoryStatus { get; set; }
+
+        /// <summary>
+        /// Product category (1st level) of the product cluster, represented in Google's product taxonomy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL1")]
+        public virtual string CategoryL1 { get; set; }
+
+        /// <summary>
+        /// Product category (2nd level) of the product cluster, represented in Google's product taxonomy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL2")]
+        public virtual string CategoryL2 { get; set; }
+
+        /// <summary>
+        /// Product category (3rd level) of the product cluster, represented in Google's product taxonomy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL3")]
+        public virtual string CategoryL3 { get; set; }
+
+        /// <summary>
+        /// Product category (4th level) of the product cluster, represented in Google's product taxonomy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL4")]
+        public virtual string CategoryL4 { get; set; }
+
+        /// <summary>
+        /// Product category (5th level) of the product cluster, represented in Google's product taxonomy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL5")]
+        public virtual string CategoryL5 { get; set; }
+
+        /// <summary>
+        /// Tells whether the product cluster is `IN_STOCK` in your product feed across multiple countries,
+        /// `OUT_OF_STOCK` in your product feed, or `NOT_IN_INVENTORY` at all. The field doesn't take the Best Sellers
+        /// report country filter into account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryStatus")]
+        public virtual string InventoryStatus { get; set; }
+
+        /// <summary>Title of the product cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>GTINs of example variants of the product cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantGtins")]
+        public virtual System.Collections.Generic.IList<string> VariantGtins { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21154,9 +21434,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The comma-separated list of product attributes to be updated. Example: `"title,salePrice"`. Attributes
-        /// specified in the update mask without a value specified in the body will be deleted from the product. Only
-        /// top-level product attributes can be updated. If not defined, product attributes with set values will be
-        /// updated and other attributes will stay unchanged. Only defined if the method is `update`.
+        /// specified in the update mask without a value specified in the body will be deleted from the product. *You
+        /// must specify the update mask to delete attributes.* Only top-level product attributes can be updated. If not
+        /// defined, product attributes with set values will be updated and other attributes will stay unchanged. Only
+        /// defined if the method is `update`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -21495,6 +21776,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
         public virtual string PromotionId { get; set; }
 
+        /// <summary>
+        /// URL to the page on the merchant's site where the promotion shows. Local Inventory ads promotions throw an
+        /// error if no promo url is included. URL is used to confirm that the promotion is valid and can be redeemed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionUrl")]
+        public virtual string PromotionUrl { get; set; }
+
         /// <summary>Required. Redemption channel for the promotion. At least one channel is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
         public virtual System.Collections.Generic.IList<string> RedemptionChannel { get; set; }
@@ -21502,6 +21790,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Shipping service names for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingServiceNames")]
         public virtual System.Collections.Generic.IList<string> ShippingServiceNames { get; set; }
+
+        /// <summary>
+        /// Whether the promotion applies to all stores, or only specified stores. Local Inventory ads promotions throw
+        /// an error if no store applicability is included. An INVALID_ARGUMENT error is thrown if store_applicability
+        /// is set to ALL_STORES and store_code or score_code_exclusion is set to a value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeApplicability")]
+        public virtual string StoreApplicability { get; set; }
+
+        /// <summary>Store codes to include for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual System.Collections.Generic.IList<string> StoreCode { get; set; }
+
+        /// <summary>Store codes to exclude for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodeExclusion")]
+        public virtual System.Collections.Generic.IList<string> StoreCodeExclusion { get; set; }
 
         /// <summary>
         /// Required. The target country used as part of the unique identifier. Can be `AU`, `CA`, `DE`, `FR`, `GB`,
@@ -21838,11 +22142,46 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ReportRow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Best Sellers fields requested by the merchant in the query. Field values are only set if the merchant
+        /// queries `BestSellersProductClusterView` or `BestSellersBrandView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestSellers")]
+        public virtual BestSellers BestSellers { get; set; }
+
+        /// <summary>
+        /// Brand fields requested by the merchant in the query. Field values are only set if the merchant queries
+        /// `BestSellersBrandView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual Brand Brand { get; set; }
+
+        /// <summary>
         /// Metrics requested by the merchant in the query. Metric values are only set for metrics requested explicitly
         /// in the query.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual Metrics Metrics { get; set; }
+
+        /// <summary>
+        /// Price Competitiveness fields requested by the merchant in the query. Field values are only set if the
+        /// merchant queries `PriceCompetitivenessProductView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceCompetitiveness")]
+        public virtual PriceCompetitiveness PriceCompetitiveness { get; set; }
+
+        /// <summary>
+        /// Price Insights fields requested by the merchant in the query. Field values are only set if the merchant
+        /// queries `PriceInsightsProductView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceInsights")]
+        public virtual PriceInsights PriceInsights { get; set; }
+
+        /// <summary>
+        /// Product cluster fields requested by the merchant in the query. Field values are only set if the merchant
+        /// queries `BestSellersProductClusterView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCluster")]
+        public virtual ProductCluster ProductCluster { get; set; }
 
         /// <summary>
         /// Product fields requested by the merchant in the query. Field values are only set if the merchant queries

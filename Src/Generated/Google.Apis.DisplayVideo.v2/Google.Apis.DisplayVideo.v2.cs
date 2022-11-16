@@ -1644,7 +1644,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2586,7 +2586,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3027,7 +3027,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -5264,7 +5264,7 @@ namespace Google.Apis.DisplayVideo.v2
                 }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -5451,8 +5451,8 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
                     /// Requests to this endpoint cannot be made concurrently with the following requests updating the
-                    /// same line item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
-                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+                    /// same line item: * BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+                    /// DeleteLineItemAssignedTargetingOption
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -5470,8 +5470,8 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
                     /// Requests to this endpoint cannot be made concurrently with the following requests updating the
-                    /// same line item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
-                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+                    /// same line item: * BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+                    /// DeleteLineItemAssignedTargetingOption
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.AssignedTargetingOption>
                     {
@@ -5771,8 +5771,8 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
                     /// concurrently with the following requests updating the same line item: *
-                    /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
-                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+                    /// BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+                    /// CreateLineItemAssignedTargetingOption
                     /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
                     /// <param name="lineItemId">
@@ -5792,8 +5792,8 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
                     /// concurrently with the following requests updating the same line item: *
-                    /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
-                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+                    /// BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+                    /// CreateLineItemAssignedTargetingOption
                     /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.Empty>
                     {
@@ -6792,7 +6792,10 @@ namespace Google.Apis.DisplayVideo.v2
             /// <summary>
             /// Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting
             /// options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned
-            /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests .
+            /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
+            /// endpoint cannot be made concurrently with the following requests updating the same line item: *
+            /// BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption *
+            /// DeleteLineItemAssignedTargetingOption
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the line items belong to.</param>
@@ -6804,7 +6807,10 @@ namespace Google.Apis.DisplayVideo.v2
             /// <summary>
             /// Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting
             /// options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned
-            /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests .
+            /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
+            /// endpoint cannot be made concurrently with the following requests updating the same line item: *
+            /// BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption *
+            /// DeleteLineItemAssignedTargetingOption
             /// </summary>
             public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.BulkEditAssignedTargetingOptionsResponse>
             {
@@ -6978,7 +6984,11 @@ namespace Google.Apis.DisplayVideo.v2
                 }
             }
 
-            /// <summary>Updates multiple line items.</summary>
+            /// <summary>
+            /// Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following
+            /// requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem *
+            /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertisersId"><c>null</c></param>
             public virtual BulkUpdateRequest BulkUpdate(Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsRequest body, string advertisersId)
@@ -6986,7 +6996,11 @@ namespace Google.Apis.DisplayVideo.v2
                 return new BulkUpdateRequest(service, body, advertisersId);
             }
 
-            /// <summary>Updates multiple line items.</summary>
+            /// <summary>
+            /// Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following
+            /// requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem *
+            /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+            /// </summary>
             public class BulkUpdateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsResponse>
             {
                 /// <summary>Constructs a new BulkUpdate request.</summary>
@@ -7150,7 +7164,7 @@ namespace Google.Apis.DisplayVideo.v2
                 }
             }
 
-            /// <summary>Duplicates a line item. Returns the newly created line item id if successful.</summary>
+            /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
             /// <param name="lineItemId">Required. The ID of the line item to duplicate.</param>
@@ -7159,7 +7173,7 @@ namespace Google.Apis.DisplayVideo.v2
                 return new DuplicateRequest(service, body, advertiserId, lineItemId);
             }
 
-            /// <summary>Duplicates a line item. Returns the newly created line item id if successful.</summary>
+            /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
             public class DuplicateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.DuplicateLineItemResponse>
             {
                 /// <summary>Constructs a new Duplicate request.</summary>
@@ -7405,7 +7419,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -7478,7 +7492,7 @@ namespace Google.Apis.DisplayVideo.v2
             /// <summary>
             /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
             /// cannot be made concurrently with the following requests updating the same line item: *
-            /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem * CreateLineItemAssignedTargetingOption *
+            /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * CreateLineItemAssignedTargetingOption *
             /// DeleteLineItemAssignedTargetingOption
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -7494,7 +7508,7 @@ namespace Google.Apis.DisplayVideo.v2
             /// <summary>
             /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
             /// cannot be made concurrently with the following requests updating the same line item: *
-            /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem * CreateLineItemAssignedTargetingOption *
+            /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * CreateLineItemAssignedTargetingOption *
             /// DeleteLineItemAssignedTargetingOption
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.LineItem>
@@ -7887,7 +7901,7 @@ namespace Google.Apis.DisplayVideo.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                    /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
                     /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -8129,7 +8143,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. Defaults to `100` if not set. Returns error code
+                /// Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code
                 /// `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -8605,7 +8619,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -9472,7 +9486,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. Defaults to `100` if not set. Returns error code
+                /// Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code
                 /// `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -11245,7 +11259,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -11618,7 +11632,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error
             /// code `INVALID_ARGUMENT` if an invalid value is specified.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -11945,7 +11959,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -12194,7 +12208,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error
             /// code `INVALID_ARGUMENT` if an invalid value is specified.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -12539,7 +12553,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error
             /// code `INVALID_ARGUMENT` if an invalid value is specified.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -12859,7 +12873,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error
             /// code `INVALID_ARGUMENT` if an invalid value is specified.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -13304,7 +13318,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error
             /// code `INVALID_ARGUMENT` if an invalid value is specified.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -13647,8 +13661,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified or greater than `100` will default to
-            /// `100`.
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -14525,7 +14538,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -14955,7 +14968,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -16180,7 +16193,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -17569,7 +17582,7 @@ namespace Google.Apis.DisplayVideo.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                    /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
                     /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -17793,7 +17806,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -18642,7 +18655,7 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
                 /// error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -19248,7 +19261,7 @@ namespace Google.Apis.DisplayVideo.v2
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -19447,6 +19460,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
+        /// <summary>Billing related settings of the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
+        public virtual AdvertiserBillingConfig BillingConfig { get; set; }
+
         /// <summary>Required. Creative related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfig")]
         public virtual AdvertiserCreativeConfig CreativeConfig { get; set; }
@@ -19522,6 +19539,17 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>The configuration for advertisers that use third-party ad servers only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOnlyConfig")]
         public virtual ThirdPartyOnlyConfig ThirdPartyOnlyConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Billing related settings of an advertiser.</summary>
+    public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a billing profile assigned to the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
+        public virtual System.Nullable<long> BillingProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22717,7 +22745,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class DuplicateLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The display name of the resulting line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
+        /// The display name of the new line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDisplayName")]
         public virtual string TargetDisplayName { get; set; }
@@ -22726,10 +22754,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for LineItemService.DuplicateLineItem.</summary>
     public class DuplicateLineItemResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the successfully created line item.</summary>
+        /// <summary>The ID of the created line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateLineItemId")]
         public virtual System.Nullable<long> DuplicateLineItemId { get; set; }
 
@@ -23809,8 +23836,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// The budget segment description. It can be used to enter Purchase Order information for each budget segment
-        /// and have that information printed on the invoices. Must be UTF-8 encoded with a length of no more than 80
-        /// characters.
+        /// and have that information printed on the invoices. Must be UTF-8 encoded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -24490,8 +24516,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ReservationType { get; set; }
 
         /// <summary>
-        /// The [targeting expansion](https://support.google.com/displayvideo/answer/10191558) settings of the line
-        /// item. This config is only applicable when eligible audience list targeting is assigned to the line item.
+        /// The [targeting expansion](//support.google.com/displayvideo/answer/10191558) settings of the line item. This
+        /// config is only applicable when eligible audience list targeting is assigned to the line item. Beginning
+        /// November 7, 2022, these settings may represent the [optimized targeting
+        /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature
+        /// will be rolled out to all partners by November 9, 2022.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
         public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
@@ -26384,7 +26413,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual GeoRegionSearchTerms GeoRegionSearchTerms { get; set; }
 
         /// <summary>
-        /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code
+        /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code
         /// `INVALID_ARGUMENT` if an invalid value is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
@@ -26534,19 +26563,31 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
     /// <summary>
     /// Settings that control the targeting expansion of the line item. Targeting expansion allows the line item to
-    /// reach a larger audience based on the original audience list and the targeting expansion level.
+    /// reach a larger audience based on the original audience list and the targeting expansion level. Beginning
+    /// November 7, 2022, these settings may represent the [optimized targeting
+    /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature will
+    /// be rolled out to all partners by November 9, 2022.
     /// </summary>
     public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Whether to exclude first party audiences from targeting. Similar audiences of the excluded first
-        /// party lists will not be excluded. Only applicable when a first-party audience is positively targeted
-        /// (directly or included in a combined audience), otherwise this selection will be ignored.
+        /// Required. Whether to exclude first-party audiences from use in targeting expansion or optimized targeting.
+        /// Similar audiences of the excluded first-party lists will not be excluded. Only applicable when a first-party
+        /// audience is positively targeted (directly or included in a combined audience), otherwise this selection will
+        /// be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFirstPartyAudience")]
         public virtual System.Nullable<bool> ExcludeFirstPartyAudience { get; set; }
 
-        /// <summary>Required. Magnitude of expansion for applicable targeting under this line item.</summary>
+        /// <summary>
+        /// Required. Magnitude of expansion for applicable targeting under this line item. Beginning November 7, 2022,
+        /// the behavior of this field will change in the following ways with the replacement of targeting expansion
+        /// with [optimized targeting](//support.google.com/displayvideo/answer/12060859): * This field will represent
+        /// the optimized targeting checkbox, with a `NO_EXPANSION` value representing optimized targeting turned off
+        /// and a `LEAST_EXPANSION` value representing optimized targeting turned on. * `NO_EXPANSION` will be the
+        /// default value for the field and will be automatically assigned if you do not set the field. * If you set the
+        /// field to any value other than `NO_EXPANSION`, it will automatically be set to `LEAST_EXPANSION`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansionLevel")]
         public virtual string TargetingExpansionLevel { get; set; }
 

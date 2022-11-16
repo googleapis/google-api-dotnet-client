@@ -281,7 +281,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             this.service = service;
             Notes = new NotesResource(service);
             Occurrences = new OccurrencesResource(service);
-            ScanConfigs = new ScanConfigsResource(service);
         }
 
         /// <summary>Gets the Notes resource.</summary>
@@ -1745,221 +1744,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
             }
         }
-
-        /// <summary>Gets the ScanConfigs resource.</summary>
-        public virtual ScanConfigsResource ScanConfigs { get; }
-
-        /// <summary>The "scanConfigs" collection of methods.</summary>
-        public class ScanConfigsResource
-        {
-            private const string Resource = "scanConfigs";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public ScanConfigsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>Gets the specified scan configuration.</summary>
-            /// <param name="name">
-            /// Required. The name of the scan configuration in the form of
-            /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-            /// </param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets the specified scan configuration.</summary>
-            public class GetRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the scan configuration in the form of
-                /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta1/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Lists scan configurations for the specified project.</summary>
-            /// <param name="parent">
-            /// Required. The name of the project to list scan configurations for in the form of
-            /// `projects/[PROJECT_ID]`.
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Lists scan configurations for the specified project.</summary>
-            public class ListRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.ListScanConfigsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the project to list scan configurations for in the form of
-                /// `projects/[PROJECT_ID]`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Required. The filter expression.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>The number of scan configs to return in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta1/{+parent}/scanConfigs";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>Updates the specified scan configuration.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Required. The name of the scan configuration in the form of
-            /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-            /// </param>
-            public virtual UpdateRequest Update(Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig body, string name)
-            {
-                return new UpdateRequest(service, body, name);
-            }
-
-            /// <summary>Updates the specified scan configuration.</summary>
-            public class UpdateRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig>
-            {
-                /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the scan configuration in the form of
-                /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "update";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PUT";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta1/{+name}";
-
-                /// <summary>Initializes Update parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
-                    });
-                }
-            }
-        }
     }
 }
 namespace Google.Apis.ContainerAnalysis.v1beta1.Data
@@ -3014,7 +2798,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space
         /// will be used by the operating system and build utilities. Also note that this is the minimum disk size that
         /// will be allocated for the build -- the build may run with a larger disk than requested. At present, the
-        /// maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+        /// maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
@@ -4846,24 +4630,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for listing scan configurations.</summary>
-    public class ListScanConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The next pagination token in the list response. It should be used as `page_token` for the following request.
-        /// An empty value means no more results.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The scan configurations requested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scanConfigs")]
-        public virtual System.Collections.Generic.IList<ScanConfig> ScanConfigs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in
     /// `/var/lib/dpkg/status`.
@@ -5566,39 +5332,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A scan configuration specifies whether Cloud components in a project have a particular type of analysis being
-    /// run. For example, it can configure whether vulnerability scanning is being done on Docker images or not.
-    /// </summary>
-    public class ScanConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The time this scan config was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. A human-readable description of what the scan configuration does.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Whether the scan is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>
-        /// Output only. The name of the scan configuration in the form of
-        /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. The time this scan config was last updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

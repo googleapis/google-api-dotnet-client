@@ -2335,9 +2335,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
@@ -2358,9 +2358,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2400,7 +2400,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
@@ -2421,7 +2421,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5117,9 +5117,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
@@ -5140,9 +5140,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5182,7 +5182,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
@@ -5203,7 +5203,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7968,9 +7968,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
@@ -7991,9 +7991,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8033,7 +8033,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
@@ -8054,7 +8054,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -9134,6 +9134,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
+
+        /// <summary>File associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
         /// <summary>The class of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]

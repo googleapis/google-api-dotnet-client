@@ -23325,6 +23325,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentReplyType")]
         public virtual string AutomatedAgentReplyType { get; set; }
 
+        /// <summary>
+        /// The unique identifier of the current Dialogflow CX conversation page. Format:
+        /// `projects//locations//agents//flows//pages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cxCurrentPage")]
+        public virtual string CxCurrentPage { get; set; }
+
         /// <summary>Response of the Dialogflow Sessions.DetectIntent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponse")]
         public virtual GoogleCloudDialogflowV2DetectIntentResponse DetectIntentResponse { get; set; }

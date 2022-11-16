@@ -4042,6 +4042,10 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Cloud Firestore indexes enable simple and complex queries against documents in a database.</summary>
     public class GoogleFirestoreAdminV1Index : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The API scope supported by this index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiScope")]
+        public virtual string ApiScope { get; set; }
+
         /// <summary>
         /// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100
         /// fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not

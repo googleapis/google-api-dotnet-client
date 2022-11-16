@@ -461,14 +461,20 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             }
         }
 
-        /// <summary>Inserts a data transfer request.</summary>
+        /// <summary>
+        /// Inserts a data transfer request. See the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters)
+        /// reference for specific application requirements.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
         {
             return new InsertRequest(service, body);
         }
 
-        /// <summary>Inserts a data transfer request.</summary>
+        /// <summary>
+        /// Inserts a data transfer request. See the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters)
+        /// reference for specific application requirements.
+        /// </summary>
         public class InsertRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -607,8 +613,8 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
 namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 {
     /// <summary>
-    /// Applications resources represent applications installed on the domain that support transferring ownership of
-    /// user data.
+    /// Application resources represent applications installed on the domain that support transferring ownership of user
+    /// data.
     /// </summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -616,7 +622,10 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>The application's ID.</summary>
+        /// <summary>
+        /// The application's ID. Retrievable by using the
+        /// [`applications.list()`](/admin-sdk/data-transfer/reference/rest/v1/applications/list) method.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
 
@@ -629,8 +638,8 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The list of all possible transfer parameters for this application. These parameters can be used to select
-        /// the data of the user in this application to be transferred.
+        /// The list of all possible transfer parameters for this application. These parameters select which categories
+        /// of the user's data to transfer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferParams")]
         public virtual System.Collections.Generic.IList<ApplicationTransferParam> TransferParams { get; set; }
@@ -645,12 +654,13 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 
         /// <summary>
         /// The transfer parameters for the application. These parameters are used to select the data which will get
-        /// transferred in context of this application.
+        /// transferred in context of this application. For more information about the specific values available for
+        /// each application, see the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters) reference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTransferParams")]
         public virtual System.Collections.Generic.IList<ApplicationTransferParam> ApplicationTransferParams { get; set; }
 
-        /// <summary>Current status of transfer for this application. (Read-only)</summary>
+        /// <summary>Read-only. Current status of transfer for this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTransferStatus")]
         public virtual string ApplicationTransferStatus { get; set; }
 
@@ -661,11 +671,11 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     /// <summary>Template for application transfer parameters.</summary>
     public class ApplicationTransferParam : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of the transfer parameter. eg: 'PRIVACY_LEVEL'</summary>
+        /// <summary>The type of the transfer parameter, such as `PRIVACY_LEVEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'</summary>
+        /// <summary>The value of the transfer parameter, such as `PRIVATE` or `SHARED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<string> Value { get; set; }
 
@@ -676,7 +686,9 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     /// <summary>Template for a collection of Applications.</summary>
     public class ApplicationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of applications that support data transfer and are also installed for the customer.</summary>
+        /// <summary>
+        /// The list of applications that support data transfer and are also installed for the customer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<Application> Applications { get; set; }
 
@@ -688,7 +700,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token which will be used to specify next page in list API.</summary>
+        /// <summary>Token to specify the next page in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
     }
@@ -697,9 +709,9 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     public class DataTransfer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// List of per application data transfer resources. It contains data transfer details of the applications
-        /// associated with this transfer resource. Note that this list is also used to specify the applications for
-        /// which data transfer has to be done at the time of the transfer resource creation.
+        /// The list of per-application data transfer resources. It contains details of the applications associated with
+        /// this transfer resource, and also specifies the applications for which data transfer has to be done at the
+        /// time of the transfer resource creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationDataTransfers")]
         public virtual System.Collections.Generic.IList<ApplicationDataTransfer> ApplicationDataTransfers { get; set; }
@@ -708,7 +720,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>The transfer's ID (Read-only).</summary>
+        /// <summary>Read-only. The transfer's ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -724,11 +736,11 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oldOwnerUserId")]
         public virtual string OldOwnerUserId { get; set; }
 
-        /// <summary>Overall transfer status (Read-only).</summary>
+        /// <summary>Read-only. Overall transfer status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overallTransferStatusCode")]
         public virtual string OverallTransferStatusCode { get; set; }
 
-        /// <summary>The time at which the data transfer was requested (Read-only).</summary>
+        /// <summary>Read-only. The time at which the data transfer was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
         public virtual string RequestTimeRaw { get; set; }
 
@@ -756,7 +768,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token which will be used to specify next page in list API.</summary>
+        /// <summary>Token to specify the next page in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
     }

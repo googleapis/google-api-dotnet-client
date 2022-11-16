@@ -1042,6 +1042,17 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kidsClubException")]
         public virtual string KidsClubException { get; set; }
 
+        /// <summary>
+        /// Kids friendly. The hotel has one or more special features for families with children, such as reduced rates,
+        /// child-sized beds, kids' club, babysitting service, or suitable place to play on premises.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kidsFriendly")]
+        public virtual System.Nullable<bool> KidsFriendly { get; set; }
+
+        /// <summary>Kids friendly exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kidsFriendlyException")]
+        public virtual string KidsFriendlyException { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

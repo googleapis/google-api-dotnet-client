@@ -406,7 +406,7 @@ namespace Google.Apis.CloudRun.v2
                             }
                         }
 
-                        /// <summary>List Tasks from an Execution of a Job.</summary>
+                        /// <summary>Lists Tasks from an Execution of a Job.</summary>
                         /// <param name="parent">
                         /// Required. The Execution from which the Tasks should be listed. To list all Tasks across
                         /// Executions of a Job, use "-" instead of Execution name. To list all Tasks across Jobs, use
@@ -418,7 +418,7 @@ namespace Google.Apis.CloudRun.v2
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>List Tasks from an Execution of a Job.</summary>
+                        /// <summary>Lists Tasks from an Execution of a Job.</summary>
                         public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListTasksResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -503,17 +503,18 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
-                    /// <summary>Delete an Execution.</summary>
+                    /// <summary>Deletes an Execution.</summary>
                     /// <param name="name">
                     /// Required. The name of the Execution to delete. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can
+                    /// be project id or number.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Delete an Execution.</summary>
+                    /// <summary>Deletes an Execution.</summary>
                     public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -525,7 +526,8 @@ namespace Google.Apis.CloudRun.v2
 
                         /// <summary>
                         /// Required. The name of the Execution to delete. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project}
+                        /// can be project id or number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -583,17 +585,18 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
-                    /// <summary>Gets information about a Execution.</summary>
+                    /// <summary>Gets information about an Execution.</summary>
                     /// <param name="name">
                     /// Required. The full name of the Execution. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can
+                    /// be project id or number.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets information about a Execution.</summary>
+                    /// <summary>Gets information about an Execution.</summary>
                     public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Execution>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -605,7 +608,8 @@ namespace Google.Apis.CloudRun.v2
 
                         /// <summary>
                         /// Required. The full name of the Execution. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project}
+                        /// can be project id or number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -634,18 +638,18 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
-                    /// <summary>List Executions from a Job.</summary>
+                    /// <summary>Lists Executions from a Job.</summary>
                     /// <param name="parent">
                     /// Required. The Execution from which the Executions should be listed. To list all Executions
                     /// across Jobs, use "-" instead of Job name. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}
+                    /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>List Executions from a Job.</summary>
+                    /// <summary>Lists Executions from a Job.</summary>
                     public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListExecutionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -658,7 +662,8 @@ namespace Google.Apis.CloudRun.v2
                         /// <summary>
                         /// Required. The Execution from which the Executions should be listed. To list all Executions
                         /// across Jobs, use "-" instead of Job name. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}
+                        /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or
+                        /// number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -729,18 +734,18 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
 
-                /// <summary>Create a Job.</summary>
+                /// <summary>Creates a Job.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location and project in which this Job should be created. Format:
-                /// projects/{project}/locations/{location}
+                /// projects/{project}/locations/{location}, where {project} can be project id or number.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Create a Job.</summary>
+                /// <summary>Creates a Job.</summary>
                 public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -753,7 +758,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project in which this Job should be created. Format:
-                    /// projects/{project}/locations/{location}
+                    /// projects/{project}/locations/{location}, where {project} can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -819,7 +824,8 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Deletes a Job.</summary>
                 /// <param name="name">
-                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job},
+                /// where {project} can be project id or number.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -837,7 +843,8 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job},
+                    /// where {project} can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -897,7 +904,8 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Gets information about a Job.</summary>
                 /// <param name="name">
-                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job},
+                /// where {project} can be project id or number.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -915,7 +923,8 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job},
+                    /// where {project} can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -945,7 +954,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>
-                /// Get the IAM Access Control policy currently in effect for the given Job. This result does not
+                /// Gets the IAM Access Control policy currently in effect for the given Job. This result does not
                 /// include any inherited policies.
                 /// </summary>
                 /// <param name="resource">
@@ -959,7 +968,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>
-                /// Get the IAM Access Control policy currently in effect for the given Job. This result does not
+                /// Gets the IAM Access Control policy currently in effect for the given Job. This result does not
                 /// include any inherited policies.
                 /// </summary>
                 public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1Policy>
@@ -1024,17 +1033,17 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
 
-                /// <summary>List Jobs.</summary>
+                /// <summary>Lists Jobs.</summary>
                 /// <param name="parent">
                 /// Required. The location and project to list resources on. Format:
-                /// projects/{project}/locations/{location}
+                /// projects/{project}/locations/{location}, where {project} can be project id or number.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>List Jobs.</summary>
+                /// <summary>Lists Jobs.</summary>
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1046,7 +1055,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project to list resources on. Format:
-                    /// projects/{project}/locations/{location}
+                    /// projects/{project}/locations/{location}, where {project} can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1203,7 +1212,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Triggers creation of a new Execution of this Job.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job},
+                /// where {project} can be project id or number.
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2RunJobRequest body, string name)
                 {
@@ -1222,7 +1232,8 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                    /// Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job},
+                    /// where {project} can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1654,7 +1665,7 @@ namespace Google.Apis.CloudRun.v2
                         this.service = service;
                     }
 
-                    /// <summary>Delete a Revision.</summary>
+                    /// <summary>Deletes a Revision.</summary>
                     /// <param name="name">
                     /// Required. The name of the Revision to delete. Format:
                     /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
@@ -1664,7 +1675,7 @@ namespace Google.Apis.CloudRun.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Delete a Revision.</summary>
+                    /// <summary>Deletes a Revision.</summary>
                     public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1785,7 +1796,7 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
-                    /// <summary>List Revisions from a given Service, or from a given location.</summary>
+                    /// <summary>Lists Revisions from a given Service, or from a given location.</summary>
                     /// <param name="parent">
                     /// Required. The Service from which the Revisions should be listed. To list all Revisions across
                     /// Services, use "-" instead of Service name. Format:
@@ -1796,7 +1807,7 @@ namespace Google.Apis.CloudRun.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>List Revisions from a given Service, or from a given location.</summary>
+                    /// <summary>Lists Revisions from a given Service, or from a given location.</summary>
                     public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListRevisionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1884,7 +1895,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location and project in which this service should be created. Format:
-                /// projects/{project}/locations/{location} Only lowercase characters, digits, and hyphens.
+                /// projects/{project}/locations/{location}, where {project} can be project id or number. Only lowercase
+                /// characters, digits, and hyphens.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string parent)
                 {
@@ -1904,13 +1916,14 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project in which this service should be created. Format:
-                    /// projects/{project}/locations/{location} Only lowercase characters, digits, and hyphens.
+                    /// projects/{project}/locations/{location}, where {project} can be project id or number. Only
+                    /// lowercase characters, digits, and hyphens.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The unique identifier for the Service. It must begin with letter, and may not end with
+                    /// Required. The unique identifier for the Service. It must begin with letter, and cannot end with
                     /// hyphen; must contain fewer than 50 characters. The name of the service becomes
                     /// {parent}/services/{service_id}.
                     /// </summary>
@@ -1976,7 +1989,8 @@ namespace Google.Apis.CloudRun.v2
                 /// </summary>
                 /// <param name="name">
                 /// Required. The full name of the Service. Format:
-                /// projects/{project}/locations/{location}/services/{service}
+                /// projects/{project}/locations/{location}/services/{service}, where {project} can be project id or
+                /// number.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1998,7 +2012,8 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The full name of the Service. Format:
-                    /// projects/{project}/locations/{location}/services/{service}
+                    /// projects/{project}/locations/{location}/services/{service}, where {project} can be project id or
+                    /// number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2059,7 +2074,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Gets information about a Service.</summary>
                 /// <param name="name">
                 /// Required. The full name of the Service. Format:
-                /// projects/{project}/locations/{location}/services/{service}
+                /// projects/{project}/locations/{location}/services/{service}, where {project} can be project id or
+                /// number.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2078,7 +2094,8 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The full name of the Service. Format:
-                    /// projects/{project}/locations/{location}/services/{service}
+                    /// projects/{project}/locations/{location}/services/{service}, where {project} can be project id or
+                    /// number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2108,7 +2125,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>
-                /// Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result
+                /// Gets the IAM Access Control policy currently in effect for the given Cloud Run Service. This result
                 /// does not include any inherited policies.
                 /// </summary>
                 /// <param name="resource">
@@ -2122,7 +2139,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>
-                /// Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result
+                /// Gets the IAM Access Control policy currently in effect for the given Cloud Run Service. This result
                 /// does not include any inherited policies.
                 /// </summary>
                 public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1Policy>
@@ -2187,17 +2204,18 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
 
-                /// <summary>List Services.</summary>
+                /// <summary>Lists Services.</summary>
                 /// <param name="parent">
                 /// Required. The location and project to list resources on. Location must be a valid GCP region, and
-                /// may not be the "-" wildcard. Format: projects/{project}/locations/{location}
+                /// cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where {project} can be
+                /// project id or number.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>List Services.</summary>
+                /// <summary>Lists Services.</summary>
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListServicesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2209,7 +2227,8 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project to list resources on. Location must be a valid GCP region,
-                    /// and may not be the "-" wildcard. Format: projects/{project}/locations/{location}
+                    /// and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where {project}
+                    /// can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2942,6 +2961,27 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GRPCAction describes an action involving a GRPC port.</summary>
+    public class GoogleCloudRunV2GRPCAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
+        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
+        /// behavior is defined by gRPC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>HTTPGetAction describes an action based on HTTP Get requests.</summary>
     public class GoogleCloudRunV2HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3221,7 +3261,14 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> FailureThreshold { get; set; }
 
         /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
+        public virtual GoogleCloudRunV2GRPCAction Grpc { get; set; }
+
+        /// <summary>
+        /// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
         public virtual GoogleCloudRunV2HTTPGetAction HttpGet { get; set; }
@@ -3243,7 +3290,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
 
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
         public virtual GoogleCloudRunV2TCPSocketAction TcpSocket { get; set; }
@@ -3268,8 +3316,9 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<bool> CpuIdle { get; set; }
 
         /// <summary>
-        /// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4
-        /// CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type:
+        /// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'.
+        /// Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s
+        /// type:
         /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
@@ -3538,8 +3587,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Secret { get; set; }
 
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific
-        /// version.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific
+        /// version, or a version alias.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -4113,8 +4162,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Path { get; set; }
 
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific
-        /// version.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret
+        /// alias for a specific version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -4177,7 +4226,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2VpcAccess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where
+        /// {project} can be project id or number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connector")]
         public virtual string Connector { get; set; }

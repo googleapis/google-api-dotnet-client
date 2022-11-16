@@ -2575,6 +2575,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// </summary>
     public class CloudSqlConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL
+        /// database availability type is REGIONAL (i.e. multiple zones / highly available).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalPublicIp")]
+        public virtual string AdditionalPublicIp { get; set; }
+
         /// <summary>Output only. The Cloud SQL instance ID that this connection profile is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlId")]
         public virtual string CloudSqlId { get; set; }
@@ -2615,6 +2622,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoStorageIncrease")]
         public virtual System.Nullable<bool> AutoStorageIncrease { get; set; }
+
+        /// <summary>
+        /// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone.
+        /// Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one
+        /// zone in a region (it is highly available).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
+        public virtual string AvailabilityType { get; set; }
 
         /// <summary>The KMS key name used for the csql instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmekKeyName")]
@@ -2659,6 +2674,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Output only. Indicates If this connection profile root password is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPasswordSet")]
         public virtual System.Nullable<bool> RootPasswordSet { get; set; }
+
+        /// <summary>
+        /// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used
+        /// when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryZone")]
+        public virtual string SecondaryZone { get; set; }
 
         /// <summary>
         /// The Database Migration Service source connection profile ID, in the format:
