@@ -8760,6 +8760,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NodeNetworkConfig NetworkConfig { get; set; }
 
+        /// <summary>Specifies the node placement policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementPolicy")]
+        public virtual PlacementPolicy PlacementPolicy { get; set; }
+
         /// <summary>[Output only] The pod CIDR block size per node in this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrSize")]
         public virtual System.Nullable<int> PodIpv4CidrSize { get; set; }
@@ -9046,6 +9050,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Status of an operation stage. Unset for single-stage operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PlacementPolicy defines the placement policy used by the node pool.</summary>
+    public class PlacementPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of placement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

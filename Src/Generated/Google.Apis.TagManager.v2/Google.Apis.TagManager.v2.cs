@@ -8253,8 +8253,8 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string TagManagerUrl { get; set; }
 
         /// <summary>
-        /// The URLs of the cloud environment for the GTM Container. @mutable tagmanager.accounts.containers.create
-        /// @mutable tagmanager.accounts.containers.update
+        /// List of server-side container URLs for the Container. If multiple URLs are provided, all URL paths must
+        /// match. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taggingServerUrls")]
         public virtual System.Collections.Generic.IList<string> TaggingServerUrls { get; set; }

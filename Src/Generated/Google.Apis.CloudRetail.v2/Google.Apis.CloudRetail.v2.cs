@@ -6993,7 +6993,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
     /// <summary>
     /// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and
-    /// "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+    /// "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
     /// </summary>
     public class GoogleCloudRetailV2RuleTwowaySynonymsAction : Google.Apis.Requests.IDirectResponseSchema
     {

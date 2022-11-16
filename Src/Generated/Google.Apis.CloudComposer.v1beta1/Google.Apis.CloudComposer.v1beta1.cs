@@ -1602,6 +1602,44 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to ExecuteAirflowCommandRequest.</summary>
+    public class ExecuteAirflowCommandResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error message. Empty if there was no error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>The unique ID of the command execution for polling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
+
+        /// <summary>The name of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
+
+        /// <summary>The namespace of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podNamespace")]
+        public virtual string PodNamespace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about how a command ended.</summary>
+    public class ExitInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error message. Empty if there was no error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>The exit code from the command execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for controlling how IPs are allocated in the GKE cluster.</summary>
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1687,6 +1725,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Whether it is impossible to upgrade an environment running with the image version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeDisabled")]
         public virtual System.Nullable<bool> UpgradeDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about a single line from logs.</summary>
+    public class Line : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the log line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Number of the line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2036,6 +2089,28 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to PollAirflowCommandRequest.</summary>
+    public class PollAirflowCommandResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result exit status of the command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitInfo")]
+        public virtual ExitInfo ExitInfo { get; set; }
+
+        /// <summary>
+        /// Output from the command execution. It may not contain the full output and the caller may need to poll for
+        /// more lines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual System.Collections.Generic.IList<Line> Output { get; set; }
+
+        /// <summary>Whether the command execution has finished and there is no more output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputEnd")]
+        public virtual System.Nullable<bool> OutputEnd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration options for the private GKE cluster in a Cloud Composer environment.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2305,6 +2380,25 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for resources used by Airflow triggerers.</summary>
+    public class TriggererResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of triggerers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>Optional. CPU request and limit for a single Airflow triggerer replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for a single Airflow triggerer replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer
     /// environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2390,6 +2484,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Optional. Resources used by Airflow schedulers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduler")]
         public virtual SchedulerResource Scheduler { get; set; }
+
+        /// <summary>Optional. Resources used by Airflow triggerers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerer")]
+        public virtual TriggererResource Triggerer { get; set; }
 
         /// <summary>Optional. Resources used by Airflow web server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServer")]

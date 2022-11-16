@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Compute.beta Client Library</Title>
-    <Version>1.57.0.2855</Version>
+    <Version>1.57.0.2861</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

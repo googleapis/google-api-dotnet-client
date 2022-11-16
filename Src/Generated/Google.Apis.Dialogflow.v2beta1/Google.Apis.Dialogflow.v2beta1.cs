@@ -24754,6 +24754,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string AutomatedAgentReplyType { get; set; }
 
         /// <summary>
+        /// The unique identifier of the current Dialogflow CX conversation page. Format:
+        /// `projects//locations//agents//flows//pages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cxCurrentPage")]
+        public virtual string CxCurrentPage { get; set; }
+
+        /// <summary>
         /// The collection of current Dialogflow CX agent session parameters at the time of this response. Deprecated:
         /// Use `parameters` instead.
         /// </summary>

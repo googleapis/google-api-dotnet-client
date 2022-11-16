@@ -1881,7 +1881,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Compliance Regime associated with this workload.</summary>
+        /// <summary>Optional. Partner regime associated with this workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partner")]
         public virtual string Partner { get; set; }
 

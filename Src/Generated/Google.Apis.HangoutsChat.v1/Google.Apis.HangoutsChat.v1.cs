@@ -2073,8 +2073,13 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Returns a space. Requires [service account
-        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// Returns a space. Requires [authentication](https://developers.google.com/chat/api/guides/auth). Fully
+        /// supports [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google Workspace
+        /// Developer Preview Program](https://developers.google.com/workspace/preview), which grants early access to
+        /// certain features. [User authentication](https://developers.google.com/chat/api/guides/auth/users) requires
+        /// the `chat.spaces` or `chat.spaces.readonly` authorization scope.
         /// </summary>
         /// <param name="name">
         /// Required. Resource name of the space, in the form "spaces/*". Format: spaces/{space}
@@ -2085,8 +2090,13 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Returns a space. Requires [service account
-        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// Returns a space. Requires [authentication](https://developers.google.com/chat/api/guides/auth). Fully
+        /// supports [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google Workspace
+        /// Developer Preview Program](https://developers.google.com/workspace/preview), which grants early access to
+        /// certain features. [User authentication](https://developers.google.com/chat/api/guides/auth/users) requires
+        /// the `chat.spaces` or `chat.spaces.readonly` authorization scope.
         /// </summary>
         public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
@@ -2126,8 +2136,14 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Lists spaces the caller is a member of. Requires [service account
-        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// Lists spaces the caller is a member of. Requires
+        /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google Workspace
+        /// Developer Preview Program](https://developers.google.com/workspace/preview), which grants early access to
+        /// certain features. [User authentication](https://developers.google.com/chat/api/guides/auth/users) requires
+        /// the `chat.spaces` or `chat.spaces.readonly` authorization scope. Lists spaces visible to the caller or
+        /// authenticated user. Group chats and DMs aren't listed until the first message is sent.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2135,8 +2151,14 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Lists spaces the caller is a member of. Requires [service account
-        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// Lists spaces the caller is a member of. Requires
+        /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google Workspace
+        /// Developer Preview Program](https://developers.google.com/workspace/preview), which grants early access to
+        /// certain features. [User authentication](https://developers.google.com/chat/api/guides/auth/users) requires
+        /// the `chat.spaces` or `chat.spaces.readonly` authorization scope. Lists spaces visible to the caller or
+        /// authenticated user. Group chats and DMs aren't listed until the first message is sent.
         /// </summary>
         public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSpacesResponse>
         {
@@ -2932,7 +2954,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1Action : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Apps Script function to invoke when the containing element is clicked/activated.</summary>
+        /// <summary>
+        /// A custom function to invoke when the containing element is clicked or othrwise activated. For example usage,
+        /// see [Create interactive cards](https://developers.google.com/chat/how-tos/cards-onclick).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; }
 
@@ -2969,7 +2994,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// recommended that the card use
         /// [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
         /// for all actions, as this locks the UI to ensure no changes are made by the user while the action is being
-        /// processed. Not supported by Google Chat apps.
+        /// processed. Not supported by Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
         public virtual System.Nullable<bool> PersistValues { get; set; }
@@ -2981,7 +3006,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
     /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
-    /// type and snooze time in the list of string parameters.
+    /// type and snooze time in the list of string parameters. To learn more, see
+    /// [CommonEventObject](https://developers.google.com/chat/api/reference/rest/v1/Event#commoneventobject).
     /// </summary>
     public class GoogleAppsCardV1ActionParameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2997,7 +3023,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the complete border style applied to widgets.</summary>
+    /// <summary>Represents the complete border style applied to items in a widget.</summary>
     public class GoogleAppsCardV1BorderStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The corner radius for the border.</summary>
@@ -3016,34 +3042,56 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A button. Can be a text button or an image button.</summary>
+    /// <summary>
+    /// A text, icon, or text + icon button that users can click. To make an image a clickable button, specify an Image
+    /// (not an ImageComponent) and set an `onClick` action.
+    /// </summary>
     public class GoogleAppsCardV1Button : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The alternative text used for accessibility. Has no effect when an icon is set; use `icon.alt_text` instead.
+        /// The alternative text used for accessibility. Set descriptive text that lets users know what the button does.
+        /// For example, if a button opens a hyperlink, you might write: "Opens a new browser tab and navigates to the
+        /// Google Chat developer documentation at https://developers.google.com/chat". Has no effect when an icon is
+        /// set; use `icon.alt_text` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
         public virtual string AltText { get; set; }
 
-        /// <summary>If set, the button is filled with a solid background.</summary>
+        /// <summary>
+        /// If set, the button is filled with a solid background color and the font color changes to maintain contrast
+        /// with the background color. For example, setting a blue background will likely result in white text. If
+        /// unset, the image background is white and the font color is blue. For red, green and blue, the value of each
+        /// field is a `float` number that can be expressed in either of two ways: as a number between 0 and 255 divided
+        /// by 255 (153/255) or as a value between 0 and 1 (0.6). 0 represents the absence of a color and 1 or 255/255
+        /// represent the full presence of that color on the RGB scale. Optionally set alpha, which sets a level of
+        /// transparency using this equation: ``` pixel color = alpha * (this color) + (1.0 - alpha) * (background
+        /// color) ``` For alpha, a value of 1 corresponds with a solid color, and a value of 0 corresponds with a
+        /// completely transparent color. For example, the following color represents a half transparent red: ```
+        /// "color": { "red": 1, "green": 0, "blue": 0, "alpha": 0.5 } ```
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
         /// <summary>
-        /// If `true`, the button is displayed in a disabled state and doesn't respond to user actions.
+        /// If `true`, the button is displayed in an inactive state and doesn't respond to user actions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>The icon image.</summary>
+        /// <summary>
+        /// The icon image. If both `icon` and `text` are set, then the icon appears in place of the text. Support for
+        /// both an icon and text is coming soon.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
-        /// <summary>The action to perform when the button is clicked.</summary>
+        /// <summary>
+        /// The action to perform when the button is clicked, such as opening a hyperlink or running a custom function.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
-        /// <summary>The text of the button.</summary>
+        /// <summary>The text displayed inside the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -3069,10 +3117,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// text message. - As a [dialog](https://developers.google.com/chat/how-tos/dialogs). The following example JSON
     /// creates a "contact card" that features: - A header with the contact's name, job title, avatar picture. - A
     /// section with the contact information, including formatted text. - Buttons that users can click to share the
-    /// contact or see more or less info. ![Example contact card](/chat/images/card_api_reference.png) ``` { "cardsV2":
-    /// [ { "cardId": "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer",
-    /// "imageUrl": "https://developers.google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE",
-    /// "imageAltText": "Avatar for Sasha", }, "sections": [ { "header": "Contact Info", "collapsible": true,
+    /// contact or see more or less info. ![Example contact
+    /// card](https://developers.google.com/chat/images/card_api_reference.png) ``` { "cardsV2": [ { "cardId":
+    /// "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
+    /// "https://developers.google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
+    /// "Avatar for Sasha", }, "sections": [ { "header": "Contact Info", "collapsible": true,
     /// "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL", },
     /// "text": "sasha@example.com", } }, { "decoratedText": { "startIcon": { "knownIcon": "PERSON", }, "text":
     /// "Online", }, }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE", }, "text": "+1 (555) 555-1234", } }, {
@@ -3083,40 +3132,57 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The card's actions. Actions are added to the card's generated toolbar menu. Not supported by Google Chat
-        /// apps. For example, the following JSON constructs a card action menu with Settings and Send Feedback options:
-        /// ``` "card_actions": [ { "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView",
-        /// "parameters": [ { "key": "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } },
-        /// { "actionLabel": "Send Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ]
-        /// ```
+        /// The card's actions. Actions are added to the card's toolbar menu. Because Chat app cards have no toolbar,
+        /// `cardActions[]` is not supported by Chat apps. For example, the following JSON constructs a card action menu
+        /// with Settings and Send Feedback options: ``` "card_actions": [ { "actionLabel": "Settings", "onClick": {
+        /// "action": { "functionName": "goToView", "parameters": [ { "key": "viewType", "value": "SETTING" } ],
+        /// "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback", "onClick": { "openLink": {
+        /// "url": "https://example.com/feedback" } } } ] ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
 
-        /// <summary>The `peekCardHeader` display style for. Not supported by Google Chat apps.</summary>
+        /// <summary>
+        /// In Google Workspace add-ons, sets the display properties of the `peekCardHeader`. Not supported by Chat
+        /// apps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayStyle")]
         public virtual string DisplayStyle { get; set; }
 
-        /// <summary>The fixed footer shown at the bottom of this card.</summary>
+        /// <summary>
+        /// The fixed footer shown at the bottom of this card. Setting `fixedFooter` without specifying a
+        /// `primaryButton` or a `secondaryButton` causes an error. Chat apps support `fixedFooter` in
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in [card
+        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedFooter")]
         public virtual GoogleAppsCardV1CardFixedFooter FixedFooter { get; set; }
 
-        /// <summary>The header of the card. A header usually contains a title and an image.</summary>
+        /// <summary>
+        /// The header of the card. A header usually contains a leading image and a title. Headers always appear at the
+        /// top of a card.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual GoogleAppsCardV1CardHeader Header { get; set; }
 
-        /// <summary>Name of the card. Used as a card identifier in card navigation.</summary>
+        /// <summary>
+        /// Name of the card. Used as a card identifier in card navigation. Because Chat apps don't support card
+        /// navigation, they ignore this field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate
-        /// forward between the homepage cards and the contextual cards. Not supported by Google Chat apps.
+        /// forward between the homepage cards and the contextual cards. Not supported by Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
         public virtual GoogleAppsCardV1CardHeader PeekCardHeader { get; set; }
 
-        /// <summary>Sections are separated by a line divider.</summary>
+        /// <summary>
+        /// Contains a collection of widgets. Each section has its own, optional header. Sections are visually separated
+        /// by a line divider.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sections")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1Section> Sections { get; set; }
 
@@ -3126,7 +3192,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A card action is the action associated with the card. For example, an invoice card might include actions such as
-    /// delete invoice, email invoice, or open the invoice in a browser. Not supported by Google Chat apps.
+    /// delete invoice, email invoice, or open the invoice in a browser. Not supported by Chat apps.
     /// </summary>
     public class GoogleAppsCardV1CardAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3142,7 +3208,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A persistent (sticky) footer that is added to the bottom of the card.</summary>
+    /// <summary>
+    /// A persistent (sticky) footer that that appears at the bottom of the card. Setting `fixedFooter` without
+    /// specifying a `primaryButton` or a `secondaryButton` causes an error. Chat apps support `fixedFooter` in
+    /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in [card
+    /// messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+    /// </summary>
     public class GoogleAppsCardV1CardFixedFooter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3169,15 +3240,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageAltText")]
         public virtual string ImageAltText { get; set; }
 
-        /// <summary>The image's type.</summary>
+        /// <summary>The shape used to crop the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
-        /// <summary>The URL of the image in the card header.</summary>
+        /// <summary>The HTTPS URL of the image in the card header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; }
 
-        /// <summary>The subtitle of the card header.</summary>
+        /// <summary>The subtitle of the card header. If specified, appears on its own line below the `title`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
         public virtual string Subtitle { get; set; }
 
@@ -3192,23 +3263,31 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The widget that lets users to specify a date and time. Not supported by Google Chat apps.</summary>
+    /// <summary>
+    /// Lets users specify a date, a time, or both a date and a time. Accepts text input from users, but features an
+    /// interactive date and time selector that helps users enter correctly-formatted dates and times. If users enter a
+    /// date or time incorrectly, the widget shows an error that prompts users to enter the correct format. Not
+    /// supported by Chat apps. Support by Chat apps coming soon.
+    /// </summary>
     public class GoogleAppsCardV1DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The label for the field that displays to the user.</summary>
+        /// <summary>
+        /// The text that prompts users to enter a date, time, or datetime. Specify text that helps the user enter the
+        /// information your app needs. For example, if users are setting an appointment, then a label like "Appointment
+        /// date" or "Appointment date and time" might work well.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
         /// <summary>
-        /// The name of the text input that's used in `formInput`, and uniquely identifies this input.
+        /// The name by which the datetime picker is identified in a form input event. For details about working with
+        /// form inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Triggered when the user clicks Save or Clear from the date/time picker dialog. This is only triggered if the
-        /// value changed as a result of the Save/Clear operation.
-        /// </summary>
+        /// <summary>Triggered when the user clicks **Save** or **Clear** from the datetime picker interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
@@ -3219,15 +3298,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
         public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
 
-        /// <summary>The type of the date/time picker.</summary>
+        /// <summary>What kind of date and time input the datetime picker supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// The value to display as the default value before user input or previous user input. It is represented in
-        /// milliseconds (Epoch time). For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY` type,
-        /// only date of the epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used. For example,
-        /// you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
+        /// The value displayed as the default value before user input or previous user input, represented in
+        /// milliseconds ([Epoch time](https://en.wikipedia.org/wiki/Unix_time)). For `DATE_AND_TIME` type, the full
+        /// epoch value is used. For `DATE_ONLY` type, only date of the epoch time is used. For `TIME_ONLY` type, only
+        /// time of the epoch time is used. For example, to represent 3:00 AM, set epoch time to `3 * 60 * 60 * 1000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
         public virtual System.Nullable<long> ValueMsEpoch { get; set; }
@@ -3242,7 +3321,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1DecoratedText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The formatted text label that shows below the main text.</summary>
+        /// <summary>
+        /// The text that appears below `text`. Always truncates. Supports simple formatting. See Text formatting for
+        /// formatting details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
         public virtual string BottomLabel { get; set; }
 
@@ -3250,15 +3332,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("button")]
         public virtual GoogleAppsCardV1Button Button { get; set; }
 
-        /// <summary>An icon displayed after the text.</summary>
+        /// <summary>
+        /// An icon displayed after the text. Supports
+        /// [standard](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
+        /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
         public virtual GoogleAppsCardV1Icon EndIcon { get; set; }
 
-        /// <summary>Deprecated in favor of start_icon.</summary>
+        /// <summary>Deprecated in favor of `startIcon`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
-        /// <summary>Only the top and bottom label and content region are clickable.</summary>
+        /// <summary>When users click on `topLabel` or `bottomLabel`, this action triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
@@ -3266,21 +3352,30 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
         public virtual GoogleAppsCardV1Icon StartIcon { get; set; }
 
-        /// <summary>A switch widget can be clicked to change its state or trigger an action.</summary>
+        /// <summary>
+        /// A switch widget can be clicked to change its state and trigger an action. Currently supported in
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
+        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
         public virtual GoogleAppsCardV1SwitchControl SwitchControl { get; set; }
 
-        /// <summary>Required. The main widget formatted text. See Text formatting for details.</summary>
+        /// <summary>
+        /// Required. The primary text. Supports simple formatting. See Text formatting for formatting details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
-        /// <summary>The formatted text label that shows above the main text.</summary>
+        /// <summary>
+        /// The text that appears above `text`. Always truncates. Supports simple formatting. See Text formatting for
+        /// formatting details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
 
         /// <summary>
-        /// The wrap text setting. If `true`, the text is wrapped and displayed in multiline. Otherwise, the text is
-        /// truncated.
+        /// The wrap text setting. If `true`, the text wraps and displays on multiple lines. Otherwise, the text is
+        /// truncated. Only applies to `text`, not `topLabel` and `bottomLabel`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wrapText")]
         public virtual System.Nullable<bool> WrapText { get; set; }
@@ -3289,14 +3384,27 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A divider that appears in between widgets.</summary>
+    /// <summary>
+    /// Displays a divider between widgets, a horizontal line. For example, the following JSON creates a divider: ```
+    /// "divider": { } ```
+    /// </summary>
     public class GoogleAppsCardV1Divider : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Grid widget that displays items in a configurable grid layout.</summary>
+    /// <summary>
+    /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of rows
+    /// is determined by items divided by columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items
+    /// and 2 columns has 6 rows. Currently supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
+    /// Support for [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
+    /// For example, the following JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine
+    /// collection of items", "numColumns": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 }, "items": [
+    /// "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": {
+    /// "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" ], "onClick": { "openLink": {
+    /// "url":"https://www.example.com" } } } ```
+    /// </summary>
     public class GoogleAppsCardV1Grid : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The border style to apply to each grid item.</summary>
@@ -3351,10 +3459,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
         public virtual string Subtitle { get; set; }
 
-        /// <summary>The horizontal alignment of the grid item's text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAlignment")]
-        public virtual string TextAlignment { get; set; }
-
         /// <summary>The grid item's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -3363,15 +3467,30 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An icon displayed in a widget on a card. Supports
+    /// [standard](https://developers.google.com/chat/api/guides/message-formats/cards) and
+    /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
+    /// </summary>
     public class GoogleAppsCardV1Icon : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The description of the icon, used for accessibility. The default value is provided if you don't specify one.
+        /// Optional. A description of the icon used for accessibility. If unspecified, a default value is provided. As
+        /// a best practice, you should set a helpful description. For example, if an icon displays a user's account
+        /// portrait, you could describe it as "A user's account portrait." If the icon displays in a Button, this alt
+        /// text takes precedence and overwrites the button's alt text, so you should write alt text for the button: Set
+        /// descriptive text that lets users know what the button does. For example, if a button opens a hyperlink, you
+        /// might write: "Opens a new browser tab and navigates to the Google Chat developer documentation at
+        /// https://developers.google.com/chat".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
         public virtual string AltText { get; set; }
 
-        /// <summary>The icon specified by a URL.</summary>
+        /// <summary>
+        /// Display a custom icon hosted at an HTTPS URL. For example: ``` "iconUrl":
+        /// "https://developers.google.com/chat/images/quickstart-app-avatar.png" ``` Supported file types include
+        /// `.png` and `.jpg`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; }
 
@@ -3382,7 +3501,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
-        /// <summary>The icon specified by the string name of a list of known icons.</summary>
+        /// <summary>
+        /// Display one of the standard icons provided by Google Workspace. For example, to display an airplane icon,
+        /// specify `AIRPLANE`. For a bus, specify `BUS`. For a full list of supported icons, see [standard
+        /// icons](https://developers.google.com/chat/api/guides/message-formats/cards).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
         public virtual string KnownIcon { get; set; }
 
@@ -3397,11 +3520,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
         public virtual string AltText { get; set; }
 
-        /// <summary>An image URL.</summary>
+        /// <summary>
+        /// The `https` URL that hosts the image. For example: ```
+        /// https://developers.google.com/chat/images/quickstart-app-avatar.png ```
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; }
 
-        /// <summary>The action triggered by an `onClick` event.</summary>
+        /// <summary>When a user clicks on the image, the click triggers this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
@@ -3432,10 +3558,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the crop style applied to an image.</summary>
+    /// <summary>
+    /// Represents the crop style applied to an image. For example, here's how to apply a 16 by 9 aspect ratio: ```
+    /// cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
+    /// </summary>
     public class GoogleAppsCardV1ImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.</summary>
+        /// <summary>
+        /// The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`. For example, here's how to apply a 16 by 9
+        /// aspect ratio: ``` cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
         public virtual System.Nullable<double> AspectRatio { get; set; }
 
@@ -3447,14 +3579,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the response to an `onClick` event.</summary>
+    /// <summary>
+    /// Represents how to respond when users click an interactive element on a card, such as a button.
+    /// </summary>
     public class GoogleAppsCardV1OnClick : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If specified, an action is triggered by this `onClick`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual GoogleAppsCardV1Action Action { get; set; }
 
-        /// <summary>A new card is pushed to the card stack after clicking if specified.</summary>
+        /// <summary>
+        /// A new card is pushed to the card stack after clicking if specified. Supported by Google Workspace Add-ons,
+        /// but not Chat apps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("card")]
         public virtual GoogleAppsCardV1Card Card { get; set; }
 
@@ -3498,31 +3635,34 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A section contains a collection of widgets that are rendered vertically in the order that they are specified.
-    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties, for
-    /// example, float.
     /// </summary>
     public class GoogleAppsCardV1Section : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Indicates whether this section is collapsible. If a section is collapsible, the description must be given.
+        /// Indicates whether this section is collapsible. Collapsible sections hide some or all widgets, but users can
+        /// expand the section to reveal the hidden widgets by clicking **Show more**. Users can hide the widgets again
+        /// by clicking **Show less**. To determine which widgets are hidden, specify `uncollapsibleWidgetsCount`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsible")]
         public virtual System.Nullable<bool> Collapsible { get; set; }
 
-        /// <summary>The header of the section. Formatted text is supported.</summary>
+        /// <summary>
+        /// Text that appears at the top of a section. Supports [simple HTML formatted
+        /// text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
 
         /// <summary>
-        /// The number of uncollapsible widgets. For example, when a section contains five widgets and the
-        /// `uncollapsibleWidgetsCount` is set to `2`, the first two widgets are always shown and the last three are
-        /// collapsed as default. The `uncollapsibleWidgetsCount` is taken into account only when `collapsible` is
-        /// `true`.
+        /// The number of uncollapsible widgets which remain visible even when a section is collapsed. For example, when
+        /// a section contains five widgets and the `uncollapsibleWidgetsCount` is set to `2`, the first two widgets are
+        /// always shown and the last three are collapsed by default. The `uncollapsibleWidgetsCount` is taken into
+        /// account only when `collapsible` is `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
         public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
 
-        /// <summary>A section must contain at least 1 widget.</summary>
+        /// <summary>All the widgets in the section. Must contain at least 1 widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1Widget> Widgets { get; set; }
 
@@ -3531,30 +3671,51 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A widget that creates a UI item with options for users to select. For example, a dropdown menu.
+    /// A widget that creates a UI item with options for users to select. For example, a dropdown menu or check list.
+    /// Chat apps receive and can process the value of entered text during form input events. For details about working
+    /// with form inputs, see [Receive form
+    /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you need to
+    /// collect data from users that matches options you set, use a selection input. To collect abstract data from
+    /// users, use the text input widget instead. Only supported in
+    /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
+    /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) coming soon.
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array of the selected items.</summary>
+        /// <summary>An array of the selected items. For example, all the selected check boxes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1SelectionItem> Items { get; set; }
 
-        /// <summary>The label displayed ahead of the switch control.</summary>
+        /// <summary>
+        /// The text that appears above the selection input field in the user interface. Specify text that helps the
+        /// user enter the information your app needs. For example, if users are selecting the urgency of a work ticket
+        /// from a drop-down menu, the label might be "Urgency" or "Select urgency".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>The name of the text input which is used in `formInput`.</summary>
+        /// <summary>
+        /// The name by which the selection input is identified in a form input event. For details about working with
+        /// form inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// If specified, the form is submitted when the selection changes. If not specified, you must specify a
-        /// separate button.
+        /// separate button that submits the form. For details about working with form inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
-        /// <summary>The type of the selection.</summary>
+        /// <summary>
+        /// The way that an option appears to users. Different options support different types of interactions. For
+        /// example, users can enable multiple check boxes, but can only select one value from a dropdown menu. Each
+        /// selection input supports one type of selection. Mixing check boxes and switches, for example, is not
+        /// supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3562,21 +3723,25 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A selectable item in the switch control.</summary>
+    /// <summary>A selectable item in a selection input, such as a check box or a switch.</summary>
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first selected item is treated as
-        /// selected and the ones after are ignored.
+        /// When `true`, more than one item is selected. If more than one item is selected for radio buttons and
+        /// dropdown menus, the first selected item is received and the ones after are ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
 
-        /// <summary>The text to be displayed.</summary>
+        /// <summary>The text displayed to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
-        /// <summary>The value associated with this item. The client should use this as a form input value.</summary>
+        /// <summary>
+        /// The value associated with this item. The client should use this as a form input value. For details about
+        /// working with form inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3584,10 +3749,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A suggestion item.</summary>
+    /// <summary>One suggested value that users can enter in a text input field.</summary>
     public class GoogleAppsCardV1SuggestionItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The suggested autocomplete result.</summary>
+        /// <summary>
+        /// The value of a suggested input to a text input field. This is equivalent to what users would enter
+        /// themselves.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -3596,11 +3764,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A container wrapping elements necessary for showing suggestion items used in text input autocomplete.
+    /// Suggested values that users can enter. These values appear when users click inside the text input field. As
+    /// users type, the suggested values dynamically filter to match what the users have typed. For example, a text
+    /// input field for programming language might suggest Java, JavaScript, Python, and C++. When users start typing
+    /// "Jav", the list of suggestions filters to show just Java and JavaScript. Suggested values help guide users to
+    /// enter values that your app can make sense of. When referring to JavaScript, some users might enter "javascript"
+    /// and others "java script". Suggesting "JavaScript" can standardize how users interact with your app. When
+    /// specified, `TextInput.type` is always `SINGLE_LINE`, even if it is set to `MULTIPLE_LINE`.
     /// </summary>
     public class GoogleAppsCardV1Suggestions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of suggestions used for autocomplete recommendations.</summary>
+        /// <summary>A list of suggestions used for autocomplete recommendations in text input fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1SuggestionItem> Items { get; set; }
 
@@ -3608,26 +3782,38 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Either a toggle-style switch or a checkbox.</summary>
+    /// <summary>
+    /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget. Only supported on the
+    /// `decoratedText` widget. Currently supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
+    /// Support for [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
+    /// </summary>
     public class GoogleAppsCardV1SwitchControl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The control type, either switch or checkbox.</summary>
+        /// <summary>How the switch appears in the user interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
         public virtual string ControlType { get; set; }
 
-        /// <summary>The name of the switch widget that's used in `formInput`.</summary>
+        /// <summary>
+        /// The name by which the switch widget is identified in a form input event. For details about working with form
+        /// inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The action when the switch state is changed.</summary>
+        /// <summary>The action to perform when the switch state is changed, such as what function to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
-        /// <summary>If the switch is selected.</summary>
+        /// <summary>When `true`, the switch is selected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
 
-        /// <summary>The value is what is passed back in the callback.</summary>
+        /// <summary>
+        /// The value entered by a user, returned as part of a form input event. For details about working with form
+        /// inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3636,43 +3822,81 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A text input is a UI item where users can input text. A text input can also have an onChange action and
-    /// suggestions.
+    /// A field in which users can enter text. Supports suggestions and on-change actions. Chat apps receive and can
+    /// process the value of entered text during form input events. For details about working with form inputs, see
+    /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you
+    /// need to collect abstract data from users, use a text input. To collect defined data from users, use the
+    /// selection input widget instead. Only supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
+    /// Support for [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) coming soon.
     /// </summary>
     public class GoogleAppsCardV1TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The refresh function that returns suggestions based on the user's input text. If the callback is not
-        /// specified, autocomplete is done in client side based on the initial suggestion items.
+        /// Optional. Specify what action to take when the text input field provides suggestions to users who interact
+        /// with it. If unspecified, the suggestions are set by `initialSuggestions` and are processed by the client. If
+        /// specified, the app takes the action specified here, such as running a custom function. Supported by Google
+        /// Workspace Add-ons, but not Chat apps. Support by Chat apps coming soon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
         public virtual GoogleAppsCardV1Action AutoCompleteAction { get; set; }
 
-        /// <summary>The hint text.</summary>
+        /// <summary>
+        /// Text that appears inside the text input field meant to assist users by prompting them to enter a certain
+        /// value. This text is not visible after users begin typing. Required if `label` is unspecified. Otherwise,
+        /// optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
         public virtual string HintText { get; set; }
 
-        /// <summary>The initial suggestions made before any user input.</summary>
+        /// <summary>
+        /// Suggested values that users can enter. These values appear when users click inside the text input field. As
+        /// users type, the suggested values dynamically filter to match what the users have typed. For example, a text
+        /// input field for programming language might suggest Java, JavaScript, Python, and C++. When users start
+        /// typing "Jav", the list of suggestions filters to show just Java and JavaScript. Suggested values help guide
+        /// users to enter values that your app can make sense of. When referring to JavaScript, some users might enter
+        /// "javascript" and others "java script". Suggesting "JavaScript" can standardize how users interact with your
+        /// app. When specified, `TextInput.type` is always `SINGLE_LINE`, even if it is set to `MULTIPLE_LINE`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialSuggestions")]
         public virtual GoogleAppsCardV1Suggestions InitialSuggestions { get; set; }
 
-        /// <summary>At least one of label and hintText must be specified.</summary>
+        /// <summary>
+        /// The text that appears above the text input field in the user interface. Specify text that helps the user
+        /// enter the information your app needs. For example, if you are asking someone's name, but specifically need
+        /// their surname, write "surname" instead of "name". Required if `hintText` is unspecified. Otherwise,
+        /// optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>The name of the text input which is used in `formInput`.</summary>
+        /// <summary>
+        /// The name by which the text input is identified in a form input event. For details about working with form
+        /// inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The onChange action, for example, invoke a function.</summary>
+        /// <summary>
+        /// What to do when a change occurs in the text input field. Examples of changes include a user adding to the
+        /// field, or deleting text. Examples of actions to take include running a custom function or opening a
+        /// [dialog](https://developers.google.com/chat/how-tos/dialogs) in Google Chat.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
-        /// <summary>The style of the text, for example, a single line or multiple lines.</summary>
+        /// <summary>
+        /// How a text input field appears in the user interface. For example, whether the field is single or
+        /// multi-line.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>The default value when there is no input from the user.</summary>
+        /// <summary>
+        /// The value entered by a user, returned as part of a form input event. For details about working with form
+        /// inputs, see [Receive form
+        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3694,13 +3918,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
+    /// <summary>
+    /// Each card is made up of widgets. A widget is a composite object that can represent one of text, images, buttons,
+    /// and other object types.
+    /// </summary>
     public class GoogleAppsCardV1Widget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of buttons. For example, the following JSON creates two buttons. The first is a filled text button
-        /// and the second is an image button that opens a link: ``` "buttonList": { "buttons": [ "button": { "text":
-        /// "Edit", "Color": { "Red": 255 "Green": 255 "Blue": 255 } "disabled": true }, "button": { "icon": {
+        /// A list of buttons. For example, the following JSON creates two buttons. The first is a blue text button and
+        /// the second is an image button that opens a link: ``` "buttonList": { "buttons": [ "button": { "text":
+        /// "Edit", "color": { "red": 0, "green": 0, "blue": 1, "alpha": 1 } "disabled": true }, "button": { "icon": {
         /// "knownIcon": "INVITE" "altText": "check calendar" }, "onClick": { "openLink": { "url":
         /// "https://example.com/calendar" } } }, ] } ```
         /// </summary>
@@ -3708,72 +3935,83 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
 
         /// <summary>
-        /// Displays a selection/input widget for date/time. For example, the following JSON creates a date/time picker
-        /// for an appointment time: ``` "date_time_picker": { "name": "appointment_time", "label": "Book your
-        /// appointment at:", "type": "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
+        /// Displays a selection/input widget for date, time, or date and time. Not supported by Chat apps. Support by
+        /// Chat apps is coming soon. For example, the following JSON creates a datetime picker to schedule an
+        /// appointment: ``` "date_time_picker": { "name": "appointment_time", "label": "Book your appointment at:",
+        /// "type": "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
         public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
 
         /// <summary>
-        /// Displays a decorated text item in this widget. For example, the following JSON creates a decorated text
-        /// widget showing email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email
-        /// Address", "content": "sasha@example.com", "bottomLabel": "This is a new Email address!", "switchWidget": {
-        /// "name": "has_send_welcome_email_to_sasha", "selected": false, "controlType": "ControlType.CHECKBOX" } } ```
+        /// Displays a decorated text item. For example, the following JSON creates a decorated text widget showing
+        /// email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email Address", "text":
+        /// "sasha@example.com", "bottomLabel": "This is a new Email address!", "switchWidget": { "name":
+        /// "has_send_welcome_email_to_sasha", "selected": false, "controlType": "ControlType.CHECKBOX" } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
         public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
 
         /// <summary>
-        /// Displays a divider. For example, the following JSON creates a divider: ``` "divider": { } ```
+        /// Displays a horizontal line divider between widgets. For example, the following JSON creates a divider: ```
+        /// "divider": { } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divider")]
         public virtual GoogleAppsCardV1Divider Divider { get; set; }
 
         /// <summary>
-        /// Displays a grid with a collection of items. For example, the following JSON creates a 2 column grid with a
-        /// single item: ``` "grid": { "title": "A fine collection of items", "numColumns": 2, "borderStyle": { "type":
-        /// "STROKE", "cornerRadius": 4.0 }, "items": [ "image": { "imageUri": "https://www.example.com/image.png",
-        /// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item",
-        /// "textAlignment": "CENTER" ], "onClick": { "openLink": { "url":"https://www.example.com" } } } ```
+        /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of
+        /// rows is determined by the upper bounds of the number items divided by the number of columns. A grid with 10
+        /// items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. Currently supported in
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
+        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon. For example,
+        /// the following JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine collection of
+        /// items", "numColumns": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4.0 }, "items": [ "image": {
+        /// "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type":
+        /// "STROKE" } }, "title": "An item", "textAlignment": "CENTER" ], "onClick": { "openLink": {
+        /// "url":"https://www.example.com" } } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grid")]
         public virtual GoogleAppsCardV1Grid Grid { get; set; }
 
-        /// <summary>The horizontal alignment of this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; }
-
         /// <summary>
-        /// Displays an image in this widget. For example, the following JSON creates an image with alternative text:
-        /// ``` "image": { "imageUrl": "https://example.com/sasha.png" "altText": "Avatar for Sasha" } ```
+        /// Displays an image. For example, the following JSON creates an image with alternative text: ``` "image": {
+        /// "imageUrl": "https://developers.google.com/chat/images/quickstart-app-avatar.png" "altText": "Chat app
+        /// avatar" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleAppsCardV1Image Image { get; set; }
 
         /// <summary>
-        /// Displays a switch control in this widget. For example, the following JSON creates a dropdown selection for
-        /// size: ``` "switchControl": { "name": "size", "label": "Size" "type": "SelectionType.DROPDOWN", "items": [ {
-        /// "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true }, {
-        /// "text": "L", "value": "large", "selected": false }, { "text": "XL", "value": "extra_large", "selected":
-        /// false } ] } ```
+        /// Displays a selection control that lets users select items. Selection controls can be check boxes, radio
+        /// buttons, switches, or dropdown menus. Currently supported in
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
+        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon. For example,
+        /// the following JSON creates a dropdown menu that lets users choose a size: ``` "selectionInput": { "name":
+        /// "size", "label": "Size" "type": "SelectionType.DROPDOWN", "items": [ { "text": "S", "value": "small",
+        /// "selected": false }, { "text": "M", "value": "medium", "selected": true }, { "text": "L", "value": "large",
+        /// "selected": false }, { "text": "XL", "value": "extra_large", "selected": false } ] } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
         public virtual GoogleAppsCardV1SelectionInput SelectionInput { get; set; }
 
         /// <summary>
-        /// Displays a text input in this widget. For example, the following JSON creates a text input for mail address:
-        /// ``` "textInput": { "name": "mailing_address", "label": "Mailing Address" } ``` As another example, the
-        /// following JSON creates a text input for programming language with static suggestions: ``` "textInput": {
-        /// "name": "preferred_programing_language", "label": "Preferred Language", "initialSuggestions": { "items": [ {
-        /// "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } } ```
+        /// Displays a text box that users can type into. Currently supported in
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
+        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon. For example,
+        /// the following JSON creates a text input for an email address: ``` "textInput": { "name": "mailing_address",
+        /// "label": "Mailing Address" } ``` As another example, the following JSON creates a text input for a
+        /// programming language with static suggestions: ``` "textInput": { "name": "preferred_programing_language",
+        /// "label": "Preferred Language", "initialSuggestions": { "items": [ { "text": "C++" }, { "text": "Java" }, {
+        /// "text": "JavaScript" }, { "text": "Python" } ] } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
         public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
 
         /// <summary>
-        /// Displays a text paragraph in this widget. For example, the following JSON creates a bolded text: ```
-        /// "textParagraph": { "text": " *bold text*" } ```
+        /// Displays a text paragraph. Supports [simple HTML formatted
+        /// text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example, the
+        /// following JSON creates a bolded text: ``` "textParagraph": { "text": " *bold text*" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
         public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
@@ -3916,6 +4154,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response corresponding to ListSpacesRequest.</summary>
     public class ListSpacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

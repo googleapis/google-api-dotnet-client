@@ -960,6 +960,206 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     this.service = service;
                 }
 
+                /// <summary>Creates a new InternalRange in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource's name of the InternalRange.</param>
+                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new InternalRange in a given project and location.</summary>
+                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource's name of the InternalRange.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/internalRanges/foo') See
+                    /// https://google.aip.dev/122#resource-id-segments Unique per location.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("internalRangeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InternalRangeId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/internalRanges";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("internalRangeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "internalRangeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single InternalRange.</summary>
+                /// <param name="name">Required. The name of the InternalRange to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single InternalRange.</summary>
+                public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the InternalRange to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/internalRanges/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single InternalRange.</summary>
+                /// <param name="name">Required. Name of the InternalRange to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single InternalRange.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the InternalRange to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/internalRanges/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -1032,6 +1232,198 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists InternalRanges in a given project and location.</summary>
+                /// <param name="parent">Required. The parent resource's name.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists InternalRanges in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.ListInternalRangesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A filter expression that filters the results listed in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Sort the results by a certain order.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of results per page that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/internalRanges";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single InternalRange.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The name of a InternalRange. Format:
+                /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
+                /// https://google.aip.dev/122#fields-representing-resource-names
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single InternalRange.</summary>
+                public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The name of a InternalRange. Format:
+                    /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
+                    /// https://google.aip.dev/122#fields-representing-resource-names
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the InternalRange
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/internalRanges/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2522,12 +2914,119 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The InternalRange resource for IPAM operations within a VPC network. Used to represent a private address range
+    /// along with behavioral characterstics of that range (it's usage and peering behavior). Networking resources can
+    /// link to this range if they are created as belonging to it. Next id: 14
+    /// </summary>
+    public class InternalRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time when the InternalRange was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>A description of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>IP range that this InternalRange defines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; }
+
+        /// <summary>User-defined labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Immutable. The name of a InternalRange. Format:
+        /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
+        /// https://google.aip.dev/122#fields-representing-resource-names
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted
+        /// if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be
+        /// specified for a global internal address. Example: - URL:
+        /// /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Optional. Types of resources that are allowed to overlap with the current InternalRange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overlaps")]
+        public virtual System.Collections.Generic.IList<string> Overlaps { get; set; }
+
+        /// <summary>The type of peering set for this InternalRange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peering")]
+        public virtual string Peering { get; set; }
+
+        /// <summary>
+        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a
+        /// free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range
+        /// sizes don't match. Can also be used during updates to change the range size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
+        public virtual System.Nullable<int> PrefixLength { get; set; }
+
+        /// <summary>
+        /// Optional. Can be set to narrow down or pick a different address space while searching for a free range. If
+        /// not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address
+        /// spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCidrRange")]
+        public virtual System.Collections.Generic.IList<string> TargetCidrRange { get; set; }
+
+        /// <summary>Time when the InternalRange was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The type of usage set for this InternalRange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual string Usage { get; set; }
+
+        /// <summary>
+        /// Output only. The list of resources that refer to this internal range. Resources that use the InternalRange
+        /// for their range allocation are referred to as users of the range. Other resources mark themselves as users
+        /// while doing so by creating a reference to this InternalRange. Having a user, based on this reference,
+        /// prevents deletion of the InternalRange referred to. Can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("users")]
+        public virtual System.Collections.Generic.IList<string> Users { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for HubService.ListHubs method.</summary>
     public class ListHubsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Hubs to be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hubs")]
         public virtual System.Collections.Generic.IList<Hub> Hubs { get; set; }
+
+        /// <summary>
+        /// The next pagination token in the List response. It should be used as page_token for the following request.
+        /// An empty value means no more result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for InternalRange.ListInternalRanges</summary>
+    public class ListInternalRangesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>InternalRanges to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalRanges")]
+        public virtual System.Collections.Generic.IList<InternalRange> InternalRanges { get; set; }
 
         /// <summary>
         /// The next pagination token in the List response. It should be used as page_token for the following request.

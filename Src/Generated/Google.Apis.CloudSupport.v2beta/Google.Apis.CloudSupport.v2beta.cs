@@ -293,7 +293,10 @@ namespace Google.Apis.CloudSupport.v2beta
             this.service = service;
         }
 
-        /// <summary>Create a file attachment on a case or Cloud resource.</summary>
+        /// <summary>
+        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
+        /// set: filename.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The resource name of the case to which attachment should be attached.</param>
         public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent)
@@ -301,7 +304,10 @@ namespace Google.Apis.CloudSupport.v2beta
             return new CreateRequest(service, body, parent);
         }
 
-        /// <summary>Create a file attachment on a case or Cloud resource.</summary>
+        /// <summary>
+        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
+        /// set: filename.
+        /// </summary>
         public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Attachment>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -571,7 +577,9 @@ namespace Google.Apis.CloudSupport.v2beta
                 this.service = service;
             }
 
-            /// <summary>Add a new comment to the specified Case.</summary>
+            /// <summary>
+            /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource name of Case to which this comment should be added.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent)
@@ -579,7 +587,9 @@ namespace Google.Apis.CloudSupport.v2beta
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Add a new comment to the specified Case.</summary>
+            /// <summary>
+            /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
+            /// </summary>
             public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Comment>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -751,7 +761,10 @@ namespace Google.Apis.CloudSupport.v2beta
             }
         }
 
-        /// <summary>Create a new case and associate it with the given Cloud resource.</summary>
+        /// <summary>
+        /// Create a new case and associate it with the given Cloud resource. The case object must have the following
+        /// fields set: display_name, description, classification, and severity.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
         /// Required. The name of the Cloud resource under which the case should be created.
@@ -761,7 +774,10 @@ namespace Google.Apis.CloudSupport.v2beta
             return new CreateRequest(service, body, parent);
         }
 
-        /// <summary>Create a new case and associate it with the given Cloud resource.</summary>
+        /// <summary>
+        /// Create a new case and associate it with the given Cloud resource. The case object must have the following
+        /// fields set: display_name, description, classification, and severity.
+        /// </summary>
         public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1339,7 +1355,10 @@ namespace Google.Apis.CloudSupport.v2beta
             #endif
         }
 
-        /// <summary>Create a file attachment on a case or Cloud resource.</summary>
+        /// <summary>
+        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
+        /// set: filename.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The resource name of the case to which attachment should be attached.</param>
         public virtual UploadRequest Upload(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent)
@@ -1347,7 +1366,10 @@ namespace Google.Apis.CloudSupport.v2beta
             return new UploadRequest(service, body, parent);
         }
 
-        /// <summary>Create a file attachment on a case or Cloud resource.</summary>
+        /// <summary>
+        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
+        /// set: filename.
+        /// </summary>
         public class UploadRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Attachment>
         {
             /// <summary>Constructs a new Upload request.</summary>
@@ -1392,7 +1414,10 @@ namespace Google.Apis.CloudSupport.v2beta
             }
         }
 
-        /// <summary>Create a file attachment on a case or Cloud resource.</summary>
+        /// <summary>
+        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
+        /// set: filename.
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">

@@ -6559,8 +6559,8 @@ namespace Google.Apis.CloudRun.v1.Data
     public class KeyToPath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific
-        /// version. The key to project.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret
+        /// alias for a specific version. The key to project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -7465,10 +7465,9 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients
         /// polling for completed reconciliation should poll until observedGeneration = metadata.generation and the
-        /// Ready condition's status is True or False. Note that providing a trafficTarget that only has a
-        /// configurationName will result in a Route that does not increment either its metadata.generation or its
-        /// observedGeneration, as new "latest ready" revisions from the Configuration are processed without an update
-        /// to the Route's spec.
+        /// Ready condition's status is True or False. Note that providing a TrafficTarget that has latest_revision=True
+        /// will result in a Route that does not increment either its metadata.generation or its observedGeneration, as
+        /// new "latest ready" revisions from the Configuration are processed without an update to the Route's spec.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; }
@@ -7528,8 +7527,8 @@ namespace Google.Apis.CloudRun.v1.Data
     public class SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a
-        /// specific version. The key of the secret to select from. Must be a valid secret key.
+        /// Required. A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a
+        /// specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -8120,21 +8119,15 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>TrafficTarget holds a single entry of the routing table for a Route.</summary>
     public class TrafficTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic.
-        /// When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will
-        /// automatically migrate from the prior "latest ready" revision to the new one. This field is never set in
-        /// Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a
-        /// single ConfigurationName.
-        /// </summary>
+        /// <summary>[Deprecated] Not supported in Cloud Run. It must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationName")]
         public virtual string ConfigurationName { get; set; }
 
         /// <summary>
-        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration
-        /// should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty;
-        /// it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the
-        /// RevisionName was resolved from a spec's ConfigurationName.
+        /// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes,
+        /// traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be
+        /// false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status,
+        /// this means that the Revision was resolved from the Service's latest ready revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRevision")]
         public virtual System.Nullable<bool> LatestRevision { get; set; }
@@ -8147,13 +8140,12 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> Percent { get; set; }
 
         /// <summary>
-        /// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive
-        /// with ConfigurationName.
+        /// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionName")]
         public virtual string RevisionName { get; set; }
 
-        /// <summary>Optional. Tag is used to expose a dedicated url for referencing this target exclusively.</summary>
+        /// <summary>Tag is used to expose a dedicated url for referencing this target exclusively.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 

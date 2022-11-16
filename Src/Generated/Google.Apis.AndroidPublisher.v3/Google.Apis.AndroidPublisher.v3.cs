@@ -9964,6 +9964,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewEnabled")]
         public virtual System.Nullable<bool> AutoRenewEnabled { get; set; }
 
+        /// <summary>The information of the last price change for the item since subscription signup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceChangeDetails")]
+        public virtual SubscriptionItemPriceChangeDetails PriceChangeDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11211,6 +11215,27 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Offer details information related to a purchase line item.</summary>
+    public class OfferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base plan ID. Present for all base plan and offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>The offer ID. Only present for discounted offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>
+        /// The latest offer tags associated with the offer. It includes tags inherited from the base plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<string> OfferTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a custom tag specified for base plans and subscription offers.</summary>
     public class OfferTag : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11848,6 +11873,32 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Price change related information of a subscription item.</summary>
+    public class SubscriptionItemPriceChangeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The renewal time at which the price change will become effective for the user. This is subject to change(to
+        /// a future time) due to cases where the renewal time shifts like pause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedNewPriceChargeTime")]
+        public virtual object ExpectedNewPriceChargeTime { get; set; }
+
+        /// <summary>New recurring price for the subscription item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newPrice")]
+        public virtual Money NewPrice { get; set; }
+
+        /// <summary>Price change mode specifies how the subscription item price is changing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceChangeMode")]
+        public virtual string PriceChangeMode { get; set; }
+
+        /// <summary>State the price change is currently in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceChangeState")]
+        public virtual string PriceChangeState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The consumer-visible metadata of a subscription.</summary>
     public class SubscriptionListing : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12239,6 +12290,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
         public virtual object ExpiryTime { get; set; }
+
+        /// <summary>The offer details for this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerDetails")]
+        public virtual OfferDetails OfferDetails { get; set; }
 
         /// <summary>The item is prepaid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prepaidPlan")]
