@@ -51,6 +51,27 @@ namespace DiscoveryDocPatcher
             }
         }
 
+        public void FromAnyToTypedArray(string jPath, string arrayElementType)
+        {
+            var obj = (JObject)_json.SelectToken(jPath);
+            if (obj["type"]?.ToString() == "any")
+            {
+                obj["type"] = "array";
+                obj.Property("type").AddAfterSelf(new JProperty("items", new JObject(new JProperty("$ref", arrayElementType))));
+                changed = true;
+            }
+        }
+
+        public void FromAnyToTyped(string jPath, string type)
+        {
+            var obj = (JObject)_json.SelectToken(jPath);
+            if (obj["type"]?.ToString() == "any")
+            {
+                obj.Property("type").Replace(new JProperty("$ref", type));
+                changed = true;
+            }
+        }
+
         public void Remove(string jPath, JToken oldToken, JToken replacedToken)
         {
             // replacedToken is used if this remove operation has already been carried
@@ -80,7 +101,7 @@ namespace DiscoveryDocPatcher
 
         public void Replace(string jPath, JToken oldToken, JToken newToken)
         {
-            var token = _json.SelectToken(jPath);
+            var token = _json.SelectToken(jPath);            
             if (!JToken.DeepEquals(token, oldToken))
             {
                 if (JToken.DeepEquals(token, newToken))

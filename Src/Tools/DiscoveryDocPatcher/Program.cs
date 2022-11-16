@@ -66,15 +66,15 @@ namespace DiscoveryDocPatcher
                 return;
             }
             // Strongly-type properties that are defined without typing.
-            patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any', 'description': 'The list of the user&s addresses. The maximum allowed data size for this field is 10Kb.'}", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' }, 'description': 'The list of the user&s addresses. The maximum allowed data size for this field is 10Kb.' }");
-            patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any', 'description': 'The list of the user&s email addresses. The maximum allowed data size for this field is 10Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' }, 'description': 'The list of the user&s email addresses. The maximum allowed data size for this field is 10Kb.' }");
-            patcher.Replace("schemas.User.properties.externalIds", "{ 'type': 'any', 'description': 'The list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserExternalId' }, 'description': 'The list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for this field is 2Kb.' }");
-            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any', 'description': 'The list of the user&s Instant Messenger (IM) accounts. A user account can have multiple ims properties. But, only one of these ims properties can be the primary IM contact. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' }, 'description': 'The list of the user&s Instant Messenger (IM) accounts. A user account can have multiple ims properties. But, only one of these ims properties can be the primary IM contact. The maximum allowed data size for this field is 2Kb.' }");
-            patcher.Replace("schemas.User.properties.organizations", "{ 'type': 'any', 'description': 'The list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserOrganization' }, 'description': 'The list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.' }");
-            patcher.Replace("schemas.User.properties.phones", "{ 'type': 'any', 'description': 'The list of the user&s phone numbers. The maximum allowed data size for this field is 1Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserPhone' }, 'description': 'The list of the user&s phone numbers. The maximum allowed data size for this field is 1Kb.' }");
-            patcher.Replace("schemas.User.properties.relations", "{ 'type': 'any', 'description': 'The list of the user&s relationships to other users. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserRelation' }, 'description': 'The list of the user&s relationships to other users. The maximum allowed data size for this field is 2Kb.' }");
-            patcher.Replace("schemas.User.properties.websites", "{ 'type': 'any', 'description': 'The user&s websites. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserWebsite' }, 'description': 'The user&s websites. The maximum allowed data size for this field is 2Kb.' }");
-            patcher.Replace("schemas.Aliases.properties.aliases.items", "{ 'type': 'any' }", "{ '$ref': 'Alias' }");
+            patcher.FromAnyToTypedArray("schemas.User.properties.addresses", "UserAddress");
+            patcher.FromAnyToTypedArray("schemas.User.properties.emails", "UserEmail");
+            patcher.FromAnyToTypedArray("schemas.User.properties.externalIds", "UserExternalId");
+            patcher.FromAnyToTypedArray("schemas.User.properties.ims", "UserIm");
+            patcher.FromAnyToTypedArray("schemas.User.properties.organizations", "UserOrganization");
+            patcher.FromAnyToTypedArray("schemas.User.properties.phones", "UserPhone");
+            patcher.FromAnyToTypedArray("schemas.User.properties.relations", "UserRelation");
+            patcher.FromAnyToTypedArray("schemas.User.properties.websites", "UserWebsite");
+            patcher.FromAnyToTyped("schemas.Aliases.properties.aliases.items", "Alias");
             patcher.SaveWithBackup();
 
         }
