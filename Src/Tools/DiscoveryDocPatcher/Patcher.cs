@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using Newtonsoft.Json.Linq;
-using System;
 using System.IO;
 
 namespace DiscoveryDocPatcher
@@ -70,59 +69,6 @@ namespace DiscoveryDocPatcher
                 obj.Property("type").Replace(new JProperty("$ref", type));
                 changed = true;
             }
-        }
-
-        public void Remove(string jPath, JToken oldToken, JToken replacedToken)
-        {
-            // replacedToken is used if this remove operation has already been carried
-            // out on this jPath. It contains the token that is expected to be at the
-            // jPath *after* the remove operation.
-            var token = _json.SelectToken(jPath);
-            if (!JToken.DeepEquals(token, oldToken))
-            {
-                if (JToken.DeepEquals(token, replacedToken))
-                {
-                    // Already replaced, so do nothing.
-                    return;
-                }
-                throw new InvalidOperationException("Content wrong");
-            }
-            changed = true;
-            token.Remove();
-        }
-
-        public void Remove(string jPath, string oldContent, string replacedContent)
-        {
-            // Single quotes replaced with double quotes, to ease caller string literals.
-            JToken oldToken = JToken.Parse(oldContent.Replace('\'', '"'));
-            JToken replacedToken = JToken.Parse(replacedContent.Replace('\'', '"'));
-            Remove(jPath, oldToken, replacedToken);
-        }
-
-        public void Replace(string jPath, JToken oldToken, JToken newToken)
-        {
-            var token = _json.SelectToken(jPath);            
-            if (!JToken.DeepEquals(token, oldToken))
-            {
-                if (JToken.DeepEquals(token, newToken))
-                {
-                    // Already replaced, so do nothing.
-                    return;
-                }
-                throw new InvalidOperationException("Content wrong");
-            }
-            changed = true;
-            token.Replace(newToken);
-        }
-
-        public void Replace(string jPath, string oldContent, string newContent)
-        {
-            // Single quotes replaced with double quotes, to ease caller string literals.
-            // And ampersand replaced with single quote for string literals that contain a single quote.
-            JToken oldToken = JToken.Parse(oldContent.Replace('\'', '"').Replace('&', '\''));
-            JToken newToken = JToken.Parse(newContent.Replace('\'', '"').Replace('&', '\''));
-            
-            Replace(jPath, oldToken, newToken);
         }
     }
 }
