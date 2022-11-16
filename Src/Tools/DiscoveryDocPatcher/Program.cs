@@ -28,9 +28,6 @@ namespace DiscoveryDocPatcher
             {
                 string discoveryDocPath = args[0];
 
-                // No longer required as on 2020-07-09. The offending resource is no longer present at all.
-                // PatchGames(discoveryDocPath);
-
                 PatchDirectory(discoveryDocPath);
 
                 return 0;
@@ -40,22 +37,6 @@ namespace DiscoveryDocPatcher
                 Console.WriteLine(e);
                 return 1;
             }
-        }
-
-        static void PatchGames(string rootPath)
-        {
-            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "games_v1.json")));
-            if (patcher is null)
-            {
-                return;
-            }
-            // Remove deprecated enum value that causes duplicate C# enum value.
-            patcher.Remove("resources.players.methods.list.parameters.collection.enum[2]", "'playedWith'", "'played_with'");
-            // There are now two descriptions that look the same. We just want to remove the first of them.
-            patcher.Remove("resources.players.methods.list.parameters.collection.enumDescriptions[2]",
-                "'(DEPRECATED) Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently.'",
-                "'(DEPRECATED) Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently.'");
-            patcher.SaveWithBackup();
         }
 
         static void PatchDirectory(string rootPath)
