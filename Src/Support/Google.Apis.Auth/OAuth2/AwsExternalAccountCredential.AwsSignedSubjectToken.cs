@@ -34,7 +34,7 @@ namespace Google.Apis.Auth.OAuth2
         /// access tokens. Google STS triggers the request as specified by the signed
         /// request to verify the callers identity.
         /// </summary>
-        private sealed class AwsSignedSubjectToken
+        internal sealed class AwsSignedSubjectToken
         {
             private const string StVerificationHttpMethod = "POST";
             private const string BasicFormatIso8601 = "yyyyMMdd'T'HHmmss'Z'";
@@ -43,22 +43,21 @@ namespace Google.Apis.Auth.OAuth2
             private const string AwsSha256Designation = "AWS4-HMAC-SHA256";
 
             [JsonProperty("url")]
-            public string Url { get; }
+            public string Url { get; set; }
 
             [JsonProperty("method")]
-            public string HttpMethod { get; }
+            public string HttpMethod { get; set; }
 
             [JsonProperty("body")]
-            public string Body { get; }
+            public string Body { get; set; }
 
             [JsonProperty("headers")]
-            public AwsSignedSubjectTokenHeader[] Headers { get; }
+            public AwsSignedSubjectTokenHeader[] Headers { get; set; }
+
+            public AwsSignedSubjectToken() { }
 
             private AwsSignedSubjectToken(string url, string httpMethod, string body, AwsSignedSubjectTokenHeader[] headers)
             {
-                // We have no public parameterless constructor because
-                // we build this manually on the Create method and then
-                // serialize it.
                 Url = url;
                 HttpMethod = httpMethod;
                 Body = body;
@@ -68,10 +67,12 @@ namespace Google.Apis.Auth.OAuth2
             public sealed class AwsSignedSubjectTokenHeader
             {
                 [JsonProperty("key")]
-                public string Key { get; }
+                public string Key { get; set; }
 
                 [JsonProperty("value")]
-                public string Value { get; }
+                public string Value { get; set; }
+
+                public AwsSignedSubjectTokenHeader() { }
 
                 internal AwsSignedSubjectTokenHeader(string key, string value)
                 {

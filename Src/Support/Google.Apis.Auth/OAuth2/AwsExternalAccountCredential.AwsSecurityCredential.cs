@@ -28,7 +28,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Represents AWS security credentials which are used to sign
         /// the subject token.
         /// </summary>
-        private sealed class AwsSecurityCredentials
+        internal sealed class AwsSecurityCredentials
         {
             private const string AccessKeyIdEnvVar = "AWS_ACCESS_KEY_ID";
             private const string SecretAccessKeyEnvVar = "AWS_SECRET_ACCESS_KEY";
@@ -49,7 +49,7 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             internal string Token { get; }
 
-            private AwsSecurityCredentials(string accessKeyId, string secretAccessKey, string token)
+            internal AwsSecurityCredentials(string accessKeyId, string secretAccessKey, string token)
             {
                 AccessKeyId = accessKeyId;
                 SecretAccessKey = secretAccessKey;
