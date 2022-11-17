@@ -14,9 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Util;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2
@@ -26,7 +24,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Helper class to obtain the AWS region.
         /// </summary>
-        private sealed class AwsRegion
+        internal sealed class AwsRegion
         {
             private static readonly string[] OrderedRegionEnvVars = new string[] { "AWS_REGION", "AWS_DEFAULT_REGION" };
 
@@ -39,7 +37,7 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             internal string Region { get; }
 
-            private AwsRegion(string region) => Region = region;
+            internal AwsRegion(string region) => Region = region;
 
             /// <summary>
             /// Fetches the AWS instance region as per https://google.aip.dev/auth/4117#determining-the-subject-token-in-aws.

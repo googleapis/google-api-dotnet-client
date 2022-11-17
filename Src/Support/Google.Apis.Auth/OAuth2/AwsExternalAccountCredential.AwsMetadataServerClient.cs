@@ -28,7 +28,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Helper class for querying the AWS Metadata Server.
         /// It will fetch and use the sesion token if required.
         /// </summary>
-        private sealed class AwsMetadataServerClient
+        internal sealed class AwsMetadataServerClient
         {
             private const string AwsMetadataServerHostV4 = "169.254.169.254";
             private const string AwsMetadataServerHostV6 = "fd00:ec2::254";
