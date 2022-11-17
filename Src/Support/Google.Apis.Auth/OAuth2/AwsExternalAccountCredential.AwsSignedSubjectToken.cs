@@ -145,6 +145,7 @@ namespace Google.Apis.Auth.OAuth2
                         canonicalRequest.Append(headerPair.Value);
                         canonicalRequest.Append(newLine);
                     }
+                    canonicalRequest.Append(newLine);
 
                     // Now the list of headers that will be signed.
                     // See point 5 in https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
