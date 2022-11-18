@@ -31,4 +31,11 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="..\..\Generated\Google.Apis.BigtableAdmin.v2\Google.Apis.BigtableAdmin.v2.cs" Link="IntegrationTests.Utils\Google.Apis.BigtableAdmin.v2.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.CloudMachineLearningEngine.v1\Google.Apis.CloudMachineLearningEngine.v1.cs" Link="IntegrationTests.Utils\Google.Apis.CloudMachineLearningEngine.v1.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.IAMCredentials.v1\Google.Apis.IAMCredentials.v1.cs" Link="IntegrationTests.Utils\Google.Apis.IAMCredentials.v1.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.Storage.v1\Google.Apis.Storage.v1.cs" Link="IntegrationTests.Utils\Google.Apis.Storage.v1.cs" />
+  </ItemGroup>
+  
 </Project>
