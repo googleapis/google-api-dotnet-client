@@ -259,9 +259,9 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var handler = new InterceptorMessageHandler();
             handler.InjectedResponseMessage = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.ServiceUnavailable
-                };
+            {
+                StatusCode = HttpStatusCode.ServiceUnavailable
+            };
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var interceptor = new InterceptorMessageHandler.Interceptor();
@@ -275,6 +275,33 @@ namespace Google.Apis.Tests.Apis.Http
                 HttpResponseMessage response = client.SendAsync(request).Result;
                 Assert.Equal(configurableHanlder.NumTries, interceptor.Calls);
                 Assert.Equal(configurableHanlder.NumTries, handler.Calls);
+            }
+        }
+
+        [Fact]
+        public void SendAsync_ExecuteInterceptor_AbnormalResponse_UnsuccessfulResponseHandler_PerRequestMaxRetries()
+        {
+            var handler = new InterceptorMessageHandler();
+            handler.InjectedResponseMessage = new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.ServiceUnavailable
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler);
+            var interceptor = new InterceptorMessageHandler.Interceptor();
+            configurableHandler.AddExecuteInterceptor(interceptor);
+            configurableHandler.AddUnsuccessfulResponseHandler(new TrueUnsuccessfulResponseHandler());
+            // Let's have this request retry for a little longer than default.
+            int perRequestRetries = configurableHandler.NumTries + 2;
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-execute-interceptor");
+                request.Properties.Add(ConfigurableMessageHandler.MaxRetriesKey, perRequestRetries);
+
+                HttpResponseMessage response = client.SendAsync(request).Result;
+                Assert.Equal(perRequestRetries, interceptor.Calls);
+                Assert.Equal(perRequestRetries, handler.Calls);
             }
         }
 
@@ -326,8 +353,11 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary>Test helper for testing unsuccessful response handlers.</summary>
-        private void SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode code)
+        [Theory]
+        [CombinatorialData]
+        public void SendAsyncUnsuccessfulReponseHanlder(
+            [CombinatorialValues(HttpStatusCode.OK, HttpStatusCode.BadGateway, HttpStatusCode.ServiceUnavailable)] HttpStatusCode code,
+            [CombinatorialValues(null, 5)] int? maxRetries)
         {
             var handler = new UnsuccessfulResponseMessageHandler { ResponseStatusCode = code };
 
@@ -338,6 +368,7 @@ namespace Google.Apis.Tests.Apis.Http
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, "https://test-unsuccessful-handler");
+                int expectedMaxRetries = MaybeSetMaxRetries(maxRetries, configurableHanlder.NumTries, request);
 
                 HttpResponseMessage response = client.SendAsync(request).Result;
                 Assert.Equal(code, response.StatusCode);
@@ -346,8 +377,8 @@ namespace Google.Apis.Tests.Apis.Http
                 // handles service unavailable responses
                 if (code == HttpStatusCode.ServiceUnavailable)
                 {
-                    Assert.Equal(configurableHanlder.NumTries, unsuccessfulHandler.Calls);
-                    Assert.Equal(configurableHanlder.NumTries, handler.Calls);
+                    Assert.Equal(expectedMaxRetries, unsuccessfulHandler.Calls);
+                    Assert.Equal(expectedMaxRetries, handler.Calls);
                 }
                 else
                 {
@@ -356,33 +387,6 @@ namespace Google.Apis.Tests.Apis.Http
                     Assert.Equal(1, handler.Calls);
                 }
             }
-        }
-
-        /// <summary>Tests that unsuccessful response handler isn't called when the response is successful.</summary>
-        [Fact]
-        public void SendAsync_UnsuccessfulReponseHanlder_SuccessfulReponse()
-        {
-            SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode.OK);
-        }
-
-        /// <summary>
-        /// Tests that unsuccessful response handler is called when the response is unsuccessful, but the handler can't
-        /// handle the abnormal response (e.g. different status code).
-        /// </summary>
-        [Fact]
-        public void SendAsync_UnsuccessfulReponseHanlder_AbnormalResponse_DifferentStatusCode()
-        {
-            SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode.BadGateway);
-        }
-
-        /// <summary>
-        /// Tests that unsuccessful response handler is called when the response is unsuccessful and the handler can 
-        /// handle the abnormal response (e.g. same status code).
-        /// </summary>
-        [Fact]
-        public void SendAsync_UnsuccessfulReponseHanlder_AbnormalResponse_SameStatusCode()
-        {
-            SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode.ServiceUnavailable);
         }
 
         /// <summary>Tests abnormal response when unsuccessful response handler isn't plugged.</summary>
@@ -464,8 +468,10 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary>Subtest for exception handler which tests that exception handler is invoked.</summary>
-        private void SubtestSendAsyncExceptionHandler(bool throwException, bool handle)
+        [Theory]
+        [CombinatorialData]
+        public void SendAsyncExceptionHandler(bool throwException, bool handle,
+            [CombinatorialValues(null, 5)] int? maxRetries)
         {
             var handler = new ExceptionMessageHandler { ThrowException = throwException };
 
@@ -476,6 +482,8 @@ namespace Google.Apis.Tests.Apis.Http
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, "https://test-exception-handler");
+                int expectedMaxRetries = MaybeSetMaxRetries(maxRetries, configurableHanlder.NumTries, request);
+
                 try
                 {
                     HttpResponseMessage response = client.SendAsync(request).Result;
@@ -493,7 +501,7 @@ namespace Google.Apis.Tests.Apis.Http
                 // only 1
                 if (throwException)
                 {
-                    Assert.Equal(handle ? configurableHanlder.NumTries : 1, exceptionHandler.Calls);
+                    Assert.Equal(handle ? expectedMaxRetries : 1, exceptionHandler.Calls);
                 }
                 // exception wasn't supposed to be thrown, so no call to exception handler should be made
                 else
@@ -501,36 +509,8 @@ namespace Google.Apis.Tests.Apis.Http
                     Assert.Equal(0, exceptionHandler.Calls);
                 }
 
-                Assert.Equal(throwException & handle ? configurableHanlder.NumTries : 1, handler.Calls);
+                Assert.Equal(throwException & handle ? expectedMaxRetries : 1, handler.Calls);
             }
-        }
-
-
-        /// <summary>Tests that the exception handler isn't called on successful response.</summary>
-        [Fact]
-        public void SendAsync_ExceptionHandler_SuccessReponse()
-        {
-            SubtestSendAsyncExceptionHandler(false, true);
-        }
-
-        /// <summary>
-        /// Tests that the exception handler is called when exception is thrown on execute, but it can't handle the 
-        /// exception. 
-        /// </summary>
-        [Fact]
-        public void SendAsync_ExceptionHandler_ThrowException_DontHandle()
-        {
-            SubtestSendAsyncExceptionHandler(true, false);
-        }
-
-        /// <summary>
-        /// Tests that the exception handler is called when exception is thrown on execute, and it handles the 
-        /// exception. 
-        /// </summary>
-        [Fact]
-        public void SendAsync_ExceptionHandler_ThrowException_Handle()
-        {
-            SubtestSendAsyncExceptionHandler(true, true);
         }
 
         /// <summary>Tests an exception is thrown on execute and there is no exception handler.</summary>
@@ -571,78 +551,88 @@ namespace Google.Apis.Tests.Apis.Http
         /// Tests that back-off handler works as expected when exception is thrown. 
         /// Use default max time span (2 minutes).
         /// </summary>
-        [Fact]
-        public void SendAsync_BackOffExceptionHandler_Throw_Max2Minutes()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(5)]
+        public void SendAsync_BackOffExceptionHandler_Throw_Max2Minutes(int? maxRetries)
         {
             // create exponential back-off without delta interval, so expected seconds are exactly 1, 2, 4, 8, etc.
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
-            SubtestSendAsync_BackOffExceptionHandler(true, initializer);
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, maxRetries: maxRetries);
         }
 
         /// <summary>
         /// Tests that back-off handler works as expected when exception is thrown. 
         /// Max time span is set to 200 milliseconds (as a result the back-off handler can't handle the exception).
         /// </summary>
-        [Fact]
-        public void SendAsync_BackOffExceptionHandler_Throw_Max200Milliseconds()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(5)]
+        public void SendAsync_BackOffExceptionHandler_Throw_Max200Milliseconds(int? maxRetries)
         {
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
                 {
                     MaxTimeSpan = TimeSpan.FromMilliseconds(200)
                 };
-            SubtestSendAsync_BackOffExceptionHandler(true, initializer);
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, maxRetries: maxRetries);
         }
 
         /// <summary>
         /// Tests that back-off handler works as expected when exception is thrown. 
         /// Max time span is set to 1 hour.
         /// </summary>
-        [Fact]
-        public void SendAsync_BackOffExceptionHandler_Throw_Max1Hour()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(5)]
+        public void SendAsync_BackOffExceptionHandler_Throw_Max1Hour(int? maxRetries)
         {
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
                 {
                     MaxTimeSpan = TimeSpan.FromHours(1)
                 };
-            SubtestSendAsync_BackOffExceptionHandler(true, initializer);
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer,maxRetries: maxRetries);
         }
 
         /// <summary>
         /// Tests that back-off handler works as expected when 
         /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/>> is thrown. 
         /// </summary>
-        [Fact]
-        public void SendAsync_BackOffExceptionHandler_ThrowCanceledException()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(5)]
+        public void SendAsync_BackOffExceptionHandler_ThrowCanceledException(int? maxRetries)
         {
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
-            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new TaskCanceledException());
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new TaskCanceledException(), maxRetries);
         }
 
         /// <summary>
         /// Tests that back-off handler works as expected with the not defaulted exception handler. 
         /// </summary>
-        [Fact]
-        public void SendAsync_BackOffExceptionHandler_DifferentHandler()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(5)]
+        public void SendAsync_BackOffExceptionHandler_DifferentHandler(int? maxRetries)
         {
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
             initializer.HandleExceptionFunc = e => (e is InvalidCastException);
-            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException());
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException(), maxRetries);
 
             initializer.HandleExceptionFunc = e => !(e is InvalidCastException);
-            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException());
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException(), maxRetries);
         }
 
         /// <summary>Tests that back-off handler works as expected when exception isn't thrown.</summary>
-        [Fact]
-        public void SendAsync_BackOffExceptionHandler_DontThrow()
+        [Theory]
+        [InlineData(null)]
+        [InlineData(5)]
+        public void SendAsync_BackOffExceptionHandler_DontThrow(int? maxRetries)
         {
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
-            SubtestSendAsync_BackOffExceptionHandler(false, initializer);
+            SubtestSendAsync_BackOffExceptionHandler(false, initializer, maxRetries: maxRetries);
         }
 
-        /// <summary>Subtest that back-off handler works as expected when exception is or isn't thrown.</summary>
-        private void SubtestSendAsync_BackOffExceptionHandler(bool throwException,
-            BackOffHandler.Initializer initializer, Exception exceptionToThrow = null)
+        private void SubtestSendAsync_BackOffExceptionHandler(bool throwException, BackOffHandler.Initializer initializer, Exception exceptionToThrow = null, int? maxRetries = null)
         {
             var handler = new ExceptionMessageHandler { ThrowException = throwException };
             if (exceptionToThrow != null)
@@ -654,19 +644,21 @@ namespace Google.Apis.Tests.Apis.Http
             var boHandler = new MockBackOffHandler(initializer);
             configurableHanlder.AddExceptionHandler(boHandler);
 
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-exception-handler");
+            int expectedMaxRetries = MaybeSetMaxRetries(maxRetries, configurableHanlder.NumTries, request);
+
             int boHandleCount = 0;
             // if an exception should be thrown and the handler can handle it then calculate the handle count by the 
             // lg(MaxTimeSpan)
             if (throwException && initializer.HandleExceptionFunc(exceptionToThrow))
             {
                 boHandleCount = Math.Min((int)Math.Floor(Math.Log(boHandler.MaxTimeSpan.TotalSeconds, 2)) + 1,
-                    configurableHanlder.NumTries - 1);
+                    expectedMaxRetries - 1);
                 boHandleCount = boHandleCount >= 0 ? boHandleCount : 0;
             }
 
             using (var client = new HttpClient(configurableHanlder))
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-exception-handler");
                 try
                 {
                     HttpResponseMessage response = client.SendAsync(request).Result;
@@ -1215,6 +1207,17 @@ namespace Google.Apis.Tests.Apis.Http
                 LatestRequestHeaders = request.Headers;
                 return Task.FromResult(new HttpResponseMessage());
             }
+        }
+
+        private int MaybeSetMaxRetries(int? perRequestMaxRetries, int defaultMaxRetries, HttpRequestMessage requestMessage)
+        {
+            if (perRequestMaxRetries == null)
+            {
+                return defaultMaxRetries;
+            }
+            int configuredRetries = perRequestMaxRetries.Value;
+            requestMessage.Properties.Add(ConfigurableMessageHandler.MaxRetriesKey, configuredRetries);
+            return configuredRetries;
         }
     }
 }

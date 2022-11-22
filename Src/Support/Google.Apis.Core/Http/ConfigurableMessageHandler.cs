@@ -72,6 +72,11 @@ namespace Google.Apis.Http
         /// </summary>
         public const string CredentialKey = "__CredentialKey";
 
+        /// <summary>
+        /// Key for request specific max retries.
+        /// </summary>
+        public const string MaxRetriesKey = "__MaxRetriesKey";
+
         /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
@@ -396,7 +401,8 @@ namespace Google.Apis.Http
                 loggingRequestId = Interlocked.Increment(ref _loggingRequestId).ToString("X8");
             }
 
-            int triesRemaining = NumTries;
+            int maxRetries = GetEffectiveMaxRetries(request);
+            int triesRemaining = maxRetries;
             int redirectRemaining = NumRedirects;
 
             Exception lastException = null;
@@ -501,8 +507,8 @@ namespace Google.Apis.Http
                             {
                                 Request = request,
                                 Exception = lastException,
-                                TotalTries = NumTries,
-                                CurrentFailedTry = NumTries - triesRemaining,
+                                TotalTries = maxRetries,
+                                CurrentFailedTry = maxRetries - triesRemaining,
                                 CancellationToken = cancellationToken
                             }).ConfigureAwait(false);
                     }
@@ -561,8 +567,8 @@ namespace Google.Apis.Http
                         {
                             Request = request,
                             Response = response,
-                            TotalTries = NumTries,
-                            CurrentFailedTry = NumTries - triesRemaining,
+                            TotalTries = maxRetries,
+                            CurrentFailedTry = maxRetries - triesRemaining,
                             CancellationToken = cancellationToken
                         };
 
@@ -666,6 +672,10 @@ namespace Google.Apis.Http
         private IHttpExecuteInterceptor GetEffectiveCredential(HttpRequestMessage request) =>
             (request.Properties.TryGetValue(CredentialKey, out var cred) && cred is IHttpExecuteInterceptor callCredential)
             ? callCredential : Credential;
+
+        private int GetEffectiveMaxRetries(HttpRequestMessage request) =>
+            (request.Properties.TryGetValue(MaxRetriesKey, out var maxRetries) && maxRetries is int perRequestMaxRetries)
+            ? perRequestMaxRetries : NumTries;
 
         /// <summary>
         /// Handles redirect if the response's status code is redirect, redirects are turned on, and the header has
