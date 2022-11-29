@@ -135,10 +135,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>Gets the count of all queued requests.</summary>
-        public int Count
-        {
-            get { return allRequests.Count; }
-        }
+        public int Count => allRequests.Count;
 
         /// <summary>Queues an individual request.</summary>
         /// <typeparam name="TResponse">The response's type.</typeparam>
@@ -153,11 +150,11 @@ namespace Google.Apis.Requests
             }
 
             allRequests.Add(new InnerRequest<TResponse>
-                {
-                    ClientRequest = request,
-                    ResponseType = typeof(TResponse),
-                    OnResponseCallback = callback,
-                });
+            {
+                ClientRequest = request,
+                ResponseType = typeof(TResponse),
+                OnResponseCallback = callback,
+            });
         }
 
         /// <summary>Asynchronously executes the batch request.</summary>
@@ -170,8 +167,10 @@ namespace Google.Apis.Requests
         /// <param name="cancellationToken">Cancellation token to cancel operation.</param>
         public async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            if (Count < 1)
+            if (Count == 0)
+            {
                 return;
+            }
 
             ConfigurableHttpClient httpClient = service.HttpClient;
 
@@ -311,16 +310,22 @@ namespace Google.Apis.Requests
 
                 // Extract empty lines.
                 while (string.IsNullOrEmpty(line))
+                {
                     line = reader.ReadLine();
+                }
 
                 // Extract the outer header.
                 while (!string.IsNullOrEmpty(line))
+                {
                     line = reader.ReadLine();
+                }
 
                 // Extract the status code.
                 line = reader.ReadLine();
                 while (string.IsNullOrEmpty(line))
+                {
                     line = reader.ReadLine();
+                }
                 int code = int.Parse(line.Split(' ')[1]);
                 response.StatusCode = (HttpStatusCode)code;
 
@@ -333,9 +338,12 @@ namespace Google.Apis.Requests
                     var value = line.Substring(separatorIndex + 1).Trim();
                     // Check if the header already exists, and if so append its value 
                     // to the existing value. Fixes issue #548.
-                    if (headersDic.ContainsKey(key)) {
+                    if (headersDic.ContainsKey(key))
+                    {
                         headersDic[key] = headersDic[key] + ", " + value;
-                    } else {
+                    }
+                    else
+                    {
                         headersDic.Add(key, value);
                     }
                 }
@@ -363,8 +371,7 @@ namespace Google.Apis.Requests
                     // improperly strict. https://bugzilla.xamarin.com/show_bug.cgi?id=39569
                     if (!headers.TryAddWithoutValidation(keyValue.Key, keyValue.Value))
                     {
-                        throw new FormatException(String.Format(
-                            "Could not parse header {0} from batch reply", keyValue.Key));
+                        throw new FormatException($"Could not parse header {keyValue.Key} from batch reply");
                     }
                 }
 
@@ -387,17 +394,8 @@ namespace Google.Apis.Requests
                 mixedContent.Add(await CreateIndividualRequest(request).ConfigureAwait(false));
             }
 
-            // Batch request currently doesn't support GZip. Uncomment when the issue will be resolved.
-            // https://code.google.com/p/google-api-dotnet-client/issues/detail?id=409
-            /*if (service.GZipEnabled)
-            {
-                var content = HttpServiceExtenstions.CreateZipContent(await mixedContent.ReadAsStringAsync()
-                    .ConfigureAwait(false));
-                content.Headers.ContentType = mixedContent.Headers.ContentType;
-                return content;
-            }*/
+            // Note: Batch request currently doesn't support GZip.
             return mixedContent;
-
         }
 
         /// <summary>Creates the individual server request.</summary>
@@ -408,7 +406,7 @@ namespace Google.Apis.Requests
             string requestContent = await CreateRequestContentString(requestMessage).ConfigureAwait(false);
 
             var content = new StringContent(requestContent);
-            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/http");
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/http");
             return content;
         }
 
@@ -426,7 +424,7 @@ namespace Google.Apis.Requests
             foreach (var otherHeader in requestMessage.Headers)
             {
                 sb.Append(Environment.NewLine)
-                    .AppendFormat(("{0}: {1}"), otherHeader.Key, String.Join(", ", otherHeader.Value.ToArray()));
+                    .AppendFormat("{0}: {1}", otherHeader.Key, string.Join(", ", otherHeader.Value.ToArray()));
             }
 
             // Add content headers.
@@ -435,7 +433,7 @@ namespace Google.Apis.Requests
                 foreach (var contentHeader in requestMessage.Content.Headers)
                 {
                     sb.Append(Environment.NewLine)
-                        .AppendFormat("{0}: {1}", contentHeader.Key, String.Join(", ", contentHeader.Value.ToArray()));
+                        .AppendFormat("{0}: {1}", contentHeader.Key, string.Join(", ", contentHeader.Value.ToArray()));
                 }
             }
 
@@ -445,7 +443,6 @@ namespace Google.Apis.Requests
                 sb.Append(Environment.NewLine);
                 var content = await requestMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                 sb.Append("Content-Length:  ").Append(content.Length);
-
                 sb.Append(Environment.NewLine).Append(Environment.NewLine).Append(content);
             }
 
