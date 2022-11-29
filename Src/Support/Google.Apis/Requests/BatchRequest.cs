@@ -355,7 +355,25 @@ namespace Google.Apis.Requests
                     mediaType = headersDic["Content-Type"].Split(';', ' ')[0];
                     headersDic.Remove("Content-Type");
                 }
-                response.Content = new StringContent(reader.ReadToEnd(), Encoding.UTF8, mediaType);
+
+                string contentBody = reader.ReadToEnd();
+                // In .NET 6+, the default HttpResponseMessage.Content is an EmptyContent, which is fine
+                // - we don't need to change it if we don't have any content. In earlier versions,
+                // the Content property is null by default, but historically we've always populated it.
+                // We don't want to break users, so we want to continue to make sure it's never null.
+                if (contentBody != "" || !string.IsNullOrEmpty(mediaType) || response.Content is null)
+                {
+                    // As of .NET 7, the StringContent constructor fails with a null or empty
+                    // media type. If there's no actual content, we can leave the HttpResponseMessage.Content
+                    // at its default empty value; but if we've got content but no media type,
+                    // we want to pass that to the callback. This would be a very odd situation, but
+                    // text/plain is a reasonable "default media type" here.
+                    if (string.IsNullOrEmpty(mediaType))
+                    {
+                        mediaType = "text/plain";
+                    }
+                    response.Content = new StringContent(contentBody, Encoding.UTF8, mediaType);
+                }
 
                 // Add the headers to the response.
                 foreach (var keyValue in headersDic)

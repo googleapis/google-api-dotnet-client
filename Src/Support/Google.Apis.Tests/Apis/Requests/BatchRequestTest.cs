@@ -596,9 +596,66 @@ hello world
             }
         }
 
-        // Line endings in HttpContent are different between mono & .NET.
-        private static string NormalizeLineEndings(string s) {
-            return Regex.Replace(s, @"\r\n|\n", "\r\n");
+        [Fact]
+        public async Task ParseAsHttpResponse_NormalContent()
+        {
+            string content = @"Content-Type: application/http
+
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Type: application/json
+
+{}
+";
+            var response = BatchRequest.ParseAsHttpResponse(content);
+            Assert.Equal("application/json", response.Content.Headers.ContentType.MediaType);
+            Assert.Equal("{}", (await response.Content.ReadAsStringAsync()).Trim());
         }
+
+        [Fact]
+        public async Task ParseAsHttpResponse_NoContent()
+        {
+            string content = @"Content-Type: application/http
+
+HTTP/1.1 204 No content
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+
+";
+            var response = BatchRequest.ParseAsHttpResponse(content);
+            var httpContent = response.Content;
+            Assert.NotNull(content);
+
+#if NET6_0_OR_GREATER
+            Assert.Null(httpContent.Headers.ContentType);
+#else
+            Assert.Equal("text/plain", httpContent.Headers.ContentType.MediaType);
+#endif
+            Assert.Equal("", (await response.Content.ReadAsStringAsync()).Trim());
+        }
+
+        [Fact]
+        public async Task ParseAsHttpResponse_ContentButNoContentType()
+        {
+            string content = @"Content-Type: application/http
+
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+
+{}
+";
+            var response = BatchRequest.ParseAsHttpResponse(content);
+            Assert.Equal("text/plain", response.Content.Headers.ContentType.MediaType);
+            Assert.Equal("{}", (await response.Content.ReadAsStringAsync()).Trim());
+        }
+
+        // Line endings in HttpContent are different between mono & .NET.
+        private static string NormalizeLineEndings(string s) =>
+            Regex.Replace(s, @"\r\n|\n", "\r\n");
     }
 }
