@@ -1,7 +1,7 @@
 # This is intended to be imported using the "source" function
 # from any script that wants to invoke the C#-based generator.
 
-declare -r GAPIC_GENERATOR_VERSION=1.4.8
+declare -r GAPIC_GENERATOR_VERSION=1.4.9
 
 TMP_CSHARP_GENERATOR_DIR=tmp-gapic-generator-csharp
 if [[ $CSHARP_GENERATOR_DIR == "" ]]
