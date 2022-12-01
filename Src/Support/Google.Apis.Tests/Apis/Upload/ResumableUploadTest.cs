@@ -32,6 +32,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Google.Apis.Tests.Apis.Upload
 {
@@ -82,11 +83,21 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class TestResumableUpload : ResumableUpload<object>
         {
+            private readonly ITestOutputHelper _testOutputHelper;
             public TestResumableUpload(IClientService service, string path, string method, Stream stream,
-                string contentType, int chunkSize)
+                string contentType, int chunkSize, ITestOutputHelper testOutputHelper)
                 : base(service, path, method, stream, contentType)
             {
                 this.chunkSize = chunkSize;
+                _testOutputHelper = testOutputHelper;
+                ProgressChanged += ProgressOutput;
+            }
+
+            private void ProgressOutput(IUploadProgress progress)
+            {
+                _testOutputHelper.WriteLine($"Status {progress.Status}");
+                _testOutputHelper.WriteLine($"BytesSent {progress.BytesSent}");
+                _testOutputHelper.WriteLine($"Exception {progress.Exception}");
             }
         }
 
@@ -287,9 +298,10 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        public ResumableUploadTest()
+        public ResumableUploadTest(ITestOutputHelper outputHelper)
         {
             _server = new TestServer();
+            _outputHelper = outputHelper;
         }
 
         public void Dispose()
@@ -298,6 +310,7 @@ namespace Google.Apis.Tests.Apis.Upload
         }
 
         private TestServer _server;
+        private readonly ITestOutputHelper _outputHelper;
 
         /// <summary>
         /// Upload completes in a single chunk.
@@ -313,7 +326,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new TestResumableUpload(
-                    service, "SingleChunk", "POST", content, contentType, uploadLength + chunkSizeDelta);
+                    service, "SingleChunk", "POST", content, contentType, uploadLength + chunkSizeDelta, _outputHelper);
                 var progress = uploader.Upload();
                 Assert.Equal(2, server.Requests.Count);
                 var r0 = server.Requests[0];
@@ -339,7 +352,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 var content = new MemoryStream(uploadTestBytes);
                 var tmpUploader = new TestResumableUpload(
-                    service, "SingleChunk", "POST", content, contentType, uploadLength);
+                    service, "SingleChunk", "POST", content, contentType, uploadLength, _outputHelper);
                 var uploadUri = await tmpUploader.InitiateSessionAsync();
 
                 var uploader = ResumableUpload.CreateFromUploadUri(uploadUri, content);
@@ -368,7 +381,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(new byte[0]) : new UnknownSizeMemoryStream(new byte[0]);
-                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100);
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
                 var progress = uploader.Upload();
                 Assert.Equal(2, server.Requests.Count);
                 var r0 = server.Requests[0];
@@ -389,7 +402,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 var content = new MemoryStream(new byte[10]);
                 content.Dispose();
-                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100);
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
                 var progress = uploader.Upload();
                 Assert.IsType<ObjectDisposedException>(progress.Exception);
             }
@@ -402,7 +415,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = new MemoryStream(new byte[10]);
-                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100);
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
                 content.Dispose();
                 var progress = uploader.Upload();
                 Assert.IsType<ObjectDisposedException>(progress.Exception);
@@ -493,7 +506,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 var progress = uploader.Upload();
                 Assert.Equal(expectedCallCount, server.Requests.Count);
                 Assert.Equal(uploadTestBytes, server.Bytes);
@@ -514,7 +527,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 int interceptionCount = 0;
                 MemoryStream interceptedBytes = new MemoryStream();
                 uploader.UploadStreamInterceptor = (buffer, offset, count) =>
@@ -540,7 +553,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 var progress = new List<IUploadProgress>();
                 uploader.ProgressChanged += p => progress.Add(p);
                 uploader.Upload();
@@ -618,7 +631,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100, _outputHelper);
                 IUploadProgress lastProgress = null;
                 uploader.ProgressChanged += p => lastProgress = p;
                 uploader.Upload();
@@ -644,7 +657,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100, _outputHelper);
                 IUploadProgress lastProgress = null;
                 uploader.ProgressChanged += p => lastProgress = p;
                 uploader.Upload();
@@ -676,7 +689,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 var progress = uploader.Upload();
                 Assert.Equal(expectedCallCount, server.Requests.Count);
                 Assert.Equal(uploadTestBytes, server.Bytes);
@@ -707,7 +720,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 uploader.BufferSize = bufferSize;
                 var progress = uploader.Upload();
                 int sanity = 0;
@@ -737,7 +750,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 Uri uploadUri = null;
                 IUploadProgress progress;
                 {
-                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                     uploader.UploadSessionData += s => uploadUri = s.UploadUri;
                     progress = uploader.Upload();
                 }
@@ -745,7 +758,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 int sanity = 0;
                 while (progress.Status == UploadStatus.Failed && sanity++ < 10)
                 {
-                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                     progress = uploader.Resume(uploadUri);
                 }
                 Assert.Equal(UploadStatus.Completed, progress.Status);
@@ -764,7 +777,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100);
+                var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100, _outputHelper);
                 var url = new Uri("http://what.ever/");
                 Assert.ThrowsAsync<NotImplementedException>(async () => await uploader.ResumeAsync(url));
             }
@@ -809,7 +822,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 if (cancelOnCall == 1)
                 {
                     var progress = uploader.UploadAsync(server.CancellationToken).Result;
@@ -870,7 +883,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
                 var progress = uploader.Upload();
                 Assert.Equal(expectedCallCount, server.Requests.Count);
                 Assert.Equal(uploadTestBytes, server.Bytes);
@@ -911,8 +924,8 @@ namespace Google.Apis.Tests.Apis.Upload
         private class TestResumableUploadWithParameters : TestResumableUpload
         {
             public TestResumableUploadWithParameters(IClientService service, string path, string method, Stream stream,
-                string contentType, int chunkSize)
-                : base(service, path, method, stream, contentType, chunkSize) { }
+                string contentType, int chunkSize, ITestOutputHelper testOutputHelper)
+                : base(service, path, method, stream, contentType, chunkSize, testOutputHelper) { }
 
             [RequestParameter("id", RequestParameterType.Path)]
             public int Id { get; set; }
@@ -941,7 +954,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = new MemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUploadWithParameters(service, "testPath/{id}", "POST", content, "text/plain", 100)
+                var uploader = new TestResumableUploadWithParameters(service, "testPath/{id}", "POST", content, "text/plain", 100, _outputHelper)
                 {
                     Id = id,
                     QueryA = "valuea",
@@ -1083,7 +1096,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(new BaseClientService.Initializer()))
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-                var upload = new TestResumableUpload(service, "whatever", "POST", stream, "text/plain", 100);
+                var upload = new TestResumableUpload(service, "whatever", "POST", stream, "text/plain", 100, _outputHelper);
 
                 // Negative chunk size.
                 Assert.Throws<ArgumentOutOfRangeException>(() => upload.ChunkSize = -1);
