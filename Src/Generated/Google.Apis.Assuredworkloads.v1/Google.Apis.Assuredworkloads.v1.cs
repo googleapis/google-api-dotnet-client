@@ -44,23 +44,16 @@ namespace Google.Apis.Assuredworkloads.v1
         public override string Name => "assuredworkloads";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://assuredworkloads.googleapis.com/";
-        #else
-            "https://assuredworkloads.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://assuredworkloads.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://assuredworkloads.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Assured Workloads API.</summary>
         public class Scope
@@ -1036,6 +1029,71 @@ namespace Google.Apis.Assuredworkloads.v1
                 }
 
                 /// <summary>
+                /// Update the permissions settings for an existing partner workload. For force updates don't set etag
+                /// field in the Workload. Only one update operation per workload can be in progress.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the workload. Format:
+                /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                /// </param>
+                public virtual MutatePartnerPermissionsRequest MutatePartnerPermissions(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest body, string name)
+                {
+                    return new MutatePartnerPermissionsRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Update the permissions settings for an existing partner workload. For force updates don't set etag
+                /// field in the Workload. Only one update operation per workload can be in progress.
+                /// </summary>
+                public class MutatePartnerPermissionsRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload>
+                {
+                    /// <summary>Constructs a new MutatePartnerPermissions request.</summary>
+                    public MutatePartnerPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the workload. Format:
+                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "mutatePartnerPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:mutatePartnerPermissions";
+
+                    /// <summary>Initializes MutatePartnerPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Updates an existing workload. Currently allows updating of workload display_name and labels. For
                 /// force updates don't set etag field in the Workload. Only one update operation per workload can be in
                 /// progress.
@@ -1270,6 +1328,25 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request of updating permission settings for a partner workload.</summary>
+    public class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The etag of the workload. If this is provided, it must match the server's etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The partner permissions to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerPermissions")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions PartnerPermissions { get; set; }
+
+        /// <summary>
+        /// Required. The list of fields to be updated. E.g. update_mask { paths:
+        /// "partner_permissions.data_logs_viewer"}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
     }
 
     /// <summary>Request for restricting list of available resources in Workload environment.</summary>
@@ -1600,6 +1677,25 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
         public virtual object RotationPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Permissions granted to the AW Partner SA account for the customer workload</summary>
+    public class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow partner to view data and logs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLogsViewer")]
+        public virtual System.Nullable<bool> DataLogsViewer { get; set; }
+
+        /// <summary>Allow partner to monitor folder and remediate violations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediateFolderViolations")]
+        public virtual System.Nullable<bool> RemediateFolderViolations { get; set; }
+
+        /// <summary>Allow partner to approve or reject Service Access requests</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccessApprover")]
+        public virtual System.Nullable<bool> ServiceAccessApprover { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

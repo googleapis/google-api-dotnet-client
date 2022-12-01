@@ -44,23 +44,16 @@ namespace Google.Apis.SiteVerification.v1
         public override string Name => "siteVerification";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/siteVerification/v1/";
-        #else
-            "https://www.googleapis.com/siteVerification/v1/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/siteVerification/v1/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "siteVerification/v1/";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://www.googleapis.com/batch/siteVerification/v1";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/siteVerification/v1";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Google Site Verification API.</summary>
         public class Scope

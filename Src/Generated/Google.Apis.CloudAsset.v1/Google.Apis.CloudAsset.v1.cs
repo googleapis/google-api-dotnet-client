@@ -49,23 +49,16 @@ namespace Google.Apis.CloudAsset.v1
         public override string Name => "cloudasset";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://cloudasset.googleapis.com/";
-        #else
-            "https://cloudasset.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://cloudasset.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://cloudasset.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Asset API.</summary>
         public class Scope
@@ -1824,6 +1817,365 @@ namespace Google.Apis.CloudAsset.v1
             }
         }
 
+        /// <summary>Analyzes organization policies under a scope.</summary>
+        /// <param name="scope">
+        /// Required. The organization to scope the request. Only organization policies within the scope will be
+        /// analyzed. * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+        /// </param>
+        public virtual AnalyzeOrgPoliciesRequest AnalyzeOrgPolicies(string scope)
+        {
+            return new AnalyzeOrgPoliciesRequest(service, scope);
+        }
+
+        /// <summary>Analyzes organization policies under a scope.</summary>
+        public class AnalyzeOrgPoliciesRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPoliciesResponse>
+        {
+            /// <summary>Constructs a new AnalyzeOrgPolicies request.</summary>
+            public AnalyzeOrgPoliciesRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
+            {
+                Scope = scope;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The organization to scope the request. Only organization policies within the scope will be
+            /// analyzed. * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Scope { get; private set; }
+
+            /// <summary>
+            /// Required. The name of the constraint to analyze organization policies for. The response only contains
+            /// analyzed organization policies for the provided constraint.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("constraint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Constraint { get; set; }
+
+            /// <summary>
+            /// The expression to filter AnalyzeOrgPoliciesResponse.org_policy_results. The only supported field is
+            /// `consolidated_policy.attached_resource`, and the only supported operator is `=`. Example:
+            /// consolidated_policy.attached_resource="//cloudresourcemanager.googleapis.com/folders/001" will return
+            /// the org policy results of"folders/001".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of items to return per page. If unspecified,
+            /// AnalyzeOrgPoliciesResponse.org_policy_results will contain 20 items with a maximum of 200.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The pagination token to retrieve the next page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "analyzeOrgPolicies";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+scope}:analyzeOrgPolicies";
+
+            /// <summary>Initializes AnalyzeOrgPolicies parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("constraint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "constraint",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Analyzes organization policies governed assets (GCP resources or policies) under a scope. This RPC supports
+        /// custom constraints and the following 10 canned constraints: * storage.uniformBucketLevelAccess *
+        /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
+        /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
+        /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
+        /// only returns either: * resources of types supported by [searchable asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or * IAM
+        /// policies.
+        /// </summary>
+        /// <param name="scope">
+        /// Required. The organization to scope the request. Only organization policies within the scope will be
+        /// analyzed. The output assets will also be limited to the ones governed by those in-scope organization
+        /// policies. * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+        /// </param>
+        public virtual AnalyzeOrgPolicyGovernedAssetsRequest AnalyzeOrgPolicyGovernedAssets(string scope)
+        {
+            return new AnalyzeOrgPolicyGovernedAssetsRequest(service, scope);
+        }
+
+        /// <summary>
+        /// Analyzes organization policies governed assets (GCP resources or policies) under a scope. This RPC supports
+        /// custom constraints and the following 10 canned constraints: * storage.uniformBucketLevelAccess *
+        /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
+        /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
+        /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
+        /// only returns either: * resources of types supported by [searchable asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or * IAM
+        /// policies.
+        /// </summary>
+        public class AnalyzeOrgPolicyGovernedAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPolicyGovernedAssetsResponse>
+        {
+            /// <summary>Constructs a new AnalyzeOrgPolicyGovernedAssets request.</summary>
+            public AnalyzeOrgPolicyGovernedAssetsRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
+            {
+                Scope = scope;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The organization to scope the request. Only organization policies within the scope will be
+            /// analyzed. The output assets will also be limited to the ones governed by those in-scope organization
+            /// policies. * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Scope { get; private set; }
+
+            /// <summary>
+            /// Required. The name of the constraint to analyze governed assets for. The analysis only contains analyzed
+            /// organization policies for the provided constraint.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("constraint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Constraint { get; set; }
+
+            /// <summary>
+            /// The expression to filter the governed assets in result. The only supported fields for governed resources
+            /// are `governed_resource.project` and `governed_resource.folders`. The only supported fields for governed
+            /// iam policies are `governed_iam_policy.project` and `governed_iam_policy.folders`. The only supported
+            /// operator is `=`. Example 1: governed_resource.project="projects/12345678" filter will return all
+            /// governed resources under projects/12345678 including the project ifself, if applicable. Example 2:
+            /// governed_iam_policy.folders="folders/12345678" filter will return all governed iam policies under
+            /// folders/12345678, if applicable.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of items to return per page. If unspecified,
+            /// AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets will contain 100 items with a maximum of 200.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The pagination token to retrieve the next page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "analyzeOrgPolicyGovernedAssets";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+scope}:analyzeOrgPolicyGovernedAssets";
+
+            /// <summary>Initializes AnalyzeOrgPolicyGovernedAssets parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("constraint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "constraint",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Analyzes organization policies governed containers (projects, folders or organization) under a scope.
+        /// </summary>
+        /// <param name="scope">
+        /// Required. The organization to scope the request. Only organization policies within the scope will be
+        /// analyzed. The output containers will also be limited to the ones governed by those in-scope organization
+        /// policies. * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+        /// </param>
+        public virtual AnalyzeOrgPolicyGovernedContainersRequest AnalyzeOrgPolicyGovernedContainers(string scope)
+        {
+            return new AnalyzeOrgPolicyGovernedContainersRequest(service, scope);
+        }
+
+        /// <summary>
+        /// Analyzes organization policies governed containers (projects, folders or organization) under a scope.
+        /// </summary>
+        public class AnalyzeOrgPolicyGovernedContainersRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPolicyGovernedContainersResponse>
+        {
+            /// <summary>Constructs a new AnalyzeOrgPolicyGovernedContainers request.</summary>
+            public AnalyzeOrgPolicyGovernedContainersRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
+            {
+                Scope = scope;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The organization to scope the request. Only organization policies within the scope will be
+            /// analyzed. The output containers will also be limited to the ones governed by those in-scope organization
+            /// policies. * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Scope { get; private set; }
+
+            /// <summary>
+            /// Required. The name of the constraint to analyze governed containers for. The analysis only contains
+            /// organization policies for the provided constraint.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("constraint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Constraint { get; set; }
+
+            /// <summary>
+            /// The expression to filter the governed containers in result. The only supported field is `parent`, and
+            /// the only supported operator is `=`. Example: parent="//cloudresourcemanager.googleapis.com/folders/001"
+            /// will return all containers under "folders/001".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of items to return per page. If unspecified,
+            /// AnalyzeOrgPolicyGovernedContainersResponse.governed_containers will contain 100 items with a maximum of
+            /// 200.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The pagination token to retrieve the next page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "analyzeOrgPolicyGovernedContainers";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+scope}:analyzeOrgPolicyGovernedContainers";
+
+            /// <summary>Initializes AnalyzeOrgPolicyGovernedContainers parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("constraint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "constraint",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs
         /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
@@ -2059,6 +2411,85 @@ namespace Google.Apis.CloudAsset.v1
             public override string RestPath => "v1/{+parent}:exportAssets";
 
             /// <summary>Initializes ExportAssets parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Issue a job that queries assets using a SQL statement compatible with [BigQuery Standard
+        /// SQL](http://cloud/bigquery/docs/reference/standard-sql/enabling-standard-sql). If the query execution
+        /// finishes within timeout and there's no pagination, the full query results will be returned in the
+        /// `QueryAssetsResponse`. Otherwise, full query results can be obtained by issuing extra requests with the
+        /// `job_reference` from the a previous `QueryAssets` call. Note, the query result has approximately 10 GB
+        /// limitation enforced by BigQuery https://cloud.google.com/bigquery/docs/best-practices-performance-output,
+        /// queries return larger results will result in errors.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The relative name of the root asset. This can only be an organization number (such as
+        /// "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+        /// "projects/12345"), or a folder number (such as "folders/123"). Only assets belonging to the `parent` will be
+        /// returned.
+        /// </param>
+        public virtual QueryAssetsRequest QueryAssets(Google.Apis.CloudAsset.v1.Data.QueryAssetsRequest body, string parent)
+        {
+            return new QueryAssetsRequest(service, body, parent);
+        }
+
+        /// <summary>
+        /// Issue a job that queries assets using a SQL statement compatible with [BigQuery Standard
+        /// SQL](http://cloud/bigquery/docs/reference/standard-sql/enabling-standard-sql). If the query execution
+        /// finishes within timeout and there's no pagination, the full query results will be returned in the
+        /// `QueryAssetsResponse`. Otherwise, full query results can be obtained by issuing extra requests with the
+        /// `job_reference` from the a previous `QueryAssets` call. Note, the query result has approximately 10 GB
+        /// limitation enforced by BigQuery https://cloud.google.com/bigquery/docs/best-practices-performance-output,
+        /// queries return larger results will result in errors.
+        /// </summary>
+        public class QueryAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.QueryAssetsResponse>
+        {
+            /// <summary>Constructs a new QueryAssets request.</summary>
+            public QueryAssetsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.QueryAssetsRequest body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The relative name of the root asset. This can only be an organization number (such as
+            /// "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+            /// "projects/12345"), or a folder number (such as "folders/123"). Only assets belonging to the `parent`
+            /// will be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.QueryAssetsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "queryAssets";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}:queryAssets";
+
+            /// <summary>Initializes QueryAssets parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -2555,6 +2986,132 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moveAnalysis")]
         public virtual System.Collections.Generic.IList<MoveAnalysis> MoveAnalysis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for AssetService.AnalyzeOrgPolicies.</summary>
+    public class AnalyzeOrgPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The definition of the constraint in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual AnalyzerOrgPolicyConstraint Constraint { get; set; }
+
+        /// <summary>The page token to fetch the next page for AnalyzeOrgPoliciesResponse.org_policy_results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The organization policies under the AnalyzeOrgPoliciesRequest.scope with the
+        /// AnalyzeOrgPoliciesRequest.constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyResults")]
+        public virtual System.Collections.Generic.IList<OrgPolicyResult> OrgPolicyResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for AssetService.AnalyzeOrgPolicyGovernedAssets.</summary>
+    public class AnalyzeOrgPolicyGovernedAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The definition of the constraint in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual AnalyzerOrgPolicyConstraint Constraint { get; set; }
+
+        /// <summary>The list of the analyzed governed assets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("governedAssets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset> GovernedAssets { get; set; }
+
+        /// <summary>
+        /// The page token to fetch the next page for AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for AssetService.AnalyzeOrgPolicyGovernedContainers.</summary>
+    public class AnalyzeOrgPolicyGovernedContainersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The definition of the constraint in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual AnalyzerOrgPolicyConstraint Constraint { get; set; }
+
+        /// <summary>The list of the analyzed governed containers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("governedContainers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1GovernedContainer> GovernedContainers { get; set; }
+
+        /// <summary>
+        /// The page token to fetch the next page for AnalyzeOrgPolicyGovernedContainersResponse.governed_containers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This organization policy message is a modified version of the one defined in the OrgPolicy system. This message
+    /// contains several fields defined in the original organization policy with some new fields for analysis purpose.
+    /// </summary>
+    public class AnalyzerOrgPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of an
+        /// organization/folder/project resource where this organization policy applies to. For any user defined org
+        /// policies, this field has the same value as the [attached_resource] field. Only for default policy, this
+        /// field has the different value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedResource")]
+        public virtual string AppliedResource { get; set; }
+
+        /// <summary>
+        /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of an
+        /// organization/folder/project resource where this organization policy is set. Notice that some type of
+        /// constraints are defined with default policy. This field will be empty for them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedResource")]
+        public virtual string AttachedResource { get; set; }
+
+        /// <summary>
+        /// If `inherit_from_parent` is true, Rules set higher up in the hierarchy (up to the closest root) are
+        /// inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy
+        /// becomes the effective root for evaluation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
+        public virtual System.Nullable<bool> InheritFromParent { get; set; }
+
+        /// <summary>
+        /// Ignores policies set above this resource and restores the default behavior of the constraint at this
+        /// resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be
+        /// empty and `inherit_from_parent` must be set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reset")]
+        public virtual System.Nullable<bool> Reset { get; set; }
+
+        /// <summary>List of rules for this organization policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Rule> Rules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The organization policy constraint definition.</summary>
+    public class AnalyzerOrgPolicyConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The definition of the custom constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
+        public virtual GoogleCloudAssetV1CustomConstraint CustomConstraint { get; set; }
+
+        /// <summary>The definition of the canned constraint defined by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDefinedConstraint")]
+        public virtual GoogleCloudAssetV1Constraint GoogleDefinedConstraint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3294,6 +3851,133 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a GCP asset(resource or IAM policy) governed by the organization policies of the
+    /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+    /// </summary>
+    public class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The consolidated policy for the analyzed asset. The consolidated policy is computed by merging and
+        /// evaluating AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.policy_bundle. The evaluation will respect
+        /// the organization policy [hierarchy
+        /// rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consolidatedPolicy")]
+        public virtual AnalyzerOrgPolicy ConsolidatedPolicy { get; set; }
+
+        /// <summary>
+        /// An IAM policy governed by the organization policies of the AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("governedIamPolicy")]
+        public virtual GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy GovernedIamPolicy { get; set; }
+
+        /// <summary>
+        /// A GCP resource governed by the organization policies of the
+        /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("governedResource")]
+        public virtual GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource GovernedResource { get; set; }
+
+        /// <summary>
+        /// The ordered list of all organization policies from the
+        /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource to the scope specified in
+        /// the request. If the constraint is defined with default policy, it will also appear in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
+        public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The IAM policies governed by the organization policies of the AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+    /// </summary>
+    public class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full resource name of the resource associated with this IAM policy. Example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Cloud Asset
+        /// Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format) for more
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedResource")]
+        public virtual string AttachedResource { get; set; }
+
+        /// <summary>
+        /// The folder(s) that this IAM policy belongs to, in the form of folders/{FOLDER_NUMBER}. This field is
+        /// available when the IAM policy belongs(directly or cascadingly) to one or more folders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<string> Folders { get; set; }
+
+        /// <summary>
+        /// The organization that this IAM policy belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
+        /// field is available when the IAM policy belongs(directly or cascadingly) to an organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>The IAM policy directly set on the given resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>
+        /// The project that this IAM policy belongs to, in the form of projects/{PROJECT_NUMBER}. This field is
+        /// available when the IAM policy belongs to a project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The GCP resources governed by the organization policies of the AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+    /// </summary>
+    public class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available
+        /// when the resource belongs(directly or cascadingly) to one or more folders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<string> Folders { get; set; }
+
+        /// <summary>
+        /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the GCP
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>
+        /// The organization that this resource belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
+        /// field is available when the resource belongs(directly or cascadingly) to an organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>
+        /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the parent
+        /// of AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// The project that this resource belongs to, in the form of projects/{PROJECT_NUMBER}. This field is available
+        /// when the resource belongs to a project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A BigQuery destination.</summary>
     public class GoogleCloudAssetV1BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3334,6 +4018,99 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A `Constraint` that is either enforced or not. For example a constraint
+    /// `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will
+    /// not be opened to that instance.
+    /// </summary>
+    public class GoogleCloudAssetV1BooleanConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of a constraint.</summary>
+    public class GoogleCloudAssetV1Constraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines this constraint as being a BooleanConstraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanConstraint")]
+        public virtual GoogleCloudAssetV1BooleanConstraint BooleanConstraint { get; set; }
+
+        /// <summary>The evaluation behavior of this constraint in the absence of 'Policy'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
+        public virtual string ConstraintDefault { get; set; }
+
+        /// <summary>
+        /// Detailed description of what this `Constraint` controls as well as how and where it is enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The human readable name of the constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Defines this constraint as being a ListConstraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listConstraint")]
+        public virtual GoogleCloudAssetV1ListConstraint ListConstraint { get; set; }
+
+        /// <summary>
+        /// The unique name of the constraint. Format of the name should be * `constraints/{constraint_name}` For
+        /// example, `constraints/compute.disableSerialPortAccess`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of a custom constraint.</summary>
+    public class GoogleCloudAssetV1CustomConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow or deny type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>
+        /// Organization policy condition/expression. For example:
+        /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade ==
+        /// true`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Detailed information about this custom policy constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>One line display name for the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>All the operations being applied for this constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodTypes")]
+        public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
+
+        /// <summary>
+        /// Name of the constraint. This is unique within the organization. Format of the name should be *
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
+        /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: *
+        /// `compute.googleapis.com/Instance`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A directional edge.</summary>
     public class GoogleCloudAssetV1Edge : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3367,6 +4144,48 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The organization/folder/project resource governed by organization policies of
+    /// AnalyzeOrgPolicyGovernedContainersRequest.constraint.
+    /// </summary>
+    public class GoogleCloudAssetV1GovernedContainer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The consolidated organization policy for the analyzed resource. The consolidated organization policy is
+        /// computed by merging and evaluating
+        /// AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.policy_bundle. The evaluation will respect the
+        /// organization policy [hierarchy
+        /// rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consolidatedPolicy")]
+        public virtual AnalyzerOrgPolicy ConsolidatedPolicy { get; set; }
+
+        /// <summary>
+        /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of an
+        /// organization/folder/project resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>
+        /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the parent
+        /// of AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.full_resource_name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// The ordered list of all organization policies from the
+        /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource. to the scope specified in
+        /// the request. If the constraint is defined with default policy, it will also appear in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
+        public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3415,6 +4234,62 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A `Constraint` that allows or disallows a list of string values, which are configured by an Organization's
+    /// policy administrator with a `Policy`.
+    /// </summary>
+    public class GoogleCloudAssetV1ListConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether values grouped into categories can be used in `Policy.allowed_values` and
+        /// `Policy.denied_values`. For example, `"in:Python"` would match any value in the 'Python' group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsIn")]
+        public virtual System.Nullable<bool> SupportsIn { get; set; }
+
+        /// <summary>
+        /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in
+        /// `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any
+        /// resource under the 'folders/123' folder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsUnder")]
+        public virtual System.Nullable<bool> SupportsUnder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BigQuery destination.</summary>
+    public class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The BigQuery dataset where the query results will be saved. It has the format of
+        /// "projects/{projectId}/datasets/{datasetId}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>
+        /// Required. The BigQuery table where the query results will be saved. If this table does not exist, a new
+        /// table with the given name will be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>
+        /// Specifies the action that occurs if the destination table or partition already exists. The following values
+        /// are supported: * WRITE_TRUNCATE: If the table or partition already exists, BigQuery overwrites the entire
+        /// table or all the partitions data. * WRITE_APPEND: If the table or partition already exists, BigQuery appends
+        /// the data to the table or the latest partition. * WRITE_EMPTY: If the table already exists and contains data,
+        /// a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Google Cloud resource under analysis.</summary>
     public class GoogleCloudAssetV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3427,6 +4302,59 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a rule defined in an organization policy</summary>
+    public class GoogleCloudAssetV1Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Setting this to true means that all values are allowed. This field can be set only in Policies for list
+        /// constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAll")]
+        public virtual System.Nullable<bool> AllowAll { get; set; }
+
+        /// <summary>The evaluating condition for this rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; }
+
+        /// <summary>
+        /// Setting this to true means that all values are denied. This field can be set only in Policies for list
+        /// constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyAll")]
+        public virtual System.Nullable<bool> DenyAll { get; set; }
+
+        /// <summary>
+        /// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can
+        /// be set only in Policies for boolean constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
+        public virtual System.Nullable<bool> Enforce { get; set; }
+
+        /// <summary>
+        /// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual GoogleCloudAssetV1StringValues Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The string values for the list constraints.</summary>
+    public class GoogleCloudAssetV1StringValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of values allowed at this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
+
+        /// <summary>List of values denied at this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
+        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3867,9 +4795,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only
-        /// include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
-        /// maximum length of the `access_level` component is 50 characters.
+        /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`.
+        /// The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its
+        /// maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4342,9 +5270,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and
-        /// only include alphanumeric and '_'. Format:
-        /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
+        /// Resource name for the `ServicePerimeter`. Format:
+        /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
+        /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
+        /// you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4988,6 +5917,30 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The organization policy result to the query.</summary>
+    public class OrgPolicyResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The consolidated organization policy for the analyzed resource. The consolidated organization policy is
+        /// computed by merging and evaluating AnalyzeOrgPoliciesResponse.policy_bundle. The evaluation will respect the
+        /// organization policy [hierarchy
+        /// rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consolidatedPolicy")]
+        public virtual AnalyzerOrgPolicy ConsolidatedPolicy { get; set; }
+
+        /// <summary>
+        /// The ordered list of all organization policies from the
+        /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource. to the scope specified in
+        /// the request. If the constraint is defined with default policy, it will also appear in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
+        public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Operating system information for the VM.</summary>
     public class OsInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5166,6 +6119,119 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Output configuration query assets.</summary>
+    public class QueryAssetsOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BigQuery destination where the query results will be saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QueryAssets request.</summary>
+    public class QueryAssetsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Reference to the query job, which is from the `QueryAssetsResponse` of previous `QueryAssets`
+        /// call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
+        public virtual string JobReference { get; set; }
+
+        /// <summary>
+        /// Optional. Destination where the query results will be saved. When this field is specified, the query results
+        /// won't be saved in the [QueryAssetsResponse.query_result]. Instead [QueryAssetsResponse.output_config] will
+        /// be set. Meanwhile, [QueryAssetsResponse.job_reference] will be set and can be used to check the status of
+        /// the query job when passed to a following [QueryAssets] API call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual QueryAssetsOutputConfig OutputConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of rows to return in the results. Responses are limited to 10 MB and 1000 rows.
+        /// By default, the maximum row count is 1000. When the byte or row count limit is reached, the rest of the
+        /// query results will be paginated. The field will be ignored when [output_config] is specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token received from previous `QueryAssets`. The field will be ignored when [output_config]
+        /// is specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>Optional. Queries cloud assets as they appeared at the specified point in time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>
+        /// Optional. [start_time] is required. [start_time] must be less than [end_time] Defaults [end_time] to now if
+        /// [start_time] is set and [end_time] isn't. Maximum permitted time range is 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTimeWindow")]
+        public virtual TimeWindow ReadTimeWindow { get; set; }
+
+        /// <summary>
+        /// Optional. A SQL statement that's compatible with [BigQuery Standard
+        /// SQL](http://cloud/bigquery/docs/reference/standard-sql/enabling-standard-sql).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statement")]
+        public virtual string Statement { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the maximum amount of time that the client is willing to wait for the query to complete.
+        /// By default, this limit is 5 min for the first query, and 1 minute for the following queries. If the query is
+        /// complete, the `done` field in the `QueryAssetsResponse` is true, otherwise false. Like BigQuery [jobs.query
+        /// API](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query#queryrequest) The call is not
+        /// guaranteed to wait for the specified timeout; it typically returns after around 200 seconds (200,000
+        /// milliseconds), even if the query is not complete. The field will be ignored when [output_config] is
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QueryAssets response.</summary>
+    public class QueryAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The query response, which can be either an `error` or a valid `response`. If `done` == `false` and the query
+        /// result is being saved in a output, the output_config field will be set. If `done` == `true`, exactly one of
+        /// `error`, `query_result` or `output_config` will be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>Error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Reference to a query job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
+        public virtual string JobReference { get; set; }
+
+        /// <summary>
+        /// Output configuration which indicates instead of being returned in API response on the fly, the query result
+        /// will be saved in a specific output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual QueryAssetsOutputConfig OutputConfig { get; set; }
+
+        /// <summary>Result of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
+        public virtual QueryResult QueryResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The query content.</summary>
     public class QueryContent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5175,6 +6241,32 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyAnalysisQuery")]
         public virtual IamPolicyAnalysisQuery IamPolicyAnalysisQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Execution results of the query. The result is formatted as rows represented by BigQuery compatible [schema].
+    /// When pagination is necessary, it will contains the page token to retrieve the results of following pages.
+    /// </summary>
+    public class QueryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Each row hold a query result in the format of `Struct`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Rows { get; set; }
+
+        /// <summary>Describes the format of the [rows].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual TableSchema Schema { get; set; }
+
+        /// <summary>Total rows of the whole query results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
+        public virtual System.Nullable<long> TotalRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5790,6 +6882,49 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A field in TableSchema.</summary>
+    public class TableFieldSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must
+        /// start with a letter or underscore. The maximum length is 128 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>Describes the nested schema fields if the type property is set to RECORD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
+
+        /// <summary>
+        /// The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// The field data type. Possible values include * STRING * BYTES * INTEGER * FLOAT * BOOLEAN * TIMESTAMP * DATE
+        /// * TIME * DATETIME * GEOGRAPHY, * NUMERIC, * BIGNUMERIC, * RECORD (where RECORD indicates that the field
+        /// contains a nested schema).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BigQuery Compatible table schema.</summary>
+    public class TableSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes the fields in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

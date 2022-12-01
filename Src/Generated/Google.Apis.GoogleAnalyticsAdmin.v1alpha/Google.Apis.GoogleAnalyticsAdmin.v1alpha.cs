@@ -46,23 +46,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         public override string Name => "analyticsadmin";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://analyticsadmin.googleapis.com/";
-        #else
-            "https://analyticsadmin.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://analyticsadmin.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://analyticsadmin.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Google Analytics Admin API.</summary>
         public class Scope
@@ -4296,8 +4289,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
                 /// <summary>
                 /// A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListProperties` must match the
-                /// call that provided the page token.
+                /// subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match
+                /// the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }

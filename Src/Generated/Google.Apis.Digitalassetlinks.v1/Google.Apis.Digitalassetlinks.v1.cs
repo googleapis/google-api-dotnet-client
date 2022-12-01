@@ -45,23 +45,16 @@ namespace Google.Apis.Digitalassetlinks.v1
         public override string Name => "digitalassetlinks";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://digitalassetlinks.googleapis.com/";
-        #else
-            "https://digitalassetlinks.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://digitalassetlinks.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://digitalassetlinks.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Assetlinks resource.</summary>
         public virtual AssetlinksResource Assetlinks { get; }

@@ -44,23 +44,16 @@ namespace Google.Apis.Dialogflow.v2
         public override string Name => "dialogflow";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://dialogflow.googleapis.com/";
-        #else
-            "https://dialogflow.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://dialogflow.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://dialogflow.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Dialogflow API.</summary>
         public class Scope
@@ -27038,6 +27031,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>
     /// The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text.
+    /// See: https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values for how to
+    /// interpret the result.
     /// </summary>
     public class GoogleCloudDialogflowV2Sentiment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29724,6 +29719,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>
     /// The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text.
+    /// See: https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values for how to
+    /// interpret the result.
     /// </summary>
     public class GoogleCloudDialogflowV2beta1Sentiment : Google.Apis.Requests.IDirectResponseSchema
     {

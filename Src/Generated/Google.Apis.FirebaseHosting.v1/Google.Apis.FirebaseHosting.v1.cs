@@ -44,23 +44,16 @@ namespace Google.Apis.FirebaseHosting.v1
         public override string Name => "firebasehosting";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://firebasehosting.googleapis.com/";
-        #else
-            "https://firebasehosting.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://firebasehosting.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://firebasehosting.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }

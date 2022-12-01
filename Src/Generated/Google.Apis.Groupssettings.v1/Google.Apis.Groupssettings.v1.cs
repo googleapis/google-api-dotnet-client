@@ -44,23 +44,16 @@ namespace Google.Apis.Groupssettings.v1
         public override string Name => "groupssettings";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/groups/v1/groups/";
-        #else
-            "https://www.googleapis.com/groups/v1/groups/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/groups/v1/groups/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "groups/v1/groups/";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://www.googleapis.com/batch/groupssettings/v1";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/groupssettings/v1";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Groups Settings API.</summary>
         public class Scope

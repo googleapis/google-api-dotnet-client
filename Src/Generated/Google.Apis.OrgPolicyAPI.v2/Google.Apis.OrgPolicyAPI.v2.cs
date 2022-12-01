@@ -46,23 +46,16 @@ namespace Google.Apis.OrgPolicyAPI.v2
         public override string Name => "orgpolicy";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://orgpolicy.googleapis.com/";
-        #else
-            "https://orgpolicy.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://orgpolicy.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://orgpolicy.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Organization Policy API.</summary>
         public class Scope

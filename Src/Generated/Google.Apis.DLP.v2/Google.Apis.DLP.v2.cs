@@ -47,23 +47,16 @@ namespace Google.Apis.DLP.v2
         public override string Name => "dlp";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://dlp.googleapis.com/";
-        #else
-            "https://dlp.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://dlp.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://dlp.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Data Loss Prevention (DLP) API.</summary>
         public class Scope
@@ -12571,12 +12564,12 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only
-    /// available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command
-    /// Center. The action will publish the count of finding instances and their info types. The summary of findings
-    /// will be persisted in CSCC and are governed by CSCC service-specific policy, see
-    /// https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible
-    /// with: Inspect
+    /// Publish the result summary of a DlpJob to [Security Command
+    /// Center](https://cloud.google.com/security-command-center). This action is available for only projects that
+    /// belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary
+    /// of findings are persisted in Security Command Center and are governed by [service-specific policies for Security
+    /// Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be
+    /// specified. Compatible with: Inspect
     /// </summary>
     public class GooglePrivacyDlpV2PublishSummaryToCscc : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -45,23 +45,16 @@ namespace Google.Apis.Texttospeech.v1
         public override string Name => "texttospeech";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://texttospeech.googleapis.com/";
-        #else
-            "https://texttospeech.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://texttospeech.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://texttospeech.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Text-to-Speech API.</summary>
         public class Scope
@@ -479,7 +472,7 @@ namespace Google.Apis.Texttospeech.v1.Data
 
     /// <summary>
     /// Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither
-    /// returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 characters.
+    /// returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes.
     /// </summary>
     public class SynthesisInput : Google.Apis.Requests.IDirectResponseSchema
     {

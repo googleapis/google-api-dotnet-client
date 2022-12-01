@@ -47,23 +47,16 @@ namespace Google.Apis.HangoutsChat.v1
         public override string Name => "chat";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://chat.googleapis.com/";
-        #else
-            "https://chat.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://chat.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://chat.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Google Chat API.</summary>
         public class Scope
@@ -839,9 +832,7 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual void Download(System.IO.Stream stream)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 mediaDownloader.Download(this.GenerateRequestUri(), stream);
             }
 
@@ -854,9 +845,7 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 return mediaDownloader.Download(this.GenerateRequestUri(), stream);
             }
 
@@ -868,9 +857,7 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
             }
 
@@ -883,13 +870,10 @@ namespace Google.Apis.HangoutsChat.v1
                 System.Threading.CancellationToken cancellationToken)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
 
-            #if !NET40
             /// <summary>Synchronously download a range of the media into the given stream.</summary>
             /// <remarks>
             /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
@@ -915,7 +899,6 @@ namespace Google.Apis.HangoutsChat.v1
                 mediaDownloader.Range = range;
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
-            #endif
         }
     }
 
@@ -1419,8 +1402,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns a membership. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Returns a membership. Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the
+            /// `chat.memberships` or `chat.memberships.readonly` authorization scope.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the membership to retrieve. Format: spaces/{space}/members/{member}
@@ -1431,8 +1420,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns a membership. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Returns a membership. Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the
+            /// `chat.memberships` or `chat.memberships.readonly` authorization scope.
             /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -1474,8 +1469,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists memberships in a space. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists memberships in a space.
+            /// Requires [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service
+            /// account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports
+            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the
+            /// `chat.memberships` or `chat.memberships.readonly` authorization scope.
             /// </summary>
             /// <param name="parent">
             /// Required. The resource name of the space for which to fetch a membership list. Format: spaces/{space}
@@ -1486,8 +1487,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists memberships in a space. Requires [service account
-            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists memberships in a space.
+            /// Requires [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service
+            /// account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports
+            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the
+            /// `chat.memberships` or `chat.memberships.readonly` authorization scope.
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
             {
@@ -1515,8 +1522,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// A page token, received from a previous list memberships call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided must match the call that provided
-                /// the page token.
+                /// subsequent page. When paginating, all other parameters provided should match the call that provided
+                /// the page token. Passing different values to the other parameters may lead to unexpected results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1974,7 +1981,125 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Updates a message. For example usage, see [Update a
             /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
-            /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// authorization scope.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Resource name in the form `spaces/*/messages/*`. Example:
+            /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a message. For example usage, see [Update a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// authorization scope.
+            /// </summary>
+            public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Message body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Resource name in the form `spaces/*/messages/*`. Example:
+                /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. If `true` and the message is not found, a new message is created and `updateMask` is
+                /// ignored. The specified message ID must be
+                /// [client-assigned](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+                /// or the request fails.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                /// <summary>
+                /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
+                /// paths: - text - cards (Requires [service account
+                /// authentication](/chat/api/guides/auth/service-accounts).) - cards_v2
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                    });
+                    RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allowMissing",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a message. For example usage, see [Update a
+            /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// authorization scope.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1989,7 +2114,13 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Updates a message. For example usage, see [Update a
             /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
-            /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
+            /// early access to certain features. [User
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+            /// authorization scope.
             /// </summary>
             public class UpdateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -2178,8 +2309,8 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Optional. A page token, received from a previous list spaces call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided must match the call that provided the
-            /// page token.
+            /// subsequent page. When paginating, the filter value should match the call that provided the page token.
+            /// Passing a different value may lead to unexpected results.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2505,7 +2636,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A reference to the data of an attachment.</summary>
+    /// <summary>[Developer Preview](https://developers.google.com/workspace/preview).</summary>
     public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4154,7 +4285,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response corresponding to ListSpacesRequest.</summary>
     public class ListSpacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

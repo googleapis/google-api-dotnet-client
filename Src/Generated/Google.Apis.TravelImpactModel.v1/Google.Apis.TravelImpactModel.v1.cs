@@ -44,23 +44,16 @@ namespace Google.Apis.TravelImpactModel.v1
         public override string Name => "travelimpactmodel";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://travelimpactmodel.googleapis.com/";
-        #else
-            "https://travelimpactmodel.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://travelimpactmodel.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://travelimpactmodel.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Flights resource.</summary>
         public virtual FlightsResource Flights { get; }

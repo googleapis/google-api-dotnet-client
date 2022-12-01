@@ -44,23 +44,16 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         public override string Name => "acceleratedmobilepageurl";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://acceleratedmobilepageurl.googleapis.com/";
-        #else
-            "https://acceleratedmobilepageurl.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://acceleratedmobilepageurl.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://acceleratedmobilepageurl.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the AmpUrls resource.</summary>
         public virtual AmpUrlsResource AmpUrls { get; }

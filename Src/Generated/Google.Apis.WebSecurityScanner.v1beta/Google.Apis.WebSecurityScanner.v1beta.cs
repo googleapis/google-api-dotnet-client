@@ -44,23 +44,16 @@ namespace Google.Apis.WebSecurityScanner.v1beta
         public override string Name => "websecurityscanner";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://websecurityscanner.googleapis.com/";
-        #else
-            "https://websecurityscanner.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://websecurityscanner.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://websecurityscanner.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Web Security Scanner API.</summary>
         public class Scope

@@ -44,23 +44,16 @@ namespace Google.Apis.Contactcenterinsights.v1
         public override string Name => "contactcenterinsights";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://contactcenterinsights.googleapis.com/";
-        #else
-            "https://contactcenterinsights.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://contactcenterinsights.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://contactcenterinsights.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Contact Center AI Insights API.</summary>
         public class Scope
@@ -579,6 +572,59 @@ namespace Google.Apis.Contactcenterinsights.v1
                     }
                 }
 
+                /// <summary>Analyzes multiple conversations in a single request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource to create analyses in.</param>
+                public virtual BulkAnalyzeRequest BulkAnalyze(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent)
+                {
+                    return new BulkAnalyzeRequest(service, body, parent);
+                }
+
+                /// <summary>Analyzes multiple conversations in a single request.</summary>
+                public class BulkAnalyzeRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new BulkAnalyze request.</summary>
+                    public BulkAnalyzeRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource to create analyses in.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "bulkAnalyze";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/conversations:bulkAnalyze";
+
+                    /// <summary>Initializes BulkAnalyze parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets conversation statistics.</summary>
                 /// <param name="location">Required. The location of the conversations.</param>
                 public virtual CalculateStatsRequest CalculateStats(string location)
@@ -841,6 +887,59 @@ namespace Google.Apis.Contactcenterinsights.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Imports conversations and processes them according to the user's configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource for new conversations.</param>
+                public virtual IngestRequest Ingest(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1IngestConversationsRequest body, string parent)
+                {
+                    return new IngestRequest(service, body, parent);
+                }
+
+                /// <summary>Imports conversations and processes them according to the user's configuration.</summary>
+                public class IngestRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Ingest request.</summary>
+                    public IngestRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1IngestConversationsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource for new conversations.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1IngestConversationsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "ingest";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/conversations:ingest";
+
+                    /// <summary>Initializes Ingest parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -1144,6 +1243,51 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public IssuesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                    }
+
+                    /// <summary>Deletes an issue.</summary>
+                    /// <param name="name">Required. The name of the issue to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes an issue.</summary>
+                    public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the issue to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/issueModels/[^/]+/issues/[^/]+$",
+                            });
+                        }
                     }
 
                     /// <summary>Gets an issue.</summary>
@@ -2876,6 +3020,74 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of requested analyses that have completed successfully so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedAnalysesCount")]
+        public virtual System.Nullable<int> CompletedAnalysesCount { get; set; }
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The number of requested analyses that have failed so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysesCount")]
+        public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
+
+        /// <summary>The original request for bulk analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Request { get; set; }
+
+        /// <summary>
+        /// Total number of analyses requested. Computed by the number of conversations returned by `filter` multiplied
+        /// by `analysis_percentage` in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRequestedAnalysesCount")]
+        public virtual System.Nullable<int> TotalRequestedAnalysesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to analyze conversations in bulk.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Percentage of selected conversation to analyze, between [0, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisPercentage")]
+        public virtual System.Nullable<float> AnalysisPercentage { get; set; }
+
+        /// <summary>Required. Filter used to select the subset of conversations to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The parent resource to create analyses in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of failed analyses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysisCount")]
+        public virtual System.Nullable<int> FailedAnalysisCount { get; set; }
+
+        /// <summary>Count of successful analyses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulAnalysisCount")]
+        public virtual System.Nullable<int> SuccessfulAnalysisCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of querying an issue model's statistics.</summary>
     public class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3718,6 +3930,96 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for an IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for ingest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to ingest conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration that applies to all conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig ConversationConfig { get; set; }
+
+        /// <summary>A cloud storage bucket source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>Required. The parent resource for new conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Configuration for when `source` contains conversation transcripts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptObjectConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig TranscriptObjectConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration that applies to all conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An opaque, user-specified string representing the human agent who handled the conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Cloud Storage bucket sources.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
+        public virtual string BucketUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for processing transcript objects.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The medium transcript objects represent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
     /// </summary>
@@ -3775,6 +4077,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Resource names of the sample representative utterances that match to this issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleUtterances")]
+        public virtual System.Collections.Generic.IList<string> SampleUtterances { get; set; }
 
         /// <summary>Output only. The most recent time that this issue was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -4429,6 +4737,74 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of requested analyses that have completed successfully so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedAnalysesCount")]
+        public virtual System.Nullable<int> CompletedAnalysesCount { get; set; }
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The number of requested analyses that have failed so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysesCount")]
+        public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
+
+        /// <summary>The original request for bulk analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest Request { get; set; }
+
+        /// <summary>
+        /// Total number of analyses requested. Computed by the number of conversations returned by `filter` multiplied
+        /// by `analysis_percentage` in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRequestedAnalysesCount")]
+        public virtual System.Nullable<int> TotalRequestedAnalysesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to analyze conversations in bulk.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Percentage of selected conversation to analyze, between [0, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisPercentage")]
+        public virtual System.Nullable<float> AnalysisPercentage { get; set; }
+
+        /// <summary>Required. Filter used to select the subset of conversations to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The parent resource to create analyses in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of failed analyses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysisCount")]
+        public virtual System.Nullable<int> FailedAnalysisCount { get; set; }
+
+        /// <summary>Count of successful analyses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulAnalysisCount")]
+        public virtual System.Nullable<int> SuccessfulAnalysisCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for a create analysis operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4637,6 +5013,96 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>Response for an export insights operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for an IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for ingest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to ingest conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration that applies to all conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig ConversationConfig { get; set; }
+
+        /// <summary>A cloud storage bucket source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>Required. The parent resource for new conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Configuration for when `source` contains conversation transcripts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptObjectConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig TranscriptObjectConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration that applies to all conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An opaque, user-specified string representing the human agent who handled the conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Cloud Storage bucket sources.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
+        public virtual string BucketUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for processing transcript objects.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The medium transcript objects represent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

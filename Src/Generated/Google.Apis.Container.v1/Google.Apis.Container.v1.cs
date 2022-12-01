@@ -44,23 +44,16 @@ namespace Google.Apis.Container.v1
         public override string Name => "container";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://container.googleapis.com/";
-        #else
-            "https://container.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://container.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://container.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Kubernetes Engine API.</summary>
         public class Scope
@@ -6424,10 +6417,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>
-        /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to
-        /// enable/disable. If unspecified, defaults to DISABLED.
-        /// </summary>
+        /// <summary>Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
         public virtual string EvaluationMode { get; set; }
 
@@ -7450,6 +7440,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of Fast Socket feature.</summary>
+    public class FastSocket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Fast Socket features are enabled in the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Allows filtering to one or more specific event types. If event types are present, those and only those event
     /// types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event
@@ -8385,6 +8386,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>Enable or disable NCCL fast socket for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
+        public virtual FastSocket FastSocket { get; set; }
 
         /// <summary>Google Container File System (image streaming) configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
@@ -10292,6 +10297,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
+
+        /// <summary>Enable or disable NCCL fast socket for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
+        public virtual FastSocket FastSocket { get; set; }
 
         /// <summary>GCFS config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]

@@ -48,23 +48,16 @@ namespace Google.Apis.Monitoring.v3
         public override string Name => "monitoring";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://monitoring.googleapis.com/";
-        #else
-            "https://monitoring.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://monitoring.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://monitoring.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Monitoring API.</summary>
         public class Scope

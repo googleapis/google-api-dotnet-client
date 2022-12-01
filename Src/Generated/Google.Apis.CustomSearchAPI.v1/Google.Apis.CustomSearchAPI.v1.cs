@@ -44,23 +44,16 @@ namespace Google.Apis.CustomSearchAPI.v1
         public override string Name => "customsearch";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://customsearch.googleapis.com/";
-        #else
-            "https://customsearch.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://customsearch.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://customsearch.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Cse resource.</summary>
         public virtual CseResource Cse { get; }

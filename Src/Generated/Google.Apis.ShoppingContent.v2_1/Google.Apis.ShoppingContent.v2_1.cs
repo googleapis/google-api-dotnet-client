@@ -78,23 +78,16 @@ namespace Google.Apis.ShoppingContent.v2_1
         public override string Name => "content";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://shoppingcontent.googleapis.com/content/v2.1/";
-        #else
-            "https://shoppingcontent.googleapis.com/content/v2.1/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://shoppingcontent.googleapis.com/content/v2.1/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "content/v2.1/";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://shoppingcontent.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Content API for Shopping.</summary>
         public class Scope
@@ -10039,7 +10032,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             this.service = service;
         }
 
-        /// <summary>Lists the quota limit and quota usage per method for your Merchant Center account.</summary>
+        /// <summary>Lists the daily call quota and usage per method for your Merchant Center account.</summary>
         /// <param name="merchantId">
         /// Required. The ID of the account that has quota. This account must be an admin.
         /// </param>
@@ -10048,7 +10041,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the quota limit and quota usage per method for your Merchant Center account.</summary>
+        /// <summary>Lists the daily call quota and usage per method for your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListMethodQuotasResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -14239,12 +14232,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Google product category ID to calculate the ranking for, represented in [Google's product
-        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// taxonomy](https://support.google.com/merchants/answer/6324436). If a `WHERE` condition on
+        /// `best_sellers.category_id` is not specified in the query, rankings for all top-level categories are
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
         public virtual System.Nullable<long> CategoryId { get; set; }
 
-        /// <summary>Country where the ranking is calculated.</summary>
+        /// <summary>
+        /// Country where the ranking is calculated. A `WHERE` condition on `best_sellers.country_code` is required in
+        /// the query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
@@ -14278,12 +14276,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Report date. The value of this field can only be one of the following: * The first day of the week (Monday)
-        /// for weekly reports. * The first day of the month for monthly reports.
+        /// for weekly reports. * The first day of the month for monthly reports. If a `WHERE` condition on
+        /// `best_sellers.report_date` is not specified in the query, the latest available weekly or monthly report is
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDate")]
         public virtual Date ReportDate { get; set; }
 
-        /// <summary>Granularity of the report. The ranking can be done over a week or a month timeframe.</summary>
+        /// <summary>
+        /// Granularity of the report. The ranking can be done over a week or a month timeframe. A `WHERE` condition on
+        /// `best_sellers.report_granularity` is required in the query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportGranularity")]
         public virtual string ReportGranularity { get; set; }
 
@@ -15023,6 +15026,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The list of destinations to exclude for this target (corresponds to cleared check boxes in Merchant Center).
+        /// Products that are excluded from all destinations for more than 7 days are automatically deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -16746,21 +16750,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The quota information per method in the Content API.</summary>
+    /// <summary>
+    /// The quota information per method in the Content API. Includes only methods with current usage greater than zero
+    /// for your account.
+    /// </summary>
     public class MethodQuota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The method name, for example “products.list”. Method name does not contain version because quota can be
+        /// The method name, for example `products.list`. Method name does not contain version because quota can be
         /// shared between different API versions of the same method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The current quota limit, for example the maximum number of calls for the method.</summary>
+        /// <summary>The current quota limit per day, meaning the maximum number of calls for the method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaLimit")]
         public virtual System.Nullable<long> QuotaLimit { get; set; }
 
-        /// <summary>The current quota usage, for example the number of calls for the method.</summary>
+        /// <summary>The current quota usage, meaning the number of calls already made to the method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
         public virtual System.Nullable<long> QuotaUsage { get; set; }
 
@@ -16781,11 +16788,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<double> Aos { get; set; }
 
         /// <summary>
-        /// Average order value - the average value (total price of items) of all placed orders. The currency of the
-        /// returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code'
-        /// is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the
-        /// user) and the currency_code segment is populated in the response. **This metric cannot be segmented by
-        /// product dimensions and customer_country_code.**
+        /// Average order value in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) - the average value
+        /// (total price of items) of all placed orders. The currency of the returned value is stored in the
+        /// currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to the
+        /// SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code
+        /// segment is populated in the response. **This metric cannot be segmented by product dimensions and
+        /// customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aovMicros")]
         public virtual System.Nullable<double> AovMicros { get; set; }
@@ -16802,11 +16810,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<double> ConversionRate { get; set; }
 
         /// <summary>
-        /// Value of conversions in micros attributed to the product, reported on the conversion date. The metric is
-        /// currently available only for the FREE_PRODUCT_LISTING program. The currency of the returned value is stored
-        /// in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to
-        /// the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code
-        /// segment is populated in the response.
+        /// Value of conversions in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) attributed to the
+        /// product, reported on the conversion date. The metric is currently available only for the
+        /// FREE_PRODUCT_LISTING program. The currency of the returned value is stored in the currency_code segment. If
+        /// this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search
+        /// query (unless it is explicitly selected by the user) and the currency_code segment is populated in the
+        /// response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionValueMicros")]
         public virtual System.Nullable<long> ConversionValueMicros { get; set; }
@@ -16854,11 +16863,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<double> ItemFillRate { get; set; }
 
         /// <summary>
-        /// Total price of ordered items. Excludes shipping, taxes (US only), and customer cancellations that happened
-        /// within 30 minutes of placing the order. The currency of the returned value is stored in the currency_code
-        /// segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in
-        /// the search query (unless it is explicitly selected by the user) and the currency_code segment is populated
-        /// in the response. **This metric cannot be segmented by customer_country_code.**
+        /// Total price of ordered items in micros (1 millionth of a standard unit, 1 USD = 1000000 micros). Excludes
+        /// shipping, taxes (US only), and customer cancellations that happened within 30 minutes of placing the order.
+        /// The currency of the returned value is stored in the currency_code segment. If this metric is selected,
+        /// 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is
+        /// explicitly selected by the user) and the currency_code segment is populated in the response. **This metric
+        /// cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderedItemSalesMicros")]
         public virtual System.Nullable<long> OrderedItemSalesMicros { get; set; }
@@ -16901,21 +16911,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> ReturnedItems { get; set; }
 
         /// <summary>
-        /// Total price of ordered items sent back for return, reported on the date when the merchant accepted the
-        /// return. The currency of the returned value is stored in the currency_code segment. If this metric is
-        /// selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless
-        /// it is explicitly selected by the user) and the currency_code segment is populated in the response. **This
-        /// metric cannot be segmented by customer_country_code.**
+        /// Total price of ordered items sent back for return in micros (1 millionth of a standard unit, 1 USD = 1000000
+        /// micros), reported on the date when the merchant accepted the return. The currency of the returned value is
+        /// stored in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically
+        /// added to the SELECT clause in the search query (unless it is explicitly selected by the user) and the
+        /// currency_code segment is populated in the response. **This metric cannot be segmented by
+        /// customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnsMicros")]
         public virtual System.Nullable<long> ReturnsMicros { get; set; }
 
         /// <summary>
-        /// Total price of shipped items, reported on the order date. Excludes shipping and taxes (US only). The
-        /// currency of the returned value is stored in the currency_code segment. If this metric is selected,
-        /// 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is
-        /// explicitly selected by the user) and the currency_code segment is populated in the response. **This metric
-        /// cannot be segmented by customer_country_code.**
+        /// Total price of shipped items in micros (1 millionth of a standard unit, 1 USD = 1000000 micros), reported on
+        /// the order date. Excludes shipping and taxes (US only). The currency of the returned value is stored in the
+        /// currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to the
+        /// SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code
+        /// segment is populated in the response. **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippedItemSalesMicros")]
         public virtual System.Nullable<long> ShippedItemSalesMicros { get; set; }
@@ -20187,7 +20198,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string BenchmarkPriceCurrencyCode { get; set; }
 
         /// <summary>
-        /// The latest available price benchmark in micros for the product's catalog in the benchmark country.
+        /// The latest available price benchmark in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) for
+        /// the product's catalog in the benchmark country.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("benchmarkPriceMicros")]
         public virtual System.Nullable<long> BenchmarkPriceMicros { get; set; }
@@ -20239,8 +20251,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string PredictedMonthlyGrossProfitChangeCurrencyCode { get; set; }
 
         /// <summary>
-        /// The predicted change in gross profit in micros after introducing the suggested price for a month compared to
-        /// current active price.
+        /// The predicted change in gross profit in micros (1 millionth of a standard unit, 1 USD = 1000000 micros)
+        /// after introducing the suggested price for a month compared to current active price.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictedMonthlyGrossProfitChangeMicros")]
         public virtual System.Nullable<long> PredictedMonthlyGrossProfitChangeMicros { get; set; }
@@ -20249,7 +20261,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedPriceCurrencyCode")]
         public virtual string SuggestedPriceCurrencyCode { get; set; }
 
-        /// <summary>The latest suggested price in micros for the product.</summary>
+        /// <summary>
+        /// The latest suggested price in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) for the
+        /// product.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedPriceMicros")]
         public virtual System.Nullable<long> SuggestedPriceMicros { get; set; }
 
@@ -20393,6 +20408,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The list of destinations to exclude for this target (corresponds to cleared check boxes in Merchant Center).
+        /// Products that are excluded from all destinations for more than 7 days are automatically deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -20679,7 +20695,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
         public virtual ProductSubscriptionCost SubscriptionCost { get; set; }
 
-        /// <summary>Required. The CLDR territory code for the item.</summary>
+        /// <summary>Required. The CLDR territory code for the item's country of sale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
 
@@ -21233,6 +21249,41 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
 
+        /// <summary>
+        /// First level of the product category in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL1")]
+        public virtual string CategoryL1 { get; set; }
+
+        /// <summary>
+        /// Second level of the product category in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL2")]
+        public virtual string CategoryL2 { get; set; }
+
+        /// <summary>
+        /// Third level of the product category in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL3")]
+        public virtual string CategoryL3 { get; set; }
+
+        /// <summary>
+        /// Fourth level of the product category in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL4")]
+        public virtual string CategoryL4 { get; set; }
+
+        /// <summary>
+        /// Fifth level of the product category in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL5")]
+        public virtual string CategoryL5 { get; set; }
+
         /// <summary>Channel of the product (online versus local).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; }
@@ -21284,11 +21335,46 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string OfferId { get; set; }
 
         /// <summary>
-        /// Product price specified as micros in the product currency. Absent in case the information about the price of
-        /// the product is not available.
+        /// Product price specified as micros (1 millionth of a standard unit, 1 USD = 1000000 micros) in the product
+        /// currency. Absent in case the information about the price of the product is not available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceMicros")]
         public virtual System.Nullable<long> PriceMicros { get; set; }
+
+        /// <summary>
+        /// First level of the product type in merchant's own [product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL1")]
+        public virtual string ProductTypeL1 { get; set; }
+
+        /// <summary>
+        /// Second level of the product type in merchant's own [product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL2")]
+        public virtual string ProductTypeL2 { get; set; }
+
+        /// <summary>
+        /// Third level of the product type in merchant's own [product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL3")]
+        public virtual string ProductTypeL3 { get; set; }
+
+        /// <summary>
+        /// Fourth level of the product type in merchant's own [product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL4")]
+        public virtual string ProductTypeL4 { get; set; }
+
+        /// <summary>
+        /// Fifth level of the product type in merchant's own [product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
+        public virtual string ProductTypeL5 { get; set; }
 
         /// <summary>The normalized shipping label specified in the feed</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingLabel")]

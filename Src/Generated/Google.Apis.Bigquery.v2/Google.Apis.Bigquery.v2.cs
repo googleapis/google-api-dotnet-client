@@ -51,23 +51,16 @@ namespace Google.Apis.Bigquery.v2
         public override string Name => "bigquery";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://bigquery.googleapis.com/bigquery/v2/";
-        #else
-            "https://bigquery.googleapis.com/bigquery/v2/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://bigquery.googleapis.com/bigquery/v2/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "bigquery/v2/";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://bigquery.googleapis.com/batch/bigquery/v2";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/bigquery/v2";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the BigQuery API.</summary>
         public class Scope

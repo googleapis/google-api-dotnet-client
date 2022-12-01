@@ -47,23 +47,16 @@ namespace Google.Apis.CloudSupport.v2beta
         public override string Name => "cloudsupport";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://cloudsupport.googleapis.com/";
-        #else
-            "https://cloudsupport.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://cloudsupport.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://cloudsupport.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Support API.</summary>
         public class Scope
@@ -298,7 +291,9 @@ namespace Google.Apis.CloudSupport.v2beta
         /// set: filename.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. The resource name of the case to which attachment should be attached.</param>
+        /// <param name="parent">
+        /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+        /// </param>
         public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent)
         {
             return new CreateRequest(service, body, parent);
@@ -318,7 +313,9 @@ namespace Google.Apis.CloudSupport.v2beta
                 InitParameters();
             }
 
-            /// <summary>Required. The resource name of the case to which attachment should be attached.</summary>
+            /// <summary>
+            /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -1276,9 +1273,7 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual void Download(System.IO.Stream stream)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 mediaDownloader.Download(this.GenerateRequestUri(), stream);
             }
 
@@ -1291,9 +1286,7 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 return mediaDownloader.Download(this.GenerateRequestUri(), stream);
             }
 
@@ -1305,9 +1298,7 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
             }
 
@@ -1320,13 +1311,10 @@ namespace Google.Apis.CloudSupport.v2beta
                 System.Threading.CancellationToken cancellationToken)
             {
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                #if !NET40
                 mediaDownloader.Range = null;
-                #endif
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
 
-            #if !NET40
             /// <summary>Synchronously download a range of the media into the given stream.</summary>
             /// <remarks>
             /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
@@ -1352,7 +1340,6 @@ namespace Google.Apis.CloudSupport.v2beta
                 mediaDownloader.Range = range;
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
-            #endif
         }
 
         /// <summary>
@@ -1360,7 +1347,9 @@ namespace Google.Apis.CloudSupport.v2beta
         /// set: filename.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. The resource name of the case to which attachment should be attached.</param>
+        /// <param name="parent">
+        /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+        /// </param>
         public virtual UploadRequest Upload(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent)
         {
             return new UploadRequest(service, body, parent);
@@ -1380,7 +1369,9 @@ namespace Google.Apis.CloudSupport.v2beta
                 InitParameters();
             }
 
-            /// <summary>Required. The resource name of the case to which attachment should be attached.</summary>
+            /// <summary>
+            /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -1436,7 +1427,9 @@ namespace Google.Apis.CloudSupport.v2beta
         /// </list>
         /// </remarks>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. The resource name of the case to which attachment should be attached.</param>
+        /// <param name="parent">
+        /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+        /// </param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UploadMediaUpload Upload(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent, System.IO.Stream stream, string contentType)
@@ -1525,7 +1518,9 @@ namespace Google.Apis.CloudSupport.v2beta
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
 
-            /// <summary>Required. The resource name of the case to which attachment should be attached.</summary>
+            /// <summary>
+            /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -1678,6 +1673,16 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// <summary>Whether the case is currently escalated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("escalated")]
         public virtual System.Nullable<bool> Escalated { get; set; }
+
+        /// <summary>
+        /// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g.,
+        /// `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this
+        /// field defaults to English (en). Language selection during case creation may affect your available support
+        /// options. For a list of supported languages and their support working hours, see:
+        /// https://cloud.google.com/support/docs/language-working-hours
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The resource name for the case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

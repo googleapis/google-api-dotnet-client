@@ -44,23 +44,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         public override string Name => "containeranalysis";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://containeranalysis.googleapis.com/";
-        #else
-            "https://containeranalysis.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://containeranalysis.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://containeranalysis.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Container Analysis API.</summary>
         public class Scope
@@ -3723,7 +3716,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
     /// <summary>
     /// DocumentNote represents an SPDX Document Creation Information section:
-    /// https://spdx.github.io/spdx-spec/2-document-creation-information/
+    /// https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
     /// </summary>
     public class DocumentNote : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3746,7 +3739,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
     /// <summary>
     /// DocumentOccurrence represents an SPDX Document Creation Information section:
-    /// https://spdx.github.io/spdx-spec/2-document-creation-information/
+    /// https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
     /// </summary>
     public class DocumentOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
