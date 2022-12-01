@@ -14,9 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// This continues to be flaky in .netcore3.1 due to https://github.com/dotnet/corefx/issues/25016
-#if !NETCOREAPP3_1
-
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -135,7 +132,7 @@ namespace Google.Apis.Tests.Apis.Upload
                         _httpListener.Start();
                     }
                     // Catch errors that mean the port is already in use
-                    catch (HttpListenerException e) when (e.ErrorCode == 183 || e.ErrorCode == 32)
+                    catch (HttpListenerException e) when (e.ErrorCode == 183 || e.ErrorCode == 32 || e.Message.Contains("already in use"))
                     {
                         _httpListener.Close();
                         _httpListener = null;
@@ -1099,4 +1096,3 @@ namespace Google.Apis.Tests.Apis.Upload
         }
     }
 }
-#endif
