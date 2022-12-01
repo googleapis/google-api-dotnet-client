@@ -35,7 +35,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         public GamesConfigurationService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             AchievementConfigurations = new AchievementConfigurationsResource(this);
-            ImageConfigurations = new ImageConfigurationsResource(this);
             LeaderboardConfigurations = new LeaderboardConfigurationsResource(this);
         }
 
@@ -46,23 +45,16 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         public override string Name => "gamesConfiguration";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://gamesconfiguration.googleapis.com/";
-        #else
-            "https://gamesconfiguration.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://gamesconfiguration.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://gamesconfiguration.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Google Play Game Services Publishing API.</summary>
         public class Scope
@@ -82,9 +74,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
 
         /// <summary>Gets the AchievementConfigurations resource.</summary>
         public virtual AchievementConfigurationsResource AchievementConfigurations { get; }
-
-        /// <summary>Gets the ImageConfigurations resource.</summary>
-        public virtual ImageConfigurationsResource ImageConfigurations { get; }
 
         /// <summary>Gets the LeaderboardConfigurations resource.</summary>
         public virtual LeaderboardConfigurationsResource LeaderboardConfigurations { get; }
@@ -554,255 +543,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         }
     }
 
-    /// <summary>The "imageConfigurations" collection of methods.</summary>
-    public class ImageConfigurationsResource
-    {
-        private const string Resource = "imageConfigurations";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ImageConfigurationsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
-        /// <param name="resourceId">The ID of the resource used by this method.</param>
-        /// <param name="imageType">Selects which image in a resource for this method.</param>
-        public virtual UploadRequest Upload(string resourceId, UploadRequest.ImageTypeEnum imageType)
-        {
-            return new UploadRequest(service, resourceId, imageType);
-        }
-
-        /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
-        public class UploadRequest : GamesConfigurationBaseServiceRequest<Google.Apis.GamesConfiguration.v1configuration.Data.ImageConfiguration>
-        {
-            /// <summary>Constructs a new Upload request.</summary>
-            public UploadRequest(Google.Apis.Services.IClientService service, string resourceId, ImageTypeEnum imageType) : base(service)
-            {
-                ResourceId = resourceId;
-                ImageType = imageType;
-                InitParameters();
-            }
-
-            /// <summary>The ID of the resource used by this method.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ResourceId { get; private set; }
-
-            /// <summary>Selects which image in a resource for this method.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("imageType", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual ImageTypeEnum ImageType { get; private set; }
-
-            /// <summary>Selects which image in a resource for this method.</summary>
-            public enum ImageTypeEnum
-            {
-                /// <summary>Default value. This value is unused.</summary>
-                [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
-                IMAGETYPEUNSPECIFIED = 0,
-
-                /// <summary>The icon image for an achievement resource.</summary>
-                [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
-                ACHIEVEMENTICON = 1,
-
-                /// <summary>The icon image for a leaderboard resource.</summary>
-                [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
-                LEADERBOARDICON = 2,
-            }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "upload";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "games/v1configuration/images/{resourceId}/imageType/{imageType}";
-
-            /// <summary>Initializes Upload parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("resourceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resourceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("imageType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "imageType",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
-        /// <remarks>
-        /// Considerations regarding <paramref name="stream"/>:
-        /// <list type="bullet">
-        /// <item>
-        /// <description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
-        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
-        /// </description>
-        /// </item>
-        /// <item>
-        /// <description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
-        /// </description>
-        /// </item>
-        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
-        /// </list>
-        /// </remarks>
-        /// <param name="resourceId">The ID of the resource used by this method.</param>
-        /// <param name="imageType">Selects which image in a resource for this method.</param>
-        /// <param name="stream">The stream to upload. See remarks for further information.</param>
-        /// <param name="contentType">The content type of the stream to upload.</param>
-        public virtual UploadMediaUpload Upload(string resourceId, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
-        {
-            return new UploadMediaUpload(service, resourceId, imageType, stream, contentType);
-        }
-
-        /// <summary>Upload media upload which supports resumable upload.</summary>
-        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.GamesConfiguration.v1configuration.Data.ImageConfiguration>
-        {
-            /// <summary>V1 error format.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
-
-            /// <summary>V1 error format.</summary>
-            public enum XgafvEnum
-            {
-                /// <summary>v1 error format</summary>
-                [Google.Apis.Util.StringValueAttribute("1")]
-                Value1 = 0,
-
-                /// <summary>v2 error format</summary>
-                [Google.Apis.Util.StringValueAttribute("2")]
-                Value2 = 1,
-            }
-
-            /// <summary>OAuth access token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string AccessToken { get; set; }
-
-            /// <summary>Data format for response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<AltEnum> Alt { get; set; }
-
-            /// <summary>Data format for response.</summary>
-            public enum AltEnum
-            {
-                /// <summary>Responses with Content-Type of application/json</summary>
-                [Google.Apis.Util.StringValueAttribute("json")]
-                Json = 0,
-
-                /// <summary>Media download with context-dependent Content-Type</summary>
-                [Google.Apis.Util.StringValueAttribute("media")]
-                Media = 1,
-
-                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
-                [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto = 2,
-            }
-
-            /// <summary>JSONP</summary>
-            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Callback { get; set; }
-
-            /// <summary>Selector specifying which fields to include in a partial response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Fields { get; set; }
-
-            /// <summary>
-            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
-            /// Required unless you provide an OAuth 2.0 token.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Key { get; set; }
-
-            /// <summary>OAuth 2.0 token for the current user.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OauthToken { get; set; }
-
-            /// <summary>Returns response with indentations and line breaks.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> PrettyPrint { get; set; }
-
-            /// <summary>
-            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
-            /// to a user, but should not exceed 40 characters.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string QuotaUser { get; set; }
-
-            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
-            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string UploadType { get; set; }
-
-            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
-            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string UploadProtocol { get; set; }
-
-            /// <summary>The ID of the resource used by this method.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ResourceId { get; private set; }
-
-            /// <summary>Selects which image in a resource for this method.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("imageType", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual ImageTypeEnum ImageType { get; private set; }
-
-            /// <summary>Selects which image in a resource for this method.</summary>
-            public enum ImageTypeEnum
-            {
-                /// <summary>Default value. This value is unused.</summary>
-                [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
-                IMAGETYPEUNSPECIFIED = 0,
-
-                /// <summary>The icon image for an achievement resource.</summary>
-                [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
-                ACHIEVEMENTICON = 1,
-
-                /// <summary>The icon image for a leaderboard resource.</summary>
-                [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
-                LEADERBOARDICON = 2,
-            }
-
-            /// <summary>Constructs a new Upload media upload instance.</summary>
-            /// <remarks>
-            /// Considerations regarding <paramref name="stream"/>:
-            /// <list type="bullet">
-            /// <item>
-            /// <description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
-            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
-            /// position
-            /// </description>
-            /// </item>
-            /// <item>
-            /// <description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
-            /// </description>
-            /// </item>
-            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
-            /// </list>
-            /// </remarks>
-            public UploadMediaUpload(Google.Apis.Services.IClientService service, string resourceId, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "games/v1configuration/images/{resourceId}/imageType/{imageType}"), "POST", stream, contentType)
-            {
-                ResourceId = resourceId;
-                ImageType = imageType;
-            }
-        }
-    }
-
     /// <summary>The "leaderboardConfigurations" collection of methods.</summary>
     public class LeaderboardConfigurationsResource
     {
@@ -1251,32 +991,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual GamesNumberAffixConfiguration Suffix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An image configuration resource.</summary>
-    public class ImageConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The image type for the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; }
-
-        /// <summary>
-        /// Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#imageConfiguration`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>The resource ID of resource which the image belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>The url for this image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

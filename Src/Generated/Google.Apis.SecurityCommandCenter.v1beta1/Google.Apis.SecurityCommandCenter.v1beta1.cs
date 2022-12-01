@@ -44,23 +44,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
         public override string Name => "securitycenter";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://securitycenter.googleapis.com/";
-        #else
-            "https://securitycenter.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://securitycenter.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://securitycenter.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Security Command Center API.</summary>
         public class Scope
@@ -2320,6 +2313,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
         public virtual string FindingCategory { get; set; }
 
+        /// <summary>Full resource name of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2963,6 +2960,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>Kernel Rootkit signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelRootkit")]
+        public virtual KernelRootkit KernelRootkit { get; set; }
 
         /// <summary>Kubernetes resources associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
@@ -4077,6 +4078,65 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The list of URIs associated to the Findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Kernel mode rootkit signatures.</summary>
+    public class KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rootkit name when available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Flag indicating unexpected modifications of kernel code memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
+        public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of ftrace points with callbacks pointing to regions that are not in the expected
+        /// kernel or module code range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedFtraceHandler")]
+        public virtual System.Nullable<bool> UnexpectedFtraceHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of interrupt handlers that are are not in the expected kernel, module code regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedInterruptHandler")]
+        public virtual System.Nullable<bool> UnexpectedInterruptHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of kernel code pages that are not in the expected kernel, module code regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKernelCodePages")]
+        public virtual System.Nullable<bool> UnexpectedKernelCodePages { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of kprobe points with callbacks pointing to regions that are not in the expected
+        /// kernel or module code range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKprobeHandler")]
+        public virtual System.Nullable<bool> UnexpectedKprobeHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating unexpected process(es) in the scheduler run-queue, those that are in the run-queue, but not
+        /// in the process task-list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
+        public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
+
+        /// <summary>Flag indicating unexpected modifications of kernel read-only data memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedReadOnlyDataModification")]
+        public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of system call handlers that are are not in the expected kernel, module code
+        /// regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSystemCallHandler")]
+        public virtual System.Nullable<bool> UnexpectedSystemCallHandler { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.GoogleAnalyticsAdmin.v1beta.GoogleAnalyticsAdminBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GoogleAnalyticsAdmin.v1beta.GoogleAnalyticsAdminBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

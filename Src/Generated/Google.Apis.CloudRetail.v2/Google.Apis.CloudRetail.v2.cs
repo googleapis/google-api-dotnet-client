@@ -44,23 +44,16 @@ namespace Google.Apis.CloudRetail.v2
         public override string Name => "retail";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://retail.googleapis.com/";
-        #else
-            "https://retail.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://retail.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://retail.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Retail API.</summary>
         public class Scope
@@ -5004,6 +4997,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievableOption")]
+        public virtual string RetrievableOption { get; set; }
+
         /// <summary>
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED,
         /// attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute
@@ -6297,7 +6294,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in
         /// by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
         /// returned. Note: Returning more fields in SearchResponse can increase response payload size and serving
-        /// latency.
+        /// latency. This field is deprecated. Use the retrievable site-wide control instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievableFields")]
         public virtual object RetrievableFields { get; set; }
@@ -8564,11 +8561,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>
         /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
         /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
-        /// and `recently-viewed`(readonly value). This field together with optimization_objective describe model
-        /// metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for
-        /// more details on what the model metadata control and which combination of parameters are valid. For invalid
-        /// combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`),
-        /// you receive an error 400 if you try to create/update a recommendation with this set of knobs.
+        /// `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -9248,11 +9246,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>
         /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
         /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
-        /// and `recently-viewed`(readonly value). This field together with optimization_objective describe model
-        /// metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for
-        /// more details on what the model metadata control and which combination of parameters are valid. For invalid
-        /// combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`),
-        /// you receive an error 400 if you try to create/update a recommendation with this set of knobs.
+        /// `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

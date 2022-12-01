@@ -63,23 +63,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public override string Name => "admin";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://admin.googleapis.com/";
-        #else
-            "https://admin.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://admin.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://admin.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Admin SDK API.</summary>
         public class Scope
@@ -3072,7 +3065,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a domain alias of the customer.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         /// <param name="domainAliasName">Name of domain alias to be retrieved.</param>
         public virtual GetRequest Get(string customer, string domainAliasName)
         {
@@ -3090,7 +3089,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -3184,7 +3189,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Lists the domain aliases of the customer.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -3200,7 +3211,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -3315,7 +3332,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a domain of the customer.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         /// <param name="domainName">Name of domain to be retrieved</param>
         public virtual GetRequest Get(string customer, string domainName)
         {
@@ -3333,7 +3356,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -3427,7 +3456,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Lists the domains of the customer.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -3443,7 +3478,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -3838,10 +3879,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
-            /// all groups for a customer, fill in this field instead of `domain`. You can also use the `my_customer`
-            /// alias to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. Either the `customer` or the `domain`
-            /// parameter must be provided.
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -4410,7 +4451,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Retrieves a paginated list of all members in a group.</summary>
+        /// <summary>
+        /// Retrieves a paginated list of all members in a group. This method times out after 60 minutes. For more
+        /// information, see [Troubleshoot error
+        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        /// </summary>
         /// <param name="groupKey">
         /// Identifies the group in the API request. The value can be the group's email address, group alias, or the
         /// unique group ID.
@@ -4420,7 +4465,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new ListRequest(service, groupKey);
         }
 
-        /// <summary>Retrieves a paginated list of all members in a group.</summary>
+        /// <summary>
+        /// Retrieves a paginated list of all members in a group. This method times out after 60 minutes. For more
+        /// information, see [Troubleshoot error
+        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        /// </summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Members>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4929,7 +4978,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Retrieves a paginated list of all user-owned mobile devices for an account. To retrieve a list that includes
         /// company-owned devices, use the Cloud Identity [Devices
-        /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead.
+        /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead. This method times out after
+        /// 60 minutes. For more information, see [Troubleshoot error
+        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
         /// </summary>
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
@@ -4944,7 +4995,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Retrieves a paginated list of all user-owned mobile devices for an account. To retrieve a list that includes
         /// company-owned devices, use the Cloud Identity [Devices
-        /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead.
+        /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead. This method times out after
+        /// 60 minutes. For more information, see [Troubleshoot error
+        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
         /// </summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MobileDevices>
         {
@@ -5613,7 +5666,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all privileges for a customer.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -5629,7 +5688,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -7244,7 +7309,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a role assignment.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         /// <param name="roleAssignmentId">Immutable ID of the role assignment.</param>
         public virtual GetRequest Get(string customer, string roleAssignmentId)
         {
@@ -7262,7 +7333,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -7356,7 +7433,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all roleAssignments.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -7372,7 +7455,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -7529,7 +7618,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a role.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         /// <param name="roleId">Immutable ID of the role.</param>
         public virtual GetRequest Get(string customer, string roleId)
         {
@@ -7547,7 +7642,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -7641,7 +7742,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all the roles in a domain.</summary>
-        /// <param name="customer">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customer">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -7657,7 +7764,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -7918,7 +8031,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a schema.</summary>
-        /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customerId">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual GetRequest Get(string customerId, string schemaKey)
         {
@@ -7936,7 +8055,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -8030,7 +8155,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves all schemas for a customer.</summary>
-        /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
+        /// <param name="customerId">
+        /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
+        /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
+        /// represent your account's `customerId`. The `customerId` is also returned as part of the
+        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+        /// `domain` parameter.
+        /// </param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
@@ -8046,7 +8177,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Workspace account.</summary>
+            /// <summary>
+            /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -9267,10 +9404,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
-            /// all groups for a customer, fill this field instead of domain. You can also use the `my_customer` alias
-            /// to represent your account's `customerId`. The `customerId` is also returned as part of the [Users
-            /// resource](/admin-sdk/directory/v1/reference/users). Either the `customer` or the `domain` parameter must
-            /// be provided.
+            /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
+            /// to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
+            /// `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -9761,9 +9898,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Updates a user. This method supports patch semantics, meaning you only need to include the fields you wish
-        /// to update. Fields that are not present in the request will be preserved, and fields set to `null` will be
-        /// cleared.
+        /// Updates a user. This method supports patch semantics, meaning that you only need to include the fields you
+        /// wish to update. Fields that are not present in the request will be preserved, and fields set to `null` will
+        /// be cleared. For repeating fields that contain arrays, individual items in the array can't be patched
+        /// piecemeal; they must be supplied in the request body with the desired values for all items. See the [user
+        /// accounts guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#update_user) for
+        /// more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">
@@ -9776,9 +9916,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Updates a user. This method supports patch semantics, meaning you only need to include the fields you wish
-        /// to update. Fields that are not present in the request will be preserved, and fields set to `null` will be
-        /// cleared.
+        /// Updates a user. This method supports patch semantics, meaning that you only need to include the fields you
+        /// wish to update. Fields that are not present in the request will be preserved, and fields set to `null` will
+        /// be cleared. For repeating fields that contain arrays, individual items in the array can't be patched
+        /// piecemeal; they must be supplied in the request body with the desired values for all items. See the [user
+        /// accounts guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#update_user) for
+        /// more information.
         /// </summary>
         public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
@@ -13090,7 +13233,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Nullable<bool> IncludeInGlobalAddressList { get; set; }
 
         /// <summary>
-        /// If `true`, the user's IP address is [whitelisted](https://support.google.com/a/answer/60752).
+        /// If `true`, the user's IP address is subject to a deprecated IP address
+        /// [`allowlist`](https://support.google.com/a/answer/60752) configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipWhitelisted")]
         public virtual System.Nullable<bool> IpWhitelisted { get; set; }

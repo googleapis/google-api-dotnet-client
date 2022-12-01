@@ -44,23 +44,16 @@ namespace Google.Apis.DriveActivity.v2
         public override string Name => "driveactivity";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://driveactivity.googleapis.com/";
-        #else
-            "https://driveactivity.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://driveactivity.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://driveactivity.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Drive Activity API.</summary>
         public class Scope

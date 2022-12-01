@@ -52,23 +52,16 @@ namespace Google.Apis.Dns.v1
         public override string Name => "dns";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://dns.googleapis.com/";
-        #else
-            "https://dns.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://dns.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://dns.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud DNS API.</summary>
         public class Scope

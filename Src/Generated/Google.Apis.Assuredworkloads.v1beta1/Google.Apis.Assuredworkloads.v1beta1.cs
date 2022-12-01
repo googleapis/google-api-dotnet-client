@@ -45,23 +45,16 @@ namespace Google.Apis.Assuredworkloads.v1beta1
         public override string Name => "assuredworkloads";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://assuredworkloads.googleapis.com/";
-        #else
-            "https://assuredworkloads.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://assuredworkloads.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://assuredworkloads.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Assured Workloads API.</summary>
         public class Scope

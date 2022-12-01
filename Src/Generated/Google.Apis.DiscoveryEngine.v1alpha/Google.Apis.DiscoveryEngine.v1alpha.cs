@@ -44,23 +44,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         public override string Name => "discoveryengine";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://discoveryengine.googleapis.com/";
-        #else
-            "https://discoveryengine.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://discoveryengine.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://discoveryengine.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Discovery Engine API.</summary>
         public class Scope
@@ -2172,7 +2165,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Google Cloud Storage location for input content. format.</summary>
+    /// <summary>Cloud Storage location for input content.</summary>
     public class GoogleCloudDiscoveryengineV1alphaGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2184,10 +2177,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DataSchema { get; set; }
 
         /// <summary>
-        /// Required. Google Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match
-        /// the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more
-        /// files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files, and each file can be
-        /// up to 2 GB.
+        /// Required. Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match the full
+        /// object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such
+        /// as `gs://bucket/directory/*.json`. A request can contain at most 100 files, and each file can be up to 2 GB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
         public virtual System.Collections.Generic.IList<string> InputUris { get; set; }
@@ -2233,7 +2225,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
 
-        /// <summary>Google Cloud Storage location for the input content.</summary>
+        /// <summary>Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
 
@@ -2288,8 +2280,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaImportErrorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
-        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory. Import
+        /// errors will be written to sharded files in this directory, one per line, as a JSON-encoded
         /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
@@ -2338,7 +2330,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
 
-        /// <summary>Required. Google Cloud Storage location for the input content.</summary>
+        /// <summary>Required. Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
 
@@ -2945,8 +2937,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaImportErrorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
-        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory. Import
+        /// errors will be written to sharded files in this directory, one per line, as a JSON-encoded
         /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]

@@ -46,23 +46,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         public override string Name => "securitycenter";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://securitycenter.googleapis.com/";
-        #else
-            "https://securitycenter.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://securitycenter.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://securitycenter.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Security Command Center API.</summary>
         public class Scope
@@ -314,7 +307,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
@@ -329,7 +325,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
             {
@@ -394,7 +393,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
-            /// its settings.
+            /// its settings. Settings provided closer to the target resource take precedence over those further away
+            /// (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
@@ -408,7 +410,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
-            /// its settings.
+            /// its settings. Settings provided closer to the target resource take precedence over those further away
+            /// (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
             {
@@ -471,7 +476,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
@@ -486,7 +494,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
             {
@@ -550,7 +561,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
@@ -564,7 +578,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
             {
@@ -628,7 +645,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
@@ -643,7 +663,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
             {
@@ -707,7 +730,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
-            /// settings.
+            /// settings. Settings provided closer to the target resource take precedence over those further away (e.g.
+            /// folder will override organization level settings). The default SCC setting for the detector service
+            /// defaults can be overridden at organization, folder and project levels. No assumptions should be made
+            /// about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
@@ -721,7 +747,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
-            /// settings.
+            /// settings. Settings provided closer to the target resource take precedence over those further away (e.g.
+            /// folder will override organization level settings). The default SCC setting for the detector service
+            /// defaults can be overridden at organization, folder and project levels. No assumptions should be made
+            /// about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
             {
@@ -765,7 +794,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateContainerThreatDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
@@ -777,7 +812,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetContainerThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateContainerThreatDetectionSettings for this purpose.
+        /// </summary>
         public class GetContainerThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetContainerThreatDetectionSettings request.</summary>
@@ -820,7 +861,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the EventThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for
+        /// this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
@@ -831,7 +878,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetEventThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the EventThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for
+        /// this purpose.
+        /// </summary>
         public class GetEventThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetEventThreatDetectionSettings request.</summary>
@@ -926,7 +979,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateRapidVulnerabilityDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
@@ -938,7 +997,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateRapidVulnerabilityDetectionSettings for this purpose.
+        /// </summary>
         public class GetRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
         {
             /// <summary>Constructs a new GetRapidVulnerabilityDetectionSettings request.</summary>
@@ -1034,7 +1099,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
+        /// <summary>
+        /// Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateSecurityHealthAnalyticsSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
@@ -1045,7 +1116,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
         }
 
-        /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
+        /// <summary>
+        /// Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateSecurityHealthAnalyticsSettings for this purpose.
+        /// </summary>
         public class GetSecurityHealthAnalyticsSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
         {
             /// <summary>Constructs a new GetSecurityHealthAnalyticsSettings request.</summary>
@@ -1087,7 +1164,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateVirtualMachineThreatDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
@@ -1099,7 +1182,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateVirtualMachineThreatDetectionSettings for this purpose.
+        /// </summary>
         public class GetVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetVirtualMachineThreatDetectionSettings request.</summary>
@@ -1142,7 +1231,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the WebSecurityScannerSettings resource.</summary>
+        /// <summary>
+        /// Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for
+        /// this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
@@ -1153,7 +1248,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetWebSecurityScannerSettingsRequest(service, name);
         }
 
-        /// <summary>Get the WebSecurityScannerSettings resource.</summary>
+        /// <summary>
+        /// Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for
+        /// this purpose.
+        /// </summary>
         public class GetWebSecurityScannerSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
         {
             /// <summary>Constructs a new GetWebSecurityScannerSettings request.</summary>
@@ -1679,7 +1780,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
@@ -1694,7 +1798,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
             {
@@ -1759,7 +1866,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
-            /// its settings.
+            /// its settings. Settings provided closer to the target resource take precedence over those further away
+            /// (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
@@ -1773,7 +1883,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
-            /// its settings.
+            /// its settings. Settings provided closer to the target resource take precedence over those further away
+            /// (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
             {
@@ -1836,7 +1949,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
@@ -1851,7 +1967,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
             {
@@ -1915,7 +2034,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
@@ -1929,7 +2051,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
             {
@@ -1993,7 +2118,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
@@ -2008,7 +2136,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
             {
@@ -2072,7 +2203,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
-            /// settings.
+            /// settings. Settings provided closer to the target resource take precedence over those further away (e.g.
+            /// folder will override organization level settings). The default SCC setting for the detector service
+            /// defaults can be overridden at organization, folder and project levels. No assumptions should be made
+            /// about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
@@ -2086,7 +2220,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
-            /// settings.
+            /// settings. Settings provided closer to the target resource take precedence over those further away (e.g.
+            /// folder will override organization level settings). The default SCC setting for the detector service
+            /// defaults can be overridden at organization, folder and project levels. No assumptions should be made
+            /// about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
             {
@@ -2130,7 +2267,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateContainerThreatDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
@@ -2142,7 +2285,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetContainerThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateContainerThreatDetectionSettings for this purpose.
+        /// </summary>
         public class GetContainerThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetContainerThreatDetectionSettings request.</summary>
@@ -2185,7 +2334,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the EventThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for
+        /// this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
@@ -2196,7 +2351,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetEventThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the EventThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for
+        /// this purpose.
+        /// </summary>
         public class GetEventThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetEventThreatDetectionSettings request.</summary>
@@ -2291,7 +2452,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateRapidVulnerabilityDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
@@ -2303,7 +2470,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateRapidVulnerabilityDetectionSettings for this purpose.
+        /// </summary>
         public class GetRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
         {
             /// <summary>Constructs a new GetRapidVulnerabilityDetectionSettings request.</summary>
@@ -2399,7 +2572,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
+        /// <summary>
+        /// Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateSecurityHealthAnalyticsSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
@@ -2410,7 +2589,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
         }
 
-        /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
+        /// <summary>
+        /// Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateSecurityHealthAnalyticsSettings for this purpose.
+        /// </summary>
         public class GetSecurityHealthAnalyticsSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
         {
             /// <summary>Constructs a new GetSecurityHealthAnalyticsSettings request.</summary>
@@ -2501,7 +2686,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateVirtualMachineThreatDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
@@ -2513,7 +2704,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateVirtualMachineThreatDetectionSettings for this purpose.
+        /// </summary>
         public class GetVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetVirtualMachineThreatDetectionSettings request.</summary>
@@ -2556,7 +2753,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the WebSecurityScannerSettings resource.</summary>
+        /// <summary>
+        /// Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for
+        /// this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
@@ -2567,7 +2770,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetWebSecurityScannerSettingsRequest(service, name);
         }
 
-        /// <summary>Get the WebSecurityScannerSettings resource.</summary>
+        /// <summary>
+        /// Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for
+        /// this purpose.
+        /// </summary>
         public class GetWebSecurityScannerSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
         {
             /// <summary>Constructs a new GetWebSecurityScannerSettings request.</summary>
@@ -3094,7 +3303,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
@@ -3109,7 +3321,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
             {
@@ -3174,7 +3389,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
-            /// its settings.
+            /// its settings. Settings provided closer to the target resource take precedence over those further away
+            /// (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
@@ -3188,7 +3406,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
-            /// its settings.
+            /// its settings. Settings provided closer to the target resource take precedence over those further away
+            /// (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
             {
@@ -3287,7 +3508,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
                     /// <summary>
                     /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-                    /// hierarchy and its settings.
+                    /// hierarchy and its settings. Settings provided closer to the target resource take precedence over
+                    /// those further away (e.g. folder will override organization level settings). The default SCC
+                    /// setting for the detector service defaults can be overridden at organization, folder and project
+                    /// levels. No assumptions should be made about the SCC defaults as it is considered an internal
+                    /// implementation detail.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
@@ -3303,7 +3528,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
                     /// <summary>
                     /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-                    /// hierarchy and its settings.
+                    /// hierarchy and its settings. Settings provided closer to the target resource take precedence over
+                    /// those further away (e.g. folder will override organization level settings). The default SCC
+                    /// setting for the detector service defaults can be overridden at organization, folder and project
+                    /// levels. No assumptions should be made about the SCC defaults as it is considered an internal
+                    /// implementation detail.
                     /// </summary>
                     public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
                     {
@@ -3349,7 +3578,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     }
                 }
 
-                /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+                /// <summary>
+                /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing
+                /// field only indicates that it was not explicitly set, so no assumption should be made about these
+                /// fields. In other words, GetContainerThreatDetectionSettings does not calculate the effective service
+                /// settings for the resource, which accounts for inherited settings and defaults. Instead, use
+                /// CalculateContainerThreatDetectionSettings for this purpose.
+                /// </summary>
                 /// <param name="name">
                 /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
                 /// organizations/{organization}/containerThreatDetectionSettings *
@@ -3362,7 +3597,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     return new GetContainerThreatDetectionSettingsRequest(service, name);
                 }
 
-                /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+                /// <summary>
+                /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing
+                /// field only indicates that it was not explicitly set, so no assumption should be made about these
+                /// fields. In other words, GetContainerThreatDetectionSettings does not calculate the effective service
+                /// settings for the resource, which accounts for inherited settings and defaults. Instead, use
+                /// CalculateContainerThreatDetectionSettings for this purpose.
+                /// </summary>
                 public class GetContainerThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
                 {
                     /// <summary>Constructs a new GetContainerThreatDetectionSettings request.</summary>
@@ -3504,7 +3745,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
@@ -3519,7 +3763,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
             {
@@ -3583,7 +3830,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
@@ -3597,7 +3847,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
-            /// and its settings.
+            /// and its settings. Settings provided closer to the target resource take precedence over those further
+            /// away (e.g. folder will override organization level settings). The default SCC setting for the detector
+            /// service defaults can be overridden at organization, folder and project levels. No assumptions should be
+            /// made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
             {
@@ -3661,7 +3914,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
@@ -3676,7 +3932,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.
+            /// hierarchy and its settings. Settings provided closer to the target resource take precedence over those
+            /// further away (e.g. folder will override organization level settings). The default SCC setting for the
+            /// detector service defaults can be overridden at organization, folder and project levels. No assumptions
+            /// should be made about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
             {
@@ -3740,7 +3999,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
-            /// settings.
+            /// settings. Settings provided closer to the target resource take precedence over those further away (e.g.
+            /// folder will override organization level settings). The default SCC setting for the detector service
+            /// defaults can be overridden at organization, folder and project levels. No assumptions should be made
+            /// about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
@@ -3754,7 +4016,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
-            /// settings.
+            /// settings. Settings provided closer to the target resource take precedence over those further away (e.g.
+            /// folder will override organization level settings). The default SCC setting for the detector service
+            /// defaults can be overridden at organization, folder and project levels. No assumptions should be made
+            /// about the SCC defaults as it is considered an internal implementation detail.
             /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
             {
@@ -3798,7 +4063,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateContainerThreatDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
@@ -3810,7 +4081,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetContainerThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateContainerThreatDetectionSettings for this purpose.
+        /// </summary>
         public class GetContainerThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetContainerThreatDetectionSettings request.</summary>
@@ -3853,7 +4130,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the EventThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for
+        /// this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
@@ -3864,7 +4147,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetEventThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the EventThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for
+        /// this purpose.
+        /// </summary>
         public class GetEventThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetEventThreatDetectionSettings request.</summary>
@@ -3959,7 +4248,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateRapidVulnerabilityDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
@@ -3971,7 +4266,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateRapidVulnerabilityDetectionSettings for this purpose.
+        /// </summary>
         public class GetRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
         {
             /// <summary>Constructs a new GetRapidVulnerabilityDetectionSettings request.</summary>
@@ -4067,7 +4368,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
+        /// <summary>
+        /// Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateSecurityHealthAnalyticsSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
@@ -4078,7 +4385,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
         }
 
-        /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
+        /// <summary>
+        /// Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateSecurityHealthAnalyticsSettings for this purpose.
+        /// </summary>
         public class GetSecurityHealthAnalyticsSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
         {
             /// <summary>Constructs a new GetSecurityHealthAnalyticsSettings request.</summary>
@@ -4120,7 +4433,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateVirtualMachineThreatDetectionSettings for this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
@@ -4132,7 +4451,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
         }
 
-        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <summary>
+        /// Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field
+        /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the
+        /// resource, which accounts for inherited settings and defaults. Instead, use
+        /// CalculateVirtualMachineThreatDetectionSettings for this purpose.
+        /// </summary>
         public class GetVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
         {
             /// <summary>Constructs a new GetVirtualMachineThreatDetectionSettings request.</summary>
@@ -4175,7 +4500,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Get the WebSecurityScannerSettings resource.</summary>
+        /// <summary>
+        /// Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for
+        /// this purpose.
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
@@ -4186,7 +4517,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             return new GetWebSecurityScannerSettingsRequest(service, name);
         }
 
-        /// <summary>Get the WebSecurityScannerSettings resource.</summary>
+        /// <summary>
+        /// Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only
+        /// indicates that it was not explicitly set, so no assumption should be made about these fields. In other
+        /// words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource,
+        /// which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for
+        /// this purpose.
+        /// </summary>
         public class GetWebSecurityScannerSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
         {
             /// <summary>Constructs a new GetWebSecurityScannerSettings request.</summary>
@@ -4809,6 +5146,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
         public virtual string FindingCategory { get; set; }
 
+        /// <summary>Full resource name of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5396,6 +5737,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>Kernel Rootkit signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelRootkit")]
+        public virtual KernelRootkit KernelRootkit { get; set; }
 
         /// <summary>Kubernetes resources associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
@@ -6192,6 +6537,65 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The list of URIs associated to the Findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Kernel mode rootkit signatures.</summary>
+    public class KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rootkit name when available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Flag indicating unexpected modifications of kernel code memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
+        public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of ftrace points with callbacks pointing to regions that are not in the expected
+        /// kernel or module code range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedFtraceHandler")]
+        public virtual System.Nullable<bool> UnexpectedFtraceHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of interrupt handlers that are are not in the expected kernel, module code regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedInterruptHandler")]
+        public virtual System.Nullable<bool> UnexpectedInterruptHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of kernel code pages that are not in the expected kernel, module code regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKernelCodePages")]
+        public virtual System.Nullable<bool> UnexpectedKernelCodePages { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of kprobe points with callbacks pointing to regions that are not in the expected
+        /// kernel or module code range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKprobeHandler")]
+        public virtual System.Nullable<bool> UnexpectedKprobeHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating unexpected process(es) in the scheduler run-queue, those that are in the run-queue, but not
+        /// in the process task-list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
+        public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
+
+        /// <summary>Flag indicating unexpected modifications of kernel read-only data memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedReadOnlyDataModification")]
+        public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of system call handlers that are are not in the expected kernel, module code
+        /// regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSystemCallHandler")]
+        public virtual System.Nullable<bool> UnexpectedSystemCallHandler { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

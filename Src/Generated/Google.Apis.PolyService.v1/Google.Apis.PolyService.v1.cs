@@ -45,23 +45,16 @@ namespace Google.Apis.PolyService.v1
         public override string Name => "poly";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://poly.googleapis.com/";
-        #else
-            "https://poly.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://poly.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://poly.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Assets resource.</summary>
         public virtual AssetsResource Assets { get; }

@@ -44,23 +44,16 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
         public override string Name => "paymentsresellersubscription";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://paymentsresellersubscription.googleapis.com/";
-        #else
-            "https://paymentsresellersubscription.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://paymentsresellersubscription.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://paymentsresellersubscription.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Partners resource.</summary>
         public virtual PartnersResource Partners { get; }
@@ -1288,6 +1281,29 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Payload specific to Google One products.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Campaign attributed to sales of this subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
+        public virtual System.Collections.Generic.IList<string> Campaigns { get; set; }
+
+        /// <summary>The type of offering the subscription was sold by the partner. e.g. VAS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offering")]
+        public virtual string Offering { get; set; }
+
+        /// <summary>The type of sales channel through which the subscription was sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesChannel")]
+        public virtual string SalesChannel { get; set; }
+
+        /// <summary>The identifier for the partner store where the subscription was sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeId")]
+        public virtual string StoreId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1368,6 +1384,21 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. Localized human readable name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
         public virtual System.Collections.Generic.IList<GoogleTypeLocalizedText> Titles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies product specific payload.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Payload specific to Google One products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleOnePayload")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload GoogleOnePayload { get; set; }
+
+        /// <summary>Payload specific to Youtube products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubePayload")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload YoutubePayload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1636,7 +1667,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Individual line item definition of a subscription. Next id: 9</summary>
+    /// <summary>Individual line item definition of a subscription.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Description of this line item.</summary>
@@ -1669,6 +1700,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual string Product { get; set; }
+
+        /// <summary>Optional. Product specific payload for this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productPayload")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1ProductPayload ProductPayload { get; set; }
 
         /// <summary>Output only. The recurrence type of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrenceType")]
@@ -1752,6 +1787,17 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The updated subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Payload specific to Youtube products.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of eligibility_ids which are applicable for the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerEligibilityIds")]
+        public virtual System.Collections.Generic.IList<string> PartnerEligibilityIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

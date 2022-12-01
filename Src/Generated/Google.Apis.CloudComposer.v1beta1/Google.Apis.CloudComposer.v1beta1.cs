@@ -44,23 +44,16 @@ namespace Google.Apis.CloudComposer.v1beta1
         public override string Name => "composer";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://composer.googleapis.com/";
-        #else
-            "https://composer.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://composer.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://composer.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Composer API.</summary>
         public class Scope
@@ -1572,6 +1565,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateEnvironmentConfig")]
         public virtual PrivateEnvironmentConfig PrivateEnvironmentConfig { get; set; }
 
+        /// <summary>
+        /// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer
+        /// environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryConfig")]
+        public virtual RecoveryConfig RecoveryConfig { get; set; }
+
         /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
@@ -2214,6 +2214,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Recovery settings of an environment.</summary>
+    public class RecoveryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The configuration for scheduled snapshot creation mechanism.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledSnapshotsConfig")]
+        public virtual ScheduledSnapshotsConfig ScheduledSnapshotsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Restart Airflow web server.</summary>
     public class RestartWebServerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2244,6 +2255,32 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
         public virtual string SnapshotPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for scheduled snapshot creation mechanism.</summary>
+    public class ScheduledSnapshotsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether scheduled snapshots creation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is
+        /// subject to additional validation around frequency of execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotCreationSchedule")]
+        public virtual string SnapshotCreationSchedule { get; set; }
+
+        /// <summary>Optional. The Cloud Storage location for storing automatically created snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotLocation")]
+        public virtual string SnapshotLocation { get; set; }
+
+        /// <summary>Optional. Time zone that sets the context to interpret snapshot_creation_schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+DataScansResource+GetRequest.ViewEnum": [
+    "DATA_SCAN_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+DataScansResource+JobsResource+GetRequest.ViewEnum": [
+    "DATA_SCAN_JOB_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LakesResource+ContentitemsResource+GetRequest.ViewEnum": [
     "CONTENT_VIEW_UNSPECIFIED",
     "BASIC",

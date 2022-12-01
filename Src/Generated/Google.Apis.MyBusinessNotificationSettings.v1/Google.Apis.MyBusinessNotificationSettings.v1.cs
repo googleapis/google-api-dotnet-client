@@ -44,23 +44,16 @@ namespace Google.Apis.MyBusinessNotificationSettings.v1
         public override string Name => "mybusinessnotifications";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://mybusinessnotifications.googleapis.com/";
-        #else
-            "https://mybusinessnotifications.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://mybusinessnotifications.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://mybusinessnotifications.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }

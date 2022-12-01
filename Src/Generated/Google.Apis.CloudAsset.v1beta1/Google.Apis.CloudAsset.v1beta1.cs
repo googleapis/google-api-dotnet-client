@@ -46,23 +46,16 @@ namespace Google.Apis.CloudAsset.v1beta1
         public override string Name => "cloudasset";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://cloudasset.googleapis.com/";
-        #else
-            "https://cloudasset.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://cloudasset.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://cloudasset.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Asset API.</summary>
         public class Scope
@@ -1760,9 +1753,9 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only
-        /// include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
-        /// maximum length of the `access_level` component is 50 characters.
+        /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`.
+        /// The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its
+        /// maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2235,9 +2228,10 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and
-        /// only include alphanumeric and '_'. Format:
-        /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
+        /// Resource name for the `ServicePerimeter`. Format:
+        /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
+        /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
+        /// you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

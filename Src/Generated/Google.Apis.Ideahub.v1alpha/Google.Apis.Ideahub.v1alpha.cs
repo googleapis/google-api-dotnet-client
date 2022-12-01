@@ -45,23 +45,16 @@ namespace Google.Apis.Ideahub.v1alpha
         public override string Name => "ideahub";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://ideahub.googleapis.com/";
-        #else
-            "https://ideahub.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://ideahub.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://ideahub.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Gets the Ideas resource.</summary>
         public virtual IdeasResource Ideas { get; }

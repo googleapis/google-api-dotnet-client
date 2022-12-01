@@ -45,23 +45,16 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
         public override string Name => "serviceconsumermanagement";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://serviceconsumermanagement.googleapis.com/";
-        #else
-            "https://serviceconsumermanagement.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://serviceconsumermanagement.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://serviceconsumermanagement.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Service Consumer Management API.</summary>
         public class Scope
@@ -1538,6 +1531,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; }
 
+        /// <summary>Deprecated, do not use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
+        public virtual System.Nullable<double> MinDeadline { get; set; }
+
         /// <summary>
         /// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         /// </summary>
@@ -1616,6 +1613,77 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about how and where to publish client libraries.</summary>
+    public class ClientLibrarySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Settings for C++ client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cppSettings")]
+        public virtual CppSettings CppSettings { get; set; }
+
+        /// <summary>Settings for .NET client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dotnetSettings")]
+        public virtual DotnetSettings DotnetSettings { get; set; }
+
+        /// <summary>Settings for Go client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goSettings")]
+        public virtual GoSettings GoSettings { get; set; }
+
+        /// <summary>Settings for legacy Java features, supported in the Service YAML.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("javaSettings")]
+        public virtual JavaSettings JavaSettings { get; set; }
+
+        /// <summary>Launch stage of this version of the API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>Settings for Node client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSettings")]
+        public virtual NodeSettings NodeSettings { get; set; }
+
+        /// <summary>Settings for PHP client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phpSettings")]
+        public virtual PhpSettings PhpSettings { get; set; }
+
+        /// <summary>Settings for Python client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonSettings")]
+        public virtual PythonSettings PythonSettings { get; set; }
+
+        /// <summary>
+        /// When using transport=rest, the client request will encode enums as numbers rather than strings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restNumericEnums")]
+        public virtual System.Nullable<bool> RestNumericEnums { get; set; }
+
+        /// <summary>Settings for Ruby client libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rubySettings")]
+        public virtual RubySettings RubySettings { get; set; }
+
+        /// <summary>Version of the API to apply these settings to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Required information for every language.</summary>
+    public class CommonLanguageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination where API teams want this client library to be published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
+
+        /// <summary>
+        /// Link to automatically generated reference documentation. Example:
+        /// https://cloud.google.com/nodejs/docs/reference/asset/latest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceDocsUri")]
+        public virtual string ReferenceDocsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: -
     /// google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the
@@ -1674,12 +1742,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     }
 
     /// <summary>
-    /// Selects and configures the service controller used by the service. The service controller handles two things: -
-    /// **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status,
-    /// billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. -
-    /// **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing,
-    /// billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated
-    /// with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+    /// Selects and configures the service controller used by the service. Example: control: environment:
+    /// servicecontrol.googleapis.com
     /// </summary>
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1689,6 +1753,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for C++ client libraries.</summary>
+    public class CppSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1847,6 +1922,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Dotnet client libraries.</summary>
+    public class DotnetSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1870,6 +1956,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     /// </summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please
+        /// specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint
+        /// will be hosted on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
+        public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
+
         /// <summary>
         /// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic,
         /// would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The
@@ -1989,6 +2083,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Go client libraries.</summary>
+    public class GoSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2174,6 +2279,37 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Java client libraries.</summary>
+    public class JavaSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>
+        /// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used
+        /// **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API
+        /// teams should use the protobuf java_package option where possible. Example of a YAML configuration::
+        /// publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("libraryPackage")]
+        public virtual string LibraryPackage { get; set; }
+
+        /// <summary>
+        /// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client.
+        /// Keys are fully-qualified service names as they appear in the protobuf (including the full the
+        /// language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name
+        /// as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings:
+        /// service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber:
+        /// SubscriptionAdmin
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassNames")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ServiceClassNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies a location to extract JWT from an API request.</summary>
     public class JwtLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2315,6 +2451,36 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Describes settings to use when generating API methods that use the long-running operation pattern. All default
+    /// values below are from those used in the client library generators (e.g.
+    /// [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+    /// </summary>
+    public class LongRunning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Initial delay after which the first poll request will be made. Default value: 5 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialPollDelay")]
+        public virtual object InitialPollDelay { get; set; }
+
+        /// <summary>Maximum time between two subsequent poll requests. Default value: 45 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPollDelay")]
+        public virtual object MaxPollDelay { get; set; }
+
+        /// <summary>
+        /// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default
+        /// value: 1.5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollDelayMultiplier")]
+        public virtual System.Nullable<float> PollDelayMultiplier { get; set; }
+
+        /// <summary>Total polling timeout. Default value: 5 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalPollTimeout")]
+        public virtual object TotalPollTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Method represents a method of an API interface.</summary>
     public class Method : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2345,6 +2511,30 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>The source syntax of this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the generator configuration for a method.</summary>
+    public class MethodSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs
+        /// that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration::
+        /// publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1
+        /// minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds:
+        /// 54000 # 90 minutes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longRunning")]
+        public virtual LongRunning LongRunning { get; set; }
+
+        /// <summary>
+        /// The fully qualified name of the method, for which the options below apply. This is used to find the method
+        /// to apply the options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2668,6 +2858,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Node client libraries.</summary>
+    public class NodeSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for
     /// "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an
@@ -2786,6 +2987,90 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subpages")]
         public virtual System.Collections.Generic.IList<Page> Subpages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Php client libraries.</summary>
+    public class PhpSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This message configures the settings for publishing [Google Cloud Client
+    /// libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+    /// </summary>
+    public class Publishing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages
+        /// delivered to package managers, etc. Example: "speech".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiShortName")]
+        public virtual string ApiShortName { get; set; }
+
+        /// <summary>
+        /// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client
+        /// libraries for this API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeownerGithubTeams")]
+        public virtual System.Collections.Generic.IList<string> CodeownerGithubTeams { get; set; }
+
+        /// <summary>A prefix used in sample code when demarking regions to be included in documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docTagPrefix")]
+        public virtual string DocTagPrefix { get; set; }
+
+        /// <summary>
+        /// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>GitHub label to apply to issues and pull requests opened for this API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubLabel")]
+        public virtual string GithubLabel { get; set; }
+
+        /// <summary>
+        /// Client library settings. If the same version string appears multiple times in this list, then the last one
+        /// wins. Settings from earlier settings with the same version string are discarded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("librarySettings")]
+        public virtual System.Collections.Generic.IList<ClientLibrarySettings> LibrarySettings { get; set; }
+
+        /// <summary>
+        /// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodSettings")]
+        public virtual System.Collections.Generic.IList<MethodSettings> MethodSettings { get; set; }
+
+        /// <summary>
+        /// Link to a place that API users can report issues. Example:
+        /// https://issuetracker.google.com/issues/new?component=190865&amp;amp;template=1161103
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newIssueUri")]
+        public virtual string NewIssueUri { get; set; }
+
+        /// <summary>For whom the client library is being published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Python client libraries.</summary>
+    public class PythonSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2913,6 +3198,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Ruby client libraries.</summary>
+    public class RubySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Some settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Service` is the root object of Google API service configuration (service config). It describes the basic
     /// information about a logical service, such as the service name and the user-facing title, and delegates other
@@ -3031,6 +3327,13 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>The Google project that owns this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; }
+
+        /// <summary>
+        /// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries)
+        /// generated from APIs defined as protocol buffers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishing")]
+        public virtual Publishing Publishing { get; set; }
 
         /// <summary>Quota configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quota")]

@@ -46,23 +46,16 @@ namespace Google.Apis.SecurityCommandCenter.v1
         public override string Name => "securitycenter";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://securitycenter.googleapis.com/";
-        #else
-            "https://securitycenter.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://securitycenter.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://securitycenter.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Security Command Center API.</summary>
         public class Scope
@@ -315,7 +308,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+            /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
             /// folders/[folder_id], or projects/[project_id]".
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
@@ -335,7 +328,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+                /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
                 /// folders/[folder_id], or projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -373,8 +366,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. Name of the organization assets should belong to. Its format is
-            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+            /// Required. Name of the parent assets should belong to. Its format is "organizations/[organization_id],
+            /// folders/[folder_id], or projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -392,7 +385,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization assets should belong to. Its format is
+                /// Required. Name of the parent assets should belong to. Its format is
                 /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1569,7 +1562,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to delete. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+            /// "projects/[project_id]/notificationConfigs/[config_id]".
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1588,7 +1583,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to delete. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+                /// "projects/[project_id]/notificationConfigs/[config_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1620,7 +1617,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to get. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+            /// "projects/[project_id]/notificationConfigs/[config_id]".
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1639,7 +1638,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to get. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+                /// "projects/[project_id]/notificationConfigs/[config_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1670,7 +1671,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists notification configs.</summary>
             /// <param name="parent">
-            /// Required. Name of the organization to list notification configs. Its format is
+            /// Required. Name of the parent to list notification configs. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
@@ -1689,7 +1690,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization to list notification configs. Its format is
+                /// Required. Name of the parent to list notification configs. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1758,7 +1759,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">
             /// The relative resource name of this notification config. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+            /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+            /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
             {
@@ -1782,7 +1785,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// The relative resource name of this notification config. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+                /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+                /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2676,7 +2681,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+            /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
             /// folders/[folder_id], or projects/[project_id]".
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
@@ -2696,7 +2701,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+                /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
                 /// folders/[folder_id], or projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2734,8 +2739,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. Name of the organization assets should belong to. Its format is
-            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+            /// Required. Name of the parent assets should belong to. Its format is "organizations/[organization_id],
+            /// folders/[folder_id], or projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2753,7 +2758,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization assets should belong to. Its format is
+                /// Required. Name of the parent assets should belong to. Its format is
                 /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3997,7 +4002,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to delete. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+            /// "projects/[project_id]/notificationConfigs/[config_id]".
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -4016,7 +4023,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to delete. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+                /// "projects/[project_id]/notificationConfigs/[config_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4048,7 +4057,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to get. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+            /// "projects/[project_id]/notificationConfigs/[config_id]".
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -4067,7 +4078,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to get. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+                /// "projects/[project_id]/notificationConfigs/[config_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4098,7 +4111,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists notification configs.</summary>
             /// <param name="parent">
-            /// Required. Name of the organization to list notification configs. Its format is
+            /// Required. Name of the parent to list notification configs. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
@@ -4117,7 +4130,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization to list notification configs. Its format is
+                /// Required. Name of the parent to list notification configs. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4186,7 +4199,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">
             /// The relative resource name of this notification config. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+            /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+            /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
             {
@@ -4210,7 +4225,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// The relative resource name of this notification config. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+                /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+                /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5948,7 +5965,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+            /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
             /// folders/[folder_id], or projects/[project_id]".
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
@@ -5968,7 +5985,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+                /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
                 /// folders/[folder_id], or projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6006,8 +6023,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. Name of the organization assets should belong to. Its format is
-            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+            /// Required. Name of the parent assets should belong to. Its format is "organizations/[organization_id],
+            /// folders/[folder_id], or projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -6025,7 +6042,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization assets should belong to. Its format is
+                /// Required. Name of the parent assets should belong to. Its format is
                 /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -7202,7 +7219,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to delete. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+            /// "projects/[project_id]/notificationConfigs/[config_id]".
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -7221,7 +7240,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to delete. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+                /// "projects/[project_id]/notificationConfigs/[config_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7253,7 +7274,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to get. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+            /// "projects/[project_id]/notificationConfigs/[config_id]".
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -7272,7 +7295,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to get. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
+                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
+                /// "projects/[project_id]/notificationConfigs/[config_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7303,7 +7328,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists notification configs.</summary>
             /// <param name="parent">
-            /// Required. Name of the organization to list notification configs. Its format is
+            /// Required. Name of the parent to list notification configs. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
@@ -7322,7 +7347,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the organization to list notification configs. Its format is
+                /// Required. Name of the parent to list notification configs. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -7391,7 +7416,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">
             /// The relative resource name of this notification config. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+            /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+            /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+            /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
             {
@@ -7415,7 +7442,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// The relative resource name of this notification config. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+                /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+                /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+                /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -8489,6 +8518,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
         public virtual string FindingCategory { get; set; }
 
+        /// <summary>Full resource name of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9154,6 +9187,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>Kernel Rootkit signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelRootkit")]
+        public virtual KernelRootkit KernelRootkit { get; set; }
 
         /// <summary>Kubernetes resources associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
@@ -10237,6 +10274,65 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Kernel mode rootkit signatures.</summary>
+    public class KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rootkit name when available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Flag indicating unexpected modifications of kernel code memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
+        public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of ftrace points with callbacks pointing to regions that are not in the expected
+        /// kernel or module code range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedFtraceHandler")]
+        public virtual System.Nullable<bool> UnexpectedFtraceHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of interrupt handlers that are are not in the expected kernel, module code regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedInterruptHandler")]
+        public virtual System.Nullable<bool> UnexpectedInterruptHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of kernel code pages that are not in the expected kernel, module code regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKernelCodePages")]
+        public virtual System.Nullable<bool> UnexpectedKernelCodePages { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of kprobe points with callbacks pointing to regions that are not in the expected
+        /// kernel or module code range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKprobeHandler")]
+        public virtual System.Nullable<bool> UnexpectedKprobeHandler { get; set; }
+
+        /// <summary>
+        /// Flag indicating unexpected process(es) in the scheduler run-queue, those that are in the run-queue, but not
+        /// in the process task-list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
+        public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
+
+        /// <summary>Flag indicating unexpected modifications of kernel read-only data memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedReadOnlyDataModification")]
+        public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
+
+        /// <summary>
+        /// Flag indicating presence of system call handlers that are are not in the expected kernel, module code
+        /// regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSystemCallHandler")]
+        public virtual System.Nullable<bool> UnexpectedSystemCallHandler { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Kubernetes related attributes.</summary>
     public class Kubernetes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10548,7 +10644,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>
         /// The relative resource name of this notification config. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-        /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+        /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+        /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

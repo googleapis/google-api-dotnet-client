@@ -44,23 +44,16 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
         public override string Name => "fcm";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://fcm.googleapis.com/";
-        #else
-            "https://fcm.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://fcm.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://fcm.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Firebase Cloud Messaging API.</summary>
         public class Scope
@@ -668,7 +661,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>
         /// HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request
         /// headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
-        /// for supported headers such as `apns-expiration` and `apns-priority`.
+        /// for supported headers such as `apns-expiration` and `apns-priority`. The backend sets a default value for
+        /// `apns-expiration` of 30 days and a default value for `apns-priority` of 10 if not explicitly set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
@@ -677,8 +671,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// APNs payload as a JSON object, including both `aps` dictionary and custom payload. See [Payload Key
         /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
         /// If present, it overrides google.firebase.fcm.v1.Notification.title and
-        /// google.firebase.fcm.v1.Notification.body. The backend sets a default value for `apns-expiration` of 30 days
-        /// and a default value for `apns-priority` of 10 if not explicitly set.
+        /// google.firebase.fcm.v1.Notification.body.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }

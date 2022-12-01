@@ -45,23 +45,16 @@ namespace Google.Apis.Vault.v1
         public override string Name => "vault";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://vault.googleapis.com/";
-        #else
-            "https://vault.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://vault.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://vault.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Google Vault API.</summary>
         public class Scope

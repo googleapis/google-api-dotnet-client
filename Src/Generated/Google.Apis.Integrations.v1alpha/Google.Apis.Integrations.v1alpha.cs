@@ -46,23 +46,16 @@ namespace Google.Apis.Integrations.v1alpha
         public override string Name => "integrations";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://integrations.googleapis.com/";
-        #else
-            "https://integrations.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://integrations.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://integrations.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Application Integration API.</summary>
         public class Scope
@@ -1615,14 +1608,22 @@ namespace Google.Apis.Integrations.v1alpha
                         this.service = service;
                     }
 
-                    /// <summary>Lists the status of the integration executions.</summary>
+                    /// <summary>
+                    /// Lists the results of all the integration executions. The response includes the same information
+                    /// as the [execution log](https://cloud.google.com/application-integration/docs/viewing-logs) in
+                    /// the Integration UI.
+                    /// </summary>
                     /// <param name="parent">Required. The parent resource name of the integration execution.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists the status of the integration executions.</summary>
+                    /// <summary>
+                    /// Lists the results of all the integration executions. The response includes the same information
+                    /// as the [execution log](https://cloud.google.com/application-integration/docs/viewing-logs) in
+                    /// the Integration UI.
+                    /// </summary>
                     public class ListRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaListExecutionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4196,7 +4197,12 @@ namespace Google.Apis.Integrations.v1alpha
                             }
                         }
 
-                        /// <summary>Lists the status of the integration executions.</summary>
+                        /// <summary>
+                        /// Lists the results of all the integration executions. The response includes the same
+                        /// information as the [execution
+                        /// log](https://cloud.google.com/application-integration/docs/viewing-logs) in the Integration
+                        /// UI.
+                        /// </summary>
                         /// <param name="parent">
                         /// Required. The parent resource name of the integration execution.
                         /// </param>
@@ -4205,7 +4211,12 @@ namespace Google.Apis.Integrations.v1alpha
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Lists the status of the integration executions.</summary>
+                        /// <summary>
+                        /// Lists the results of all the integration executions. The response includes the same
+                        /// information as the [execution
+                        /// log](https://cloud.google.com/application-integration/docs/viewing-logs) in the Integration
+                        /// UI.
+                        /// </summary>
                         public class ListRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaListExecutionsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -11718,8 +11729,8 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. Matched against all {@link TriggerConfig}s across all integrations. i.e.
-        /// TriggerConfig.trigger_id.equals(trigger_id)
+        /// Required. Matched against all {@link TriggerConfig}s across all integrations. i.e.
+        /// TriggerConfig.trigger_id.equals(trigger_id). The trigger_id is in the format of `api_trigger/TRIGGER_NAME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; }

@@ -45,23 +45,16 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         public override string Name => "factchecktools";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://factchecktools.googleapis.com/";
-        #else
-            "https://factchecktools.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://factchecktools.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://factchecktools.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Fact Check Tools API.</summary>
         public class Scope

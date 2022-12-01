@@ -44,23 +44,16 @@ namespace Google.Apis.CloudFunctions.v2beta
         public override string Name => "cloudfunctions";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://cloudfunctions.googleapis.com/";
-        #else
-            "https://cloudfunctions.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://cloudfunctions.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://cloudfunctions.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Functions API.</summary>
         public class Scope

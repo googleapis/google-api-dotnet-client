@@ -45,23 +45,16 @@ namespace Google.Apis.AndroidManagement.v1
         public override string Name => "androidmanagement";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://androidmanagement.googleapis.com/";
-        #else
-            "https://androidmanagement.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://androidmanagement.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://androidmanagement.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Android Management API.</summary>
         public class Scope
@@ -2795,7 +2788,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use InstallType KIOSK or
-        /// kioskCustomLauncherEnabled to to configure a dedicated device.
+        /// kioskCustomLauncherEnabled to configure a dedicated device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockTaskAllowed")]
         public virtual System.Nullable<bool> LockTaskAllowed { get; set; }
@@ -2837,6 +2830,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionGrants")]
         public virtual System.Collections.Generic.IList<PermissionGrant> PermissionGrants { get; set; }
+
+        /// <summary>
+        /// Specifies whether the app installed in the work profile is allowed to add widgets to the home screen.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workProfileWidgets")]
+        public virtual string WorkProfileWidgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3313,6 +3312,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showWorkContactsInPersonalProfile")]
         public virtual string ShowWorkContactsInPersonalProfile { get; set; }
+
+        /// <summary>
+        /// Specifies the default behaviour for work profile widgets. If the policy does not specify
+        /// work_profile_widgets for a specific application, it will behave according to the value specified here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workProfileWidgetsDefault")]
+        public virtual string WorkProfileWidgetsDefault { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3840,7 +3846,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Configuration to enable an app as an extension app, with the capability of interacting with Android Device
-    /// Policy offline.
+    /// Policy offline. For Android versions 13 and above, extension apps are exempt from battery restrictions so will
+    /// not be placed into the restricted App Standby Bucket
+    /// (https://developer.android.com/topic/performance/appstandby#restricted-bucket). Extensions apps are also
+    /// protected against users clearing their data or force-closing the application, although admins can continue to
+    /// use the clear app data command
+    /// (https://developer.android.com/management/reference/rest/v1/enterprises.devices/issueCommand#CommandType) on
+    /// extension apps if needed for Android 13 and above.
     /// </summary>
     public class ExtensionConfig : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -44,23 +44,16 @@ namespace Google.Apis.ChromeManagement.v1
         public override string Name => "chromemanagement";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://chromemanagement.googleapis.com/";
-        #else
-            "https://chromemanagement.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://chromemanagement.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://chromemanagement.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Chrome Management API.</summary>
         public class Scope
@@ -1328,6 +1321,7 @@ namespace Google.Apis.ChromeManagement.v1
             {
                 this.service = service;
                 Devices = new DevicesResource(service);
+                Events = new EventsResource(service);
             }
 
             /// <summary>Gets the Devices resource.</summary>
@@ -1460,6 +1454,128 @@ namespace Google.Apis.ChromeManagement.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/telemetry/devices";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Events resource.</summary>
+            public virtual EventsResource Events { get; }
+
+            /// <summary>The "events" collection of methods.</summary>
+            public class EventsResource
+            {
+                private const string Resource = "events";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EventsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>List telemetry events.</summary>
+                /// <param name="parent">
+                /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                /// request.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List telemetry events.</summary>
+                public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1ListTelemetryEventsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                    /// request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Only include resources that match the filter. Supported filter fields: * device_id *
+                    /// user_id * device_org_unit_id * user_org_unit_id * timestamp * event_type
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of results to return. Default value is 100. Maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Token to specify next page in the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. Read mask to specify which fields to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/telemetry/events";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -2554,6 +2670,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing telemetry events for a customer.</summary>
+    public class GoogleChromeManagementV1ListTelemetryEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to specify next page in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Telemetry events returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetryEvents")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryEvent> TelemetryEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Memory information of a device. * This field has both telemetry and device information: - `totalRamBytes` -
     /// Device information - `availableRamBytes` - Telemetry information - `totalMemoryEncryption` - Device information
@@ -2871,6 +3002,16 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out of buffer data for more than 5
+    /// seconds.
+    /// </summary>
+    public class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Telemetry data collected from a managed device.</summary>
     public class GoogleChromeManagementV1TelemetryDevice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2973,6 +3114,122 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Information on Thunderbolt bus.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thunderboltInfo")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1ThunderboltInfo> ThunderboltInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a device associated with telemetry data.</summary>
+    public class GoogleChromeManagementV1TelemetryDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's
+        /// Directory API ID in the ChromeOS Devices tab.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>Output only. Organization unit ID of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Telemetry data reported by a managed device.</summary>
+    public class GoogleChromeManagementV1TelemetryEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Payload for audio severe underrun event. Present only when the `event_type` field is
+        /// `AUDIO_SEVERE_UNDERRUN`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioSevereUnderrunEvent")]
+        public virtual GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent AudioSevereUnderrunEvent { get; set; }
+
+        /// <summary>Output only. Information about the device associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual GoogleChromeManagementV1TelemetryDeviceInfo Device { get; set; }
+
+        /// <summary>The event type of the current event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// Output only. Payload for HTTPS latency change event. Present only when `event_type` is
+        /// `NETWORK_HTTPS_LATENCY_CHANGE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyChangeEvent")]
+        public virtual GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent HttpsLatencyChangeEvent { get; set; }
+
+        /// <summary>Output only. Resource name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Payload for network connection state change event. Present only when `event_type` is
+        /// `NETWORK_CONNECTION_STATE_CHANGE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConnectionStateChangeEvent")]
+        public virtual GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent NetworkConnectionStateChangeEvent { get; set; }
+
+        /// <summary>Timestamp that represents when the event was reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Output only. Information about the user associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual GoogleChromeManagementV1TelemetryUserInfo User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Https latency routine is run periodically and `TelemetryHttpsLatencyChangeEvent` is triggered if a latency
+    /// problem was detected or if the device has recovered from a latency problem..
+    /// </summary>
+    public class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>HTTPS latency routine data that triggered the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyRoutineData")]
+        public virtual GoogleChromeManagementV1HttpsLatencyRoutineData HttpsLatencyRoutineData { get; set; }
+
+        /// <summary>Current HTTPS latency state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyState")]
+        public virtual string HttpsLatencyState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `TelemetryNetworkConnectionStateChangeEvent` is triggered on network connection state changes.
+    /// </summary>
+    public class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current connection state of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionState")]
+        public virtual string ConnectionState { get; set; }
+
+        /// <summary>Unique identifier of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
+        public virtual string Guid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a user associated with telemetry data.</summary>
+    public class GoogleChromeManagementV1TelemetryUserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. User's email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Output only. Organization unit ID of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

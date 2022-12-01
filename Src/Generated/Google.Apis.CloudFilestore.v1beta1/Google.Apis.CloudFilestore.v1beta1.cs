@@ -44,23 +44,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
         public override string Name => "file";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://file.googleapis.com/";
-        #else
-            "https://file.googleapis.com/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://file.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://file.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Filestore API.</summary>
         public class Scope
@@ -323,8 +316,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The backup's project and location, in the format
-                /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to GCP regions, for
-                /// example **us-west1**.
+                /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud
+                /// regions, for example **us-west1**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string parent)
                 {
@@ -344,8 +337,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The backup's project and location, in the format
-                    /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to GCP regions,
-                    /// for example **us-west1**.
+                    /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud
+                    /// regions, for example **us-west1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -503,9 +496,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve backup information, in the format
-                /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to GCP regions, for
-                /// example **us-west1**. To retrieve backup information for all locations, use "-" for the `{location}`
-                /// value.
+                /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud
+                /// regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for the
+                /// `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -526,9 +519,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve backup information, in the format
-                    /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to GCP regions,
-                    /// for example **us-west1**. To retrieve backup information for all locations, use "-" for the
-                    /// `{location}` value.
+                    /// `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud
+                    /// regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for
+                    /// the `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1455,8 +1448,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The instance's project and location, in the format
-                /// `projects/{project_id}/locations/{location}`. In Filestore, locations map to GCP zones, for example
-                /// **us-west1-b**.
+                /// `projects/{project_id}/locations/{location}`. In Filestore, locations map to Google Cloud zones, for
+                /// example **us-west1-b**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string parent)
                 {
@@ -1480,8 +1473,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The instance's project and location, in the format
-                    /// `projects/{project_id}/locations/{location}`. In Filestore, locations map to GCP zones, for
-                    /// example **us-west1-b**.
+                    /// `projects/{project_id}/locations/{location}`. In Filestore, locations map to Google Cloud zones,
+                    /// for example **us-west1-b**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1654,9 +1647,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve instance information, in the format
-                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones, for
-                /// example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
-                /// `{location}` value.
+                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to Google Cloud
+                /// zones, for example **us-west1-b**. To retrieve instance information for all locations, use "-" for
+                /// the `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1677,9 +1670,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve instance information, in the format
-                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones,
-                    /// for example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
-                    /// `{location}` value.
+                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to Google Cloud
+                    /// zones, for example **us-west1-b**. To retrieve instance information for all locations, use "-"
+                    /// for the `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3398,11 +3391,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RestoreInstanceRequest restores an existing instance's file share from a snapshot or backup.</summary>
+    /// <summary>RestoreInstanceRequest restores an existing instance's file share from a backup.</summary>
     public class RestoreInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Name of the file share in the Filestore instance that the snapshot is being restored to.
+        /// Required. Name of the file share in the Filestore instance that the backup is being restored to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileShare")]
         public virtual string FileShare { get; set; }

@@ -51,23 +51,16 @@ namespace Google.Apis.Calendar.v3
         public override string Name => "calendar";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri =>
-        #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/calendar/v3/";
-        #else
-            "https://www.googleapis.com/calendar/v3/";
-        #endif
+        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/calendar/v3/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "calendar/v3/";
 
-        #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://www.googleapis.com/batch/calendar/v3";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/calendar/v3";
-        #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Calendar API.</summary>
         public class Scope
