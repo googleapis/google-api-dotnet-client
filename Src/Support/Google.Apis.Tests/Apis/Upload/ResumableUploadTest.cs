@@ -97,7 +97,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 _testOutputHelper.WriteLine($"Status {progress.Status}");
                 _testOutputHelper.WriteLine($"BytesSent {progress.BytesSent}");
-                _testOutputHelper.WriteLine($"Exception {progress.Exception}");
+                _testOutputHelper.WriteLine($"Exception {progress.Exception?.ToString() ?? "None"}");
             }
         }
 
@@ -128,7 +128,9 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </remarks>
         private class TestServer : IDisposable
         {
-            public TestServer()
+            private readonly ITestOutputHelper _testOutputHelper;
+
+            public TestServer(ITestOutputHelper testOutputHelper)
             {
                 var rnd = new Random();
                 // Find an available port and start an HttpListener.
@@ -155,6 +157,7 @@ namespace Google.Apis.Tests.Apis.Upload
                     }
                 } while (_httpListener == null);
                 _httpTask = RunServer();
+                _testOutputHelper = testOutputHelper; 
             }
 
             private readonly HttpListener _httpListener;
@@ -183,7 +186,10 @@ namespace Google.Apis.Tests.Apis.Upload
                             var bodyBytes = body?.ToArray() ?? new byte[0];
                             await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
                         }
-                        catch (HttpListenerException) { }
+                        catch (HttpListenerException ex)
+                        {
+                            _testOutputHelper.WriteLine($"Test Server Exception {ex}");
+                        }
                         finally
                         {
                             try
@@ -300,7 +306,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
         public ResumableUploadTest(ITestOutputHelper outputHelper)
         {
-            _server = new TestServer();
+            _server = new TestServer(outputHelper);
             _outputHelper = outputHelper;
         }
 
