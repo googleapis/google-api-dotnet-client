@@ -236,7 +236,7 @@ namespace Google.Apis.Upload
                 request.Properties[ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey] = new List<IHttpUnsuccessfulResponseHandler> { this };
             }
 
-            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
+            public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
                 var result = false;
                 var statusCode = (int)args.Response.StatusCode;
@@ -253,7 +253,9 @@ namespace Google.Apis.Upload
 
                 TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
                 tcs.SetResult(result);
-                return tcs.Task;
+                args.Request.Headers.Add("StatusCodeHandled", args.Response.StatusCode.ToString());
+                args.Request.Headers.Add("StatusCodeHandledBody", await args.Response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                return await tcs.Task.ConfigureAwait(false);
             }
 
             public Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
@@ -263,6 +265,7 @@ namespace Google.Apis.Upload
 
                 TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
                 tcs.SetResult(result);
+                args.Request.Headers.Add("ExceptioneHandled", args.Exception.ToString());
                 return tcs.Task;
             }
 
