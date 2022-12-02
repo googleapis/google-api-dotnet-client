@@ -113,6 +113,20 @@ namespace Google.Apis.Tests.Apis.Upload
             }
             public NameValueCollection Headers { get; }
             public Uri Url { get; }
+
+            public override string ToString()
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine($"Url: {Url}");
+                foreach(var key in Headers.AllKeys)
+                {
+                    foreach(var value in Headers.GetValues(key))
+                    {
+                        builder.AppendLine($"{key}: {value}");
+                    }
+                }
+                return builder.ToString();
+            }
         }
 
         /// <summary>
@@ -233,7 +247,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 public Task<IEnumerable<byte>> HandleCall0(
                     HttpListenerRequest request, HttpListenerResponse response)
                 {
-                    Requests.Add(new RequestInfo(request));
+                    var requestInfo = new RequestInfo(request);
+                    Requests.Add(requestInfo);
+                    _server._testOutputHelper.WriteLine($"Request: {requestInfo}");
                     return HandleCall(request, response);
                 }
 
