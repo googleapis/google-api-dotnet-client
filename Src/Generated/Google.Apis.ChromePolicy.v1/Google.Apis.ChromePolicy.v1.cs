@@ -2131,10 +2131,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policySchemaFilter")]
         public virtual string PolicySchemaFilter { get; set; }
 
-        /// <summary>
-        /// Required. The key of the target resource on which the policies should be resolved. The target resource must
-        /// point to an Org Unit.
-        /// </summary>
+        /// <summary>Required. The key of the target resource on which the policies should be resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
         public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
 

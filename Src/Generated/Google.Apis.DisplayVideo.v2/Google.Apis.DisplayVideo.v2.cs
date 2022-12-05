@@ -6983,10 +6983,10 @@ namespace Google.Apis.DisplayVideo.v2
             /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="advertisersId"><c>null</c></param>
-            public virtual BulkUpdateRequest BulkUpdate(Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsRequest body, string advertisersId)
+            /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
+            public virtual BulkUpdateRequest BulkUpdate(Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsRequest body, long advertiserId)
             {
-                return new BulkUpdateRequest(service, body, advertisersId);
+                return new BulkUpdateRequest(service, body, advertiserId);
             }
 
             /// <summary>
@@ -6997,15 +6997,16 @@ namespace Google.Apis.DisplayVideo.v2
             public class BulkUpdateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsResponse>
             {
                 /// <summary>Constructs a new BulkUpdate request.</summary>
-                public BulkUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsRequest body, string advertisersId) : base(service)
+                public BulkUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsRequest body, long advertiserId) : base(service)
                 {
-                    AdvertisersId = advertisersId;
+                    AdvertiserId = advertiserId;
                     Body = body;
                     InitParameters();
                 }
 
-                [Google.Apis.Util.RequestParameterAttribute("advertisersId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string AdvertisersId { get; private set; }
+                /// <summary>Required. The ID of the advertiser this line item belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v2.Data.BulkUpdateLineItemsRequest Body { get; set; }
@@ -7020,19 +7021,19 @@ namespace Google.Apis.DisplayVideo.v2
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/advertisers/{advertisersId}/lineItems:bulkUpdate";
+                public override string RestPath => "v2/advertisers/{+advertiserId}/lineItems:bulkUpdate";
 
                 /// <summary>Initializes BulkUpdate parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-                    RequestParameters.Add("advertisersId", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "advertisersId",
+                        Name = "advertiserId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^[^/]+$",
                     });
                 }
             }
@@ -19879,6 +19880,22 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionId")]
         public virtual string AssignedTargetingOptionId { get; set; }
+
+        /// <summary>
+        /// Output only. An alias for the assigned targeting option id field. This field is only supported for targeting
+        /// types with enum targeting enabled. This value can be used in place of the assignedTargetingOptionId required
+        /// for GET and DELETE targeting methods. An alias for the assignedTargetingOptionId. This value can be used in
+        /// place of `assignedTargetingOptionId` when retrieving or deleting existing targeting. This field will only be
+        /// supported for assigned targeting options of the following targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+        /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+        /// `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+        /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` *
+        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID` *
+        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+        /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionIdAlias")]
+        public virtual string AssignedTargetingOptionIdAlias { get; set; }
 
         /// <summary>
         /// Audience targeting details. This field will be populated when the targeting_type is

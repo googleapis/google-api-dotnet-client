@@ -6322,6 +6322,19 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extraStatements")]
         public virtual System.Collections.Generic.IList<string> ExtraStatements { get; set; }
 
+        /// <summary>
+        /// Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in 'extra_statements' above.
+        /// Contains a protobuf-serialized
+        /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+        /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports
+        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run """ $protoc
+        /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \
+        /// moon/shot/app.proto """ For more details, see protobuffer [self
+        /// description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoDescriptors")]
+        public virtual string ProtoDescriptors { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6889,6 +6902,15 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The response for GetDatabaseDdl.</summary>
     public class GetDatabaseDdlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Proto descriptors stored in the database. Contains a protobuf-serialized
+        /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+        /// For more details, see protobuffer [self
+        /// description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoDescriptors")]
+        public virtual string ProtoDescriptors { get; set; }
+
         /// <summary>
         /// A list of formatted DDL statements defining the schema of the database specified in the request.
         /// </summary>
@@ -9043,6 +9065,13 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
+        /// <summary>
+        /// If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully qualified name of the proto type
+        /// representing the proto/enum definition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoTypeFqn")]
+        public virtual string ProtoTypeFqn { get; set; }
+
         /// <summary>If code == STRUCT, then `struct_type` provides type information for the struct's fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structType")]
         public virtual StructType StructType { get; set; }
@@ -9124,6 +9153,18 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
+
+        /// <summary>
+        /// Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements. Contains a protobuf-serialized
+        /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+        /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports
+        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run """ $protoc
+        /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \
+        /// moon/shot/app.proto """ For more details, see protobuffer [self
+        /// description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoDescriptors")]
+        public virtual string ProtoDescriptors { get; set; }
 
         /// <summary>Required. DDL statements to be applied to the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]

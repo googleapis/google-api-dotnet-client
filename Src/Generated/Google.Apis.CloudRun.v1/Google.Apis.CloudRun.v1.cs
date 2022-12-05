@@ -2468,7 +2468,7 @@ namespace Google.Apis.CloudRun.v1
             /// </summary>
             /// <param name="name">
             /// Required. The fully qualified name of the service to delete. It can be any of the following forms: *
-            /// `namespaces/{project_id_or_number}/services/{service_name}` *
+            /// `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) *
             /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
             /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
             /// </param>
@@ -2492,7 +2492,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// Required. The fully qualified name of the service to delete. It can be any of the following forms: *
-                /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                /// `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </summary>
@@ -2577,7 +2577,7 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Gets information about a service.</summary>
             /// <param name="name">
             /// Required. The fully qualified name of the service to retrieve. It can be any of the following forms: *
-            /// `namespaces/{project_id_or_number}/services/{service_name}` *
+            /// `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) *
             /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
             /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
             /// </param>
@@ -2598,8 +2598,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// Required. The fully qualified name of the service to retrieve. It can be any of the following forms:
-                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
-                /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional)
+                /// * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2778,7 +2778,7 @@ namespace Google.Apis.CloudRun.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The fully qualified name of the service to replace. It can be any of the following forms: *
-            /// `namespaces/{project_id_or_number}/services/{service_name}` *
+            /// `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) *
             /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
             /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
             /// </param>
@@ -2804,8 +2804,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// Required. The fully qualified name of the service to replace. It can be any of the following forms:
-                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
-                /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional)
+                /// * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4781,7 +4781,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. The fully qualified name of the service to delete. It can be any of the following forms: *
-                /// `namespaces/{project_id_or_number}/services/{service_name}` *
+                /// `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) *
                 /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </param>
@@ -4805,8 +4805,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// Required. The fully qualified name of the service to delete. It can be any of the following
-                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` *
-                    /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint`
+                    /// is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4890,8 +4890,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Gets information about a service.</summary>
                 /// <param name="name">
                 /// Required. The fully qualified name of the service to retrieve. It can be any of the following forms:
-                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
-                /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional)
+                /// * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -4911,8 +4911,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// Required. The fully qualified name of the service to retrieve. It can be any of the following
-                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` *
-                    /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint`
+                    /// is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5173,8 +5173,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The fully qualified name of the service to replace. It can be any of the following forms:
-                /// * `namespaces/{project_id_or_number}/services/{service_name}` *
-                /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                /// * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional)
+                /// * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                 /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                 /// </param>
                 public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
@@ -5199,8 +5199,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// Required. The fully qualified name of the service to replace. It can be any of the following
-                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` *
-                    /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
+                    /// forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint`
+                    /// is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` *
                     /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6985,8 +6985,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// Required. The name of the resource. In Cloud Run, name is required when creating top-level resources
         /// (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More
-        /// info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a
-        /// CreateServiceRequest, name must contain fewer than 50 characters.
+        /// info: https://kubernetes.io/docs/user-guide/identifiers#names
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
