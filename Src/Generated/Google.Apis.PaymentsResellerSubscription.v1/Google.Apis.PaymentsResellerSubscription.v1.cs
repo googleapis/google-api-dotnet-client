@@ -798,9 +798,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to extend a subscription service for their customers on an ongoing basis for the
-            /// subscription to remain active and renewable. It should be called directly by the partner using service
-            /// accounts.
+            /// [Deprecated] New partners should be on auto-extend by default. Used by partners to extend a subscription
+            /// service for their customers on an ongoing basis for the subscription to remain active and renewable. It
+            /// should be called directly by the partner using service accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -813,9 +813,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to extend a subscription service for their customers on an ongoing basis for the
-            /// subscription to remain active and renewable. It should be called directly by the partner using service
-            /// accounts.
+            /// [Deprecated] New partners should be on auto-extend by default. Used by partners to extend a subscription
+            /// service for their customers on an ongoing basis for the subscription to remain active and renewable. It
+            /// should be called directly by the partner using service accounts.
             /// </summary>
             public class ExtendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse>
             {

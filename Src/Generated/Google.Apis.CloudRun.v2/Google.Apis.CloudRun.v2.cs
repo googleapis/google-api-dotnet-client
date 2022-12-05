@@ -2199,9 +2199,9 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Lists Services.</summary>
                 /// <param name="parent">
-                /// Required. The location and project to list resources on. Location must be a valid GCP region, and
-                /// cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where {project} can be
-                /// project id or number.
+                /// Required. The location and project to list resources on. Location must be a valid Google Cloud
+                /// region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where
+                /// {project} can be project id or number.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2219,9 +2219,9 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The location and project to list resources on. Location must be a valid GCP region,
-                    /// and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where {project}
-                    /// can be project id or number.
+                    /// Required. The location and project to list resources on. Location must be a valid Google Cloud
+                    /// region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where
+                    /// {project} can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2813,9 +2813,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
         /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
         /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
-        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
-        /// not be preserved.
+        /// https://cloud.google.com/run/docs/configuring/labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2920,11 +2918,20 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>ExecutionTemplate describes the data an execution should have when created from a template.</summary>
     public class GoogleCloudRunV2ExecutionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>KRM-style annotations for the resource.</summary>
+        /// <summary>
+        /// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2
+        /// ExecutionTemplate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>KRM-style labels for the resource.</summary>
+        /// <summary>
+        /// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`,
+        /// `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be
+        /// rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3006,17 +3013,17 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>
-    /// Job represents the configuration of a single job. A job an immutable resource that references a container image
-    /// which is run to completion.
+    /// Job represents the configuration of a single job, which references a container image that is run to completion.
     /// </summary>
     public class GoogleCloudRunV2Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// KRM-style annotations for the resource. Unstructured key value map that may be set by external tools to
         /// store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud
-        /// Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This
-        /// field follows Kubernetes annotations' namespacing, limits, and rules. More info:
-        /// https://kubernetes.io/docs/user-guide/annotations
+        /// Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`,
+        /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system
+        /// annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes annotations'
+        /// namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3078,9 +3085,9 @@ namespace Google.Apis.CloudRun.v2.Data
         /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
         /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
         /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
-        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
-        /// not be preserved.
+        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3388,9 +3395,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
         /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
         /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
-        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
-        /// not be preserved.
+        /// https://cloud.google.com/run/docs/configuring/labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3489,7 +3494,12 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>RevisionTemplate describes the data a revision should have when created from a template.</summary>
     public class GoogleCloudRunV2RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>KRM-style annotations for the resource.</summary>
+        /// <summary>
+        /// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2
+        /// RevisionTemplate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
@@ -3508,7 +3518,11 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
 
-        /// <summary>KRM-style labels for the resource.</summary>
+        /// <summary>
+        /// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`,
+        /// `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be
+        /// rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3639,9 +3653,11 @@ namespace Google.Apis.CloudRun.v2.Data
     {
         /// <summary>
         /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not
-        /// queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using
-        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations'
-        /// namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2
+        /// Service. This field follows Kubernetes annotations' namespacing, limits, and rules. More info:
+        /// https://kubernetes.io/docs/user-guide/annotations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3713,9 +3729,9 @@ namespace Google.Apis.CloudRun.v2.Data
         /// shared with Google's billing system, so they can be used to filter, or break down billing charges by team,
         /// component, environment, state, etc. For more information, visit
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
-        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
-        /// not be preserved.
+        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3920,9 +3936,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
         /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
         /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
-        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
-        /// not be preserved.
+        /// https://cloud.google.com/run/docs/configuring/labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

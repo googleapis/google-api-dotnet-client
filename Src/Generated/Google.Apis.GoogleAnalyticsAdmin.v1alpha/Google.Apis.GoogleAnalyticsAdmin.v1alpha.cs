@@ -7448,6 +7448,56 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A link between a GA4 Property and BigQuery project.</summary>
+    public class GoogleAnalyticsAdminV1alphaBigQueryLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time when the link was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>If set true, enables daily data export to the linked Google Cloud project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyExportEnabled")]
+        public virtual System.Nullable<bool> DailyExportEnabled { get; set; }
+
+        /// <summary>The list of event names that will be excluded from exports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedEvents")]
+        public virtual System.Collections.Generic.IList<string> ExcludedEvents { get; set; }
+
+        /// <summary>
+        /// The list of streams under the parent property for which data will be exported. Format:
+        /// properties/{property_id}/dataStreams/{stream_id} Example: ['properties/1000/dataStreams/2000']
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportStreams")]
+        public virtual System.Collections.Generic.IList<string> ExportStreams { get; set; }
+
+        /// <summary>If set true, exported data will include advertising identifiers for mobile app streams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAdvertisingId")]
+        public virtual System.Nullable<bool> IncludeAdvertisingId { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of this BigQuery link. Format:
+        /// 'properties/{property_id}/bigQueryLinks/{bigquery_link_id}' Format: 'properties/1234/bigQueryLinks/abc567'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The linked Google Cloud project. When creating a BigQueryLink, you may provide this resource name
+        /// using either a project number or project ID. Once this resource has been created, the returned project will
+        /// always have a project that contains a project number. Format: 'projects/{project number}' Example:
+        /// 'projects/1234'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>If set true, enables streaming export to the linked Google Cloud project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingExportEnabled")]
+        public virtual System.Nullable<bool> StreamingExportEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7494,6 +7544,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of AttributionSettings resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
         public virtual GoogleAnalyticsAdminV1alphaAttributionSettings AttributionSettings { get; set; }
+
+        /// <summary>A snapshot of a BigQuery link resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryLink")]
+        public virtual GoogleAnalyticsAdminV1alphaBigQueryLink BigqueryLink { get; set; }
 
         /// <summary>A snapshot of a ConversionEvent resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionEvent")]

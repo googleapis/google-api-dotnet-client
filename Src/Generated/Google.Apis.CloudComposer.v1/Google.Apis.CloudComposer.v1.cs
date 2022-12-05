@@ -544,6 +544,71 @@ namespace Google.Apis.CloudComposer.v1
                     }
                 }
 
+                /// <summary>
+                /// Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of
+                /// environment's specified in LoadSnapshotRequest is loaded into the environment.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the target environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual LoadSnapshotRequest LoadSnapshot(Google.Apis.CloudComposer.v1.Data.LoadSnapshotRequest body, string environment)
+                {
+                    return new LoadSnapshotRequest(service, body, environment);
+                }
+
+                /// <summary>
+                /// Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of
+                /// environment's specified in LoadSnapshotRequest is loaded into the environment.
+                /// </summary>
+                public class LoadSnapshotRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new LoadSnapshot request.</summary>
+                    public LoadSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.LoadSnapshotRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the target environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1.Data.LoadSnapshotRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "loadSnapshot";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+environment}:loadSnapshot";
+
+                    /// <summary>Initializes LoadSnapshot parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Update an environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -670,6 +735,71 @@ namespace Google.Apis.CloudComposer.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of
+                /// environment's state is stored in a location specified in the SaveSnapshotRequest.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the source environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual SaveSnapshotRequest SaveSnapshot(Google.Apis.CloudComposer.v1.Data.SaveSnapshotRequest body, string environment)
+                {
+                    return new SaveSnapshotRequest(service, body, environment);
+                }
+
+                /// <summary>
+                /// Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of
+                /// environment's state is stored in a location specified in the SaveSnapshotRequest.
+                /// </summary>
+                public class SaveSnapshotRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new SaveSnapshot request.</summary>
+                    public SaveSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.SaveSnapshotRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the source environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1.Data.SaveSnapshotRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "saveSnapshot";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+environment}:saveSnapshot";
+
+                    /// <summary>Initializes SaveSnapshot parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
                         });
                     }
                 }
@@ -1263,6 +1393,13 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateEnvironmentConfig")]
         public virtual PrivateEnvironmentConfig PrivateEnvironmentConfig { get; set; }
 
+        /// <summary>
+        /// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer
+        /// environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryConfig")]
+        public virtual RecoveryConfig RecoveryConfig { get; set; }
+
         /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
@@ -1421,6 +1558,38 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to load a snapshot into a Cloud Composer environment.</summary>
+    public class LoadSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not to skip setting Airflow overrides when loading the environment's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipAirflowOverridesSetting")]
+        public virtual System.Nullable<bool> SkipAirflowOverridesSetting { get; set; }
+
+        /// <summary>
+        /// Whether or not to skip setting environment variables when loading the environment's state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipEnvironmentVariablesSetting")]
+        public virtual System.Nullable<bool> SkipEnvironmentVariablesSetting { get; set; }
+
+        /// <summary>Whether or not to skip copying Cloud Storage data when loading the environment's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipGcsDataCopying")]
+        public virtual System.Nullable<bool> SkipGcsDataCopying { get; set; }
+
+        /// <summary>Whether or not to skip installing Pypi packages when loading the environment's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipPypiPackagesInstallation")]
+        public virtual System.Nullable<bool> SkipPypiPackagesInstallation { get; set; }
+
+        /// <summary>
+        /// A Cloud Storage path to a snapshot to load, e.g.:
+        /// "gs://my-bucket/snapshots/project_location_environment_timestamp".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
+        public virtual string SnapshotPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1784,6 +1953,30 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Recovery settings of an environment.</summary>
+    public class RecoveryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The configuration for scheduled snapshot creation mechanism.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledSnapshotsConfig")]
+        public virtual ScheduledSnapshotsConfig ScheduledSnapshotsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to create a snapshot of a Cloud Composer environment.</summary>
+    public class SaveSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "gs://my-bucket/snapshots".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotLocation")]
+        public virtual string SnapshotLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to SaveSnapshotRequest.</summary>
     public class SaveSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1794,6 +1987,32 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
         public virtual string SnapshotPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for scheduled snapshot creation mechanism.</summary>
+    public class ScheduledSnapshotsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether scheduled snapshots creation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is
+        /// subject to additional validation around frequency of execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotCreationSchedule")]
+        public virtual string SnapshotCreationSchedule { get; set; }
+
+        /// <summary>Optional. The Cloud Storage location for storing automatically created snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotLocation")]
+        public virtual string SnapshotLocation { get; set; }
+
+        /// <summary>Optional. Time zone that sets the context to interpret snapshot_creation_schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

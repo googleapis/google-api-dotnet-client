@@ -4431,6 +4431,21 @@ namespace Google.Apis.VMMigrationService.v1alpha1
 }
 namespace Google.Apis.VMMigrationService.v1alpha1.Data
 {
+    /// <summary>Message describing AWS Credentials using access key id and secret.</summary>
+    public class AccessKeyCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AWS access key ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
+        public virtual string AccessKeyId { get; set; }
+
+        /// <summary>Input only. AWS secret access key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKey")]
+        public virtual string SecretAccessKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AdaptingOSStep contains specific step details.</summary>
     public class AdaptingOSStep : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4526,6 +4541,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>AwsSourceDetails message describes a specific source details for the AWS source type.</summary>
     public class AwsSourceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>AWS Credentials using access key id and secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyCreds")]
+        public virtual AccessKeyCredentials AccessKeyCreds { get; set; }
+
         /// <summary>AWS access key ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
         public virtual string AccessKeyId { get; set; }
@@ -4541,6 +4560,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>AWS security group names to limit the scope of the source inventory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySecurityGroupNames")]
         public virtual System.Collections.Generic.IList<string> InventorySecurityGroupNames { get; set; }
+
+        /// <summary>AWS resource tags to limit the scope of the source inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryTagList")]
+        public virtual System.Collections.Generic.IList<Tag> InventoryTagList { get; set; }
 
         /// <summary>
         /// Deprecated: AWS resource tags to limit the scope of the source inventory. Use inventory_tag_list instead.
@@ -6092,6 +6115,21 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tag is an AWS tag representation.</summary>
+    public class Tag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key of tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Value of tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

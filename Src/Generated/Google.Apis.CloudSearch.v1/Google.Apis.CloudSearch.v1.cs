@@ -8163,16 +8163,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Nullable<int> MaxJoinedDevices { get; set; }
 
         /// <summary>
-        /// Output only. Information about the media backend for the currently ongoing conference in the meeting space.
-        /// The media backend information will only be filled in for clients that are supposed to present the
-        /// information. The information should be displayed in a debug panel and is only intended for internal
-        /// debugging purposes. If the string is empty nothing should be displayed about the media backend. Deprecated
-        /// because media backend is always MEDIA_ROUTER since Dec 2018.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaBackendInfo")]
-        public virtual string MediaBackendInfo { get; set; }
-
-        /// <summary>
         /// Output only. The name or description of the organization or domain that the organizer belongs to. The
         /// expected use of this in clients is to present messages like "John Doe (outside of Google.com) is trying to
         /// join this call", where "Google.com" is the organization name. The field will be empty if the organization
@@ -9829,6 +9819,31 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This is the proto for holding message level scoring information. This data is used for logging in query-api
+    /// server and for testing purposes.
+    /// </summary>
+    public class DynamiteMessagesScoringInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("finalScore")]
+        public virtual System.Nullable<double> FinalScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessScore")]
+        public virtual System.Nullable<double> FreshnessScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("joinedSpaceAffinityScore")]
+        public virtual System.Nullable<double> JoinedSpaceAffinityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageAgeInDays")]
+        public virtual System.Nullable<double> MessageAgeInDays { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
+        public virtual System.Nullable<double> TopicalityScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13456,6 +13471,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual AppsDynamiteSharedRetentionSettings RetentionSettings { get; set; }
 
         /// <summary>
+        /// Used by clients to correctly log format type for message creation due to complexity with client side
+        /// optimistic update (see go/content-metric-post-send-logging for details). Currently, only set by server in
+        /// the message or topic creation path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richTextFormattingType")]
+        public virtual string RichTextFormattingType { get; set; }
+
+        /// <summary>
         /// A client-specified string that can be used to uniquely identify a message in a space, in lieu of
         /// `id.message_id`.
         /// </summary>
@@ -16923,6 +16946,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletionPolicyUrl")]
         public virtual string DeletionPolicyUrl { get; set; }
 
+        /// <summary>Link to GWM page of the app. May be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gwmUrl")]
+        public virtual string GwmUrl { get; set; }
+
         /// <summary>Link to the privacy policy webpage for the bot. May be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicyUrl")]
         public virtual string PrivacyPolicyUrl { get; set; }
@@ -17875,10 +17902,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Dimensions of the image: width.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intImageWidth")]
         public virtual System.Nullable<int> IntImageWidth { get; set; }
-
-        /// <summary>NEXT TAG : 18</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
-        public virtual string LinkType { get; set; }
 
         /// <summary>
         /// Mime type of the content (Currently mapped from Page Render Service ItemType) Note that this is not
