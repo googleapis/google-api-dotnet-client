@@ -2273,6 +2273,7 @@ namespace Google.Apis.Monitoring.v3
             MonitoredResourceDescriptors = new MonitoredResourceDescriptorsResource(service);
             NotificationChannelDescriptors = new NotificationChannelDescriptorsResource(service);
             NotificationChannels = new NotificationChannelsResource(service);
+            Snoozes = new SnoozesResource(service);
             TimeSeries = new TimeSeriesResource(service);
             UptimeCheckConfigs = new UptimeCheckConfigsResource(service);
         }
@@ -4589,6 +4590,329 @@ namespace Google.Apis.Monitoring.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Snoozes resource.</summary>
+        public virtual SnoozesResource Snoozes { get; }
+
+        /// <summary>The "snoozes" collection of methods.</summary>
+        public class SnoozesResource
+        {
+            private const string Resource = "snoozes";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SnoozesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a Snooze that will prevent alerts, which match the provided criteria, from being opened. The
+            /// Snooze applies for a specific time interval.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which a Snooze should
+            /// be created. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Snooze body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a Snooze that will prevent alerts, which match the provided criteria, from being opened. The
+            /// Snooze applies for a specific time interval.
+            /// </summary>
+            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Snooze>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.Snooze body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which a Snooze
+                /// should be created. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.Snooze Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/snoozes";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves a Snooze by name.</summary>
+            /// <param name="name">
+            /// Required. The ID of the Snooze to retrieve. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID]
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieves a Snooze by name.</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Snooze>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the Snooze to retrieve. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID]
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/snoozes/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists the Snoozes associated with a project. Can optionally pass in filter, which specifies predicates
+            /// to match Snoozes.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose Snoozes should be
+            /// listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists the Snoozes associated with a project. Can optionally pass in filter, which specifies predicates
+            /// to match Snoozes.
+            /// </summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListSnoozesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose Snoozes should
+                /// be listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Optional filter to restrict results to the given criteria. The following fields are
+                /// supported. interval.start_time interval.end_timeFor example: ``` interval.start_time &amp;gt;
+                /// "2022-03-11T00:00:00-08:00" AND interval.end_time &amp;lt; "2022-03-12T00:00:00-08:00" ```
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of results to return for a single query. The server may further
+                /// constrain the maximum number of results returned in a single page. The value should be in the range
+                /// 1, 1000. If the value given is outside this range, the server will decide the number of results to
+                /// be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. The next_page_token from a previous call to ListSnoozesRequest to get the next page of
+                /// results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/snoozes";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a Snooze, identified by its name, with the parameters in the given Snooze object.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the Snooze. The format is: projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] The
+            /// ID of the Snooze will be generated by the system.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.Snooze body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a Snooze, identified by its name, with the parameters in the given Snooze object.
+            /// </summary>
+            public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Snooze>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.Snooze body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Snooze. The format is: projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID]
+                /// The ID of the Snooze will be generated by the system.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The fields to update.For each field listed in update_mask: If the Snooze object supplied
+                /// in the UpdateSnoozeRequest has a value for that field, the value of the field in the existing Snooze
+                /// will be set to the value of the field in the supplied Snooze. If the field does not have a value in
+                /// the supplied Snooze, the field in the existing Snooze is set to its default value.Fields not listed
+                /// retain their existing value.The following are the field names that are accepted in update_mask:
+                /// display_name interval.start_time interval.end_timeThat said, the start time and end time of the
+                /// Snooze determines which fields can legally be updated. Before attempting an update, users should
+                /// consult the documentation for UpdateSnoozeRequest, which talks about which fields can be updated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.Snooze Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/snoozes/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -7719,6 +8043,24 @@ namespace Google.Apis.Monitoring.v3.Data
     }
 
     /// <summary>
+    /// Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come
+    /// from one of the AlertPolicys whose names are supplied.
+    /// </summary>
+    public class Criteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The specific AlertPolicy names for the alert that should be snoozed. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 10 policies per snooze. This
+        /// limit is checked during snooze creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<string> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Use a custom service to designate a service that you want to monitor when none of the other service types (like
     /// App Engine, Cloud Run, or a GKE type) matches your intended service.
     /// </summary>
@@ -8003,6 +8345,23 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options used when forecasting the time series and testing the predicted value against the threshold.
+    /// </summary>
+    public class ForecastOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The length of time into the future to forecast whether a time series will violate the threshold.
+        /// If the predicted value is found to violate the threshold, and the violation is observed in all forecasts
+        /// made for the configured duration, then the time series is considered to be failing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forecastHorizon")]
+        public virtual object ForecastHorizon { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8681,6 +9040,24 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The results of a successful ListSnoozes call, containing the matching Snoozes.</summary>
+    public class ListSnoozesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Page token for repeated calls to ListSnoozes, to fetch additional pages of results. If this is empty or
+        /// missing, there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Snoozes matching this list call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snoozes")]
+        public virtual System.Collections.Generic.IList<Snooze> Snoozes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListTimeSeries response.</summary>
     public class ListTimeSeriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9123,6 +9500,14 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to
+        /// violate the threshold within the forecast_horizion. When this field is not set, the MetricThreshold tests
+        /// the current value of the timeseries against the threshold.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forecastOptions")]
+        public virtual ForecastOptions ForecastOptions { get; set; }
 
         /// <summary>A value against which to compare the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdValue")]
@@ -9890,6 +10275,42 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Snooze will prevent any alerts from being opened, and close any that are already open. The Snooze will work on
+    /// alerts that match the criteria defined in the Snooze. The Snooze will be active from interval.start_time through
+    /// interval.end_time.
+    /// </summary>
+    public class Snooze : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. This defines the criteria for applying the Snooze. See Criteria for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
+        public virtual Criteria Criteria { get; set; }
+
+        /// <summary>Required. A display name for the Snooze. This can be, at most, 512 unicode characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. The Snooze will be active from interval.start_time through interval.end_time. interval.start_time
+        /// cannot be in the past. There is a 15 second clock skew to account for the time it takes for a request to
+        /// reach the API from the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual TimeInterval Interval { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Snooze. The format is: projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] The ID
+        /// of the Snooze will be generated by the system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

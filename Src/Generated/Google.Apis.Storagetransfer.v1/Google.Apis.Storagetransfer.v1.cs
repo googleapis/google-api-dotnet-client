@@ -1710,6 +1710,39 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }
 
     /// <summary>
+    /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer
+    /// updated files.
+    /// </summary>
+    public class EventStream : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream.
+        /// After this time, any transfers in progress will complete, but no new transfers are initiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventStreamExpirationTime")]
+        public virtual object EventStreamExpirationTime { get; set; }
+
+        /// <summary>
+        /// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If
+        /// no start time is specified or start time is in the past, Storage Transfer Service starts listening
+        /// immediately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventStreamStartTime")]
+        public virtual object EventStreamStartTime { get; set; }
+
+        /// <summary>
+        /// Required. Specifies a unique name of the resource such as AWS SQS ARN in the form
+        /// 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form
+        /// 'projects/{project}/subscriptions/{sub}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time"
     /// refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the
     /// metadata of the object is updated.
@@ -2413,6 +2446,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified,
+        /// the Schedule fields are ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventStream")]
+        public virtual EventStream EventStream { get; set; }
 
         /// <summary>Output only. The time that the transfer job was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]

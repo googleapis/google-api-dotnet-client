@@ -72,7 +72,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Compose and send messages in Google Chat</summary>
             public static string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
-            /// <summary>view messages and reactions in Google Chat</summary>
+            /// <summary>View messages and reactions in Google Chat</summary>
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
         }
 
@@ -90,7 +90,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Compose and send messages in Google Chat</summary>
             public const string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
-            /// <summary>view messages and reactions in Google Chat</summary>
+            /// <summary>View messages and reactions in Google Chat</summary>
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
         }
 
@@ -2636,7 +2636,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>[Developer Preview](https://developers.google.com/workspace/preview).</summary>
     public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

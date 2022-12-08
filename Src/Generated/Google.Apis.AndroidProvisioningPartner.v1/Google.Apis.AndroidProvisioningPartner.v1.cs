@@ -2419,7 +2419,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceCustomerId")]
         public virtual string GoogleWorkspaceCustomerId { get; set; }
 
-        /// <summary>The ID of the Customer that purchased the Android device.</summary>
+        /// <summary>The ID of the Customer that purchased the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCompanyId")]
         public virtual System.Nullable<long> OwnerCompanyId { get; set; }
 
@@ -2485,7 +2485,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>
         /// The device model's name. Allowed values are listed in [Android
         /// models](/zero-touch/resources/manufacturer-names#model-names) and [Chrome OS
-        /// models](https://support.google.com/chrome/a/answer/10130175?hl=en#identify_compatible).
+        /// models](https://support.google.com/chrome/a/answer/10130175#identify_compatible).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -2935,7 +2935,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Captures the processing status for each device in the operation.</summary>
     public class PerDeviceStatusInBatch : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If processing succeeds, the device ID of the Android device.</summary>
+        /// <summary>If processing succeeds, the device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; }
 

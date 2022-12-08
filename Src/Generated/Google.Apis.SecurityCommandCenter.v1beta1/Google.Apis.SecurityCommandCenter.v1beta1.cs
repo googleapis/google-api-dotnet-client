@@ -3058,8 +3058,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Represents vulnerability specific fields like cve, cvss scores etc. CVE stands for Common Vulnerabilities
-        /// and Exposures (https://cve.mitre.org/about/)
+        /// Represents vulnerability-specific fields like CVE and CVS scores. CVE stands for Common Vulnerabilities and
+        /// Exposures (https://cve.mitre.org/about/)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerability")]
         public virtual Vulnerability Vulnerability { get; set; }
@@ -3307,10 +3307,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ExternalUid { get; set; }
 
         /// <summary>
-        /// External System Name e.g. jira, demisto, etc. e.g.:
-        /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-        /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-        /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+        /// Full resource name of the external system, for example:
+        /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+        /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+        /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4090,39 +4090,39 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Flag indicating unexpected modifications of kernel code memory.</summary>
+        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
         public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of ftrace points with callbacks pointing to regions that are not in the expected
-        /// kernel or module code range.
+        /// True when `ftrace` points are present with callbacks pointing to regions that are not in the expected kernel
+        /// or module code range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedFtraceHandler")]
         public virtual System.Nullable<bool> UnexpectedFtraceHandler { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of interrupt handlers that are are not in the expected kernel, module code regions.
+        /// True when interrupt handlers that are are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedInterruptHandler")]
         public virtual System.Nullable<bool> UnexpectedInterruptHandler { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of kernel code pages that are not in the expected kernel, module code regions.
+        /// True when kernel code pages that are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKernelCodePages")]
         public virtual System.Nullable<bool> UnexpectedKernelCodePages { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of kprobe points with callbacks pointing to regions that are not in the expected
-        /// kernel or module code range.
+        /// True when `kprobe` points are present with callbacks pointing to regions that are not in the expected kernel
+        /// or module code range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKprobeHandler")]
         public virtual System.Nullable<bool> UnexpectedKprobeHandler { get; set; }
 
         /// <summary>
-        /// Flag indicating unexpected process(es) in the scheduler run-queue, those that are in the run-queue, but not
-        /// in the process task-list.
+        /// True when unexpected processes in the scheduler run queue are present. Such processes are in the run queue,
+        /// but not in the process task list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
         public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
@@ -4132,8 +4132,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of system call handlers that are are not in the expected kernel, module code
-        /// regions.
+        /// True when system call handlers that are are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSystemCallHandler")]
         public virtual System.Nullable<bool> UnexpectedSystemCallHandler { get; set; }

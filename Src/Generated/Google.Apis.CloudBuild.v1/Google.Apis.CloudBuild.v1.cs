@@ -1188,7 +1188,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="name">
             /// This field should contain the name of the enterprise config resource. For example:
-            /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+            /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1207,7 +1207,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1263,7 +1263,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
             /// <param name="name">
             /// This field should contain the name of the enterprise config resource. For example:
-            /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+            /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1282,7 +1282,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1400,7 +1400,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-            /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+            /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
             {
@@ -1420,7 +1420,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3221,7 +3221,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="name">
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3240,7 +3240,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// This field should contain the name of the enterprise config resource. For example:
-                    /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                    /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3296,7 +3296,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
                 /// <param name="name">
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3315,7 +3315,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// This field should contain the name of the enterprise config resource. For example:
-                    /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                    /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3433,7 +3433,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
                 {
@@ -3453,7 +3453,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-                    /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+                    /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4056,8 +4056,9 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the
-                /// POST request that includes the location endpoint in the path. The POST request that does not include
-                /// the location endpoint in the path can only be used when running global triggers.
+                /// POST request that includes the location endpoint in the path (ex.
+                /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not
+                /// include the location endpoint in the path can only be used when running global triggers.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -4071,8 +4072,9 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the
-                /// POST request that includes the location endpoint in the path. The POST request that does not include
-                /// the location endpoint in the path can only be used when running global triggers.
+                /// POST request that includes the location endpoint in the path (ex.
+                /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not
+                /// include the location endpoint in the path can only be used when running global triggers.
                 /// </summary>
                 public class RunRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
@@ -5031,8 +5033,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST
-            /// request that includes the location endpoint in the path. The POST request that does not include the
-            /// location endpoint in the path can only be used when running global triggers.
+            /// request that includes the location endpoint in the path (ex.
+            /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not
+            /// include the location endpoint in the path can only be used when running global triggers.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
@@ -5044,8 +5047,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST
-            /// request that includes the location endpoint in the path. The POST request that does not include the
-            /// location endpoint in the path can only be used when running global triggers.
+            /// request that includes the location endpoint in the path (ex.
+            /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not
+            /// include the location endpoint in the path can only be used when running global triggers.
             /// </summary>
             public class RunRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
@@ -5940,7 +5944,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space
         /// will be used by the operating system and build utilities. Also note that this is the minimum disk size that
         /// will be allocated for the build -- the build may run with a larger disk than requested. At present, the
-        /// maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+        /// maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
@@ -6694,7 +6698,7 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-        /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6776,7 +6780,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     {
         /// <summary>
         /// Optional. The resource name of the github enterprise config that should be applied to this installation. For
-        /// example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfigResourceName")]
         public virtual string EnterpriseConfigResourceName { get; set; }
@@ -7301,6 +7305,17 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeredNetwork")]
         public virtual string PeeredNetwork { get; set; }
+
+        /// <summary>
+        /// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation. The IP and prefix
+        /// size are both optional. If unspecified, the default value for IP is blank (will use an automatic value from
+        /// the peered network), and the prefix size will default to 24 bits. e.g. `192.168.0.0/30` would specify a
+        /// subnet mask of 192.168.0.0 with a prefix size of 30 bits. `192.168.0.0` would specify a subnet mask of
+        /// 192.168.0.0 with a prefix size of 24 bits (the default prefix size). `/16` would specify a prefix size of 16
+        /// bits, with an unspecified IP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeredNetworkIpRange")]
+        public virtual string PeeredNetworkIpRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

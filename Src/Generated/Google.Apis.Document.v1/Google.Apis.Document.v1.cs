@@ -2984,7 +2984,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Placeholder. Styles for the Document.text.</summary>
+        /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentStyle> TextStyles { get; set; }
 
@@ -3108,10 +3108,10 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
         /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
-        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
-        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
-        /// the ISO 8601 text format.
+        /// normalized. For example, some processors may not generate `float` or `integer` normalized text by default.
+        /// Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO
+        /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
+        /// (`datetime_value`) is in the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -3163,6 +3163,25 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The Cloud Storage uri (a directory) of the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
+
+        /// <summary>Specifies the sharding config for the output document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardingConfig")]
+        public virtual GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig ShardingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The sharding config for the output document.</summary>
+    public class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of overlapping pages between consecutive shards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pagesOverlap")]
+        public virtual System.Nullable<int> PagesOverlap { get; set; }
+
+        /// <summary>The number of pages per shard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pagesPerShard")]
+        public virtual System.Nullable<int> PagesPerShard { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3294,8 +3313,8 @@ namespace Google.Apis.Document.v1.Data
         public virtual string LayoutType { get; set; }
 
         /// <summary>
-        /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element. This field is skipped when its value is the default 0. See
+        /// Required. Index into the Document.pages element, for example using `Document.pages` to locate the related
+        /// page element. This field is skipped when its value is the default `0`. See
         /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
@@ -3419,7 +3438,7 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this
-        /// indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        /// indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
@@ -3867,8 +3886,8 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// Name of the type. It must be unique within the schema file and cannot be a 'Common Type'. Besides that we
-        /// use the following naming conventions: - *use `snake_casing`* - name matching is case-insensitive - Maximum
-        /// 64 characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        /// use the following naming conventions: - *use `snake_casing`* - name matching is case-sensitive - Maximum 64
+        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         /// compatibility internal infrastructure and tooling can handle any ascii character) - The `/` is sometimes
         /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
         /// still be honored for backward compatibility.
@@ -4377,6 +4396,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>A set of Cloud Storage URIs of sample documents for this processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleDocumentUris")]
+        public virtual System.Collections.Generic.IList<string> SampleDocumentUris { get; set; }
+
         /// <summary>The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4770,7 +4793,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Placeholder. Styles for the Document.text.</summary>
+        /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentStyle> TextStyles { get; set; }
 
@@ -4894,10 +4917,10 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
         /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
-        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
-        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
-        /// the ISO 8601 text format.
+        /// normalized. For example, some processors may not generate `float` or `integer` normalized text by default.
+        /// Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO
+        /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
+        /// (`datetime_value`) is in the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -5051,8 +5074,8 @@ namespace Google.Apis.Document.v1.Data
         public virtual string LayoutType { get; set; }
 
         /// <summary>
-        /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element. This field is skipped when its value is the default 0. See
+        /// Required. Index into the Document.pages element, for example using `Document.pages` to locate the related
+        /// page element. This field is skipped when its value is the default `0`. See
         /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
@@ -5176,7 +5199,7 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this
-        /// indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        /// indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
@@ -5993,7 +6016,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Placeholder. Styles for the Document.text.</summary>
+        /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentStyle> TextStyles { get; set; }
 
@@ -6117,10 +6140,10 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
         /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
-        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
-        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
-        /// the ISO 8601 text format.
+        /// normalized. For example, some processors may not generate `float` or `integer` normalized text by default.
+        /// Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO
+        /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
+        /// (`datetime_value`) is in the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -6303,8 +6326,8 @@ namespace Google.Apis.Document.v1.Data
         public virtual string LayoutType { get; set; }
 
         /// <summary>
-        /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element. This field is skipped when its value is the default 0. See
+        /// Required. Index into the Document.pages element, for example using `Document.pages` to locate the related
+        /// page element. This field is skipped when its value is the default `0`. See
         /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
@@ -6428,7 +6451,7 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this
-        /// indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        /// indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }

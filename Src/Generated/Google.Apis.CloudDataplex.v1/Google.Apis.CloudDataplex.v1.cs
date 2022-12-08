@@ -8989,7 +8989,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation TableConditionExpectation { get; set; }
 
         /// <summary>
-        /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule. Default = 1.0
+        /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0,
+        /// 1.00 indicates default value (i.e. 1.0)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
@@ -9237,6 +9238,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionSpec")]
         public virtual GoogleCloudDataplexV1DataScanExecutionSpec ExecutionSpec { get; set; }
 
+        /// <summary>Output only. Status of the data scan execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual GoogleCloudDataplexV1DataScanExecutionStatus ExecutionStatus { get; set; }
+
         /// <summary>Optional. User-defined labels for the scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -9378,6 +9383,21 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
         public virtual GoogleCloudDataplexV1Trigger Trigger { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of the data scan execution.</summary>
+    public class GoogleCloudDataplexV1DataScanExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the latest DataScanJob ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestJobEndTime")]
+        public virtual object LatestJobEndTime { get; set; }
+
+        /// <summary>The time when the latest DataScanJob started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestJobStartTime")]
+        public virtual object LatestJobStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10635,6 +10655,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
+        /// <summary>Optional. Additional information about iceberg tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iceberg")]
+        public virtual GoogleCloudDataplexV1StorageFormatIcebergOptions Iceberg { get; set; }
+
         /// <summary>Optional. Additional information about CSV formatted data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("json")]
         public virtual GoogleCloudDataplexV1StorageFormatJsonOptions Json { get; set; }
@@ -10679,6 +10703,19 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes Iceberg data format.</summary>
+    public class GoogleCloudDataplexV1StorageFormatIcebergOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The location of where the iceberg metadata is present, must be within the table path
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataLocation")]
+        public virtual string MetadataLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

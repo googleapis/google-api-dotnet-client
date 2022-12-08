@@ -2828,6 +2828,141 @@ namespace Google.Apis.Dataproc.v1
                 public ClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    NodeGroups = new NodeGroupsResource(service);
+                }
+
+                /// <summary>Gets the NodeGroups resource.</summary>
+                public virtual NodeGroupsResource NodeGroups { get; }
+
+                /// <summary>The "nodeGroups" collection of methods.</summary>
+                public class NodeGroupsResource
+                {
+                    private const string Resource = "nodeGroups";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public NodeGroupsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the resource representation for a node group in a cluster.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the node group to retrieve. Format:
+                    /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the resource representation for a node group in a cluster.</summary>
+                    public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.NodeGroup>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the node group to retrieve. Format:
+                        /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+/nodeGroups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Resizes a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the node group to resize. Format:
+                    /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+                    /// </param>
+                    public virtual ResizeRequest Resize(Google.Apis.Dataproc.v1.Data.ResizeNodeGroupRequest body, string name)
+                    {
+                        return new ResizeRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Resizes a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+                    /// </summary>
+                    public class ResizeRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Resize request.</summary>
+                        public ResizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.ResizeNodeGroupRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the node group to resize. Format:
+                        /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataproc.v1.Data.ResizeNodeGroupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "resize";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:resize";
+
+                        /// <summary>Initializes Resize parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+/nodeGroups/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -6296,6 +6431,25 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Node group identification and configuration information.</summary>
+    public class AuxiliaryNodeGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Node group configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeGroup")]
+        public virtual NodeGroup NodeGroup { get; set; }
+
+        /// <summary>
+        /// Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers
+        /// (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from
+        /// 3 to 33 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupId")]
+        public virtual string NodeGroupId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Auxiliary services configuration for a Cluster.</summary>
     public class AuxiliaryServicesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6646,6 +6800,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingConfig")]
         public virtual AutoscalingConfig AutoscalingConfig { get; set; }
 
+        /// <summary>Optional. The node group settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryNodeGroups")]
+        public virtual System.Collections.Generic.IList<AuxiliaryNodeGroup> AuxiliaryNodeGroups { get; set; }
+
         /// <summary>
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
         /// output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US,
@@ -6966,6 +7124,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Driver scheduling configuration.</summary>
+    public class DriverSchedulingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The amount of memory in MB the driver is requesting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Required. The number of vCPUs the driver is requesting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcores")]
+        public virtual System.Nullable<int> Vcores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -7032,8 +7205,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the
         /// session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of
-        /// Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 10 minutes if not
-        /// set.
+        /// Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTtl")]
         public virtual object IdleTtl { get; set; }
@@ -7783,6 +7955,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; }
 
+        /// <summary>Optional. Driver scheduling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driverSchedulingConfig")]
+        public virtual DriverSchedulingConfig DriverSchedulingConfig { get; set; }
+
         /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; }
@@ -7941,19 +8117,19 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with
-        /// non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero
-        /// code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not
-        /// supported in Dataproc workflow template
-        /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        /// non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a
+        /// non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is
+        /// not supported in Dataproc workflow templates
+        /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresPerHour")]
         public virtual System.Nullable<int> MaxFailuresPerHour { get; set; }
 
         /// <summary>
-        /// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with
-        /// non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job
-        /// option is not supported in Dataproc workflow template
-        /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        /// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a
+        /// non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is
+        /// 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates
+        /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresTotal")]
         public virtual System.Nullable<int> MaxFailuresTotal { get; set; }
@@ -8403,7 +8579,40 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Node Group Affinity for clusters using sole-tenant node groups.</summary>
+    /// <summary>
+    /// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+    /// </summary>
+    public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035
+        /// (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1
+        /// to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no
+        /// more than 32 labelsn.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The Node group resource name (https://aip.dev/122).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The node group instance group configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupConfig")]
+        public virtual InstanceGroupConfig NodeGroupConfig { get; set; }
+
+        /// <summary>Required. Node group roles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not
+    /// related to the Dataproc NodeGroup resource.
+    /// </summary>
     public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9010,6 +9219,44 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to resize a node group.</summary>
+    public class ResizeNodeGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning)
+        /// allows the removal of nodes from the Compute Engine node group without interrupting jobs in progress. This
+        /// timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and
+        /// potentially interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+        /// timeout is 1 day. (see JSON representation of Duration
+        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only supported on Dataproc image versions
+        /// 1.2 and higher.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
+        public virtual object GracefulDecommissionTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. A unique ID used to identify the request. If the server receives two ResizeNodeGroupRequest
+        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.ResizeNodeGroupRequests)
+        /// with the same ID, the second request is ignored and the first google.longrunning.Operation created and
+        /// stored in the backend is returned.Recommendation: Set this value to a UUID
+        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
+        /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. The number of running instances for the node group to maintain. The group adds or removes
+        /// instances to maintain the number of instances specified by this parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<int> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime configuration for a workload.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9043,6 +9290,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approximateUsage")]
         public virtual UsageMetrics ApproximateUsage { get; set; }
+
+        /// <summary>Output only. Snapshot of current workload resource usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentUsage")]
+        public virtual UsageSnapshot CurrentUsage { get; set; }
 
         /// <summary>Output only. A URI pointing to the location of the diagnostics tarball.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticOutputUri")]
@@ -9745,6 +9996,31 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleStorageGbSeconds")]
         public virtual System.Nullable<long> ShuffleStorageGbSeconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The usage snaphot represents the resources consumed by a workload at a specified time.</summary>
+    public class UsageSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliDcu")]
+        public virtual System.Nullable<long> MilliDcu { get; set; }
+
+        /// <summary>
+        /// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleStorageGb")]
+        public virtual System.Nullable<long> ShuffleStorageGb { get; set; }
+
+        /// <summary>Optional. The timestamp of the usage snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual object SnapshotTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

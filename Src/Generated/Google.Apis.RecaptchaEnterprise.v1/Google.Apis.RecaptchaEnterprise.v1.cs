@@ -1206,6 +1206,34 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about account verification, used for identity verification.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Endpoints that can be used for identity verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo> Endpoints { get; set; }
+
+        /// <summary>
+        /// Language code preference for the verification message, set as a IETF BCP 47 language code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Output only. Result of the latest account verification challenge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestVerificationResult")]
+        public virtual string LatestVerificationResult { get; set; }
+
+        /// <summary>
+        /// Username of the account that is being verified. Deprecated. Customers should now provide the hashed account
+        /// ID field in Event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings specific to keys that can be used by Android apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1260,6 +1288,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Assessment returned by account defender when a hashed_account_id is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountDefenderAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment AccountDefenderAssessment { get; set; }
+
+        /// <summary>
+        /// Account verification information for identity verification. The assessment event must include a token and
+        /// site key to use this feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountVerification")]
+        public virtual GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo AccountVerification { get; set; }
 
         /// <summary>The event being assessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
@@ -1318,6 +1353,34 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passedCount")]
         public virtual System.Nullable<long> PassedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a verification endpoint that can be used for 2FA.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address for which to trigger a verification request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
+
+        /// <summary>Output only. Timestamp of the last successful verification for the endpoint, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastVerificationTime")]
+        public virtual object LastVerificationTime { get; set; }
+
+        /// <summary>
+        /// Phone number for which to trigger a verification request. Should be given in E.164 format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Output only. Token to provide to the client to trigger endpoint verification. It must be used within 15
+        /// minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestToken")]
+        public virtual string RequestToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1514,6 +1577,17 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>The migrate key request message.</summary>
     public class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Whether or not to do billing check. A reCAPTCHA Enterprise or migrated key behaves differently
+        /// than a reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
+        /// https://cloud.google.com/recaptcha-enterprise/quotas#quota_limit). To avoid any disruption of your usage, we
+        /// check that a billing account is present. If your usage of reCAPTCHA is under the free quota, you can safely
+        /// skip the billing check and proceed with the migration. See
+        /// https://cloud.google.com/recaptcha-enterprise/docs/billing-information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipBillingCheck")]
+        public virtual System.Nullable<bool> SkipBillingCheck { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
