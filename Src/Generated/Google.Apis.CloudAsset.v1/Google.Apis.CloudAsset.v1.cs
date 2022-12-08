@@ -1933,8 +1933,8 @@ namespace Google.Apis.CloudAsset.v1
         /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
         /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
         /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
-        /// only returns either: * resources of types supported by [searchable asset
-        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or * IAM
+        /// only returns either resources of types supported by [searchable asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or IAM
         /// policies.
         /// </summary>
         /// <param name="scope">
@@ -1953,8 +1953,8 @@ namespace Google.Apis.CloudAsset.v1
         /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
         /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
         /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
-        /// only returns either: * resources of types supported by [searchable asset
-        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or * IAM
+        /// only returns either resources of types supported by [searchable asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or IAM
         /// policies.
         /// </summary>
         public class AnalyzeOrgPolicyGovernedAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPolicyGovernedAssetsResponse>

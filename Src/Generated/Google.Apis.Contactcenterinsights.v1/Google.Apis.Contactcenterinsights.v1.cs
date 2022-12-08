@@ -2870,6 +2870,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual GoogleCloudContactcenterinsightsV1AnalysisResult AnalysisResult { get; set; }
 
         /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelector AnnotatorSelector { get; set; }
+
+        /// <summary>
         /// Output only. The time at which the analysis was created, which occurs when the long-running operation
         /// completes.
         /// </summary>
@@ -2953,6 +2960,61 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordIndex")]
         public virtual System.Nullable<int> WordIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Selector of all available annotators and phrase matchers to run.</summary>
+    public class GoogleCloudContactcenterinsightsV1AnnotatorSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided
+        /// issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator
+        /// is set to true. If more than one issue model is provided, only the first provided issue model will be used
+        /// for inference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModels")]
+        public virtual System.Collections.Generic.IList<string> IssueModels { get; set; }
+
+        /// <summary>
+        /// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive
+        /// phrase matchers are provided, they will not be used. Phrase matchers will be run only if
+        /// run_phrase_matcher_annotator is set to true. Format:
+        /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
+        public virtual System.Collections.Generic.IList<string> PhraseMatchers { get; set; }
+
+        /// <summary>Whether to run the entity annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
+        public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
+
+        /// <summary>Whether to run the intent annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runIntentAnnotator")]
+        public virtual System.Nullable<bool> RunIntentAnnotator { get; set; }
+
+        /// <summary>Whether to run the interruption annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runInterruptionAnnotator")]
+        public virtual System.Nullable<bool> RunInterruptionAnnotator { get; set; }
+
+        /// <summary>
+        /// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runIssueModelAnnotator")]
+        public virtual System.Nullable<bool> RunIssueModelAnnotator { get; set; }
+
+        /// <summary>Whether to run the active phrase matcher annotator(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runPhraseMatcherAnnotator")]
+        public virtual System.Nullable<bool> RunPhraseMatcherAnnotator { get; set; }
+
+        /// <summary>Whether to run the sentiment annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSentimentAnnotator")]
+        public virtual System.Nullable<bool> RunSentimentAnnotator { get; set; }
+
+        /// <summary>Whether to run the silence annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSilenceAnnotator")]
+        public virtual System.Nullable<bool> RunSilenceAnnotator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3060,6 +3122,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. Percentage of selected conversation to analyze, between [0, 100].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisPercentage")]
         public virtual System.Nullable<float> AnalysisPercentage { get; set; }
+
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelector AnnotatorSelector { get; set; }
 
         /// <summary>Required. Filter used to select the subset of conversations to analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -3534,6 +3603,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata for a create analysis operation.</summary>
     public class GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The annotator selector used for the analysis (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelector AnnotatorSelector { get; set; }
+
         /// <summary>Output only. The Conversation that this Analysis Operation belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
         public virtual string Conversation { get; set; }
@@ -4140,6 +4213,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputDataConfig")]
         public virtual GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig InputDataConfig { get; set; }
 
+        /// <summary>Output only. Number of issues in this issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueCount")]
+        public virtual System.Nullable<long> IssueCount { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the issue model. Format:
         /// projects/{project}/locations/{location}/issueModels/{issue_model}
@@ -4594,6 +4671,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelector AnnotatorSelector { get; set; }
+
+        /// <summary>
         /// Percentage of conversations created using Dialogflow runtime integration to analyze automatically, between
         /// [0, 100].
         /// </summary>
@@ -4737,6 +4821,61 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Selector of all available annotators and phrase matchers to run.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided
+        /// issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator
+        /// is set to true. If more than one issue model is provided, only the first provided issue model will be used
+        /// for inference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModels")]
+        public virtual System.Collections.Generic.IList<string> IssueModels { get; set; }
+
+        /// <summary>
+        /// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive
+        /// phrase matchers are provided, they will not be used. Phrase matchers will be run only if
+        /// run_phrase_matcher_annotator is set to true. Format:
+        /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
+        public virtual System.Collections.Generic.IList<string> PhraseMatchers { get; set; }
+
+        /// <summary>Whether to run the entity annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
+        public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
+
+        /// <summary>Whether to run the intent annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runIntentAnnotator")]
+        public virtual System.Nullable<bool> RunIntentAnnotator { get; set; }
+
+        /// <summary>Whether to run the interruption annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runInterruptionAnnotator")]
+        public virtual System.Nullable<bool> RunInterruptionAnnotator { get; set; }
+
+        /// <summary>
+        /// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runIssueModelAnnotator")]
+        public virtual System.Nullable<bool> RunIssueModelAnnotator { get; set; }
+
+        /// <summary>Whether to run the active phrase matcher annotator(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runPhraseMatcherAnnotator")]
+        public virtual System.Nullable<bool> RunPhraseMatcherAnnotator { get; set; }
+
+        /// <summary>Whether to run the sentiment annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSentimentAnnotator")]
+        public virtual System.Nullable<bool> RunSentimentAnnotator { get; set; }
+
+        /// <summary>Whether to run the silence annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSilenceAnnotator")]
+        public virtual System.Nullable<bool> RunSilenceAnnotator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata for a bulk analyze conversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4778,6 +4917,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisPercentage")]
         public virtual System.Nullable<float> AnalysisPercentage { get; set; }
 
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector AnnotatorSelector { get; set; }
+
         /// <summary>Required. Filter used to select the subset of conversations to analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -4808,6 +4954,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata for a create analysis operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The annotator selector used for the analysis (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector AnnotatorSelector { get; set; }
+
         /// <summary>Output only. The Conversation that this Analysis Operation belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
         public virtual string Conversation { get; set; }
@@ -5122,6 +5272,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Configs for the input data that used to create the issue model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputDataConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig InputDataConfig { get; set; }
+
+        /// <summary>Output only. Number of issues in this issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueCount")]
+        public virtual System.Nullable<long> IssueCount { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the issue model. Format:

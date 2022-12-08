@@ -676,10 +676,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a big query export.</summary>
+            /// <summary>Creates a BigQuery export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the new big query export's parent. Its format is
+            /// Required. Resource name of the new BigQuery export's parent. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
@@ -687,7 +687,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a big query export.</summary>
+            /// <summary>Creates a BigQuery export.</summary>
             public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -699,7 +699,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the new big query export's parent. Its format is
+                /// Required. Resource name of the new BigQuery export's parent. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -751,9 +751,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
             }
 
-            /// <summary>Deletes an existing big query export.</summary>
+            /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the big query export to delete. Its format is
+            /// Required. Name of the BigQuery export to delete. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -762,7 +762,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an existing big query export.</summary>
+            /// <summary>Deletes an existing BigQuery export.</summary>
             public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -773,7 +773,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the big query export to delete. Its format is
+                /// Required. Name of the BigQuery export to delete. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -804,9 +804,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
             }
 
-            /// <summary>Gets a big query export.</summary>
+            /// <summary>Gets a BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the big query export to retrieve. Its format is
+            /// Required. Name of the BigQuery export to retrieve. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -815,7 +815,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a big query export.</summary>
+            /// <summary>Gets a BigQuery export.</summary>
             public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -826,7 +826,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the big query export to retrieve. Its format is
+                /// Required. Name of the BigQuery export to retrieve. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -1516,7 +1516,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and
-                /// 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+                /// 128 characters, and contain alphanumeric characters, underscores or hyphens only.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
@@ -1894,10 +1894,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>Updates external system. This is for a given finding.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// External System Name e.g. jira, demisto, etc. e.g.:
-                    /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-                    /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-                    /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+                    /// Full resource name of the external system, for example:
+                    /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+                    /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+                    /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
                     {
@@ -1916,10 +1916,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         }
 
                         /// <summary>
-                        /// External System Name e.g. jira, demisto, etc. e.g.:
-                        /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-                        /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-                        /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+                        /// Full resource name of the external system, for example:
+                        /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+                        /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+                        /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2338,9 +2338,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Updates the mute state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the finding. See:
-                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// Required. The [relative resource
+                /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
+                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
                 /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
                 /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
@@ -2361,9 +2361,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the finding. See:
-                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// Required. The [relative resource
+                    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
+                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
                     /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
                     /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
@@ -2402,11 +2402,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The relative resource name of the finding. See:
-                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
-                /// </param>
+                /// <param name="name"><c>null</c></param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
                     return new SetStateRequest(service, body, name);
@@ -2423,11 +2419,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The relative resource name of the finding. See:
-                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3116,10 +3107,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a big query export.</summary>
+            /// <summary>Creates a BigQuery export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the new big query export's parent. Its format is
+            /// Required. Resource name of the new BigQuery export's parent. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
@@ -3127,7 +3118,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a big query export.</summary>
+            /// <summary>Creates a BigQuery export.</summary>
             public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3139,7 +3130,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the new big query export's parent. Its format is
+                /// Required. Resource name of the new BigQuery export's parent. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3191,9 +3182,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
             }
 
-            /// <summary>Deletes an existing big query export.</summary>
+            /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the big query export to delete. Its format is
+            /// Required. Name of the BigQuery export to delete. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -3202,7 +3193,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an existing big query export.</summary>
+            /// <summary>Deletes an existing BigQuery export.</summary>
             public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3213,7 +3204,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the big query export to delete. Its format is
+                /// Required. Name of the BigQuery export to delete. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -3244,9 +3235,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
             }
 
-            /// <summary>Gets a big query export.</summary>
+            /// <summary>Gets a BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the big query export to retrieve. Its format is
+            /// Required. Name of the BigQuery export to retrieve. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -3255,7 +3246,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a big query export.</summary>
+            /// <summary>Gets a BigQuery export.</summary>
             public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3266,7 +3257,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the big query export to retrieve. Its format is
+                /// Required. Name of the BigQuery export to retrieve. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -3956,7 +3947,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and
-                /// 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+                /// 128 characters, and contain alphanumeric characters, underscores or hyphens only.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
@@ -4610,10 +4601,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>Updates external system. This is for a given finding.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// External System Name e.g. jira, demisto, etc. e.g.:
-                    /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-                    /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-                    /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+                    /// Full resource name of the external system, for example:
+                    /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+                    /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+                    /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
                     {
@@ -4632,10 +4623,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         }
 
                         /// <summary>
-                        /// External System Name e.g. jira, demisto, etc. e.g.:
-                        /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-                        /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-                        /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+                        /// Full resource name of the external system, for example:
+                        /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+                        /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+                        /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -5132,9 +5123,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Updates the mute state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the finding. See:
-                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// Required. The [relative resource
+                /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
+                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
                 /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
                 /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
@@ -5155,9 +5146,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the finding. See:
-                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// Required. The [relative resource
+                    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
+                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
                     /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
                     /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
@@ -5196,11 +5187,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The relative resource name of the finding. See:
-                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
-                /// </param>
+                /// <param name="name"><c>null</c></param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
                     return new SetStateRequest(service, body, name);
@@ -5217,11 +5204,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The relative resource name of the finding. See:
-                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6333,10 +6315,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a big query export.</summary>
+            /// <summary>Creates a BigQuery export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the new big query export's parent. Its format is
+            /// Required. Resource name of the new BigQuery export's parent. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
@@ -6344,7 +6326,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a big query export.</summary>
+            /// <summary>Creates a BigQuery export.</summary>
             public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -6356,7 +6338,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the new big query export's parent. Its format is
+                /// Required. Resource name of the new BigQuery export's parent. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6408,9 +6390,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
             }
 
-            /// <summary>Deletes an existing big query export.</summary>
+            /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the big query export to delete. Its format is
+            /// Required. Name of the BigQuery export to delete. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -6419,7 +6401,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an existing big query export.</summary>
+            /// <summary>Deletes an existing BigQuery export.</summary>
             public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -6430,7 +6412,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the big query export to delete. Its format is
+                /// Required. Name of the BigQuery export to delete. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -6461,9 +6443,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
             }
 
-            /// <summary>Gets a big query export.</summary>
+            /// <summary>Gets a BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the big query export to retrieve. Its format is
+            /// Required. Name of the BigQuery export to retrieve. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -6472,7 +6454,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a big query export.</summary>
+            /// <summary>Gets a BigQuery export.</summary>
             public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -6483,7 +6465,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the big query export to retrieve. Its format is
+                /// Required. Name of the BigQuery export to retrieve. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -7173,7 +7155,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and
-                /// 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+                /// 128 characters, and contain alphanumeric characters, underscores or hyphens only.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
@@ -7551,10 +7533,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>Updates external system. This is for a given finding.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// External System Name e.g. jira, demisto, etc. e.g.:
-                    /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-                    /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-                    /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+                    /// Full resource name of the external system, for example:
+                    /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+                    /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+                    /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
                     {
@@ -7573,10 +7555,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         }
 
                         /// <summary>
-                        /// External System Name e.g. jira, demisto, etc. e.g.:
-                        /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-                        /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-                        /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+                        /// Full resource name of the external system, for example:
+                        /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+                        /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+                        /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7995,9 +7977,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Updates the mute state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the finding. See:
-                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// Required. The [relative resource
+                /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
+                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
                 /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
                 /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                 /// </param>
@@ -8018,9 +8000,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the finding. See:
-                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// Required. The [relative resource
+                    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
+                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
                     /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
                     /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
                     /// </summary>
@@ -8059,11 +8041,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The relative resource name of the finding. See:
-                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
-                /// </param>
+                /// <param name="name"><c>null</c></param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
                     return new SetStateRequest(service, body, name);
@@ -8080,11 +8058,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The relative resource name of the finding. See:
-                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -9285,8 +9258,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Represents vulnerability specific fields like cve, cvss scores etc. CVE stands for Common Vulnerabilities
-        /// and Exposures (https://cve.mitre.org/about/)
+        /// Represents vulnerability-specific fields like CVE and CVS scores. CVE stands for Common Vulnerabilities and
+        /// Exposures (https://cve.mitre.org/about/)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerability")]
         public virtual Vulnerability Vulnerability { get; set; }
@@ -9534,10 +9507,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ExternalUid { get; set; }
 
         /// <summary>
-        /// External System Name e.g. jira, demisto, etc. e.g.:
-        /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
-        /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
-        /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
+        /// Full resource name of the external system, for example:
+        /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+        /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+        /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10281,39 +10254,39 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Flag indicating unexpected modifications of kernel code memory.</summary>
+        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
         public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of ftrace points with callbacks pointing to regions that are not in the expected
-        /// kernel or module code range.
+        /// True when `ftrace` points are present with callbacks pointing to regions that are not in the expected kernel
+        /// or module code range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedFtraceHandler")]
         public virtual System.Nullable<bool> UnexpectedFtraceHandler { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of interrupt handlers that are are not in the expected kernel, module code regions.
+        /// True when interrupt handlers that are are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedInterruptHandler")]
         public virtual System.Nullable<bool> UnexpectedInterruptHandler { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of kernel code pages that are not in the expected kernel, module code regions.
+        /// True when kernel code pages that are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKernelCodePages")]
         public virtual System.Nullable<bool> UnexpectedKernelCodePages { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of kprobe points with callbacks pointing to regions that are not in the expected
-        /// kernel or module code range.
+        /// True when `kprobe` points are present with callbacks pointing to regions that are not in the expected kernel
+        /// or module code range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKprobeHandler")]
         public virtual System.Nullable<bool> UnexpectedKprobeHandler { get; set; }
 
         /// <summary>
-        /// Flag indicating unexpected process(es) in the scheduler run-queue, those that are in the run-queue, but not
-        /// in the process task-list.
+        /// True when unexpected processes in the scheduler run queue are present. Such processes are in the run queue,
+        /// but not in the process task list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
         public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
@@ -10323,8 +10296,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
 
         /// <summary>
-        /// Flag indicating presence of system call handlers that are are not in the expected kernel, module code
-        /// regions.
+        /// True when system call handlers that are are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSystemCallHandler")]
         public virtual System.Nullable<bool> UnexpectedSystemCallHandler { get; set; }
@@ -11141,7 +11113,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for updating a finding's state.</summary>
+    /// <summary>
+    /// Request message for updating a finding's state. The [relative resource
+    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example:
+    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+    /// </summary>
     public class SetFindingStateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The time at which the updated state takes effect.</summary>

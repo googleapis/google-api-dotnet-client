@@ -2546,6 +2546,15 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Nullable<bool> AllTrafficOnLatestRevision { get; set; }
 
         /// <summary>
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        /// Supports the same values as Cloud Run, see
+        /// https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1
+        /// vCPU
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCpu")]
+        public virtual string AvailableCpu { get; set; }
+
+        /// <summary>
         /// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no
         /// unit is supplied the value is interpreted as bytes. See
         /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
@@ -2573,6 +2582,12 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Nullable<int> MaxInstanceCount { get; set; }
 
         /// <summary>
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
+        public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
+
+        /// <summary>
         /// The limit on the minimum number of function instances that may coexist at a given time. Function instances
         /// are kept in idle state for a short period after they finished executing the request to reduce cold start
         /// time for subsequent requests. Setting a minimum instance count will ensure that the given number of
@@ -2595,9 +2610,9 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Collections.Generic.IList<SecretVolume> SecretVolumes { get; set; }
 
         /// <summary>
-        /// Optional. Security level configure whether the function only accepts https. This configuration is only
-        /// applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd
-        /// Gen functions are https ONLY.
+        /// Security level configure whether the function only accepts https. This configuration is only applicable to
+        /// 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions
+        /// are https ONLY.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityLevel")]
         public virtual string SecurityLevel { get; set; }

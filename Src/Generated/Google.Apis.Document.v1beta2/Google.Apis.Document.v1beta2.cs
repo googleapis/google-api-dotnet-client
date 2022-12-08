@@ -1807,7 +1807,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Placeholder. Styles for the Document.text.</summary>
+        /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentStyle> TextStyles { get; set; }
 
@@ -1931,10 +1931,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
         /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
-        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
-        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
-        /// the ISO 8601 text format.
+        /// normalized. For example, some processors may not generate `float` or `integer` normalized text by default.
+        /// Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO
+        /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
+        /// (`datetime_value`) is in the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -2088,8 +2088,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string LayoutType { get; set; }
 
         /// <summary>
-        /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element. This field is skipped when its value is the default 0. See
+        /// Required. Index into the Document.pages element, for example using `Document.pages` to locate the related
+        /// page element. This field is skipped when its value is the default `0`. See
         /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
@@ -2213,7 +2213,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this
-        /// indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        /// indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
@@ -3058,7 +3058,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Placeholder. Styles for the Document.text.</summary>
+        /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentStyle> TextStyles { get; set; }
 
@@ -3182,10 +3182,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
         /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
-        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
-        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
-        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
-        /// the ISO 8601 text format.
+        /// normalized. For example, some processors may not generate `float` or `integer` normalized text by default.
+        /// Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO
+        /// 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
+        /// (`datetime_value`) is in the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -3368,8 +3368,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string LayoutType { get; set; }
 
         /// <summary>
-        /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element. This field is skipped when its value is the default 0. See
+        /// Required. Index into the Document.pages element, for example using `Document.pages` to locate the related
+        /// page element. This field is skipped when its value is the default `0`. See
         /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
@@ -3493,7 +3493,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this
-        /// indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        /// indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
