@@ -36,10 +36,10 @@ limitations under the License.
 // Probably needed to reproduce failure
 
 #define TestUploadInBadServer_NeedsResume
-#define TestChunkSize
 #define TestUploadCancelled
 
 // In progress
+// #define TestChunkSize
 
 // Still to be analysed
 
@@ -527,7 +527,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public async Task TestUploadCancelled(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(/*1, 2, 3, 4, */5)] int cancelOnCall)
+            [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
         {
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
