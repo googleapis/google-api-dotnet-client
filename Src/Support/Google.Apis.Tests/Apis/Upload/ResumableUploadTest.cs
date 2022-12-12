@@ -31,7 +31,7 @@ limitations under the License.
 
 // In progress
 
-//#define TestUploadInBadServer_NeedsResume
+#define TestUploadInBadServer_NeedsResume
 //#define TestUploadInBadServer_UploaderRestart
 #define TestUploadWithUploaderRestart_UnknownSize
 
