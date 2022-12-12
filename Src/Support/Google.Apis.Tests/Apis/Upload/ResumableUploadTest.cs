@@ -30,20 +30,20 @@ limitations under the License.
 //#define TestUploadInPartialServer
 //#define TestUploadWithQueryAndPathParameters
 //#define TestUploadInBadServer_NotFound_JsonError
+//#define TestUploadWithRequestAndResponseBody
 
 // Probably needed to reproduce failure
 
 #define TestUploadInBadServer_NeedsResume
 #define TestUploadWithUploaderRestart_UnknownSize
+#define TestChunkSize
 
 // In progress
 
-//#define TestUploadWithRequestAndResponseBody
-#define TestChunkSize
+//#define TestUploadCancelled
 
 
 // Still to be analysed
-#define TestUploadCancelled
 
 using Google.Apis.Json;
 using Google.Apis.Services;
