@@ -37,10 +37,10 @@ limitations under the License.
 #define TestUploadInBadServer_NeedsResume
 #define TestUploadWithUploaderRestart_UnknownSize
 #define TestChunkSize
+#define TestUploadCancelled
 
 // In progress
 
-//#define TestUploadCancelled
 
 
 // Still to be analysed
