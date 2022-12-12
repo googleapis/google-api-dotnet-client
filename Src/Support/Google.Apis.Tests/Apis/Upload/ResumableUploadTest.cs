@@ -41,6 +41,519 @@ namespace Google.Apis.Tests.Apis.Upload
     /// </summary>
     public class ResumableUploadTest : IDisposable
     {
+        #region Tests
+        /// <summary>
+        /// Upload completes in a single chunk.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInSingleChunk(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues("", "text/plain")] string contentType,
+            [CombinatorialValues(0, 10)] int chunkSizeDelta)
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(
+                    service, "SingleChunk", "POST", content, contentType, uploadLength + chunkSizeDelta, _outputHelper);
+                var progress = uploader.Upload();
+                Assert.Equal(2, server.Requests.Count);
+                var r0 = server.Requests[0];
+                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
+                Assert.Equal(knownSize ? uploadTestBytes.Length.ToString() : null, r0.Headers["X-Upload-Content-Length"]);
+                var r1 = server.Requests[1];
+                Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
+                Assert.Equal($"bytes 0-{uploadLength - 1}/{uploadLength}", r1.Headers["Content-Range"]);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(uploadTestBytes.Length, progress.BytesSent);
+            }
+        }
+
+        /// <summary>
+        /// An upload using a pre-established session.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public async Task TestInitiatedResumableUpload(
+            [CombinatorialValues("", "text/plain")] string contentType)
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(uploadTestBytes);
+                var tmpUploader = new TestResumableUpload(
+                    service, "SingleChunk", "POST", content, contentType, uploadLength, _outputHelper);
+                var uploadUri = await tmpUploader.InitiateSessionAsync();
+
+                var uploader = ResumableUpload.CreateFromUploadUri(uploadUri, content);
+                var progress = uploader.Upload();
+
+                Assert.Equal(2, server.Requests.Count);
+                var r0 = server.Requests[0];
+                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
+                Assert.Equal(uploadTestBytes.Length.ToString(), r0.Headers["X-Upload-Content-Length"]);
+                var r1 = server.Requests[1];
+                Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
+                Assert.Equal($"bytes 0-{uploadLength - 1}/{uploadLength}", r1.Headers["Content-Range"]);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(uploadTestBytes.Length, progress.BytesSent);
+            }
+        }
+
+        /// <summary>
+        /// Upload of an empty file.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadEmptyFile(
+            [CombinatorialValues(true, false)] bool knownSize)
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(new byte[0]) : new UnknownSizeMemoryStream(new byte[0]);
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
+                var progress = uploader.Upload();
+                Assert.Equal(2, server.Requests.Count);
+                var r0 = server.Requests[0];
+                Assert.Equal(knownSize ? "0" : null, r0.Headers["X-Upload-Content-Length"]);
+                var r1 = server.Requests[1];
+                Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
+                Assert.Equal("bytes *" + "/0", r1.Headers["Content-Range"]);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(0, progress.BytesSent);
+            }
+        }
+
+        [Fact]
+        public void TestUploadStreamDisposedBeforeConstruction()
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(new byte[10]);
+                content.Dispose();
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
+                var progress = uploader.Upload();
+                Assert.IsType<ObjectDisposedException>(progress.Exception);
+            }
+        }
+
+        [Fact]
+        public void TestUploadStreamDisposedBetweenConstructionAndUpload()
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(new byte[10]);
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
+                content.Dispose();
+                var progress = uploader.Upload();
+                Assert.IsType<ObjectDisposedException>(progress.Exception);
+            }
+        }
+
+        /// <summary>
+        /// An upload in multiple chunks, with no server errors.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInMultipleChunks(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(false, true)] bool lowerRange)
+        {
+            var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
+            using (var server = new MultiChunkServer(_server, lowerRange))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                var progress = uploader.Upload();
+                Assert.Equal(expectedCallCount, server.Requests.Count);
+                Assert.Equal(uploadTestBytes, server.Bytes);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+            }
+        }
+
+        // As TestUploadInMultipleChunks, but testing stream interception
+        [Theory, CombinatorialData]
+        public void TestUploadInMultipleChunks_Interception(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(true, false)] bool ignoreFirstUploadCall)
+        {
+            // One fewer interception call than server calls, as there's no initialization call.
+            var expectedInterceptionCount = (uploadLength + chunkSize - 1) / chunkSize;
+            using (var server = new MultiChunkServer(_server, ignoreFirstUploadCall: ignoreFirstUploadCall))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                int interceptionCount = 0;
+                MemoryStream interceptedBytes = new MemoryStream();
+                uploader.UploadStreamInterceptor = (buffer, offset, count) =>
+                {
+                    interceptedBytes.Write(buffer, offset, count);
+                    interceptionCount++;
+                };
+                var progress = uploader.Upload();
+                Assert.Equal(expectedInterceptionCount, interceptionCount);
+                Assert.Equal(uploadTestBytes, interceptedBytes.ToArray());
+            }
+        }
+
+        /// <summary>
+        /// Check the upload progress is correct during upload.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadProgress(
+            [CombinatorialValues(true, false)] bool knownSize)
+        {
+            int chunkSize = 200;
+            using (var server = new MultiChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                var progress = new List<IUploadProgress>();
+                uploader.ProgressChanged += p => progress.Add(p);
+                uploader.Upload();
+                Assert.Equal(4, progress.Count);
+                Assert.Equal(UploadStatus.Starting, progress[0].Status);
+                Assert.Equal(0, progress[0].BytesSent);
+                Assert.Equal(UploadStatus.Uploading, progress[1].Status);
+                Assert.Equal(chunkSize, progress[1].BytesSent);
+                Assert.Equal(UploadStatus.Uploading, progress[2].Status);
+                Assert.Equal(chunkSize * 2, progress[2].BytesSent);
+                Assert.Equal(UploadStatus.Completed, progress[3].Status);
+                Assert.Equal(uploadLength, progress[3].BytesSent);
+            }
+        }
+
+
+        /// <summary>
+        /// Server 404s, with a plain-text (non-JSON) body.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInBadServer_NotFound_PlainTextError(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
+        {
+            string plainTextError = "Not Found";
+            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, plainTextError))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100, _outputHelper);
+                IUploadProgress lastProgress = null;
+                uploader.ProgressChanged += p => lastProgress = p;
+                uploader.Upload();
+                Assert.NotNull(lastProgress);
+                Assert.Equal(UploadStatus.Failed, lastProgress.Status);
+                var exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
+                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. No error message was specified.", exception.Message);
+                Assert.Contains(
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is NotFound.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are: {plainTextError}", exception.ToString());
+                Assert.True(exception.Error.IsOnlyRawContent);
+            }
+        }
+
+        /// <summary>
+        /// Server fails with occasional 500s, which the uploader transparently copes with.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInBadServer_ServerUnavailable(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 100 })] int[] dodgyBytes,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize)
+        {
+            var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
+            expectedCallCount += dodgyBytes.Length * 2;
+            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.ServiceUnavailable))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                var progress = uploader.Upload();
+                Assert.Equal(expectedCallCount, server.Requests.Count);
+                Assert.Equal(uploadTestBytes, server.Bytes);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+            }
+        }
+
+        /// <summary>
+        /// Server fails with 400s, so Resume() calls are required.
+        /// </summary>
+        /// <remarks>
+        /// The test parameters are chosen such that:
+        /// Everything is tested with a seekable stream and a non-seekable stream
+        /// Server fails on 1st, middle, and last chunk
+        /// Chunked in many chunks, 2 chunks and 1 chunk
+        /// Buffersize is both larger, smaller, the same, and a divisor of chunkSize
+        /// </remarks>
+        [Theory, CombinatorialData]
+        public void TestUploadInBadServer_NeedsResume(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(4096, 51, 100)] int bufferSize)
+        {
+            var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
+                + dodgyBytes.Length * 2;
+            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                uploader.BufferSize = bufferSize;
+                var progress = uploader.Upload();
+                int sanity = 0;
+                while (progress.Status == UploadStatus.Failed && sanity++ < 10)
+                {
+                    progress = uploader.Resume();
+                }
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(expectedCallCount, server.Requests.Count);
+                Assert.Equal(uploadTestBytes, server.Bytes);
+            }
+        }
+
+        /// <summary>
+        /// Server fails with 400s, so resume calls are required.
+        /// Resume is done as if the entire client program has restarted (ie with a fresh uploader).
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInBadServer_UploaderRestart(
+            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize)
+        {
+            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(uploadTestBytes);
+                Uri uploadUri = null;
+                IUploadProgress progress;
+                {
+                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                    uploader.UploadSessionData += s => uploadUri = s.UploadUri;
+                    progress = uploader.Upload();
+                }
+                Assert.NotNull(uploadUri);
+                int sanity = 0;
+                while (progress.Status == UploadStatus.Failed && sanity++ < 10)
+                {
+                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                    progress = uploader.Resume(uploadUri);
+                }
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(uploadTestBytes, server.Bytes);
+            }
+        }
+
+        /// <summary>
+        /// Resuming on program restart with a non-seekable stream is not supported.
+        /// </summary>
+        [Fact]
+        public void TestUploadWithUploaderRestart_UnknownSize()
+        {
+            // Unknown stream size not supported, exception always thrown
+            using (var server = new MultiChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100, _outputHelper);
+                var url = new Uri("http://what.ever/");
+                Assert.ThrowsAsync<NotImplementedException>(async () => await uploader.ResumeAsync(url));
+            }
+        }
+
+
+        /// <summary>
+        /// Upload correctly handles server accepting only partial uploaded chunks.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInPartialServer(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(80, 150)] int partialSize,
+            [CombinatorialValues(100, 200)] int chunkSize)
+        {
+            var actualChunkSize = Math.Min(partialSize, chunkSize);
+            var expectedCallCount = (uploadLength + actualChunkSize - 1) / actualChunkSize + 1;
+            using (var server = new MultiChunkPartialServer(_server, partialSize))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                var progress = uploader.Upload();
+                Assert.Equal(expectedCallCount, server.Requests.Count);
+                Assert.Equal(uploadTestBytes, server.Bytes);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+            }
+        }
+
+        /// <summary>
+        /// Uploader correctly adds path and query parameters to initial server call.
+        /// </summary>
+        [Fact]
+        public void TestUploadWithQueryAndPathParameters()
+        {
+            var id = 123;
+            var queryA = "valuea";
+            var queryB = "VALUEB";
+            var pathAndQuery = $"testPath/{id}?uploadType=resumable&queryA={queryA}&queryB={queryB}&time=2002-02-25T12%3A57%3A32.777Z";
+            using (var server = new MultiChunkQueriedServer(_server, pathAndQuery))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUploadWithParameters(service, "testPath/{id}", "POST", content, "text/plain", 100, _outputHelper)
+                {
+                    Id = id,
+                    QueryA = "valuea",
+                    QueryB = "VALUEB",
+                    MinTime = new DateTime(2002, 2, 25, 12, 57, 32, 777, DateTimeKind.Utc),
+                };
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(6, server.Requests.Count);
+            }
+        }
+
+        /// <summary>
+        /// Server 404s, with a JSON body.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadInBadServer_NotFound_JsonError(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
+        {
+            string jsonError =
+                @"{ ""error"": {
+                    ""errors"": [
+                        {
+                            ""domain"": ""global"",
+                            ""reason"": ""required"",
+                            ""message"": ""Login Required"",
+                            ""locationType"": ""header"",
+                            ""location"": ""Authorization""
+                        }
+                    ],
+                    ""code"": 401,
+                    ""message"": ""Login Required""
+                  }}";
+            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, jsonError))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100, _outputHelper);
+                IUploadProgress lastProgress = null;
+                uploader.ProgressChanged += p => lastProgress = p;
+                uploader.Upload();
+                Assert.NotNull(lastProgress);
+                Assert.Equal(UploadStatus.Failed, lastProgress.Status);
+                var exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
+                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. Login Required", exception.Message);
+                Assert.Contains("Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]", exception.ToString());
+                Assert.Equal("Login Required", exception.Error.Message);
+            }
+        }
+
+        /// <summary>
+        /// Async uploads can be cancelled at any time.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public async Task TestUploadCancelled(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
+        {
+            int chunkSize = 100;
+            using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                if (cancelOnCall == 1)
+                {
+                    var progress = uploader.UploadAsync(server.CancellationToken).Result;
+                    Assert.Equal(UploadStatus.Failed, progress.Status);
+                    Assert.IsAssignableFrom<OperationCanceledException>(progress.Exception);
+                }
+                else
+                {
+                    await Assert.ThrowsAsync<TaskCanceledException>(
+                        () => uploader.UploadAsync(server.CancellationToken));
+                }
+                Assert.Equal(cancelOnCall, server.Requests.Count);
+            }
+        }
+
+        /// <summary>
+        /// Uploader correctly processes request and response bodies.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestUploadWithRequestAndResponseBody(
+            [CombinatorialValues(false)] bool gzipEnabled) // TODO: Also with zip
+        {
+            var body = new TestRequest
+            {
+                Name = "test object",
+                Description = "the description",
+            };
+            var expectedResponse = new TestResponse
+            {
+                Name = "foo",
+                Id = 100,
+                Description = "bar",
+            };
+            using (var server = new MultiChunkRequestResponseServer<TestRequest, TestResponse>(_server, expectedResponse))
+            using (var service = new MockClientService(new BaseClientService.Initializer
+            {
+                GZipEnabled = gzipEnabled
+            }, server.HttpPrefix))
+            {
+                var content = new MemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUploadWithResponse<TestRequest, TestResponse>(
+                    service, "MultiChunk", "POST", content, "text/plain", 100)
+                {
+                    Body = body,
+                };
+                TestResponse response = null;
+                int reponseReceivedCount = 0;
+                uploader.ResponseReceived += (r) => { response = r; reponseReceivedCount++; };
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(body, server.Request);
+                Assert.Equal(expectedResponse, response);
+                Assert.Equal(expectedResponse, uploader.ResponseBody);
+                Assert.Equal(1, reponseReceivedCount);
+            }
+        }
+
+        /// <summary>
+        /// Client validates chunk-size correctly.
+        /// </summary>
+        [Fact]
+        public void TestChunkSize()
+        {
+            using (var service = new MockClientService(new BaseClientService.Initializer()))
+            {
+                var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
+                var upload = new TestResumableUpload(service, "whatever", "POST", stream, "text/plain", 100, _outputHelper);
+
+                // Negative chunk size.
+                Assert.Throws<ArgumentOutOfRangeException>(() => upload.ChunkSize = -1);
+                // Less than the minimum.
+                Assert.Throws<ArgumentOutOfRangeException>(() => upload.ChunkSize = TestResumableUpload.MinimumChunkSize - 1);
+                // Valid chunk size.
+                upload.ChunkSize = TestResumableUpload.MinimumChunkSize;
+                upload.ChunkSize = TestResumableUpload.MinimumChunkSize * 2;
+            }
+        }
+
+        #endregion
+
+        #region The rest
         /// <summary>
         /// Mock string to upload to the media server. It contains 454 bytes, and in most cases we will use a chunk 
         /// size of 100. There are 3 spaces on the end of each line because the original carriage return line endings
@@ -340,117 +853,6 @@ namespace Google.Apis.Tests.Apis.Upload
         private TestServer _server;
         private readonly ITestOutputHelper _outputHelper;
 
-        /*
-        /// <summary>
-        /// Upload completes in a single chunk.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInSingleChunk(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues("", "text/plain")] string contentType,
-            [CombinatorialValues(0, 10)] int chunkSizeDelta)
-        {
-            using (var server = new SingleChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(
-                    service, "SingleChunk", "POST", content, contentType, uploadLength + chunkSizeDelta, _outputHelper);
-                var progress = uploader.Upload();
-                Assert.Equal(2, server.Requests.Count);
-                var r0 = server.Requests[0];
-                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
-                Assert.Equal(knownSize ? uploadTestBytes.Length.ToString() : null, r0.Headers["X-Upload-Content-Length"]);
-                var r1 = server.Requests[1];
-                Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
-                Assert.Equal($"bytes 0-{uploadLength - 1}/{uploadLength}", r1.Headers["Content-Range"]);
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(uploadTestBytes.Length, progress.BytesSent);
-            }
-        }
-
-        /// <summary>
-        /// An upload using a pre-established session.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public async Task TestInitiatedResumableUpload(
-            [CombinatorialValues("", "text/plain")] string contentType)
-        {
-            using (var server = new SingleChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new MemoryStream(uploadTestBytes);
-                var tmpUploader = new TestResumableUpload(
-                    service, "SingleChunk", "POST", content, contentType, uploadLength, _outputHelper);
-                var uploadUri = await tmpUploader.InitiateSessionAsync();
-
-                var uploader = ResumableUpload.CreateFromUploadUri(uploadUri, content);
-                var progress = uploader.Upload();
-
-                Assert.Equal(2, server.Requests.Count);
-                var r0 = server.Requests[0];
-                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
-                Assert.Equal(uploadTestBytes.Length.ToString(), r0.Headers["X-Upload-Content-Length"]);
-                var r1 = server.Requests[1];
-                Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
-                Assert.Equal($"bytes 0-{uploadLength - 1}/{uploadLength}", r1.Headers["Content-Range"]);
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(uploadTestBytes.Length, progress.BytesSent);
-            }
-        }
-
-        /// <summary>
-        /// Upload of an empty file.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadEmptyFile(
-            [CombinatorialValues(true, false)] bool knownSize)
-        {
-            using (var server = new SingleChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(new byte[0]) : new UnknownSizeMemoryStream(new byte[0]);
-                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
-                var progress = uploader.Upload();
-                Assert.Equal(2, server.Requests.Count);
-                var r0 = server.Requests[0];
-                Assert.Equal(knownSize ? "0" : null, r0.Headers["X-Upload-Content-Length"]);
-                var r1 = server.Requests[1];
-                Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
-                Assert.Equal("bytes *" + "/0", r1.Headers["Content-Range"]);
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(0, progress.BytesSent);
-            }
-        }
-        */
-        [Fact]
-        public void TestUploadStreamDisposedBeforeConstruction()
-        {
-            using (var server = new SingleChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new MemoryStream(new byte[10]);
-                content.Dispose();
-                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
-                var progress = uploader.Upload();
-                Assert.IsType<ObjectDisposedException>(progress.Exception);
-            }
-        }
-
-        [Fact]
-        public void TestUploadStreamDisposedBetweenConstructionAndUpload()
-        {
-            using (var server = new SingleChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new MemoryStream(new byte[10]);
-                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100, _outputHelper);
-                content.Dispose();
-                var progress = uploader.Upload();
-                Assert.IsType<ObjectDisposedException>(progress.Exception);
-            }
-        }
-
         /// <summary>
         /// Server that support multiple-chunk uploads.
         /// </summary>
@@ -520,83 +922,8 @@ namespace Google.Apis.Tests.Apis.Upload
                 }
             }
         }
-        /*
-        /// <summary>
-        /// An upload in multiple chunks, with no server errors.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInMultipleChunks(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize,
-            [CombinatorialValues(false, true)] bool lowerRange)
-        {
-            var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
-            using (var server = new MultiChunkServer(_server, lowerRange))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                var progress = uploader.Upload();
-                Assert.Equal(expectedCallCount, server.Requests.Count);
-                Assert.Equal(uploadTestBytes, server.Bytes);
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-            }
-        }
-
-        // As TestUploadInMultipleChunks, but testing stream interception
-        [Theory, CombinatorialData]
-        public void TestUploadInMultipleChunks_Interception(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize,
-            [CombinatorialValues(true, false)] bool ignoreFirstUploadCall)
-        {
-            // One fewer interception call than server calls, as there's no initialization call.
-            var expectedInterceptionCount = (uploadLength + chunkSize - 1) / chunkSize;
-            using (var server = new MultiChunkServer(_server, ignoreFirstUploadCall: ignoreFirstUploadCall))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                int interceptionCount = 0;
-                MemoryStream interceptedBytes = new MemoryStream();
-                uploader.UploadStreamInterceptor = (buffer, offset, count) =>
-                {
-                    interceptedBytes.Write(buffer, offset, count);
-                    interceptionCount++;
-                };
-                var progress = uploader.Upload();
-                Assert.Equal(expectedInterceptionCount, interceptionCount);
-                Assert.Equal(uploadTestBytes, interceptedBytes.ToArray());
-            }
-        }
-
-        /// <summary>
-        /// Check the upload progress is correct during upload.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadProgress(
-            [CombinatorialValues(true, false)] bool knownSize)
-        {
-            int chunkSize = 200;
-            using (var server = new MultiChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                var progress = new List<IUploadProgress>();
-                uploader.ProgressChanged += p => progress.Add(p);
-                uploader.Upload();
-                Assert.Equal(4, progress.Count);
-                Assert.Equal(UploadStatus.Starting, progress[0].Status);
-                Assert.Equal(0, progress[0].BytesSent);
-                Assert.Equal(UploadStatus.Uploading, progress[1].Status);
-                Assert.Equal(chunkSize, progress[1].BytesSent);
-                Assert.Equal(UploadStatus.Uploading, progress[2].Status);
-                Assert.Equal(chunkSize * 2, progress[2].BytesSent);
-                Assert.Equal(UploadStatus.Completed, progress[3].Status);
-                Assert.Equal(uploadLength, progress[3].BytesSent);
-            }
-        }*/
+        
+        
 
         /// <summary>
         /// A multi-chunk server that simulates errors at the specified byte offsets during upload.
@@ -632,186 +959,8 @@ namespace Google.Apis.Tests.Apis.Upload
                     return base.HandleCall(request, response);
                 }
             }
-        }
-
-        /// <summary>
-        /// Server 404s, with a JSON body.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInBadServer_NotFound_JsonError(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
-        {
-            string jsonError =
-                @"{ ""error"": {
-                    ""errors"": [
-                        {
-                            ""domain"": ""global"",
-                            ""reason"": ""required"",
-                            ""message"": ""Login Required"",
-                            ""locationType"": ""header"",
-                            ""location"": ""Authorization""
-                        }
-                    ],
-                    ""code"": 401,
-                    ""message"": ""Login Required""
-                  }}";
-            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, jsonError))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100, _outputHelper);
-                IUploadProgress lastProgress = null;
-                uploader.ProgressChanged += p => lastProgress = p;
-                uploader.Upload();
-                Assert.NotNull(lastProgress);
-                Assert.Equal(UploadStatus.Failed, lastProgress.Status);
-                var exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
-                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. Login Required", exception.Message);
-                Assert.Contains("Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]", exception.ToString());
-                Assert.Equal("Login Required", exception.Error.Message);
-            }
-        }
-        /*
-        /// <summary>
-        /// Server 404s, with a plain-text (non-JSON) body.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInBadServer_NotFound_PlainTextError(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
-        {
-            string plainTextError = "Not Found";
-            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, plainTextError))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100, _outputHelper);
-                IUploadProgress lastProgress = null;
-                uploader.ProgressChanged += p => lastProgress = p;
-                uploader.Upload();
-                Assert.NotNull(lastProgress);
-                Assert.Equal(UploadStatus.Failed, lastProgress.Status);
-                var exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
-                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. No error message was specified.", exception.Message);
-                Assert.Contains(
-                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
-                    $"HttpStatusCode is NotFound.{Environment.NewLine}" +
-                    $"No JSON error details were specified.{Environment.NewLine}" +
-                    $"Raw error details are: {plainTextError}", exception.ToString());
-                Assert.True(exception.Error.IsOnlyRawContent);
-            }
-        }
-
-        /// <summary>
-        /// Server fails with occasional 500s, which the uploader transparently copes with.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInBadServer_ServerUnavailable(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 100 })] int[] dodgyBytes,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize)
-        {
-            var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
-            expectedCallCount += dodgyBytes.Length * 2;
-            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.ServiceUnavailable))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                var progress = uploader.Upload();
-                Assert.Equal(expectedCallCount, server.Requests.Count);
-                Assert.Equal(uploadTestBytes, server.Bytes);
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-            }
-        }
+        }        
         
-        /// <summary>
-        /// Server fails with 400s, so Resume() calls are required.
-        /// </summary>
-        /// <remarks>
-        /// The test parameters are chosen such that:
-        /// Everything is tested with a seekable stream and a non-seekable stream
-        /// Server fails on 1st, middle, and last chunk
-        /// Chunked in many chunks, 2 chunks and 1 chunk
-        /// Buffersize is both larger, smaller, the same, and a divisor of chunkSize
-        /// </remarks>
-        [Theory, CombinatorialData]
-        public void TestUploadInBadServer_NeedsResume(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize,
-            [CombinatorialValues(4096, 51, 100)] int bufferSize)
-        {
-            var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
-                + dodgyBytes.Length * 2;
-            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                uploader.BufferSize = bufferSize;
-                var progress = uploader.Upload();
-                int sanity = 0;
-                while (progress.Status == UploadStatus.Failed && sanity++ < 10)
-                {
-                    progress = uploader.Resume();
-                }
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(expectedCallCount, server.Requests.Count);
-                Assert.Equal(uploadTestBytes, server.Bytes);
-            }
-        }
-
-        /// <summary>
-        /// Server fails with 400s, so resume calls are required.
-        /// Resume is done as if the entire client program has restarted (ie with a fresh uploader).
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInBadServer_UploaderRestart(
-            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize)
-        {
-            using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new MemoryStream(uploadTestBytes);
-                Uri uploadUri = null;
-                IUploadProgress progress;
-                {
-                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                    uploader.UploadSessionData += s => uploadUri = s.UploadUri;
-                    progress = uploader.Upload();
-                }
-                Assert.NotNull(uploadUri);
-                int sanity = 0;
-                while (progress.Status == UploadStatus.Failed && sanity++ < 10)
-                {
-                    var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                    progress = uploader.Resume(uploadUri);
-                }
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(uploadTestBytes, server.Bytes);
-            }
-        }
-
-        /// <summary>
-        /// Resuming on program restart with a non-seekable stream is not supported.
-        /// </summary>
-        [Fact]
-        public void TestUploadWithUploaderRestart_UnknownSize()
-        {
-            // Unknown stream size not supported, exception always thrown
-            using (var server = new MultiChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100, _outputHelper);
-                var url = new Uri("http://what.ever/");
-                Assert.ThrowsAsync<NotImplementedException>(async () => await uploader.ResumeAsync(url));
-            }
-        }
-        */
         /// <summary>
         /// Server that causes cancellation after a specified number of calls.
         /// </summary>
@@ -837,36 +986,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 return base.HandleCall(request, response);
             }
         }
-
-        /// <summary>
-        /// Async uploads can be cancelled at any time.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public async Task TestUploadCancelled(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
-        {
-            int chunkSize = 100;
-            using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                if (cancelOnCall == 1)
-                {
-                    var progress = uploader.UploadAsync(server.CancellationToken).Result;
-                    Assert.Equal(UploadStatus.Failed, progress.Status);
-                    Assert.IsAssignableFrom<OperationCanceledException>(progress.Exception);
-                }
-                else
-                {
-                    await Assert.ThrowsAsync<TaskCanceledException>(
-                        () => uploader.UploadAsync(server.CancellationToken));
-                }
-                Assert.Equal(cancelOnCall, server.Requests.Count);
-            }
-        }
-
+        
         /// <summary>
         /// Server that only accepts part of each uploaded chunk.
         /// </summary>
@@ -897,28 +1017,6 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        /// <summary>
-        /// Upload correctly handles server accepting only partial uploaded chunks.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadInPartialServer(
-            [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(80, 150)] int partialSize,
-            [CombinatorialValues(100, 200)] int chunkSize)
-        {
-            var actualChunkSize = Math.Min(partialSize, chunkSize);
-            var expectedCallCount = (uploadLength + actualChunkSize - 1) / actualChunkSize + 1;
-            using (var server = new MultiChunkPartialServer(_server, partialSize))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
-                var progress = uploader.Upload();
-                Assert.Equal(expectedCallCount, server.Requests.Count);
-                Assert.Equal(uploadTestBytes, server.Bytes);
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-            }
-        }
 
         /// <summary>
         /// Server that expects an initial call with path and query parameters.
@@ -967,33 +1065,6 @@ namespace Google.Apis.Tests.Apis.Upload
 
             [RequestParameter("time", RequestParameterType.Query)]
             public DateTime? MinTime { get; set; }
-        }
-
-        /// <summary>
-        /// Uploader correctly adds path and query parameters to initial server call.
-        /// </summary>
-        [Fact]
-        public void TestUploadWithQueryAndPathParameters()
-        {
-            var id = 123;
-            var queryA = "valuea";
-            var queryB = "VALUEB";
-            var pathAndQuery = $"testPath/{id}?uploadType=resumable&queryA={queryA}&queryB={queryB}&time=2002-02-25T12%3A57%3A32.777Z";
-            using (var server = new MultiChunkQueriedServer(_server, pathAndQuery))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new MemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUploadWithParameters(service, "testPath/{id}", "POST", content, "text/plain", 100, _outputHelper)
-                {
-                    Id = id,
-                    QueryA = "valuea",
-                    QueryB = "VALUEB",
-                    MinTime = new DateTime(2002, 2, 25, 12, 57, 32, 777, DateTimeKind.Utc),
-                };
-                var progress = uploader.Upload();
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(6, server.Requests.Count);
-            }
         }
 
         /// <summary>A mock request object.</summary>
@@ -1074,67 +1145,7 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        /// <summary>
-        /// Uploader correctly processes request and response bodies.
-        /// </summary>
-        [Theory, CombinatorialData]
-        public void TestUploadWithRequestAndResponseBody(
-            [CombinatorialValues(false)] bool gzipEnabled) // TODO: Also with zip
-        {
-            var body = new TestRequest
-            {
-                Name = "test object",
-                Description = "the description",
-            };
-            var expectedResponse = new TestResponse
-            {
-                Name = "foo",
-                Id = 100,
-                Description = "bar",
-            };
-            using (var server = new MultiChunkRequestResponseServer<TestRequest, TestResponse>(_server, expectedResponse))
-            using (var service = new MockClientService(new BaseClientService.Initializer
-            {
-                GZipEnabled = gzipEnabled
-            }, server.HttpPrefix))
-            {
-                var content = new MemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUploadWithResponse<TestRequest, TestResponse>(
-                    service, "MultiChunk", "POST", content, "text/plain", 100)
-                {
-                    Body = body,
-                };
-                TestResponse response = null;
-                int reponseReceivedCount = 0;
-                uploader.ResponseReceived += (r) => { response = r; reponseReceivedCount++; };
-                var progress = uploader.Upload();
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(body, server.Request);
-                Assert.Equal(expectedResponse, response);
-                Assert.Equal(expectedResponse, uploader.ResponseBody);
-                Assert.Equal(1, reponseReceivedCount);
-            }
-        }
-
-        /// <summary>
-        /// Client validates chunk-size correctly.
-        /// </summary>
-        [Fact]
-        public void TestChunkSize()
-        {
-            using (var service = new MockClientService(new BaseClientService.Initializer()))
-            {
-                var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-                var upload = new TestResumableUpload(service, "whatever", "POST", stream, "text/plain", 100, _outputHelper);
-
-                // Negative chunk size.
-                Assert.Throws<ArgumentOutOfRangeException>(() => upload.ChunkSize = -1);
-                // Less than the minimum.
-                Assert.Throws<ArgumentOutOfRangeException>(() => upload.ChunkSize = TestResumableUpload.MinimumChunkSize - 1);
-                // Valid chunk size.
-                upload.ChunkSize = TestResumableUpload.MinimumChunkSize;
-                upload.ChunkSize = TestResumableUpload.MinimumChunkSize * 2;
-            }
-        }
+        
+        #endregion
     }
 }
