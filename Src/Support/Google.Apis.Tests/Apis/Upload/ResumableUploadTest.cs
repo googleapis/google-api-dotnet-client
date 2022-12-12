@@ -31,6 +31,7 @@ limitations under the License.
 //#define TestUploadWithQueryAndPathParameters
 //#define TestUploadInBadServer_NotFound_JsonError
 //#define TestUploadWithRequestAndResponseBody
+//#define TestUploadWithUploaderRestart_UnknownSize
 
 // Probably needed to reproduce failure
 
@@ -39,9 +40,6 @@ limitations under the License.
 #define TestUploadCancelled
 
 // In progress
-
-//#define TestUploadWithUploaderRestart_UnknownSize
-
 
 // Still to be analysed
 
@@ -529,7 +527,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public async Task TestUploadCancelled(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
+            [CombinatorialValues(/*1, 2, 3, 4, */5)] int cancelOnCall)
         {
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
