@@ -33,7 +33,7 @@ limitations under the License.
 
 //#define TestUploadInBadServer_NeedsResume
 //#define TestUploadInBadServer_UploaderRestart
-//#define TestUploadWithUploaderRestart_UnknownSize
+#define TestUploadWithUploaderRestart_UnknownSize
 
 // Still to be analysed
 
