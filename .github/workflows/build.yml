@@ -34,4 +34,4 @@ jobs:
     - name: Build and test	
       run: |
         ./BuildSupport.sh
-        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework netcoreapp3.1 -c Release --filter ResumableUpload
+        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework netcoreapp3.1 -c Release --filter TestUploadInMultipleChunks
