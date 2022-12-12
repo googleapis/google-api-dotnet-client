@@ -39,13 +39,10 @@ limitations under the License.
 // In progress
 
 //#define TestUploadWithRequestAndResponseBody
-//#define TestChunkSize
+#define TestChunkSize
 
 
 // Still to be analysed
-
-
-
 #define TestUploadCancelled
 
 using Google.Apis.Json;
