@@ -3320,6 +3320,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
+        /// <summary>The workload profile for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadProfile")]
+        public virtual string WorkloadProfile { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4607,6 +4611,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The storage type for this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageType")]
         public virtual string StorageType { get; set; }
+
+        /// <summary>The workload profile for the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadProfile")]
+        public virtual string WorkloadProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

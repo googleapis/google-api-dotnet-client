@@ -1867,7 +1867,8 @@ namespace Google.Apis.GKEHub.v1beta.Data
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling.
+        /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is
+        /// deprecated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowVerticalScale")]
         public virtual System.Nullable<bool> AllowVerticalScale { get; set; }
@@ -2965,6 +2966,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Config Management-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
+
+        /// <summary>True if value of `feature_spec` was inherited from a fleet-level default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetInherited")]
+        public virtual System.Nullable<bool> FleetInherited { get; set; }
 
         /// <summary>Fleet observability membership spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]

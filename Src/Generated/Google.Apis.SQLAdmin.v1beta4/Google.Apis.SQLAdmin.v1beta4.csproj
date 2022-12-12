@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.SQLAdmin.v1beta4 Client Library</Title>
-    <Version>1.58.0.2821</Version>
+    <Version>1.58.0.2876</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

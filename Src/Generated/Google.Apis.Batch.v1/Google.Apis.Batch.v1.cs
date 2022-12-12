@@ -291,10 +291,8 @@ namespace Google.Apis.Batch.v1
             {
                 this.service = service;
                 Jobs = new JobsResource(service);
-                Nodes = new NodesResource(service);
                 Operations = new OperationsResource(service);
                 State = new StateResource(service);
-                Tasks = new TasksResource(service);
             }
 
             /// <summary>Gets the Jobs resource.</summary>
@@ -1008,242 +1006,6 @@ namespace Google.Apis.Batch.v1
                 }
             }
 
-            /// <summary>Gets the Nodes resource.</summary>
-            public virtual NodesResource Nodes { get; }
-
-            /// <summary>The "nodes" collection of methods.</summary>
-            public class NodesResource
-            {
-                private const string Resource = "nodes";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public NodesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
-                {
-                    return new GetIamPolicyRequest(service, resource);
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                public class GetIamPolicyRequest : BatchBaseServiceRequest<Google.Apis.Batch.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
-                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
-                    /// specify any valid value or leave the field unset. The policy in the response might use the
-                    /// policy version that you specified, or it might use a lower policy version. For example, if you
-                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:getIamPolicy";
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                        });
-                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Batch.v1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(service, body, resource);
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                public class SetIamPolicyRequest : BatchBaseServiceRequest<Google.Apis.Batch.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Batch.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Batch.v1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:setIamPolicy";
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Batch.v1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(service, body, resource);
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                public class TestIamPermissionsRequest : BatchBaseServiceRequest<Google.Apis.Batch.v1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Batch.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Batch.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "testIamPermissions";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                        });
-                    }
-                }
-            }
-
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -1605,242 +1367,6 @@ namespace Google.Apis.Batch.v1
                 }
             }
 
-            /// <summary>Gets the Tasks resource.</summary>
-            public virtual TasksResource Tasks { get; }
-
-            /// <summary>The "tasks" collection of methods.</summary>
-            public class TasksResource
-            {
-                private const string Resource = "tasks";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public TasksResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
-                {
-                    return new GetIamPolicyRequest(service, resource);
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                public class GetIamPolicyRequest : BatchBaseServiceRequest<Google.Apis.Batch.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
-                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
-                    /// specify any valid value or leave the field unset. The policy in the response might use the
-                    /// policy version that you specified, or it might use a lower policy version. For example, if you
-                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:getIamPolicy";
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/tasks/[^/]+$",
-                        });
-                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Batch.v1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(service, body, resource);
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                public class SetIamPolicyRequest : BatchBaseServiceRequest<Google.Apis.Batch.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Batch.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Batch.v1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:setIamPolicy";
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/tasks/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Batch.v1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(service, body, resource);
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                public class TestIamPermissionsRequest : BatchBaseServiceRequest<Google.Apis.Batch.v1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Batch.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Batch.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "testIamPermissions";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/tasks/[^/]+$",
-                        });
-                    }
-                }
-            }
-
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2044,7 +1570,7 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>AgentMetadata never changes for a single instance of VM agent.</summary>
     public class AgentMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When the VM agent started.</summary>
+        /// <summary>When the VM agent started. Use agent_startup_time instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; }
 
@@ -2055,6 +1581,10 @@ namespace Google.Apis.Batch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
+
+        /// <summary>image version for the VM that this agent is installed on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
+        public virtual string ImageVersion { get; set; }
 
         /// <summary>GCP instance name (go/instance-name).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
@@ -2130,6 +1660,25 @@ namespace Google.Apis.Batch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskStatus")]
         public virtual TaskStatus TaskStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VM timing information</summary>
+    public class AgentTimingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Agent startup time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentStartupTime")]
+        public virtual object AgentStartupTime { get; set; }
+
+        /// <summary>Boot timestamp of the VM OS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootTime")]
+        public virtual object BootTime { get; set; }
+
+        /// <summary>Startup time of the Batch VM script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptStartupTime")]
+        public virtual object ScriptStartupTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2371,14 +1920,14 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string Options { get; set; }
 
         /// <summary>
-        /// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*"
+        /// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*`
         /// then Batch will read the password from the Secret Manager;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
         /// <summary>
-        /// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*"
+        /// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*`
         /// then Batch will read the username from the Secret Manager.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
@@ -2889,7 +2438,12 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>A network interface.</summary>
     public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL of the network resource.</summary>
+        /// <summary>
+        /// The URL of an existing network resource. You can specify the network as a full or partial URL. For example,
+        /// the following are all valid URLs:
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// projects/{project}/global/networks/{network} global/networks/{network}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
@@ -2902,7 +2456,12 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("noExternalIpAddress")]
         public virtual System.Nullable<bool> NoExternalIpAddress { get; set; }
 
-        /// <summary>The URL of the Subnetwork resource.</summary>
+        /// <summary>
+        /// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or
+        /// partial URL. For example, the following are all valid URLs:
+        /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork}
+        /// projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
@@ -3079,6 +2638,10 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentInfo")]
         public virtual AgentInfo AgentInfo { get; set; }
 
+        /// <summary>Agent timing info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentTimingInfo")]
+        public virtual AgentTimingInfo AgentTimingInfo { get; set; }
+
         /// <summary>Agent metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual AgentMetadata Metadata { get; set; }
@@ -3090,6 +2653,10 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>Response to ReportAgentStateRequest.</summary>
     public class ReportAgentStateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Minimum report interval override</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minReportInterval")]
+        public virtual object MinReportInterval { get; set; }
+
         /// <summary>Tasks assigned to the agent</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<AgentTask> Tasks { get; set; }
@@ -3377,7 +2944,7 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual Environment Environment { get; set; }
 
-        /// <summary>Environment variables to set before running the Task. You can set up to 100 environments.</summary>
+        /// <summary>Deprecated: please use environment(non-plural) instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
         public virtual System.Collections.Generic.IDictionary<string, string> Environments { get; set; }
 

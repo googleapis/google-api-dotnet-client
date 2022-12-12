@@ -7332,8 +7332,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Routines in the requested dataset. Unless read_mask is set in the request, only the following fields are
-        /// populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and
-        /// language.
+        /// populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time,
+        /// language, and remote_function_options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routines")]
         public virtual System.Collections.Generic.IList<Routine> Routines { get; set; }
@@ -7376,6 +7376,12 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class MaterializedViewDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// [Optional] Allow non incremental materialized view definition. The default value is "false".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allow_non_incremental_definition")]
+        public virtual System.Nullable<bool> AllowNonIncrementalDefinition { get; set; }
+
         /// <summary>
         /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated.
         /// The default value is "true".
@@ -8296,7 +8302,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importedLibraries")]
         public virtual System.Collections.Generic.IList<string> ImportedLibraries { get; set; }
 
-        /// <summary>Optional. Defaults to "SQL".</summary>
+        /// <summary>
+        /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
@@ -8313,8 +8321,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is
         /// inferred from definition_body at query time in each query that references this routine. If present, then the
-        /// columns in the evaluated table result will be cast to match the column types specificed in return table
-        /// type, at query time.
+        /// columns in the evaluated table result will be cast to match the column types specified in return table type,
+        /// at query time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnTableType")]
         public virtual StandardSqlTableType ReturnTableType { get; set; }

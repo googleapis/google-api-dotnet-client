@@ -74,6 +74,14 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View messages and reactions in Google Chat</summary>
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
+
+            /// <summary>
+            /// Create conversations and spaces and view or update metadata (including history settings) in Google Chat
+            /// </summary>
+            public static string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
+
+            /// <summary>View chat and spaces in Google Chat</summary>
+            public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Chat API.</summary>
@@ -92,6 +100,14 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View messages and reactions in Google Chat</summary>
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
+
+            /// <summary>
+            /// Create conversations and spaces and view or update metadata (including history settings) in Google Chat
+            /// </summary>
+            public const string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
+
+            /// <summary>View chat and spaces in Google Chat</summary>
+            public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
         }
 
         /// <summary>Gets the Dms resource.</summary>

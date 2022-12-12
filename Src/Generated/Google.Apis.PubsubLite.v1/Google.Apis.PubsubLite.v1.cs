@@ -2623,6 +2623,47 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients
+    /// must not connect to this subscription.
+    /// </summary>
+    public class ExportConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The current state of the export, which may be different to the desired state due to errors.
+        /// This field is output only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
+        public virtual string CurrentState { get; set; }
+
+        /// <summary>
+        /// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the
+        /// destination. For example, the message can not be published to the Pub/Sub service because it does not
+        /// satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like:
+        /// projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and
+        /// location as the subscription. The topic may be changed or removed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadLetterTopic")]
+        public virtual string DeadLetterTopic { get; set; }
+
+        /// <summary>
+        /// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an
+        /// error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredState")]
+        public virtual string DesiredState { get; set; }
+
+        /// <summary>
+        /// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a
+        /// Pub/Sub topic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubConfig")]
+        public virtual PubSubConfig PubsubConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2864,6 +2905,20 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for exporting to a Pub/Sub topic.</summary>
+    public class PubSubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may
+        /// be changed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata about a reservation resource.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2982,6 +3037,13 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>The settings for this subscription's message delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryConfig")]
         public virtual DeliveryConfig DeliveryConfig { get; set; }
+
+        /// <summary>
+        /// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription
+        /// to a destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportConfig")]
+        public virtual ExportConfig ExportConfig { get; set; }
 
         /// <summary>
         /// The name of the subscription. Structured like:

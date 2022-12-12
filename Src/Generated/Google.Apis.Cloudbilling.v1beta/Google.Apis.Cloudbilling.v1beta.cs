@@ -412,6 +412,149 @@ namespace Google.Apis.Cloudbilling.v1beta
 }
 namespace Google.Apis.Cloudbilling.v1beta.Data
 {
+    /// <summary>Specifies the regions for Cache Fill.</summary>
+    public class CacheFillRegions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination region for cache fill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRegion")]
+        public virtual string DestinationRegion { get; set; }
+
+        /// <summary>The source region for cache fill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
+        public virtual string SourceRegion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies usage for Cloud CDN egress.</summary>
+    public class CloudCdnEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination for the cache egress charges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheEgressDestination")]
+        public virtual string CacheEgressDestination { get; set; }
+
+        /// <summary>
+        /// Cache egress usage. The rate of data cache egressed in the destination. For example : units such as "GiBy/s"
+        /// or "TBy/mo".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheEgressRate")]
+        public virtual Usage CacheEgressRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies usage for Cloud CDN resources.</summary>
+    public class CloudCdnWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source service for the cache fill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheFillOriginService")]
+        public virtual string CacheFillOriginService { get; set; }
+
+        /// <summary>
+        /// Cache fill usage. The rate of data transferred between cache fill regions. For example: units such as
+        /// "GiBy/s" or "TBy/mo".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheFillRate")]
+        public virtual Usage CacheFillRate { get; set; }
+
+        /// <summary>
+        /// The regions where data is transferred from Google data locations into Google global cache servers. The SKU
+        /// prices for cache fill across services are the same.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheFillRegions")]
+        public virtual CacheFillRegions CacheFillRegions { get; set; }
+
+        /// <summary>
+        /// Cache look up requests. This is specified to indicate the number of requests. For example: units such as
+        /// "1/s".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheLookUpRate")]
+        public virtual Usage CacheLookUpRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The interconnect egress only includes the Interconnect Egress. Please use the standard egress traffic interface
+    /// to specify your standard egress usage.
+    /// </summary>
+    public class CloudInterconnectEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Data egress usage. This usage applies when you move or copy data from one Google Cloud service to another
+        /// service. Expected units such as "GiBy/s, By/s, etc."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
+        public virtual Usage EgressRate { get; set; }
+
+        /// <summary>
+        /// Locations in the [Interconnect connection location
+        /// table](https://cloud.google.com/vpc/network-pricing#interconnect-pricing). This is the interconnect egress
+        /// charges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectConnectionLocation")]
+        public virtual string InterconnectConnectionLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies usage for Cloud Interconnect resources.</summary>
+    public class CloudInterconnectWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>VLAN attachment used for interconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachments")]
+        public virtual System.Collections.Generic.IList<VlanAttachment> InterconnectAttachments { get; set; }
+
+        /// <summary>Vlan attachment type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectType")]
+        public virtual string InterconnectType { get; set; }
+
+        /// <summary>Interconnect circuit link type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
+        public virtual string LinkType { get; set; }
+
+        /// <summary>
+        /// Interconnect usage. This is specified as a unitless quantity which indicates the number of circuit
+        /// provisioned in interconnect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedLinkCount")]
+        public virtual Usage ProvisionedLinkCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification of a network type. Network egress within Google Cloud applies when you move or copy data from one
+    /// Cloud Storage bucket to another or when another Google Cloud service accesses data in your Cloud Storage
+    /// bucket.This includes the network egress within Google Cloud and the general network usage.
+    /// </summary>
+    public class CloudStorageEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Where the data is sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationContinent")]
+        public virtual string DestinationContinent { get; set; }
+
+        /// <summary>
+        /// Egress usage rate. This usage applies when you move or copy data from one Cloud Storage bucket to another or
+        /// when another Google Cloud service accesses data in your Cloud Storage bucket. Expected units such as
+        /// "GiBy/s, By/s, ..."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
+        public virtual Usage EgressRate { get; set; }
+
+        /// <summary>Where the data comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceContinent")]
+        public virtual string SourceContinent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies usage of Cloud Storage resources.</summary>
     public class CloudStorageWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -477,7 +620,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     {
         /// <summary>
         /// Required. A name for this commitment. All commitments in a CostScenario must have unique names. Each name
-        /// must be a maximum of 32 characters.
+        /// may be at most 128 characters long.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -846,6 +989,27 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specify Premium Tier Internet egress networking.</summary>
+    public class PremiumTierEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Where the data is sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationContinent")]
+        public virtual string DestinationContinent { get; set; }
+
+        /// <summary>Premium Tier egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
+        public virtual Usage EgressRate { get; set; }
+
+        /// <summary>
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data comes from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
+        public virtual string SourceRegion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The price of a SKU at a point int time.</summary>
     public class Price : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -928,7 +1092,9 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// <summary>
         /// Time frame for the estimate. Workloads must specify usage for this duration. Duration must be at least 1
         /// hour (3,600 seconds) and at most 10 years (315,360,000 seconds). The calculations for years and months are
-        /// based on a 730-hour (2,628,000-second) month.
+        /// based on a 730-hour (2,628,000-second) month. For durations longer than one month (2,628,000 seconds), the
+        /// duration is rounded up to the next month, so the estimate shows you the costs for full months. For example,
+        /// a duration of 3,232,800 seconds (roughly 5 weeks) is rounded up to 2 months.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimateDuration")]
         public virtual object EstimateDuration { get; set; }
@@ -1008,6 +1174,23 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specify Standard Tier Internet egress networking.</summary>
+    public class StandardTierEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Standard tier egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
+        public virtual Usage EgressRate { get; set; }
+
+        /// <summary>
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data comes from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
+        public virtual string SourceRegion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An amount of usage over a time frame.</summary>
     public class Usage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1031,10 +1214,11 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     public class UsageRateTimeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The unit for the usage rate in each timeline entry. The supported units are a subset of [The Unified Code
-        /// for Units of Measure](https://ucum.org/ucum.html) standard: * **Time units (TIME-UNIT)** * `s` second *
-        /// `min` minute * `h` hour * `d` day * `wk` week * `mo` month * `yr` year * `ms` millisecond * `us` microsecond
-        /// * `ns` nanosecond * **Basic storage units (BASIC-STORAGE-UNIT)** * `bit` bit * `By` byte * **Count units
+        /// The unit for the usage rate in each timeline entry. If you provide an incorrect unit for an instance, the
+        /// correct unit is provided in the error message. The supported units are a subset of [The Unified Code for
+        /// Units of Measure](https://ucum.org/ucum.html) standard: * **Time units (TIME-UNIT)** * `s` second * `min`
+        /// minute * `h` hour * `d` day * `wk` week * `mo` month * `yr` year * `ms` millisecond * `us` microsecond *
+        /// `ns` nanosecond * **Basic storage units (BASIC-STORAGE-UNIT)** * `bit` bit * `By` byte * **Count units
         /// (COUNT-UNIT)** * `count` count * **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9)
         /// * `T` tera (10^12) * `P` peta (10^15) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi
         /// (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio
@@ -1075,6 +1259,27 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// <summary>The usage rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageRate")]
         public virtual System.Nullable<double> UsageRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VLAN attachment for cloud interconnect.</summary>
+    public class VlanAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Capacities in the [pricing table](https://cloud.google.com/vpc/network-pricing#interconnect-pricing)
+        /// Examples of capacity are: 50/100/200/300/400/500-Mbps, 1/2/5/10/20/50-Gbps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
+        public virtual string Bandwidth { get; set; }
+
+        /// <summary>
+        /// VLAN usage. This is specified as a unitless quantity which indicates the number of VLAN attachment used in
+        /// interconnect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vlanCount")]
+        public virtual Usage VlanCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1126,6 +1331,26 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     /// </summary>
     public class Workload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Usage on Google Cloud CDN Egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudCdnEgressWorkload")]
+        public virtual CloudCdnEgressWorkload CloudCdnEgressWorkload { get; set; }
+
+        /// <summary>Usage on Google Cloud CDN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudCdnWorkload")]
+        public virtual CloudCdnWorkload CloudCdnWorkload { get; set; }
+
+        /// <summary>Usage on Google Cloud Interconnect Egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudInterconnectEgressWorkload")]
+        public virtual CloudInterconnectEgressWorkload CloudInterconnectEgressWorkload { get; set; }
+
+        /// <summary>Usage on Google Cloud Interconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudInterconnectWorkload")]
+        public virtual CloudInterconnectWorkload CloudInterconnectWorkload { get; set; }
+
+        /// <summary>Usage on a cloud storage egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageEgressWorkload")]
+        public virtual CloudStorageEgressWorkload CloudStorageEgressWorkload { get; set; }
+
         /// <summary>Usage on Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageWorkload")]
         public virtual CloudStorageWorkload CloudStorageWorkload { get; set; }
@@ -1136,10 +1361,18 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
 
         /// <summary>
         /// Required. A name for this workload. All workloads in a `CostScenario` must have a unique `name`. Each `name`
-        /// must be a maximum of 32 characters.
+        /// may be at most 128 characters long.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Usage on Premium Tier Internet Egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("premiumTierEgressWorkload")]
+        public virtual PremiumTierEgressWorkload PremiumTierEgressWorkload { get; set; }
+
+        /// <summary>Usage on Standard Tier Internet Egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardTierEgressWorkload")]
+        public virtual StandardTierEgressWorkload StandardTierEgressWorkload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
