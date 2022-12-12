@@ -35,12 +35,12 @@ limitations under the License.
 // Probably needed to reproduce failure
 
 #define TestUploadInBadServer_NeedsResume
-#define TestUploadWithUploaderRestart_UnknownSize
 #define TestChunkSize
 #define TestUploadCancelled
 
 // In progress
 
+//#define TestUploadWithUploaderRestart_UnknownSize
 
 
 // Still to be analysed
