@@ -21,23 +21,24 @@ limitations under the License.
 //#define TestUploadEmptyFile
 //#define TestUploadStreamDisposedBeforeConstruction
 //#define TestUploadStreamDisposedBetweenConstructionAndUpload
-
-// Probably needed to reproduce failure
-
-// In progress
 //#define TestUploadInMultipleChunks
 //#define TestUploadInMultipleChunks_Interception
 //#define TestUploadProgress
 //#define TestUploadInBadServer_NotFound_PlainTextError
 //#define TestUploadInBadServer_ServerUnavailable
 
+// Probably needed to reproduce failure
+
+// In progress
+
+//#define TestUploadInBadServer_NeedsResume
+//#define TestUploadInBadServer_UploaderRestart
+//#define TestUploadWithUploaderRestart_UnknownSize
+
 // Still to be analysed
 
 
 
-#define TestUploadInBadServer_NeedsResume
-#define TestUploadInBadServer_UploaderRestart
-#define TestUploadWithUploaderRestart_UnknownSize
 #define TestUploadInPartialServer
 #define TestUploadWithQueryAndPathParameters
 #define TestUploadInBadServer_NotFound_JsonError
