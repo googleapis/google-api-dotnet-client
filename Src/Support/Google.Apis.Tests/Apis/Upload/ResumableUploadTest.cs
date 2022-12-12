@@ -346,7 +346,7 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </remarks>
         [Theory, CombinatorialData]
         public void TestUploadInBadServer_NeedsResume(
-            [CombinatorialValues(/*true, */false)] bool knownSize,
+            [CombinatorialValues(true, false)] bool knownSize,
             [CombinatorialValues(/*new[] { 0 }, new[] { 100 }, new[] { 410 }, */new[] { 0, 410 })] int[] dodgyBytes,
             [CombinatorialValues(/*100, 400, */1000)] int chunkSize,
             [CombinatorialValues(4096, 51, 100)] int bufferSize)
