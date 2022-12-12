@@ -14,17 +14,27 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Not needed
+
 //#define TestUploadInSingleChunk
 //#define TestInitiatedResumableUpload
 //#define TestUploadEmptyFile
 //#define TestUploadStreamDisposedBeforeConstruction
 //#define TestUploadStreamDisposedBetweenConstructionAndUpload
 
-#define TestUploadInMultipleChunks
-#define TestUploadInMultipleChunks_Interception
-#define TestUploadProgress
-#define TestUploadInBadServer_NotFound_PlainTextError
-#define TestUploadInBadServer_ServerUnavailable
+// Probably needed to reproduce failure
+
+// In progress
+//#define TestUploadInMultipleChunks
+//#define TestUploadInMultipleChunks_Interception
+//#define TestUploadProgress
+//#define TestUploadInBadServer_NotFound_PlainTextError
+//#define TestUploadInBadServer_ServerUnavailable
+
+// Still to be analysed
+
+
+
 #define TestUploadInBadServer_NeedsResume
 #define TestUploadInBadServer_UploaderRestart
 #define TestUploadWithUploaderRestart_UnknownSize
