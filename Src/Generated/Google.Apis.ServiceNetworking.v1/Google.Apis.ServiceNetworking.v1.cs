@@ -2240,6 +2240,14 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     public class AddSubnetworkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Defines the allowSubnetCidrRoutesOverlap field of the subnet, e.g. Available in alpha and beta
+        /// according to [Compute API
+        /// documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks/insert)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowSubnetCidrRoutesOverlap")]
+        public virtual System.Nullable<bool> AllowSubnetCidrRoutesOverlap { get; set; }
+
+        /// <summary>
         /// Optional. The IAM permission check determines whether the consumer project has
         /// 'servicenetworking.services.use' permission or not.
         /// </summary>

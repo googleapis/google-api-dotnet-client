@@ -300,9 +300,66 @@ namespace Google.Apis.CloudSecurityToken.v1
         }
 
         /// <summary>
+        /// Exchanges a credential that represents the resource owner's authorization for a Google-generated [OAuth 2.0
+        /// access token] (https://www.rfc-editor.org/rfc/rfc6749#section-5) or [refreshes an accesstoken]
+        /// (https://www.rfc-editor.org/rfc/rfc6749#section-6) following [the OAuth 2.0 authorization framework]
+        /// (https://tools.ietf.org/html/rfc8693) The credential can be one of the following: - An authorization code
+        /// issued by the workforce identity federation authorization endpoint - A [refresh
+        /// token](https://www.rfc-editor.org/rfc/rfc6749#section-10.4) issued by this endpoint This endpoint is only
+        /// meant to be called by the Google Cloud CLI. Also note that this API only accepts the authorization code
+        /// issued for workforce pools.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual OauthtokenRequest Oauthtoken(Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeOauthTokenRequest body)
+        {
+            return new OauthtokenRequest(service, body);
+        }
+
+        /// <summary>
+        /// Exchanges a credential that represents the resource owner's authorization for a Google-generated [OAuth 2.0
+        /// access token] (https://www.rfc-editor.org/rfc/rfc6749#section-5) or [refreshes an accesstoken]
+        /// (https://www.rfc-editor.org/rfc/rfc6749#section-6) following [the OAuth 2.0 authorization framework]
+        /// (https://tools.ietf.org/html/rfc8693) The credential can be one of the following: - An authorization code
+        /// issued by the workforce identity federation authorization endpoint - A [refresh
+        /// token](https://www.rfc-editor.org/rfc/rfc6749#section-10.4) issued by this endpoint This endpoint is only
+        /// meant to be called by the Google Cloud CLI. Also note that this API only accepts the authorization code
+        /// issued for workforce pools.
+        /// </summary>
+        public class OauthtokenRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeOauthTokenResponse>
+        {
+            /// <summary>Constructs a new Oauthtoken request.</summary>
+            public OauthtokenRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeOauthTokenRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeOauthTokenRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "oauthtoken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/oauthtoken";
+
+            /// <summary>Initializes Oauthtoken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within an
         /// identity pool, or it applies a Credential Access Boundary to a Google access token. Note that workforce
-        /// pools do not support Credential Access Boundary at the moment. When you call this method, do not send the
+        /// pools do not support Credential Access Boundaries. When you call this method, do not send the
         /// `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and
         /// using the header can cause the request to fail.
         /// </summary>
@@ -315,7 +372,7 @@ namespace Google.Apis.CloudSecurityToken.v1
         /// <summary>
         /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within an
         /// identity pool, or it applies a Credential Access Boundary to a Google access token. Note that workforce
-        /// pools do not support Credential Access Boundary at the moment. When you call this method, do not send the
+        /// pools do not support Credential Access Boundaries. When you call this method, do not send the
         /// `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and
         /// using the header can cause the request to fail.
         /// </summary>
@@ -457,6 +514,113 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableResource")]
         public virtual string AvailableResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ExchangeOauthToken</summary>
+    public class GoogleIdentityStsV1ExchangeOauthTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The client identifier for the OAuth 2.0 client that requested the provided token. It is REQUIRED
+        /// when the [client] (https://www.rfc-editor.org/rfc/rfc6749#section-1.1) is not authenticating with the
+        /// authorization server, i.e. when authentication method is [client authentication]
+        /// (https://www.rfc-editor.org/rfc/rfc6749#section-3.2.1).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>
+        /// Optional. The authorization code that was previously from workforce identity federation's `authorize`
+        /// endpoint. Required if the flow is authorization code flow, i.e. if grant_type is 'authorization_code'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>
+        /// Optional. The code verifier for the PKCE request, Google Cloud CLI originally generates it before the
+        /// authorization request. PKCE is used to protect authorization code from interception attacks. See
+        /// https://www.rfc-editor.org/rfc/rfc7636#section-1.1 and https://www.rfc-editor.org/rfc/rfc7636#section-3. It
+        /// is required when the flow is authorization code flow, i.e. if grant_type is 'authorization_code'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeVerifier")]
+        public virtual string CodeVerifier { get; set; }
+
+        /// <summary>
+        /// Required. The grant types are as follows: - 'authorization_code' : an authorization code flow, i.e. exchange
+        /// of authorization code for the Oauth access token - 'refresh_token' : a refresh token flow, i.e. obtain a new
+        /// access token by providing the refresh token. See https://www.rfc-editor.org/rfc/rfc6749#section-6
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantType")]
+        public virtual string GrantType { get; set; }
+
+        /// <summary>
+        /// Optional. redirect_url is required when the flow is authorization code flow i.e. if grant_type is
+        /// `authorization_code` See https://www.rfc-editor.org/rfc/rfc6749#section-4.1.3
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>
+        /// Optional. The Refresh token is the credential that is used to obtain a new access token when the current
+        /// access token becomes invalid or expires. Required when using refresh token flow, i.e. if `grant_type` is
+        /// 'refresh_token' See https://www.rfc-editor.org/rfc/rfc6749#section-1.5 and
+        /// https://www.rfc-editor.org/rfc/rfc6749#section-6
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; }
+
+        /// <summary>
+        /// Optional. An optional list of scopes that are requested for the token to be returned. See
+        /// https://www.rfc-editor.org/rfc/rfc6749#section-3.3 Must be a list of space-delimited, case-sensitive
+        /// strings. Note: Currently, the scopes in the request are not supported
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for ExchangeOauthToken. see https://www.rfc-editor.org/rfc/rfc6749#section-5.1
+    /// </summary>
+    public class GoogleIdentityStsV1ExchangeOauthTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An OAuth 2.0 security token, issued by Google, in response to the Oauth token exchange request for the
+        /// authorization code and refresh token flows. The returned [access
+        /// token](https://www.rfc-editor.org/rfc/rfc6749#section-4.1.4). Tokens can vary in size, depending, in part,
+        /// on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google reserves the right to change
+        /// the token size and the maximum length at any time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>
+        /// The amount of time, in seconds, between the time when the access token was issued and the time when the
+        /// access token will expires.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
+        public virtual System.Nullable<int> ExpiresIn { get; set; }
+
+        /// <summary>
+        /// A refresh token, issued by Google, in response to the OAuth token exchange request for refresh token flow
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refresh_token")]
+        public virtual string RefreshToken { get; set; }
+
+        /// <summary>A list of scopes associated with the returned token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// The type of token. Field reserved for RFC compliance. See https://www.rfc-editor.org/rfc/rfc6749#section-5.1
+        /// Note: No token_type is returned for current implementation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
+        public virtual string TokenType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

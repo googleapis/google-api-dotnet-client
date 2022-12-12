@@ -1,0 +1,11 @@
+{
+  "Google.Apis.WorkloadManager.v1.WorkloadManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.WorkloadManager.v1.WorkloadManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

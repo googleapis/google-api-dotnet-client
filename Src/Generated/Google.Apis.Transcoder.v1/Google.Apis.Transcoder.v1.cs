@@ -1384,7 +1384,10 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to
-        /// match the specified width and input aspect ratio. If both are omitted, the input height is used.
+        /// match the specified width and input aspect ratio. If both are omitted, the input height is used. For
+        /// portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the
+        /// horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata
+        /// and swaps the requested height and width for the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
         public virtual System.Nullable<int> HeightPixels { get; set; }
@@ -1446,7 +1449,10 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to
-        /// match the specified height and input aspect ratio. If both are omitted, the input width is used.
+        /// match the specified height and input aspect ratio. If both are omitted, the input width is used. For
+        /// portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        /// horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata
+        /// and swaps the requested height and width for the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
@@ -1531,7 +1537,10 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to
-        /// match the specified width and input aspect ratio. If both are omitted, the input height is used.
+        /// match the specified width and input aspect ratio. If both are omitted, the input height is used. For
+        /// portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the
+        /// horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata
+        /// and swaps the requested height and width for the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
         public virtual System.Nullable<int> HeightPixels { get; set; }
@@ -1595,7 +1604,10 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to
-        /// match the specified height and input aspect ratio. If both are omitted, the input width is used.
+        /// match the specified height and input aspect ratio. If both are omitted, the input width is used. For
+        /// portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        /// horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata
+        /// and swaps the requested height and width for the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
@@ -2100,7 +2112,10 @@ namespace Google.Apis.Transcoder.v1.Data
         /// <summary>
         /// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set
         /// the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the
-        /// API will automatically calculate the missing field).
+        /// API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and
+        /// rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per
+        /// the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the
+        /// output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spriteHeightPixels")]
         public virtual System.Nullable<int> SpriteHeightPixels { get; set; }
@@ -2108,7 +2123,10 @@ namespace Google.Apis.Transcoder.v1.Data
         /// <summary>
         /// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set
         /// the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the
-        /// API will automatically calculate the missing field).
+        /// API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and
+        /// rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per
+        /// the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the
+        /// output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spriteWidthPixels")]
         public virtual System.Nullable<int> SpriteWidthPixels { get; set; }
@@ -2258,7 +2276,10 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to
-        /// match the specified width and input aspect ratio. If both are omitted, the input height is used.
+        /// match the specified width and input aspect ratio. If both are omitted, the input height is used. For
+        /// portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the
+        /// horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata
+        /// and swaps the requested height and width for the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
         public virtual System.Nullable<int> HeightPixels { get; set; }
@@ -2290,7 +2311,10 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to
-        /// match the specified height and input aspect ratio. If both are omitted, the input width is used.
+        /// match the specified height and input aspect ratio. If both are omitted, the input width is used. For
+        /// portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        /// horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata
+        /// and swaps the requested height and width for the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }

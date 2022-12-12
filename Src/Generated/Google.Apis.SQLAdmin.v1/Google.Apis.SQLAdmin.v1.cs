@@ -3693,10 +3693,7 @@ namespace Google.Apis.SQLAdmin.v1
         /// <summary>Retrieves a resource containing information about a user.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
-        /// <param name="name">
-        /// User of the instance. If the database user has a host, this is specified as {username}@{host} else as
-        /// {username}.
-        /// </param>
+        /// <param name="name">User of the instance.</param>
         public virtual GetRequest Get(string project, string instance, string name)
         {
             return new GetRequest(service, project, instance, name);
@@ -3722,12 +3719,13 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>
-            /// User of the instance. If the database user has a host, this is specified as {username}@{host} else as
-            /// {username}.
-            /// </summary>
+            /// <summary>User of the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>Host of a user of the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Host { get; set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -3763,6 +3761,14 @@ namespace Google.Apis.SQLAdmin.v1
                     Name = "name",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("host", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "host",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4790,6 +4796,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Database instance export context.</summary>
     public class ExportContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Options for exporting BAK files (SQL Server-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bakExportOptions")]
+        public virtual BakExportOptionsData BakExportOptions { get; set; }
+
         /// <summary>Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
         public virtual CsvExportOptionsData CsvExportOptions { get; set; }
@@ -4832,6 +4842,21 @@ namespace Google.Apis.SQLAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+
+        /// <summary>Options for exporting BAK files (SQL Server-only)</summary>
+        public class BakExportOptionsData
+        {
+            /// <summary>
+            /// Option for specifying how many stripes to use for the export. If blank, and the value of the striped
+            /// field is true, the number of stripes is automatically chosen.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("stripeCount")]
+            public virtual System.Nullable<int> StripeCount { get; set; }
+
+            /// <summary>Whether or not the export should be striped.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("striped")]
+            public virtual System.Nullable<bool> Striped { get; set; }
+        }
 
         /// <summary>Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only.</summary>
         public class CsvExportOptionsData
@@ -5078,6 +5103,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
         {
             [Newtonsoft.Json.JsonPropertyAttribute("encryptionOptions")]
             public virtual EncryptionOptionsData EncryptionOptions { get; set; }
+
+            /// <summary>
+            /// Whether or not the backup set being restored is striped. Applies only to Cloud SQL for SQL Server.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("striped")]
+            public virtual System.Nullable<bool> Striped { get; set; }
 
             public class EncryptionOptionsData
             {
@@ -5347,6 +5378,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
         public virtual System.Collections.Generic.IList<AclEntry> AuthorizedNetworks { get; set; }
+
+        /// <summary>Controls connectivity to private IP instances from Google services, such as BigQuery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivatePathForGoogleCloudServices")]
+        public virtual System.Nullable<bool> EnablePrivatePathForGoogleCloudServices { get; set; }
 
         /// <summary>Whether the instance is assigned a public IP address or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Enabled")]
@@ -5757,7 +5792,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual System.Nullable<int> MinLength { get; set; }
 
         /// <summary>
-        /// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        /// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordChangeInterval")]
         public virtual object PasswordChangeInterval { get; set; }

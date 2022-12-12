@@ -5704,6 +5704,28 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the override to conditionally apply.</summary>
+    public class GoogleCloudChannelV1ConditionalOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Information about the applied override's adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustment")]
+        public virtual GoogleCloudChannelV1RepricingAdjustment Adjustment { get; set; }
+
+        /// <summary>
+        /// Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your
+        /// repricing costs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rebillingBasis")]
+        public virtual string RebillingBasis { get; set; }
+
+        /// <summary>Required. Specifies the condition which, if met, will apply the override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repricingCondition")]
+        public virtual GoogleCloudChannelV1RepricingCondition RepricingCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the constraints for buying the Offer.</summary>
     public class GoogleCloudChannelV1Constraints : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6932,6 +6954,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resizeUnitCount")]
         public virtual System.Nullable<bool> ResizeUnitCount { get; set; }
 
+        /// <summary>
+        /// Output only. The renewal offer resource name for which the entitlement is to be renewed. Takes the form:
+        /// accounts/{account_id}/offers/{offer_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledRenewalOffer")]
+        public virtual string ScheduledRenewalOffer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7082,6 +7111,17 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the various repricing conditions you can use for a conditional override.</summary>
+    public class GoogleCloudChannelV1RepricingCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SKU Group condition for override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuGroupCondition")]
+        public virtual GoogleCloudChannelV1SkuGroupCondition SkuGroupCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for repricing a Google bill over a period of time.</summary>
     public class GoogleCloudChannelV1RepricingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7095,6 +7135,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerGranularity")]
         public virtual GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity ChannelPartnerGranularity { get; set; }
+
+        /// <summary>
+        /// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first
+        /// valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling
+        /// basis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionalOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1ConditionalOverride> ConditionalOverrides { get; set; }
 
         /// <summary>
         /// Required. The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept
@@ -7222,6 +7270,21 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>Product the SKU is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual GoogleCloudChannelV1Product Product { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A condition that applies the override if a line item SKU is found in the SKU group.</summary>
+    public class GoogleCloudChannelV1SkuGroupCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format:
+        /// accounts/{account}/skuGroups/{sku_group}. Example:
+        /// "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuGroup")]
+        public virtual string SkuGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7839,6 +7902,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resizeUnitCount")]
         public virtual System.Nullable<bool> ResizeUnitCount { get; set; }
+
+        /// <summary>
+        /// Output only. The renewal offer resource name for which the entitlement is to be renewed. Takes the form:
+        /// accounts/{account_id}/offers/{offer_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledRenewalOffer")]
+        public virtual string ScheduledRenewalOffer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

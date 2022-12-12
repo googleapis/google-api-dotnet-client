@@ -2545,6 +2545,135 @@ namespace Google.Apis.Appengine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request sent to CLHs during project events.</summary>
+    public class ProjectEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique ID for this project event. CLHs can use this value to dedup repeated calls. required
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>The projects metadata for this project. required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectMetadata")]
+        public virtual ProjectsMetadata ProjectMetadata { get; set; }
+
+        /// <summary>The state of the project that led to this event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual ProjectState State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ProjectState contains the externally-visible project state that is used to communicate the state and reasoning
+    /// for that state to the CLH. This data is not persisted by CCFE, but is instead derived from CCFE's internal
+    /// representation of the project state.
+    /// </summary>
+    public class ProjectState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("currentReasons")]
+        public virtual Reasons CurrentReasons { get; set; }
+
+        /// <summary>
+        /// The previous and current reasons for a project state will be sent for a project event. CLHs that need to
+        /// know the signal that caused the project event to trigger (edges) as opposed to just knowing the state can
+        /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
+        /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
+        /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
+        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
+        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
+        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
+        public virtual Reasons PreviousReasons { get; set; }
+
+        /// <summary>
+        /// The current state of the project. This state is the culmination of all of the opinions from external systems
+        /// that CCFE knows about of the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ProjectsMetadata is the metadata CCFE stores about the all the relevant projects (tenant, consumer, producer).
+    /// </summary>
+    public class ProjectsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The consumer project id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectId")]
+        public virtual string ConsumerProjectId { get; set; }
+
+        /// <summary>The consumer project number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectNumber")]
+        public virtual System.Nullable<long> ConsumerProjectNumber { get; set; }
+
+        /// <summary>
+        /// The CCFE state of the consumer project. It is the same state that is communicated to the CLH during project
+        /// events. Notice that this field is not set in the DB, it is only set in this proto when communicated to CLH
+        /// in the side channel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectState")]
+        public virtual string ConsumerProjectState { get; set; }
+
+        /// <summary>
+        /// The service account authorized to operate on the consumer project. Note: CCFE only propagates P4SA with
+        /// default tag to CLH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p4ServiceAccount")]
+        public virtual string P4ServiceAccount { get; set; }
+
+        /// <summary>The producer project id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
+        public virtual string ProducerProjectId { get; set; }
+
+        /// <summary>The producer project number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerProjectNumber")]
+        public virtual System.Nullable<long> ProducerProjectNumber { get; set; }
+
+        /// <summary>The tenant project id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
+        public virtual string TenantProjectId { get; set; }
+
+        /// <summary>The tenant project number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectNumber")]
+        public virtual System.Nullable<long> TenantProjectNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Projects transition between and within states based on reasons sent from various systems. CCFE will provide the
+    /// CLH with reasons for the current state per system.The current systems that CCFE supports are: Service Management
+    /// (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API)
+    /// </summary>
+    public class Reasons : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("abuse")]
+        public virtual string Abuse { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("billing")]
+        public virtual string Billing { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dataGovernance")]
+        public virtual string DataGovernance { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceManagement")]
+        public virtual string ServiceManagement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A DNS resource record.</summary>
     public class ResourceRecord : Google.Apis.Requests.IDirectResponseSchema
     {

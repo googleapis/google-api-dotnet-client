@@ -494,7 +494,7 @@ namespace Google.Apis.WorkflowExecutions.v1
 
                             /// <summary>
                             /// Includes only basic metadata about the execution. Following fields are returned: name,
-                            /// start_time, end_time, state and workflow_revision_id.
+                            /// start_time, end_time, duration, state and workflow_revision_id.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
@@ -607,7 +607,7 @@ namespace Google.Apis.WorkflowExecutions.v1
 
                             /// <summary>
                             /// Includes only basic metadata about the execution. Following fields are returned: name,
-                            /// start_time, end_time, state and workflow_revision_id.
+                            /// start_time, end_time, duration, state and workflow_revision_id.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
@@ -778,6 +778,10 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// <summary>The call logging level associated to this execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callLogLevel")]
         public virtual string CallLogLevel { get; set; }
+
+        /// <summary>Output only. Measures the duration of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
 
         /// <summary>Output only. Marks the end of execution, successful or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
