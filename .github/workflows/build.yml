@@ -36,4 +36,5 @@ jobs:
         ./BuildSupport.sh
         dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj \
           --no-build --framework netcoreapp3.1 -c Release \
+          --logger "console;verbosity=detailed" \
           --filter ResumableUpload
