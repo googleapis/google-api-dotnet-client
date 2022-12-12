@@ -422,7 +422,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(0, progress.BytesSent);
             }
         }
-
+        */
         [Fact]
         public void TestUploadStreamDisposedBeforeConstruction()
         {
@@ -449,7 +449,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 var progress = uploader.Upload();
                 Assert.IsType<ObjectDisposedException>(progress.Exception);
             }
-        }*/
+        }
 
         /// <summary>
         /// Server that support multiple-chunk uploads.
