@@ -14,6 +14,26 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#define TestUploadInSingleChunk
+#define TestInitiatedResumableUpload
+#define TestUploadEmptyFile
+#define TestUploadStreamDisposedBeforeConstruction
+#define TestUploadStreamDisposedBetweenConstructionAndUpload
+#define TestUploadInMultipleChunks
+#define TestUploadInMultipleChunks_Interception
+#define TestUploadProgress
+#define TestUploadInBadServer_NotFound_PlainTextError
+#define TestUploadInBadServer_ServerUnavailable
+#define TestUploadInBadServer_NeedsResume
+#define TestUploadInBadServer_UploaderRestart
+#define TestUploadWithUploaderRestart_UnknownSize
+#define TestUploadInPartialServer
+#define TestUploadWithQueryAndPathParameters
+#define TestUploadInBadServer_NotFound_JsonError
+#define TestUploadCancelled
+#define TestUploadWithRequestAndResponseBody
+#define TestChunkSize
+
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -42,6 +62,9 @@ namespace Google.Apis.Tests.Apis.Upload
     public class ResumableUploadTest : IDisposable
     {
         #region Tests
+
+
+#if TestUploadInSingleChunk
         /// <summary>
         /// Upload completes in a single chunk.
         /// </summary>
@@ -69,7 +92,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(uploadTestBytes.Length, progress.BytesSent);
             }
         }
+#endif
 
+#if TestInitiatedResumableUpload
         /// <summary>
         /// An upload using a pre-established session.
         /// </summary>
@@ -99,7 +124,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(uploadTestBytes.Length, progress.BytesSent);
             }
         }
+#endif
 
+#if TestUploadEmptyFile
         /// <summary>
         /// Upload of an empty file.
         /// </summary>
@@ -123,7 +150,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(0, progress.BytesSent);
             }
         }
+#endif
 
+#if TestUploadStreamDisposedBeforeConstruction
         [Fact]
         public void TestUploadStreamDisposedBeforeConstruction()
         {
@@ -137,7 +166,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.IsType<ObjectDisposedException>(progress.Exception);
             }
         }
+#endif
 
+#if TestUploadStreamDisposedBetweenConstructionAndUpload
         [Fact]
         public void TestUploadStreamDisposedBetweenConstructionAndUpload()
         {
@@ -151,7 +182,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.IsType<ObjectDisposedException>(progress.Exception);
             }
         }
+#endif
 
+#if TestUploadInMultipleChunks
         /// <summary>
         /// An upload in multiple chunks, with no server errors.
         /// </summary>
@@ -173,7 +206,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(UploadStatus.Completed, progress.Status);
             }
         }
+#endif
 
+#if TestUploadInMultipleChunks_Interception
         // As TestUploadInMultipleChunks, but testing stream interception
         [Theory, CombinatorialData]
         public void TestUploadInMultipleChunks_Interception(
@@ -200,7 +235,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(uploadTestBytes, interceptedBytes.ToArray());
             }
         }
+#endif
 
+#if TestUploadProgress
         /// <summary>
         /// Check the upload progress is correct during upload.
         /// </summary>
@@ -228,8 +265,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(uploadLength, progress[3].BytesSent);
             }
         }
+#endif
 
-
+#if TestUploadInBadServer_NotFound_PlainTextError
         /// <summary>
         /// Server 404s, with a plain-text (non-JSON) body.
         /// </summary>
@@ -259,7 +297,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.True(exception.Error.IsOnlyRawContent);
             }
         }
+#endif
 
+#if TestUploadInBadServer_ServerUnavailable
         /// <summary>
         /// Server fails with occasional 500s, which the uploader transparently copes with.
         /// </summary>
@@ -282,7 +322,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(UploadStatus.Completed, progress.Status);
             }
         }
+#endif
 
+#if TestUploadInBadServer_NeedsResume
         /// <summary>
         /// Server fails with 400s, so Resume() calls are required.
         /// </summary>
@@ -319,7 +361,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(uploadTestBytes, server.Bytes);
             }
         }
+#endif
 
+#if TestUploadInBadServer_UploaderRestart
         /// <summary>
         /// Server fails with 400s, so resume calls are required.
         /// Resume is done as if the entire client program has restarted (ie with a fresh uploader).
@@ -351,7 +395,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(uploadTestBytes, server.Bytes);
             }
         }
+#endif
 
+#if TestUploadWithUploaderRestart_UnknownSize
         /// <summary>
         /// Resuming on program restart with a non-seekable stream is not supported.
         /// </summary>
@@ -368,8 +414,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.ThrowsAsync<NotImplementedException>(async () => await uploader.ResumeAsync(url));
             }
         }
+#endif
 
-
+#if TestUploadInPartialServer
         /// <summary>
         /// Upload correctly handles server accepting only partial uploaded chunks.
         /// </summary>
@@ -392,7 +439,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(UploadStatus.Completed, progress.Status);
             }
         }
+#endif
 
+#if TestUploadWithQueryAndPathParameters
         /// <summary>
         /// Uploader correctly adds path and query parameters to initial server call.
         /// </summary>
@@ -419,7 +468,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(6, server.Requests.Count);
             }
         }
+#endif
 
+#if TestUploadInBadServer_NotFound_JsonError
         /// <summary>
         /// Server 404s, with a JSON body.
         /// </summary>
@@ -458,7 +509,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal("Login Required", exception.Error.Message);
             }
         }
+#endif
 
+#if TestUploadCancelled
         /// <summary>
         /// Async uploads can be cancelled at any time.
         /// </summary>
@@ -487,7 +540,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(cancelOnCall, server.Requests.Count);
             }
         }
+#endif
 
+#if TestUploadWithRequestAndResponseBody
         /// <summary>
         /// Uploader correctly processes request and response bodies.
         /// </summary>
@@ -529,7 +584,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(1, reponseReceivedCount);
             }
         }
+#endif
 
+#if TestChunkSize
         /// <summary>
         /// Client validates chunk-size correctly.
         /// </summary>
@@ -550,10 +607,11 @@ namespace Google.Apis.Tests.Apis.Upload
                 upload.ChunkSize = TestResumableUpload.MinimumChunkSize * 2;
             }
         }
+#endif
 
-        #endregion
+#endregion
 
-        #region The rest
+#region The rest
         /// <summary>
         /// Mock string to upload to the media server. It contains 454 bytes, and in most cases we will use a chunk 
         /// size of 100. There are 3 spaces on the end of each line because the original carriage return line endings
@@ -1146,6 +1204,6 @@ namespace Google.Apis.Tests.Apis.Upload
         }
 
         
-        #endregion
+#endregion
     }
 }
