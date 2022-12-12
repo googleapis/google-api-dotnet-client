@@ -320,15 +320,21 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+        private static int _instanceCount;
+        private int _id;
+
         public ResumableUploadTest(ITestOutputHelper outputHelper)
         {
             _server = new TestServer(outputHelper);
+            _id = Interlocked.Increment(ref _instanceCount);
             _outputHelper = outputHelper;
+            _outputHelper.WriteLine($"Instance {_id} constructed at {DateTime.UtcNow:HH:mm:ss.FFFFFF}");
         }
 
         public void Dispose()
         {
             _server.Dispose();
+            _outputHelper?.WriteLine($"Instance {_id} disposed at {DateTime.UtcNow:HH:mm:ss.FFFFFF}");
         }
 
         private TestServer _server;
