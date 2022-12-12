@@ -32,6 +32,7 @@ limitations under the License.
 //#define TestUploadInBadServer_NotFound_JsonError
 //#define TestUploadWithRequestAndResponseBody
 //#define TestUploadWithUploaderRestart_UnknownSize
+//#define TestChunkSize
 
 // Probably needed to reproduce failure
 
@@ -39,7 +40,6 @@ limitations under the License.
 #define TestUploadCancelled
 
 // In progress
-// #define TestChunkSize
 
 // Still to be analysed
 
@@ -347,8 +347,8 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public void TestUploadInBadServer_NeedsResume(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(/*new[] { 0 }, new[] { 100 }, new[] { 410 }, */new[] { 0, 410 })] int[] dodgyBytes,
+            [CombinatorialValues(/*100, 400, */1000)] int chunkSize,
             [CombinatorialValues(4096, 51, 100)] int bufferSize)
         {
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
@@ -527,7 +527,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public async Task TestUploadCancelled(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
+            [CombinatorialValues(/*1, 2, 3, 4, */5)] int cancelOnCall)
         {
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
