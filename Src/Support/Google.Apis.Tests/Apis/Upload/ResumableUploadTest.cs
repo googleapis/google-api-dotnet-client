@@ -27,6 +27,9 @@ limitations under the License.
 //#define TestUploadInBadServer_NotFound_PlainTextError
 //#define TestUploadInBadServer_ServerUnavailable
 //#define TestUploadInBadServer_UploaderRestart
+//#define TestUploadInPartialServer
+//#define TestUploadWithQueryAndPathParameters
+//#define TestUploadInBadServer_NotFound_JsonError
 
 // Probably needed to reproduce failure
 
@@ -35,17 +38,15 @@ limitations under the License.
 
 // In progress
 
-//#define TestUploadInPartialServer
-//#define TestUploadWithQueryAndPathParameters
-//#define TestUploadInBadServer_NotFound_JsonError
+//#define TestUploadWithRequestAndResponseBody
+//#define TestChunkSize
+
 
 // Still to be analysed
 
 
 
 #define TestUploadCancelled
-#define TestUploadWithRequestAndResponseBody
-#define TestChunkSize
 
 using Google.Apis.Json;
 using Google.Apis.Services;
