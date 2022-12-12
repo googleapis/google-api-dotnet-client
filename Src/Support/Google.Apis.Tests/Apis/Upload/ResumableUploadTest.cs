@@ -14,11 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#define TestUploadInSingleChunk
-#define TestInitiatedResumableUpload
-#define TestUploadEmptyFile
-#define TestUploadStreamDisposedBeforeConstruction
-#define TestUploadStreamDisposedBetweenConstructionAndUpload
+//#define TestUploadInSingleChunk
+//#define TestInitiatedResumableUpload
+//#define TestUploadEmptyFile
+//#define TestUploadStreamDisposedBeforeConstruction
+//#define TestUploadStreamDisposedBetweenConstructionAndUpload
+
 #define TestUploadInMultipleChunks
 #define TestUploadInMultipleChunks_Interception
 #define TestUploadProgress
