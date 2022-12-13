@@ -459,7 +459,7 @@ hello world
                 {
                     StatusCode = HttpStatusCode.BadRequest,
                     ReasonPhrase = "Bad Request",
-                    Content = _responseContent == null ? null : new StringContent(_responseContent, Encoding.UTF8, "application/jsong")
+                    Content = _responseContent == null ? null : new StringContent(_responseContent, Encoding.UTF8, "application/json")
                 });
         }
 
@@ -563,10 +563,6 @@ hello world
         public async Task BatchEndpointErrorNullContent()
         {
             string expectedExceptionMessage = "The service TestService has thrown an exception. HttpStatusCode is BadRequest. No error message was specified.";
-            string expectedExceptionToStringContent =
-                $"The service TestService has thrown an exception.{Environment.NewLine}" +
-                $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
-                $"No error details were specified.";
 
             using (var service = new MockClientService( new BaseClientService.Initializer()
             {
@@ -590,7 +586,23 @@ hello world
 
                 GoogleApiException innerException = Assert.IsType<GoogleApiException>(outerException.InnerException);
                 Assert.Equal(HttpStatusCode.BadRequest, innerException.HttpStatusCode);
+#if NET6_0_OR_GREATER
+                // Even though we tell our handler to return a response with null content,
+                // in .NET 6 we get a StringContent with empty string content.
+                // This just documents that behaviour.
+                Assert.Equal("", innerException.Error.ErrorResponseContent);
+                string expectedExceptionToStringContent =
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are empty or white spaces only.";
+#else
                 Assert.Null(innerException.Error);
+                string expectedExceptionToStringContent =
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
+                    $"No error details were specified.";
+#endif
                 Assert.Equal(expectedExceptionMessage, innerException.Message);
                 Assert.Contains(expectedExceptionToStringContent, innerException.ToString());
             }

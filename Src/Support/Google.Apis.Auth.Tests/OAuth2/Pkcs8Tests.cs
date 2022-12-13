@@ -137,7 +137,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
                 Assert.Equal(publicKey.Modulus.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.Modulus, false));
             }
         }
-#elif NETCOREAPP3_1
+#elif NETCOREAPP3_1 || NET6_0
         // RsaFuzzTest() can't run on net core.
 #else
 #error Unsupported platform.

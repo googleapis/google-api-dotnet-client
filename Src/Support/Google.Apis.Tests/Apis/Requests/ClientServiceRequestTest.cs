@@ -1235,17 +1235,37 @@ namespace Google.Apis.Tests.Apis.Requests
                     null,
                     0,
                     $"The service TestService has thrown an exception. No HttpStatusCode was specified. No error message was specified.",
+#if NET6_0_OR_GREATER
+                    // Even though we tell our handler to return a response with null content,
+                    // in .NET 6 we get a StringContent with empty string content.
+                    // This just documents that behaviour.
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"No HttpStatusCode was specified.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are empty or white spaces only."
+#else
                     $"The service TestService has thrown an exception.{Environment.NewLine}" +
                     $"No HttpStatusCode was specified.{Environment.NewLine}" +
                     $"No error details were specified."
+#endif
                 },
                 {
                     null,
                     HttpStatusCode.BadRequest,
                     $"The service TestService has thrown an exception. HttpStatusCode is BadRequest. No error message was specified.",
+#if NET6_0_OR_GREATER
+                    // Even though we tell our handler to return a response with null content,
+                    // in .NET 6 we get a StringContent with empty string content.
+                    // This just documents that behaviour.
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are empty or white spaces only."
+#else
                     $"The service TestService has thrown an exception.{Environment.NewLine}" +
                     $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
                     $"No error details were specified."
+#endif
                 }
             };
 
