@@ -14,34 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Not needed
-
-//#define TestUploadInSingleChunk
-//#define TestInitiatedResumableUpload
-//#define TestUploadEmptyFile
-//#define TestUploadStreamDisposedBeforeConstruction
-//#define TestUploadStreamDisposedBetweenConstructionAndUpload
-//#define TestUploadInMultipleChunks
-//#define TestUploadInMultipleChunks_Interception
-//#define TestUploadProgress
-//#define TestUploadInBadServer_NotFound_PlainTextError
-//#define TestUploadInBadServer_ServerUnavailable
-//#define TestUploadInBadServer_UploaderRestart
-//#define TestUploadInPartialServer
-//#define TestUploadWithQueryAndPathParameters
-//#define TestUploadInBadServer_NotFound_JsonError
-//#define TestUploadWithRequestAndResponseBody
-//#define TestUploadWithUploaderRestart_UnknownSize
-//#define TestChunkSize
-
-// Probably needed to reproduce failure
-
-#define TestUploadInBadServer_NeedsResume
-#define TestUploadCancelled
-
-// In progress
-
-// Still to be analysed
 
 using Google.Apis.Json;
 using Google.Apis.Services;
@@ -115,7 +87,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public async Task TestUploadCancelled(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(/*1, 2, */3, 4, 5)] int cancelOnCall)
+            [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
         {
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
@@ -401,29 +373,6 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        /// <summary>
-        /// Server that only handles an upload completing in a single chunk.
-        /// </summary>
-        private class SingleChunkServer : TestServer.Handler
-        {
-            public SingleChunkServer(TestServer server) : base(server) { }
-
-            protected override Task<IEnumerable<byte>> HandleCall(HttpListenerRequest request, HttpListenerResponse response)
-            {
-                switch (RemovePrefix(request.Url.PathAndQuery))
-                {
-                    case "SingleChunk?uploadType=resumable":
-                        response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{uploadPath}";
-                        break;
-                    case uploadPath:
-                        break;
-                    default:
-                        throw new InvalidOperationException();
-                }
-                return Task.FromResult<IEnumerable<byte>>(null);
-            }
-        }
-
         private static int _instanceCount;
         private int _id;
 
@@ -577,45 +526,6 @@ namespace Google.Apis.Tests.Apis.Upload
                 return base.HandleCall(request, response);
             }
         }
-
-        /// <summary>A mock request object.</summary>
-        private class TestRequest : IEquatable<TestRequest>
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-
-            public bool Equals(TestRequest other)
-            {
-                if (other == null)
-                {
-                    return false;
-                }
-
-                return Name == null ? other.Name == null : Name.Equals(other.Name) &&
-                    Description == null ? other.Description == null : Description.Equals(other.Description);
-            }
-        }
-
-        /// <summary>A mock response object.</summary>
-        private class TestResponse : IEquatable<TestResponse>
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string Description { get; set; }
-
-            public bool Equals(TestResponse other)
-            {
-                if (other == null)
-                {
-                    return false;
-                }
-
-                return Id.Equals(other.Id) &&
-                    Name == null ? other.Name == null : Name.Equals(other.Name) &&
-                    Description == null ? other.Description == null : Description.Equals(other.Description);
-            }
-        }
-
 
 #endregion
     }
