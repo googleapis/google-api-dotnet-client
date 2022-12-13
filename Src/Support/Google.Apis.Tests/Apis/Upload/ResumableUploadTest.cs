@@ -283,8 +283,8 @@ namespace Google.Apis.Tests.Apis.Upload
                         {
                             _testLogger.WriteLine($"Handling request {requestId}");
                             body = await HandleCall(context.Request, response);
-                            _testLogger.WriteLine($"Handled request {requestId}; response status: {response.StatusCode}");
                             var bodyBytes = body?.ToArray() ?? new byte[0];
+                            _testLogger.WriteLine($"Handled request {requestId}; response status: {response.StatusCode}; body length {bodyBytes.Length}");
                             await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
                         }
                         catch (HttpListenerException ex)
@@ -471,6 +471,7 @@ namespace Google.Apis.Tests.Apis.Upload
                         }
                         HandleHeaders(request, response);
                         _firstUploadCall = false;
+                        Logger.WriteLine($"Read {bytesStream.Length} bytes from request");
                         return null;
                     default:
                         Logger.WriteLine($"Unexpected last part of URL: {lastPart}");
