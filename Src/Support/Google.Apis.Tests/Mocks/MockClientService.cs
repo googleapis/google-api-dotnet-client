@@ -43,6 +43,7 @@ namespace Google.Apis.Tests.Mocks
         public MockClientService(string baseUri = @"https://testexample.google.com", string batchUri = null)
             : this(new Initializer(), baseUri, batchUri)
         {
+            HttpClient.DefaultRequestHeaders.ConnectionClose = true;
         }
 
         public MockClientService(Initializer initializer,
