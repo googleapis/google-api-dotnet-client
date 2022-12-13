@@ -96,6 +96,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                service.HttpClient.MessageHandler.ResumableUploadTestLogger = message => _testLogger.WriteLine(message, "MessageHandler.SendAsync");
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _testLogger);
                 if (cancelOnCall == 1)
