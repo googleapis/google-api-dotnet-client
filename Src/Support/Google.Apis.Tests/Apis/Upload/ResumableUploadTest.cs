@@ -58,8 +58,8 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadInBadServer_NeedsResume(
             [CombinatorialValues(true, false)] bool knownSize,
             [CombinatorialValues(/*new[] { 0 }, new[] { 100 }, new[] { 410 }, */new[] { 0, 410 })] int[] dodgyBytes,
-            [CombinatorialValues(/*100, 400, */1000)] int chunkSize,
-            [CombinatorialValues(/*4096, 51, */100)] int bufferSize)
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(4096, 51, 100)] int bufferSize)
         {
             _outputHelper.WriteLine($"TestUploadInBadServer_NeedsResume: {knownSize}, (dodgyBytes), {chunkSize}, {bufferSize}");
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
@@ -220,6 +220,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
             public TestServer(ITestOutputHelper testOutputHelper)
             {
+                _testOutputHelper = testOutputHelper;
                 var rnd = new Random();
                 // Find an available port and start an HttpListener.
                 do
@@ -249,7 +250,6 @@ namespace Google.Apis.Tests.Apis.Upload
                     }
                 } while (_httpListener == null);
                 _httpTask = RunServer();
-                _testOutputHelper = testOutputHelper; 
             }
 
             private readonly HttpListener _httpListener;
