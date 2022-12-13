@@ -61,6 +61,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [CombinatorialValues(/*100, 400, */1000)] int chunkSize,
             [CombinatorialValues(/*4096, 51, */100)] int bufferSize)
         {
+            _outputHelper.WriteLine($"TestUploadInBadServer_NeedsResume: {knownSize}, (dodgyBytes), {chunkSize}, {bufferSize}");
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
                 + dodgyBytes.Length * 2;
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
@@ -89,6 +90,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [CombinatorialValues(true, false)] bool knownSize,
             [CombinatorialValues(1, 2, 3, 4, 5)] int cancelOnCall)
         {
+            _outputHelper.WriteLine($"TestUploadCancelled: {knownSize}, {cancelOnCall}");
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
             using (var service = new MockClientService(server.HttpPrefix))
