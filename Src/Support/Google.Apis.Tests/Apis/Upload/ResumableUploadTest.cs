@@ -15,11 +15,9 @@ limitations under the License.
 */
 
 
-using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Upload;
-using Google.Apis.Util;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -29,6 +27,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -68,7 +67,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
-                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _outputHelper, _instanceCount);
                 uploader.BufferSize = bufferSize;
                 var progress = uploader.Upload();
                 int sanity = 0;
@@ -157,21 +156,22 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class TestResumableUpload : ResumableUpload<object>
         {
-            private readonly ITestOutputHelper _testOutputHelper;
+            private readonly TestLogger _testLogger;
+
             public TestResumableUpload(IClientService service, string path, string method, Stream stream,
-                string contentType, int chunkSize, ITestOutputHelper testOutputHelper)
+                string contentType, int chunkSize, TestLogger testOutputHelper)
                 : base(service, path, method, stream, contentType)
             {
                 this.chunkSize = chunkSize;
-                _testOutputHelper = testOutputHelper;
+                _testLogger = testOutputHelper;
                 ProgressChanged += ProgressOutput;
             }
 
             private void ProgressOutput(IUploadProgress progress)
             {
-                _testOutputHelper.WriteLine($"ProgressOutput Status {progress.Status}");
-                _testOutputHelper.WriteLine($"ProgressOutput BytesSent {progress.BytesSent}");
-                _testOutputHelper.WriteLine($"ProgressOutput Exception {progress.Exception?.ToString() ?? "None"}");
+                _testLogger.WriteLine($"Status {progress.Status}");
+                _testLogger.WriteLine($"BytesSent {progress.BytesSent}");
+                _testLogger.WriteLine($"Exception {progress.Exception?.ToString() ?? "None"}");
             }
         }
 
@@ -216,11 +216,11 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </remarks>
         private class TestServer : IDisposable
         {
-            private readonly ITestOutputHelper _testOutputHelper;
+            private readonly TestLogger _testLogger;
 
-            public TestServer(ITestOutputHelper testOutputHelper)
+            public TestServer(TestLogger testLogger)
             {
-                _testOutputHelper = testOutputHelper;
+                _testLogger = testLogger;
                 var rnd = new Random();
                 // Find an available port and start an HttpListener.
                 do
@@ -231,20 +231,20 @@ namespace Google.Apis.Tests.Apis.Upload
                     _httpListener.Prefixes.Add(HttpPrefix);
                     try
                     {
-                        testOutputHelper.WriteLine("Starting server");
+                        testLogger.WriteLine("Starting server");
                         _httpListener.Start();
-                        testOutputHelper.WriteLine("Server started");
+                        testLogger.WriteLine("Server started");
                     }
                     // Catch errors that mean the port is already in use
                     catch (HttpListenerException e) when (e.ErrorCode == 183 || e.ErrorCode == 32 || e.Message.Contains("already in use"))
                     {
-                        testOutputHelper.WriteLine("Address in use (1); retrying");
+                        testLogger.WriteLine("Address in use (1); retrying");
                         _httpListener.Close();
                         _httpListener = null;
                     }
                     catch (SocketException e) when (e.SocketErrorCode == SocketError.AddressAlreadyInUse)
                     {
-                        testOutputHelper.WriteLine("Address in use (2); retrying");
+                        testLogger.WriteLine("Address in use (2); retrying");
                         _httpListener.Close();
                         _httpListener = null;
                     }
@@ -280,7 +280,7 @@ namespace Google.Apis.Tests.Apis.Upload
                         }
                         catch (HttpListenerException ex)
                         {
-                            _testOutputHelper.WriteLine($"Test Server Exception {ex}");
+                            _testLogger.WriteLine($"Test Server Exception {ex}");
                         }
                         finally
                         {
@@ -327,7 +327,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 {
                     var requestInfo = new RequestInfo(request);
                     Requests.Add(requestInfo);
-                    _server._testOutputHelper.WriteLine($"Request: {requestInfo}");
+                    _server._testLogger.WriteLine($"Request: {requestInfo}");
                     return HandleCall(request, response);
                 }
 
@@ -375,25 +375,22 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        private static int _instanceCount;
-        private int _id;
-
         public ResumableUploadTest(ITestOutputHelper outputHelper)
         {
-            _server = new TestServer(outputHelper);
-            _id = Interlocked.Increment(ref _instanceCount);
-            _outputHelper = outputHelper;
-            _outputHelper.WriteLine($"Instance {_id} constructed at {DateTime.UtcNow:HH:mm:ss.FFFFFF}");
+            _testLogger = new TestLogger(outputHelper);
+            _server = new TestServer(_testLogger);
+            _testLogger.WriteLine("End of constructor");
         }
 
         public void Dispose()
         {
+            _testLogger?.WriteLine("Disposing");
             _server.Dispose();
-            _outputHelper?.WriteLine($"Instance {_id} disposed at {DateTime.UtcNow:HH:mm:ss.FFFFFF}");
+            _testLogger?.WriteLine("Dispose completed");
         }
 
         private TestServer _server;
-        private readonly ITestOutputHelper _outputHelper;
+        private readonly TestLogger _testLogger;
 
         /// <summary>
         /// Server that support multiple-chunk uploads.
@@ -529,6 +526,25 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-#endregion
+        #endregion
+
+        private class TestLogger
+        {
+            private static int _instanceCount;
+            private int _id;
+            private readonly ITestOutputHelper _outputHelper;
+
+            public TestLogger(ITestOutputHelper outputHelper)
+            {
+                _id = Interlocked.Increment(ref _instanceCount);
+                _outputHelper = outputHelper;
+            }
+
+            public void WriteLine(string message, [CallerMemberName] string caller = null)
+            {
+                string fullMessage = $"{DateTime.UtcNow:HH:mm:ss.FFFFFF}: {_id} - {caller}: {message}";
+                _outputHelper.WriteLine(fullMessage);
+            }
+        }
     }
 }
