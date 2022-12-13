@@ -56,11 +56,11 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public void TestUploadInBadServer_NeedsResume(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(/*new[] { 0 }, new[] { 100 }, new[] { 410 }, */new[] { 0, 410 })] int[] dodgyBytes,
+            [CombinatorialValues(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 411 })] int[] dodgyBytes,
             [CombinatorialValues(100, 400, 1000)] int chunkSize,
             [CombinatorialValues(4096, 51, 100)] int bufferSize)
         {
-            _testLogger.WriteLine($"TestUploadInBadServer_NeedsResume: {knownSize}, (dodgyBytes), {chunkSize}, {bufferSize}");
+            _testLogger.WriteLine($"TestUploadInBadServer_NeedsResume: {knownSize}, {dodgyBytes.Last()}, {chunkSize}, {bufferSize}");
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
                 + dodgyBytes.Length * 2;
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
