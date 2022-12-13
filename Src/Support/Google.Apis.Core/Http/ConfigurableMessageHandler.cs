@@ -481,11 +481,11 @@ namespace Google.Apis.Http
                     request.Headers.Add($"x-goog-requestid", requestId.ToString());
                     ResumableUploadTestLogger?.Invoke($"Before request {requestId}: {request.RequestUri}");
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                    ResumableUploadTestLogger?.Invoke($"After request: {response.StatusCode}");
+                    ResumableUploadTestLogger?.Invoke($"After request {requestId}: {response.StatusCode}");
                 }
                 catch (Exception ex)
                 {
-                    ResumableUploadTestLogger?.Invoke($"Request failed: {ex}");
+                    ResumableUploadTestLogger?.Invoke($"Request {requestId} failed: {ex}");
                     lastException = ex;
                 }
 
