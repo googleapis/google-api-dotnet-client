@@ -288,7 +288,10 @@ namespace Google.Apis.Tests.Apis.Upload
                             {
                                 response.Close();
                             }
-                            catch (Exception) { }
+                            catch (Exception ex)
+                            {
+                                _testLogger.WriteLine($"Test Server exception when closing response {ex}");
+                            }
                         }
                     }
                 }
@@ -299,6 +302,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 private static int handlerId = 0;
 
                 private TestServer _server;
+                protected TestLogger Logger => _server._testLogger;
 
                 public Handler(TestServer server)
                 {
@@ -322,13 +326,15 @@ namespace Google.Apis.Tests.Apis.Upload
 
                 public List<RequestInfo> Requests { get; } = new List<RequestInfo>();
 
-                public Task<IEnumerable<byte>> HandleCall0(
+                public async Task<IEnumerable<byte>> HandleCall0(
                     HttpListenerRequest request, HttpListenerResponse response)
                 {
                     var requestInfo = new RequestInfo(request);
                     Requests.Add(requestInfo);
                     _server._testLogger.WriteLine($"Request: {requestInfo}");
-                    return HandleCall(request, response);
+                    var result = await HandleCall(request, response).ConfigureAwait(false);
+                    _server._testLogger.WriteLine($"Response status / content type: {response.StatusCode}/{response.ContentType}");
+                    return result;
                 }
 
                 protected abstract Task<IEnumerable<byte>> HandleCall(
@@ -440,7 +446,8 @@ namespace Google.Apis.Tests.Apis.Upload
 
             protected override async Task<IEnumerable<byte>> HandleCall(HttpListenerRequest request, HttpListenerResponse response)
             {
-                switch (RemovePrefix(request.Url.PathAndQuery))
+                string lastPart = RemovePrefix(request.Url.PathAndQuery);
+                switch (lastPart)
                 {
                     case "MultiChunk?uploadType=resumable":
                         response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{uploadPath}";
@@ -457,6 +464,7 @@ namespace Google.Apis.Tests.Apis.Upload
                         _firstUploadCall = false;
                         return null;
                     default:
+                        Logger.WriteLine($"Unexpected last part of URL: {lastPart}");
                         throw new InvalidOperationException();
                 }
             }
