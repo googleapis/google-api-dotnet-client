@@ -229,7 +229,8 @@ namespace Google.Apis.Tests.Apis.Upload
                 do
                 {
                     _httpListener = new HttpListener();
-                    _httpListener.IgnoreWriteExceptions = true;
+                    
+                    //_httpListener.IgnoreWriteExceptions = true;
                     HttpPrefix = $"http://localhost:{rnd.Next(49152, 65535)}/";
                     _httpListener.Prefixes.Add(HttpPrefix);
                     try
