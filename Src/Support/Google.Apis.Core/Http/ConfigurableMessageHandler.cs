@@ -211,6 +211,11 @@ namespace Google.Apis.Http
         private ILogger _instanceLogger = Logger;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public Action<string> ResumableUploadTestLogger { get; set; }
+
+        /// <summary>
         /// For testing only.
         /// This defaults to the static <see cref="Logger"/>, but can be overridden for fine-grain testing. 
         /// </summary>
@@ -470,10 +475,13 @@ namespace Google.Apis.Http
                 try
                 {
                     // Send the request!
+                    ResumableUploadTestLogger?.Invoke($"Before request: {request.RequestUri}");
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                    ResumableUploadTestLogger?.Invoke($"After request: {response.StatusCode}");
                 }
                 catch (Exception ex)
                 {
+                    ResumableUploadTestLogger?.Invoke($"Request failed: {ex}");
                     lastException = ex;
                 }
 

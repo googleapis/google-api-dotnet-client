@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 
+using Google.Apis.Http;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Upload;
@@ -66,6 +67,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                service.HttpClient.MessageHandler.ResumableUploadTestLogger = message => _testLogger.WriteLine(message, "MessageHandler.SendAsync");
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize, _testLogger);
                 uploader.BufferSize = bufferSize;
