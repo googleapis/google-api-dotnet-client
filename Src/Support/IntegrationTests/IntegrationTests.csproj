@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- net452 is the earliest desktop version supported by xunit runner -->
-    <TargetFrameworks>netcoreapp3.1;net452;net46</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net452;net46;net6.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>

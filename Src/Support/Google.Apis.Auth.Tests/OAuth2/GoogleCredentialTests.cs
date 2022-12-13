@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETCOREAPP3_1 || NET461
+#if NETCOREAPP3_1 || NET461 || NET6_0
 #define EXTENSIONS_SUPPORTED
 #elif !(NET452 || NET46)
 #error Unsupported Platform
