@@ -259,9 +259,12 @@ namespace Google.Apis.Tests.Apis.Upload
 
             private async Task RunServer()
             {
+                int requestCount = 0;
                 while (_httpListener.IsListening)
                 {
                     var context = await _httpListener.GetContextAsync();
+                    int requestId = Interlocked.Increment(ref requestCount);
+                    _testLogger.WriteLine($"Received request {requestId}");
                     var response = context.Response;
                     if (context.Request.Url.AbsolutePath.EndsWith("/Quit"))
                     {
@@ -274,13 +277,15 @@ namespace Google.Apis.Tests.Apis.Upload
                         IEnumerable<byte> body;
                         try
                         {
+                            _testLogger.WriteLine($"Handling request {requestId}");
                             body = await HandleCall(context.Request, response);
+                            _testLogger.WriteLine($"Handled request {requestId}; response status: {response.StatusCode}");
                             var bodyBytes = body?.ToArray() ?? new byte[0];
                             await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
                         }
                         catch (HttpListenerException ex)
                         {
-                            _testLogger.WriteLine($"Test Server Exception {ex}");
+                            _testLogger.WriteLine($"Request {requestId}: Test Server Exception {ex}");
                         }
                         finally
                         {
@@ -290,7 +295,7 @@ namespace Google.Apis.Tests.Apis.Upload
                             }
                             catch (Exception ex)
                             {
-                                _testLogger.WriteLine($"Test Server exception when closing response {ex}");
+                                _testLogger.WriteLine($"Request {requestId}: Test Server exception when closing response {ex}");
                             }
                         }
                     }
