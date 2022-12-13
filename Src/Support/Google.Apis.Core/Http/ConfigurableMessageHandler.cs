@@ -391,6 +391,8 @@ namespace Google.Apis.Http
             InstanceLogger.Debug(fmtText, new string(bodyChars));
         }
 
+        private static int requestCounter;
+
         /// <summary>
         /// The main logic of sending a request to the server. This send method adds the User-Agent header to a request
         /// with <see cref="ApplicationName"/> and the library version. It also calls interceptors before each attempt,
@@ -472,10 +474,12 @@ namespace Google.Apis.Http
                         await LogBody($"Request[{loggingRequestId}] Body: '{{0}}'", request.Content).ConfigureAwait(false);
                     }
                 }
+                int requestId = Interlocked.Increment(ref requestCounter);
                 try
                 {
                     // Send the request!
-                    ResumableUploadTestLogger?.Invoke($"Before request: {request.RequestUri}");
+                    request.Headers.Add($"x-goog-requestid", requestId.ToString());
+                    ResumableUploadTestLogger?.Invoke($"Before request {requestId}: {request.RequestUri}");
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                     ResumableUploadTestLogger?.Invoke($"After request: {response.StatusCode}");
                 }
