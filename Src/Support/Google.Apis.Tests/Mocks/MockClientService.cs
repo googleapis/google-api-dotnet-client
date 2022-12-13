@@ -43,6 +43,23 @@ namespace Google.Apis.Tests.Mocks
         public MockClientService(string baseUri = @"https://testexample.google.com", string batchUri = null)
             : this(new Initializer(), baseUri, batchUri)
         {
+            // In GitHub CI, tests using HttpListener can very occasionally fail in hard-to-diagnose ways.
+            // The symptoms are:
+            // Request x: goes through the HttpListener and is fine
+            // Request x+1: goes through the HttpListener handler, but the HttpClient fails to read the
+            //     start of the response, with an error of:
+            //     "System.Net.Http.HttpRequestException: Received an invalid status line: '0'."
+            //     The code sending the response then fails with an error of:
+            //     System.Net.HttpListenerException (0x80131620): Unable to write data to the transport connection: Broken pipe.
+            // Request x+2: doesn't hit the HttpListener handler at all, and fails immediately
+            //     with a status of BadRequest (400) and a response body of "<h1>Bad Request (Bad Request)</h1>"
+            //
+            // Obviously this sequence causes test failures.
+            // If we close the connection after each request, the problems disappear.
+            // While it's not obvious why this is needed, we have no evidence that it's a problem in production
+            // code - we expect the issue to be in HttpListener rather than HttpClient.
+            // This is just a workaround to make tests more stable.
+            HttpClient.DefaultRequestHeaders.ConnectionClose = true;
         }
 
         public MockClientService(Initializer initializer,
