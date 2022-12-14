@@ -32,6 +32,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Google.Apis.Tests.Apis.Upload
 {
@@ -45,14 +46,14 @@ namespace Google.Apis.Tests.Apis.Upload
         /// size of 100. There are 3 spaces on the end of each line because the original carriage return line endings
         /// caused differences between Windows and Linux test results.
         /// </summary>
-        static readonly string UploadTestData =
+        private static readonly string UploadTestData =
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod   " +
             "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris   " +
             "nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore   " +
             "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit   " +
             "anim id est laborum.";
-        static readonly byte[] uploadTestBytes = Encoding.UTF8.GetBytes(UploadTestData);
-        static readonly int uploadLength = uploadTestBytes.Length;
+        private static readonly byte[] uploadTestBytes = Encoding.UTF8.GetBytes(UploadTestData);
+        private static readonly int uploadLength = uploadTestBytes.Length;
 
         /// <summary>
         /// URL used for the resumable upload.
@@ -117,8 +118,12 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </remarks>
         private class TestServer : IDisposable
         {
-            public TestServer()
+            internal TestLogger Logger { get; }
+
+            public TestServer(TestLogger logger)
             {
+                Logger = logger;
+
                 var rnd = new Random();
                 // Find an available port and start an HttpListener.
                 do
@@ -171,14 +176,20 @@ namespace Google.Apis.Tests.Apis.Upload
                             var bodyBytes = body?.ToArray() ?? new byte[0];
                             await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
                         }
-                        catch (HttpListenerException) { }
+                        catch (HttpListenerException ex)
+                        {
+                            Logger.WriteLine($"HttpListener failed while handling response: {ex}");
+                        }
                         finally
                         {
                             try
                             {
                                 response.Close();
                             }
-                            catch (Exception) { }
+                            catch (Exception ex)
+                            {
+                                Logger.WriteLine($"HttpListener failed while closing response: {ex}");
+                            }
                         }
                     }
                 }
@@ -286,17 +297,21 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        public ResumableUploadTest()
+        private readonly TestServer _server;
+        private readonly TestLogger _logger;
+
+        public ResumableUploadTest(ITestOutputHelper outputHelper)
         {
-            _server = new TestServer();
+            _logger = new TestLogger(outputHelper);
+            _logger.WriteLine("Start of test");
+            _server = new TestServer(_logger);
         }
 
         public void Dispose()
         {
             _server.Dispose();
+            _logger.WriteLine("Test disposed");
         }
-
-        private TestServer _server;
 
         /// <summary>
         /// Upload completes in a single chunk.
@@ -1092,6 +1107,26 @@ namespace Google.Apis.Tests.Apis.Upload
                 upload.ChunkSize = TestResumableUpload.MinimumChunkSize;
                 upload.ChunkSize = TestResumableUpload.MinimumChunkSize * 2;
             }
+        }
+
+        /// <summary>
+        /// Wrapper around <see cref="ITestOutputHelper"/> which keep an incrementing
+        /// counter to allow easy differentiation between separate tests.
+        /// </summary>
+        internal class TestLogger
+        {
+            private static int _counter;
+            private readonly int _id;
+            private readonly ITestOutputHelper _outputHelper;
+
+            internal TestLogger(ITestOutputHelper outputHelper)
+            {
+                _outputHelper = outputHelper;
+                _id = Interlocked.Increment(ref _counter);
+            }
+
+            internal void WriteLine(string message) =>
+                _outputHelper.WriteLine($"Test {_id:0000} at {DateTime.UtcNow:HH:mm:ss.fff}: {message}");
         }
     }
 }
