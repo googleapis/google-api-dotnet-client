@@ -41,6 +41,13 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </remarks>
         private class TestServer : IDisposable
         {
+            private readonly HttpListener _httpListener;
+            private readonly Task _httpTask;
+
+            private int _requestCounter;
+
+            public string HttpPrefix { get; }
+
             internal TestLogger Logger { get; }
 
             public TestServer(TestLogger logger)
@@ -73,16 +80,14 @@ namespace Google.Apis.Tests.Apis.Upload
                 _httpTask = RunServer();
             }
 
-            private readonly HttpListener _httpListener;
-            private readonly Task _httpTask;
-
-            public string HttpPrefix { get; }
 
             private async Task RunServer()
             {
                 while (_httpListener.IsListening)
                 {
+                    int requestId = Interlocked.Increment(ref _requestCounter);
                     var context = await _httpListener.GetContextAsync();
+                    Logger.WriteLine($"HttpListener received request {requestId} with path {context.Request.Url.AbsolutePath}");
                     var response = context.Response;
                     if (context.Request.Url.AbsolutePath.EndsWith("/Quit"))
                     {
@@ -98,10 +103,11 @@ namespace Google.Apis.Tests.Apis.Upload
                             body = await HandleCall(context.Request, response);
                             var bodyBytes = body?.ToArray() ?? new byte[0];
                             await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+                            Logger.WriteLine($"Request {requestId} completed with status code: {response.StatusCode}; content length {bodyBytes.Length}");
                         }
                         catch (HttpListenerException ex)
                         {
-                            Logger.WriteLine($"HttpListener failed while handling response: {ex}");
+                            Logger.WriteLine($"HttpListener failed while handling response for request {requestId}: {ex}");
                         }
                         finally
                         {
@@ -111,7 +117,7 @@ namespace Google.Apis.Tests.Apis.Upload
                             }
                             catch (Exception ex)
                             {
-                                Logger.WriteLine($"HttpListener failed while closing response: {ex}");
+                                Logger.WriteLine($"HttpListener failed while closing response for request {requestId}: {ex}");
                             }
                         }
                     }
