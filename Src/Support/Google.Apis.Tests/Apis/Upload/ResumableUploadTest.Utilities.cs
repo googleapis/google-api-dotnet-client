@@ -20,6 +20,7 @@ using System;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using Xunit.Abstractions;
 
@@ -88,8 +89,8 @@ namespace Google.Apis.Tests.Apis.Upload
                 _id = Interlocked.Increment(ref _counter);
             }
 
-            internal void WriteLine(string message) =>
-                _outputHelper.WriteLine($"Test {_id:0000} at {DateTime.UtcNow:HH:mm:ss.fff}: {message}");
+            internal void WriteLine(string message, [CallerMemberName] string caller = null) =>
+                _outputHelper.WriteLine($"Test {_id:0000} at {DateTime.UtcNow:HH:mm:ss.fff}: {caller} - {message}");
         }
     }
 }
