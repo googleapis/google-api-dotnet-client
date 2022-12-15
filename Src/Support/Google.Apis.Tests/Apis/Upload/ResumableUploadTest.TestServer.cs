@@ -102,7 +102,10 @@ namespace Google.Apis.Tests.Apis.Upload
                         {
                             body = await HandleCall(context.Request, response);
                             var bodyBytes = body?.ToArray() ?? new byte[0];
-                            await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+                            if (bodyBytes.Length > 0)
+                            {
+                                await response.OutputStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+                            }
                             Logger.WriteLine($"Request {requestId} completed with status code: {response.StatusCode}; content length {bodyBytes.Length}");
                         }
                         catch (HttpListenerException ex)
