@@ -2848,6 +2848,108 @@ namespace Google.Apis.Dataproc.v1
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Creates a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where this node group will be created. Format:
+                    /// projects/{project}/regions/{region}/clusters/{cluster}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.NodeGroup body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+                    /// </summary>
+                    public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.NodeGroup body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where this node group will be created. Format:
+                        /// projects/{project}/regions/{region}/clusters/{cluster}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional node group ID. Generated if not specified.The ID must contain only
+                        /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end
+                        /// with underscore or hyphen. Must consist of from 3 to 33 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodeGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodeGroupId { get; set; }
+
+                        /// <summary>
+                        /// Optional. A unique ID used to identify the request. If the server receives two
+                        /// CreateNodeGroupRequest
+                        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
+                        /// with the same ID, the second request is ignored and the first google.longrunning.Operation
+                        /// created and stored in the backend is returned.Recommendation: Set this value to a UUID
+                        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only
+                        /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is
+                        /// 40 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataproc.v1.Data.NodeGroup Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/nodeGroups";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("nodeGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodeGroupId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the resource representation for a node group in a cluster.</summary>
                     /// <param name="name">
                     /// Required. The name of the node group to retrieve. Format:

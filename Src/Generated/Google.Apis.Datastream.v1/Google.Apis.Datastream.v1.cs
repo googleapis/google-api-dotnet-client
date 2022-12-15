@@ -1480,6 +1480,10 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. If set to true, will skip validations.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Required. The private connectivity identifier.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("privateConnectionId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PrivateConnectionId { get; set; }
@@ -1523,6 +1527,14 @@ namespace Google.Apis.Datastream.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("privateConnectionId", new Google.Apis.Discovery.Parameter
                         {
@@ -4039,6 +4051,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>A single target dataset to which all data will be streamed.</summary>
     public class SingleTargetDataset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The dataset ID of the target dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 

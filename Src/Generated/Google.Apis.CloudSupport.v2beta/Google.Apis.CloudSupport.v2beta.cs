@@ -1027,11 +1027,7 @@ namespace Google.Apis.CloudSupport.v2beta
             }
         }
 
-        /// <summary>
-        /// Update the specified case. Only a subset of fields (display_name, description, time_zone,
-        /// subscriber_email_addresses, related_resources, severity, priority, primary_contact, and labels) can be
-        /// updated.
-        /// </summary>
+        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name for the case.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2beta.Data.Case body, string name)
@@ -1039,11 +1035,7 @@ namespace Google.Apis.CloudSupport.v2beta
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>
-        /// Update the specified case. Only a subset of fields (display_name, description, time_zone,
-        /// subscriber_email_addresses, related_resources, severity, priority, primary_contact, and labels) can be
-        /// updated.
-        /// </summary>
+        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
         public class PatchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
         {
             /// <summary>Constructs a new Patch request.</summary>

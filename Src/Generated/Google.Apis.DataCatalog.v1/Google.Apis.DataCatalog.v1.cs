@@ -476,6 +476,7 @@ namespace Google.Apis.DataCatalog.v1
             {
                 this.service = service;
                 EntryGroups = new EntryGroupsResource(service);
+                Operations = new OperationsResource(service);
                 TagTemplates = new TagTemplatesResource(service);
                 Taxonomies = new TaxonomiesResource(service);
             }
@@ -1081,6 +1082,73 @@ namespace Google.Apis.DataCatalog.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Imports entries from some source (e.g. dump in a Cloud Storage bucket) to the Data Catalog. Dump
+                    /// here is a snapshot of the third-party system state, that needs to be ingested in the Data
+                    /// Catalog. Import of entries is a sync operation that reconciles state of the third-party system
+                    /// and Data Catalog. ImportEntries is a long-running operation done in the background, so this
+                    /// method returns long-running operation resource. The resource can be queried with
+                    /// Operations.GetOperation which contains metadata and response.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Target entry group for ingested entries.</param>
+                    public virtual ImportRequest Import(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ImportEntriesRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Imports entries from some source (e.g. dump in a Cloud Storage bucket) to the Data Catalog. Dump
+                    /// here is a snapshot of the third-party system state, that needs to be ingested in the Data
+                    /// Catalog. Import of entries is a sync operation that reconciles state of the third-party system
+                    /// and Data Catalog. ImportEntries is a long-running operation done in the background, so this
+                    /// method returns long-running operation resource. The resource can be queried with
+                    /// Operations.GetOperation which contains metadata and response.
+                    /// </summary>
+                    public class ImportRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ImportEntriesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Target entry group for ingested entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ImportEntriesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/entries:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                             });
                         }
                     }
@@ -2488,6 +2556,284 @@ namespace Google.Apis.DataCatalog.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(string name)
+                {
+                    return new CancelRequest(service, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.
+                /// </summary>
+                public class ListRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -4941,6 +5287,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
+        /// <summary>Optional. Default value for the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual string DefaultValue { get; set; }
+
         /// <summary>
         /// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8
         /// string with the maximum size of 2000 bytes.
@@ -4954,12 +5304,24 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
         public virtual string GcRule { get; set; }
 
+        /// <summary>Optional. Most important inclusion of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highestIndexingType")]
+        public virtual string HighestIndexingType { get; set; }
+
+        /// <summary>Looker specific column info of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lookerColumnSpec")]
+        public virtual GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec LookerColumnSpec { get; set; }
+
         /// <summary>
         /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only
         /// `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>Optional. Ordinal position</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
+        public virtual System.Nullable<int> OrdinalPosition { get; set; }
 
         /// <summary>Optional. Schema of sub-columns. A column can have zero or more sub-columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subcolumns")]
@@ -4968,6 +5330,28 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Required. Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Column info specific to Looker System.</summary>
+    public class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Looker specific column type of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common statistics on the entry's usage. They can be set on any system.</summary>
+    public class GoogleCloudDatacatalogV1CommonUsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>View count in source system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
+        public virtual System.Nullable<long> ViewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5053,6 +5437,10 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// <summary>Specification that applies to a table resource. Valid only for entries with the `TABLE` type.</summary>
     public class GoogleCloudDatacatalogV1DatabaseTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Spec what aplies to tables that are actually views. Not set for "real" tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseViewSpec")]
+        public virtual GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec DatabaseViewSpec { get; set; }
+
         /// <summary>
         /// Output only. Fields specific to a Dataplex table and present only in the Dataplex table entries.
         /// </summary>
@@ -5062,6 +5450,25 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Type of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to database view.</summary>
+    public class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a singular table this view reflects one to one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
+        public virtual string BaseTable { get; set; }
+
+        /// <summary>SQL query used to generate this view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlQuery")]
+        public virtual string SqlQuery { get; set; }
+
+        /// <summary>Type of this view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewType")]
+        public virtual string ViewType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5195,7 +5602,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual GoogleCloudDatacatalogV1DataSourceConnectionSpec DataSourceConnectionSpec { get; set; }
 
         /// <summary>
-        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseTableSpec")]
         public virtual GoogleCloudDatacatalogV1DatabaseTableSpec DatabaseTableSpec { get; set; }
@@ -5210,9 +5617,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes
-        /// (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8.
-        /// Default value is an empty string.
+        /// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty
+        /// string.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -5268,6 +5674,13 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string LinkedResource { get; set; }
 
         /// <summary>
+        /// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to
+        /// `LOOKER`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lookerSystemSpec")]
+        public virtual GoogleCloudDatacatalogV1LookerSystemSpec LookerSystemSpec { get; set; }
+
+        /// <summary>
         /// Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources
         /// might not be stored in the location specified in its name.
         /// </summary>
@@ -5296,6 +5709,13 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSystemTimestamps")]
         public virtual GoogleCloudDatacatalogV1SystemTimestamps SourceSystemTimestamps { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a relational database system. Only settable when `user_specified_system` is
+        /// equal to `SQL_DATABASE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlDatabaseSystemSpec")]
+        public virtual GoogleCloudDatacatalogV1SqlDatabaseSystemSpec SqlDatabaseSystemSpec { get; set; }
 
         /// <summary>
         /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only
@@ -5496,6 +5916,51 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata message for long-running operation returned by the ImportEntries.</summary>
+    public class GoogleCloudDatacatalogV1ImportEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Partial errors that are encountered during the ImportEntries operation. There is no guarantee that all the
+        /// encountered errors are reported. However, if no errors are reported, it means that no errors were
+        /// encountered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>State of the import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ImportEntries method.</summary>
+    public class GoogleCloudDatacatalogV1ImportEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to a Cloud Storage bucket that contains a dump ready for ingestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucketPath")]
+        public virtual string GcsBucketPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for long-running operation returned by the ImportEntries.</summary>
+    public class GoogleCloudDatacatalogV1ImportEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of entries deleted as a result of import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedEntriesCount")]
+        public virtual System.Nullable<long> DeletedEntriesCount { get; set; }
+
+        /// <summary>Cumulative number of entries created and entries updated as a result of import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upsertedEntriesCount")]
+        public virtual System.Nullable<long> UpsertedEntriesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ImportTaxonomies.</summary>
     public class GoogleCloudDatacatalogV1ImportTaxonomiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5610,6 +6075,39 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Taxonomies that the project contains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxonomies")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Taxonomy> Taxonomies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to entries that are part `LOOKER` system (user_specified_type)</summary>
+    public class GoogleCloudDatacatalogV1LookerSystemSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the parent Looker Instance. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentInstanceDisplayName")]
+        public virtual string ParentInstanceDisplayName { get; set; }
+
+        /// <summary>
+        /// ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentInstanceId")]
+        public virtual string ParentInstanceId { get; set; }
+
+        /// <summary>Name of the parent Model. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentModelDisplayName")]
+        public virtual string ParentModelDisplayName { get; set; }
+
+        /// <summary>ID of the parent Model. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentModelId")]
+        public virtual string ParentModelId { get; set; }
+
+        /// <summary>Name of the parent View. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentViewDisplayName")]
+        public virtual string ParentViewDisplayName { get; set; }
+
+        /// <summary>ID of the parent View. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentViewId")]
+        public virtual string ParentViewId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6139,6 +6637,33 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
+    /// </summary>
+    public class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Version of the database engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3;
+        /// AZURE_SQL = 4; } Host of the enclousing database instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceHost")]
+        public virtual string InstanceHost { get; set; }
+
+        /// <summary>
+        /// SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine
+        /// of the enclosing database instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlEngine")]
+        public virtual string SqlEngine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for StarEntry.</summary>
     public class GoogleCloudDatacatalogV1StarEntryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6487,6 +7012,17 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// </summary>
     public class GoogleCloudDatacatalogV1UsageSignal : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D",
+        /// "30D", "Lifetime"}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonUsageWithinTimeRange")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1CommonUsageStats> CommonUsageWithinTimeRange { get; set; }
+
+        /// <summary>Favorite count in the source system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("favoriteCount")]
+        public virtual System.Nullable<long> FavoriteCount { get; set; }
+
         /// <summary>The end timestamp of the duration of usage statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -6536,6 +7072,64 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Output only. The query that defines the table view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewQuery")]
         public virtual string ViewQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6616,6 +7210,35 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

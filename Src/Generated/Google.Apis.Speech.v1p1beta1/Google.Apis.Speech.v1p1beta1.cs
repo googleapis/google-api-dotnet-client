@@ -1282,6 +1282,18 @@ namespace Google.Apis.Speech.v1p1beta1
 }
 namespace Google.Apis.Speech.v1p1beta1.Data
 {
+    public class ABNFGrammar : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// All declarations and rules of an ABNF grammar broken up into multiple strings that will end up concatenated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abnfStrings")]
+        public virtual System.Collections.Generic.IList<string> AbnfStrings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An item of the class.</summary>
     public class ClassItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1999,6 +2011,13 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>Speech adaptation configuration.</summary>
     public class SpeechAdaptation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Augmented Backus-Naur form (ABNF) is a standardized grammar notation comprised by a set of derivation rules.
+        /// See specifications: https://www.w3.org/TR/speech-grammar
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abnfGrammar")]
+        public virtual ABNFGrammar AbnfGrammar { get; set; }
+
         /// <summary>
         /// A collection of custom classes. To specify the classes inline, leave the class' `name` blank and fill in the
         /// rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in phrase hints

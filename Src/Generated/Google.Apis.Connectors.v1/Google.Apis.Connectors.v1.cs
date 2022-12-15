@@ -310,8 +310,86 @@ namespace Google.Apis.Connectors.v1
                 public ConnectionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ConnectionSchemaMetadata = new ConnectionSchemaMetadataResource(service);
                     RuntimeActionSchemas = new RuntimeActionSchemasResource(service);
                     RuntimeEntitySchemas = new RuntimeEntitySchemasResource(service);
+                }
+
+                /// <summary>Gets the ConnectionSchemaMetadata resource.</summary>
+                public virtual ConnectionSchemaMetadataResource ConnectionSchemaMetadata { get; }
+
+                /// <summary>The "connectionSchemaMetadata" collection of methods.</summary>
+                public class ConnectionSchemaMetadataResource
+                {
+                    private const string Resource = "connectionSchemaMetadata";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConnectionSchemaMetadataResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Refresh runtime schema of a connection.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Resource name. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                    /// </param>
+                    public virtual RefreshRequest Refresh(Google.Apis.Connectors.v1.Data.RefreshConnectionSchemaMetadataRequest body, string name)
+                    {
+                        return new RefreshRequest(service, body, name);
+                    }
+
+                    /// <summary>Refresh runtime schema of a connection.</summary>
+                    public class RefreshRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Refresh request.</summary>
+                        public RefreshRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.RefreshConnectionSchemaMetadataRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.RefreshConnectionSchemaMetadataRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "refresh";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:refresh";
+
+                        /// <summary>Initializes Refresh parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/connectionSchemaMetadata$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the RuntimeActionSchemas resource.</summary>
@@ -3635,6 +3713,13 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("webAssetsLocation")]
         public virtual string WebAssetsLocation { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConnectorsService.RefreshConnectionSchemaMetadata.</summary>
+    public class RefreshConnectionSchemaMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

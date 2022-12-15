@@ -7165,6 +7165,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredShieldedNodes")]
         public virtual ShieldedNodes DesiredShieldedNodes { get; set; }
 
+        /// <summary>
+        /// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type
+        /// of the cluster, update will attempt to change the stack type to the new type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredStackType")]
+        public virtual string DesiredStackType { get; set; }
+
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; }

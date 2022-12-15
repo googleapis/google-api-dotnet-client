@@ -9424,6 +9424,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workerShutdownNotice")]
         public virtual WorkerShutdownNotice WorkerShutdownNotice { get; set; }
 
+        /// <summary>Thread scaling information reported by workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerThreadScalingReport")]
+        public virtual WorkerThreadScalingReport WorkerThreadScalingReport { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9477,6 +9481,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Service's response to shutdown notice (currently empty).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerShutdownNoticeResponse")]
         public virtual WorkerShutdownNoticeResponse WorkerShutdownNoticeResponse { get; set; }
+
+        /// <summary>Service's thread scaling recommendation for workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerThreadScalingReportResponse")]
+        public virtual WorkerThreadScalingReportResponse WorkerThreadScalingReportResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9687,6 +9695,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Service-side response to WorkerMessage issuing shutdown notice.</summary>
     public class WorkerShutdownNoticeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about the thread scaling information of a worker.</summary>
+    public class WorkerThreadScalingReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current number of active threads in a worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentThreadCount")]
+        public virtual System.Nullable<int> CurrentThreadCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the thread scaling recommendation for a worker from the backend.</summary>
+    public class WorkerThreadScalingReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Recommended number of threads for a worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedThreadCount")]
+        public virtual System.Nullable<int> RecommendedThreadCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
