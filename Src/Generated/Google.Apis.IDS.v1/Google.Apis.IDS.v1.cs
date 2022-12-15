@@ -704,6 +704,97 @@ namespace Google.Apis.IDS.v1
                     }
                 }
 
+                /// <summary>Updates the parameters of a single Endpoint.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The name of the endpoint.</param>
+                public virtual PatchRequest Patch(Google.Apis.IDS.v1.Data.Endpoint body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Endpoint.</summary>
+                public class PatchRequest : IDSBaseServiceRequest<Google.Apis.IDS.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.IDS.v1.Data.Endpoint body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Output only. The name of the endpoint.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and t he request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the Endpoint resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.IDS.v1.Data.Endpoint Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -1430,6 +1521,10 @@ namespace Google.Apis.IDS.v1.Data
         /// <summary>Output only. Current state of the endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>List of threat IDs to be excepted from generating alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatExceptions")]
+        public virtual System.Collections.Generic.IList<string> ThreatExceptions { get; set; }
 
         /// <summary>Whether the endpoint should report traffic logs in addition to threat logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficLogs")]

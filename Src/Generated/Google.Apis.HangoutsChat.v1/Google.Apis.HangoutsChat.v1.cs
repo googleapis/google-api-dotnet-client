@@ -1687,7 +1687,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
             /// early access to certain features. [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// or `chat.messages.create` authorization scope.
+            /// or `chat.messages.create` authorization scope. Because Chat provides authentication for
+            /// [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of the URL that's generated when
+            /// a webhook is registered, webhooks can create messages without a service account or user authentication.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1707,7 +1709,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
             /// early access to certain features. [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// or `chat.messages.create` authorization scope.
+            /// or `chat.messages.create` authorization scope. Because Chat provides authentication for
+            /// [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of the URL that's generated when
+            /// a webhook is registered, webhooks can create messages without a service account or user authentication.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {

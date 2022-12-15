@@ -1719,7 +1719,7 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Describe whether the function is gen1 or gen2.</summary>
+        /// <summary>Describe whether the function is 1st Gen or 2nd Gen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 

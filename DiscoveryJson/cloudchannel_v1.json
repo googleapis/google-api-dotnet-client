@@ -2009,7 +2009,7 @@
    }
   }
  },
- "revision": "20221207",
+ "revision": "20221212",
  "rootUrl": "https://cloudchannel.googleapis.com/",
  "schemas": {
   "GoogleCloudChannelV1ActivateEntitlementRequest": {
@@ -3783,11 +3783,6 @@
     "resizeUnitCount": {
      "description": "If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.",
      "type": "boolean"
-    },
-    "scheduledRenewalOffer": {
-     "description": "Output only. The renewal offer resource name for which the entitlement is to be renewed. Takes the form: accounts/{account_id}/offers/{offer_id}.",
-     "readOnly": true,
-     "type": "string"
     }
    },
    "type": "object"
@@ -4802,11 +4797,6 @@
     "resizeUnitCount": {
      "description": "If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.",
      "type": "boolean"
-    },
-    "scheduledRenewalOffer": {
-     "description": "Output only. The renewal offer resource name for which the entitlement is to be renewed. Takes the form: accounts/{account_id}/offers/{offer_id}.",
-     "readOnly": true,
-     "type": "string"
     }
    },
    "type": "object"

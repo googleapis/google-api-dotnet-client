@@ -2962,8 +2962,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
                     /// Recommendations AI serving config or placement. Before you can request predictions from your
                     /// model, you must create at least one serving config or placement for it. For more information,
-                    /// see [Managing serving configurations] (https://cloud.google.com/retail/docs/manage-configs). The
-                    /// full list of available serving configs can be seen at
+                    /// see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full
+                    /// list of available serving configs can be seen at
                     /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaPredictRequest body, string placement)
@@ -2989,7 +2989,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of
                         /// the Recommendations AI serving config or placement. Before you can request predictions from
                         /// your model, you must create at least one serving config or placement for it. For more
-                        /// information, see [Managing serving configurations]
+                        /// information, see [Manage serving configs]
                         /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
                         /// configs can be seen at
                         /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
@@ -3037,8 +3037,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
                     /// the name of the legacy placement resource, such as
                     /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
-                    /// used to identify the serving configuration name and the set of models that will be used to make
-                    /// the search.
+                    /// used to identify the serving config name and the set of models that will be used to make the
+                    /// search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSearchRequest body, string placement)
                     {
@@ -3064,8 +3064,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
                         /// or the name of the legacy placement resource, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
-                        /// is used to identify the serving configuration name and the set of models that will be used
-                        /// to make the search.
+                        /// is used to identify the serving config name and the set of models that will be used to make
+                        /// the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -3542,8 +3542,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
                     /// Recommendations AI serving config or placement. Before you can request predictions from your
                     /// model, you must create at least one serving config or placement for it. For more information,
-                    /// see [Managing serving configurations] (https://cloud.google.com/retail/docs/manage-configs). The
-                    /// full list of available serving configs can be seen at
+                    /// see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full
+                    /// list of available serving configs can be seen at
                     /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaPredictRequest body, string placement)
@@ -3569,7 +3569,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of
                         /// the Recommendations AI serving config or placement. Before you can request predictions from
                         /// your model, you must create at least one serving config or placement for it. For more
-                        /// information, see [Managing serving configurations]
+                        /// information, see [Manage serving configs]
                         /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
                         /// configs can be seen at
                         /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
@@ -3682,8 +3682,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
                     /// the name of the legacy placement resource, such as
                     /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
-                    /// used to identify the serving configuration name and the set of models that will be used to make
-                    /// the search.
+                    /// used to identify the serving config name and the set of models that will be used to make the
+                    /// search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSearchRequest body, string placement)
                     {
@@ -3709,8 +3709,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
                         /// or the name of the legacy placement resource, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
-                        /// is used to identify the serving configuration name and the set of models that will be used
-                        /// to make the search.
+                        /// is used to identify the serving config name and the set of models that will be used to make
+                        /// the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -4130,6 +4130,15 @@ namespace Google.Apis.CloudRetail.v2alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// If set to true, the user event will be written asynchronously after validation, and the API
+                        /// will respond without waiting for the write. Therefore, silent failures can occur even if the
+                        /// API returns success. In case of silent failures, error messages can be found in Stackdriver
+                        /// logs.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("writeAsync", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> WriteAsync { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaUserEvent Body { get; set; }
 
@@ -4156,6 +4165,14 @@ namespace Google.Apis.CloudRetail.v2alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("writeAsync", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "writeAsync",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -6388,8 +6405,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. List of serving configuration ids that are associated with this control in the same Catalog.
-        /// Note the association is managed via the ServingConfig, this is an output only denormalized view.
+        /// Output only. List of serving config ids that are associated with this control in the same Catalog. Note the
+        /// association is managed via the ServingConfig, this is an output only denormalized view.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
         public virtual System.Collections.Generic.IList<string> AssociatedServingConfigIds { get; set; }
@@ -7262,8 +7279,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which
-    /// serving configurations to consider for each panel. The purpose of this model is to optimize which ServingConfig
-    /// to show on which panels in way that optimizes the visitors shopping journey.
+    /// serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show
+    /// on which panels in way that optimizes the visitors shopping journey.
     /// </summary>
     public class GoogleCloudRetailV2alphaModelPageOptimizationConfig : Google.Apis.Requests.IDirectResponseSchema
     {

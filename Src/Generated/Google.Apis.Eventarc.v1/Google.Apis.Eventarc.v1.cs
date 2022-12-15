@@ -2979,7 +2979,9 @@ namespace Google.Apis.Eventarc.v1.Data
     {
         /// <summary>
         /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format:
-        /// `projects/{project}/locations/{location}/functions/{function}`
+        /// `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud
+        /// Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the
+        /// user sets this value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual string CloudFunction { get; set; }

@@ -5217,10 +5217,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representa a single contact's email address</summary>
+    /// <summary>The email address of a contact.</summary>
     public class Contact : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An email address e.g. "person123@company.com"</summary>
+        /// <summary>An email address. For example, "`person123@company.com`".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
@@ -5959,7 +5959,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual Role Role { get; set; }
 
-        /// <summary>Represents the subjects(s) bound to the role. Not always available for PATCH requests.</summary>
+        /// <summary>
+        /// Represents one or more subjects that are bound to the role. Not always available for PATCH requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
         public virtual System.Collections.Generic.IList<Subject> Subjects { get; set; }
 
@@ -6514,9 +6516,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
-    /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact
-    /// observed on a network or in an operating system that, with high confidence, indicates a computer intrusion.
-    /// Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+    /// Represents what's commonly known as an _indicator of compromise_ (IoC) in computer forensics. This is an
+    /// artifact observed on a network or in an operating system that, with high confidence, indicates a computer
+    /// intrusion. For more information, see [Indicator of
+    /// compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
     /// </summary>
     public class Indicator : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6524,7 +6527,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
-        /// <summary>List of ip addresses associated to the Finding.</summary>
+        /// <summary>The list of IP addresses that are associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
 
@@ -6549,7 +6552,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
+        /// <summary>True when unexpected modifications of kernel code memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
         public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
 
@@ -6586,7 +6589,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
         public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
 
-        /// <summary>Flag indicating unexpected modifications of kernel read-only data memory.</summary>
+        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedReadOnlyDataModification")]
         public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
 
@@ -6600,7 +6603,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Kubernetes related attributes.</summary>
+    /// <summary>Kubernetes-related attributes.</summary>
     public class Kubernetes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

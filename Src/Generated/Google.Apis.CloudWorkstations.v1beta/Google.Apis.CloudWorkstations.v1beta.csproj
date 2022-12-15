@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.CloudFunctions.v2 Client Library</Title>
-    <Version>1.58.0.2897</Version>
+    <Title>Google.Apis.CloudWorkstations.v1beta Client Library</Title>
+    <Version>1.58.0.2896</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,7 +14,7 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      Google APIs Client Library for working with Cloudfunctions v2.
+      Google APIs Client Library for working with Workstations v1beta.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -30,7 +30,7 @@
       - Windows Phone Silverlight 8.0
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/cloudfunctions/v2
+      https://developers.google.com/api-client-library/dotnet/apis/workstations/v1beta
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated

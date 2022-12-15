@@ -1351,7 +1351,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// </summary>
     public class ApnsCertificateExpirationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Apple ID used for the certificate, may be blank if admins did not enter it.</summary>
+        /// <summary>The Apple ID used for the certificate may be blank if admins didn't enter it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appleId")]
         public virtual string AppleId { get; set; }
 
@@ -2370,6 +2370,47 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details for an invalid transfer or forward.</summary>
+    public class TransferError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User's email address. This may be unavailable if the entity was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Type of entity being transferred to. For ring group members, this should always be USER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Ring group or auto attendant ID. Not set for users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Reason for the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidReason")]
+        public virtual string InvalidReason { get; set; }
+
+        /// <summary>
+        /// User's full name, or the ring group / auto attendant name. This may be unavailable if the entity was
+        /// deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error related to transferring or forwarding a phone call.</summary>
+    public class TransferMisconfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details for each invalid transfer or forward.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<TransferError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to undelete a specific alert that was marked for deletion.</summary>
     public class UndeleteAlertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2424,6 +2465,68 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Resource name that uniquely identifies the detector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An alert triggered when Google Voice configuration becomes invalid, generally due to an external entity being
+    /// modified or deleted.
+    /// </summary>
+    public class VoiceMisconfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the entity whose configuration is now invalid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
+        public virtual string EntityName { get; set; }
+
+        /// <summary>Type of the entity whose configuration is now invalid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Link that the admin can follow to fix the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixUri")]
+        public virtual string FixUri { get; set; }
+
+        /// <summary>Issue(s) with members of a ring group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membersMisconfiguration")]
+        public virtual TransferMisconfiguration MembersMisconfiguration { get; set; }
+
+        /// <summary>Issue(s) with transferring or forwarding to an external entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferMisconfiguration")]
+        public virtual TransferMisconfiguration TransferMisconfiguration { get; set; }
+
+        /// <summary>Issue(s) with sending to voicemail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voicemailMisconfiguration")]
+        public virtual VoicemailMisconfiguration VoicemailMisconfiguration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue(s) with sending to voicemail.</summary>
+    public class VoicemailMisconfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Issue(s) with voicemail recipients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<VoicemailRecipientError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue(s) with a voicemail recipient.</summary>
+    public class VoicemailRecipientError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Email address of the invalid recipient. This may be unavailable if the recipient was deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Reason for the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidReason")]
+        public virtual string InvalidReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

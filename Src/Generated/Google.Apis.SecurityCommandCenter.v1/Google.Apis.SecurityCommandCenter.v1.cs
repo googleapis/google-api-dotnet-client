@@ -308,8 +308,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
-            /// folders/[folder_id], or projects/[project_id]".
+            /// Required. The name of the parent to group the assets by. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -328,8 +328,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
-                /// folders/[folder_id], or projects/[project_id]".
+                /// Required. The name of the parent to group the assets by. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -366,8 +366,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent assets should belong to. Its format is "organizations/[organization_id],
-            /// folders/[folder_id], or projects/[project_id]".
+            /// Required. The name of the parent that the listed assets belong to. Its format is
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -385,8 +385,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent assets should belong to. Its format is
-                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+                /// Required. The name of the parent that the listed assets belong to. Its format is
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -679,7 +679,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Creates a BigQuery export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the new BigQuery export's parent. Its format is
+            /// Required. The name of the parent resource of the new BigQuery export. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
@@ -699,7 +699,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the new BigQuery export's parent. Its format is
+                /// Required. The name of the parent resource of the new BigQuery export. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -753,7 +753,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the BigQuery export to delete. Its format is
+            /// Required. The name of the BigQuery export to delete. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -773,7 +773,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the BigQuery export to delete. Its format is
+                /// Required. The name of the BigQuery export to delete. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -1516,7 +1516,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and
-                /// 128 characters, and contain alphanumeric characters, underscores or hyphens only.
+                /// 128 characters and contain alphanumeric characters, underscores, or hyphens only.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
@@ -1671,7 +1671,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists notification configs.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent to list notification configs. Its format is
+            /// Required. The name of the parent in which to list the notification configurations. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
@@ -1690,7 +1690,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent to list notification configs. Its format is
+                /// Required. The name of the parent in which to list the notification configurations. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2402,7 +2402,13 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name"><c>null</c></param>
+                /// <param name="name">
+                /// Required. The [relative resource
+                /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
+                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
                     return new SetStateRequest(service, body, name);
@@ -2419,6 +2425,13 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         InitParameters();
                     }
 
+                    /// <summary>
+                    /// Required. The [relative resource
+                    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
+                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2551,7 +2564,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2570,7 +2583,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2672,8 +2685,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
-            /// folders/[folder_id], or projects/[project_id]".
+            /// Required. The name of the parent to group the assets by. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -2692,8 +2705,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
-                /// folders/[folder_id], or projects/[project_id]".
+                /// Required. The name of the parent to group the assets by. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2730,8 +2743,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent assets should belong to. Its format is "organizations/[organization_id],
-            /// folders/[folder_id], or projects/[project_id]".
+            /// Required. The name of the parent that the listed assets belong to. Its format is
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2749,8 +2762,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent assets should belong to. Its format is
-                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+                /// Required. The name of the parent that the listed assets belong to. Its format is
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3110,7 +3123,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Creates a BigQuery export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the new BigQuery export's parent. Its format is
+            /// Required. The name of the parent resource of the new BigQuery export. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
@@ -3130,7 +3143,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the new BigQuery export's parent. Its format is
+                /// Required. The name of the parent resource of the new BigQuery export. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3184,7 +3197,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the BigQuery export to delete. Its format is
+            /// Required. The name of the BigQuery export to delete. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -3204,7 +3217,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the BigQuery export to delete. Its format is
+                /// Required. The name of the BigQuery export to delete. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -3947,7 +3960,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and
-                /// 128 characters, and contain alphanumeric characters, underscores or hyphens only.
+                /// 128 characters and contain alphanumeric characters, underscores, or hyphens only.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
@@ -4102,7 +4115,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists notification configs.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent to list notification configs. Its format is
+            /// Required. The name of the parent in which to list the notification configurations. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
@@ -4121,7 +4134,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent to list notification configs. Its format is
+                /// Required. The name of the parent in which to list the notification configurations. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -5187,7 +5200,13 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name"><c>null</c></param>
+                /// <param name="name">
+                /// Required. The [relative resource
+                /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
+                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
                     return new SetStateRequest(service, body, name);
@@ -5204,6 +5223,13 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         InitParameters();
                     }
 
+                    /// <summary>
+                    /// Required. The [relative resource
+                    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
+                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5506,7 +5532,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -5525,7 +5551,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5947,8 +5973,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
-            /// folders/[folder_id], or projects/[project_id]".
+            /// Required. The name of the parent to group the assets by. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -5967,8 +5993,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent to groupBy. Its format is "organizations/[organization_id],
-                /// folders/[folder_id], or projects/[project_id]".
+                /// Required. The name of the parent to group the assets by. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6005,8 +6031,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent assets should belong to. Its format is "organizations/[organization_id],
-            /// folders/[folder_id], or projects/[project_id]".
+            /// Required. The name of the parent that the listed assets belong to. Its format is
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -6024,8 +6050,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent assets should belong to. Its format is
-                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+                /// Required. The name of the parent that the listed assets belong to. Its format is
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6318,7 +6344,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Creates a BigQuery export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the new BigQuery export's parent. Its format is
+            /// Required. The name of the parent resource of the new BigQuery export. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
@@ -6338,7 +6364,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the new BigQuery export's parent. Its format is
+                /// Required. The name of the parent resource of the new BigQuery export. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6392,7 +6418,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
-            /// Required. Name of the BigQuery export to delete. Its format is
+            /// Required. The name of the BigQuery export to delete. Its format is
             /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
             /// or projects/{project}/bigQueryExports/{export_id}
             /// </param>
@@ -6412,7 +6438,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the BigQuery export to delete. Its format is
+                /// Required. The name of the BigQuery export to delete. Its format is
                 /// organizations/{organization}/bigQueryExports/{export_id},
                 /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
                 /// </summary>
@@ -7155,7 +7181,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and
-                /// 128 characters, and contain alphanumeric characters, underscores or hyphens only.
+                /// 128 characters and contain alphanumeric characters, underscores, or hyphens only.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
@@ -7310,7 +7336,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists notification configs.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent to list notification configs. Its format is
+            /// Required. The name of the parent in which to list the notification configurations. Its format is
             /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
@@ -7329,7 +7355,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent to list notification configs. Its format is
+                /// Required. The name of the parent in which to list the notification configurations. Its format is
                 /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8041,7 +8067,13 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name"><c>null</c></param>
+                /// <param name="name">
+                /// Required. The [relative resource
+                /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
+                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
                     return new SetStateRequest(service, body, name);
@@ -8058,6 +8090,13 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         InitParameters();
                     }
 
+                    /// <summary>
+                    /// Required. The [relative resource
+                    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
+                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8190,7 +8229,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -8209,7 +8248,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -8678,10 +8717,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representa a single contact's email address</summary>
+    /// <summary>The email address of a contact.</summary>
     public class Contact : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An email address e.g. "person123@company.com"</summary>
+        /// <summary>An email address. For example, "`person123@company.com`".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
@@ -9412,7 +9451,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual Role Role { get; set; }
 
-        /// <summary>Represents the subjects(s) bound to the role. Not always available for PATCH requests.</summary>
+        /// <summary>
+        /// Represents one or more subjects that are bound to the role. Not always available for PATCH requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
         public virtual System.Collections.Generic.IList<Subject> Subjects { get; set; }
 
@@ -10219,9 +10260,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     }
 
     /// <summary>
-    /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact
-    /// observed on a network or in an operating system that, with high confidence, indicates a computer intrusion.
-    /// Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+    /// Represents what's commonly known as an _indicator of compromise_ (IoC) in computer forensics. This is an
+    /// artifact observed on a network or in an operating system that, with high confidence, indicates a computer
+    /// intrusion. For more information, see [Indicator of
+    /// compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
     /// </summary>
     public class Indicator : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10229,7 +10271,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
-        /// <summary>List of ip addresses associated to the Finding.</summary>
+        /// <summary>The list of IP addresses that are associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
 
@@ -10254,7 +10296,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
+        /// <summary>True when unexpected modifications of kernel code memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
         public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
 
@@ -10291,7 +10333,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
         public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
 
-        /// <summary>Flag indicating unexpected modifications of kernel read-only data memory.</summary>
+        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedReadOnlyDataModification")]
         public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
 
@@ -10305,7 +10347,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Kubernetes related attributes.</summary>
+    /// <summary>Kubernetes-related attributes.</summary>
     public class Kubernetes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -11113,13 +11155,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request message for updating a finding's state. The [relative resource
-    /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example:
-    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
-    /// </summary>
+    /// <summary>Request message for updating a finding's state.</summary>
     public class SetFindingStateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The time at which the updated state takes effect.</summary>

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudWorkstations.v1beta.CloudWorkstationsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudWorkstations.v1beta.CloudWorkstationsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
