@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5813,7 +5813,11 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
-        /// <summary>List of environment variables to set in the container.</summary>
+        /// <summary>
+        /// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if
+        /// referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container
+        /// will only get the last-declared one.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
 
@@ -5843,7 +5847,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual Probe LivenessProbe { get; set; }
 
         /// <summary>
-        /// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info:
+        /// Name of the container specified as a DNS_LABEL (RFC 1123). More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

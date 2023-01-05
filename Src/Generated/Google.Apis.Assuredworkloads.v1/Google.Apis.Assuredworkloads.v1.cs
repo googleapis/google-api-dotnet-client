@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1367,7 +1367,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Workload monitoring Violation.</summary>
+    /// <summary>Workload monitoring Violation. Next Id: 22</summary>
     public class GoogleCloudAssuredworkloadsV1Violation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A boolean that indicates if the violation is acknowledged</summary>

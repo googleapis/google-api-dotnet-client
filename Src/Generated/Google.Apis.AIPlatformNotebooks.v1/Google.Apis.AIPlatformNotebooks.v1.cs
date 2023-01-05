@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4288,11 +4288,11 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Nullable<bool> CopyHomeFilesFlagEnabled { get; set; }
 
         /// <summary>
-        /// Required. User Cloud Storage bucket location (REQUIRED) ## Must be formatted with path prefix
-        /// (gs://$GCS_BUCKET) Permissions: User Managed Notebooks: - storage.buckets.writer: Must be given to the
+        /// Required. User Cloud Storage bucket location (REQUIRED). Must be formatted with path prefix
+        /// (`gs://$GCS_BUCKET`). Permissions: User Managed Notebooks: - storage.buckets.writer: Must be given to the
         /// project's service account attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be given
-        /// to the project's service account or ## user credentials attached to VM depending on authentication mode.
-        /// Cloud Storage bucket Log file will be written to gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz
+        /// to the project's service account or user credentials attached to VM depending on authentication mode. Cloud
+        /// Storage bucket Log file will be written to `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
         public virtual string GcsBucket { get; set; }
@@ -4304,8 +4304,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>
         /// Optional. Defines the relative storage path in the Cloud Storage bucket where the diagnostic logs will be
         /// written: Default path will be the root directory of the Cloud Storage bucket
-        /// (gs://$GCS_BUCKET/$DATE_$TIME.tar.gz) Example of full path where Log file will be written:
-        /// gs://$GCS_BUCKET/$RELATIVE_PATH/
+        /// (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`) Example of full path where Log file will be written:
+        /// `gs://$GCS_BUCKET/$RELATIVE_PATH/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
         public virtual string RelativePath { get; set; }
@@ -5802,6 +5802,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Output only. Bool indicating whether an newer image is available in an image family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeable")]
         public virtual System.Nullable<bool> Upgradeable { get; set; }
+
+        /// <summary>Output only. version of boot image such as M100, from release label of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

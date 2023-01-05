@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3428,8 +3428,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class Config : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Default Skaffold version that is assigned when a Release is created without specifying a
-        /// Skaffold version.
+        /// Default Skaffold version that is assigned when a Release is created without specifying a Skaffold version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSkaffoldVersion")]
         public virtual string DefaultSkaffoldVersion { get; set; }
@@ -3438,7 +3437,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. All supported versions of Skaffold.</summary>
+        /// <summary>All supported versions of Skaffold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedVersions")]
         public virtual System.Collections.Generic.IList<SkaffoldVersion> SupportedVersions { get; set; }
 
@@ -4191,9 +4190,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineReadyCondition")]
         public virtual PipelineReadyCondition PipelineReadyCondition { get; set; }
 
-        /// <summary>Detalis around targets enumerated in the pipeline.</summary>
+        /// <summary>Details around targets enumerated in the pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetsPresentCondition")]
         public virtual TargetsPresentCondition TargetsPresentCondition { get; set; }
+
+        /// <summary>Details on the whether the targets enumerated in the pipeline are of the same type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetsTypeCondition")]
+        public virtual TargetsTypeCondition TargetsTypeCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4661,7 +4664,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Details of a supported Skaffold version.</summary>
     public class SkaffoldVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Date when this version is expected to no longer be supported.</summary>
+        /// <summary>
+        /// Date when this version is expected to no longer be supported. For a more precise time, use the
+        /// `support_expiration_time` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportEndDate")]
         public virtual Date SupportEndDate { get; set; }
 
@@ -4912,7 +4918,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class TargetsPresentCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of Target names that are missing. For example,
+        /// The list of Target names that do not exist. For example,
         /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missingTargets")]
@@ -4925,6 +4931,27 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Last time the condition was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the
+    /// same type.
+    /// </summary>
+    public class TargetsTypeCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human readable error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
+        public virtual string ErrorDetails { get; set; }
+
+        /// <summary>
+        /// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters.
+        /// This is false if some targets are Cloud Run targets and others are GKE clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<bool> Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -596,6 +596,110 @@ namespace Google.Apis.Datapipelines.v1
                 }
 
                 /// <summary>
+                /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
+                /// </summary>
+                public class ListRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ListPipelinesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// An expression for filtering the results of the request. If unspecified, all pipelines will be
+                    /// returned. Multiple filters can be applied and must be comma separated. Fields eligible for
+                    /// filtering are: + `type`: The type of the pipeline (streaming or batch). Allowed values are
+                    /// `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the pipeline. Allowed values
+                    /// are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For example, to limit results to active batch
+                    /// processing pipelines: type:BATCH,status:ACTIVE
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of entities to return. The service may return fewer than this value, even if
+                    /// there are additional pages. If unspecified, the max limit is yet to be determined by the backend
+                    /// implementation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListPipelines` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListPipelines` must match
+                    /// the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/pipelines";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Updates a pipeline. If successful, the updated Pipeline is returned. Returns `NOT_FOUND` if the
                 /// pipeline doesn't exist. If UpdatePipeline does not return successfully, you can retry the
                 /// UpdatePipeline request until you receive a successful response.
@@ -822,110 +926,6 @@ namespace Google.Apis.Datapipelines.v1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/pipelines/[^/]+$",
                         });
                     }
-                }
-            }
-
-            /// <summary>
-            /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
-            /// </summary>
-            /// <param name="parent">
-            /// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
-            /// </param>
-            public virtual ListPipelinesRequest ListPipelines(string parent)
-            {
-                return new ListPipelinesRequest(service, parent);
-            }
-
-            /// <summary>
-            /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
-            /// </summary>
-            public class ListPipelinesRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ListPipelinesResponse>
-            {
-                /// <summary>Constructs a new ListPipelines request.</summary>
-                public ListPipelinesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// An expression for filtering the results of the request. If unspecified, all pipelines will be
-                /// returned. Multiple filters can be applied and must be comma separated. Fields eligible for filtering
-                /// are: + `type`: The type of the pipeline (streaming or batch). Allowed values are `ALL`, `BATCH`, and
-                /// `STREAMING`. + `status`: The activity status of the pipeline. Allowed values are `ALL`, `ACTIVE`,
-                /// `ARCHIVED`, and `PAUSED`. For example, to limit results to active batch processing pipelines:
-                /// type:BATCH,status:ACTIVE
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>
-                /// The maximum number of entities to return. The service may return fewer than this value, even if
-                /// there are additional pages. If unspecified, the max limit is yet to be determined by the backend
-                /// implementation.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A page token, received from a previous `ListPipelines` call. Provide this to retrieve the subsequent
-                /// page. When paginating, all other parameters provided to `ListPipelines` must match the call that
-                /// provided the page token.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "listPipelines";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+parent}";
-
-                /// <summary>Initializes ListPipelines parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                    });
-                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 }
             }
         }

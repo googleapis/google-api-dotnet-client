@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1182,6 +1182,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+                /// you're using this API for your own organization, use `customers/my_customer` If you're using this
+                /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
+                /// to whom the device belongs.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1202,6 +1211,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                    });
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1235,6 +1252,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+                /// you're using this API for your own organization, use `customers/my_customer` If you're using this
+                /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
+                /// to whom the device belongs.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -1255,6 +1281,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                    });
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1285,6 +1319,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+                /// you're using this API for your own organization, use `customers/my_customer` If you're using this
+                /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
+                /// to whom the device belongs.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
 
                 /// <summary>
                 /// Optional. Additional restrictions when fetching list of devices. For a list of search fields, refer
@@ -1334,6 +1377,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^devices/[^/]+$",
+                    });
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -1717,6 +1768,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+            /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+            /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
+            /// the device belongs.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -1737,6 +1797,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^devices/[^/]+$",
+                });
+                RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -1768,6 +1836,13 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Customer in
+            /// format: `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -1789,6 +1864,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     DefaultValue = null,
                     Pattern = @"^devices/[^/]+$",
                 });
+                RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -1806,6 +1889,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
             {
                 InitParameters();
             }
+
+            /// <summary>
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
 
             /// <summary>
             /// Optional. Additional restrictions when fetching list of devices. For a list of search fields, refer to
@@ -1878,6 +1967,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
@@ -3066,7 +3163,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// <summary>
             /// Required. The parent resource under which to list all `Group` resources. Must be of the form
             /// `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}`
-            /// for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+            /// for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer
+            /// ID.] (https://support.google.com/cloudidentity/answer/10070793)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -3299,6 +3397,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
             /// <summary>
+            /// The ordering of groups for the display name or email in the search groups response. The syntax for this
+            /// field can be found at https://cloud.google.com/apis/design/design_patterns#sorting_order. Example: Sort
+            /// by the ascending name: order_by="display_name" Sort by the descending group key email:
+            /// order_by="group_key desc"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
             /// The maximum number of results to return. Note that the number of results returned may be less than this
             /// value even if there are more available results. To fetch all results, clients must continue calling this
             /// method repeatedly until the response no longer contains a `next_page_token`. If unspecified, defaults to
@@ -3313,11 +3420,16 @@ namespace Google.Apis.CloudIdentity.v1beta1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Required. The search query. Must be specified in [Common Expression
-            /// Language](https://opensource.google/projects/cel). May only contain equality operators on the parent and
-            /// inclusion operators on labels (e.g., `parent == 'customers/{customer_id}' &amp;amp;&amp;amp;
-            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer_id` must begin with
-            /// "C" (for example, 'C046psxkn').
+            /// Required. The search query. * Must be specified in [Common Expression
+            /// Language](https://opensource.google/projects/cel). * Must contain equality operators on the parent, e.g.
+            /// `parent == 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+            /// [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793) * Can contain
+            /// optional inclusion operators on `labels` such as `cloudidentity.googleapis.com/groups.discussion_forum'
+            /// in labels`). * Can contain an optional equality operator on `domain_name` or
+            /// `startsWith/contains/equality` operator on `group_key`, e.g. `domain_name == 'abc.com'`,
+            /// `group_key.startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@abc.com'` * Can contain an
+            /// optional `startsWith/contains/equality` operator on `display_name`, such as
+            /// `display_name.startsWith('dev')` , `display_name.contains('dev')`, `display_name == 'dev'`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -3351,6 +3463,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -4660,6 +4780,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Request message for approving the device to access user data.</summary>
     public class ApproveDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4678,6 +4807,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Request message for blocking account on device.</summary>
     public class BlockDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4703,6 +4841,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Request message for cancelling an unfinished device wipe.</summary>
     public class CancelWipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4723,6 +4870,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Request message for cancelling an unfinished user account wipe.</summary>
     public class CancelWipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4889,6 +5045,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Request message for creating a Company Owned device.</summary>
     public class CreateDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>
         /// Required. The device to be created. The name field within this device is ignored in the create method. A new
         /// name is created by the method, and returned within the response. Only the fields `device_type`,
@@ -5826,9 +5991,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity
-        /// resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped
-        /// groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example,
-        /// 'C046psxkn').
+        /// resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped
+        /// groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The
+        /// `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.]
+        /// (https://support.google.com/cloudidentity/answer/10070793)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -6202,7 +6368,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     public class LookupSelfDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The obfuscated customer Id that may be passed back to other Devices API methods such as List, Get, etc.
+        /// The customer Id that may be passed back to other Devices API methods such as List, Get, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -6848,6 +7014,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     public class WipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>
         /// Optional. Specifies if a user is able to factory reset a device after a Device Wipe. On iOS, this is called
         /// "Activation Lock", while on Android, this is known as "Factory Reset Protection". If true, this protection
         /// will be removed from the device, so that a user can successfully factory reset. If false, the setting is
@@ -6876,6 +7051,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Request message for starting an account wipe on device.</summary>
     public class WipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
+        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
+        /// belongs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

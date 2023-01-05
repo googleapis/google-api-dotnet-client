@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1309,7 +1309,10 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the target of activity.</summary>
+    /// <summary>
+    /// Information about the target of activity. For more information on how activity history is shared with users, see
+    /// [Activity history visibility](https://developers.google.com/drive/activity/v2#activityhistory).
+    /// </summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target is a shared drive.</summary>

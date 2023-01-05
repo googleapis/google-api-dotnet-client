@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3720,7 +3720,7 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputFilePath")]
         public virtual string OutputFilePath { get; set; }
 
-        /// <summary>An inline script. The size of the script is limited to 1024 characters.</summary>
+        /// <summary>An inline script. The size of the script is limited to 32KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual string Script { get; set; }
 
@@ -3794,7 +3794,7 @@ namespace Google.Apis.OSConfig.v1.Data
     /// <summary>A resource that manages the state of a file.</summary>
     public class OSPolicyResourceFileResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A a file with this content. The size of the content is limited to 1024 characters.</summary>
+        /// <summary>A a file with this content. The size of the content is limited to 32KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 

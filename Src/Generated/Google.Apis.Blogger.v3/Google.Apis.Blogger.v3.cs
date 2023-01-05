@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1525,6 +1525,10 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
 
+            /// <summary>Move to Trash if possible</summary>
+            [Google.Apis.Util.RequestParameterAttribute("useTrash", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseTrash { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -1551,6 +1555,14 @@ namespace Google.Apis.Blogger.v3
                     Name = "pageId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useTrash", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useTrash",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2479,6 +2491,10 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
+            /// <summary>Move to Trash if possible</summary>
+            [Google.Apis.Util.RequestParameterAttribute("useTrash", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseTrash { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -2505,6 +2521,14 @@ namespace Google.Apis.Blogger.v3
                     Name = "postId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useTrash", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useTrash",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2870,6 +2894,26 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>Sort direction applied to post list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sortOption", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SortOptionEnum> SortOption { get; set; }
+
+            /// <summary>Sort direction applied to post list.</summary>
+            public enum SortOptionEnum
+            {
+                /// <summary>The unspecified sort option.</summary>
+                [Google.Apis.Util.StringValueAttribute("SORT_OPTION_UNSPECIFIED")]
+                SORTOPTIONUNSPECIFIED = 0,
+
+                /// <summary>The option to sort posts in descending order in time.</summary>
+                [Google.Apis.Util.StringValueAttribute("DESCENDING")]
+                DESCENDING = 1,
+
+                /// <summary>The option to sort posts in ascending order in time.</summary>
+                [Google.Apis.Util.StringValueAttribute("ASCENDING")]
+                ASCENDING = 2,
+            }
+
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartDate { get; set; }
 
@@ -2995,6 +3039,14 @@ namespace Google.Apis.Blogger.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOption", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOption",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DESCENDING",
                     Pattern = null,
                 });
                 RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter

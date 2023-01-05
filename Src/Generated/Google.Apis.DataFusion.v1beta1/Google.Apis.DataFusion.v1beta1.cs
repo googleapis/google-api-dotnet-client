@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2187,6 +2187,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
+        /// <summary>The state of the accelerator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2493,6 +2497,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>Option to enable Stackdriver Monitoring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverMonitoring")]
         public virtual System.Nullable<bool> EnableStackdriverMonitoring { get; set; }
+
+        /// <summary>Option to enable zone separation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableZoneSeparation")]
+        public virtual System.Nullable<bool> EnableZoneSeparation { get; set; }
 
         /// <summary>Option to enable and pass metadata for event publishing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventPublishConfig")]
@@ -2804,6 +2812,14 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>Represents the metadata of a long-running operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Map to hold any additional status info for the operation If there is an accelerator being
+        /// enabled/disabled/deleted, this will be populated with accelerator name as key and status as ENABLING,
+        /// DISABLING or DELETING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalStatus")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalStatus { get; set; }
+
         /// <summary>API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }

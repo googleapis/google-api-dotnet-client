@@ -7,5 +7,11 @@
   "Google.Apis.DatabaseMigrationService.v1.DatabaseMigrationServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.DatabaseMigrationService.v1.ProjectsResource+LocationsResource+ConversionWorkspacesResource+DescribeDatabaseEntitiesRequest.TreeEnum": [
+    "DB_TREE_TYPE_UNSPECIFIED",
+    "SOURCE_TREE",
+    "DRAFT_TREE",
+    "DESTINATION_TREE"
   ]
 }

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5835,7 +5835,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Represents vulnerability-specific fields like CVE and CVS scores. CVE stands for Common Vulnerabilities and
+        /// Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and
         /// Exposures (https://cve.mitre.org/about/)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerability")]
@@ -5878,7 +5878,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class GoogleCloudSecuritycenterV1BigQueryExport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The time at which the big query export was created. This field is set by the server and will be
+        /// Output only. The time at which the BigQuery export was created. This field is set by the server and will be
         /// ignored if provided on export on creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -5909,7 +5909,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Output only. Email address of the user who last edited the big query export. This field is set by the server
+        /// Output only. Email address of the user who last edited the BigQuery export. This field is set by the server
         /// and will be ignored if provided on export creation or update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostRecentEditor")]
@@ -5927,15 +5927,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The service account that needs permission to create table, upload data to the big query
+        /// Output only. The service account that needs permission to create table and upload data to the BigQuery
         /// dataset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual string Principal { get; set; }
 
         /// <summary>
-        /// Output only. The most recent time at which the big export was updated. This field is set by the server and
-        /// will be ignored if provided on export creation or update.
+        /// Output only. The most recent time at which the BigQuery export was updated. This field is set by the server
+        /// and will be ignored if provided on export creation or update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }

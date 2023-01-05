@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CCAIPlatform.v1alpha1.CCAIPlatformBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CCAIPlatform.v1alpha1.CCAIPlatformBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

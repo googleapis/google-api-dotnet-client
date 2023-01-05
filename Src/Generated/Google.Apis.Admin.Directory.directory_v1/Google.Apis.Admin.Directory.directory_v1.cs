@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10981,6 +10981,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuStatusReports")]
         public virtual System.Collections.Generic.IList<CpuStatusReportsData> CpuStatusReports { get; set; }
 
+        /// <summary>(Read-only) Deprovision reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprovisionReason")]
+        public virtual string DeprovisionReason { get; set; }
+
         /// <summary>A list of device files to download (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceFiles")]
         public virtual System.Collections.Generic.IList<DeviceFilesData> DeviceFiles { get; set; }
@@ -11031,6 +11035,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>(Read-only) Date and time for the last deprovision of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDeprovisionTimestamp")]
+        public virtual string LastDeprovisionTimestamp { get; set; }
 
         /// <summary>Date and time the device was last enrolled (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastEnrollmentTime")]
@@ -11696,6 +11704,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class DirectoryChromeosdevicesCommandResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The payload for the command result. The following commands respond with a payload: -
+        /// DEVICE_START_CRD_SESSION: Payload is a stringified JSON object in the form: { "url": url }. The URL provides
+        /// a link to the CRD session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commandResultPayload")]
+        public virtual string CommandResultPayload { get; set; }
+
+        /// <summary>
         /// The error message with a short explanation as to why the command failed. Only present if the command failed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
@@ -11723,7 +11739,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>
         /// The payload for the command, provide it only if command supports it. The following commands support adding
         /// payload: - SET_VOLUME: Payload is a stringified JSON object in the form: { "volume": 50 }. The volume has to
-        /// be an integer in the range [0,100].
+        /// be an integer in the range [0,100]. - DEVICE_START_CRD_SESSION: Payload is optionally a stringified JSON
+        /// object in the form: { "ackedUserPresence": true }. ackedUserPresence is a boolean. If a device is being
+        /// used, ackedUserPresence must be set to true to acknowledge that you want to start a CRD session anyways. It
+        /// is false by default, so a CRD command will fail if used on an active device without this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; }
@@ -11939,7 +11958,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// Google Groups provide your users the ability to send messages to groups of people using the group's email
     /// address. For more information about common tasks, see the [Developer's
-    /// Guide](/admin-sdk/directory/v1/guides/manage-groups).
+    /// Guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-groups). For information about other
+    /// types of groups, see the [Cloud Identity Groups API
+    /// documentation](https://cloud.google.com/identity/docs/groups). Note: The user calling the API (or being
+    /// impersonated by a service account) must have an assigned
+    /// [role](https://developers.google.com/admin-sdk/directory/v1/guides/manage-roles) that includes Admin API Groups
+    /// permissions, such as Super Admin or Groups Admin.
     /// </summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8641,8 +8641,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<string> JarUris { get; set; }
 
         /// <summary>
-        /// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri
-        /// field must be set.
+        /// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the
+        /// main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set
+        /// for Java/Scala language type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainFileUri")]
         public virtual string MainFileUri { get; set; }

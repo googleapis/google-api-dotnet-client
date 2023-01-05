@@ -8,6 +8,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.AndroidEnterprise.v1.EnterprisesResource+CreateEnrollmentTokenRequest.DeviceTypeEnum": [
+    "unknown",
+    "dedicatedDevice",
+    "knowledgeWorker"
+  ],
   "Google.Apis.AndroidEnterprise.v1.EnterprisesResource+GetServiceAccountRequest.KeyTypeEnum": [
     "googleCredentials",
     "pkcs12"

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -298,81 +298,229 @@ namespace Google.Apis.Texttospeech.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                Voices = new VoicesResource(service);
+                Operations = new OperationsResource(service);
             }
 
-            /// <summary>Gets the Voices resource.</summary>
-            public virtual VoicesResource Voices { get; }
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
 
-            /// <summary>The "voices" collection of methods.</summary>
-            public class VoicesResource
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
             {
-                private const string Resource = "voices";
+                private const string Resource = "operations";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public VoicesResource(Google.Apis.Services.IClientService service)
+                public OperationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
                 }
 
-                /// <summary>Synthesizes long form text asynchronously.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// The resource states of the request in the form of projects/*/locations/*/voices/*.
-                /// </param>
-                public virtual SynthesizeLongAudioRequest SynthesizeLongAudio(Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest body, string parent)
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
                 {
-                    return new SynthesizeLongAudioRequest(service, body, parent);
+                    return new GetRequest(service, name);
                 }
 
-                /// <summary>Synthesizes long form text asynchronously.</summary>
-                public class SynthesizeLongAudioRequest : TexttospeechBaseServiceRequest<Google.Apis.Texttospeech.v1beta1.Data.Operation>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : TexttospeechBaseServiceRequest<Google.Apis.Texttospeech.v1beta1.Data.Operation>
                 {
-                    /// <summary>Constructs a new SynthesizeLongAudio request.</summary>
-                    public SynthesizeLongAudioRequest(Google.Apis.Services.IClientService service, Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest body, string parent) : base(service)
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
-                        Parent = parent;
-                        Body = body;
+                        Name = name;
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// The resource states of the request in the form of projects/*/locations/*/voices/*.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
 
                     /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "synthesizeLongAudio";
+                    public override string MethodName => "get";
 
                     /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
+                    public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}:SynthesizeLongAudio";
+                    public override string RestPath => "v1beta1/{+name}";
 
-                    /// <summary>Initializes SynthesizeLongAudio parameter list.</summary>
+                    /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "parent",
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/voices/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                         });
                     }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.
+                /// </summary>
+                public class ListRequest : TexttospeechBaseServiceRequest<Google.Apis.Texttospeech.v1beta1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Synthesizes long form text asynchronously.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// The resource states of the request in the form of `projects/*/locations/*/voices/*`.
+            /// </param>
+            public virtual SynthesizeLongAudioRequest SynthesizeLongAudio(Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest body, string parent)
+            {
+                return new SynthesizeLongAudioRequest(service, body, parent);
+            }
+
+            /// <summary>Synthesizes long form text asynchronously.</summary>
+            public class SynthesizeLongAudioRequest : TexttospeechBaseServiceRequest<Google.Apis.Texttospeech.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new SynthesizeLongAudio request.</summary>
+                public SynthesizeLongAudioRequest(Google.Apis.Services.IClientService service, Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The resource states of the request in the form of `projects/*/locations/*/voices/*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "synthesizeLongAudio";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}:synthesizeLongAudio";
+
+                /// <summary>Initializes SynthesizeLongAudio parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
             }
         }
@@ -568,6 +716,21 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// <summary>Optional. The usage of the synthesized audio to be reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportedUsage")]
         public virtual string ReportedUsage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

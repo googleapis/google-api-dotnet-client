@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2289,9 +2289,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. The prefix length of the subnet's IP address range. Use CIDR range notation, such as `30` to
-        /// provision a subnet with an `x.x.x.x/30` CIDR range. The IP address range is drawn from a pool of available
-        /// ranges in the service consumer's allocated range.
+        /// Required. The prefix length of the subnet's IP address range. Use CIDR range notation, such as `29` to
+        /// provision a subnet with an `x.x.x.x/29` CIDR range. The IP address range is drawn from a pool of available
+        /// ranges in the service consumer's allocated range. GCE disallows subnets with prefix_length &amp;gt; 29
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
@@ -4776,9 +4776,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     public class RangeReservation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The size of the desired subnet. Use usual CIDR range notation. For example, '30' to find unused
-        /// x.x.x.x/30 CIDR range. The goal is to determine if one of the allocated ranges has enough free space for a
-        /// subnet of the requested size.
+        /// Required. The size of the desired subnet. Use usual CIDR range notation. For example, '29' to find unused
+        /// x.x.x.x/29 CIDR range. The goal is to determine if one of the allocated ranges has enough free space for a
+        /// subnet of the requested size. GCE disallows subnets with prefix_length &amp;gt; 29
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
@@ -4793,8 +4793,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
 
         /// <summary>
         /// Optional. The size of the desired secondary ranges for the subnet. Use usual CIDR range notation. For
-        /// example, '30' to find unused x.x.x.x/30 CIDR range. The goal is to determine that the allocated ranges have
-        /// enough free space for all the requested secondary ranges.
+        /// example, '29' to find unused x.x.x.x/29 CIDR range. The goal is to determine that the allocated ranges have
+        /// enough free space for all the requested secondary ranges. GCE disallows subnets with prefix_length &amp;gt;
+        /// 29
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryRangeIpPrefixLengths")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> SecondaryRangeIpPrefixLengths { get; set; }

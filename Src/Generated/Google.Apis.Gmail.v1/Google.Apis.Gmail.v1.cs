@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3409,10 +3409,944 @@ namespace Google.Apis.Gmail.v1
             public SettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Cse = new CseResource(service);
                 Delegates = new DelegatesResource(service);
                 Filters = new FiltersResource(service);
                 ForwardingAddresses = new ForwardingAddressesResource(service);
                 SendAs = new SendAsResource(service);
+            }
+
+            /// <summary>Gets the Cse resource.</summary>
+            public virtual CseResource Cse { get; }
+
+            /// <summary>The "cse" collection of methods.</summary>
+            public class CseResource
+            {
+                private const string Resource = "cse";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CseResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Identities = new IdentitiesResource(service);
+                    Keypairs = new KeypairsResource(service);
+                }
+
+                /// <summary>Gets the Identities resource.</summary>
+                public virtual IdentitiesResource Identities { get; }
+
+                /// <summary>The "identities" collection of methods.</summary>
+                public class IdentitiesResource
+                {
+                    private const string Resource = "identities";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public IdentitiesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates and configures a client-side encryption identity that's authorized to send mail from the
+                    /// user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that
+                    /// people within a Google Workspace organization can encrypt and send mail to the identity.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.CseIdentity body, string userId)
+                    {
+                        return new CreateRequest(service, body, userId);
+                    }
+
+                    /// <summary>
+                    /// Creates and configures a client-side encryption identity that's authorized to send mail from the
+                    /// user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that
+                    /// people within a Google Workspace organization can encrypt and send mail to the identity.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.CseIdentity body, string userId) : base(service)
+                        {
+                            UserId = userId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.CseIdentity Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/identities";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a client-side encryption identity. The authenticated user can no longer use the identity
+                    /// to send encrypted messages. You cannot restore the identity after you delete it. Instead, use
+                    /// the CreateCseIdentity method to create another identity with the same configuration.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="cseEmailAddress">
+                    /// The primary email address associated with the client-side encryption identity configuration
+                    /// that's removed.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string userId, string cseEmailAddress)
+                    {
+                        return new DeleteRequest(service, userId, cseEmailAddress);
+                    }
+
+                    /// <summary>
+                    /// Deletes a client-side encryption identity. The authenticated user can no longer use the identity
+                    /// to send encrypted messages. You cannot restore the identity after you delete it. Instead, use
+                    /// the CreateCseIdentity method to create another identity with the same configuration.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class DeleteRequest : GmailBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string cseEmailAddress) : base(service)
+                        {
+                            UserId = userId;
+                            CseEmailAddress = cseEmailAddress;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>
+                        /// The primary email address associated with the client-side encryption identity configuration
+                        /// that's removed.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("cseEmailAddress", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string CseEmailAddress { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("cseEmailAddress", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "cseEmailAddress",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Retrieves a client-side encryption identity configuration.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="cseEmailAddress">
+                    /// The primary email address associated with the client-side encryption identity configuration
+                    /// that's retrieved.
+                    /// </param>
+                    public virtual GetRequest Get(string userId, string cseEmailAddress)
+                    {
+                        return new GetRequest(service, userId, cseEmailAddress);
+                    }
+
+                    /// <summary>
+                    /// Retrieves a client-side encryption identity configuration.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string userId, string cseEmailAddress) : base(service)
+                        {
+                            UserId = userId;
+                            CseEmailAddress = cseEmailAddress;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>
+                        /// The primary email address associated with the client-side encryption identity configuration
+                        /// that's retrieved.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("cseEmailAddress", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string CseEmailAddress { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("cseEmailAddress", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "cseEmailAddress",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists the client-side encrypted identities for an authenticated user.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    public virtual ListRequest List(string userId)
+                    {
+                        return new ListRequest(service, userId);
+                    }
+
+                    /// <summary>
+                    /// Lists the client-side encrypted identities for an authenticated user.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListCseIdentitiesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
+                        {
+                            UserId = userId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>
+                        /// The number of identities to return. If not provided, the page size will default to 20
+                        /// entries.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Pagination token indicating which page of identities to return. If the token is not
+                        /// supplied, then the API will return the first page of results.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/identities";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = "20",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Associates a different key pair with an existing client-side encryption identity. The updated
+                    /// key pair must validate against Google's [S/MIME certificate
+                    /// profiles](https://support.google.com/a/answer/7300887).
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="emailAddress">
+                    /// The email address of the client-side encryption identity to update.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Gmail.v1.Data.CseIdentity body, string userId, string emailAddress)
+                    {
+                        return new PatchRequest(service, body, userId, emailAddress);
+                    }
+
+                    /// <summary>
+                    /// Associates a different key pair with an existing client-side encryption identity. The updated
+                    /// key pair must validate against Google's [S/MIME certificate
+                    /// profiles](https://support.google.com/a/answer/7300887).
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.CseIdentity body, string userId, string emailAddress) : base(service)
+                        {
+                            UserId = userId;
+                            EmailAddress = emailAddress;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The email address of the client-side encryption identity to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("emailAddress", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string EmailAddress { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.CseIdentity Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/identities/{emailAddress}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("emailAddress", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "emailAddress",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Keypairs resource.</summary>
+                public virtual KeypairsResource Keypairs { get; }
+
+                /// <summary>The "keypairs" collection of methods.</summary>
+                public class KeypairsResource
+                {
+                    private const string Resource = "keypairs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public KeypairsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates and uploads a client-side encryption S/MIME public key certificate chain and private key
+                    /// metadata for the authenticated user.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.CseKeyPair body, string userId)
+                    {
+                        return new CreateRequest(service, body, userId);
+                    }
+
+                    /// <summary>
+                    /// Creates and uploads a client-side encryption S/MIME public key certificate chain and private key
+                    /// metadata for the authenticated user.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.CseKeyPair body, string userId) : base(service)
+                        {
+                            UserId = userId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.CseKeyPair Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/keypairs";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Turns off a client-side encryption key pair. The authenticated user can no longer use the key
+                    /// pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the
+                    /// EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair
+                    /// by using the ObliterateCseKeyPair method.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="keyPairId">The identifier of the key pair to turn off.</param>
+                    public virtual DisableRequest Disable(Google.Apis.Gmail.v1.Data.DisableCseKeyPairRequest body, string userId, string keyPairId)
+                    {
+                        return new DisableRequest(service, body, userId, keyPairId);
+                    }
+
+                    /// <summary>
+                    /// Turns off a client-side encryption key pair. The authenticated user can no longer use the key
+                    /// pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the
+                    /// EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair
+                    /// by using the ObliterateCseKeyPair method.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class DisableRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
+                    {
+                        /// <summary>Constructs a new Disable request.</summary>
+                        public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.DisableCseKeyPairRequest body, string userId, string keyPairId) : base(service)
+                        {
+                            UserId = userId;
+                            KeyPairId = keyPairId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The identifier of the key pair to turn off.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("keyPairId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string KeyPairId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.DisableCseKeyPairRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "disable";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:disable";
+
+                        /// <summary>Initializes Disable parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("keyPairId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "keyPairId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Turns on a client-side encryption key pair that was turned off. The key pair becomes active
+                    /// again for any associated client-side encryption identities.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="keyPairId">The identifier of the key pair to turn on.</param>
+                    public virtual EnableRequest Enable(Google.Apis.Gmail.v1.Data.EnableCseKeyPairRequest body, string userId, string keyPairId)
+                    {
+                        return new EnableRequest(service, body, userId, keyPairId);
+                    }
+
+                    /// <summary>
+                    /// Turns on a client-side encryption key pair that was turned off. The key pair becomes active
+                    /// again for any associated client-side encryption identities.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class EnableRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
+                    {
+                        /// <summary>Constructs a new Enable request.</summary>
+                        public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.EnableCseKeyPairRequest body, string userId, string keyPairId) : base(service)
+                        {
+                            UserId = userId;
+                            KeyPairId = keyPairId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The identifier of the key pair to turn on.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("keyPairId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string KeyPairId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.EnableCseKeyPairRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "enable";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:enable";
+
+                        /// <summary>Initializes Enable parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("keyPairId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "keyPairId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Retrieves an existing client-side encryption key pair.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="keyPairId">The identifier of the key pair to retrieve.</param>
+                    public virtual GetRequest Get(string userId, string keyPairId)
+                    {
+                        return new GetRequest(service, userId, keyPairId);
+                    }
+
+                    /// <summary>
+                    /// Retrieves an existing client-side encryption key pair.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string userId, string keyPairId) : base(service)
+                        {
+                            UserId = userId;
+                            KeyPairId = keyPairId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The identifier of the key pair to retrieve.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("keyPairId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string KeyPairId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("keyPairId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "keyPairId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists client-side encryption key pairs for an authenticated user.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    public virtual ListRequest List(string userId)
+                    {
+                        return new ListRequest(service, userId);
+                    }
+
+                    /// <summary>
+                    /// Lists client-side encryption key pairs for an authenticated user.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListCseKeyPairsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
+                        {
+                            UserId = userId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>
+                        /// The number of key pairs to return. If not provided, the page size will default to 20
+                        /// entries.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Pagination token indicating which page of key pairs to return. If the token is not supplied,
+                        /// then the API will return the first page of results.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/keypairs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = "20",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a client-side encryption key pair permanently and immediately. You can only permanently
+                    /// delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use
+                    /// the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by
+                    /// an obliterated key. Authenticated users and Google Workspace administrators lose access to
+                    /// reading the encrypted messages.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">
+                    /// The requester's primary email address. To indicate the authenticated user, you can use the
+                    /// special value `me`.
+                    /// </param>
+                    /// <param name="keyPairId">The identifier of the key pair to obliterate.</param>
+                    public virtual ObliterateRequest Obliterate(Google.Apis.Gmail.v1.Data.ObliterateCseKeyPairRequest body, string userId, string keyPairId)
+                    {
+                        return new ObliterateRequest(service, body, userId, keyPairId);
+                    }
+
+                    /// <summary>
+                    /// Deletes a client-side encryption key pair permanently and immediately. You can only permanently
+                    /// delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use
+                    /// the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by
+                    /// an obliterated key. Authenticated users and Google Workspace administrators lose access to
+                    /// reading the encrypted messages.
+                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
+                    /// </summary>
+                    public class ObliterateRequest : GmailBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Obliterate request.</summary>
+                        public ObliterateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ObliterateCseKeyPairRequest body, string userId, string keyPairId) : base(service)
+                        {
+                            UserId = userId;
+                            KeyPairId = keyPairId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The requester's primary email address. To indicate the authenticated user, you can use the
+                        /// special value `me`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The identifier of the key pair to obliterate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("keyPairId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string KeyPairId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.ObliterateCseKeyPairRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "obliterate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:obliterate";
+
+                        /// <summary>Initializes Obliterate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("keyPairId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "keyPairId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the Delegates resource.</summary>
@@ -6431,6 +7365,95 @@ namespace Google.Apis.Gmail.v1.Data
     }
 
     /// <summary>
+    /// [Beta](https://workspace.google.com/terms/service-terms/index.html). The client-side encryption (CSE)
+    /// configuration for the email address of an authenticated user. Gmail uses CSE configurations to save drafts of
+    /// client-side encrypted email messages, and to sign and send encrypted email messages.
+    /// </summary>
+    public class CseIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The email address for the sending identity. The email address must be the primary email address of the
+        /// authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
+
+        /// <summary>If a key pair is associated, the identifier of the key pair, CseKeyPair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKeyPairId")]
+        public virtual string PrimaryKeyPairId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Beta](https://workspace.google.com/terms/service-terms/index.html). A client-side encryption S/MIME key pair,
+    /// which is comprised of a public key, its certificate chain, and metadata for its paired private key. Gmail uses
+    /// the key pair to complete the following tasks: - Sign outgoing client-side encrypted messages. - Save and reopen
+    /// drafts of client-side encrypted messages. - Save and reopen sent messages. - Decrypt incoming or archived S/MIME
+    /// messages.
+    /// </summary>
+    public class CseKeyPair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If a key pair is set to `DISABLED`, the time that the key pair's state changed from `ENABLED`
+        /// to `DISABLED`. This field is present only when the key pair is in state `DISABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
+        public virtual object DisableTime { get; set; }
+
+        /// <summary>Output only. The current state of the key pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementState")]
+        public virtual string EnablementState { get; set; }
+
+        /// <summary>Output only. The immutable ID for the client-side encryption S/MIME key pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyPairId")]
+        public virtual string KeyPairId { get; set; }
+
+        /// <summary>
+        /// Output only. The public key and its certificate chain, in
+        /// [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pem")]
+        public virtual string Pem { get; set; }
+
+        /// <summary>
+        /// Input only. The public key and its certificate chain. The chain must be in
+        /// [PKCS#7](https://en.wikipedia.org/wiki/PKCS_7) format and use PEM encoding and ASCII armor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkcs7")]
+        public virtual string Pkcs7 { get; set; }
+
+        /// <summary>Metadata for instances of this key pair's private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyMetadata")]
+        public virtual System.Collections.Generic.IList<CsePrivateKeyMetadata> PrivateKeyMetadata { get; set; }
+
+        /// <summary>Output only. The email address identities that are specified on the leaf certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> SubjectEmailAddresses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a private key instance.</summary>
+    public class CsePrivateKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Metadata for a private key instance managed by an external key access control list service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kaclsKeyMetadata")]
+        public virtual KaclsKeyMetadata KaclsKeyMetadata { get; set; }
+
+        /// <summary>Output only. The immutable ID for the private key metadata instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyMetadataId")]
+        public virtual string PrivateKeyMetadataId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add contacts, for
     /// the delegator's account. See "Set up mail delegation" for more information about delegates.
     /// </summary>
@@ -6450,6 +7473,13 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Requests to turn off a client-side encryption key pair.</summary>
+    public class DisableCseKeyPairRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A draft email in the user's mailbox.</summary>
     public class Draft : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6461,6 +7491,13 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Requests to turn on a client-side encryption key pair.</summary>
+    public class EnableCseKeyPairRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6690,6 +7727,26 @@ namespace Google.Apis.Gmail.v1.Data
     }
 
     /// <summary>
+    /// Metadata for private keys managed by an external key access control list service. For details about managing key
+    /// access, see [Google Workspace CSE API Reference](https://developers.google.com/workspace/cse/reference).
+    /// </summary>
+    public class KaclsKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Opaque data generated and used by the key access control list service. Maximum size: 8 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kaclsData")]
+        public virtual string KaclsData { get; set; }
+
+        /// <summary>The URI of the key access control list service that manages the private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kaclsUri")]
+        public virtual string KaclsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Labels are used to categorize messages and threads within the user's mailbox. The maximum number of labels
     /// supported for a user's mailbox is 10,000.
     /// </summary>
@@ -6805,6 +7862,40 @@ namespace Google.Apis.Gmail.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLanguage")]
         public virtual string DisplayLanguage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListCseIdentitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One page of the list of CSE identities configured for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cseIdentities")]
+        public virtual System.Collections.Generic.IList<CseIdentity> CseIdentities { get; set; }
+
+        /// <summary>
+        /// Pagination token to be passed to a subsequent ListCseIdentities call in order to retrieve the next page of
+        /// identities. If this value is not returned or is the empty string, then no further pages remain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListCseKeyPairsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One page of the list of CSE key pairs installed for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cseKeyPairs")]
+        public virtual System.Collections.Generic.IList<CseKeyPair> CseKeyPairs { get; set; }
+
+        /// <summary>
+        /// Pagination token to be passed to a subsequent ListCseKeyPairs call in order to retrieve the next page of key
+        /// pairs. If this value is not returned, then no further pages remain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7133,6 +8224,13 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
         public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to obliterate a CSE key pair.</summary>
+    public class ObliterateCseKeyPairRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2803,8 +2803,8 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">
-        /// The resource name for the person, assigned by the server. An ASCII string with a max length of 27
-        /// characters, in the form of `people/{person_id}`.
+        /// The resource name for the person, assigned by the server. An ASCII string in the form of
+        /// `people/{person_id}`.
         /// </param>
         public virtual UpdateContactRequest UpdateContact(Google.Apis.PeopleService.v1.Data.Person body, string resourceName)
         {
@@ -2834,8 +2834,8 @@ namespace Google.Apis.PeopleService.v1
             }
 
             /// <summary>
-            /// The resource name for the person, assigned by the server. An ASCII string with a max length of 27
-            /// characters, in the form of `people/{person_id}`.
+            /// The resource name for the person, assigned by the server. An ASCII string in the form of
+            /// `people/{person_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
@@ -4457,8 +4457,8 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual System.Collections.Generic.IList<Residence> Residences { get; set; }
 
         /// <summary>
-        /// The resource name for the person, assigned by the server. An ASCII string with a max length of 27
-        /// characters, in the form of `people/{person_id}`.
+        /// The resource name for the person, assigned by the server. An ASCII string in the form of
+        /// `people/{person_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }

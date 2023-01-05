@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -850,7 +850,9 @@ namespace Google.Apis.Firestore.v1beta1
                 /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
                 /// </param>
                 /// <param name="collectionId">
-                /// Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`.
+                /// Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`.
+                /// This is optional, and when not provided, Firestore will list documents from all collections under
+                /// the provided `parent`.
                 /// </param>
                 public virtual ListRequest List(string parent, string collectionId)
                 {
@@ -879,8 +881,9 @@ namespace Google.Apis.Firestore.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or
-                    /// `messages`.
+                    /// Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or
+                    /// `messages`. This is optional, and when not provided, Firestore will list documents from all
+                    /// collections under the provided `parent`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CollectionId { get; private set; }
@@ -891,34 +894,45 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
-                    /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
+                    /// <summary>
+                    /// Optional. The optional ordering of the documents to return. For example: `priority desc,
+                    /// __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string
+                    /// representation. When absent, documents are ordered based on `__name__ ASC`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>The maximum number of documents to return.</summary>
+                    /// <summary>
+                    /// Optional. The maximum number of documents to return in a single response. Firestore may return
+                    /// fewer than this value.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListDocuments` response. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters (with the exception of
+                    /// `page_size`) must match the values set in the request that generated the page token.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Reads documents as they were at the given time. This may not be older than 270 seconds.
+                    /// Perform the read at the provided time. This may not be older than 270 seconds.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadTime { get; set; }
 
                     /// <summary>
-                    /// If the list should show missing documents. A missing document is a document that does not exist
-                    /// but has sub-documents. These documents will be returned with a key but will not have fields,
-                    /// Document.create_time, or Document.update_time set. Requests with `show_missing` may not specify
-                    /// `where` or `order_by`.
+                    /// If the list should show missing documents. A document is missing if it does not exist, but there
+                    /// are sub-documents nested underneath it. When true, such missing documents will be returned with
+                    /// a key but will not have fields, `create_time`, or `update_time` set. Requests with
+                    /// `show_missing` may not specify `where` or `order_by`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("showMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ShowMissing { get; set; }
 
-                    /// <summary>Reads documents in a transaction.</summary>
+                    /// <summary>Perform the read as part of an already active transaction.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Transaction { get; set; }
 
@@ -1080,7 +1094,9 @@ namespace Google.Apis.Firestore.v1beta1
                 /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
                 /// </param>
                 /// <param name="collectionId">
-                /// Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`.
+                /// Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`.
+                /// This is optional, and when not provided, Firestore will list documents from all collections under
+                /// the provided `parent`.
                 /// </param>
                 public virtual ListDocumentsRequest ListDocuments(string parent, string collectionId)
                 {
@@ -1109,8 +1125,9 @@ namespace Google.Apis.Firestore.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or
-                    /// `messages`.
+                    /// Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or
+                    /// `messages`. This is optional, and when not provided, Firestore will list documents from all
+                    /// collections under the provided `parent`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CollectionId { get; private set; }
@@ -1121,34 +1138,45 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
-                    /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
+                    /// <summary>
+                    /// Optional. The optional ordering of the documents to return. For example: `priority desc,
+                    /// __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string
+                    /// representation. When absent, documents are ordered based on `__name__ ASC`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>The maximum number of documents to return.</summary>
+                    /// <summary>
+                    /// Optional. The maximum number of documents to return in a single response. Firestore may return
+                    /// fewer than this value.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListDocuments` response. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters (with the exception of
+                    /// `page_size`) must match the values set in the request that generated the page token.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Reads documents as they were at the given time. This may not be older than 270 seconds.
+                    /// Perform the read at the provided time. This may not be older than 270 seconds.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadTime { get; set; }
 
                     /// <summary>
-                    /// If the list should show missing documents. A missing document is a document that does not exist
-                    /// but has sub-documents. These documents will be returned with a key but will not have fields,
-                    /// Document.create_time, or Document.update_time set. Requests with `show_missing` may not specify
-                    /// `where` or `order_by`.
+                    /// If the list should show missing documents. A document is missing if it does not exist, but there
+                    /// are sub-documents nested underneath it. When true, such missing documents will be returned with
+                    /// a key but will not have fields, `create_time`, or `update_time` set. Requests with
+                    /// `show_missing` may not specify `where` or `order_by`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("showMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ShowMissing { get; set; }
 
-                    /// <summary>Reads documents in a transaction.</summary>
+                    /// <summary>Perform the read as part of an already active transaction.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Transaction { get; set; }
 
@@ -3128,7 +3156,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documents")]
         public virtual System.Collections.Generic.IList<Document> Documents { get; set; }
 
-        /// <summary>The next page token.</summary>
+        /// <summary>
+        /// A token to retrieve the next page of documents. If this field is omitted, there are no subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

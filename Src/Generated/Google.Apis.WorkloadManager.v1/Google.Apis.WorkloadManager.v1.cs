@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -291,6 +291,7 @@ namespace Google.Apis.WorkloadManager.v1
             {
                 this.service = service;
                 Evaluations = new EvaluationsResource(service);
+                Insights = new InsightsResource(service);
                 Operations = new OperationsResource(service);
             }
 
@@ -543,6 +544,81 @@ namespace Google.Apis.WorkloadManager.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Insights resource.</summary>
+            public virtual InsightsResource Insights { get; }
+
+            /// <summary>The "insights" collection of methods.</summary>
+            public class InsightsResource
+            {
+                private const string Resource = "insights";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InsightsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Write the data insights to workload manager data warehouse.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="location">
+                /// Required. The GCP location. The format is: projects/{project}/locations/{location}.
+                /// </param>
+                public virtual WriteInsightRequest WriteInsight(Google.Apis.WorkloadManager.v1.Data.WriteInsightRequest body, string location)
+                {
+                    return new WriteInsightRequest(service, body, location);
+                }
+
+                /// <summary>Write the data insights to workload manager data warehouse.</summary>
+                public class WriteInsightRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.WriteInsightResponse>
+                {
+                    /// <summary>Constructs a new WriteInsight request.</summary>
+                    public WriteInsightRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkloadManager.v1.Data.WriteInsightRequest body, string location) : base(service)
+                    {
+                        Location = location;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The GCP location. The format is: projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.WorkloadManager.v1.Data.WriteInsightRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "writeInsight";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+location}/insights:writeInsight";
+
+                    /// <summary>Initializes WriteInsight parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -1047,6 +1123,28 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A presentation of host resource usage where the workload runs.</summary>
+    public class Insight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The insights data for sap system discovery. This is a copy of SAP System proto and should get updated
+        /// whenever that one changes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapDiscovery")]
+        public virtual SapDiscovery SapDiscovery { get; set; }
+
+        /// <summary>The insights data for the sap workload validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapValidation")]
+        public virtual SapValidation SapValidation { get; set; }
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentTime")]
+        public virtual object SentTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to listing Evaluations</summary>
     public class ListEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1248,6 +1346,141 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema of SAP system discovery data.</summary>
+    public class SapDiscovery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An SAP system may run without an application layer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationLayer")]
+        public virtual SapDiscoveryComponent ApplicationLayer { get; set; }
+
+        /// <summary>An SAP System must have a database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseLayer")]
+        public virtual SapDiscoveryComponent DatabaseLayer { get; set; }
+
+        /// <summary>The metadata for SAP system discovery data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual SapDiscoveryMetadata Metadata { get; set; }
+
+        /// <summary>
+        /// A combination of database SID, database instance URI and tenant DB name to make a unique identifier
+        /// per-system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemId")]
+        public virtual string SystemId { get; set; }
+
+        /// <summary>Unix timestamp this system has been updated last.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the system component.</summary>
+    public class SapDiscoveryComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The component is a SAP application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
+        public virtual string ApplicationType { get; set; }
+
+        /// <summary>The component is a SAP database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
+        public virtual string DatabaseType { get; set; }
+
+        /// <summary>Pantheon Project in which the resources reside.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostProject")]
+        public virtual string HostProject { get; set; }
+
+        /// <summary>The resources in a component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<SapDiscoveryResource> Resources { get; set; }
+
+        /// <summary>
+        /// The sap identifier, used by the SAP software and helps differentiate systems for customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sid")]
+        public virtual string Sid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing SAP discovery system metadata</summary>
+    public class SapDiscoveryMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customer region string for customer's use. Does not represent GCP region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerRegion")]
+        public virtual string CustomerRegion { get; set; }
+
+        /// <summary>Customer defined, something like "E-commerce pre prod"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definedSystem")]
+        public virtual string DefinedSystem { get; set; }
+
+        /// <summary>Should be "prod", "QA", "dev", "staging", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>This sap product name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapProduct")]
+        public virtual string SapProduct { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing a resource.</summary>
+    public class SapDiscoveryResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of resource URIs related to this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
+        public virtual System.Collections.Generic.IList<string> RelatedResources { get; set; }
+
+        /// <summary>ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
+        public virtual string ResourceKind { get; set; }
+
+        /// <summary>The type of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>URI of the resource, includes project, location, and name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>Unix timestamp of when this resource last had its discovery data updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A presentation of SAP workload insight. The schema of SAP workloads validation related data.</summary>
+    public class SapValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of SAP validation metrics data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
+        public virtual System.Collections.Generic.IList<SapValidationValidationDetail> ValidationDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the SAP validation metrics.</summary>
+    public class SapValidationValidationDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pairs of metrics data: field name &amp; field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
+        /// <summary>The SAP system that the validation data is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapValidationType")]
+        public virtual string SapValidationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1273,6 +1506,36 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for sending the data insights.</summary>
+    public class WriteInsightRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The metrics data details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insight")]
+        public virtual Insight Insight { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for write insights request.</summary>
+    public class WriteInsightResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

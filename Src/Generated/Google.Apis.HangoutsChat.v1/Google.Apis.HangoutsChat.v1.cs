@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,6 +64,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
+            /// <summary>View members in Google Chat conversations.</summary>
+            public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
+
             /// <summary>
             /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
             /// </summary>
@@ -89,6 +92,9 @@ namespace Google.Apis.HangoutsChat.v1
         {
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+
+            /// <summary>View members in Google Chat conversations.</summary>
+            public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
             /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
@@ -4596,7 +4602,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The space's display name. For direct messages between humans, this field might be empty.</summary>
+        /// <summary>
+        /// The space's display name. Required when [creating a
+        /// space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create). For direct messages, this
+        /// field may be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 

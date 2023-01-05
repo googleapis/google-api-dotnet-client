@@ -1059,7 +1059,7 @@
    }
   }
  },
- "revision": "20221129",
+ "revision": "20230102",
  "rootUrl": "https://run.googleapis.com/",
  "schemas": {
   "GoogleCloudRunV2BinaryAuthorization": {
@@ -1078,7 +1078,7 @@
    "type": "object"
   },
   "GoogleCloudRunV2CloudSqlInstance": {
-   "description": "Represents a specific Cloud SQL instance.",
+   "description": "Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.",
    "id": "GoogleCloudRunV2CloudSqlInstance",
    "properties": {
     "instances": {
@@ -1267,7 +1267,7 @@
      "description": "Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes"
     },
     "name": {
-     "description": "Name of the container specified as a DNS_LABEL.",
+     "description": "Name of the container specified as a DNS_LABEL (RFC 1123).",
      "type": "string"
     },
     "ports": {
@@ -1356,6 +1356,12 @@
      "description": "KRM-style annotations for the resource.",
      "type": "object"
     },
+    "cancelledCount": {
+     "description": "Output only. The number of tasks which reached phase Cancelled.",
+     "format": "int32",
+     "readOnly": true,
+     "type": "integer"
+    },
     "completionTime": {
      "description": "Output only. Represents time when the execution was completed. It is not guaranteed to be set in happens-before order across separate operations.",
      "format": "google-datetime",
@@ -1441,6 +1447,11 @@
      ],
      "type": "string"
     },
+    "logUri": {
+     "description": "Output only. URI where logs for this execution can be found in Cloud Console.",
+     "readOnly": true,
+     "type": "string"
+    },
     "name": {
      "description": "Output only. The unique name of this Execution.",
      "readOnly": true,
@@ -1462,6 +1473,12 @@
      "description": "Output only. Indicates whether the resource's reconciliation is still in progress. See comments in `Job.reconciling` for additional information on reconciliation process in Cloud Run.",
      "readOnly": true,
      "type": "boolean"
+    },
+    "retriedCount": {
+     "description": "Output only. The number of tasks which have retried at least once.",
+     "format": "int32",
+     "readOnly": true,
+     "type": "integer"
     },
     "runningCount": {
      "description": "Output only. The number of actively running tasks.",
@@ -1948,6 +1965,25 @@
     },
     "encryptionKey": {
      "description": "A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek",
+     "type": "string"
+    },
+    "encryptionKeyRevocationAction": {
+     "description": "The action to take if the encryption key is revoked.",
+     "enum": [
+      "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED",
+      "PREVENT_NEW",
+      "SHUTDOWN"
+     ],
+     "enumDescriptions": [
+      "Unspecified",
+      "Prevents the creation of new instances.",
+      "Shuts down existing instances, and prevents creation of new ones."
+     ],
+     "type": "string"
+    },
+    "encryptionKeyShutdownDuration": {
+     "description": "If encryption_key_revocation_action is SHUTDOWN, the duration before shutting down all instances. The minimum increment is 1 hour.",
+     "format": "google-duration",
      "type": "string"
     },
     "etag": {
@@ -2538,6 +2574,11 @@
      "$ref": "GoogleCloudRunV2TaskAttemptResult",
      "description": "Output only. Result of the last attempt of this Task.",
      "readOnly": true
+    },
+    "logUri": {
+     "description": "Output only. URI where logs for this execution can be found in Cloud Console.",
+     "readOnly": true,
+     "type": "string"
     },
     "maxRetries": {
      "description": "Number of retries allowed per Task, before marking this Task failed.",
