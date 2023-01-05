@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -532,7 +532,7 @@ namespace Google.Apis.Workflows.v1
 
                 /// <summary>
                 /// Creates a new workflow. If a workflow with the specified name already exists in the specified
-                /// project and location, the long running operation will return ALREADY_EXISTS error.
+                /// project and location, the long running operation returns a ALREADY_EXISTS error.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -546,7 +546,7 @@ namespace Google.Apis.Workflows.v1
 
                 /// <summary>
                 /// Creates a new workflow. If a workflow with the specified name already exists in the specified
-                /// project and location, the long running operation will return ALREADY_EXISTS error.
+                /// project and location, the long running operation returns a ALREADY_EXISTS error.
                 /// </summary>
                 public class CreateRequest : WorkflowsBaseServiceRequest<Google.Apis.Workflows.v1.Data.Operation>
                 {
@@ -669,9 +669,9 @@ namespace Google.Apis.Workflows.v1
                     }
                 }
 
-                /// <summary>Gets details of a single Workflow.</summary>
+                /// <summary>Gets details of a single workflow.</summary>
                 /// <param name="name">
-                /// Required. Name of the workflow which information should be retrieved. Format:
+                /// Required. Name of the workflow for which information should be retrieved. Format:
                 /// projects/{project}/locations/{location}/workflows/{workflow}
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -679,7 +679,7 @@ namespace Google.Apis.Workflows.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets details of a single Workflow.</summary>
+                /// <summary>Gets details of a single workflow.</summary>
                 public class GetRequest : WorkflowsBaseServiceRequest<Google.Apis.Workflows.v1.Data.Workflow>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -690,7 +690,7 @@ namespace Google.Apis.Workflows.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the workflow which information should be retrieved. Format:
+                    /// Required. Name of the workflow for which information should be retrieved. Format:
                     /// projects/{project}/locations/{location}/workflows/{workflow}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -721,7 +721,7 @@ namespace Google.Apis.Workflows.v1
                 }
 
                 /// <summary>
-                /// Lists Workflows in a given project and location. The default order is not specified.
+                /// Lists workflows in a given project and location. The default order is not specified.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Project and location from which the workflows should be listed. Format:
@@ -733,7 +733,7 @@ namespace Google.Apis.Workflows.v1
                 }
 
                 /// <summary>
-                /// Lists Workflows in a given project and location. The default order is not specified.
+                /// Lists workflows in a given project and location. The default order is not specified.
                 /// </summary>
                 public class ListRequest : WorkflowsBaseServiceRequest<Google.Apis.Workflows.v1.Data.ListWorkflowsResponse>
                 {
@@ -756,17 +756,17 @@ namespace Google.Apis.Workflows.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma-separated list of fields that that specify the order of the results. Default sorting order
-                    /// for a field is ascending. To specify descending order for a field, append a " desc" suffix. If
-                    /// not specified, the results will be returned in an unspecified order.
+                    /// Comma-separated list of fields that specify the order of the results. Default sorting order for
+                    /// a field is ascending. To specify descending order for a field, append a "desc" suffix. If not
+                    /// specified, the results are returned in an unspecified order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Maximum number of workflows to return per call. The service may return fewer than this value. If
-                    /// the value is not specified, a default value of 500 will be used. The maximum permitted value is
-                    /// 1000 and values greater than 1000 will be coerced down to 1000.
+                    /// Maximum number of workflows to return per call. The service might return fewer than this value
+                    /// even if not at the end of the collection. If a value is not specified, a default value of 500 is
+                    /// used. The maximum permitted value is 1000 and values greater than 1000 are coerced down to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -837,8 +837,8 @@ namespace Google.Apis.Workflows.v1
 
                 /// <summary>
                 /// Updates an existing workflow. Running this method has no impact on already running executions of the
-                /// workflow. A new revision of the workflow may be created as a result of a successful update
-                /// operation. In that case, such revision will be used in new workflow executions.
+                /// workflow. A new revision of the workflow might be created as a result of a successful update
+                /// operation. In that case, the new revision is used in new workflow executions.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -852,8 +852,8 @@ namespace Google.Apis.Workflows.v1
 
                 /// <summary>
                 /// Updates an existing workflow. Running this method has no impact on already running executions of the
-                /// workflow. A new revision of the workflow may be created as a result of a successful update
-                /// operation. In that case, such revision will be used in new workflow executions.
+                /// workflow. A new revision of the workflow might be created as a result of a successful update
+                /// operation. In that case, the new revision is used in new workflow executions.
                 /// </summary>
                 public class PatchRequest : WorkflowsBaseServiceRequest<Google.Apis.Workflows.v1.Data.Operation>
                 {
@@ -1110,7 +1110,7 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
-        /// <summary>The workflows which match the request.</summary>
+        /// <summary>The workflows that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workflows")]
         public virtual System.Collections.Generic.IList<Workflow> Workflows { get; set; }
 
@@ -1252,7 +1252,7 @@ namespace Google.Apis.Workflows.v1.Data
     /// <summary>Workflow program to be executed by Workflows.</summary>
     public class Workflow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The timestamp of when the workflow was created.</summary>
+        /// <summary>Output only. The timestamp for when the workflow was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -1264,7 +1264,7 @@ namespace Google.Apis.Workflows.v1.Data
 
         /// <summary>
         /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no
-        /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and
+        /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and
         /// dashes. Label keys must start with a letter. International characters are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -1276,7 +1276,7 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The timestamp that the latest revision of the workflow was created.</summary>
+        /// <summary>Output only. The timestamp for the latest revision of the workflow's creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
         public virtual object RevisionCreateTime { get; set; }
 
@@ -1308,7 +1308,7 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. The last update timestamp of the workflow.</summary>
+        /// <summary>Output only. The timestamp for when the workflow was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

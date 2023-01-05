@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4749,7 +4749,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
 
-        /// <summary>The GCP target project ID or project name.</summary>
+        /// <summary>The Google Cloud target project ID or project name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
@@ -4928,9 +4928,9 @@ namespace Google.Apis.VMMigrationService.v1.Data
     }
 
     /// <summary>
-    /// DatacenterConnector message describes a connector between the Source and GCP, which is installed on a vmware
-    /// datacenter (an OVA vm installed by the user) to connect the Datacenter to GCP and support vm migration data
-    /// transfer.
+    /// DatacenterConnector message describes a connector between the Source and Google Cloud, which is installed on a
+    /// vmware datacenter (an OVA vm installed by the user) to connect the Datacenter to Google Cloud and support vm
+    /// migration data transfer.
     /// </summary>
     public class DatacenterConnector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4952,7 +4952,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableVersions")]
         public virtual AvailableUpdates AvailableVersions { get; set; }
 
-        /// <summary>Output only. The communication channel between the datacenter connector and GCP.</summary>
+        /// <summary>Output only. The communication channel between the datacenter connector and Google Cloud.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 

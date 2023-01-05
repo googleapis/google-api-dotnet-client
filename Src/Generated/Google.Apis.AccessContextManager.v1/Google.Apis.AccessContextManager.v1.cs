@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -281,6 +281,7 @@ namespace Google.Apis.AccessContextManager.v1
         {
             this.service = service;
             AccessLevels = new AccessLevelsResource(service);
+            AuthorizedOrgsDescs = new AuthorizedOrgsDescsResource(service);
             ServicePerimeters = new ServicePerimetersResource(service);
         }
 
@@ -857,6 +858,366 @@ namespace Google.Apis.AccessContextManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accessPolicies/[^/]+/accessLevels/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the AuthorizedOrgsDescs resource.</summary>
+        public virtual AuthorizedOrgsDescsResource AuthorizedOrgsDescs { get; }
+
+        /// <summary>The "authorizedOrgsDescs" collection of methods.</summary>
+        public class AuthorizedOrgsDescsResource
+        {
+            private const string Resource = "authorizedOrgsDescs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AuthorizedOrgsDescsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
+            /// will be assigned during creation.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name for the access policy which owns this Authorized Orgs Desc. Format:
+            /// `accessPolicies/{policy_id}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
+            /// will be assigned during creation.
+            /// </summary>
+            public class CreateRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name for the access policy which owns this Authorized Orgs Desc. Format:
+                /// `accessPolicies/{policy_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/authorizedOrgsDescs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accessPolicies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a authorized orgs desc based on the resource name. The long-running operation from this RPC has
+            /// a successful status after the authorized orgs desc is removed from long-lasting storage.
+            /// </summary>
+            /// <param name="name">
+            /// Required. Resource name for the Authorized Orgs Desc. Format:
+            /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// Deletes a authorized orgs desc based on the resource name. The long-running operation from this RPC has
+            /// a successful status after the authorized orgs desc is removed from long-lasting storage.
+            /// </summary>
+            public class DeleteRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name for the Authorized Orgs Desc. Format:
+                /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accessPolicies/[^/]+/authorizedOrgsDescs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a authorized orgs desc based on the resource name.</summary>
+            /// <param name="name">
+            /// Required. Resource name for the Authorized Orgs Desc. Format:
+            /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a authorized orgs desc based on the resource name.</summary>
+            public class GetRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name for the Authorized Orgs Desc. Format:
+                /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accessPolicies/[^/]+/authorizedOrgsDescs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all authorized orgs descs for an access policy.</summary>
+            /// <param name="parent">
+            /// Required. Resource name for the access policy to list Authorized Orgs Desc from. Format:
+            /// `accessPolicies/{policy_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all authorized orgs descs for an access policy.</summary>
+            public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListAuthorizedOrgsDescsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name for the access policy to list Authorized Orgs Desc from. Format:
+                /// `accessPolicies/{policy_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Number of Authorized Orgs Descs to include in the list. Default 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Next page token for the next batch of Authorized Orgs Desc instances. Defaults to the first page of
+                /// results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/authorizedOrgsDescs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accessPolicies/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// an error response is returned for the first error encountered. Only the organization list in
+            /// `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and
+            /// authorization_direction cannot be updated.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Assigned by the server during creation. The last segment has an arbitrary length and has only URI
+            /// unreserved characters (as defined by [RFC 3986 Section
+            /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
+            /// creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// an error response is returned for the first error encountered. Only the organization list in
+            /// `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and
+            /// authorization_direction cannot be updated.
+            /// </summary>
+            public class PatchRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Assigned by the server during creation. The last segment has an arbitrary length and has only URI
+                /// unreserved characters (as defined by [RFC 3986 Section
+                /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
+                /// creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. Mask to control which fields get updated. Must be non-empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accessPolicies/[^/]+/authorizedOrgsDescs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2719,6 +3080,52 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// `AuthorizedOrgsDesc` is a resource that contains a list of organizations for a authorization type and asset type
+    /// and its authorization direction.
+    /// </summary>
+    public class AuthorizedOrgsDesc : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The asset type of this authorized orgs desc. e.g. device, credential strength.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>
+        /// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate
+        /// this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as
+        /// `AUTHORIZATION_DIRECTION_TO` in this
+        /// AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this
+        /// org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to
+        /// take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this
+        /// AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this
+        /// org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to
+        /// take effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationDirection")]
+        public virtual string AuthorizationDirection { get; set; }
+
+        /// <summary>
+        /// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationType")]
+        public virtual string AuthorizationType { get; set; }
+
+        /// <summary>
+        /// Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
+        /// characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
+        /// not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The list of organization ids in this AuthorizedOrgsDesc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgs")]
+        public virtual System.Collections.Generic.IList<string> Orgs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`BasicLevel` is an `AccessLevel` using a set of recommended features.</summary>
     public class BasicLevel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3286,6 +3693,23 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>List of the AccessPolicy instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessPolicies")]
         public virtual System.Collections.Generic.IList<AccessPolicy> AccessPolicies { get; set; }
+
+        /// <summary>
+        /// The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response to `ListAuthorizedOrgsDescsRequest`.</summary>
+    public class ListAuthorizedOrgsDescsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of the Authorized Orgs Desc instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedOrgsDescs")]
+        public virtual System.Collections.Generic.IList<AuthorizedOrgsDesc> AuthorizedOrgsDescs { get; set; }
 
         /// <summary>
         /// The pagination token to retrieve the next page of results. If the value is empty, no further results remain.

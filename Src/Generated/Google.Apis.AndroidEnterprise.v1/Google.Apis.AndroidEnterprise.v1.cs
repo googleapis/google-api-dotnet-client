@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -952,6 +952,87 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>
+        /// Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment
+        /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
+        /// for each device or reused across multiple devices.
+        /// </summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        public virtual CreateEnrollmentTokenRequest CreateEnrollmentToken(string enterpriseId)
+        {
+            return new CreateEnrollmentTokenRequest(service, enterpriseId);
+        }
+
+        /// <summary>
+        /// Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment
+        /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
+        /// for each device or reused across multiple devices.
+        /// </summary>
+        public class CreateEnrollmentTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.CreateEnrollmentTokenResponse>
+        {
+            /// <summary>Constructs a new CreateEnrollmentToken request.</summary>
+            public CreateEnrollmentTokenRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                InitParameters();
+            }
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>Whether it’s a dedicated device or a knowledge worker device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<DeviceTypeEnum> DeviceType { get; set; }
+
+            /// <summary>Whether it’s a dedicated device or a knowledge worker device.</summary>
+            public enum DeviceTypeEnum
+            {
+                /// <summary>This value is unused</summary>
+                [Google.Apis.Util.StringValueAttribute("unknown")]
+                Unknown = 0,
+
+                /// <summary>This device is a dedicated device.</summary>
+                [Google.Apis.Util.StringValueAttribute("dedicatedDevice")]
+                DedicatedDevice = 1,
+
+                /// <summary>This device is required to have an authenticated user.</summary>
+                [Google.Apis.Util.StringValueAttribute("knowledgeWorker")]
+                KnowledgeWorker = 2,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createEnrollmentToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/createEnrollmentToken";
+
+            /// <summary>Initializes CreateEnrollmentToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the
         /// managed Google Play javascript API. Each token may only be used to start one UI session. See the javascript
         /// API documentation for further information.
@@ -1394,7 +1475,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>
             /// The request mode for pulling notifications. Specifying waitForNotifications will cause the request to
             /// block and wait until one or more notifications are present, or return an empty notification list if no
-            /// notifications are present after some time. Speciying returnImmediately will cause the request to
+            /// notifications are present after some time. Specifying returnImmediately will cause the request to
             /// immediately return the pending notifications, or an empty list if no notifications are present. If
             /// omitted, defaults to waitForNotifications.
             /// </summary>
@@ -1404,7 +1485,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>
             /// The request mode for pulling notifications. Specifying waitForNotifications will cause the request to
             /// block and wait until one or more notifications are present, or return an empty notification list if no
-            /// notifications are present after some time. Speciying returnImmediately will cause the request to
+            /// notifications are present after some time. Specifying returnImmediately will cause the request to
             /// immediately return the pending notifications, or an empty list if no notifications are present. If
             /// omitted, defaults to waitForNotifications.
             /// </summary>
@@ -6200,6 +6281,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The variable set that is attributed to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableSet")]
         public virtual System.Collections.Generic.IList<VariableSet> VariableSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for create enrollment token.</summary>
+    public class CreateEnrollmentTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enrollment token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentToken")]
+        public virtual string EnrollmentToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -490,8 +490,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> RestrictToMyDrive { get; set; }
 
             /// <summary>
-            /// A comma-separated list of spaces to query within the user corpus. Supported values are 'drive',
-            /// 'appDataFolder' and 'photos'.
+            /// A comma-separated list of spaces to query within the corpora. Supported values are 'drive' and
+            /// 'appDataFolder'.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
@@ -719,8 +719,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> RestrictToMyDrive { get; set; }
 
             /// <summary>
-            /// A comma-separated list of spaces to query within the user corpus. Supported values are 'drive',
-            /// 'appDataFolder' and 'photos'.
+            /// A comma-separated list of spaces to query within the corpora. Supported values are 'drive' and
+            /// 'appDataFolder'.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
@@ -940,7 +940,7 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a new comment on a file.</summary>
+        /// <summary>Creates a comment on a file.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.Comment body, string fileId)
@@ -948,7 +948,7 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(service, body, fileId);
         }
 
-        /// <summary>Creates a new comment on a file.</summary>
+        /// <summary>Creates a comment on a file.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1305,7 +1305,7 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a new shared drive.</summary>
+        /// <summary>Creates a shared drive.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="requestId">
         /// An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a
@@ -1318,7 +1318,7 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(service, body, requestId);
         }
 
-        /// <summary>Creates a new shared drive.</summary>
+        /// <summary>Creates a shared drive.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1931,14 +1931,14 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Creates a new file.</summary>
+        /// <summary>Creates a file.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.File body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new file.</summary>
+        /// <summary>Creates a file.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2090,7 +2090,7 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Creates a new file.</summary>
+        /// <summary>Creates a file.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -2893,7 +2893,7 @@ namespace Google.Apis.Drive.v3
             public virtual string Q { get; set; }
 
             /// <summary>
-            /// A comma-separated list of spaces to query within the corpus. Supported values are 'drive' and
+            /// A comma-separated list of spaces to query within the corpora. Supported values are 'drive' and
             /// 'appDataFolder'.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
@@ -4394,7 +4394,7 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a new reply to a comment.</summary>
+        /// <summary>Creates a reply to a comment.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -4403,7 +4403,7 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(service, body, fileId, commentId);
         }
 
-        /// <summary>Creates a new reply to a comment.</summary>
+        /// <summary>Creates a reply to a comment.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Create request.</summary>

@@ -99,6 +99,11 @@
     "PUBLISHED",
     "UPDATED"
   ],
+  "Google.Apis.Blogger.v3.PostsResource+ListRequest.SortOptionEnum": [
+    "SORT_OPTION_UNSPECIFIED",
+    "DESCENDING",
+    "ASCENDING"
+  ],
   "Google.Apis.Blogger.v3.PostsResource+ListRequest.StatusEnum": [
     "LIVE",
     "DRAFT",

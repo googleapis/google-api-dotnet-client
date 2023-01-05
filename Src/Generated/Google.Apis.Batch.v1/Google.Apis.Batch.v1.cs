@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1567,7 +1567,7 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>AgentMetadata never changes for a single instance of VM agent.</summary>
+    /// <summary>VM Agent Metadata.</summary>
     public class AgentMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>When the VM agent started. Use agent_startup_time instead.</summary>
@@ -1593,6 +1593,10 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>GCP instance ID (go/instance-id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual System.Nullable<ulong> InstanceId { get; set; }
+
+        /// <summary>If the GCP instance has received preemption notice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePreemptionNoticeReceived")]
+        public virtual System.Nullable<bool> InstancePreemptionNoticeReceived { get; set; }
 
         /// <summary>parsed contents of /etc/os-release</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osRelease")]
@@ -1999,6 +2003,20 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>An Environment describes a collection of environment variables to set when executing Tasks.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their
+        /// values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedVariables")]
+        public virtual KMSEnvMap EncryptedVariables { get; set; }
+
+        /// <summary>
+        /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to
+        /// set the value of each environment variable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SecretVariables { get; set; }
+
         /// <summary>A map of environment variable names to values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variables")]
         public virtual System.Collections.Generic.IDictionary<string, string> Variables { get; set; }
@@ -2243,6 +2261,20 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskGroups")]
         public virtual System.Collections.Generic.IDictionary<string, TaskGroupStatus> TaskGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class KMSEnvMap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the cipherText response from the `encrypt` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cipherText")]
+        public virtual string CipherText { get; set; }
+
+        /// <summary>The name of the KMS key that will be used to decrypt the cipher text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2653,6 +2685,10 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>Response to ReportAgentStateRequest.</summary>
     public class ReportAgentStateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Default report interval override</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultReportInterval")]
+        public virtual object DefaultReportInterval { get; set; }
+
         /// <summary>Minimum report interval override</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minReportInterval")]
         public virtual object MinReportInterval { get; set; }

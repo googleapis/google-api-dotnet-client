@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2795,59 +2795,6 @@ namespace Google.Apis.Integrations.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Get execution stats</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource name: {parent=projects/*/locations/*}.</param>
-                public virtual MonitorexecutionstatsRequest Monitorexecutionstats(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest body, string parent)
-                {
-                    return new MonitorexecutionstatsRequest(service, body, parent);
-                }
-
-                /// <summary>Get execution stats</summary>
-                public class MonitorexecutionstatsRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsResponse>
-                {
-                    /// <summary>Constructs a new Monitorexecutionstats request.</summary>
-                    public MonitorexecutionstatsRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent resource name: {parent=projects/*/locations/*}.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "monitorexecutionstats";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}:monitorexecutionstats";
-
-                    /// <summary>Initializes Monitorexecutionstats parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+$",
                         });
                     }
                 }
@@ -5837,61 +5784,6 @@ namespace Google.Apis.Integrations.v1alpha
                         }
                     }
 
-                    /// <summary>Get execution stats</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. The parent resource name: {parent=projects/*/locations/*}.
-                    /// </param>
-                    public virtual MonitorexecutionstatsRequest Monitorexecutionstats(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest body, string parent)
-                    {
-                        return new MonitorexecutionstatsRequest(service, body, parent);
-                    }
-
-                    /// <summary>Get execution stats</summary>
-                    public class MonitorexecutionstatsRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsResponse>
-                    {
-                        /// <summary>Constructs a new Monitorexecutionstats request.</summary>
-                        public MonitorexecutionstatsRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The parent resource name: {parent=projects/*/locations/*}.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "monitorexecutionstats";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}:monitorexecutionstats";
-
-                        /// <summary>Initializes Monitorexecutionstats parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
-                            });
-                        }
-                    }
-
                     /// <summary>
                     /// Schedules an integration for execution by passing the trigger id and the scheduled time in the
                     /// request body.
@@ -7782,98 +7674,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    public class EnterpriseCrmCardsCellValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("empty")]
-        public virtual GoogleProtobufEmpty Empty { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
-        public virtual System.Nullable<long> LongValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class EnterpriseCrmCardsRow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Ordered list of cell values within a row.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
-        public virtual System.Collections.Generic.IList<EnterpriseCrmCardsCellValue> Cells { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The generic data format returned from all connectors.</summary>
-    public class EnterpriseCrmCardsTabularData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Ordered list of column headers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
-
-        /// <summary>Ordered list of table rows.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<EnterpriseCrmCardsRow> Rows { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data used to render an Aplos Series card.</summary>
-    public class EnterpriseCrmCardsTemplatesAplosSeriesData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A single Series Row</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<EnterpriseCrmCardsTemplatesAplosSeriesDataRow> Rows { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Aplos series row is exactly two columns labeled x and y.</summary>
-    public class EnterpriseCrmCardsTemplatesAplosSeriesDataRow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("x")]
-        public virtual EnterpriseCrmCardsCellValue X { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("y")]
-        public virtual EnterpriseCrmCardsCellValue Y { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data used for Aplos charts that accept multiple Series.</summary>
-    public class EnterpriseCrmCardsTemplatesAplosSeriesListData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual System.Collections.Generic.IList<EnterpriseCrmCardsTemplatesAplosSeriesListDataSeries> Series { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class EnterpriseCrmCardsTemplatesAplosSeriesListDataSeries : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual EnterpriseCrmCardsTemplatesAplosSeriesData Data { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9357,6 +9157,9 @@ namespace Google.Apis.Integrations.v1alpha.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedBy")]
         public virtual string ResolvedBy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedByCpi")]
+        public virtual string ResolvedByCpi { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; }
@@ -11023,7 +10826,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Configuration for the connection.</summary>
+        /// <summary>Optional. Node configuration for the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual GoogleCloudConnectorsV1NodeConfig NodeConfig { get; set; }
 
@@ -11122,7 +10925,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for the connection.</summary>
+    /// <summary>Node configuration for the connection.</summary>
     public class GoogleCloudConnectorsV1NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of nodes in the runtime nodes.</summary>
@@ -12660,166 +12463,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>The list of the tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskEntities")]
         public virtual System.Collections.Generic.IList<EnterpriseCrmFrontendsEventbusProtoTaskEntity> TaskEntities { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to get data for monarch connector config.</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>How long the series data range: "1h","1d",etc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; }
-
-        /// <summary>Final time to query over, or the current time if left unset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>Required. Query for searching data in monarch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mashQuery")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQuery MashQuery { get; set; }
-
-        /// <summary>
-        /// Returns a table of all possible metric field values within the specified duration, ignoring any data
-        /// samples. Useful for autocomplete functionality.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricFieldTable")]
-        public virtual System.Nullable<bool> MetricFieldTable { get; set; }
-
-        /// <summary>
-        /// The output period for the query. Must be set if there is a window operation within the query and unset
-        /// otherwise.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputPeriod")]
-        public virtual object OutputPeriod { get; set; }
-
-        /// <summary>Required. Template for response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseTemplate")]
-        public virtual string ResponseTemplate { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>MashQuery GroupBy parameters.</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestGroupBy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. optional, metrics list for GroupBy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<string> Fields { get; set; }
-
-        /// <summary>Optional. optional, reduce function for GroupBy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reducer")]
-        public virtual string Reducer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The MashQuery for searching data, set both queries for Join Operation.</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQuery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The components for constructing a mash query. Set "point_operation" if this is a single query
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstQuery")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent FirstQuery { get; set; }
-
-        /// <summary>
-        /// Optional. optional, only set when joining 2 queries. By default join 2 queries with join operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationMode")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationMode OperationMode { get; set; }
-
-        /// <summary>
-        /// Optional. optional, only set when joining 2 queries. Set "point_operation" for joined query.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondQuery")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent SecondQuery { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The components for constructing MashQuery.</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The metric for monarch.BorgTask.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("borgTaskMetric")]
-        public virtual string BorgTaskMetric { get; set; }
-
-        /// <summary>Optional. optional, filters on fetched data, "metric:client_id" not supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<string> DataFilters { get; set; }
-
-        /// <summary>Optional. optional, filters for Fetch Raw, "metric:client_id" not supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fetchFilters")]
-        public virtual System.Collections.Generic.IList<string> FetchFilters { get; set; }
-
-        /// <summary>Optional. optional, GroupBy variables.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestGroupBy GroupBy { get; set; }
-
-        /// <summary>Optional. optional, Point Operation on single query or joined query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pointOperation")]
-        public virtual string PointOperation { get; set; }
-
-        /// <summary>Required. Window time delta.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeDelta")]
-        public virtual string TimeDelta { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Operation between 2 query</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationMode : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. join operation</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("joinConfig")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeJoinConfig JoinConfig { get; set; }
-
-        /// <summary>Optional. optional operation types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; }
-
-        /// <summary>Optional. union operation</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unionConfig")]
-        public virtual GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeUnionConfig UnionConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Join Operation</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeJoinConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Union operation</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeUnionConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. optional, reduce function</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reducer")]
-        public virtual string Reducer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response for getting Execution stats.</summary>
-    public class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of points.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aplosSeriesListData")]
-        public virtual EnterpriseCrmCardsTemplatesAplosSeriesListData AplosSeriesListData { get; set; }
-
-        /// <summary>Data in form of table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tableData")]
-        public virtual EnterpriseCrmCardsTabularData TableData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

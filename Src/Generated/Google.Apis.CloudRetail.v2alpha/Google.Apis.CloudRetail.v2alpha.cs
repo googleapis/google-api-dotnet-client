@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3806,8 +3806,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                         public virtual System.Nullable<long> Ets { get; set; }
 
                         /// <summary>
-                        /// The prebuilt rule name that can convert a specific type of raw_json. For example:
-                        /// "default_schema/v1.0"
+                        /// The prebuilt rule name that can convert a specific type of raw_json. For example: "ga4_bq"
+                        /// rule for the GA4 user event schema.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("prebuiltRule", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PrebuiltRule { get; set; }
@@ -6046,7 +6046,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable. This property only applies to
-        /// textual custom attributes and requires indexable set to enabled to enable exact-searchable.
+        /// textual custom attributes and requires indexable set to enabled to enable exact-searchable. If unset, the
+        /// server behavior defaults to EXACT_SEARCHABLE_DISABLED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exactSearchableOption")]
         public virtual string ExactSearchableOption { get; set; }
@@ -6076,7 +6077,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as
         /// `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and
         /// underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named
-        /// `attributes.abc-xyz` cannot be indexed.
+        /// `attributes.abc-xyz` cannot be indexed. For attributes whoes key start with `attributes.`, we refer them as
+        /// custom attributes. Otherwise they are built-in attributes such as `color` and `brands`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -6089,7 +6091,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationsFilteringOption")]
         public virtual string RecommendationsFilteringOption { get; set; }
 
-        /// <summary>If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results.</summary>
+        /// <summary>
+        /// If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results. If unset, the server
+        /// behavior defaults to RETRIEVABLE_DISABLED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievableOption")]
         public virtual string RetrievableOption { get; set; }
 
@@ -9333,7 +9338,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diversityLevel")]
         public virtual string DiversityLevel { get; set; }
 
-        /// <summary>What kind of diversity to use - data driven or rule based.</summary>
+        /// <summary>
+        /// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to
+        /// RULE_BASED_DIVERSITY.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diversityType")]
         public virtual string DiversityType { get; set; }
 
@@ -9421,7 +9429,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// How much price ranking we want in serving results. Price reranking causes product items with a similar
         /// recommendation probability to be ordered by price, with the highest-priced items first. This setting could
         /// result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` *
-        /// `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose
+        /// `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose
         /// default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is
         /// SOLUTION_TYPE_RECOMMENDATION.
         /// </summary>

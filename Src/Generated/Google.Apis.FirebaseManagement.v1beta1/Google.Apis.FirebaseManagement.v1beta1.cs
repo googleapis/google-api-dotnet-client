@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3175,20 +3175,21 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// A query string compatible with Google's [AIP-160](https://google.aip.dev/160) standard. Use any of the
-            /// following fields in a query: * [`app_id`](../projects.apps#FirebaseAppInfo.FIELDS.app_id) *
-            /// [`namespace`](../projects.apps#FirebaseAppInfo.FIELDS.namespace) *
-            /// [`platform`](../projects.apps#FirebaseAppInfo.FIELDS.platform) We also support the following "virtual"
-            /// fields (fields which are not actually part of the returned resource object, but can be queried as if
-            /// they are pre-populated with specific values): * `sha1_hash` or `sha1_hashes`: This field is considered
-            /// to be a repeated `string` field, populated with the list of all SHA-1 certificate fingerprints
-            /// registered with the app. This list is empty if the app is not an Android app. * `sha256_hash` or
-            /// `sha256_hashes`: This field is considered to be a repeated `string` field, populated with the list of
-            /// all SHA-256 certificate fingerprints registered with the app. This list is empty if the app is not an
-            /// Android app. * `app_store_id`: This field is considered to be a singular `string` field, populated with
-            /// the Apple App Store ID registered with the app. This field is empty if the app is not an iOS app. *
-            /// `team_id`: This field is considered to be a singular `string` field, populated with the Apple team ID
-            /// registered with the app. This field is empty if the app is not an iOS app.
+            /// A query string compatible with Google's [AIP-160 standard](https://google.aip.dev/160). Use any of the
+            /// following fields in a query: * [`app_id`](../projects/searchApps#FirebaseAppInfo.FIELDS.app_id) *
+            /// [`namespace`](../projects/searchApps#FirebaseAppInfo.FIELDS.namespace) *
+            /// [`platform`](../projects/searchApps#FirebaseAppInfo.FIELDS.platform) This query also supports the
+            /// following "virtual" fields. These are fields which are not actually part of the returned resource
+            /// object, but they can be queried as if they are pre-populated with specific values. * `sha1_hash` or
+            /// `sha1_hashes`: This field is considered to be a _repeated_ `string` field, populated with the list of
+            /// all SHA-1 certificate fingerprints registered with the AndroidApp. This list is empty if the App is not
+            /// an `AndroidApp`. * `sha256_hash` or `sha256_hashes`: This field is considered to be a _repeated_
+            /// `string` field, populated with the list of all SHA-256 certificate fingerprints registered with the
+            /// AndroidApp. This list is empty if the App is not an `AndroidApp`. * `app_store_id`: This field is
+            /// considered to be a _singular_ `string` field, populated with the Apple App Store ID registered with the
+            /// IosApp. This field is empty if the App is not an `IosApp`. * `team_id`: This field is considered to be a
+            /// _singular_ `string` field, populated with the Apple team ID registered with the IosApp. This field is
+            /// empty if the App is not an `IosApp`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3424,6 +3425,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update
+        /// requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's
+        /// [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly
+        /// validated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
@@ -3460,9 +3470,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>Output only. The lifecycle state of the App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Configuration metadata of a single Firebase App for Android.</summary>
@@ -3624,9 +3631,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class FirebaseProject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set of user-defined annotations for the FirebaseProject as per
-        /// [AIP-128](https://google.aip.dev/128#annotations). These annotations are intended solely for developers and
-        /// client-side tools Firebase services will not mutate this annotation set.
+        /// A set of user-defined annotations for the FirebaseProject. Learn more about annotations in Google's [AIP-128
+        /// standard](https://google.aip.dev/128#annotations). These annotations are intended solely for developers and
+        /// client-side tools. Firebase services will not mutate this annotations set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3636,9 +3643,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update
-        /// requests to ensure the client has an up-to-date value before proceeding.
-        /// [AIP-154](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update
+        /// requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's
+        /// [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly
+        /// validated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3718,6 +3726,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update
+        /// requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's
+        /// [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly
+        /// validated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
@@ -3742,9 +3759,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The Apple Developer Team ID associated with the App in the App Store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamId")]
         public virtual string TeamId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Configuration metadata of a single Firebase App for iOS.</summary>
@@ -4016,8 +4030,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
         /// <summary>
-        /// Checksum provided in the AndroidApp entity, which if provided ensures the client has an up-to-date value
-        /// before proceeding.
+        /// Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4045,8 +4059,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
         /// <summary>
-        /// Checksum provided in the IosApp entity, which if provided ensures the client has an up-to-date value before
-        /// proceeding.
+        /// Checksum provided in the IosApp resource. If provided, this checksum ensures that the client has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4074,8 +4088,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
         /// <summary>
-        /// Checksum provided in the WebApp entity, which if provided ensures the client has an up-to-date value before
-        /// proceeding.
+        /// Checksum provided in the WebApp resource. If provided, this checksum ensures that the client has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4236,8 +4250,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class UndeleteAndroidAppRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Checksum provided in the AndroidApp entity, which if provided ensures the client has an up-to-date value
-        /// before proceeding.
+        /// Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4250,8 +4264,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class UndeleteIosAppRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Checksum provided in the IosApp entity, which if provided ensures the client has an up-to-date value before
-        /// proceeding.
+        /// Checksum provided in the IosApp resource. If provided, this checksum ensures that the client has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4264,8 +4278,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class UndeleteWebAppRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Checksum provided in the WebApp entity, which if provided ensures the client has an up-to-date value before
-        /// proceeding.
+        /// Checksum provided in the WebApp resource. If provided, this checksum ensures that the client has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4310,6 +4324,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update
+        /// requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's
+        /// [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly
+        /// validated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
@@ -4338,9 +4361,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webId")]
         public virtual string WebId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Configuration metadata of a single Firebase App for the web.</summary>

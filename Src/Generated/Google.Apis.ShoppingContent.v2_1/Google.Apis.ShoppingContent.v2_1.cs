@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22368,7 +22368,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     /// <summary>
     /// Represents a repricing rule. A repricing rule is used by shopping serving to adjust transactable offer prices if
-    /// conditions are met. Next ID: 24
+    /// conditions are met.
     /// </summary>
     public class RepricingRule : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2040,6 +2040,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportEnabled")]
         public virtual System.Nullable<bool> SupportEnabled { get; set; }
 
+        /// <summary>Output only. Types of an item in the Chrome Web Store</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3166,16 +3170,16 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Output only. Payload for network connection state change event. Present only when `event_type` is
-        /// `NETWORK_CONNECTION_STATE_CHANGE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkConnectionStateChangeEvent")]
-        public virtual GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent NetworkConnectionStateChangeEvent { get; set; }
-
         /// <summary>Timestamp that represents when the event was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
         public virtual object ReportTime { get; set; }
+
+        /// <summary>
+        /// Output only. Payload for usb peripherals event. Present only when the `event_type` field is either
+        /// `USB_ADDED` or `USB_REMOVED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usbPeripheralsEvent")]
+        public virtual GoogleChromeManagementV1TelemetryUsbPeripheralsEvent UsbPeripheralsEvent { get; set; }
 
         /// <summary>Output only. Information about the user associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
@@ -3203,18 +3207,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// `TelemetryNetworkConnectionStateChangeEvent` is triggered on network connection state changes.
-    /// </summary>
-    public class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>`TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or removed.</summary>
+    public class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Current connection state of the network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectionState")]
-        public virtual string ConnectionState { get; set; }
-
-        /// <summary>Unique identifier of the network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
-        public virtual string Guid { get; set; }
+        /// <summary>List of usb devices that were either added or removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usbPeripheralReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1UsbPeripheralReport> UsbPeripheralReport { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3278,6 +3276,45 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>The maximum number of keys that can be used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxKeys")]
         public virtual System.Nullable<long> MaxKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>USB connected peripheral report.</summary>
+    public class GoogleChromeManagementV1UsbPeripheralReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Categories the device belongs to https://www.usb.org/defined-class-codes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
+
+        /// <summary>Output only. Class ID https://www.usb.org/defined-class-codes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classId")]
+        public virtual System.Nullable<int> ClassId { get; set; }
+
+        /// <summary>Output only. Firmware version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
+        public virtual string FirmwareVersion { get; set; }
+
+        /// <summary>Output only. Device name, model name, or product name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Product ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pid")]
+        public virtual System.Nullable<int> Pid { get; set; }
+
+        /// <summary>Output only. Subclass ID https://www.usb.org/defined-class-codes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subclassId")]
+        public virtual System.Nullable<int> SubclassId { get; set; }
+
+        /// <summary>Output only. Vendor name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
+        public virtual string Vendor { get; set; }
+
+        /// <summary>Output only. Vendor ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vid")]
+        public virtual System.Nullable<int> Vid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

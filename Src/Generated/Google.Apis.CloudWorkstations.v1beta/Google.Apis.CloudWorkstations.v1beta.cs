@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             this.service = service;
                         }
 
-                        /// <summary>Creates a new Workstation.</summary>
+                        /// <summary>Creates a new workstation.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Parent resource name.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudWorkstations.v1beta.Data.Workstation body, string parent)
@@ -641,7 +641,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a new Workstation.</summary>
+                        /// <summary>Creates a new workstation.</summary>
                         public class CreateRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -712,14 +712,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             }
                         }
 
-                        /// <summary>Deletes the specified Workstation.</summary>
+                        /// <summary>Deletes the specified workstation.</summary>
                         /// <param name="name">Required. Name of the workstation to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>Deletes the specified Workstation.</summary>
+                        /// <summary>Deletes the specified workstation.</summary>
                         public class DeleteRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -849,14 +849,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             }
                         }
 
-                        /// <summary>Returns the requested Workstation.</summary>
+                        /// <summary>Returns the requested workstation.</summary>
                         /// <param name="name">Required. Name of the requested resource.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>Returns the requested Workstation.</summary>
+                        /// <summary>Returns the requested workstation.</summary>
                         public class GetRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Workstation>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -1119,7 +1119,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             }
                         }
 
-                        /// <summary>Updates an existing Workstation.</summary>
+                        /// <summary>Updates an existing workstation.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Full name of this resource.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.Workstation body, string name)
@@ -1127,7 +1127,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             return new PatchRequest(service, body, name);
                         }
 
-                        /// <summary>Updates an existing Workstation.</summary>
+                        /// <summary>Updates an existing workstation.</summary>
                         public class PatchRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -1460,7 +1460,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
                     }
 
-                    /// <summary>Creates a new WorkstationConfig.</summary>
+                    /// <summary>Creates a new workstation configuration.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Parent resource name.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig body, string parent)
@@ -1468,7 +1468,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a new WorkstationConfig.</summary>
+                    /// <summary>Creates a new workstation configuration.</summary>
                     public class CreateRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -1539,14 +1539,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
                     }
 
-                    /// <summary>Deletes the specified WorkstationConfig.</summary>
+                    /// <summary>Deletes the specified workstation configuration.</summary>
                     /// <param name="name">Required. Name of the config to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified WorkstationConfig.</summary>
+                    /// <summary>Deletes the specified workstation configuration.</summary>
                     public class DeleteRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1628,14 +1628,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
                     }
 
-                    /// <summary>Returns the requested WorkstationConfig.</summary>
+                    /// <summary>Returns the requested workstation configuration.</summary>
                     /// <param name="name">Required. Name of the requested resource.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Returns the requested WorkstationConfig.</summary>
+                    /// <summary>Returns the requested workstation configuration.</summary>
                     public class GetRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1754,14 +1754,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
                     }
 
-                    /// <summary>Returns all WorkstationConfigs in the specified cluster.</summary>
+                    /// <summary>Returns all workstation configurations in the specified cluster.</summary>
                     /// <param name="parent">Required. Parent resource name.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns all WorkstationConfigs in the specified cluster.</summary>
+                    /// <summary>Returns all workstation configurations in the specified cluster.</summary>
                     public class ListRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.ListWorkstationConfigsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1824,7 +1824,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
 
                     /// <summary>
-                    /// Returns all WorkstationConfigs in the specified cluster on which the caller has the
+                    /// Returns all workstation configurations in the specified cluster on which the caller has the
                     /// "workstations.workstation.create" permission.
                     /// </summary>
                     /// <param name="parent">Required. Parent resource name.</param>
@@ -1834,7 +1834,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
 
                     /// <summary>
-                    /// Returns all WorkstationConfigs in the specified cluster on which the caller has the
+                    /// Returns all workstation configurations in the specified cluster on which the caller has the
                     /// "workstations.workstation.create" permission.
                     /// </summary>
                     public class ListUsableRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.ListUsableWorkstationConfigsResponse>
@@ -1898,7 +1898,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
                     }
 
-                    /// <summary>Updates an existing WorkstationConfig.</summary>
+                    /// <summary>Updates an existing workstation configuration.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Full name of this resource.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig body, string name)
@@ -1906,7 +1906,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates an existing WorkstationConfig.</summary>
+                    /// <summary>Updates an existing workstation configuration.</summary>
                     public class PatchRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -2131,7 +2131,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
                 }
 
-                /// <summary>Creates a new WorkstationCluster.</summary>
+                /// <summary>Creates a new workstation cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Parent resource name.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster body, string parent)
@@ -2139,7 +2139,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new WorkstationCluster.</summary>
+                /// <summary>Creates a new workstation cluster.</summary>
                 public class CreateRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2210,14 +2210,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
                 }
 
-                /// <summary>Deletes the specified WorkstationCluster.</summary>
+                /// <summary>Deletes the specified workstation cluster.</summary>
                 /// <param name="name">Required. Name of the cluster to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the specified WorkstationCluster.</summary>
+                /// <summary>Deletes the specified workstation cluster.</summary>
                 public class DeleteRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2239,8 +2239,8 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// If set, any WorkstationConfigs and Workstations in the cluster will also be deleted. Otherwise,
-                    /// the request will work only if the cluster has no configs or workstations.
+                    /// If set, any workstation configurations and workstations in the cluster will also be deleted.
+                    /// Otherwise, the request will work only if the cluster has no configurations or workstations.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -2299,14 +2299,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
                 }
 
-                /// <summary>Returns the requested WorkstationCluster.</summary>
+                /// <summary>Returns the requested workstation cluster.</summary>
                 /// <param name="name">Required. Name of the requested resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Returns the requested WorkstationCluster.</summary>
+                /// <summary>Returns the requested workstation cluster.</summary>
                 public class GetRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2344,14 +2344,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
                 }
 
-                /// <summary>Returns all WorkstationClusters in the specified location.</summary>
+                /// <summary>Returns all workstation clusters in the specified location.</summary>
                 /// <param name="parent">Required. Parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Returns all WorkstationClusters in the specified location.</summary>
+                /// <summary>Returns all workstation clusters in the specified location.</summary>
                 public class ListRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.ListWorkstationClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2413,7 +2413,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
                 }
 
-                /// <summary>Updates an existing WorkstationCluster.</summary>
+                /// <summary>Updates an existing workstation cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Full name of this resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster body, string name)
@@ -2421,7 +2421,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates an existing WorkstationCluster.</summary>
+                /// <summary>Updates an existing workstation cluster.</summary>
                 public class PatchRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2711,7 +2711,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A set of Confidential Google Compute Engine Instance option.</summary>
+    /// <summary>A set of Compute Engine Confidential VM instance options.</summary>
     public class GceConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the instance has confidential compute enabled.</summary>
@@ -2722,14 +2722,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A runtime using a Google Compute Engine Instance.</summary>
+    /// <summary>A runtime using a Compute Engine instance.</summary>
     public class GceInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the boot disk in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
-        /// <summary>A set of Confidential Google Compute Engine Instance option.</summary>
+        /// <summary>A set of Compute Engine Confidential VM instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
         public virtual GceConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }
 
@@ -2737,11 +2737,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disablePublicIpAddresses")]
         public virtual System.Nullable<bool> DisablePublicIpAddresses { get; set; }
 
-        /// <summary>The name of a Google Compute Engine machine type.</summary>
+        /// <summary>The name of a Compute Engine machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>Number of instances to pool for faster Workstation starup.</summary>
+        /// <summary>Number of instances to pool for faster workstation starup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poolSize")]
         public virtual System.Nullable<int> PoolSize { get; set; }
 
@@ -2753,11 +2753,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>A set of Shielded Google Compute Engine Instance options.</summary>
+        /// <summary>A set of Compute Engine Shielded instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual GceShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
-        /// <summary>Network tags to add to the Google Compute Engine machines backing the Workstations.</summary>
+        /// <summary>Network tags to add to the Compute Engine machines backing the Workstations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
@@ -2773,13 +2773,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string DiskType { get; set; }
 
         /// <summary>
-        /// Type of file system that the disk should be formatted with. The Workstation image must support this file
+        /// Type of file system that the disk should be formatted with. The workstation image must support this file
         /// system type. Must be empty if source_snapshot is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fsType")]
         public virtual string FsType { get; set; }
 
-        /// <summary>What should happen to the disk after the Workstation is deleted. Defaults to DELETE.</summary>
+        /// <summary>What should happen to the disk after the workstation is deleted. Defaults to DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reclaimPolicy")]
         public virtual string ReclaimPolicy { get; set; }
 
@@ -2791,7 +2791,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A set of Shielded Google Compute Engine Instance options.</summary>
+    /// <summary>A set of Compute Engine Shielded instance options.</summary>
     public class GceShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the instance has integrity monitoring enabled.</summary>
@@ -2849,12 +2849,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The system will attempt to keep enough computational resources on standby Runtime host for a Workstation.
-    /// </summary>
+    /// <summary>Runtime host for a workstation.</summary>
     public class Host : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies a Google Compute Engine Instance as the host.</summary>
+        /// <summary>Specifies a Compute Engine instance as the host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceInstance")]
         public virtual GceInstance GceInstance { get; set; }
 
@@ -3064,14 +3062,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A directory persisted across Workstation sessions.</summary>
+    /// <summary>A directory to persist across workstation sessions.</summary>
     public class PersistentDirectory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A PersistentDirectory backed by a Compute Engine persistent disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePd")]
         public virtual GceRegionalPersistentDisk GcePd { get; set; }
 
-        /// <summary>Location of this directory in the running Workstation.</summary>
+        /// <summary>Location of this directory in the running workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
         public virtual string MountPath { get; set; }
 
@@ -3152,7 +3150,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Hostname for the Workstation Cluster. This field will be populated only when private endpoint
+        /// Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint
         /// is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an
         /// internal IP address and a forwarding rule mapping that address to the service attachment.
         /// </summary>
@@ -3164,7 +3162,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
         /// <summary>
-        /// Output only. Service attachment URI for the Workstation Cluster. The service attachemnt is created when
+        /// Output only. Service attachment URI for the workstation cluster. The service attachemnt is created when
         /// private endpoint is enabled. To access workstations in the cluster, configure access to the managed service
         /// using (Private Service
         /// Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -3340,7 +3338,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual object UpdateTime { get; set; }
     }
 
-    /// <summary>A grouping of WorkstationConfigs and their associated Workstations in a region.</summary>
+    /// <summary>A grouping of workstation configurations and the associated workstations in that region.</summary>
     public class WorkstationCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Client-specified annotations.</summary>
@@ -3414,8 +3412,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// A set of configuration options describing how a workstation will be run. WorkstationConfigs are intended to be
-    /// shared across multiple workstations.
+    /// A set of configuration options describing how a workstation will be run. Workstation configurations are intended
+    /// to be shared across multiple workstations.
     /// </summary>
     public class WorkstationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3428,7 +3426,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IList<Status> Conditions { get; set; }
 
         /// <summary>
-        /// Container that will be run for each Workstation using this config when that Workstation is started.
+        /// Container that will be run for each workstation using this configuration when that workstation is started.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual Container Container { get; set; }
@@ -3459,7 +3457,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Runtime host for the Workstation.</summary>
+        /// <summary>Runtime host for the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual Host Host { get; set; }
 
@@ -3474,7 +3472,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Directories to persist across Workstation sessions.</summary>
+        /// <summary>Directories to persist across workstation sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistentDirectories")]
         public virtual System.Collections.Generic.IList<PersistentDirectory> PersistentDirectories { get; set; }
 

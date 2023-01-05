@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4680,6 +4680,65 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
+                    /// <summary>Run an on demand execution of a Task.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the task:
+                    /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}.
+                    /// </param>
+                    public virtual RunRequest Run(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunTaskRequest body, string name)
+                    {
+                        return new RunRequest(service, body, name);
+                    }
+
+                    /// <summary>Run an on demand execution of a Task.</summary>
+                    public class RunRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunTaskResponse>
+                    {
+                        /// <summary>Constructs a new Run request.</summary>
+                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunTaskRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the task:
+                        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunTaskRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "run";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:run";
+
+                        /// <summary>Initializes Run parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/tasks/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can
                     /// return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -8508,6 +8567,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only
+        /// available to storage buckets assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAccessMode")]
+        public virtual string ReadAccessMode { get; set; }
+
         /// <summary>Required. Immutable. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -9589,6 +9655,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Represents tables and fileset metadata contained within a zone.</summary>
     public class GoogleCloudDataplexV1Entity : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Identifies the access mechanism to the entity. Not user settable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access")]
+        public virtual GoogleCloudDataplexV1StorageAccess Access { get; set; }
+
         /// <summary>
         /// Required. Immutable. The ID of the asset associated with the storage location containing the entity data.
         /// The entity must be with in the same zone with the asset.
@@ -10414,6 +10484,22 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDataplexV1RunTaskRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDataplexV1RunTaskResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Jobs created by RunTask API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual GoogleCloudDataplexV1Job Job { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The data scanned during processing (e.g. in incremental DataScan)</summary>
     public class GoogleCloudDataplexV1ScannedData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10630,6 +10716,17 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The size of results the query produced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSizeBytes")]
         public virtual System.Nullable<long> ResultSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the access mechanism of the data within its storage location.</summary>
+    public class GoogleCloudDataplexV1StorageAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Describes the read access mechanism of the data. Not user settable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("read")]
+        public virtual string Read { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

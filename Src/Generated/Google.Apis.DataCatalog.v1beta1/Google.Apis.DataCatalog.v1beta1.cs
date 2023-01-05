@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4553,6 +4553,40 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata message for long-running operation returned by the ImportEntries.</summary>
+    public class GoogleCloudDatacatalogV1ImportEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Partial errors that are encountered during the ImportEntries operation. There is no guarantee that all the
+        /// encountered errors are reported. However, if no errors are reported, it means that no errors were
+        /// encountered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>State of the import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for long-running operation returned by the ImportEntries.</summary>
+    public class GoogleCloudDatacatalogV1ImportEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of entries deleted as a result of import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedEntriesCount")]
+        public virtual System.Nullable<long> DeletedEntriesCount { get; set; }
+
+        /// <summary>Cumulative number of entries created and entries updated as a result of import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upsertedEntriesCount")]
+        public virtual System.Nullable<long> UpsertedEntriesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context:
     /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding
@@ -5686,6 +5720,35 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

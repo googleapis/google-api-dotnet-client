@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2538,7 +2538,11 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a specific Cloud SQL instance.</summary>
+    /// <summary>
+    /// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit
+    /// https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud
+    /// Run.
+    /// </summary>
     public class GoogleCloudRunV2CloudSqlInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2643,7 +2647,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual GoogleCloudRunV2Probe LivenessProbe { get; set; }
 
-        /// <summary>Name of the container specified as a DNS_LABEL.</summary>
+        /// <summary>Name of the container specified as a DNS_LABEL (RFC 1123).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2753,6 +2757,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Output only. The number of tasks which reached phase Cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelledCount")]
+        public virtual System.Nullable<int> CancelledCount { get; set; }
+
         /// <summary>
         /// Output only. Represents time when the execution was completed. It is not guaranteed to be set in
         /// happens-before order across separate operations.
@@ -2826,6 +2834,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
 
+        /// <summary>Output only. URI where logs for this execution can be found in Cloud Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logUri")]
+        public virtual string LogUri { get; set; }
+
         /// <summary>Output only. The unique name of this Execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2853,6 +2865,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. The number of tasks which have retried at least once.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retriedCount")]
+        public virtual System.Nullable<int> RetriedCount { get; set; }
 
         /// <summary>Output only. The number of actively running tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningCount")]
@@ -3366,6 +3382,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual string EncryptionKey { get; set; }
+
+        /// <summary>The action to take if the encryption key is revoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyRevocationAction")]
+        public virtual string EncryptionKeyRevocationAction { get; set; }
+
+        /// <summary>
+        /// If encryption_key_revocation_action is SHUTDOWN, the duration before shutting down all instances. The
+        /// minimum increment is 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyShutdownDuration")]
+        public virtual object EncryptionKeyShutdownDuration { get; set; }
 
         /// <summary>
         /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
@@ -3944,6 +3971,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. Result of the last attempt of this Task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptResult")]
         public virtual GoogleCloudRunV2TaskAttemptResult LastAttemptResult { get; set; }
+
+        /// <summary>Output only. URI where logs for this execution can be found in Cloud Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logUri")]
+        public virtual string LogUri { get; set; }
 
         /// <summary>Number of retries allowed per Task, before marking this Task failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]

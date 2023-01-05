@@ -1,0 +1,27 @@
+{
+  "Google.Apis.Integrations.v1.CallbackResource+GenerateTokenRequest.ProductEnum": [
+    "UNSPECIFIED_PRODUCT",
+    "IP",
+    "APIGEE",
+    "SECURITY"
+  ],
+  "Google.Apis.Integrations.v1.IntegrationsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Integrations.v1.IntegrationsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Integrations.v1.ProjectsResource+LocationsResource+IntegrationsResource+VersionsResource+DownloadRequest.FileFormatEnum": [
+    "FILE_FORMAT_UNSPECIFIED",
+    "JSON",
+    "YAML"
+  ],
+  "Google.Apis.Integrations.v1.ProjectsResource+LocationsResource+ProductsResource+IntegrationsResource+VersionsResource+DownloadRequest.FileFormatEnum": [
+    "FILE_FORMAT_UNSPECIFIED",
+    "JSON",
+    "YAML"
+  ]
+}

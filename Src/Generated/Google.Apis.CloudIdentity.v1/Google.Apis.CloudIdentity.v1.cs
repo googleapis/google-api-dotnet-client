@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3325,8 +3325,9 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. The parent resource under which to list all `Group` resources. Must be of the form
-            /// `identitysources/{identity_source}` for external- identity-mapped groups or `customers/{customer}` for
-            /// Google Groups. The `customer` must begin with "C" (for example, 'C046psxkn').
+            /// `identitysources/{identity_source}` for external- identity-mapped groups or `customers/{customer_id}`
+            /// for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer
+            /// ID.] (https://support.google.com/cloudidentity/answer/10070793)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -3575,9 +3576,10 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>
             /// Required. The search query. Must be specified in [Common Expression
             /// Language](https://opensource.google/projects/cel). May only contain equality operators on the parent and
-            /// inclusion operators on labels (e.g., `parent == 'customers/{customer}' &amp;amp;&amp;amp;
-            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer` must begin with "C"
-            /// (for example, 'C046psxkn').
+            /// inclusion operators on labels (e.g., `parent == 'customers/{customer_id}' &amp;amp;&amp;amp;
+            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer_id` must begin with
+            /// "C" (for example, 'C046psxkn'). [Find your customer ID.]
+            /// (https://support.google.com/cloudidentity/answer/10070793)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -4432,7 +4434,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The obfuscated customer Id that may be passed back to other Devices API methods such as List, Get, etc.
+        /// The customer resource name that may be passed back to other Devices API methods such as List, Get, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -4601,9 +4603,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity
-        /// resource hierarchy. Must be of the form `identitysources/{identity_source}` for external- identity-mapped
-        /// groups or `customers/{customer}` for Google Groups. The `customer` must begin with "C" (for example,
-        /// 'C046psxkn').
+        /// resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped
+        /// groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The
+        /// `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.]
+        /// (https://support.google.com/cloudidentity/answer/10070793)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
