@@ -418,9 +418,13 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Contains the integrity request information.</summary>
     public class RequestDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Nonce that was provided in the request (which is base64 web-safe no-wrap).</summary>
+        /// <summary>Nonce that was provided in the request (which is base64 web-safe no-wrap).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonce")]
         public virtual string Nonce { get; set; }
+
+        /// <summary>Request hash that was provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHash")]
+        public virtual string RequestHash { get; set; }
 
         /// <summary>
         /// Required. Application package name this attestation was requested for. Note: This field makes no guarantees

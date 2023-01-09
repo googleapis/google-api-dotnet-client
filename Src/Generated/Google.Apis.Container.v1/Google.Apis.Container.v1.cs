@@ -6665,6 +6665,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual string Endpoint { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// [Output only] The time the cluster will be automatically deleted in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
@@ -6932,9 +6939,6 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -7180,7 +7184,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadIdentityConfig")]
         public virtual WorkloadIdentityConfig DesiredWorkloadIdentityConfig { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
+        /// <summary>
+        /// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster,
+        /// update will be blocked and an ABORTED error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
     }
 
@@ -7443,6 +7451,24 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+    /// </summary>
+    public class EphemeralStorageLocalSsdConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in
+        /// size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is
+        /// dependent upon the maximum number of disks available on a machine per zone. See:
+        /// https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
+        public virtual System.Nullable<int> LocalSsdCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7966,6 +7992,22 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.</summary>
+    public class LocalNvmeSsdBlockConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+        /// If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is
+        /// dependent upon the maximum number of disks available on a machine per zone. See:
+        /// https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
+        public virtual System.Nullable<int> LocalSsdCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>LoggingComponentConfig is cluster logging component configuration.</summary>
     public class LoggingComponentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8394,6 +8436,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>
+        /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by
+        /// the boot disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralStorageLocalSsdConfig")]
+        public virtual EphemeralStorageLocalSsdConfig EphemeralStorageLocalSsdConfig { get; set; }
+
         /// <summary>Enable or disable NCCL fast socket for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
         public virtual FastSocket FastSocket { get; set; }
@@ -8430,6 +8479,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Parameters that can be configured on Linux nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
         public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
+
+        /// <summary>Parameters for using raw-block Local NVMe SSDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localNvmeSsdBlockConfig")]
+        public virtual LocalNvmeSsdBlockConfig LocalNvmeSsdBlockConfig { get; set; }
 
         /// <summary>
         /// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the
@@ -8548,6 +8601,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taints")]
         public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; }
+
+        /// <summary>Parameters that can be configured on Windows nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsNodeConfig")]
+        public virtual WindowsNodeConfig WindowsNodeConfig { get; set; }
 
         /// <summary>The workload metadata configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
@@ -8726,6 +8783,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual NodeConfig Config { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// The initial node count for the pool. You must ensure that your Compute Engine [resource
         /// quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also
         /// have available firewall and routes quota.
@@ -8808,9 +8872,6 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The version of the Kubernetes of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -10305,6 +10366,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
+        /// <summary>
+        /// The current etag of the node pool. If an etag is provided and does not match the current etag of the node
+        /// pool, update will be blocked and an ABORTED error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         /// <summary>Enable or disable NCCL fast socket for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
         public virtual FastSocket FastSocket { get; set; }
@@ -10409,6 +10477,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; }
 
+        /// <summary>Parameters that can be configured on Windows nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsNodeConfig")]
+        public virtual WindowsNodeConfig WindowsNodeConfig { get; set; }
+
         /// <summary>The desired workload metadata config for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
         public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; }
@@ -10420,9 +10492,6 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -10612,6 +10681,20 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Whether gVNIC features are enabled in the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be
+    /// used to configure the Windows node pool settings
+    /// </summary>
+    public class WindowsNodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OSVersion specifies the Windows node config to be used on the node</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

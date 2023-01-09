@@ -703,9 +703,10 @@ namespace Google.Apis.CloudResourceManager.v3
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Required. The resource name of the organization or folder whose folders are being listed. Must be of the
-            /// form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking
-            /// the `resourcemanager.folders.list` permission on the `parent`.
+            /// Required. The name of the parent resource whose folders are being listed. Only children of this parent
+            /// resource are listed; descendants are not listed. If the parent is a folder, use the value
+            /// `folders/{folder_id}`. If the parent is an organization, use the value `organizations/{org_id}`. Access
+            /// to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -2186,8 +2187,9 @@ namespace Google.Apis.CloudResourceManager.v3
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Required. The name of the parent resource to list projects under. For example, setting this field to
-            /// 'folders/1234' would list all projects directly under that folder.
+            /// Required. The name of the parent resource whose projects are being listed. Only children of this parent
+            /// resource are listed; descendants are not listed. If the parent is a folder, use the value
+            /// `folders/{folder_id}`. If the parent is an organization, use the value `organizations/{org_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -4067,9 +4069,7 @@ namespace Google.Apis.CloudResourceManager.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Required. Resource name for TagKey, parent of the TagValues to be listed, in the format `tagKeys/123`.
-            /// </summary>
+            /// <summary>Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
@@ -5276,9 +5276,9 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be
         /// between 0 and 63 characters long and must conform to the regular expression
-        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource.
-        /// Clients should store labels in a representation such as JSON that does not depend on specific characters
-        /// being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 64 labels can be associated with a given resource. Clients
+        /// should store labels in a representation such as JSON that does not depend on specific characters being
+        /// disallowed. Example: `"myBusinessDimension" : "businessValue"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

@@ -1452,7 +1452,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ConversionWorkspace { get; private set; }
 
-                    /// <summary>Optional filter to request a specific commit id</summary>
+                    /// <summary>Optional. Optional filter to request a specific commit id</summary>
                     [Google.Apis.Util.RequestParameterAttribute("commitId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CommitId { get; set; }
 
@@ -4337,7 +4337,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'CommitConversionWorkspace' request.</summary>
     public class CommitConversionWorkspaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional name of the commit.</summary>
+        /// <summary>Optional. Optional name of the commit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitName")]
         public virtual string CommitName { get; set; }
 
