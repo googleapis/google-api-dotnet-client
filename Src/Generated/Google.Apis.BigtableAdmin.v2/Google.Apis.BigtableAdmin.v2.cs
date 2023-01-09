@@ -5653,7 +5653,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>
         /// Set to true to make the table protected against data loss. i.e. deleting the following resources through
-        /// Admin APIs are prohibited: - The table. - The column families in the table. - The instance containing the
+        /// Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the
         /// table. Note one can still delete the data stored in the table through Data APIs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]

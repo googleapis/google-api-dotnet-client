@@ -2011,6 +2011,10 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("serverPageLocationHostname")]
                             ServerPageLocationHostname = 112,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("visitorRegion")]
+                            VisitorRegion = 113,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -2542,6 +2546,10 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("serverPageLocationHostname")]
                             ServerPageLocationHostname = 112,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("visitorRegion")]
+                            VisitorRegion = 113,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -3124,6 +3132,10 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("serverPageLocationHostname")]
                             ServerPageLocationHostname = 112,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("visitorRegion")]
+                            VisitorRegion = 113,
                         }
 
                         /// <summary>Gets the method name.</summary>

@@ -1785,7 +1785,7 @@ namespace Google.Apis.Testing.v1.Data
         /// Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You
         /// must specify at least one shard if this field is present. When you select one or more physical devices, the
         /// number of repeated test_targets_for_shard must be &amp;lt;= 50. When you select one or more ARM virtual
-        /// devices, it must be &amp;lt;= 50. When you select only x86 virtual devices, it must be &amp;lt;= 500.
+        /// devices, it must be &amp;lt;= 100. When you select only x86 virtual devices, it must be &amp;lt;= 500.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; }
@@ -2442,7 +2442,7 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>
         /// Required. The total number of shards to create. This must always be a positive number that is no greater
         /// than the total number of test cases. When you select one or more physical devices, the number of shards must
-        /// be &amp;lt;= 50. When you select one or more ARM virtual devices, it must be &amp;lt;= 50. When you select
+        /// be &amp;lt;= 50. When you select one or more ARM virtual devices, it must be &amp;lt;= 100. When you select
         /// only x86 virtual devices, it must be &amp;lt;= 500.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]

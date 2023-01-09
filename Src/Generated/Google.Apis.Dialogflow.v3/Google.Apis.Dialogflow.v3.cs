@@ -9102,6 +9102,20 @@ namespace Google.Apis.Dialogflow.v3.Data
     }
 
     /// <summary>
+    /// This message is used to hold all the Conversation Signals data, which will be converted to JSON and exported to
+    /// BigQuery.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ConversationSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Turn signals for the current turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnSignals")]
+        public virtual GoogleCloudDialogflowCxV3TurnSignals TurnSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides
     /// a response.
     /// </summary>
@@ -12695,6 +12709,45 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
+    public class GoogleCloudDialogflowCxV3TurnSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether agent responded with LiveAgentHandoff fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentEscalated")]
+        public virtual System.Nullable<bool> AgentEscalated { get; set; }
+
+        /// <summary>Whether user was using DTMF input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfUsed")]
+        public virtual System.Nullable<bool> DtmfUsed { get; set; }
+
+        /// <summary>Failure reasons of the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<string> FailureReasons { get; set; }
+
+        /// <summary>Whether NLU predicted NO_MATCH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noMatch")]
+        public virtual System.Nullable<bool> NoMatch { get; set; }
+
+        /// <summary>Whether user provided no input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUserInput")]
+        public virtual System.Nullable<bool> NoUserInput { get; set; }
+
+        /// <summary>Whether turn resulted in End Session page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
+        public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>Whether user was specifically asking for a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
+        public virtual System.Nullable<bool> UserEscalated { get; set; }
+
+        /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
+        public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateDocument operation.</summary>
     public class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13244,6 +13297,20 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>A list of individual test case results names in this continuous test run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
         public virtual System.Collections.Generic.IList<string> TestCaseResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This message is used to hold all the Conversation Signals data, which will be converted to JSON and exported to
+    /// BigQuery.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ConversationSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Turn signals for the current turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnSignals")]
+        public virtual GoogleCloudDialogflowCxV3beta1TurnSignals TurnSignals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14839,6 +14906,45 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
         public virtual GoogleCloudDialogflowCxV3beta1Fulfillment TriggerFulfillment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TurnSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether agent responded with LiveAgentHandoff fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentEscalated")]
+        public virtual System.Nullable<bool> AgentEscalated { get; set; }
+
+        /// <summary>Whether user was using DTMF input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfUsed")]
+        public virtual System.Nullable<bool> DtmfUsed { get; set; }
+
+        /// <summary>Failure reasons of the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<string> FailureReasons { get; set; }
+
+        /// <summary>Whether NLU predicted NO_MATCH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noMatch")]
+        public virtual System.Nullable<bool> NoMatch { get; set; }
+
+        /// <summary>Whether user provided no input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUserInput")]
+        public virtual System.Nullable<bool> NoUserInput { get; set; }
+
+        /// <summary>Whether turn resulted in End Session page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
+        public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>Whether user was specifically asking for a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
+        public virtual System.Nullable<bool> UserEscalated { get; set; }
+
+        /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
+        public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19483,6 +19589,20 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This message is used to hold all the Conversation Signals data, which will be converted to JSON and exported to
+    /// BigQuery.
+    /// </summary>
+    public class GoogleCloudDialogflowV3alpha1ConversationSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Turn signals for the current turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnSignals")]
+        public virtual GoogleCloudDialogflowV3alpha1TurnSignals TurnSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for CreateDocument operation.</summary>
     public class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19544,6 +19664,49 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The generic information of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
         public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
+    public class GoogleCloudDialogflowV3alpha1TurnSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether agent responded with LiveAgentHandoff fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentEscalated")]
+        public virtual System.Nullable<bool> AgentEscalated { get; set; }
+
+        /// <summary>Whether user was using DTMF input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfUsed")]
+        public virtual System.Nullable<bool> DtmfUsed { get; set; }
+
+        /// <summary>Failure reasons of the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<string> FailureReasons { get; set; }
+
+        /// <summary>Whether NLU predicted NO_MATCH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noMatch")]
+        public virtual System.Nullable<bool> NoMatch { get; set; }
+
+        /// <summary>Whether user provided no input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUserInput")]
+        public virtual System.Nullable<bool> NoUserInput { get; set; }
+
+        /// <summary>Whether turn resulted in End Session page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
+        public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>Whether agent has triggered the event corresponding to user abandoning the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredAbandonmentEvent")]
+        public virtual System.Nullable<bool> TriggeredAbandonmentEvent { get; set; }
+
+        /// <summary>Whether user was specifically asking for a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
+        public virtual System.Nullable<bool> UserEscalated { get; set; }
+
+        /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
+        public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7457,6 +7457,7 @@ namespace Google.Apis.Dialogflow.v2
                 this.service = service;
                 Messages = new MessagesResource(service);
                 Participants = new ParticipantsResource(service);
+                Suggestions = new SuggestionsResource(service);
             }
 
             /// <summary>Gets the Messages resource.</summary>
@@ -8127,6 +8128,88 @@ namespace Google.Apis.Dialogflow.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Suggestions resource.</summary>
+            public virtual SuggestionsResource Suggestions { get; }
+
+            /// <summary>The "suggestions" collection of methods.</summary>
+            public class SuggestionsResource
+            {
+                private const string Resource = "suggestions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SuggestionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Suggests summary for a conversation based on specific historical messages. The range of the messages
+                /// to be used for summary can be specified in the request.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="conversation">
+                /// Required. The conversation to fetch suggestion for. Format: `projects//locations//conversations/`.
+                /// </param>
+                public virtual SuggestConversationSummaryRequest SuggestConversationSummary(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest body, string conversation)
+                {
+                    return new SuggestConversationSummaryRequest(service, body, conversation);
+                }
+
+                /// <summary>
+                /// Suggests summary for a conversation based on specific historical messages. The range of the messages
+                /// to be used for summary can be specified in the request.
+                /// </summary>
+                public class SuggestConversationSummaryRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryResponse>
+                {
+                    /// <summary>Constructs a new SuggestConversationSummary request.</summary>
+                    public SuggestConversationSummaryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest body, string conversation) : base(service)
+                    {
+                        Conversation = conversation;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The conversation to fetch suggestion for. Format:
+                    /// `projects//locations//conversations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Conversation { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "suggestConversationSummary";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+conversation}/suggestions:suggestConversationSummary";
+
+                    /// <summary>Initializes SuggestConversationSummary parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversation",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
                         });
                     }
                 }
@@ -16018,6 +16101,7 @@ namespace Google.Apis.Dialogflow.v2
                     this.service = service;
                     Messages = new MessagesResource(service);
                     Participants = new ParticipantsResource(service);
+                    Suggestions = new SuggestionsResource(service);
                 }
 
                 /// <summary>Gets the Messages resource.</summary>
@@ -16697,6 +16781,89 @@ namespace Google.Apis.Dialogflow.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Suggestions resource.</summary>
+                public virtual SuggestionsResource Suggestions { get; }
+
+                /// <summary>The "suggestions" collection of methods.</summary>
+                public class SuggestionsResource
+                {
+                    private const string Resource = "suggestions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SuggestionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Suggests summary for a conversation based on specific historical messages. The range of the
+                    /// messages to be used for summary can be specified in the request.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="conversation">
+                    /// Required. The conversation to fetch suggestion for. Format:
+                    /// `projects//locations//conversations/`.
+                    /// </param>
+                    public virtual SuggestConversationSummaryRequest SuggestConversationSummary(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest body, string conversation)
+                    {
+                        return new SuggestConversationSummaryRequest(service, body, conversation);
+                    }
+
+                    /// <summary>
+                    /// Suggests summary for a conversation based on specific historical messages. The range of the
+                    /// messages to be used for summary can be specified in the request.
+                    /// </summary>
+                    public class SuggestConversationSummaryRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryResponse>
+                    {
+                        /// <summary>Constructs a new SuggestConversationSummary request.</summary>
+                        public SuggestConversationSummaryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest body, string conversation) : base(service)
+                        {
+                            Conversation = conversation;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The conversation to fetch suggestion for. Format:
+                        /// `projects//locations//conversations/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Conversation { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "suggestConversationSummary";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+conversation}/suggestions:suggestConversationSummary";
+
+                        /// <summary>Initializes SuggestConversationSummary parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "conversation",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
                             });
                         }
                     }
@@ -18974,6 +19141,20 @@ namespace Google.Apis.Dialogflow.v2.Data
     }
 
     /// <summary>
+    /// This message is used to hold all the Conversation Signals data, which will be converted to JSON and exported to
+    /// BigQuery.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ConversationSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Turn signals for the current turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnSignals")]
+        public virtual GoogleCloudDialogflowCxV3TurnSignals TurnSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides
     /// a response.
     /// </summary>
@@ -20568,6 +20749,45 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
+    public class GoogleCloudDialogflowCxV3TurnSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether agent responded with LiveAgentHandoff fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentEscalated")]
+        public virtual System.Nullable<bool> AgentEscalated { get; set; }
+
+        /// <summary>Whether user was using DTMF input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfUsed")]
+        public virtual System.Nullable<bool> DtmfUsed { get; set; }
+
+        /// <summary>Failure reasons of the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<string> FailureReasons { get; set; }
+
+        /// <summary>Whether NLU predicted NO_MATCH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noMatch")]
+        public virtual System.Nullable<bool> NoMatch { get; set; }
+
+        /// <summary>Whether user provided no input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUserInput")]
+        public virtual System.Nullable<bool> NoUserInput { get; set; }
+
+        /// <summary>Whether turn resulted in End Session page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
+        public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>Whether user was specifically asking for a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
+        public virtual System.Nullable<bool> UserEscalated { get; set; }
+
+        /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
+        public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateDocument operation.</summary>
     public class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20957,6 +21177,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>A list of individual test case results names in this continuous test run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
         public virtual System.Collections.Generic.IList<string> TestCaseResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This message is used to hold all the Conversation Signals data, which will be converted to JSON and exported to
+    /// BigQuery.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ConversationSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Turn signals for the current turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnSignals")]
+        public virtual GoogleCloudDialogflowCxV3beta1TurnSignals TurnSignals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22557,6 +22791,45 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TurnSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether agent responded with LiveAgentHandoff fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentEscalated")]
+        public virtual System.Nullable<bool> AgentEscalated { get; set; }
+
+        /// <summary>Whether user was using DTMF input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfUsed")]
+        public virtual System.Nullable<bool> DtmfUsed { get; set; }
+
+        /// <summary>Failure reasons of the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<string> FailureReasons { get; set; }
+
+        /// <summary>Whether NLU predicted NO_MATCH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noMatch")]
+        public virtual System.Nullable<bool> NoMatch { get; set; }
+
+        /// <summary>Whether user provided no input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUserInput")]
+        public virtual System.Nullable<bool> NoUserInput { get; set; }
+
+        /// <summary>Whether turn resulted in End Session page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
+        public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>Whether user was specifically asking for a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
+        public virtual System.Nullable<bool> UserEscalated { get; set; }
+
+        /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
+        public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateDocument operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22994,6 +23267,29 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentEfficiency")]
         public virtual string DocumentEfficiency { get; set; }
+
+        /// <summary>Optional. Feedback for conversation summarization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationFeedback")]
+        public virtual GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback SummarizationFeedback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feedback for conversation summarization.</summary>
+    public class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp when composing of the summary starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Timestamp when the summary was submitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submitTime")]
+        public virtual object SubmitTime { get; set; }
+
+        /// <summary>Text of actual submitted summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
+        public virtual string SummaryText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27354,6 +27650,75 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Conversations.SuggestConversationSummary.</summary>
+    public class GoogleCloudDialogflowV2SuggestConversationSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Max number of messages prior to and including [latest_message] to use as context when compiling the
+        /// suggestion. By default 500 and at most 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. If empty, the latest
+        /// message of the conversation will be used. Format: `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.SuggestConversationSummary.</summary>
+    public class GoogleCloudDialogflowV2SuggestConversationSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including last_conversation_message used to compile the suggestion. It may
+        /// be smaller than the SuggestSummaryRequest.context_size field in the request if there weren't that many
+        /// messages in the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>Generated summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generated summary for a conversation.</summary>
+    public class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the answer record. Format: "projects//answerRecords/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>The summary content that is concatenated into one string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// The summary content that is divided into sections. The key is the section's name and the value is the
+        /// section's content. There is no specific format for the key or value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSections")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TextSections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Participants.SuggestFaqAnswers.</summary>
     public class GoogleCloudDialogflowV2SuggestFaqAnswersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30089,6 +30454,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This message is used to hold all the Conversation Signals data, which will be converted to JSON and exported to
+    /// BigQuery.
+    /// </summary>
+    public class GoogleCloudDialogflowV3alpha1ConversationSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Turn signals for the current turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnSignals")]
+        public virtual GoogleCloudDialogflowV3alpha1TurnSignals TurnSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for CreateDocument operation.</summary>
     public class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30150,6 +30529,49 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The generic information of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
         public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
+    public class GoogleCloudDialogflowV3alpha1TurnSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether agent responded with LiveAgentHandoff fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentEscalated")]
+        public virtual System.Nullable<bool> AgentEscalated { get; set; }
+
+        /// <summary>Whether user was using DTMF input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfUsed")]
+        public virtual System.Nullable<bool> DtmfUsed { get; set; }
+
+        /// <summary>Failure reasons of the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<string> FailureReasons { get; set; }
+
+        /// <summary>Whether NLU predicted NO_MATCH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noMatch")]
+        public virtual System.Nullable<bool> NoMatch { get; set; }
+
+        /// <summary>Whether user provided no input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUserInput")]
+        public virtual System.Nullable<bool> NoUserInput { get; set; }
+
+        /// <summary>Whether turn resulted in End Session page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
+        public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>Whether agent has triggered the event corresponding to user abandoning the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredAbandonmentEvent")]
+        public virtual System.Nullable<bool> TriggeredAbandonmentEvent { get; set; }
+
+        /// <summary>Whether user was specifically asking for a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
+        public virtual System.Nullable<bool> UserEscalated { get; set; }
+
+        /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
+        public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

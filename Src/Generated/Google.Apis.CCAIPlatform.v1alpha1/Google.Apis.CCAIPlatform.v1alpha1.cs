@@ -1124,10 +1124,9 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
             /// account, which the input project belongs to.
             /// </summary>
             /// <param name="parent">Required. Parent project resource id.</param>
-            /// <param name="locationsId"><c>null</c></param>
-            public virtual QueryContactCenterQuotaRequest QueryContactCenterQuota(string parent, string locationsId)
+            public virtual QueryContactCenterQuotaRequest QueryContactCenterQuota(string parent)
             {
-                return new QueryContactCenterQuotaRequest(service, parent, locationsId);
+                return new QueryContactCenterQuotaRequest(service, parent);
             }
 
             /// <summary>
@@ -1137,19 +1136,15 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
             public class QueryContactCenterQuotaRequest : CCAIPlatformBaseServiceRequest<Google.Apis.CCAIPlatform.v1alpha1.Data.ContactCenterQuota>
             {
                 /// <summary>Constructs a new QueryContactCenterQuota request.</summary>
-                public QueryContactCenterQuotaRequest(Google.Apis.Services.IClientService service, string parent, string locationsId) : base(service)
+                public QueryContactCenterQuotaRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
-                    LocationsId = locationsId;
                     InitParameters();
                 }
 
                 /// <summary>Required. Parent project resource id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LocationsId { get; private set; }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "queryContactCenterQuota";
@@ -1158,7 +1153,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha1/{+parent}/locations/{locationsId}:queryContactCenterQuota";
+                public override string RestPath => "v1alpha1/{+parent}:queryContactCenterQuota";
 
                 /// <summary>Initializes QueryContactCenterQuota parameter list.</summary>
                 protected override void InitParameters()
@@ -1170,68 +1165,9 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-                    RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationsId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
-            }
-        }
-
-        /// <summary>
-        /// Queries the contact center quota, an aggregation over all the projects, that belongs to the billing account,
-        /// which the input project belongs to.
-        /// </summary>
-        /// <param name="parent">Required. Parent project resource id.</param>
-        public virtual QueryContactCenterQuotaRequest QueryContactCenterQuota(string parent)
-        {
-            return new QueryContactCenterQuotaRequest(service, parent);
-        }
-
-        /// <summary>
-        /// Queries the contact center quota, an aggregation over all the projects, that belongs to the billing account,
-        /// which the input project belongs to.
-        /// </summary>
-        public class QueryContactCenterQuotaRequest : CCAIPlatformBaseServiceRequest<Google.Apis.CCAIPlatform.v1alpha1.Data.ContactCenterQuota>
-        {
-            /// <summary>Constructs a new QueryContactCenterQuota request.</summary>
-            public QueryContactCenterQuotaRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-            {
-                Parent = parent;
-                InitParameters();
-            }
-
-            /// <summary>Required. Parent project resource id.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Parent { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "queryContactCenterQuota";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha1/{+parent}:queryContactCenterQuota";
-
-            /// <summary>Initializes QueryContactCenterQuota parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "parent",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/[^/]+$",
-                });
             }
         }
     }

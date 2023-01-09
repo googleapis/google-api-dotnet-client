@@ -1643,6 +1643,17 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about any range constraints.</summary>
+    public class GoogleChromePolicyVersionsV1FieldConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The allowed range for numeric fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericRangeConstraint")]
+        public virtual GoogleChromePolicyVersionsV1NumericRangeConstraint NumericRangeConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Request parameters for inheriting policy value of a specific org unit target from the policy value of its parent
     /// org unit.
@@ -1785,6 +1796,21 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A constraint on upper and/or lower bounds, with at least one being set.</summary>
+    public class GoogleChromePolicyVersionsV1NumericRangeConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual System.Nullable<long> Maximum { get; set; }
+
+        /// <summary>Minimum value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual System.Nullable<long> Minimum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Error information for a modification request of a specific field on a specific policy.</summary>
     public class GoogleChromePolicyVersionsV1PolicyModificationFieldError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1898,6 +1924,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. The name of the field for associated with this description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
+
+        /// <summary>Output only. Information on any input constraints associated on the values for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldConstraints")]
+        public virtual GoogleChromePolicyVersionsV1FieldConstraints FieldConstraints { get; set; }
 
         /// <summary>
         /// Output only. Provides a list of fields and values. At least one of the fields must have the corresponding

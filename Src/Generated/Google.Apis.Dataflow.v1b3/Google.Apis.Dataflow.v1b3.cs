@@ -8541,6 +8541,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information for a straggler.</summary>
+    public class Straggler : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Batch straggler identification and debugging information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchStraggler")]
+        public virtual StragglerInfo BatchStraggler { get; set; }
+
+        /// <summary>Streaming straggler identification and debugging information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingStraggler")]
+        public virtual StreamingStragglerInfo StreamingStraggler { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Information useful for debugging a straggler. Each type will provide specialized debugging information relevant
     /// for a particular cause. The StragglerDebuggingInfo will be 1:1 mapping to the StragglerCause enum.
@@ -8576,6 +8591,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Summarized straggler identification details.</summary>
     public class StragglerSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The most recent stragglers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentStragglers")]
+        public virtual System.Collections.Generic.IList<Straggler> RecentStragglers { get; set; }
+
         /// <summary>
         /// Aggregated counts of straggler causes, keyed by the string representation of the StragglerCause enum.
         /// </summary>
@@ -8784,6 +8803,33 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Identifies the particular stream within the streaming Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
         public virtual string StreamId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information useful for streaming straggler identification and debugging.</summary>
+    public class StreamingStragglerInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The event-time watermark lag at the time of the straggler detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataWatermarkLag")]
+        public virtual object DataWatermarkLag { get; set; }
+
+        /// <summary>End time of this straggler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Start time of this straggler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The system watermark lag at the time of the straggler detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemWatermarkLag")]
+        public virtual object SystemWatermarkLag { get; set; }
+
+        /// <summary>Name of the worker where the straggler was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerName")]
+        public virtual string WorkerName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

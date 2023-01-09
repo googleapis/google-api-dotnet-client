@@ -27029,6 +27029,47 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings related to VideoAdSequence.</summary>
+    public class VideoAdSequenceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The minimum time interval before the same user sees this sequence again.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumDuration")]
+        public virtual string MinimumDuration { get; set; }
+
+        /// <summary>The steps of which the sequence consists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<VideoAdSequenceStep> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The detail of a single step in a VideoAdSequence.</summary>
+    public class VideoAdSequenceStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the corresponding ad group of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        /// <summary>
+        /// The interaction on the previous step that will lead the viewer to this step. The first step does not have
+        /// interaction_type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
+        public virtual string InteractionType { get; set; }
+
+        /// <summary>The ID of the previous step. The first step does not have previous step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousStepId")]
+        public virtual System.Nullable<long> PreviousStepId { get; set; }
+
+        /// <summary>The ID of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
+        public virtual System.Nullable<long> StepId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Video player size targeting option details. This will be populated in the video_player_size_details field when
     /// targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not supported. Remove
@@ -27155,6 +27196,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>The third-party measurement settings of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementSettings")]
         public virtual YoutubeAndPartnersThirdPartyMeasurementSettings ThirdPartyMeasurementSettings { get; set; }
+
+        /// <summary>The settings related to VideoAdSequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoAdSequenceSettings")]
+        public virtual VideoAdSequenceSettings VideoAdSequenceSettings { get; set; }
 
         /// <summary>
         /// The view frequency cap settings of the line item. The max_views field in this settings object must be used
