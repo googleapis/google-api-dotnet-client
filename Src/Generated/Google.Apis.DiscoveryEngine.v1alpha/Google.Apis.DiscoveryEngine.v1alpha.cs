@@ -2000,6 +2000,141 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A description of the context in which an error occurred.</summary>
+    public class GoogleCloudDiscoveryengineLoggingErrorContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP request which was processed when the error was triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
+        public virtual GoogleCloudDiscoveryengineLoggingHttpRequestContext HttpRequest { get; set; }
+
+        /// <summary>
+        /// The location in the source code where the decision was made to report the error, usually the place where it
+        /// was logged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportLocation")]
+        public virtual GoogleCloudDiscoveryengineLoggingSourceLocation ReportLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error log which is reported to the Error Reporting system.</summary>
+    public class GoogleCloudDiscoveryengineLoggingErrorLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the context in which the error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual GoogleCloudDiscoveryengineLoggingErrorContext Context { get; set; }
+
+        /// <summary>The error payload that is populated on LRO import APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importPayload")]
+        public virtual GoogleCloudDiscoveryengineLoggingImportErrorContext ImportPayload { get; set; }
+
+        /// <summary>A message describing the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// The API request payload, represented as a protocol buffer. Most API request types are supported. For
+        /// example: "type.googleapis.com/google.cloud.discoveryengine.v1alpha.DocumentService.CreateDocumentRequest"
+        /// "type.googleapis.com/google.cloud.discoveryengine.v1alpha.UserEventService.WriteUserEventRequest"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> RequestPayload { get; set; }
+
+        /// <summary>
+        /// The API response payload, represented as a protocol buffer. This is used to log some "soft errors", where
+        /// the response is valid but we consider there are some quality issues like unjoined events. The following API
+        /// responses are supported and no PII is included:
+        /// "google.cloud.discoveryengine.v1alpha.RecommendationService.Recommend"
+        /// "google.cloud.discoveryengine.v1alpha.UserEventService.WriteUserEvent"
+        /// "google.cloud.discoveryengine.v1alpha.UserEventService.CollectUserEvent"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ResponsePayload { get; set; }
+
+        /// <summary>The service context in which this error has occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
+        public virtual GoogleCloudDiscoveryengineLoggingServiceContext ServiceContext { get; set; }
+
+        /// <summary>The RPC status associated with the error log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HTTP request data that is related to a reported error.</summary>
+    public class GoogleCloudDiscoveryengineLoggingHttpRequestContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP response status code for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseStatusCode")]
+        public virtual System.Nullable<int> ResponseStatusCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The error payload that is populated on LRO import APIs. Including:
+    /// "google.cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments"
+    /// "google.cloud.discoveryengine.v1alpha.UserEventService.ImportUserEvents"
+    /// </summary>
+    public class GoogleCloudDiscoveryengineLoggingImportErrorContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed content which caused the error on importing a document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>
+        /// Google Cloud Storage file path of the import source. Can be set for batch operation error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
+        public virtual string GcsPath { get; set; }
+
+        /// <summary>
+        /// Line number of the content in file. Should be empty for permission or batch operation error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual string LineNumber { get; set; }
+
+        /// <summary>The operation resource name of the LRO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The detailed content which caused the error on importing a user event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEvent")]
+        public virtual string UserEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a running service that sends errors.</summary>
+    public class GoogleCloudDiscoveryengineLoggingServiceContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An identifier of the service. For example, "discoveryengine.googleapis.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates a location in the source code of the service for which errors are reported.</summary>
+    public class GoogleCloudDiscoveryengineLoggingSourceLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Human-readable name of a function or method. For example, "
+        /// google.cloud.discoveryengine.v1alpha.RecommendationService.Recommend".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
+        public virtual string FunctionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BigQuery source import data from.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
     {

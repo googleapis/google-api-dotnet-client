@@ -562,18 +562,18 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
-                    /// <summary>Get DataScanJob resource.</summary>
+                    /// <summary>Gets a DataScanJob resource.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the DataScanJob:
                     /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
-                    /// where {project} refers to a project_id or project_number and location_id refers to a GCP region.
+                    /// where project refers to a project_id or project_number and location_id refers to a GCP region.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Get DataScanJob resource.</summary>
+                    /// <summary>Gets a DataScanJob resource.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScanJob>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -586,21 +586,17 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The resource name of the DataScanJob:
                         /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
-                        /// where {project} refers to a project_id or project_number and location_id refers to a GCP
+                        /// where project refers to a project_id or project_number and location_id refers to a GCP
                         /// region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>
-                        /// Optional. Used to select the subset of DataScan information to return. Defaults to BASIC.
-                        /// </summary>
+                        /// <summary>Optional. Select the DataScanJob view to return. Defaults to BASIC.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                        /// <summary>
-                        /// Optional. Used to select the subset of DataScan information to return. Defaults to BASIC.
-                        /// </summary>
+                        /// <summary>Optional. Select the DataScanJob view to return. Defaults to BASIC.</summary>
                         public enum ViewEnum
                         {
                             /// <summary>The API will default to the BASIC view.</summary>
@@ -648,10 +644,10 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Lists DataScanJobs under the given dataScan.</summary>
+                    /// <summary>Lists DataScanJobs under the given DataScan.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent environment:
-                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where {project} refers to a
+                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
                     /// project_id or project_number and location_id refers to a GCP region.
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -659,7 +655,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists DataScanJobs under the given dataScan.</summary>
+                    /// <summary>Lists DataScanJobs under the given DataScan.</summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListDataScanJobsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -671,8 +667,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent environment:
-                        /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where {project} refers
-                        /// to a project_id or project_number and location_id refers to a GCP region.
+                        /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to
+                        /// a project_id or project_number and location_id refers to a GCP region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -734,18 +730,18 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Creates a dataScan resource.</summary>
+                /// <summary>Creates a DataScan resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the parent location: projects/{project}/locations/{location_id} where
-                /// {project} refers to a project_id or project_number and location_id refers to a GCP region.
+                /// project refers to a project_id or project_number and location_id refers to a GCP region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a dataScan resource.</summary>
+                /// <summary>Creates a DataScan resource.</summary>
                 public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -758,15 +754,15 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the parent location: projects/{project}/locations/{location_id}
-                    /// where {project} refers to a project_id or project_number and location_id refers to a GCP region.
+                    /// where project refers to a project_id or project_number and location_id refers to a GCP region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. DataScan identifier. * Must contain only lowercase letters, numbers and hyphens. *
-                    /// Must start with a letter. * Must end with a number or a letter. * Must be between 1-63
-                    /// characters. * Must be unique within the customer project / location.
+                    /// Required. DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must
+                    /// start with a letter. Must end with a number or a letter. Must be between 1-63 characters. Must
+                    /// be unique within the customer project / location.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataScanId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataScanId { get; set; }
@@ -809,10 +805,10 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Delete the dataScan resource.</summary>
+                /// <summary>Deletes a DataScan resource.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the dataScan:
-                /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where {project} refers to a
+                /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
                 /// project_id or project_number and location_id refers to a GCP region.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -820,7 +816,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Delete the dataScan resource.</summary>
+                /// <summary>Deletes a DataScan resource.</summary>
                 public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -832,7 +828,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the dataScan:
-                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where {project} refers to a
+                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
                     /// project_id or project_number and location_id refers to a GCP region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -862,10 +858,10 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Get dataScan resource.</summary>
+                /// <summary>Gets a DataScan resource.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the dataScan:
-                /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where {project} refers to a
+                /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
                 /// project_id or project_number and location_id refers to a GCP region.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -873,7 +869,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get dataScan resource.</summary>
+                /// <summary>Gets a DataScan resource.</summary>
                 public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -885,21 +881,17 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the dataScan:
-                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where {project} refers to a
+                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
                     /// project_id or project_number and location_id refers to a GCP region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. Used to select the subset of DataScan information to return. Defaults to BASIC.
-                    /// </summary>
+                    /// <summary>Optional. Select the DataScan view to return. Defaults to BASIC.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>
-                    /// Optional. Used to select the subset of DataScan information to return. Defaults to BASIC.
-                    /// </summary>
+                    /// <summary>Optional. Select the DataScan view to return. Defaults to BASIC.</summary>
                     public enum ViewEnum
                     {
                         /// <summary>The API will default to the BASIC view.</summary>
@@ -1025,17 +1017,17 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Lists dataScans.</summary>
+                /// <summary>Lists DataScans.</summary>
                 /// <param name="parent">
-                /// Required. projects/{project}/locations/{location_id} where {project} refers to a project_id or
-                /// project_number and location_id refers to a GCP region.
+                /// Required. The resource name of the parent location: projects/{project}/locations/{location_id} where
+                /// project refers to a project_id or project_number and location_id refers to a GCP region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists dataScans.</summary>
+                /// <summary>Lists DataScans.</summary>
                 public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListDataScansResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1046,8 +1038,8 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. projects/{project}/locations/{location_id} where {project} refers to a project_id or
-                    /// project_number and location_id refers to a GCP region.
+                    /// Required. The resource name of the parent location: projects/{project}/locations/{location_id}
+                    /// where project refers to a project_id or project_number and location_id refers to a GCP region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1135,11 +1127,11 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Update the dataScan resource.</summary>
+                /// <summary>Updates a DataScan resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The relative resource name of the scan, of the form:
-                /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}. where {project} refers to a
+                /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a
                 /// project_id or project_number and location_id refers to a GCP region.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan body, string name)
@@ -1147,7 +1139,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Update the dataScan resource.</summary>
+                /// <summary>Updates a DataScan resource.</summary>
                 public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1160,7 +1152,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Output only. The relative resource name of the scan, of the form:
-                    /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}. where {project} refers to a
+                    /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a
                     /// project_id or project_number and location_id refers to a GCP region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1208,12 +1200,12 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Run an on demand execution of a DataScan.</summary>
+                /// <summary>Runs an on-demand execution of a DataScan</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the DataScan:
-                /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where {project} refers to a
-                /// project_id or project_number and location_id refers to a GCP region. Only on-demand DataScans are
+                /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where project refers to a
+                /// project_id or project_number and location_id refers to a GCP region.Only OnDemand data scans are
                 /// allowed.
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunDataScanRequest body, string name)
@@ -1221,7 +1213,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new RunRequest(service, body, name);
                 }
 
-                /// <summary>Run an on demand execution of a DataScan.</summary>
+                /// <summary>Runs an on-demand execution of a DataScan</summary>
                 public class RunRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunDataScanResponse>
                 {
                     /// <summary>Constructs a new Run request.</summary>
@@ -1234,9 +1226,9 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the DataScan:
-                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where {project} refers to a
-                    /// project_id or project_number and location_id refers to a GCP region. Only on-demand DataScans
-                    /// are allowed.
+                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where project refers to a
+                    /// project_id or project_number and location_id refers to a GCP region.Only OnDemand data scans are
+                    /// allowed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8447,8 +8439,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60
         /// minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
         /// "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from
-        /// IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * *
-        /// *".
+        /// IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }
@@ -8735,15 +8726,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataProfileResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This represents the profile information per field.</summary>
+        /// <summary>The profile information per field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfile Profile { get; set; }
 
-        /// <summary>The count of all rows in the sampled data. Return 0, if zero rows.</summary>
+        /// <summary>The count of rows scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
 
-        /// <summary>The data scanned for this profile.</summary>
+        /// <summary>The data scanned for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedData")]
         public virtual GoogleCloudDataplexV1ScannedData ScannedData { get; set; }
 
@@ -8751,12 +8742,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Profile information describing the structure and layout of the data and contains the profile info.
-    /// </summary>
+    /// <summary>Contains name, type, mode and field type specific profile information.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The sequence of fields describing data in table entities.</summary>
+        /// <summary>List of fields with structural and profile information for each field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProfileResultProfileField> Fields { get; set; }
 
@@ -8764,11 +8753,11 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a column field within a table schema.</summary>
+    /// <summary>A field within a table.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The mode of the field. Its value will be: REQUIRED, if it is a required field. NULLABLE, if it is an
+        /// The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an
         /// optional field. REPEATED, if it is a repeated field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
@@ -8778,7 +8767,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The profile information for the corresponding field.</summary>
+        /// <summary>Profile information for the corresponding field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo Profile { get; set; }
 
@@ -8793,33 +8782,36 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ProfileInfo defines the profile information for each schema field type.</summary>
+    /// <summary>The profile information for each field type.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ratio of rows that are distinct against the rows in the sampled data.</summary>
+        /// <summary>
+        /// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field
+        /// type RECORD and fields with REPEATABLE mode.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distinctRatio")]
         public virtual System.Nullable<double> DistinctRatio { get; set; }
 
-        /// <summary>The corresponding double field profile.</summary>
+        /// <summary>Double type field information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleProfile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo DoubleProfile { get; set; }
 
-        /// <summary>The corresponding integer field profile.</summary>
+        /// <summary>Integer type field information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerProfile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo IntegerProfile { get; set; }
 
-        /// <summary>The ratio of null rows against the rows in the sampled data.</summary>
+        /// <summary>Ratio of rows with null value against total scanned rows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullRatio")]
         public virtual System.Nullable<double> NullRatio { get; set; }
 
-        /// <summary>The corresponding string field profile.</summary>
+        /// <summary>String type field information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringProfile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo StringProfile { get; set; }
 
         /// <summary>
-        /// The array of top N values of the field in the sampled data. Currently N is set as 10 or equal to distinct
-        /// values in the field, whichever is smaller. This will be optional for complex non-groupable data-types such
-        /// as JSON, ARRAY, JSON, STRUCT.
+        /// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to
+        /// the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable
+        /// field type RECORD and fields with REPEATABLE mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topNValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> TopNValues { get; set; }
@@ -8828,46 +8820,34 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DoubleFieldInfo defines output for any double type field.</summary>
+    /// <summary>The profile information for a double type field.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The average of non-null values of double field in the sampled data. Return NaN, if the field has a NaN.
-        /// Optional if zero non-null rows.
-        /// </summary>
+        /// <summary>Average of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("average")]
         public virtual System.Nullable<double> Average { get; set; }
 
-        /// <summary>
-        /// The maximum value of a double field in the sampled data. Return NaN, if the field has a NaN. Optional if
-        /// zero non-null rows.
-        /// </summary>
+        /// <summary>Maximum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual System.Nullable<double> Max { get; set; }
 
-        /// <summary>
-        /// The minimum value of a double field in the sampled data. Return NaN, if the field has a NaN. Optional if
-        /// zero non-null rows.
-        /// </summary>
+        /// <summary>Minimum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual System.Nullable<double> Min { get; set; }
 
         /// <summary>
-        /// A quartile divide the numebr of data points into four parts, or quarters, of more-or-less equal size. Three
+        /// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three
         /// main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It
         /// is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second
         /// quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile
         /// (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical
-        /// quartile, as 75% of the data lies below this point. So, here the quartiles is provided as an ordered list of
-        /// quartile values, occurring in order Q1, median, Q3.
+        /// quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of
+        /// quartile values for the scanned data, occurring in order Q1, median, Q3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quartiles")]
         public virtual System.Collections.Generic.IList<System.Nullable<double>> Quartiles { get; set; }
 
-        /// <summary>
-        /// The standard deviation of non-null of double field in the sampled data. Return NaN, if the field has a NaN.
-        /// Optional if zero non-null rows.
-        /// </summary>
+        /// <summary>Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardDeviation")]
         public virtual System.Nullable<double> StandardDeviation { get; set; }
 
@@ -8875,46 +8855,34 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>IntegerFieldInfo defines output for any integer type field.</summary>
+    /// <summary>The profile information for an integer type field.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The average of non-null values of integer field in the sampled data. Return NaN, if the field has a NaN.
-        /// Optional if zero non-null rows.
-        /// </summary>
+        /// <summary>Average of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("average")]
         public virtual System.Nullable<double> Average { get; set; }
 
-        /// <summary>
-        /// The maximum value of an integer field in the sampled data. Return NaN, if the field has a NaN. Optional if
-        /// zero non-null rows.
-        /// </summary>
+        /// <summary>Maximum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual System.Nullable<long> Max { get; set; }
 
-        /// <summary>
-        /// The minimum value of an integer field in the sampled data. Return NaN, if the field has a NaN. Optional if
-        /// zero non-null rows.
-        /// </summary>
+        /// <summary>Minimum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual System.Nullable<long> Min { get; set; }
 
         /// <summary>
-        /// A quartile divide the number of data points into four parts, or quarters, of more-or-less equal size. Three
+        /// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three
         /// main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It
         /// is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second
         /// quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile
         /// (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical
-        /// quartile, as 75% of the data lies below this point. So, here the quartiles is provided as an ordered list of
-        /// quartile values, occurring in order Q1, median, Q3.
+        /// quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of
+        /// quartile values for the scanned data, occurring in order Q1, median, Q3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quartiles")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> Quartiles { get; set; }
 
-        /// <summary>
-        /// The standard deviation of non-null of integer field in the sampled data. Return NaN, if the field has a NaN.
-        /// Optional if zero non-null rows.
-        /// </summary>
+        /// <summary>Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardDeviation")]
         public virtual System.Nullable<double> StandardDeviation { get; set; }
 
@@ -8922,20 +8890,18 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>StringFieldInfo defines output info for any string type field.</summary>
+    /// <summary>The profile information for a string type field.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The average length of a string field in the sampled data. Optional if zero non-null rows.</summary>
+        /// <summary>Average length of non-null values in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageLength")]
         public virtual System.Nullable<double> AverageLength { get; set; }
 
-        /// <summary>The maximum length of a string field in the sampled data. Optional if zero non-null rows.</summary>
+        /// <summary>Maximum length of non-null values in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
         public virtual System.Nullable<long> MaxLength { get; set; }
 
-        /// <summary>
-        /// The minimum length of the string field in the sampled data. Optional if zero non-null rows.
-        /// </summary>
+        /// <summary>Minimum length of non-null values in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<long> MinLength { get; set; }
 
@@ -8943,14 +8909,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The TopNValue defines the structure of output of top N values of a field.</summary>
+    /// <summary>Top N non-null values in the scanned data.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The frequency count of the corresponding value in the field.</summary>
+        /// <summary>Count of the corresponding value in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>The value is the string value of the actual value from the field.</summary>
+        /// <summary>String value of a top N non-null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -8965,7 +8931,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DataQualityDimensionResult provides a more detailed, per-dimension level view of the results.</summary>
+    /// <summary>DataQualityDimensionResult provides a more detailed, per-dimension view of the results.</summary>
     public class GoogleCloudDataplexV1DataQualityDimensionResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the dimension passed or failed.</summary>
@@ -8979,7 +8945,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataQualityScan.</summary>
     public class GoogleCloudDataplexV1DataQualityResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of results at the dimension-level.</summary>
+        /// <summary>A list of results at the dimension level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityDimensionResult> Dimensions { get; set; }
 
@@ -9011,7 +8977,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Column { get; set; }
 
         /// <summary>
-        /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension-level. Supported
+        /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported
         /// dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
@@ -9019,7 +8985,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case,
-        /// such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        /// such null rows are trivially considered passing.Only applicable to ColumnMap rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreNull")]
         public virtual System.Nullable<bool> IgnoreNull { get; set; }
@@ -9056,7 +9022,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0,
-        /// 1.00 indicates default value (i.e. 1.0)
+        /// 1.0.0 indicates default value (i.e. 1.0).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
@@ -9095,14 +9061,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. Whether each value needs to be strictly lesser than ('&amp;lt;') the maximum, or if equality is
-        /// allowed. Only relevant if a max_value has been defined. Default = false.
+        /// allowed.Only relevant if a max_value has been defined. Default = false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMaxEnabled")]
         public virtual System.Nullable<bool> StrictMaxEnabled { get; set; }
 
         /// <summary>
         /// Optional. Whether each value needs to be strictly greater than ('&amp;gt;') the minimum, or if equality is
-        /// allowed. Only relevant if a min_value has been defined. Default = false.
+        /// allowed.Only relevant if a min_value has been defined. Default = false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMinEnabled")]
         public virtual System.Nullable<bool> StrictMinEnabled { get; set; }
@@ -9114,6 +9080,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Evaluates whether each column value matches a specified regex.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleRegexExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A regular expression the column value is expected to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
         public virtual string Regex { get; set; }
 
@@ -9121,13 +9088,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DataQualityRuleResult provides a more detailed, per-rule level view of the results.</summary>
+    /// <summary>DataQualityRuleResult provides a more detailed, per-rule view of the results.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
-        /// Evaluated count can be configured to either (1) include all rows (default) - with null rows automatically
-        /// failing rule evaluation OR (2) exclude null rows from the evaluated_count, by setting ignore_nulls = true
+        /// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated
+        /// count can be configured to either include all rows (default) - with null rows automatically failing rule
+        /// evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatedCount")]
         public virtual System.Nullable<long> EvaluatedCount { get; set; }
@@ -9167,11 +9134,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Evaluates whether each row passes the specified condition. The SQL expression needs to use BigQuery standard SQL
-    /// syntax and should produce a boolean per row as the result. Example: col1 &amp;gt;= 0 AND col2 &amp;lt; 10
+    /// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL
+    /// syntax and should produce a boolean value per row as the result.Example: col1 &amp;gt;= 0 AND col2 &amp;lt; 10
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The SQL expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExpression")]
         public virtual string SqlExpression { get; set; }
 
@@ -9182,6 +9150,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Evaluates whether each column value is contained by a specified set.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleSetExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Expected values for the column value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
@@ -9193,14 +9162,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The maximum column statistic value allowed for a row to pass this validation. At least one of min_value and
+        /// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and
         /// max_value need to be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual string MaxValue { get; set; }
 
         /// <summary>
-        /// The minimum column statistic value allowed for a row to pass this validation. At least one of min_value and
+        /// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and
         /// max_value need to be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
@@ -9211,14 +9180,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Whether column statistic needs to be strictly lesser than ('&amp;lt;') the maximum, or if equality is
-        /// allowed. Only relevant if a max_value has been defined. Default = false.
+        /// allowed.Only relevant if a max_value has been defined. Default = false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMaxEnabled")]
         public virtual System.Nullable<bool> StrictMaxEnabled { get; set; }
 
         /// <summary>
         /// Whether column statistic needs to be strictly greater than ('&amp;gt;') the minimum, or if equality is
-        /// allowed. Only relevant if a min_value has been defined. Default = false.
+        /// allowed.Only relevant if a min_value has been defined. Default = false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMinEnabled")]
         public virtual System.Nullable<bool> StrictMinEnabled { get; set; }
@@ -9228,11 +9197,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Evaluates whether the provided expression is true. The SQL expression needs to use BigQuery standard SQL syntax
-    /// and should produce a scalar boolean result. Example: MIN(col1) &amp;gt;= 0
+    /// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax
+    /// and should produce a scalar boolean result.Example: MIN(col1) &amp;gt;= 0
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The SQL expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExpression")]
         public virtual string SqlExpression { get; set; }
 
@@ -9259,10 +9229,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Represents a user-visible job which provides the insights for the related data source. For examples: - Data
-    /// Quality: generates queries based on the rules and run against the data to get data quality check results. - Data
-    /// Profile: analyzes the data in table(s) and generates insights about the structure, content and relationships
-    /// (such as null percent, cardinality, min/max/mean, etc).
+    /// Represents a user-visible job which provides the insights for the related data source.For example: Data Quality:
+    /// generates queries based on the rules and runs against the data to get data quality check results. Data Profile:
+    /// analyzes the data in table(s) and generates insights about the structure, content and relationships (such as
+    /// null percent, cardinality, min/max/mean, etc).
     /// </summary>
     public class GoogleCloudDataplexV1DataScan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9290,16 +9260,16 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualitySpec")]
         public virtual GoogleCloudDataplexV1DataQualitySpec DataQualitySpec { get; set; }
 
-        /// <summary>Optional. Description of the scan. * Must be between 1-1024 characters.</summary>
+        /// <summary>Optional. Description of the scan. Must be between 1-1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. User friendly display name. * Must be between 1-256 characters.</summary>
+        /// <summary>Optional. User friendly display name. Must be between 1-256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. DataScan execution settings. If not specified, the fields under it will use their default values.
+        /// Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionSpec")]
         public virtual GoogleCloudDataplexV1DataScanExecutionSpec ExecutionSpec { get; set; }
@@ -9314,8 +9284,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Output only. The relative resource name of the scan, of the form:
-        /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}. where {project} refers to a project_id
-        /// or project_number and location_id refers to a GCP region.
+        /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a project_id or
+        /// project_number and location_id refers to a GCP region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9437,14 +9407,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataScanExecutionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The unnested field (Date or Timestamp) that contains values that monotonically increase over
-        /// time.
+        /// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase
+        /// over time.If not specified, a data scan will run for all data in the table.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
         /// <summary>
-        /// Optional. Spec related to how often and when a scan should be triggered. If not specified, the default is
+        /// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is
         /// OnDemand, which means the scan will not run until the user calls RunDataScan API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
@@ -9469,7 +9439,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A DataScanJob represents an instance of a data scan.</summary>
+    /// <summary>A DataScanJob represents an instance of DataScan execution.</summary>
     public class GoogleCloudDataplexV1DataScanJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The result of the data profile scan.</summary>
@@ -9498,8 +9468,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Output only. The relative resource name of the DataScanJob, of the form:
-        /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id}. where {project} refers to
-        /// a project_id or project_number and location_id refers to a GCP region.
+        /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id}, where project refers to a
+        /// project_id or project_number and location_id refers to a GCP region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9528,7 +9498,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The dataplex entity that contains the data for DataScan, of the form:
+        /// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the
+        /// form:
         /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
@@ -9746,6 +9717,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Required. Immutable. The type of entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. System generated unique ID for the Entity. This ID will be different if the Entity is deleted
+        /// and re-created with the same name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>Output only. The time when the entity was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -10218,7 +10196,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>List DataScanJobs response.</summary>
     public class GoogleCloudDataplexV1ListDataScanJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>DataScanJobs (metadata only) under a given dataScan.</summary>
+        /// <summary>DataScanJobs (BASIC view only) under a given dataScan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataScanJobs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataScanJob> DataScanJobs { get; set; }
 
@@ -10235,7 +10213,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>List dataScans response.</summary>
     public class GoogleCloudDataplexV1ListDataScansResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>DataScans (metadata only) under the given parent location.</summary>
+        /// <summary>DataScans (BASIC view only) under the given parent location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataScans")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataScan> DataScans { get; set; }
 
@@ -10476,7 +10454,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Run DataScan Response.</summary>
     public class GoogleCloudDataplexV1RunDataScanResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>DataScanJob created by RunDataScan API.</summary>
+        /// <summary>DataScanJob created by RunDataScan request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual GoogleCloudDataplexV1DataScanJob Job { get; set; }
 
@@ -10514,15 +10492,17 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>A data range denoted by a pair of start/end values of a field.</summary>
     public class GoogleCloudDataplexV1ScannedDataIncrementalField : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Value that marks the end of the range</summary>
+        /// <summary>Value that marks the end of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual string End { get; set; }
 
-        /// <summary>The field that contains values which monotonically increases over time (e.g. timestamp).</summary>
+        /// <summary>
+        /// The field that contains values which monotonically increases over time (e.g. a timestamp column).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
-        /// <summary>Value that marks the start of the range</summary>
+        /// <summary>Value that marks the start of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual string Start { get; set; }
 
@@ -11160,8 +11140,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly
         /// set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or
         /// "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For
-        /// example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required
-        /// for RECURRING tasks.
+        /// example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for
+        /// RECURRING tasks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }
@@ -11184,7 +11164,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>DataScan scheduling and trigger settings.</summary>
     public class GoogleCloudDataplexV1Trigger : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The scan runs one-time shortly after DataScan Creation.</summary>
+        /// <summary>The scan runs once via RunDataScan API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onDemand")]
         public virtual GoogleCloudDataplexV1TriggerOnDemand OnDemand { get; set; }
 
@@ -11196,7 +11176,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The scan runs one-time via RunDataScan API.</summary>
+    /// <summary>The scan runs once via RunDataScan API.</summary>
     public class GoogleCloudDataplexV1TriggerOnDemand : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -11207,11 +11187,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1TriggerSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running scans periodically. To explicitly
-        /// set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or
-        /// "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For
-        /// example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required
-        /// for Schedule scans.
+        /// Required. Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly
+        /// set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or
+        /// "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database
+        /// (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example,
+        /// CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule
+        /// scans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cron")]
         public virtual string Cron { get; set; }
@@ -11323,8 +11304,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60
         /// minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
         /// "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from
-        /// IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * *
-        /// *".
+        /// IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }

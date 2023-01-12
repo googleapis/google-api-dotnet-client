@@ -999,6 +999,69 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Name of the recommendation.</param>
+                    public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
+                    {
+                        return new MarkDismissedRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    public class MarkDismissedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkDismissed request.</summary>
+                        public MarkDismissedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markDismissed";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markDismissed";
+
+                        /// <summary>Initializes MarkDismissed parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Marks the Recommendation State as Failed. Users can use this method to indicate to the
                     /// Recommender API that they have applied the recommendation themselves, and the operation failed.
                     /// This stops the recommendation content from being updated. Associated insights are frozen and
@@ -1846,6 +1909,69 @@ namespace Google.Apis.Recommender.v1beta1
                         public override string RestPath => "v1beta1/{+name}:markClaimed";
 
                         /// <summary>Initializes MarkClaimed parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Name of the recommendation.</param>
+                    public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
+                    {
+                        return new MarkDismissedRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    public class MarkDismissedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkDismissed request.</summary>
+                        public MarkDismissedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markDismissed";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markDismissed";
+
+                        /// <summary>Initializes MarkDismissed parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -2710,6 +2836,69 @@ namespace Google.Apis.Recommender.v1beta1
                         public override string RestPath => "v1beta1/{+name}:markClaimed";
 
                         /// <summary>Initializes MarkClaimed parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Name of the recommendation.</param>
+                    public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
+                    {
+                        return new MarkDismissedRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    public class MarkDismissedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkDismissed request.</summary>
+                        public MarkDismissedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markDismissed";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markDismissed";
+
+                        /// <summary>Initializes MarkDismissed parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -3737,6 +3926,69 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Name of the recommendation.</param>
+                    public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
+                    {
+                        return new MarkDismissedRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Mark the Recommendation State as Dismissed. Users can use this method to indicate to the
+                    /// Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED.
+                    /// MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.
+                    /// </summary>
+                    public class MarkDismissedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkDismissed request.</summary>
+                        public MarkDismissedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markDismissed";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markDismissed";
+
+                        /// <summary>Initializes MarkDismissed parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Marks the Recommendation State as Failed. Users can use this method to indicate to the
                     /// Recommender API that they have applied the recommendation themselves, and the operation failed.
                     /// This stops the recommendation content from being updated. Associated insights are frozen and
@@ -4285,6 +4537,14 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
+    }
+
+    /// <summary>Request for the `MarkRecommendationDismissed` Method.</summary>
+    public class GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fingerprint of the Recommendation. Provides optimistic locking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request for the `MarkRecommendationFailed` Method.</summary>

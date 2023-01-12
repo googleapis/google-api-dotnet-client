@@ -2340,9 +2340,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <param name="name">
             /// Output only. The fully-qualified resource name of the Hosting site, in the format:
             /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-            /// [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+            /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
             /// ***(recommended)*** or its
-            /// [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+            /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
             /// Learn more about using project identifiers in Google's [AIP 2510
             /// standard](https://google.aip.dev/cloud/2510).
             /// </param>
@@ -2365,9 +2365,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>
                 /// Output only. The fully-qualified resource name of the Hosting site, in the format:
                 /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-                /// [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+                /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                 /// ***(recommended)*** or its
-                /// [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+                /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
                 /// Learn more about using project identifiers in Google's [AIP 2510
                 /// standard](https://google.aip.dev/cloud/2510).
                 /// </summary>
@@ -4916,7 +4916,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>
         /// Optional. The [ID of a Web
-        /// App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        /// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
         /// associated with the Hosting site.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
@@ -4933,9 +4933,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>
         /// Output only. The fully-qualified resource name of the Hosting site, in the format:
         /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-        /// [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         /// ***(recommended)*** or its
-        /// [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+        /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
         /// Learn more about using project identifiers in Google's [AIP 2510
         /// standard](https://google.aip.dev/cloud/2510).
         /// </summary>
