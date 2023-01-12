@@ -3055,6 +3055,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PathOverride. Path message defines path override for HTTP targets.</summary>
+    public class PathOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI path (e.g., a/b/c). Default is Empty string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PauseQueue.</summary>
     public class PauseQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3164,6 +3175,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Request message for PurgeQueue.</summary>
     public class PurgeQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QueryOverride. Query message defines query override for HTTP targets.</summary>
+    public class QueryOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The query parameters (e.g., qparam1=123&amp;qparam2=456). Default is Empty string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
+        public virtual string QueryParams { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3658,35 +3680,45 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     public class UriOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is
-        /// "https://www.google.com", and host is set to "example.net", the overridden Uri will be
-        /// "https://example.net".
+        /// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is
+        /// "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to
+        /// "https://example.net". Host value cannot be an empty string.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
         /// <summary>
-        /// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+        /// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty
+        /// string clears the URI path segment.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("pathOverride")]
+        public virtual PathOverride PathOverride { get; set; }
 
         /// <summary>
-        /// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance,
-        /// for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+        /// Port override. When specified, will replace the port part of the task URI. For instance, for a URI
+        /// http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that
+        /// the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<long> Port { get; set; }
 
-        /// <summary>Uri Query. Will replace the query part of the task uri.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; }
+        /// <summary>
+        /// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty
+        /// string clears the URI query segment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryOverride")]
+        public virtual QueryOverride QueryOverride { get; set; }
 
-        /// <summary>Scheme override. When specified, the Uri scheme is replaced by the provided value.</summary>
+        /// <summary>
+        /// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
         public virtual string Scheme { get; set; }
 
-        /// <summary>Uri Override Enforce Mode Determines the Target UriOverride mode.</summary>
+        /// <summary>
+        /// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it
+        /// defaults to ALWAYS.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriOverrideEnforceMode")]
         public virtual string UriOverrideEnforceMode { get; set; }
 

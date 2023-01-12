@@ -1051,11 +1051,11 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// A field that represents attributes of a case object that should be updated as part of this request.
-            /// Supported values are severity, display_name, and subscriber_email_addresses. If no fields are specified,
-            /// all supported fields will be updated. WARNING: If you do not provide a field mask then you may
-            /// accidentally clear some fields. For example, if you leave field mask empty and do not provide a value
-            /// for subscriber_email_addresses then subscriber_email_addresses will be updated to empty.
+            /// A list of attributes of the case object that should be updated as part of this request. Supported values
+            /// are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported
+            /// fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some
+            /// fields. For example, if you leave field mask empty and do not provide a value for
+            /// subscriber_email_addresses, then subscriber_email_addresses is updated to empty.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }

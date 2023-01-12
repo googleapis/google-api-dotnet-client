@@ -21862,6 +21862,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
         public virtual string PromotionId { get; set; }
 
+        /// <summary>Output only. The current status of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionStatus")]
+        public virtual PromotionPromotionStatus PromotionStatus { get; set; }
+
         /// <summary>
         /// URL to the page on the merchant's site where the promotion shows. Local Inventory ads promotions throw an
         /// error if no promo url is included. URL is used to confirm that the promotion is valid and can be redeemed.
@@ -21899,6 +21903,66 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the promotion.</summary>
+    public class PromotionPromotionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Date on which the promotion has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format:
+        /// Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
+        public virtual string CreationDate { get; set; }
+
+        /// <summary>The intended destinations for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
+        public virtual System.Collections.Generic.IList<PromotionPromotionStatusDestinationStatus> DestinationStatuses { get; set; }
+
+        /// <summary>
+        /// Date on which the promotion status has been last updated in [ISO
+        /// 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example
+        /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateDate")]
+        public virtual string LastUpdateDate { get; set; }
+
+        /// <summary>A list of issues associated with the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionIssue")]
+        public virtual System.Collections.Generic.IList<PromotionPromotionStatusPromotionIssue> PromotionIssue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The destination status of the promotion.</summary>
+    public class PromotionPromotionStatusDestinationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>The status for the specified destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The issue associated with the promotion.</summary>
+    public class PromotionPromotionStatusPromotionIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Code of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Explanation of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

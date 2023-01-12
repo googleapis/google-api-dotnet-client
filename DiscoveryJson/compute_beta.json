@@ -35966,7 +35966,7 @@
    }
   }
  },
- "revision": "20221206",
+ "revision": "20221224",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -37032,6 +37032,28 @@
    },
    "type": "object"
   },
+  "AllocationResourceStatus": {
+   "description": "[Output Only] Contains output only fields.",
+   "id": "AllocationResourceStatus",
+   "properties": {
+    "specificSkuAllocation": {
+     "$ref": "AllocationResourceStatusSpecificSKUAllocation",
+     "description": "Allocation Properties of this reservation."
+    }
+   },
+   "type": "object"
+  },
+  "AllocationResourceStatusSpecificSKUAllocation": {
+   "description": "Contains Properties set for the reservation.",
+   "id": "AllocationResourceStatusSpecificSKUAllocation",
+   "properties": {
+    "sourceInstanceTemplateId": {
+     "description": "ID of the instance template used to populate reservation properties.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk": {
    "id": "AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk",
    "properties": {
@@ -37125,6 +37147,10 @@
     "instanceProperties": {
      "$ref": "AllocationSpecificSKUAllocationReservedInstanceProperties",
      "description": "The instance properties for the reservation."
+    },
+    "sourceInstanceTemplate": {
+     "description": "Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate ",
+     "type": "string"
     }
    },
    "type": "object"
@@ -42866,7 +42892,7 @@
    "id": "FirewallPolicyRule",
    "properties": {
     "action": {
-     "description": "The Action to perform when the client connection triggers the rule. Can currently be either \"allow\" or \"deny()\" where valid values for status are 403, 404, and 502.",
+     "description": "The Action to perform when the client connection triggers the rule. Valid actions are \"allow\", \"deny\" and \"goto_next\".",
      "type": "string"
     },
     "description": {
@@ -43129,6 +43155,10 @@
     },
     "allowGlobalAccess": {
      "description": "This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.",
+     "type": "boolean"
+    },
+    "allowPscGlobalAccess": {
+     "description": "This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.",
      "type": "boolean"
     },
     "backendService": {
@@ -43899,11 +43929,13 @@
       "MULTI_IP_SUBNET",
       "SECURE_BOOT",
       "SEV_CAPABLE",
+      "SEV_SNP_CAPABLE",
       "UEFI_COMPATIBLE",
       "VIRTIO_SCSI_MULTIQUEUE",
       "WINDOWS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -54065,6 +54097,10 @@
      "description": "URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default ",
      "type": "string"
     },
+    "networkAttachment": {
+     "description": "The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.",
+     "type": "string"
+    },
     "networkIP": {
      "description": "An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.",
      "type": "string"
@@ -60471,6 +60507,10 @@
      },
      "description": "Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.",
      "type": "object"
+    },
+    "resourceStatus": {
+     "$ref": "AllocationResourceStatus",
+     "description": "[Output Only] Status information for Reservation resource."
     },
     "satisfiesPzs": {
      "description": "[Output Only] Reserved for future use.",

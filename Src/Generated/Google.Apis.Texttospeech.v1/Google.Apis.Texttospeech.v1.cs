@@ -878,6 +878,21 @@ namespace Google.Apis.Texttospeech.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for response returned by the `SynthesizeLongAudio` method.</summary>
+    public class GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The progress of the most recent processing update in percentage, ie. 70.0%.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual System.Nullable<double> ProgressPercentage { get; set; }
+
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -993,6 +1008,21 @@ namespace Google.Apis.Texttospeech.v1.Data
         /// <summary>The raw text to be synthesized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for response returned by the `SynthesizeLongAudio` method.</summary>
+    public class SynthesizeLongAudioMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The progress of the most recent processing update in percentage, ie. 70.0%.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual System.Nullable<double> ProgressPercentage { get; set; }
+
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1785,6 +1785,14 @@ namespace Google.Apis.Translate.v3beta1.Data
     /// <summary>The BatchTranslateDocument request.</summary>
     public class BatchTranslateDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. This flag is to support user customized attribution. If not provided, the default is `Machine
+        /// Translated by Google`. Customized attribution should follow rules in
+        /// https://cloud.google.com/translate/attribution#attribution_and_logos
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customizedAttribution")]
+        public virtual string CustomizedAttribution { get; set; }
+
         /// <summary>Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatConversions")]
         public virtual System.Collections.Generic.IDictionary<string, string> FormatConversions { get; set; }
@@ -2365,7 +2373,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// updated during the process, please make sure there is no custom retention policy applied on the output
         /// bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy)
         /// The format of translations_file (for target language code 'trg') is:
-        /// gs://translation_test/a_b_c_'trg'_translations.[extension] If the input file extension is tsv, the output
+        /// `gs://translation_test/a_b_c_'trg'_translations.[extension]` If the input file extension is tsv, the output
         /// has the following columns: Column 1: ID of the request provided in the input, if it's not provided in the
         /// input, then the input row number is used (0-based). Column 2: source sentence. Column 3: translation without
         /// applying a glossary. Empty string if there is an error. Column 4 (only present if a glossary is provided in
@@ -2485,6 +2493,13 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentOutputConfig")]
         public virtual DocumentOutputConfig DocumentOutputConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If true, use the text removal server to remove the shadow text on background image for native pdf
+        /// translation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableShadowRemovalNativePdf")]
+        public virtual System.Nullable<bool> EnableShadowRemovalNativePdf { get; set; }
 
         /// <summary>
         /// Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as
