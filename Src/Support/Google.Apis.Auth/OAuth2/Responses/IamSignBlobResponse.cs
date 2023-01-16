@@ -16,14 +16,12 @@ limitations under the License.
 
 using Newtonsoft.Json;
 
-namespace Google.Apis.Auth.OAuth2.Requests
+namespace Google.Apis.Auth.OAuth2.Responses
 {
-    internal class ImpersonationSignBlobRequest : ImpersonationRequest
+    internal class IamSignBlobResponse
     {
-        /// <summary>
-        /// Gets or sets the payload to be signed.
-        /// </summary>
-        [JsonProperty("payload")]
-        public byte[] Payload { get; set; }
+        /// <summary>Gets or sets the signed blob.</summary>
+        [JsonProperty("signedBlob")]
+        public string SignedBlob { get; set; }
     }
 }
