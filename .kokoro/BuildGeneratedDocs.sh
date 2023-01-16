@@ -23,9 +23,16 @@ declare -r supportversion=$(grep \<Version\> Src/Support/CommonProjectProperties
 # TODO: Work out somewhere better to put these!
 rm -rf obj
 mkdir obj
-curl -sSL https://googleapis.dev/dotnet/Google.Apis/$supportversion/xrefmap.yml -o obj/Google.Apis.xrefmap.yml
-curl -sSL https://googleapis.dev/dotnet/Google.Apis.Core/$supportversion/xrefmap.yml -o obj/Google.Apis.Core.xrefmap.yml
-curl -sSL https://googleapis.dev/dotnet/Google.Apis.Auth/$supportversion/xrefmap.yml -o obj/Google.Apis.Auth.xrefmap.yml
+
+# Temporary workaround for failure to fetch xref maps from googleapis.dev: build locally and copy.
+# This is far from great, as it means we could refer to unreleased methods, but it's better than nothing.
+.kokoro/BuildSupportDocs.sh
+cp Src/Support/Google.Apis/obj/site/xrefmap.yml obj/Google.Apis.xrefmap.yml
+cp Src/Support/Google.Apis.Core/obj/site/xrefmap.yml obj/Google.Apis.Core.xrefmap.yml
+cp Src/Support/Google.Apis.Auth/obj/site/xrefmap.yml obj/Google.Apis.Auth.xrefmap.yml
+#curl -sSL https://googleapis.dev/dotnet/Google.Apis/$supportversion/xrefmap.yml -o obj/Google.Apis.xrefmap.yml
+#curl -sSL https://googleapis.dev/dotnet/Google.Apis.Core/$supportversion/xrefmap.yml -o obj/Google.Apis.Core.xrefmap.yml
+#curl -sSL https://googleapis.dev/dotnet/Google.Apis.Auth/$supportversion/xrefmap.yml -o obj/Google.Apis.Auth.xrefmap.yml
 
 build_site() {
   declare -r package=$1
