@@ -335,8 +335,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             try
             {
-                var tokenResponse = await request.ExecuteAsync
-                    (httpClient, TokenServerUrl, taskCancellationToken, Clock, Logger).ConfigureAwait(false);
+                var tokenResponse = await request.PostFormAsync
+                    (httpClient, TokenServerUrl, null, Clock, Logger, taskCancellationToken).ConfigureAwait(false);
                 return tokenResponse;
             }
             catch (TokenResponseException ex)
