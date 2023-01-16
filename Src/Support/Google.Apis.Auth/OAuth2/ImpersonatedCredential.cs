@@ -224,7 +224,7 @@ namespace Google.Apis.Auth.OAuth2
                 Lifetime = $"{(int)Lifetime.TotalSeconds}s"
             };
 
-            Token = await request.ExecuteAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)
+            Token = await request.PostJsonAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)
                 .ConfigureAwait(false);
 
             return true;
@@ -253,7 +253,7 @@ namespace Google.Apis.Auth.OAuth2
             };
             var oidcTokenUrl = string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, TargetPrincipal);
 
-            caller.Token = await request.ExecuteAsync(HttpClient, oidcTokenUrl, Clock, Logger, cancellationToken)
+            caller.Token = await request.PostJsonAsync(HttpClient, oidcTokenUrl, Clock, Logger, cancellationToken)
                 .ConfigureAwait(false);
 
             return true;
@@ -277,7 +277,7 @@ namespace Google.Apis.Auth.OAuth2
             };
             var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, TargetPrincipal);
 
-            var response = await request.ExecuteAsync<ImpersonationSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
+            var response = await request.PostJsonAsync<ImpersonationSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);
 
             return response.SignedBlob;

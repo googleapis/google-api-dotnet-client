@@ -310,7 +310,7 @@ namespace Google.Apis.Auth.OAuth2
             }.Build();
 
             return await request
-                .ExecuteAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)
+                .PostFormAsync(HttpClient, TokenServerUrl, request.AuthenticationHeader, Clock, Logger, taskCancellationToken)
                 .ConfigureAwait(false);
         }
 

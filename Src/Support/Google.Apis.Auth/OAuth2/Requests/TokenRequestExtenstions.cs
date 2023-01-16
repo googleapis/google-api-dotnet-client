@@ -15,8 +15,6 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Logging;
-using Google.Apis.Requests.Parameters;
 using Google.Apis.Util;
 using System.Net.Http;
 using System.Threading;
@@ -29,32 +27,17 @@ namespace Google.Apis.Auth.OAuth2.Requests
     {
         /// <summary>
         /// Executes the token request in order to receive a 
-        /// <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponse"/>. In case the token server returns an 
-        /// error, a <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponseException"/> is thrown.
+        /// <see cref="TokenResponse"/>. In case the token server returns an 
+        /// error, a <see cref="TokenResponseException"/> is thrown.
         /// </summary>
         /// <param name="request">The token request.</param>
         /// <param name="httpClient">The HTTP client used to create an HTTP request.</param>
         /// <param name="tokenServerUrl">The token server URL.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
-        /// <param name="clock">
-        /// The clock which is used to set the
-        /// <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponse.Issued"/> property.
-        /// </param>
+        /// <param name="clock">The clock which is used to set the <see cref="TokenResponse.Issued"/> property.</param>
         /// <returns>Token response with the new access token.</returns>
         public static Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
             string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock) =>
-            ExecuteAsync(request, httpClient, tokenServerUrl, taskCancellationToken, clock, ApplicationContext.Logger);
-
-        internal static async Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
-            string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock, ILogger logger)
-        {
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, tokenServerUrl)
-            {
-                Content = ParameterUtils.CreateFormUrlEncodedContent(request)
-            };
-
-            var response = await httpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
-            return await TokenResponse.FromHttpResponseAsync(response, clock, logger).ConfigureAwait(false);
-        }
+            request.PostFormAsync(httpClient, tokenServerUrl, null, clock, ApplicationContext.Logger, taskCancellationToken);
     }
 }

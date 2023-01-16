@@ -253,7 +253,7 @@ namespace Google.Apis.Auth.OAuth2
             Logger.Debug("Request a new access token. Assertion data is: " + request.Assertion);
 
             var newToken = await request
-                .ExecuteAsync(HttpClient, TokenServerUrl, taskCancellationToken, Clock, Logger)
+                .PostFormAsync(HttpClient, TokenServerUrl, null, Clock, Logger, taskCancellationToken)
                 .ConfigureAwait(false);
             Token = newToken;
             return true;
@@ -316,7 +316,7 @@ namespace Google.Apis.Auth.OAuth2
                 Assertion = jwtForOidc
             };
             caller.Token = await req
-                .ExecuteAsync(HttpClient, TokenServerUrl, cancellationToken, Clock, Logger)
+                .PostFormAsync(HttpClient, TokenServerUrl, null, Clock, Logger, cancellationToken)
                 .ConfigureAwait(false);
             return true;
         }
