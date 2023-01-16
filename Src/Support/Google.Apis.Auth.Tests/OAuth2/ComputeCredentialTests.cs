@@ -18,7 +18,6 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Http;
 using Google.Apis.Tests.Mocks;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -29,14 +28,6 @@ namespace Google.Apis.Auth.Tests.OAuth2
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.ComputeCredential"/>.</summary>
     public class ComputeCredentialTests
     {
-        // Temporarily remove this test as we often are testing on GCE instances.
-        /*[Test]
-        public void IsRunningOnComputeEngine()
-        {
-            // It should be safe to assume that this test is not running on GCE.
-            Assert.IsFalse(ComputeCredential.IsRunningOnComputeEngine().Result);
-        }*/
-
         [Fact]
         public void IsRunningOnComputeEngine_ResultIsCached()
         {
