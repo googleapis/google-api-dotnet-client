@@ -344,10 +344,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string ConnectionProfileId { get; set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// Optional. A unique id used to identify the request. If the server receives two requests with the
+                    /// same id, then the second request will be ignored. It is recommended to always set this value to
+                    /// a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -777,10 +777,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// Optional. A unique id used to identify the request. If the server receives two requests with the
+                    /// same id, then the second request will be ignored. It is recommended to always set this value to
+                    /// a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -3481,6 +3481,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>Optional. If set to true, will skip validations.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("skipValidation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> SkipValidation { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DatabaseMigrationService.v1.Data.PrivateConnection Body { get; set; }
 
@@ -3519,6 +3523,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("skipValidation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skipValidation",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

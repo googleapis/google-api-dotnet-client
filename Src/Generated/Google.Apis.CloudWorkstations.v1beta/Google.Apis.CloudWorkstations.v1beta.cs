@@ -3157,7 +3157,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterHostname")]
         public virtual string ClusterHostname { get; set; }
 
-        /// <summary>Whether Workstations endpoint is private.</summary>
+        /// <summary>Immutable. Whether Workstations endpoint is private.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
@@ -3315,6 +3315,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
+        /// <summary>
+        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying
+        /// Compute Engine resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>Full name of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3375,12 +3382,20 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying
+        /// Compute Engine resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>Full name of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Name of the Compute Engine network in which instances associated with this cluster will be created.
+        /// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be
+        /// created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -3396,8 +3411,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
-        /// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must
-        /// be part of the subnetwork specified for this cluster.
+        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be
+        /// created. Must be part of the subnetwork specified for this cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
@@ -3467,6 +3482,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
         public virtual object IdleTimeout { get; set; }
+
+        /// <summary>
+        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying
+        /// Compute Engine resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Full name of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

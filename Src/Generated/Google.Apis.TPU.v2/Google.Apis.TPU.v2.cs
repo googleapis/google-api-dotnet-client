@@ -816,7 +816,7 @@ namespace Google.Apis.TPU.v2
 
                 /// <summary>Starts a node.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual StartRequest Start(Google.Apis.TPU.v2.Data.StartNodeRequest body, string name)
                 {
                     return new StartRequest(service, body, name);
@@ -833,7 +833,7 @@ namespace Google.Apis.TPU.v2
                         InitParameters();
                     }
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -869,7 +869,7 @@ namespace Google.Apis.TPU.v2
 
                 /// <summary>Stops a node. This operation is only available with single TPU nodes.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual StopRequest Stop(Google.Apis.TPU.v2.Data.StopNodeRequest body, string name)
                 {
                     return new StopRequest(service, body, name);
@@ -886,7 +886,7 @@ namespace Google.Apis.TPU.v2
                         InitParameters();
                     }
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 

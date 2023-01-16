@@ -4966,8 +4966,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. A server-assigned timestamp representing when this Instance was created. For instances created
-        /// before this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
+        /// Output only. A commit timestamp representing when this Instance was created. For instances created before
+        /// this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

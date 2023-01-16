@@ -894,7 +894,7 @@ namespace Google.Apis.TPU.v2alpha1
 
                 /// <summary>Starts a node.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual StartRequest Start(Google.Apis.TPU.v2alpha1.Data.StartNodeRequest body, string name)
                 {
                     return new StartRequest(service, body, name);
@@ -911,7 +911,7 @@ namespace Google.Apis.TPU.v2alpha1
                         InitParameters();
                     }
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -947,7 +947,7 @@ namespace Google.Apis.TPU.v2alpha1
 
                 /// <summary>Stops a node. This operation is only available with single TPU nodes.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual StopRequest Stop(Google.Apis.TPU.v2alpha1.Data.StopNodeRequest body, string name)
                 {
                     return new StopRequest(service, body, name);
@@ -964,7 +964,7 @@ namespace Google.Apis.TPU.v2alpha1
                         InitParameters();
                     }
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2445,7 +2445,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual Node Node { get; set; }
 
         /// <summary>
-        /// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format. This is only specified
+        /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified
         /// when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead.
         /// It's an error to specify both node_id and multi_node_params.
         /// </summary>

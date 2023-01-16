@@ -11440,6 +11440,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual System.Nullable<bool> AnalyzeQueryTextSentiment { get; set; }
 
         /// <summary>
+        /// The channel which this query is for. If specified, only the ResponseMessage associated with the channel will
+        /// be returned. If no ResponseMessage is associated with the channel, it falls back to the ResponseMessage with
+        /// unspecified channel. If unspecified, the ResponseMessage with unspecified channel will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>
         /// The unique identifier of the page to override the current page in the session. Format:
         /// `projects//locations//agents//flows//pages/`. If `current_page` is specified, the previous state of the
         /// session will be ignored by Dialogflow, including the previous page and the previous session parameters. In
@@ -11675,6 +11683,13 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The channel which the response is associated with. Clients can specify the channel via
+        /// QueryParameters.channel, and only associated channel response will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>Indicates that the conversation succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationSuccess")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess ConversationSuccess { get; set; }
@@ -14397,6 +14412,13 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The channel which the response is associated with. Clients can specify the channel via
+        /// QueryParameters.channel, and only associated channel response will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>Indicates that the conversation succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationSuccess")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess ConversationSuccess { get; set; }

@@ -3633,9 +3633,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be
-        /// allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}`
-        /// The project may be in any Google Cloud organization, not just the organization that the perimeter is defined
-        /// in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+        /// allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format:
+        /// `projects/{project_number}` VPC format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google
+        /// Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case
+        /// of allowing all Google Cloud resources only is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -4099,8 +4101,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual System.Collections.Generic.IList<IngressPolicy> IngressPolicies { get; set; }
 
         /// <summary>
-        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are
-        /// allowed. Format: `projects/{project_number}`
+        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs
+        /// are allowed. Project format: `projects/{project_number}` VPC format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
