@@ -270,14 +270,14 @@ namespace Google.Apis.Auth.OAuth2
         public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
         {
             ThrowIfCustomTokenUrl();
-            var request = new ImpersonationSignBlobRequest
+            var request = new IamSignBlobRequest
             {
                 DelegateAccounts = DelegateAccounts,
                 Payload = blob
             };
             var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, TargetPrincipal);
 
-            var response = await request.PostJsonAsync<ImpersonationSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
+            var response = await request.PostJsonAsync<IamSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);
 
             return response.SignedBlob;
