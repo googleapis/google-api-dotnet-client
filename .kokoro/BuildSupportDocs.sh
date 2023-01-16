@@ -16,9 +16,6 @@ rm -rf Src/Support/*/obj
 rm -rf Src/Support/*/bin
 dotnet build Src/Support/GoogleApisClient.sln
 
-# Some versions of docfx fail if VSINSTALLDIR is set (and isn't a version they expect)
-export VSINSTALLDIR=
-
 # Extract the support libraries version number from the XML.
 # This is pretty horrible, but it works...
 declare -r version=$(grep \<Version\> Src/Support/CommonProjectProperties.xml | sed 's/</>/g' | cut -d\> -f 3)
@@ -45,8 +42,8 @@ build_site() {
   sed -i "s/\\\$title/Google API support libraries/g" $directory/index.md
   sed -i "s/\\\$entry_namespace/$entry_namespace/g" $directory/index.md  
   
-  $DOCFX metadata -f --disableGitFeatures $json
-  $DOCFX build --disableGitFeatures $json
+  dotnet docfx metadata -f --disableGitFeatures $json
+  dotnet docfx build --disableGitFeatures $json
   
   if [ ! -d $directory/obj/api ]
   then
