@@ -953,7 +953,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new InternalRange in a given project and location.</summary>
+                /// <summary>Creates a new internal range in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource's name of the InternalRange.</param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange body, string parent)
@@ -961,7 +961,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new InternalRange in a given project and location.</summary>
+                /// <summary>Creates a new internal range in a given project and location.</summary>
                 public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -988,10 +988,11 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and t he request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, will ignore the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1042,14 +1043,14 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     }
                 }
 
-                /// <summary>Deletes a single InternalRange.</summary>
+                /// <summary>Deletes a single internal range.</summary>
                 /// <param name="name">Required. The name of the InternalRange to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a single InternalRange.</summary>
+                /// <summary>Deletes a single internal range.</summary>
                 public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1068,10 +1069,11 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
                     /// example, consider a situation where you make an initial request and t he request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, will ignore the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1108,14 +1110,14 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     }
                 }
 
-                /// <summary>Gets details of a single InternalRange.</summary>
+                /// <summary>Gets details of a single internal range.</summary>
                 /// <param name="name">Required. Name of the InternalRange to get.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets details of a single InternalRange.</summary>
+                /// <summary>Gets details of a single internal range.</summary>
                 public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.InternalRange>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1233,14 +1235,14 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     }
                 }
 
-                /// <summary>Lists InternalRanges in a given project and location.</summary>
+                /// <summary>Lists internal ranges in a given project and location.</summary>
                 /// <param name="parent">Required. The parent resource's name.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists InternalRanges in a given project and location.</summary>
+                /// <summary>Lists internal ranges in a given project and location.</summary>
                 public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.ListInternalRangesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1326,10 +1328,10 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single InternalRange.</summary>
+                /// <summary>Updates the parameters of a single internal range.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The name of a InternalRange. Format:
+                /// Immutable. The name of an internal range. Format:
                 /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
                 /// https://google.aip.dev/122#fields-representing-resource-names
                 /// </param>
@@ -1338,7 +1340,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the parameters of a single InternalRange.</summary>
+                /// <summary>Updates the parameters of a single internal range.</summary>
                 public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1alpha1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1350,7 +1352,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     }
 
                     /// <summary>
-                    /// Immutable. The name of a InternalRange. Format:
+                    /// Immutable. The name of an internal range. Format:
                     /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
                     /// https://google.aip.dev/122#fields-representing-resource-names
                     /// </summary>
@@ -1362,16 +1364,17 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and t he request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, will ignore the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the InternalRange
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the internal range
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
                     /// not the full request. A field will be overwritten if it is in the mask. If the user does not
                     /// provide a mask then all fields will be overwritten.
@@ -2908,13 +2911,13 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
     }
 
     /// <summary>
-    /// The InternalRange resource for IPAM operations within a VPC network. Used to represent a private address range
-    /// along with behavioral characterstics of that range (it's usage and peering behavior). Networking resources can
-    /// link to this range if they are created as belonging to it. Next id: 14
+    /// The internal range resource for IPAM operations within a VPC network. Used to represent a private address range
+    /// along with behavioral characterstics of that range (its usage and peering behavior). Networking resources can
+    /// link to this range if they are created as belonging to it.
     /// </summary>
     public class InternalRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time when the InternalRange was created.</summary>
+        /// <summary>Time when the internal range was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -2922,7 +2925,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>IP range that this InternalRange defines.</summary>
+        /// <summary>IP range that this internal range defines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; }
 
@@ -2931,7 +2934,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. The name of a InternalRange. Format:
+        /// Immutable. The name of an internal range. Format:
         /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
         /// https://google.aip.dev/122#fields-representing-resource-names
         /// </summary>
@@ -2939,26 +2942,26 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted
-        /// if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be
-        /// specified for a global internal address. Example: - URL:
+        /// The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted
+        /// if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only
+        /// be specified for a global internal address. Example: - URL:
         /// /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Optional. Types of resources that are allowed to overlap with the current InternalRange.</summary>
+        /// <summary>Optional. Types of resources that are allowed to overlap with the current internal range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overlaps")]
         public virtual System.Collections.Generic.IList<string> Overlaps { get; set; }
 
-        /// <summary>The type of peering set for this InternalRange.</summary>
+        /// <summary>The type of peering set for this internal range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peering")]
         public virtual string Peering { get; set; }
 
         /// <summary>
-        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a
-        /// free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range
-        /// sizes don't match. Can also be used during updates to change the range size.
+        /// An alternative to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a
+        /// free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the
+        /// range sizes do not match. Can also be used during updates to change the range size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; }
@@ -2971,19 +2974,19 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetCidrRange")]
         public virtual System.Collections.Generic.IList<string> TargetCidrRange { get; set; }
 
-        /// <summary>Time when the InternalRange was updated.</summary>
+        /// <summary>Time when the internal range was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>The type of usage set for this InternalRange.</summary>
+        /// <summary>The type of usage set for this internal range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual string Usage { get; set; }
 
         /// <summary>
-        /// Output only. The list of resources that refer to this internal range. Resources that use the InternalRange
+        /// Output only. The list of resources that refer to this internal range. Resources that use the internal range
         /// for their range allocation are referred to as users of the range. Other resources mark themselves as users
-        /// while doing so by creating a reference to this InternalRange. Having a user, based on this reference,
-        /// prevents deletion of the InternalRange referred to. Can be empty.
+        /// while doing so by creating a reference to this internal range. Having a user, based on this reference,
+        /// prevents deletion of the internal range that is referred to. Can be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
         public virtual System.Collections.Generic.IList<string> Users { get; set; }
@@ -3017,7 +3020,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
     /// <summary>Response for InternalRange.ListInternalRanges</summary>
     public class ListInternalRangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>InternalRanges to be returned.</summary>
+        /// <summary>Internal range to be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalRanges")]
         public virtual System.Collections.Generic.IList<InternalRange> InternalRanges { get; set; }
 

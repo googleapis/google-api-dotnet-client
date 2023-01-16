@@ -1481,6 +1481,65 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
                         }
                     }
 
+                    /// <summary>DomainJoinMachine API joins a Compute Engine VM to the domain</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// projects/{project_id}/locations/global/domains/{domain_name}
+                    /// </param>
+                    public virtual DomainJoinMachineRequest DomainJoinMachine(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DomainJoinMachineRequest body, string domain)
+                    {
+                        return new DomainJoinMachineRequest(service, body, domain);
+                    }
+
+                    /// <summary>DomainJoinMachine API joins a Compute Engine VM to the domain</summary>
+                    public class DomainJoinMachineRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DomainJoinMachineResponse>
+                    {
+                        /// <summary>Constructs a new DomainJoinMachine request.</summary>
+                        public DomainJoinMachineRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DomainJoinMachineRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// projects/{project_id}/locations/global/domains/{domain_name}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1.Data.DomainJoinMachineRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "domainJoinMachine";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+domain}:domainJoinMachine";
+
+                        /// <summary>Initializes DomainJoinMachine parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Enable Domain Migration</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="domain">
@@ -3784,6 +3843,35 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DomainJoinMachineRequest is the request message for DomainJoinMachine method</summary>
+    public class DomainJoinMachineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. OU name where the VM needs to be domain joined</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ouName")]
+        public virtual string OuName { get; set; }
+
+        /// <summary>
+        /// Required. Full instance id token of compute engine VM to verify instance identity. More about this:
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity#request_signature
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmIdToken")]
+        public virtual string VmIdToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DomainJoinMachineResponse is the response message for DomainJoinMachine method</summary>
+    public class DomainJoinMachineResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Offline domain join blob as the response</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainJoinBlob")]
+        public virtual string DomainJoinBlob { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -4493,7 +4581,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines policies to service maintenance events.</summary>
+    /// <summary>LINT.IfChange Defines policies to service maintenance events.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time when the resource was created.</summary>

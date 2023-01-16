@@ -2812,7 +2812,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Configuration for the connection.</summary>
+        /// <summary>Optional. Node configuration for the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; }
 
@@ -3457,7 +3457,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for the connection.</summary>
+    /// <summary>Node configuration for the connection.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of nodes in the runtime nodes.</summary>

@@ -4739,6 +4739,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Immutable. The name of the workflow config to invoke. Must be in the format
+        /// `projects/*/locations/*/repositories/*/workflowConfigs/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflowConfig")]
+        public virtual string WorkflowConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

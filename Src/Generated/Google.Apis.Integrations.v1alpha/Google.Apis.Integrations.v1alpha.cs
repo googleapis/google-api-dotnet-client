@@ -1606,6 +1606,266 @@ namespace Google.Apis.Integrations.v1alpha
                     public ExecutionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Suspensions = new SuspensionsResource(service);
+                    }
+
+                    /// <summary>Gets the Suspensions resource.</summary>
+                    public virtual SuspensionsResource Suspensions { get; }
+
+                    /// <summary>The "suspensions" collection of methods.</summary>
+                    public class SuspensionsResource
+                    {
+                        private const string Resource = "suspensions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SuspensionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// * Lifts suspension for advanced suspension task. Fetch corresponding suspension with
+                        /// provided suspension Id, resolve suspension, and set up suspension result for the Suspension
+                        /// Task.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource that the suspension belongs to.
+                        /// "projects/{project}/locations/{location}/products/{product}/integrations/{integration}/executions/{execution}/suspensions/{suspenion}"
+                        /// format.
+                        /// </param>
+                        public virtual LiftRequest Lift(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaLiftSuspensionRequest body, string name)
+                        {
+                            return new LiftRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// * Lifts suspension for advanced suspension task. Fetch corresponding suspension with
+                        /// provided suspension Id, resolve suspension, and set up suspension result for the Suspension
+                        /// Task.
+                        /// </summary>
+                        public class LiftRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaLiftSuspensionResponse>
+                        {
+                            /// <summary>Constructs a new Lift request.</summary>
+                            public LiftRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaLiftSuspensionRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource that the suspension belongs to.
+                            /// "projects/{project}/locations/{location}/products/{product}/integrations/{integration}/executions/{execution}/suspensions/{suspenion}"
+                            /// format.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaLiftSuspensionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "lift";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}:lift";
+
+                            /// <summary>Initializes Lift parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/executions/[^/]+/suspensions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// * Lists suspensions associated with a specific execution. Only those with permissions to
+                        /// resolve the relevant suspensions will be able to view them.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required.
+                        /// projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_name}/executions/{execution_name}
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// * Lists suspensions associated with a specific execution. Only those with permissions to
+                        /// resolve the relevant suspensions will be able to view them.
+                        /// </summary>
+                        public class ListRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaListSuspensionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required.
+                            /// projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_name}/executions/{execution_name}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Standard filter field.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Field name to order by.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>Maximum number of entries in the response.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Token to retrieve a specific page.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/suspensions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// * Resolves (lifts/rejects) any number of suspensions. If the integration is already running,
+                        /// only the status of the suspension is updated. Otherwise, the suspended integration will
+                        /// begin execution again.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required.
+                        /// projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_name}/executions/{execution_name}/suspensions/{suspension_id}
+                        /// </param>
+                        public virtual ResolveRequest Resolve(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaResolveSuspensionRequest body, string name)
+                        {
+                            return new ResolveRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// * Resolves (lifts/rejects) any number of suspensions. If the integration is already running,
+                        /// only the status of the suspension is updated. Otherwise, the suspended integration will
+                        /// begin execution again.
+                        /// </summary>
+                        public class ResolveRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>
+                        {
+                            /// <summary>Constructs a new Resolve request.</summary>
+                            public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaResolveSuspensionRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required.
+                            /// projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_name}/executions/{execution_name}/suspensions/{suspension_id}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaResolveSuspensionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "resolve";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}:resolve";
+
+                            /// <summary>Initializes Resolve parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/executions/[^/]+/suspensions/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>

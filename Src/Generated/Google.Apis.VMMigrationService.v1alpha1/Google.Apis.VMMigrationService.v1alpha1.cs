@@ -55,7 +55,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Migrate to Virtual Machines API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the VM Migration API.</summary>
         public class Scope
         {
             /// <summary>
@@ -65,7 +65,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Migrate to Virtual Machines API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the VM Migration API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -4545,10 +4545,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessKeyCreds")]
         public virtual AccessKeyCredentials AccessKeyCreds { get; set; }
 
-        /// <summary>AWS access key ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
-        public virtual string AccessKeyId { get; set; }
-
         /// <summary>Immutable. The AWS region that the source VMs will be migrated from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsRegion")]
         public virtual string AwsRegion { get; set; }
@@ -4566,12 +4562,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual System.Collections.Generic.IList<Tag> InventoryTagList { get; set; }
 
         /// <summary>
-        /// Deprecated: AWS resource tags to limit the scope of the source inventory. Use inventory_tag_list instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventoryTags")]
-        public virtual System.Collections.Generic.IDictionary<string, string> InventoryTags { get; set; }
-
-        /// <summary>
         /// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to
         /// the default tags that are set as part of the migration process. The tags must not begin with the reserved
         /// prefix `m2vm`.
@@ -4584,10 +4574,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIp")]
         public virtual string PublicIp { get; set; }
-
-        /// <summary>Input only. AWS secret access key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKey")]
-        public virtual string SecretAccessKey { get; set; }
 
         /// <summary>Output only. State of the source as determined by the health check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

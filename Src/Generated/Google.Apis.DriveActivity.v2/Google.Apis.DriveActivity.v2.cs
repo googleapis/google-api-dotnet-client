@@ -538,10 +538,9 @@ namespace Google.Apis.DriveActivity.v2.Data
     }
 
     /// <summary>
-    /// How the individual activities are consolidated. A set of activities may be consolidated into one combined
-    /// activity if they are related in some way, such as one actor performing the same action on multiple targets, or
-    /// multiple actors performing the same action on a single target. The strategy defines the rules for which
-    /// activities are related.
+    /// How the individual activities are consolidated. If a set of activities is related they can be consolidated into
+    /// one combined activity, such as one actor performing the same action on multiple targets, or multiple actors
+    /// performing the same action on a single target. The strategy defines the rules for which activities are related.
     /// </summary>
     public class ConsolidationStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1002,7 +1001,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     }
 
     /// <summary>
-    /// A strategy which consolidates activities using the grouping rules from the legacy V1 Activity API. Similar
+    /// A strategy that consolidates activities using the grouping rules from the legacy V1 Activity API. Similar
     /// actions occurring within a window of time can be grouped across multiple targets (such as moving a set of files
     /// at once) or multiple actors (such as several users editing the same item). Grouping rules for this strategy are
     /// specific to each type of action.
@@ -1035,7 +1034,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A strategy which does no consolidation of individual activities.</summary>
+    /// <summary>A strategy that does no consolidation of individual activities.</summary>
     public class NoConsolidation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1132,14 +1131,14 @@ namespace Google.Apis.DriveActivity.v2.Data
     public class QueryDriveActivityRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Return activities for this Drive folder and all children and descendants. The format is `items/ITEM_ID`.
+        /// Return activities for this Drive folder, plus all children and descendants. The format is `items/ITEM_ID`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorName")]
         public virtual string AncestorName { get; set; }
 
         /// <summary>
         /// Details on how to consolidate related actions that make up the activity. If not set, then related actions
-        /// are not consolidated.
+        /// aren't consolidated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consolidationStrategy")]
         public virtual ConsolidationStrategy ConsolidationStrategy { get; set; }
@@ -1150,9 +1149,10 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// Supported fields: - `time`: Uses numerical operators on date values either in terms of milliseconds since
         /// Jan 1, 1970 or in RFC 3339 format. Examples: - `time &amp;gt; 1452409200000 AND time &amp;lt;=
         /// 1492812924310` - `time &amp;gt;= "2016-01-10T01:02:03-05:00"` - `detail.action_detail_case`: Uses the "has"
-        /// operator (:) and either a singular value or a list of allowed action types enclosed in parentheses.
-        /// Examples: - `detail.action_detail_case: RENAME` - `detail.action_detail_case:(CREATE EDIT)` -
-        /// `-detail.action_detail_case:MOVE`
+        /// operator (:) and either a singular value or a list of allowed action types enclosed in parentheses,
+        /// separated by a space. To exclude a result from the response, prepend a hyphen (`-`) to the beginning of the
+        /// filter string. Examples: - `detail.action_detail_case:RENAME` - `detail.action_detail_case:(CREATE RESTORE)`
+        /// - `-detail.action_detail_case:MOVE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -1162,17 +1162,16 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ItemName { get; set; }
 
         /// <summary>
-        /// The miminum number of activities desired in the response; the server will attempt to return at least this
-        /// quanitity. The server may also return fewer activities if it has a partial response ready before the request
+        /// The minimum number of activities desired in the response; the server attempts to return at least this
+        /// quantity. The server may also return fewer activities if it has a partial response ready before the request
         /// times out. If not set, a default value is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// The token identifying which page of results to return. Set this to the next_page_token value returned from a
-        /// previous query to obtain the following page of results. If not set, the first page of results will be
-        /// returned.
+        /// The token identifies which page of results to return. Set this to the next_page_token value returned from a
+        /// previous query to obtain the following page of results. If not set, the first page of results is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }

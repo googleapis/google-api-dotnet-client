@@ -4285,7 +4285,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines policies to service maintenance events.</summary>
+    /// <summary>LINT.IfChange Defines policies to service maintenance events.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time when the resource was created.</summary>

@@ -20235,6 +20235,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The channel which the response is associated with. Clients can specify the channel via
+        /// QueryParameters.channel, and only associated channel response will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>Indicates that the conversation succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationSuccess")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess ConversationSuccess { get; set; }
@@ -22277,6 +22284,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The channel which the response is associated with. Clients can specify the channel via
+        /// QueryParameters.channel, and only associated channel response will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>Indicates that the conversation succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationSuccess")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess ConversationSuccess { get; set; }

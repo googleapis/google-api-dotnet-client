@@ -35,6 +35,7 @@ namespace Google.Apis.Appengine.v1
         public AppengineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Apps = new AppsResource(this);
+            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -93,6 +94,9 @@ namespace Google.Apis.Appengine.v1
 
         /// <summary>Gets the Apps resource.</summary>
         public virtual AppsResource Apps { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for Appengine requests.</summary>
@@ -3610,6 +3614,134 @@ namespace Google.Apis.Appengine.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Applications = new ApplicationsResource(service);
+            }
+
+            /// <summary>Gets the Applications resource.</summary>
+            public virtual ApplicationsResource Applications { get; }
+
+            /// <summary>The "applications" collection of methods.</summary>
+            public class ApplicationsResource
+            {
+                private const string Resource = "applications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ApplicationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets information about an application.</summary>
+                /// <param name="projectsId">
+                /// Part of `name`. Name of the Application resource to get. Example: apps/myapp.
+                /// </param>
+                /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId)
+                {
+                    return new GetRequest(service, projectsId, locationsId, applicationsId);
+                }
+
+                /// <summary>Gets information about an application.</summary>
+                public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Application>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
+                    {
+                        ProjectsId = projectsId;
+                        LocationsId = locationsId;
+                        ApplicationsId = applicationsId;
+                        InitParameters();
+                    }
+
+                    /// <summary>Part of `name`. Name of the Application resource to get. Example: apps/myapp.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string LocationsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ApplicationsId { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "applicationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
         }
     }

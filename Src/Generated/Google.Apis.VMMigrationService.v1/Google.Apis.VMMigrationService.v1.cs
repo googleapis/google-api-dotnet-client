@@ -55,7 +55,7 @@ namespace Google.Apis.VMMigrationService.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Migrate to Virtual Machines API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the VM Migration API.</summary>
         public class Scope
         {
             /// <summary>
@@ -65,7 +65,7 @@ namespace Google.Apis.VMMigrationService.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Migrate to Virtual Machines API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the VM Migration API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -4431,6 +4431,21 @@ namespace Google.Apis.VMMigrationService.v1
 }
 namespace Google.Apis.VMMigrationService.v1.Data
 {
+    /// <summary>Message describing AWS Credentials using access key id and secret.</summary>
+    public class AccessKeyCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AWS access key ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
+        public virtual string AccessKeyId { get; set; }
+
+        /// <summary>Input only. AWS secret access key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKey")]
+        public virtual string SecretAccessKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AdaptingOSStep contains specific step details.</summary>
     public class AdaptingOSStep : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4503,6 +4518,171 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newDeployableAppliance")]
         public virtual ApplianceVersion NewDeployableAppliance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AwsSecurityGroup describes a security group of an AWS VM.</summary>
+    public class AwsSecurityGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS security group id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The AWS security group name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AwsSourceDetails message describes a specific source details for the AWS source type.</summary>
+    public class AwsSourceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AWS Credentials using access key id and secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyCreds")]
+        public virtual AccessKeyCredentials AccessKeyCreds { get; set; }
+
+        /// <summary>Immutable. The AWS region that the source VMs will be migrated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRegion")]
+        public virtual string AwsRegion { get; set; }
+
+        /// <summary>Output only. Provides details on the state of the Source in case of an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>AWS security group names to limit the scope of the source inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventorySecurityGroupNames")]
+        public virtual System.Collections.Generic.IList<string> InventorySecurityGroupNames { get; set; }
+
+        /// <summary>AWS resource tags to limit the scope of the source inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryTagList")]
+        public virtual System.Collections.Generic.IList<Tag> InventoryTagList { get; set; }
+
+        /// <summary>
+        /// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to
+        /// the default tags that are set as part of the migration process. The tags must not begin with the reserved
+        /// prefix `m2vm`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationResourcesUserTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MigrationResourcesUserTags { get; set; }
+
+        /// <summary>
+        /// Output only. The source's public IP. All communication initiated by this source will originate from this IP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIp")]
+        public virtual string PublicIp { get; set; }
+
+        /// <summary>Output only. State of the source as determined by the health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent the source AWS VM details.</summary>
+    public class AwsSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
+        public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
+
+        /// <summary>The firmware type of the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
+        public virtual string Firmware { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AwsVmDetails describes a VM in AWS.</summary>
+    public class AwsVmDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CPU architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>The VM Boot Option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
+        public virtual string BootOption { get; set; }
+
+        /// <summary>The total size of the storage allocated to the VM in MB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedStorageMb")]
+        public virtual System.Nullable<long> CommittedStorageMb { get; set; }
+
+        /// <summary>The number of cpus the VM has.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
+        public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>The number of disks the VM has.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskCount")]
+        public virtual System.Nullable<int> DiskCount { get; set; }
+
+        /// <summary>The display name of the VM. Note that this value is not necessarily unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The instance type of the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
+        public virtual string InstanceType { get; set; }
+
+        /// <summary>The memory size of the VM in MB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>The VM's OS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osDescription")]
+        public virtual string OsDescription { get; set; }
+
+        /// <summary>Output only. The power state of the VM at the moment list was taken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("powerState")]
+        public virtual string PowerState { get; set; }
+
+        /// <summary>The security groups the VM belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityGroups")]
+        public virtual System.Collections.Generic.IList<AwsSecurityGroup> SecurityGroups { get; set; }
+
+        /// <summary>The descriptive name of the AWS's source this VM is connected to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDescription")]
+        public virtual string SourceDescription { get; set; }
+
+        /// <summary>The id of the AWS's source this VM is connected to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
+        public virtual string SourceId { get; set; }
+
+        /// <summary>The tags of the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The virtualization type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualizationType")]
+        public virtual string VirtualizationType { get; set; }
+
+        /// <summary>The VM ID in AWS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; }
+
+        /// <summary>The VPC ID the VM belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcId")]
+        public virtual string VpcId { get; set; }
+
+        /// <summary>The AWS zone of the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AWSVmsDetails describes VMs in AWS.</summary>
+    public class AwsVmsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details of the AWS VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<AwsVmDetails> Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5024,6 +5204,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// <summary>Response message for fetchInventory.</summary>
     public class FetchInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The description of the VMs in a Source of type AWS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsVms")]
+        public virtual AwsVmsDetails AwsVms { get; set; }
+
         /// <summary>
         /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.
@@ -5393,6 +5577,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// </summary>
     public class MigratingVm : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details of the VM from an AWS source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsSourceVmDetails")]
+        public virtual AwsSourceVmDetails AwsSourceVmDetails { get; set; }
+
         /// <summary>Details of the target VM in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTargetDefaults")]
         public virtual ComputeEngineTargetDefaults ComputeEngineTargetDefaults { get; set; }
@@ -5796,6 +5984,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// </summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>AWS type source details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aws")]
+        public virtual AwsSourceDetails Aws { get; set; }
+
         /// <summary>Output only. The create time timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -5855,6 +6047,21 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tag is an AWS tag representation.</summary>
+    public class Tag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key of tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Value of tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

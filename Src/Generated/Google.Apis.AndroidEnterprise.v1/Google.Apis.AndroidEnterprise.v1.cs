@@ -6417,6 +6417,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("administrator")]
         public virtual System.Collections.Generic.IList<Administrator> Administrator { get; set; }
 
+        /// <summary>Output only. Settings for Google-provided user authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationSettings")]
+        public virtual GoogleAuthenticationSettings GoogleAuthenticationSettings { get; set; }
+
         /// <summary>The unique ID for the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6527,6 +6531,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
         public virtual System.Collections.Generic.IList<Entitlement> Entitlement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains settings for Google-provided user authentication.</summary>
+    public class GoogleAuthenticationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether dedicated devices are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedDevicesAllowed")]
+        public virtual string DedicatedDevicesAllowed { get; set; }
+
+        /// <summary>Whether Google authentication is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationRequired")]
+        public virtual string GoogleAuthenticationRequired { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

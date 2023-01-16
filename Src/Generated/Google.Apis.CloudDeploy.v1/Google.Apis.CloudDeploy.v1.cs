@@ -4664,10 +4664,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Details of a supported Skaffold version.</summary>
     public class SkaffoldVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Date when this version is expected to no longer be supported. For a more precise time, use the
-        /// `support_expiration_time` field.
-        /// </summary>
+        /// <summary>Date when this version is expected to no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportEndDate")]
         public virtual Date SupportEndDate { get; set; }
 
