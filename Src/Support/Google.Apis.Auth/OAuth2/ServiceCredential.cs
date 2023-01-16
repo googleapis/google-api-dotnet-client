@@ -212,11 +212,24 @@ namespace Google.Apis.Auth.OAuth2
             Scopes = initializer.Scopes?.Where(scope => !string.IsNullOrWhiteSpace(scope)).ToList().AsReadOnly()
                 ?? Enumerable.Empty<string>();
 
-            // Set the HTTP client.
+            DefaultExponentialBackOffPolicy = initializer.DefaultExponentialBackOffPolicy;
+            HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(initializer.HttpClientInitializers).AsReadOnly();
+
+            HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
+            HttpClient = HttpClientFactory.CreateHttpClient(BuildCreateHttpClientArgs());
+            _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
+
+            QuotaProject = initializer.QuotaProject;
+        }
+
+        /// <summary>
+        /// Builds HTTP client creation args from this credential settings.
+        /// </summary>
+        protected internal CreateHttpClientArgs BuildCreateHttpClientArgs()
+        {
             var httpArgs = new CreateHttpClientArgs();
 
             // Add exponential back-off initializer if necessary.
-            DefaultExponentialBackOffPolicy = initializer.DefaultExponentialBackOffPolicy;
             if (DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
             {
                 httpArgs.Initializers.Add(
@@ -225,17 +238,12 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             // Add other initializers
-            HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(initializer.HttpClientInitializers).AsReadOnly();
-            foreach(var httpClientInitializer in HttpClientInitializers)
+            foreach (var httpClientInitializer in HttpClientInitializers)
             {
                 httpArgs.Initializers.Add(httpClientInitializer);
             }
 
-            HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
-            HttpClient = HttpClientFactory.CreateHttpClient(httpArgs);
-            _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
-
-            QuotaProject = initializer.QuotaProject;
+            return httpArgs;
         }
 
         #region IConfigurableHttpClientInitializer
