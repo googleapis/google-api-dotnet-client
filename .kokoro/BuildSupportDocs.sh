@@ -51,7 +51,10 @@ build_site() {
     exit 1
   fi
 
-  sed -i "1s/^/baseUrl: https:\/\/googleapis.dev\/dotnet\/$package\/$version\/\n/" $directory/obj/site/xrefmap.yml
+  # Specify the baseUrl as being on cloud.google.com
+  sed -i "1s/^/baseUrl: https:\/\/cloud.google.com\/dotnet\/docs\/reference\/Google.Apis\/latest\/\n/" $directory/obj/site/xrefmap.yml
+  # Remove the api/ part we generate, as that's not in the cloud.google.com URL.
+  sed -i "s/  href: api\//  href: /g" $directory/obj/site/xrefmap.yml
 }
 
 build_site Google.Apis.Core "" netstandard2.0 Google.Apis
