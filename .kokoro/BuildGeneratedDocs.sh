@@ -9,8 +9,8 @@ cd $repo_root
 # Avoid dotnet restore failing if the directory isn't present
 mkdir -p NuPkgs/Support
 
-source DocfxFunctions.sh
-install_docfx
+# Install docfx (and any other dotnet tools)
+dotnet tool restore > /dev/null
 
 rm -rf Src/Generated/*/obj
 rm -rf Src/Generated/*/bin
