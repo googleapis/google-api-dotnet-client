@@ -5055,6 +5055,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>BundleInstallSpec is the specification configuration for a single managed bundle.</summary>
+    public class PolicyControllerBundleInstallSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>the set of namespaces to be exempted from the bundle</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedNamespaces")]
+        public virtual System.Collections.Generic.IList<string> ExemptedNamespaces { get; set; }
+
+        /// <summary>Management specifies how the bundle will be managed by the controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for Policy Controller</summary>
     public class PolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5092,6 +5107,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
         public virtual System.Nullable<bool> MutationEnabled { get; set; }
 
+        /// <summary>Specifies the desired policy content on the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyContent")]
+        public virtual PolicyControllerPolicyContentSpec PolicyContent { get; set; }
+
         /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
         /// being evaluated.
@@ -5128,11 +5147,16 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation" 4. "constraint
-        /// template library"
+        /// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentStates")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ComponentStates { get; set; }
+
+        /// <summary>
+        /// The state of the template library and any bundles included in the chosen version of the manifest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStates")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ContentStates { get; set; }
 
         /// <summary>The overall Policy Controller lifecycle state observed by the Hub Feature controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5170,6 +5194,20 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The lifecycle state of this component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PolicyContentSpec defines the user's desired content configuration on the cluster.</summary>
+    public class PolicyControllerPolicyContentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the
+        /// `policycontroller.gke.io/constraintData` annotation on a constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerBundleInstallSpec> Bundles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

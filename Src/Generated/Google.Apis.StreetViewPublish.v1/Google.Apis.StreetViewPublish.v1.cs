@@ -1668,6 +1668,29 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.</summary>
+    public class NoOverlapGpsFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time of last recorded GPS point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpsEndTime")]
+        public virtual object GpsEndTime { get; set; }
+
+        /// <summary>Time of first recorded GPS point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpsStartTime")]
+        public virtual object GpsStartTime { get; set; }
+
+        /// <summary>End time of video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoEndTime")]
+        public virtual object VideoEndTime { get; set; }
+
+        /// <summary>Start time of video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoStartTime")]
+        public virtual object VideoStartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple indoor frames found, the first
     /// frame is recorded here.
@@ -2030,6 +2053,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>See InsufficientGpsFailureDetails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insufficientGpsDetails")]
         public virtual InsufficientGpsFailureDetails InsufficientGpsDetails { get; set; }
+
+        /// <summary>See NoOverlapGpsFailureDetails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noOverlapGpsDetails")]
+        public virtual NoOverlapGpsFailureDetails NoOverlapGpsDetails { get; set; }
 
         /// <summary>See NotOutdoorsFailureDetails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notOutdoorsDetails")]

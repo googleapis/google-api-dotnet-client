@@ -972,6 +972,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
     public class EntityResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The time at which the entity was created. This field is set for `FULL` entity results. If this entity is
+        /// missing, this field will not be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
         /// A cursor that points to the position after the result entity. Set only when the `EntityResult` is part of a
         /// `QueryResultBatch` message.
         /// </summary>
@@ -1635,6 +1642,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conflictDetected")]
         public virtual System.Nullable<bool> ConflictDetected { get; set; }
+
+        /// <summary>The create time of the entity. This field will not be set after a 'delete'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The automatically allocated key. Set only when the mutation allocated a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]

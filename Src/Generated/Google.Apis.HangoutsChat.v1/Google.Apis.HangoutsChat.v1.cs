@@ -484,8 +484,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Returns a membership. Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// Returns a membership. Requires [authentication](https://developers.google.com/chat/api/guides/auth/).
+            /// Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
             /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
@@ -502,8 +502,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Returns a membership. Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// Returns a membership. Requires [authentication](https://developers.google.com/chat/api/guides/auth/).
+            /// Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
             /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
@@ -551,10 +551,10 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists memberships in a space.
-            /// Requires [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service
-            /// account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports
-            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Lists memberships in a space. Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
             /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
             /// early access to certain features. [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the
@@ -569,10 +569,10 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists memberships in a space.
-            /// Requires [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service
-            /// account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports
-            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
+            /// Lists memberships in a space. Requires
+            /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) as part of the [Google
             /// Workspace Developer Preview Program](https://developers.google.com/workspace/preview), which grants
             /// early access to certain features. [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the
@@ -1914,8 +1914,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual Space Space { get; set; }
 
         /// <summary>
-        /// The Chat app-defined key for the thread related to the event. See the thread_key field of the
-        /// `spaces.message.create` request for more information.
+        /// The Chat app-defined key for the thread related to the event. See
+        /// [`spaces.messages.thread.threadKey`](/chat/api/reference/rest/v1/spaces.messages#Thread.FIELDS.thread_key)
+        /// for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
         public virtual string ThreadKey { get; set; }
@@ -2914,9 +2915,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1Action AutoCompleteAction { get; set; }
 
         /// <summary>
-        /// Text that appears inside the text input field meant to assist users by prompting them to enter a certain
-        /// value. This text is not visible after users begin typing. Required if `label` is unspecified. Otherwise,
-        /// optional.
+        /// Text that appears below the text input field meant to assist users by prompting them to enter a certain
+        /// value. This text is always visible. Required if `label` is unspecified. Otherwise, optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
         public virtual string HintText { get; set; }

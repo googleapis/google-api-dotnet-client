@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SA360.v0.SA360BaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SA360.v0.SA360BaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

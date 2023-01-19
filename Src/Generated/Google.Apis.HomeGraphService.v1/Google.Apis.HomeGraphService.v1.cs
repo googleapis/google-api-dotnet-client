@@ -587,7 +587,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Third-party device definition. Next ID = 14</summary>
+    /// <summary>Third-party device definition.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attributes for the traits supported by the device.</summary>

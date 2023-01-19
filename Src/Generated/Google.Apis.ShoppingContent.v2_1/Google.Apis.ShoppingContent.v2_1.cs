@@ -12924,8 +12924,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Linked Ads accounts that are active or pending approval. To create a new link request, add a new link with
         /// status `active` to the list. It will remain in a `pending` state until approved or rejected either in the
-        /// Ads interface or through the AdWords API. To delete an active link, or to cancel a link request, remove it
-        /// from the list.
+        /// Ads interface or through the Google Ads API. To delete an active link, or to cancel a link request, remove
+        /// it from the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsLinks")]
         public virtual System.Collections.Generic.IList<AccountAdsLink> AdsLinks { get; set; }
@@ -20273,7 +20273,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    ///  Required product attributes are primarily defined by the products data specification. See the Products Data
+    ///  Required product attributes are primarily defined by the product data specification. See the Product Data
     /// Specification Help Center article for information. Product data. After inserting, updating, or deleting a
     /// product, it may take several minutes before changes take effect.
     /// </summary>
@@ -20494,6 +20494,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>
+        /// Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item
+        /// in a real-world context. See the Help Center article for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifestyleImageLinks")]
+        public virtual System.Collections.Generic.IList<string> LifestyleImageLinks { get; set; }
+
         /// <summary>URL directly linking to your item's page on your website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; }
@@ -20599,7 +20606,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productLength")]
         public virtual ProductDimension ProductLength { get; set; }
 
-        /// <summary>Categories of the item (formatted as in products data specification).</summary>
+        /// <summary>Categories of the item (formatted as in product data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypes")]
         public virtual System.Collections.Generic.IList<string> ProductTypes { get; set; }
 
@@ -20625,7 +20632,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; }
 
-        /// <summary>Date range during which the item is on sale (see products data specification ).</summary>
+        /// <summary>Date range during which the item is on sale (see product data specification ).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual string SalePriceEffectiveDate { get; set; }
 
@@ -20949,7 +20956,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string LocationGroupName { get; set; }
 
         /// <summary>
-        /// The numeric ID of a location that the shipping rate applies to as defined in the AdWords API.
+        /// The numeric ID of a location that the shipping rate applies to as defined in the Google Ads API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<long> LocationId { get; set; }
@@ -21175,7 +21182,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
-        /// <summary>The numeric ID of a location that the tax rate applies to as defined in the AdWords API.</summary>
+        /// <summary>
+        /// The numeric ID of a location that the tax rate applies to as defined in the Google Ads API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<long> LocationId { get; set; }
 

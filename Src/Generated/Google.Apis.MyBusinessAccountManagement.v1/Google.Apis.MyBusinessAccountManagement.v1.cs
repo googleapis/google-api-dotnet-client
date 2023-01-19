@@ -1379,7 +1379,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1.Data
 
         /// <summary>
         /// Required. Input only. The resource name of the account which will be the primary owner of the account being
-        /// created. It should be of the form `accounts/{account_id}/`.
+        /// created. It should be of the form `accounts/{account_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryOwner")]
         public virtual string PrimaryOwner { get; set; }

@@ -279,16 +279,16 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         }
 
         /// <summary>
-        /// Searches all the IAM policies within a given accessible CRM scope (project/folder/organization). This RPC
-        /// gives callers especially administrators the ability to search all the IAM policies within a scope, even if
-        /// they don't have `.getIamPolicy` permission of all the IAM policies. Callers should have
-        /// `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the request will be
-        /// rejected.
+        /// Searches all the IAM policies within a given accessible Resource Manager scope
+        /// (project/folder/organization). This RPC gives callers especially administrators the ability to search all
+        /// the IAM policies within a scope, even if they don't have `.getIamPolicy` permission of all the IAM policies.
+        /// Callers should have `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the
+        /// request will be rejected.
         /// </summary>
         /// <param name="scope">
         /// Required. The relative name of an asset. The search is limited to the resources within the `scope`. The
-        /// allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-        /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")
+        /// allowed value must be: * Organization number (such as "organizations/123") * Folder number (such as
+        /// "folders/1234") * Project number (such as "projects/12345") * Project ID (such as "projects/abc")
         /// </param>
         public virtual SearchAllRequest SearchAll(string scope)
         {
@@ -296,11 +296,11 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         }
 
         /// <summary>
-        /// Searches all the IAM policies within a given accessible CRM scope (project/folder/organization). This RPC
-        /// gives callers especially administrators the ability to search all the IAM policies within a scope, even if
-        /// they don't have `.getIamPolicy` permission of all the IAM policies. Callers should have
-        /// `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the request will be
-        /// rejected.
+        /// Searches all the IAM policies within a given accessible Resource Manager scope
+        /// (project/folder/organization). This RPC gives callers especially administrators the ability to search all
+        /// the IAM policies within a scope, even if they don't have `.getIamPolicy` permission of all the IAM policies.
+        /// Callers should have `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the
+        /// request will be rejected.
         /// </summary>
         public class SearchAllRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p1beta1.Data.SearchAllIamPoliciesResponse>
         {
@@ -313,8 +313,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 
             /// <summary>
             /// Required. The relative name of an asset. The search is limited to the resources within the `scope`. The
-            /// allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-            /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")
+            /// allowed value must be: * Organization number (such as "organizations/123") * Folder number (such as
+            /// "folders/1234") * Project number (such as "projects/12345") * Project ID (such as "projects/abc")
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Scope { get; private set; }
@@ -406,15 +406,15 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         }
 
         /// <summary>
-        /// Searches all the resources within a given accessible CRM scope (project/folder/organization). This RPC gives
-        /// callers especially administrators the ability to search all the resources within a scope, even if they don't
-        /// have `.get` permission of all the resources. Callers should have `cloud.assets.SearchAllResources`
-        /// permission on the requested scope, otherwise the request will be rejected.
+        /// Searches all the resources within a given accessible Resource Manager scope (project/folder/organization).
+        /// This RPC gives callers especially administrators the ability to search all the resources within a scope,
+        /// even if they don't have `.get` permission of all the resources. Callers should have
+        /// `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be rejected.
         /// </summary>
         /// <param name="scope">
         /// Required. The relative name of an asset. The search is limited to the resources within the `scope`. The
-        /// allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-        /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")
+        /// allowed value must be: * Organization number (such as "organizations/123") * Folder number (such as
+        /// "folders/1234") * Project number (such as "projects/12345") * Project ID (such as "projects/abc")
         /// </param>
         public virtual SearchAllRequest SearchAll(string scope)
         {
@@ -422,10 +422,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         }
 
         /// <summary>
-        /// Searches all the resources within a given accessible CRM scope (project/folder/organization). This RPC gives
-        /// callers especially administrators the ability to search all the resources within a scope, even if they don't
-        /// have `.get` permission of all the resources. Callers should have `cloud.assets.SearchAllResources`
-        /// permission on the requested scope, otherwise the request will be rejected.
+        /// Searches all the resources within a given accessible Resource Manager scope (project/folder/organization).
+        /// This RPC gives callers especially administrators the ability to search all the resources within a scope,
+        /// even if they don't have `.get` permission of all the resources. Callers should have
+        /// `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be rejected.
         /// </summary>
         public class SearchAllRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p1beta1.Data.SearchAllResourcesResponse>
         {
@@ -438,8 +438,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 
             /// <summary>
             /// Required. The relative name of an asset. The search is limited to the resources within the `scope`. The
-            /// allowed value must be: * Organization number (such as "organizations/123") * Folder number(such as
-            /// "folders/1234") * Project number (such as "projects/12345") * Project id (such as "projects/abc")
+            /// allowed value must be: * Organization number (such as "organizations/123") * Folder number (such as
+            /// "folders/1234") * Project number (such as "projects/12345") * Project ID (such as "projects/abc")
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Scope { get; private set; }
@@ -546,7 +546,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 }
 namespace Google.Apis.CloudAsset.v1p1beta1.Data
 {
-    /// <summary>Represents the metadata of the longrunning operation for the AnalyzeIamPolicyLongrunning rpc.</summary>
+    /// <summary>Represents the metadata of the longrunning operation for the AnalyzeIamPolicyLongrunning RPC.</summary>
     public class AnalyzeIamPolicyLongrunningMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time the operation was created.</summary>
@@ -732,8 +732,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
     /// An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-    /// Cloud IAM policy). See [Supported asset
-    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+    /// for more information.
     /// </summary>
     public class GoogleCloudAssetV1p7beta1Asset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -769,12 +769,12 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual string AssetType { get; set; }
 
         /// <summary>
-        /// A representation of the Cloud IAM policy set on a Google Cloud resource. There can be a maximum of one Cloud
-        /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
-        /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
-        /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
-        /// resource levels in the hierarchy. See [this
-        /// topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information.
+        /// A representation of the IAM policy set on a Google Cloud resource. There can be a maximum of one IAM policy
+        /// set on any given resource. In addition, IAM policies inherit their granted access scope from any policies
+        /// set on parent resources in the resource hierarchy. Therefore, the effectively policy is the union of both
+        /// the policy set on this resource and each policy set on all of the resource's ancestry resource levels in the
+        /// hierarchy. See [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; }
@@ -829,8 +829,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
     /// the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-    /// Cloud IAM policy). See [Supported asset
-    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+    /// for more information.
     /// </summary>
     public class GoogleCloudAssetV1p7beta1RelatedAsset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -936,7 +936,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         /// <summary>
         /// The full name of the immediate parent of this resource. See [Resource
         /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. For
-        /// Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
+        /// Google Cloud assets, this value is the parent resource defined in the [IAM policy
         /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). Example:
         /// `//cloudresourcemanager.googleapis.com/projects/my_project_123` For third-party assets, this field may be
         /// set differently.
@@ -1538,9 +1538,11 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
 
         /// <summary>
         /// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be
-        /// allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}`
-        /// The project may be in any Google Cloud organization, not just the organization that the perimeter is defined
-        /// in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+        /// allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format:
+        /// `projects/{project_number}` VPC format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google
+        /// Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case
+        /// of allowing all Google Cloud resources only is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -1723,8 +1725,9 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1IngressPolicy> IngressPolicies { get; set; }
 
         /// <summary>
-        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are
-        /// allowed. Format: `projects/{project_number}`
+        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs
+        /// are allowed. Project format: `projects/{project_number}` VPC format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -1896,7 +1899,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// A list of IamPolicy that match the search query. Related information such as the associated resource is
+        /// A list of IAM policies that match the search query. Related information such as the associated resource is
         /// returned along with the policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
@@ -1949,7 +1952,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Labels associated with this resource. See [Labelling and grouping GCP
+        /// Labels associated with this resource. See [Labelling and grouping Google Cloud
         /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
         /// for more information.
         /// </summary>
@@ -1970,7 +1973,7 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
 
         /// <summary>
         /// Network tags associated with this resource. Like labels, network tags are a type of annotations used to
-        /// group GCP resources. See [Labelling GCP
+        /// group Google Cloud resources. See [Labelling Google Cloud
         /// resources](lhttps://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
         /// for more information.
         /// </summary>

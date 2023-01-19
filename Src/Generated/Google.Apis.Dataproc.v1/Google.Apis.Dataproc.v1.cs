@@ -3802,7 +3802,7 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string ClusterName { get; private set; }
 
                     /// <summary>
-                    /// Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows removing
+                    /// Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning allows removing
                     /// nodes from the cluster without interrupting jobs in progress. Timeout specifies how long to wait
                     /// for jobs in progress to finish before forcefully removing nodes (and potentially interrupting
                     /// jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1
@@ -7308,6 +7308,8 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the
         /// session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of
         /// Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set.
+        /// If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be
+        /// terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTtl")]
         public virtual object IdleTtl { get; set; }
@@ -9267,7 +9269,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ClusterUuid { get; set; }
 
         /// <summary>
-        /// Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning facilitates the removal of
+        /// Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning facilitates the removal of
         /// cluster nodes without interrupting jobs in progress. The timeout specifies the amount of time to wait for
         /// jobs finish before forcefully removing nodes. The default timeout is 0 for forceful decommissioning, and the
         /// maximum timeout period is 1 day. (see JSON Mapping—Duration

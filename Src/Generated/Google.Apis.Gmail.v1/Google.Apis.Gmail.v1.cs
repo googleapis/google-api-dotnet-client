@@ -3456,7 +3456,6 @@ namespace Google.Apis.Gmail.v1
                     /// Creates and configures a client-side encryption identity that's authorized to send mail from the
                     /// user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that
                     /// people within a Google Workspace organization can encrypt and send mail to the identity.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3472,7 +3471,6 @@ namespace Google.Apis.Gmail.v1
                     /// Creates and configures a client-side encryption identity that's authorized to send mail from the
                     /// user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that
                     /// people within a Google Workspace organization can encrypt and send mail to the identity.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
                     {
@@ -3525,7 +3523,6 @@ namespace Google.Apis.Gmail.v1
                     /// Deletes a client-side encryption identity. The authenticated user can no longer use the identity
                     /// to send encrypted messages. You cannot restore the identity after you delete it. Instead, use
                     /// the CreateCseIdentity method to create another identity with the same configuration.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
@@ -3544,7 +3541,6 @@ namespace Google.Apis.Gmail.v1
                     /// Deletes a client-side encryption identity. The authenticated user can no longer use the identity
                     /// to send encrypted messages. You cannot restore the identity after you delete it. Instead, use
                     /// the CreateCseIdentity method to create another identity with the same configuration.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class DeleteRequest : GmailBaseServiceRequest<string>
                     {
@@ -3602,10 +3598,7 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Retrieves a client-side encryption identity configuration.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Retrieves a client-side encryption identity configuration.</summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -3619,10 +3612,7 @@ namespace Google.Apis.Gmail.v1
                         return new GetRequest(service, userId, cseEmailAddress);
                     }
 
-                    /// <summary>
-                    /// Retrieves a client-side encryption identity configuration.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Retrieves a client-side encryption identity configuration.</summary>
                     public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3679,10 +3669,7 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Lists the client-side encrypted identities for an authenticated user.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Lists the client-side encrypted identities for an authenticated user.</summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -3692,10 +3679,7 @@ namespace Google.Apis.Gmail.v1
                         return new ListRequest(service, userId);
                     }
 
-                    /// <summary>
-                    /// Lists the client-side encrypted identities for an authenticated user.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Lists the client-side encrypted identities for an authenticated user.</summary>
                     public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListCseIdentitiesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3770,7 +3754,6 @@ namespace Google.Apis.Gmail.v1
                     /// Associates a different key pair with an existing client-side encryption identity. The updated
                     /// key pair must validate against Google's [S/MIME certificate
                     /// profiles](https://support.google.com/a/answer/7300887).
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3789,7 +3772,6 @@ namespace Google.Apis.Gmail.v1
                     /// Associates a different key pair with an existing client-side encryption identity. The updated
                     /// key pair must validate against Google's [S/MIME certificate
                     /// profiles](https://support.google.com/a/answer/7300887).
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
                     {
@@ -3872,7 +3854,6 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Creates and uploads a client-side encryption S/MIME public key certificate chain and private key
                     /// metadata for the authenticated user.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3887,7 +3868,6 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Creates and uploads a client-side encryption S/MIME public key certificate chain and private key
                     /// metadata for the authenticated user.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
@@ -3941,7 +3921,6 @@ namespace Google.Apis.Gmail.v1
                     /// pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the
                     /// EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair
                     /// by using the ObliterateCseKeyPair method.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3959,7 +3938,6 @@ namespace Google.Apis.Gmail.v1
                     /// pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the
                     /// EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair
                     /// by using the ObliterateCseKeyPair method.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class DisableRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
@@ -4024,7 +4002,6 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Turns on a client-side encryption key pair that was turned off. The key pair becomes active
                     /// again for any associated client-side encryption identities.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -4040,7 +4017,6 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Turns on a client-side encryption key pair that was turned off. The key pair becomes active
                     /// again for any associated client-side encryption identities.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class EnableRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
@@ -4102,10 +4078,7 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Retrieves an existing client-side encryption key pair.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Retrieves an existing client-side encryption key pair.</summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -4116,10 +4089,7 @@ namespace Google.Apis.Gmail.v1
                         return new GetRequest(service, userId, keyPairId);
                     }
 
-                    /// <summary>
-                    /// Retrieves an existing client-side encryption key pair.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Retrieves an existing client-side encryption key pair.</summary>
                     public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -4173,10 +4143,7 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Lists client-side encryption key pairs for an authenticated user.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Lists client-side encryption key pairs for an authenticated user.</summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -4186,10 +4153,7 @@ namespace Google.Apis.Gmail.v1
                         return new ListRequest(service, userId);
                     }
 
-                    /// <summary>
-                    /// Lists client-side encryption key pairs for an authenticated user.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
-                    /// </summary>
+                    /// <summary>Lists client-side encryption key pairs for an authenticated user.</summary>
                     public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListCseKeyPairsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4266,7 +4230,6 @@ namespace Google.Apis.Gmail.v1
                     /// the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by
                     /// an obliterated key. Authenticated users and Google Workspace administrators lose access to
                     /// reading the encrypted messages.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -4285,7 +4248,6 @@ namespace Google.Apis.Gmail.v1
                     /// the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by
                     /// an obliterated key. Authenticated users and Google Workspace administrators lose access to
                     /// reading the encrypted messages.
-                    /// [Beta](https://workspace.google.com/terms/service-terms/index.html).
                     /// </summary>
                     public class ObliterateRequest : GmailBaseServiceRequest<string>
                     {
@@ -7365,9 +7327,9 @@ namespace Google.Apis.Gmail.v1.Data
     }
 
     /// <summary>
-    /// [Beta](https://workspace.google.com/terms/service-terms/index.html). The client-side encryption (CSE)
-    /// configuration for the email address of an authenticated user. Gmail uses CSE configurations to save drafts of
-    /// client-side encrypted email messages, and to sign and send encrypted email messages.
+    /// The client-side encryption (CSE) configuration for the email address of an authenticated user. Gmail uses CSE
+    /// configurations to save drafts of client-side encrypted email messages, and to sign and send encrypted email
+    /// messages.
     /// </summary>
     public class CseIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7387,11 +7349,10 @@ namespace Google.Apis.Gmail.v1.Data
     }
 
     /// <summary>
-    /// [Beta](https://workspace.google.com/terms/service-terms/index.html). A client-side encryption S/MIME key pair,
-    /// which is comprised of a public key, its certificate chain, and metadata for its paired private key. Gmail uses
-    /// the key pair to complete the following tasks: - Sign outgoing client-side encrypted messages. - Save and reopen
-    /// drafts of client-side encrypted messages. - Save and reopen sent messages. - Decrypt incoming or archived S/MIME
-    /// messages.
+    /// A client-side encryption S/MIME key pair, which is comprised of a public key, its certificate chain, and
+    /// metadata for its paired private key. Gmail uses the key pair to complete the following tasks: - Sign outgoing
+    /// client-side encrypted messages. - Save and reopen drafts of client-side encrypted messages. - Save and reopen
+    /// sent messages. - Decrypt incoming or archived S/MIME messages.
     /// </summary>
     public class CseKeyPair : Google.Apis.Requests.IDirectResponseSchema
     {

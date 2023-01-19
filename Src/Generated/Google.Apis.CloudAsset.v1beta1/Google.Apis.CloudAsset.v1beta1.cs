@@ -1008,7 +1008,7 @@ namespace Google.Apis.CloudAsset.v1beta1
 }
 namespace Google.Apis.CloudAsset.v1beta1.Data
 {
-    /// <summary>Represents the metadata of the longrunning operation for the AnalyzeIamPolicyLongrunning rpc.</summary>
+    /// <summary>Represents the metadata of the longrunning operation for the AnalyzeIamPolicyLongrunning RPC.</summary>
     public class AnalyzeIamPolicyLongrunningMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time the operation was created.</summary>
@@ -1030,8 +1030,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     /// An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-    /// Cloud IAM policy). See [Supported asset
-    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+    /// for more information.
     /// </summary>
     public class Asset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1057,12 +1057,12 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string AssetType { get; set; }
 
         /// <summary>
-        /// A representation of the Cloud IAM policy set on a Google Cloud resource. There can be a maximum of one Cloud
-        /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
-        /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
-        /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
-        /// resource levels in the hierarchy. See [this
-        /// topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information.
+        /// A representation of the IAM policy set on a Google Cloud resource. There can be a maximum of one IAM policy
+        /// set on any given resource. In addition, IAM policies inherit their granted access scope from any policies
+        /// set on parent resources in the resource hierarchy. Therefore, the effectively policy is the union of both
+        /// the policy set on this resource and each policy set on all of the resource's ancestry resource levels in the
+        /// hierarchy. See [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; }
@@ -1297,7 +1297,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The uri of the Cloud Storage object. It's the same uri that is used by gsutil. For example:
+        /// The URI of the Cloud Storage object. It's the same URI that is used by gsutil. For example:
         /// "gs://bucket_name/object_name". See [Viewing and Editing Object
         /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information.
         /// </summary>
@@ -1305,8 +1305,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string Uri { get; set; }
 
         /// <summary>
-        /// The uri prefix of all generated Cloud Storage objects. For example: "gs://bucket_name/object_name_prefix".
-        /// Each object uri is in format: "gs://bucket_name/object_name_prefix// and only contains assets for that type.
+        /// The URI prefix of all generated Cloud Storage objects. For example: "gs://bucket_name/object_name_prefix".
+        /// Each object URI is in format: "gs://bucket_name/object_name_prefix// and only contains assets for that type.
         /// starts from 0. For example: "gs://bucket_name/object_name_prefix/google.compute.disk/0" is the first shard
         /// of output objects containing all google.compute.disk assets. An INVALID_ARGUMENT error will be returned if
         /// file with the same name "gs://bucket_name/object_name_prefix" already exists.
@@ -1322,8 +1322,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     /// An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-    /// Cloud IAM policy). See [Supported asset
-    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+    /// for more information.
     /// </summary>
     public class GoogleCloudAssetV1p7beta1Asset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1359,12 +1359,12 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string AssetType { get; set; }
 
         /// <summary>
-        /// A representation of the Cloud IAM policy set on a Google Cloud resource. There can be a maximum of one Cloud
-        /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
-        /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
-        /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
-        /// resource levels in the hierarchy. See [this
-        /// topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information.
+        /// A representation of the IAM policy set on a Google Cloud resource. There can be a maximum of one IAM policy
+        /// set on any given resource. In addition, IAM policies inherit their granted access scope from any policies
+        /// set on parent resources in the resource hierarchy. Therefore, the effectively policy is the union of both
+        /// the policy set on this resource and each policy set on all of the resource's ancestry resource levels in the
+        /// hierarchy. See [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; }
@@ -1419,8 +1419,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     /// the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-    /// Cloud IAM policy). See [Supported asset
-    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+    /// for more information.
     /// </summary>
     public class GoogleCloudAssetV1p7beta1RelatedAsset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1526,7 +1526,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// <summary>
         /// The full name of the immediate parent of this resource. See [Resource
         /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. For
-        /// Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
+        /// Google Cloud assets, this value is the parent resource defined in the [IAM policy
         /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). Example:
         /// `//cloudresourcemanager.googleapis.com/projects/my_project_123` For third-party assets, this field may be
         /// set differently.
@@ -2128,9 +2128,11 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
 
         /// <summary>
         /// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be
-        /// allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}`
-        /// The project may be in any Google Cloud organization, not just the organization that the perimeter is defined
-        /// in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+        /// allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format:
+        /// `projects/{project_number}` VPC format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google
+        /// Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case
+        /// of allowing all Google Cloud resources only is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -2313,8 +2315,9 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1IngressPolicy> IngressPolicies { get; set; }
 
         /// <summary>
-        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are
-        /// allowed. Format: `projects/{project_number}`
+        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs
+        /// are allowed. Project format: `projects/{project_number}` VPC format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -2507,7 +2510,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// <summary>
         /// The full name of the immediate parent of this resource. See [Resource
         /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. For
-        /// Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
+        /// Google Cloud assets, this value is the parent resource defined in the [IAM policy
         /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). Example:
         /// `//cloudresourcemanager.googleapis.com/projects/my_project_123` For third-party assets, this field may be
         /// set differently.

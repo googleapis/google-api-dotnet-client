@@ -1621,6 +1621,75 @@ namespace Google.Apis.CloudRun.v2
                         });
                     }
                 }
+
+                /// <summary>
+                /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                /// returning the latest state. If the operation is already done, the latest state is immediately
+                /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                /// timeout is used. If the server does not support this method, it returns
+                /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the
+                /// latest state before the specified timeout (including immediately), meaning even an immediate
+                /// response is no guarantee that the operation is done.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to wait on.</param>
+                public virtual WaitRequest Wait(Google.Apis.CloudRun.v2.Data.GoogleLongrunningWaitOperationRequest body, string name)
+                {
+                    return new WaitRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                /// returning the latest state. If the operation is already done, the latest state is immediately
+                /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                /// timeout is used. If the server does not support this method, it returns
+                /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the
+                /// latest state before the specified timeout (including immediately), meaning even an immediate
+                /// response is no guarantee that the operation is done.
+                /// </summary>
+                public class WaitRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Wait request.</summary>
+                    public WaitRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleLongrunningWaitOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to wait on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleLongrunningWaitOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "wait";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:wait";
+
+                    /// <summary>Initializes Wait parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Services resource.</summary>
@@ -4552,6 +4621,21 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Operations.WaitOperation.</summary>
+    public class GoogleLongrunningWaitOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted
+        /// by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
