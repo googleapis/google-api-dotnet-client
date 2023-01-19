@@ -5071,16 +5071,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ServiceName { get; set; }
 
         /// <summary>
-        /// What kind of user agent is associated, e.g. operating system shells, embedded or stand-alone applications,
-        /// etc.
+        /// What kind of user agent is associated, for example operating system shells, embedded or stand-alone
+        /// applications, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgentFamily")]
         public virtual string UserAgentFamily { get; set; }
 
         /// <summary>
-        /// A string representing a username. This is likely not an IAM principal. For instance, this may be the system
-        /// user name if the finding is VM-related, or this may be some type of application login user name, depending
-        /// on the type of finding.
+        /// A string that represents the username of a user, user account, or other entity involved in the access event.
+        /// What the entity is and what its role in the access event is depends on the finding that this field appears
+        /// in. The entity is likely not an IAM principal, but could be a user that is logged into an operating system,
+        /// if the finding is VM-related, or a user that is logged into some type of application that is involved in the
+        /// access event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }
