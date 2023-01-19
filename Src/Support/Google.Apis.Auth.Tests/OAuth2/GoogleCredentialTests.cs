@@ -697,9 +697,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public async Task SignBlobAsync_UnsupportedCredential()
         {
-            var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored");
-            var computeCredential = new ComputeCredential(initializer);
-            var googleCredential = GoogleCredential.FromComputeCredential(computeCredential);
+            var googleCredential = GoogleCredential.FromAccessToken("fake_token");
             await Assert.ThrowsAsync<InvalidOperationException>(() => googleCredential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
         }
     }

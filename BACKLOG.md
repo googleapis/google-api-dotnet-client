@@ -53,7 +53,6 @@ the request and want to put work into it.
 - Issue [#1803 OIDC support for user credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1803)
 - Issue [#1812 Support for limited input device flow](https://github.com/googleapis/google-api-dotnet-client/issues/1812)
 - Issue [#1827 PCKE flow should no require client_secret](https://github.com/googleapis/google-api-dotnet-client/issues/1827)
-- Issue [#1857 Retrieve default Compute credential email](https://github.com/googleapis/google-api-dotnet-client/issues/1857)
 - Issue [#2011 Add support for Domain-Wide Delegation using ImpersonatedCredential](https://github.com/googleapis/google-api-dotnet-client/issues/2011)
 - Issue [#2159 Impersonation for gcloud credentials](https://github.com/googleapis/google-api-dotnet-client/issues/2159)
 - Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries. These feature requests are on the Auth team backlog.

@@ -355,7 +355,7 @@ namespace Google.Apis.Auth.OAuth2
             UnderlyingCredential is IBlobSigner ?
                 await (UnderlyingCredential as IBlobSigner).SignBlobAsync(blob, cancellationToken).ConfigureAwait(false) :
                 throw new InvalidOperationException(
-                    $"{nameof(UnderlyingCredential)} is not a blob signer. Only {nameof(ServiceAccountCredential)}, {nameof(ImpersonatedCredential)} are supported blob signers.");
+                    $"{nameof(UnderlyingCredential)} is not a blob signer. Only {nameof(ServiceAccountCredential)}, {nameof(ImpersonatedCredential)}, {nameof(ComputeCredential)} are supported blob signers.");
 
         /// <summary>
         /// Allows this credential to impersonate the <see cref="ImpersonatedCredential.Initializer.TargetPrincipal"/>.

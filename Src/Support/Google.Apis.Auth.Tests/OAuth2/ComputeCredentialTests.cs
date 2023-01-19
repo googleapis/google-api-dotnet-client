@@ -15,10 +15,15 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
+using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using static Google.Apis.Auth.JsonWebSignature;
@@ -47,6 +52,34 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.NotSame(credential.HttpClient, credentialWithFactory.HttpClient);
             Assert.NotSame(credential.HttpClientFactory, credentialWithFactory.HttpClientFactory);
             Assert.Same(factory, credentialWithFactory.HttpClientFactory);
+        }
+
+        [Fact]
+        public async Task FetchesDefaultServiceAccountEmail()
+        {
+            string dummyServiceAccountEmail = "dummy-service-account@dummy-instance.com";
+
+            var messageHandler = new DelegatedMessageHandler(FetchServiceAccountId);
+            var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
+            {
+                HttpClientFactory = new MockHttpClientFactory(messageHandler)
+            };
+            var credential = new ComputeCredential(initializer);
+
+            var serviceAccountEmailTask = credential.GetDefaultServiceAccountEmailAsync();
+
+            Assert.Equal(dummyServiceAccountEmail, await serviceAccountEmailTask);
+
+            Task<HttpResponseMessage> FetchServiceAccountId(HttpRequestMessage request)
+            {
+                Assert.Equal(GoogleAuthConsts.EffectiveComputeDefaultServiceAccountEmailUrl, request.RequestUri.ToString());
+                Assert.Null(request.Headers.Authorization);
+                Assert.Contains(request.Headers, h => h.Key == ComputeCredential.MetadataFlavor && h.Value.Contains(ComputeCredential.GoogleMetadataHeader));
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(dummyServiceAccountEmail)
+                });
+            }
         }
 
         [Fact]
@@ -235,6 +268,62 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             AssertScoped(credential, scopes, expectedTokenUrl);
             await AssertUsesScopedUrl(credential, fakeMessageHandler, expectedTokenUrl);
+        }
+
+        [Fact]
+        public async Task SignBlobAsync()
+        {
+            var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
+            var response = NewtonsoftJsonSerializer.Instance.Serialize(new { keyId = "1", signedBlob = "Zm9v" });
+            var dummyAccessToken = "dummy_access_token";
+            var dummyServiceAccountEmail = "dummy-service-account@dummy-instance.com";
+
+            var messageHandler = new DelegatedMessageHandler(FetchServiceAccountId, FetchOAuthToken, SignBlob);
+            var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
+            {
+                HttpClientFactory = new MockHttpClientFactory(messageHandler),
+                Clock = clock
+            };
+
+            var credential = new ComputeCredential(initializer);
+
+            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored")).ConfigureAwait(false);
+            Assert.Equal("Zm9v", signature);
+
+            Task<HttpResponseMessage> FetchServiceAccountId(HttpRequestMessage request)
+            {
+                Assert.Null(request.Headers.Authorization);
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(dummyServiceAccountEmail)
+                });
+            }
+
+            Task<HttpResponseMessage> FetchOAuthToken(HttpRequestMessage request)
+            {
+                Assert.Null(request.Headers.Authorization);
+                // We are requesting a token for calling the IAM API, the request URI should include the IAM scope.
+                Assert.Equal($"http://will.be.ignored/?scopes={GoogleAuthConsts.IamScope}", request.RequestUri.ToString());
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
+                    {
+                        AccessToken = dummyAccessToken,
+                        ExpiresInSeconds = 24 * 60 * 60, //One day in seconds
+                        IssuedUtc = clock.UtcNow
+                    }))
+                });
+            }
+
+            Task<HttpResponseMessage> SignBlob(HttpRequestMessage request)
+            {
+                Assert.Equal(string.Format(GoogleAuthConsts.IamSignEndpointFormatString, dummyServiceAccountEmail), request.RequestUri.ToString());
+                Assert.Equal(dummyAccessToken, request.Headers.Authorization.Parameter);
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(response)
+                });
+            }
         }
     }
 }
