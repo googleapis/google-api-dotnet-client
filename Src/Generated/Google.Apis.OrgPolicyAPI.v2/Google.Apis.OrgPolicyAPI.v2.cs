@@ -762,6 +762,13 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Field mask used to specify the fields to be overwritten in the policy by the set. The fields
+                /// specified in the update_mask are relative to the policy, not the full request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy Body { get; set; }
 
@@ -788,6 +795,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/policies/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1636,6 +1651,13 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Field mask used to specify the fields to be overwritten in the policy by the set. The fields
+                /// specified in the update_mask are relative to the policy, not the full request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy Body { get; set; }
 
@@ -1662,6 +1684,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/policies/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2162,6 +2192,13 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Field mask used to specify the fields to be overwritten in the policy by the set. The fields
+                /// specified in the update_mask are relative to the policy, not the full request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy Body { get; set; }
 
@@ -2188,6 +2225,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/policies/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2430,6 +2475,13 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
         public virtual GoogleCloudOrgpolicyV2AlternatePolicySpec Alternate { get; set; }
+
+        /// <summary>
+        /// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing
+        /// and future resources if it's enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRunSpec")]
+        public virtual GoogleCloudOrgpolicyV2PolicySpec DryRunSpec { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the

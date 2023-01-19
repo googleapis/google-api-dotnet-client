@@ -2344,6 +2344,14 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedRanges")]
         public virtual System.Collections.Generic.IList<string> RequestedRanges { get; set; }
 
+        /// <summary>
+        /// Optional. Defines the role field of the subnet, e.g. 'ACTIVE'. For information about the roles that can be
+        /// set using this field, see [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
+        /// in the Compute API documentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
         /// <summary>Optional. A list of secondary IP ranges to be created within the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRangeSpecs")]
         public virtual System.Collections.Generic.IList<SecondaryIpRangeSpec> SecondaryIpRangeSpecs { get; set; }

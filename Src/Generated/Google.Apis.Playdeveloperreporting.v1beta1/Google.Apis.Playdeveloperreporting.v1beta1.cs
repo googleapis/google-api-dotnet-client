@@ -56,6 +56,20 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Play Developer Reporting API.</summary>
+        public class Scope
+        {
+            /// <summary>See metrics and data about the apps in your Google Play Developer account</summary>
+            public static string Playdeveloperreporting = "https://www.googleapis.com/auth/playdeveloperreporting";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Developer Reporting API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>See metrics and data about the apps in your Google Play Developer account</summary>
+            public const string Playdeveloperreporting = "https://www.googleapis.com/auth/playdeveloperreporting";
+        }
+
         /// <summary>Gets the Anomalies resource.</summary>
         public virtual AnomaliesResource Anomalies { get; }
 
