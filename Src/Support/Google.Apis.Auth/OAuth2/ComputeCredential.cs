@@ -14,9 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Util;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +39,7 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public class ComputeCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
+    public class ComputeCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
         /// <summary>The metadata server url. This can be overridden (for the purposes of Compute environment detection and
         /// auth token retrieval) using the GCE_METADATA_HOST environment variable.</summary>
@@ -57,10 +59,24 @@ namespace Google.Apis.Auth.OAuth2
         private const int MetadataServerPingAttempts = 3;
 
         /// <summary>The Metadata flavor header name.</summary>
-        private const string MetadataFlavor = "Metadata-Flavor";
+        internal const string MetadataFlavor = "Metadata-Flavor";
 
         /// <summary>The Metadata header response indicating Google.</summary>
-        private const string GoogleMetadataHeader = "Google";
+        internal const string GoogleMetadataHeader = "Google";
+
+        /// <summary>
+        /// Caches the task that fetches the default service account email from the metadata server.
+        /// The default service account email can be cached because changing the service
+        /// account associated to a Compute instance requires a machine shutdown.
+        /// </summary>
+        private readonly Lazy<Task<string>> _defaultServiceAccountEmailCache;
+
+        /// <summary>
+        /// HttpClient used to call APIs internally authenticated as this ComputeCredential.
+        /// For instance, to perform IAM API calls for signing blobs of data.
+        /// </summary>
+        /// <remarks>Lazy to build one HtppClient only if it is needed.</remarks>
+        private readonly Lazy<ConfigurableHttpClient> _authenticatedHttpClient;
 
         /// <summary>
         /// Gets the OIDC Token URL.
@@ -132,6 +148,8 @@ namespace Google.Apis.Auth.OAuth2
             {
                 EffectiveTokenServerUrl = TokenServerUrl;
             }
+            _defaultServiceAccountEmailCache = new Lazy<Task<string>>(FetchDefaultServiceAccountEmailAsync, LazyThreadSafetyMode.ExecutionAndPublication);
+            _authenticatedHttpClient = new Lazy<ConfigurableHttpClient>(BuildAuthenticatedHttpClient, LazyThreadSafetyMode.ExecutionAndPublication);
         }
 
         /// <inheritdoc/>
@@ -149,6 +167,26 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
             new ComputeCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
+
+        /// <summary>
+        /// Returns a task whose result, when completed, is the default service account email associated to
+        /// this Compute credential.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This value is cached, because for changing the default service account associated to a
+        /// Compute VM, the machine needs to be turned off. This means that the operation is only
+        /// asynchronous when calling for the first time.
+        /// </para>
+        /// <para>
+        /// Note that if, when fetching this value, an exception is thrown, the exception is cached and
+        /// will be rethrown by the task returned by any future call to this method.
+        /// You can create a new <see cref="ComputeCredential"/> instance if that happens so fetching
+        /// the service account default email is re-attempted.
+        /// </para>
+        /// </remarks>
+        public Task<string> GetDefaultServiceAccountEmailAsync(CancellationToken cancellationToken = default) =>
+            Task.Run(() => _defaultServiceAccountEmailCache.Value, cancellationToken);
 
         #region ServiceCredential overrides
 
@@ -196,6 +234,55 @@ namespace Google.Apis.Auth.OAuth2
             var token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
             caller.Token = token;
             return true;
+        }
+
+        /// <summary>
+        /// Signs the provided blob using the private key associated with the service account
+        /// this ComputeCredential represents.
+        /// </summary>
+        /// <param name="blob">The blob to sign.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+        /// <returns>The base64 encoded signature.</returns>
+        /// <exception cref="HttpRequestException">When the signing request fails.</exception>
+        /// <exception cref="JsonException">When the signing response is not valid JSON.</exception>
+        /// <remarks>
+        /// The private key associated with the Compute service account is not known locally
+        /// by a ComputeCredential. Signing happens by executing a request to the IAM Credentials API
+        /// which increases latency and counts towards IAM Credentials API quotas. Aditionally, the first
+        /// time a ComputeCredential is used to sign data, a request to the metadata server is made to
+        /// to obtain the email of the default Compute service account.
+        /// </remarks>
+        public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
+        {
+            var request = new IamSignBlobRequest { Payload = blob };
+            var serviceAccountEmail = await GetDefaultServiceAccountEmailAsync(cancellationToken).ConfigureAwait(false);
+            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, serviceAccountEmail);
+
+            var response = await request.PostJsonAsync<IamSignBlobResponse>(_authenticatedHttpClient.Value, signBlobUrl, cancellationToken)
+                .ConfigureAwait(false);
+
+            return response.SignedBlob;
+        }
+
+        private async Task<string> FetchDefaultServiceAccountEmailAsync()
+        {
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveComputeDefaultServiceAccountEmailUrl);
+            httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
+
+            var response = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        }
+
+        private ConfigurableHttpClient BuildAuthenticatedHttpClient()
+        {
+            var httpClientArgs = BuildCreateHttpClientArgs();
+            // We scope the credential because, although normal ComputeCredentials are scoped on origin,
+            // GKE Workload Identity credentials accept scopes.
+            // We know that the HttpClient is only used for IAM requests, so we scope it only for IAM.
+            var scopedCredential = ((IGoogleCredential)this).MaybeWithScopes(new string[] { GoogleAuthConsts.IamScope });
+            httpClientArgs.Initializers.Add(scopedCredential);
+            return HttpClientFactory.CreateHttpClient(httpClientArgs);
         }
 
         /// <summary>
