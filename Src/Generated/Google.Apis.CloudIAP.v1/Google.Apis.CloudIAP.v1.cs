@@ -1637,10 +1637,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessDeniedPageSettings")]
         public virtual AccessDeniedPageSettings AccessDeniedPageSettings { get; set; }
 
-        /// <summary>
-        /// Settings to configure attribute propagation to customer application. These attributes may come from
-        /// SAML/SessionStorage integration, or other sources in the future.
-        /// </summary>
+        /// <summary>Settings to configure attribute propagation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributePropagationSettings")]
         public virtual AttributePropagationSettings AttributePropagationSettings { get; set; }
 
@@ -1659,10 +1656,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Configuration for propagating attributes to customer applications protected by IAP. These attributes may be SAML
-    /// attributes from a 3rd party IdP, or potentially other sources in the future.
-    /// </summary>
+    /// <summary>Configuration for propagating attributes to applications protected by IAP.</summary>
     public class AttributePropagationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1673,9 +1667,16 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual System.Nullable<bool> Enable { get; set; }
 
         /// <summary>
-        /// Raw string CEL expression. Expression should be of the form attributes.saml_attributes.filter(attribute,
-        /// attribute.name in [{attribute_list}]). An example expression to select the attributes "my_attr" and
-        /// "other_attr": attributes.saml_attributes.filter(attribute, attribute.name in ["my_attr", "other_attr"])
+        /// Raw string CEL expression. Must return a list of attributes. Maximum of 45 attributes can be selected.
+        /// Expressions can select different attribute types from `attributes`: `attributes.saml_attributes`,
+        /// `attributes.iap_attributes`. Limited functions are supported: - filter: .filter(, ) -&amp;gt; returns a
+        /// subset of where is true for every item - in: in -&amp;gt; returns true if contains - selectByName:
+        /// .selectByName() -&amp;gt; returns the attribute in with the given name, otherwise returns empty. - emitAs:
+        /// .emitAs() -&amp;gt; sets the name field to the given for propagation in selected output credentials. -
+        /// strict: .strict() -&amp;gt; ignore the `x-goog-iap-attr-` prefix for the provided attribute when propagating
+        /// via the `HEADER` output credential, i.e. request headers. - append: .append() OR .append() -&amp;gt; append
+        /// the provided or onto the end of Example expression: attributes.saml_attributes.filter(x, x.name in
+        /// ['test']).append(attributes.iap_attributes.selectByName('exact').emitAs('custom').strict())
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }

@@ -4569,6 +4569,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for
+        /// VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageAggregatePool")]
+        public virtual string StorageAggregatePool { get; set; }
+
         /// <summary>The storage type for this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageType")]
         public virtual string StorageType { get; set; }
@@ -4626,6 +4633,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Whether snapshots should be enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotsEnabled")]
         public virtual System.Nullable<bool> SnapshotsEnabled { get; set; }
+
+        /// <summary>
+        /// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for
+        /// VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageAggregatePool")]
+        public virtual string StorageAggregatePool { get; set; }
 
         /// <summary>The type of this Volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

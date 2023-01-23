@@ -301,6 +301,63 @@ namespace Google.Apis.Pubsub.v1
                 this.service = service;
             }
 
+            /// <summary>Commits a new schema revision to an existing schema.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the schema we are revising. Format is `projects/{project}/schemas/{schema}`.
+            /// </param>
+            public virtual CommitRequest Commit(Google.Apis.Pubsub.v1.Data.CommitSchemaRequest body, string name)
+            {
+                return new CommitRequest(service, body, name);
+            }
+
+            /// <summary>Commits a new schema revision to an existing schema.</summary>
+            public class CommitRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Schema>
+            {
+                /// <summary>Constructs a new Commit request.</summary>
+                public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.CommitSchemaRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the schema we are revising. Format is `projects/{project}/schemas/{schema}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.CommitSchemaRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "commit";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:commit";
+
+                /// <summary>Initializes Commit parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/schemas/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Creates a schema.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -418,6 +475,72 @@ namespace Google.Apis.Pubsub.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/schemas/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a specific schema revision.</summary>
+            /// <param name="name">
+            /// Required. The name of the schema revision to be deleted, with a revision ID explicitly included.
+            /// Example: projects/123/schemas/my-schema@c7cfa2a8
+            /// </param>
+            public virtual DeleteRevisionRequest DeleteRevision(string name)
+            {
+                return new DeleteRevisionRequest(service, name);
+            }
+
+            /// <summary>Deletes a specific schema revision.</summary>
+            public class DeleteRevisionRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Schema>
+            {
+                /// <summary>Constructs a new DeleteRevision request.</summary>
+                public DeleteRevisionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the schema revision to be deleted, with a revision ID explicitly included.
+                /// Example: projects/123/schemas/my-schema@c7cfa2a8
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The revision ID to roll back to. It must be a revision of the same schema. Example:
+                /// c7cfa2a8
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("revisionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RevisionId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "deleteRevision";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:deleteRevision";
+
+                /// <summary>Initializes DeleteRevision parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/schemas/[^/]+$",
+                    });
+                    RequestParameters.Add("revisionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "revisionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -690,6 +813,165 @@ namespace Google.Apis.Pubsub.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists all schema revisions for the named schema.</summary>
+            /// <param name="name">Required. The name of the schema to list revisions for.</param>
+            public virtual ListRevisionsRequest ListRevisions(string name)
+            {
+                return new ListRevisionsRequest(service, name);
+            }
+
+            /// <summary>Lists all schema revisions for the named schema.</summary>
+            public class ListRevisionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSchemaRevisionsResponse>
+            {
+                /// <summary>Constructs a new ListRevisions request.</summary>
+                public ListRevisionsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the schema to list revisions for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The maximum number of revisions to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The page token, received from a previous ListSchemaRevisions call. Provide this to retrieve the
+                /// subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The set of Schema fields to return in the response. If not set, returns Schemas with `name` and
+                /// `type`, but not `definition`. Set to `FULL` to retrieve all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>
+                /// The set of Schema fields to return in the response. If not set, returns Schemas with `name` and
+                /// `type`, but not `definition`. Set to `FULL` to retrieve all fields.
+                /// </summary>
+                public enum ViewEnum
+                {
+                    /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW_UNSPECIFIED")]
+                    SCHEMAVIEWUNSPECIFIED = 0,
+
+                    /// <summary>Include the name and type of the schema, but not the definition.</summary>
+                    [Google.Apis.Util.StringValueAttribute("BASIC")]
+                    BASIC = 1,
+
+                    /// <summary>Include all Schema object fields.</summary>
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL = 2,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "listRevisions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:listRevisions";
+
+                /// <summary>Initializes ListRevisions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/schemas/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Creates a new schema revision that is a copy of the provided revision_id.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The schema being rolled back with revision id.</param>
+            public virtual RollbackRequest Rollback(Google.Apis.Pubsub.v1.Data.RollbackSchemaRequest body, string name)
+            {
+                return new RollbackRequest(service, body, name);
+            }
+
+            /// <summary>Creates a new schema revision that is a copy of the provided revision_id.</summary>
+            public class RollbackRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Schema>
+            {
+                /// <summary>Constructs a new Rollback request.</summary>
+                public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.RollbackSchemaRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The schema being rolled back with revision id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.RollbackSchemaRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "rollback";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:rollback";
+
+                /// <summary>Initializes Rollback parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/schemas/[^/]+$",
                     });
                 }
             }
@@ -3424,6 +3706,17 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for CommitSchema method.</summary>
+    public class CommitSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema revision to commit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual Schema Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `CreateSnapshot` method.</summary>
     public class CreateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3552,6 +3845,24 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ListSchemaRevisions` method.</summary>
+    public class ListSchemaRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The revisions of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<Schema> Schemas { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4009,6 +4320,19 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumBackoff")]
         public virtual object MinimumBackoff { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `RollbackSchema` method.</summary>
+    public class RollbackSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The revision ID to roll back to. It must be a revision of the same schema. Example: c7cfa2a8
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

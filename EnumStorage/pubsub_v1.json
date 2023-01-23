@@ -9,6 +9,11 @@
     "BASIC",
     "FULL"
   ],
+  "Google.Apis.Pubsub.v1.ProjectsResource+SchemasResource+ListRevisionsRequest.ViewEnum": [
+    "SCHEMA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.Pubsub.v1.PubsubBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",

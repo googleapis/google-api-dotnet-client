@@ -366,9 +366,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. The name of the parent resource that contains the assets. The value that you can specify on
-            /// parent depends on the method in which you specify parent. You can specify one of the following values:
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// Required. The name of the parent that the listed assets belong to. Its format is
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -386,9 +385,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the parent resource that contains the assets. The value that you can specify
-                /// on parent depends on the method in which you specify parent. You can specify one of the following
-                /// values: "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// Required. The name of the parent that the listed assets belong to. Its format is
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2566,7 +2564,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2585,7 +2583,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2745,9 +2743,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. The name of the parent resource that contains the assets. The value that you can specify on
-            /// parent depends on the method in which you specify parent. You can specify one of the following values:
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// Required. The name of the parent that the listed assets belong to. Its format is
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2765,9 +2762,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the parent resource that contains the assets. The value that you can specify
-                /// on parent depends on the method in which you specify parent. You can specify one of the following
-                /// values: "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// Required. The name of the parent that the listed assets belong to. Its format is
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5536,7 +5532,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -5555,7 +5551,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6035,9 +6031,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">
-            /// Required. The name of the parent resource that contains the assets. The value that you can specify on
-            /// parent depends on the method in which you specify parent. You can specify one of the following values:
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// Required. The name of the parent that the listed assets belong to. Its format is
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -6055,9 +6050,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the parent resource that contains the assets. The value that you can specify
-                /// on parent depends on the method in which you specify parent. You can specify one of the following
-                /// values: "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// Required. The name of the parent that the listed assets belong to. Its format is
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -8235,7 +8229,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -8254,7 +8248,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// "organizations/[organization_id], "folders/[folder_id]", or "projects/[project_id]".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -8376,18 +8370,16 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ServiceName { get; set; }
 
         /// <summary>
-        /// What kind of user agent is associated, for example operating system shells, embedded or stand-alone
-        /// applications, etc.
+        /// What kind of user agent is associated, e.g. operating system shells, embedded or stand-alone applications,
+        /// etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgentFamily")]
         public virtual string UserAgentFamily { get; set; }
 
         /// <summary>
-        /// A string that represents the username of a user, user account, or other entity involved in the access event.
-        /// What the entity is and what its role in the access event is depends on the finding that this field appears
-        /// in. The entity is likely not an IAM principal, but could be a user that is logged into an operating system,
-        /// if the finding is VM-related, or a user that is logged into some type of application that is involved in the
-        /// access event.
+        /// A string representing a username. This is likely not an IAM principal. For instance, this may be the system
+        /// user name if the finding is VM-related, or this may be some type of application login user name, depending
+        /// on the type of finding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }

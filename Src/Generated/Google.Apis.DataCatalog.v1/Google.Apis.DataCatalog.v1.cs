@@ -4697,6 +4697,12 @@ namespace Google.Apis.DataCatalog.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Supported field for filter is 'service' and value is 'dataplex'. Eg: service=dataplex.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// The maximum number of items to return. Must be a value between 1 and 1000 inclusively. If not
                     /// set, defaults to 50.
                     /// </summary>
@@ -4730,6 +4736,14 @@ namespace Google.Apis.DataCatalog.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -6984,9 +6998,31 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyTagCount")]
         public virtual System.Nullable<int> PolicyTagCount { get; set; }
 
+        /// <summary>
+        /// Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy
+        /// is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual GoogleCloudDatacatalogV1TaxonomyService Service { get; set; }
+
         /// <summary>Output only. Creation and modification timestamps of this taxonomy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxonomyTimestamps")]
         public virtual GoogleCloudDatacatalogV1SystemTimestamps TaxonomyTimestamps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The source system of the Taxonomy.</summary>
+    public class GoogleCloudDatacatalogV1TaxonomyService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>P4SA Identity of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>The GCP service name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

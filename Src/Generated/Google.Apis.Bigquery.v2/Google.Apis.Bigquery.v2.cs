@@ -4126,6 +4126,10 @@ namespace Google.Apis.Bigquery.v2.Data
     public class BiEngineStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only] Specifies which mode of BI Engine acceleration was performed (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerationMode")]
+        public virtual string AccelerationMode { get; set; }
+
+        /// <summary>[Output-only] Specifies which mode of BI Engine acceleration was performed (if any).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biEngineMode")]
         public virtual string BiEngineMode { get; set; }
 
