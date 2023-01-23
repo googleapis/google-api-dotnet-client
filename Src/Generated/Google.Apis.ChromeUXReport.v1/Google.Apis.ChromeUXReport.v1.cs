@@ -425,7 +425,7 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         public virtual System.Collections.Generic.IList<Bin> Histogram { get; set; }
 
         /// <summary>
-        /// Common useful percentiles of the Metric. The value type for the percentiles will be the same as the value
+        /// Commonly useful percentiles of the Metric. The value type for the percentiles will be the same as the value
         /// types given for the Histogram bins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentiles")]
@@ -540,7 +540,8 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         /// <summary>
         /// Metrics is the map of user experience data available for the record defined in the key field. Metrics are
         /// keyed on the metric name. Allowed key values: ["first_contentful_paint", "first_input_delay",
-        /// "largest_contentful_paint", "cumulative_layout_shift"]
+        /// "largest_contentful_paint", "cumulative_layout_shift", "experimental_time_to_first_byte",
+        /// "experimental_interaction_to_next_paint"]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, Metric> Metrics { get; set; }

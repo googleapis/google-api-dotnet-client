@@ -5885,7 +5885,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>
         /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time
         /// elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from
-        /// `startTime`. Default time is ten minutes.
+        /// `startTime`. Default time is 60 minutes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
@@ -7035,17 +7035,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>HTTPDelivery is the delivery configuration for an HTTP notification.</summary>
-    public class HTTPDelivery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The URI to which JSON-containing HTTP POST requests should be sent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Container message for hash values.</summary>
     public class Hash : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7315,134 +7304,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeredNetworkIpRange")]
         public virtual string PeeredNetworkIpRange { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Notification is the container which holds the data that is relevant to this particular notification.
-    /// </summary>
-    public class Notification : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The filter string to use for notification filtering. Currently, this is assumed to be a CEL program. See
-        /// https://opensource.google/projects/cel for more.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; }
-
-        /// <summary>Configuration for HTTP delivery.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpDelivery")]
-        public virtual HTTPDelivery HttpDelivery { get; set; }
-
-        /// <summary>Configuration for Slack delivery.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("slackDelivery")]
-        public virtual SlackDelivery SlackDelivery { get; set; }
-
-        /// <summary>Configuration for SMTP (email) delivery.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("smtpDelivery")]
-        public virtual SMTPDelivery SmtpDelivery { get; set; }
-
-        /// <summary>Escape hatch for users to supply custom delivery configs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("structDelivery")]
-        public virtual System.Collections.Generic.IDictionary<string, object> StructDelivery { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>NotifierConfig is the top-level configuration message.</summary>
-    public class NotifierConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version of this configuration format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        /// <summary>The type of notifier to use (e.g. SMTPNotifier).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Metadata for referring to/handling/deploying this notifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual NotifierMetadata Metadata { get; set; }
-
-        /// <summary>The actual configuration for this notifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual NotifierSpec Spec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>NotifierMetadata contains the data which can be used to reference or describe this notifier.</summary>
-    public class NotifierMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The human-readable and user-given name for the notifier. For example: "repo-merge-email-notifier".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The string representing the name and version of notifier to deploy. Expected to be of the form of "/:". For
-        /// example: "gcr.io/my-project/notifiers/smtp:1.2.34".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notifier")]
-        public virtual string Notifier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// NotifierSecret is the container that maps a secret name (reference) to its Google Cloud Secret Manager resource
-    /// path.
-    /// </summary>
-    public class NotifierSecret : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name is the local name of the secret, such as the verbatim string "my-smtp-password".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Value is interpreted to be a resource path for fetching the actual (versioned) secret data for this secret.
-        /// For example, this would be a Google Cloud Secret Manager secret version resource path like:
-        /// "projects/my-project/secrets/my-secret/versions/latest".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// NotifierSecretRef contains the reference to a secret stored in the corresponding NotifierSpec.
-    /// </summary>
-    public class NotifierSecretRef : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The value of `secret_ref` should be a `name` that is registered in a `Secret` in the `secrets` list of the
-        /// `Spec`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secretRef")]
-        public virtual string SecretRef { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>NotifierSpec is the configuration container for notifications.</summary>
-    public class NotifierSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The configuration of this particular notifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual Notification Notification { get; set; }
-
-        /// <summary>Configurations for secret resources used by this particular notifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
-        public virtual System.Collections.Generic.IList<NotifierSecret> Secrets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7888,42 +7749,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SMTPDelivery is the delivery configuration for an SMTP (email) notification.</summary>
-    public class SMTPDelivery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This is the SMTP account/email that appears in the `From:` of the email. If empty, it is assumed to be
-        /// sender.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromAddress")]
-        public virtual string FromAddress { get; set; }
-
-        /// <summary>The SMTP sender's password.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual NotifierSecretRef Password { get; set; }
-
-        /// <summary>The SMTP port of the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual string Port { get; set; }
-
-        /// <summary>
-        /// This is the list of addresses to which we send the email (i.e. in the `To:` of the email).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recipientAddresses")]
-        public virtual System.Collections.Generic.IList<string> RecipientAddresses { get; set; }
-
-        /// <summary>This is the SMTP account/email that is used to send the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("senderAddress")]
-        public virtual string SenderAddress { get; set; }
-
-        /// <summary>The address of the SMTP server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("server")]
-        public virtual string Server { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt
     /// the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For
@@ -7989,20 +7814,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// SlackDelivery is the delivery configuration for delivering Slack messages via webhooks. See Slack webhook
-    /// documentation at: https://api.slack.com/messaging/webhooks.
-    /// </summary>
-    public class SlackDelivery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The secret reference for the Slack webhook URI for sending messages to a channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webhookUri")]
-        public virtual NotifierSecretRef WebhookUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8357,7 +8168,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>
         /// Size of the disk attached to the worker, in GB. See [Worker pool config
         /// file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of
-        /// up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        /// up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; }

@@ -14,6 +14,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.Integrations.v1alpha.ProjectsResource+LocationsResource+IntegrationsResource+VersionsResource+DownloadRequest.FileFormatEnum": [
+    "FILE_FORMAT_UNSPECIFIED",
+    "JSON",
+    "YAML"
+  ],
   "Google.Apis.Integrations.v1alpha.ProjectsResource+LocationsResource+ProductsResource+IntegrationsResource+VersionsResource+DownloadRequest.FileFormatEnum": [
     "FILE_FORMAT_UNSPECIFIED",
     "JSON",

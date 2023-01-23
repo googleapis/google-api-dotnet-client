@@ -2409,6 +2409,158 @@ namespace Google.Apis.Integrations.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
+                    /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and set to
+                    /// the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed
+                    /// too. This RPC throws an exception if the version being deleted is DRAFT, and if the `locked_by`
+                    /// user is not the same as the user performing the Delete. Audit fields updated include
+                    /// last_modified_timestamp, last_modified_by. Any existing lock is released when Deleting a
+                    /// integration. Currently, there is no undelete mechanism.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The version to delete. Format:
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
+                    /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and set to
+                    /// the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed
+                    /// too. This RPC throws an exception if the version being deleted is DRAFT, and if the `locked_by`
+                    /// user is not the same as the user performing the Delete. Audit fields updated include
+                    /// last_modified_timestamp, last_modified_by. Any existing lock is released when Deleting a
+                    /// integration. Currently, there is no undelete mechanism.
+                    /// </summary>
+                    public class DeleteRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The version to delete. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Downloads an integration. Retrieves the `IntegrationVersion` for a given `integration_id` and
+                    /// returns the response as a string.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The version to download. Format:
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                    /// </param>
+                    public virtual DownloadRequest Download(string name)
+                    {
+                        return new DownloadRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Downloads an integration. Retrieves the `IntegrationVersion` for a given `integration_id` and
+                    /// returns the response as a string.
+                    /// </summary>
+                    public class DownloadRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>
+                    {
+                        /// <summary>Constructs a new Download request.</summary>
+                        public DownloadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The version to download. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>File format for download request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fileFormat", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<FileFormatEnum> FileFormat { get; set; }
+
+                        /// <summary>File format for download request.</summary>
+                        public enum FileFormatEnum
+                        {
+                            /// <summary>Unspecified file format</summary>
+                            [Google.Apis.Util.StringValueAttribute("FILE_FORMAT_UNSPECIFIED")]
+                            FILEFORMATUNSPECIFIED = 0,
+
+                            /// <summary>JSON File Format</summary>
+                            [Google.Apis.Util.StringValueAttribute("JSON")]
+                            JSON = 1,
+
+                            /// <summary>YAML File Format</summary>
+                            [Google.Apis.Util.StringValueAttribute("YAML")]
+                            YAML = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "download";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:download";
+
+                        /// <summary>Initializes Download parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                            });
+                            RequestParameters.Add("fileFormat", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fileFormat",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Get a integration in the specified project.</summary>
                     /// <param name="name">
                     /// Required. The version to retrieve. Format:
@@ -2817,6 +2969,142 @@ namespace Google.Apis.Integrations.v1alpha
                     }
 
                     /// <summary>
+                    /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
+                    /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws an
+                    /// exception if the version being snapshot is not ACTIVE. Audit fields added include action,
+                    /// action_by, action_timestamp.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The version to deactivate. Format:
+                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                    /// </param>
+                    public virtual UnpublishRequest Unpublish(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest body, string name)
+                    {
+                        return new UnpublishRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
+                    /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws an
+                    /// exception if the version being snapshot is not ACTIVE. Audit fields added include action,
+                    /// action_by, action_timestamp.
+                    /// </summary>
+                    public class UnpublishRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Unpublish request.</summary>
+                        public UnpublishRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The version to deactivate. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "unpublish";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:unpublish";
+
+                        /// <summary>Initializes Unpublish parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Uploads an integration. The content can be a previously downloaded integration. Performs the
+                    /// same function as CreateDraftIntegrationVersion, but accepts input in a string format, which
+                    /// holds the complete representation of the IntegrationVersion content.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The version to upload. Format:
+                    /// projects/{project}/locations/{location}/integrations/{integration}
+                    /// </param>
+                    public virtual UploadRequest Upload(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest body, string parent)
+                    {
+                        return new UploadRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Uploads an integration. The content can be a previously downloaded integration. Performs the
+                    /// same function as CreateDraftIntegrationVersion, but accepts input in a string format, which
+                    /// holds the complete representation of the IntegrationVersion content.
+                    /// </summary>
+                    public class UploadRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse>
+                    {
+                        /// <summary>Constructs a new Upload request.</summary>
+                        public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The version to upload. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "upload";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/versions:upload";
+
+                        /// <summary>Initializes Upload parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Validates the given integration. If the id doesn't exist, a NotFoundException is thrown. If
                     /// validation fails a CanonicalCodeException is thrown. If there was no failure an empty response
                     /// is returned.
@@ -2881,6 +3169,51 @@ namespace Google.Apis.Integrations.v1alpha
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
                             });
                         }
+                    }
+                }
+
+                /// <summary>Delete the selected integration and all versions inside</summary>
+                /// <param name="name">Required. The location resource of the request.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Delete the selected integration and all versions inside</summary>
+                public class DeleteRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The location resource of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+$",
+                        });
                     }
                 }
 
@@ -5073,6 +5406,73 @@ namespace Google.Apis.Integrations.v1alpha
                         }
 
                         /// <summary>
+                        /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
+                        /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and
+                        /// set to the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are
+                        /// removed too. This RPC throws an exception if the version being deleted is DRAFT, and if the
+                        /// `locked_by` user is not the same as the user performing the Delete. Audit fields updated
+                        /// include last_modified_timestamp, last_modified_by. Any existing lock is released when
+                        /// Deleting a integration. Currently, there is no undelete mechanism.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The version to delete. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
+                        /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and
+                        /// set to the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are
+                        /// removed too. This RPC throws an exception if the version being deleted is DRAFT, and if the
+                        /// `locked_by` user is not the same as the user performing the Delete. Audit fields updated
+                        /// include last_modified_timestamp, last_modified_by. Any existing lock is released when
+                        /// Deleting a integration. Currently, there is no undelete mechanism.
+                        /// </summary>
+                        public class DeleteRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The version to delete. Format:
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Downloads an integration. Retrieves the `IntegrationVersion` for a given `integration_id`
                         /// and returns the response as a string.
                         /// </summary>
@@ -5608,6 +6008,75 @@ namespace Google.Apis.Integrations.v1alpha
                                 RequestParameters.Add("integrationVersion", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "integrationVersion",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
+                        /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws
+                        /// an exception if the version being snapshot is not ACTIVE. Audit fields added include action,
+                        /// action_by, action_timestamp.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The version to deactivate. Format:
+                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                        /// </param>
+                        public virtual UnpublishRequest Unpublish(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest body, string name)
+                        {
+                            return new UnpublishRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
+                        /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws
+                        /// an exception if the version being snapshot is not ACTIVE. Audit fields added include action,
+                        /// action_by, action_timestamp.
+                        /// </summary>
+                        public class UnpublishRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Unpublish request.</summary>
+                            public UnpublishRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The version to deactivate. Format:
+                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "unpublish";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}:unpublish";
+
+                            /// <summary>Initializes Unpublish parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
@@ -10455,7 +10924,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
     /// <summary>
     /// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for
-    /// the same Task. Next available id: 27
+    /// the same Task.
     /// </summary>
     public class EnterpriseCrmFrontendsEventbusProtoTaskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10579,7 +11048,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>
         /// A string template that allows user to configure task parameters (with either literal default values or
         /// tokens which will be resolved at execution time) for the task. It will eventually replace the old
-        /// "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+        /// "parameters" field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskSpec")]
         public virtual string TaskSpec { get; set; }
@@ -13529,6 +13998,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggerType")]
         public virtual string TriggerType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for UnpublishIntegrationVersion.</summary>
+    public class GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
