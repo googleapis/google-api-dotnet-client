@@ -6292,7 +6292,7 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ChannelId { get; set; }
 
-            /// <summary>Returen content in specified language</summary>
+            /// <summary>Return content in specified language</summary>
             [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Hl { get; set; }
 

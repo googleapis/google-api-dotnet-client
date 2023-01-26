@@ -710,8 +710,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
-                        /// Retail Search on Cloud Console before using this feature.
+                        /// obsolete.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -734,8 +733,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
-                        /// Retail Search on Cloud Console before using this feature.
+                        /// obsolete.
                         /// </summary>
                         public class AddFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -797,8 +795,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.UpdateProduct has no effect on local inventories. The returned Operations
                         /// will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
                         /// conflicting updates are issued, the Operations associated with the stale updates will not be
-                        /// marked as done until being obsolete. This feature is only available for users who have
-                        /// Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
+                        /// marked as done until being obsolete.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -823,8 +820,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.UpdateProduct has no effect on local inventories. The returned Operations
                         /// will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
                         /// conflicting updates are issued, the Operations associated with the stale updates will not be
-                        /// marked as done until being obsolete. This feature is only available for users who have
-                        /// Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
+                        /// marked as done until being obsolete.
                         /// </summary>
                         public class AddLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1375,8 +1371,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
-                        /// Retail Search on Cloud Console before using this feature.
+                        /// obsolete.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1399,8 +1394,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
-                        /// Retail Search on Cloud Console before using this feature.
+                        /// obsolete.
                         /// </summary>
                         public class RemoveFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1460,9 +1454,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local
                         /// inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will
                         /// return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated
-                        /// with the stale updates will not be marked as done until being obsolete. This feature is only
-                        /// available for users who have Retail Search enabled. Enable Retail Search on Cloud Console
-                        /// before using this feature.
+                        /// with the stale updates will not be marked as done until being obsolete.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1485,9 +1477,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local
                         /// inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will
                         /// return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated
-                        /// with the stale updates will not be marked as done until being obsolete. This feature is only
-                        /// available for users who have Retail Search enabled. Enable Retail Search on Cloud Console
-                        /// before using this feature.
+                        /// with the stale updates will not be marked as done until being obsolete.
                         /// </summary>
                         public class RemoveLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1556,8 +1546,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.RemoveFulfillmentPlaces. The returned Operations is obsolete after one day,
                         /// and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting updates are issued,
                         /// the Operations associated with the stale updates are not marked as done until they are
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
-                        /// Retail Search on Cloud Console before using this feature.
+                        /// obsolete.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -1587,8 +1576,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// ProductService.RemoveFulfillmentPlaces. The returned Operations is obsolete after one day,
                         /// and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting updates are issued,
                         /// the Operations associated with the stale updates are not marked as done until they are
-                        /// obsolete. This feature is only available for users who have Retail Search enabled. Enable
-                        /// Retail Search on Cloud Console before using this feature.
+                        /// obsolete.
                         /// </summary>
                         public class SetInventoryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -5267,6 +5255,20 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata associated with a create operation.</summary>
+    public class GoogleCloudRetailV2CreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this create applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response of the ImportCompletionDataRequest. If the long running operation is done, this message is returned by
     /// the google.longrunning.Operations.response field if the operation is successful.
@@ -5375,6 +5377,136 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
+    /// Metadata that describes the training and serving parameters of a Model. A Model can be associated with a
+    /// ServingConfig and then queried through the Predict API.
+    /// </summary>
+    public class GoogleCloudRetailV2Model : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp the Recommendation Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The state of data requirements for this model: `DATA_OK` and `DATA_ERROR`. Recommendation model
+        /// cannot be trained if the data is in `DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state
+        /// even if serving state is `ACTIVE`: models were trained successfully before, but cannot be refreshed because
+        /// model no longer has sufficient data for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the model. Should be human readable, used to display Recommendation Models in
+        /// the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the
+        /// model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringOption")]
+        public virtual string FilteringOption { get; set; }
+
+        /// <summary>Output only. The timestamp when the latest successful tune finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
+        public virtual object LastTuneTime { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
+        /// char limit of 50. recommendation_model_id has char limit of 40.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`,
+        /// `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of
+        /// recommendation: `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// `frequently-bought-together` =&amp;gt; `revenue_per_order` This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the
+        /// `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicTuningState")]
+        public virtual string PeriodicTuningState { get; set; }
+
+        /// <summary>
+        /// Output only. The list of valid serving configs associated with the PageOptimizationConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigLists")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2ModelServingConfigList> ServingConfigLists { get; set; }
+
+        /// <summary>Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
+        public virtual string ServingState { get; set; }
+
+        /// <summary>
+        /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of
+        /// running the service is frequency of training - this can be used to determine when to train model in order to
+        /// control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value
+        /// for `UpdateModel` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Output only. The tune operation associated with the model. Can be used to determine if there is an ongoing
+        /// tune for this recommendation. Empty field implies no tune is goig on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningOperation")]
+        public virtual string TuningOperation { get; set; }
+
+        /// <summary>
+        /// Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`,
+        /// `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`,
+        /// `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective
+        /// describe model metadata to use to control model training and serving. See
+        /// https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which
+        /// combination of parameters are valid. For invalid combinations of parameters (e.g. type =
+        /// `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to
+        /// create/update a recommendation with this set of knobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp the Recommendation Model was last updated. E.g. if a Recommendation Model was paused
+        /// - this would be the time the pause was initiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION`
+    /// recommendations.
+    /// </summary>
+    public class GoogleCloudRetailV2ModelServingConfigList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
+        public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the Purge operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -5471,6 +5603,27 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// ProductService.SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2SetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2TuneModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the model that this tune applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudRetailV2TuneModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6995,6 +7148,46 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for active A/B testing Experiments.</summary>
+    public class GoogleCloudRetailV2betaExperimentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully qualified resource name of the experiment that provides the serving config under test, should an
+        /// active experiment exist. For example:
+        /// `projects/*/locations/global/catalogs/default_catalog/experiments/experiment_id`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentName")]
+        public virtual string ExperimentName { get; set; }
+
+        /// <summary>A/B test between existing Cloud Retail Search ServingConfigs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigExperiment")]
+        public virtual GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment ServingConfigExperiment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for active serving config A/B tests.</summary>
+    public class GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully qualified resource name of the serving config VariantArm.serving_config_id responsible for
+        /// generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentServingConfig")]
+        public virtual string ExperimentServingConfig { get; set; }
+
+        /// <summary>
+        /// The fully qualified resource name of the original SearchRequest.placement in the search request prior to
+        /// reassignment by experiment API. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalServingConfig")]
+        public virtual string OriginalServingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9434,6 +9627,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("correctedQuery")]
         public virtual string CorrectedQuery { get; set; }
+
+        /// <summary>
+        /// Metadata related to A/B testing Experiment associated with this response. Only exists when an experiment is
+        /// triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaExperimentInfo> ExperimentInfo { get; set; }
 
         /// <summary>Results of facets requested by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facets")]

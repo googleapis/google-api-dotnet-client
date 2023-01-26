@@ -274,8 +274,7 @@ namespace Google.Apis.MyBusinessLodging.v1
 
             /// <summary>Returns the Google updated Lodging of a specific location.</summary>
             /// <param name="name">
-            /// Required. Google identifier for this location in the form:
-            /// `accounts/{account_id}/locations/{location_id}/lodging`
+            /// Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
             /// </param>
             public virtual GetGoogleUpdatedRequest GetGoogleUpdated(string name)
             {
@@ -293,8 +292,7 @@ namespace Google.Apis.MyBusinessLodging.v1
                 }
 
                 /// <summary>
-                /// Required. Google identifier for this location in the form:
-                /// `accounts/{account_id}/locations/{location_id}/lodging`
+                /// Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }

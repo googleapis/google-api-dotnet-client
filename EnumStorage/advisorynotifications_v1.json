@@ -1,0 +1,16 @@
+{
+  "Google.Apis.Advisorynotifications.v1.AdvisorynotificationsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Advisorynotifications.v1.AdvisorynotificationsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Advisorynotifications.v1.OrganizationsResource+LocationsResource+NotificationsResource+ListRequest.ViewEnum": [
+    "NOTIFICATION_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

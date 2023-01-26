@@ -915,6 +915,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Version-specific information of an Android model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perVersionInfo")]
+        public virtual System.Collections.Generic.IList<PerAndroidVersionInfo> PerVersionInfo { get; set; }
+
         /// <summary>Screen density in DPI. This corresponds to ro.sf.lcd_density</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
         public virtual System.Nullable<int> ScreenDensity { get; set; }
@@ -1576,6 +1580,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Version-specific information of an iOS model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perVersionInfo")]
+        public virtual System.Collections.Generic.IList<PerIosVersionInfo> PerVersionInfo { get; set; }
+
         /// <summary>Screen density in DPI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
         public virtual System.Nullable<int> ScreenDensity { get; set; }
@@ -1870,6 +1878,36 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Tags for this dimension. Example: "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A version-specific information of an Android model.</summary>
+    public class PerAndroidVersionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of online devices for an Android version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCapacity")]
+        public virtual string DeviceCapacity { get; set; }
+
+        /// <summary>An Android version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A version-specific information of an iOS model.</summary>
+    public class PerIosVersionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of online devices for an iOS version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCapacity")]
+        public virtual string DeviceCapacity { get; set; }
+
+        /// <summary>An iOS version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

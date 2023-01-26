@@ -1606,6 +1606,13 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
 
         /// <summary>
+        /// Options for beginning a new transaction for this request. The transaction is committed when the request
+        /// completes. If specified, TransactionOptions.mode must be TransactionOptions.ReadWrite.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleUseTransaction")]
+        public virtual TransactionOptions SingleUseTransaction { get; set; }
+
+        /// <summary>
         /// The identifier of the transaction associated with the commit. A transaction identifier is returned by a call
         /// to Datastore.BeginTransaction.
         /// </summary>
@@ -2515,6 +2522,13 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; }
 
+        /// <summary>
+        /// The identifier of the transaction that was started as part of this Lookup request. Set only when
+        /// ReadOptions.begin_transaction was set in LookupRequest.read_options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2851,6 +2865,13 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The options shared by read requests.</summary>
     public class ReadOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Options for beginning a new transaction for this request. The new transaction identifier will be returned in
+        /// the corresponding response as either LookupResponse.transaction or RunQueryResponse.transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newTransaction")]
+        public virtual TransactionOptions NewTransaction { get; set; }
+
         /// <summary>The non-transactional read consistency to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readConsistency")]
         public virtual string ReadConsistency { get; set; }
@@ -2980,6 +3001,13 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual AggregationQuery Query { get; set; }
 
+        /// <summary>
+        /// The identifier of the transaction that was started as part of this RunAggregationQuery request. Set only
+        /// when ReadOptions.begin_transaction was set in RunAggregationQueryRequest.read_options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3027,6 +3055,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; }
+
+        /// <summary>
+        /// The identifier of the transaction that was started as part of this RunQuery request. Set only when
+        /// ReadOptions.begin_transaction was set in RunQueryRequest.read_options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5238,49 +5238,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An action that describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
-    /// handle the form.
-    /// </summary>
-    public class AppsDynamiteSharedAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Apps Script function to invoke when the containing element is clicked/activated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("interaction")]
-        public virtual string Interaction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
-        public virtual string LoadIndicator { get; set; }
-
-        /// <summary>List of action parameters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedActionActionParameter> Parameters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
-    /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
-    /// type and snooze time in the list of string parameters.
-    /// </summary>
-    public class AppsDynamiteSharedActionActionParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the parameter for the action script.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>The value of the parameter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Next Id: 7</summary>
     public class AppsDynamiteSharedActivityFeedAnnotationData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5519,6 +5476,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual GroupId GroupId { get; set; }
 
+        /// <summary>If the uploaded file is a video that has been transcoded on the client side Next tag: 18</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isClientSideTranscodedVideo")]
+        public virtual System.Nullable<bool> IsClientSideTranscodedVideo { get; set; }
+
         /// <summary>Original dimension of the content. Only set for image attachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalDimension")]
         public virtual AppsDynamiteSharedDimension OriginalDimension { get; set; }
@@ -5559,68 +5520,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Result for a virus scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virusScanResult")]
         public virtual string VirusScanResult { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the complete border style applied to widgets.</summary>
-    public class AppsDynamiteSharedBorderStyle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The corner radius for the border.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cornerRadius")]
-        public virtual System.Nullable<int> CornerRadius { get; set; }
-
-        /// <summary>The colors to use when the type is `BORDER_TYPE_STROKE`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strokeColor")]
-        public virtual Color StrokeColor { get; set; }
-
-        /// <summary>The border type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A button. Can be a text button or an image button.</summary>
-    public class AppsDynamiteSharedButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The alternative text used for accessibility. Has no effect when an icon is set; use `icon.alt_text` instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>If set, the button is filled with a solid background.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; }
-
-        /// <summary>If true, the button is displayed in a disabled state and doesn't respond to user actions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; }
-
-        /// <summary>The icon image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual AppsDynamiteSharedIcon Icon { get; set; }
-
-        /// <summary>The action to perform when the button is clicked.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteSharedOnClick OnClick { get; set; }
-
-        /// <summary>The text of the button.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A list of buttons layed out horizontally.</summary>
-    public class AppsDynamiteSharedButtonList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedButton> Buttons { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5721,96 +5620,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A card is a UI element that can contain UI widgets such as text and images. For more information, see Cards .
-    /// For example, the following JSON creates a card that has a header with the name, position, icons, and link for a
-    /// contact, followed by a section with contact information like email and phone number. ``` { "header": { "title":
-    /// "Heba Salam", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
-    /// "https://example.com/heba_salam.png", "imageAltText": "Avatar for Heba Salam" }, "sections" : [ { "header":
-    /// "Contact Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content":
-    /// "heba.salam@example.com" } }, { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, {
-    /// "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ {
-    /// "textButton": { "text": "Share", }, "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
-    /// "textButton": { "text": "Edit", }, "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
-    /// "viewType", "value": "EDIT" } ], "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
-    /// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink":
-    /// { "url": "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
-    /// </summary>
-    public class AppsDynamiteSharedCard : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The actions of this card. They are added to a card's generated toolbar menu. For example, the following JSON
-        /// constructs a card action menu with Settings and Send Feedback options: ``` "card_actions": [ {
-        /// "actionLabel": "Setting", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
-        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
-        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedCardCardAction> CardActions { get; set; }
-
-        /// <summary>The header of the card. A header usually contains a title and an image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual AppsDynamiteSharedCardCardHeader Header { get; set; }
-
-        /// <summary>Name of the card, which is used as a identifier for the card in card navigation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Sections are separated by a line divider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedCardSection> Sections { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A card action is the action associated with the card. For example, an invoice card might include actions such as
-    /// delete invoice, email invoice, or open the invoice in a browser.
-    /// </summary>
-    public class AppsDynamiteSharedCardCardAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label that displays as the action menu item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
-        public virtual string ActionLabel { get; set; }
-
-        /// <summary>The onclick action for this action item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteSharedOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedCardCardHeader : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this image which is used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageAltText")]
-        public virtual string ImageAltText { get; set; }
-
-        /// <summary>The image's type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; }
-
-        /// <summary>The URL of the image in the card header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>The subtitle of the card header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        /// <summary>
-        /// The title of the card header. The title must be specified. The header has a fixed height: if both a title
-        /// and subtitle are specified, each takes up one line. If only the title is specified, it takes up both lines.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Card click which identifies one suggestion provided by the app/bot.</summary>
     public class AppsDynamiteSharedCardClickSuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5824,40 +5633,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The message_id for the message that was posted by the app/bot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionMessageId")]
         public virtual MessageId SuggestionMessageId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A section contains a collection of widgets that are rendered vertically in the order that they are specified.
-    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties, for
-    /// example, float.
-    /// </summary>
-    public class AppsDynamiteSharedCardSection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates whether this section is collapsible. If a section is collapsible, the description must be given.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collapsible")]
-        public virtual System.Nullable<bool> Collapsible { get; set; }
-
-        /// <summary>The header of the section. Formatted text is supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; }
-
-        /// <summary>
-        /// The number of uncollapsible widgets. For example, when a section contains five widgets and the
-        /// `numUncollapsibleWidget` is set to `2`, the first two widgets are always shown and the last three are
-        /// collapsed as default. The `numUncollapsibleWidget` is taken into account only when collapsible is set to
-        /// `true`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
-        public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
-
-        /// <summary>A section must contain at least 1 widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedWidget> Widgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5978,81 +5753,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Columns widget that displays a single row of columns.</summary>
-    public class AppsDynamiteSharedColumns : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Each card supports up to 2 columns.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("columnItems")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedColumnsColumn> ColumnItems { get; set; }
-
-        /// <summary>Controls how the column resizes based on screen width.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wrapStyle")]
-        public virtual string WrapStyle { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a Column that consists of widgets stacked vertically.</summary>
-    public class AppsDynamiteSharedColumnsColumn : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The horizontal alignment of the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; }
-
-        /// <summary>Specifies how the column content is sized horizontally.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalSizeStyle")]
-        public virtual string HorizontalSizeStyle { get; set; }
-
-        /// <summary>The vertical alignment of the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
-        public virtual string VerticalAlignment { get; set; }
-
-        /// <summary>
-        /// LINT.ThenChange(//google/apps/card/v1/card.proto) Array of widgets included in the column.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedColumnsColumnWidgets> Widgets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>LINT.IfChange The `column` widget can contain these widgets.</summary>
-    public class AppsDynamiteSharedColumnsColumnWidgets : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ButtonList widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
-        public virtual AppsDynamiteSharedButtonList ButtonList { get; set; }
-
-        /// <summary>DateTimePicker widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
-        public virtual AppsDynamiteSharedDateTimePicker DateTimePicker { get; set; }
-
-        /// <summary>DecoratedText widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
-        public virtual AppsDynamiteSharedDecoratedText DecoratedText { get; set; }
-
-        /// <summary>Image widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual AppsDynamiteSharedImage Image { get; set; }
-
-        /// <summary>SelectionInput widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
-        public virtual AppsDynamiteSharedSelectionInput SelectionInput { get; set; }
-
-        /// <summary>TextInput widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
-        public virtual AppsDynamiteSharedTextInput TextInput { get; set; }
-
-        /// <summary>Text paragraph widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual AppsDynamiteSharedTextParagraph TextParagraph { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Denotes a type of content report a user can send.</summary>
     public class AppsDynamiteSharedContentReportType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6146,127 +5846,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The widget that lets users to specify a date and time.</summary>
-    public class AppsDynamiteSharedDateTimePicker : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label for the field that displays to the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text input that's used in formInput, and uniquely identifies this input.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Triggered when the user clicks Save or Clear from the date/time picker dialog. This is only triggered if the
-        /// value changed as a result of the Save/Clear operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteSharedAction OnChangeAction { get; set; }
-
-        /// <summary>
-        /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
-        /// in the specified time zone. If not set, it uses the user's time zone setting on the client side.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
-        public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
-
-        /// <summary>The type of the date/time picker.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// The value to display as the default value before user input or previous user input. It is represented in
-        /// milliseconds (Epoch time). For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY` type,
-        /// only date of the epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used. For example,
-        /// you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
-        public virtual System.Nullable<long> ValueMsEpoch { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A widget that displays text with optional decorations such as a label above or below the text, an icon in front
-    /// of the text, a selection widget or a button after the text.
-    /// </summary>
-    public class AppsDynamiteSharedDecoratedText : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The formatted text label that shows below the main text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
-        public virtual string BottomLabel { get; set; }
-
-        /// <summary>A button that can be clicked to trigger an action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("button")]
-        public virtual AppsDynamiteSharedButton Button { get; set; }
-
-        /// <summary>An icon displayed after the text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
-        public virtual AppsDynamiteSharedIcon EndIcon { get; set; }
-
-        /// <summary>Deprecated in favor of start_icon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual AppsDynamiteSharedIcon Icon { get; set; }
-
-        /// <summary>Only the top and bottom label and content region are clickable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteSharedOnClick OnClick { get; set; }
-
-        /// <summary>The icon displayed in front of the text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
-        public virtual AppsDynamiteSharedIcon StartIcon { get; set; }
-
-        /// <summary>A switch widget can be clicked to change its state or trigger an action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
-        public virtual AppsDynamiteSharedDecoratedTextSwitchControl SwitchControl { get; set; }
-
-        /// <summary>Required. The main widget formatted text. See Text formatting for details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The formatted text label that shows above the main text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
-        public virtual string TopLabel { get; set; }
-
-        /// <summary>
-        /// The wrap text setting. If `true`, the text is wrapped and displayed in multiline. Otherwise, the text is
-        /// truncated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wrapText")]
-        public virtual System.Nullable<bool> WrapText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedDecoratedTextSwitchControl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The control type, either switch or checkbox.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
-        public virtual string ControlType { get; set; }
-
-        /// <summary>The name of the switch widget that's used in formInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The action when the switch state is changed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteSharedAction OnChangeAction { get; set; }
-
-        /// <summary>If the switch is selected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The value is what is passed back in the callback.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Dimension for the uploaded attachments.</summary>
     public class AppsDynamiteSharedDimension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6276,13 +5855,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A divider that appears in between widgets.</summary>
-    public class AppsDynamiteSharedDivider : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6358,73 +5930,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Grid widget that displays items in a configurable grid layout.</summary>
-    public class AppsDynamiteSharedGrid : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The border style to apply to each grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
-        public virtual AppsDynamiteSharedBorderStyle BorderStyle { get; set; }
-
-        /// <summary>
-        /// The number of columns to display in the grid. A default value is used if this field isn't specified, and
-        /// that default value is different depending on where the grid is shown (dialog versus companion).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
-        public virtual System.Nullable<int> ColumnCount { get; set; }
-
-        /// <summary>The items to display in the grid.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedGridGridItem> Items { get; set; }
-
-        /// <summary>
-        /// This callback is reused by each individual grid item, but with the item's identifier and index in the items
-        /// list added to the callback's parameters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteSharedOnClick OnClick { get; set; }
-
-        /// <summary>The text that displays in the grid header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a single item in the grid layout.</summary>
-    public class AppsDynamiteSharedGridGridItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A user-specified identifier for this grid item. This identifier is returned in the parent Grid's onClick
-        /// callback parameters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>The image that displays in the grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual AppsDynamiteSharedImageComponent Image { get; set; }
-
-        /// <summary>The layout to use for the grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
-        public virtual string Layout { get; set; }
-
-        /// <summary>The grid item's subtitle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        /// <summary>The horizontal alignment of the grid item's text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAlignment")]
-        public virtual string TextAlignment { get; set; }
-
-        /// <summary>The grid item's title.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>NEXT TAG: 3 A GroupDetails proto will store the information pertaining to single Group.</summary>
     public class AppsDynamiteSharedGroupDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6449,88 +5954,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedIcon : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The description of the icon, used for accessibility. The default value is provided if you don't specify one.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>The icon specified by a URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>
-        /// The crop style applied to the image. In some cases, applying a `CIRCLE` crop causes the image to be drawn
-        /// larger than a standard icon.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; }
-
-        /// <summary>The icon specified by the string name of a list of known icons</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
-        public virtual string KnownIcon { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An image that is specified by a URL and can have an onClick action.</summary>
-    public class AppsDynamiteSharedImage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this image, used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>An image URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteSharedOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedImageComponent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The accessibility label for the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>The border style to apply to the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
-        public virtual AppsDynamiteSharedBorderStyle BorderStyle { get; set; }
-
-        /// <summary>The crop style to apply to the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cropStyle")]
-        public virtual AppsDynamiteSharedImageCropStyle CropStyle { get; set; }
-
-        /// <summary>The image URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the crop style applied to an image.</summary>
-    public class AppsDynamiteSharedImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; }
-
-        /// <summary>The crop type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6641,116 +6064,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedOnClick : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If specified, an action is triggered by this onClick.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual AppsDynamiteSharedAction Action { get; set; }
-
-        /// <summary>
-        /// Triggers host app action on click directly without invoking form actions. This is currently not available to
-        /// end-users and is used internal only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostAppAction")]
-        public virtual HostAppActionMarkup HostAppAction { get; set; }
-
-        /// <summary>
-        /// An add-on triggers this action when the action needs to open a link. This differs from the open_link above
-        /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
-        /// to do before the open link action response comes back.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
-        public virtual AppsDynamiteSharedAction OpenDynamicLinkAction { get; set; }
-
-        /// <summary>If specified, this onClick triggers an open link action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
-        public virtual AppsDynamiteSharedOpenLink OpenLink { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedOpenLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Represents the platform specific uri/intent to open on each client. For example: A companion_url will open
-        /// in a companion window on the web. An iOS URL and android intent will open in the corresponding hosting apps.
-        /// If these platform specific URLs can't be handled correctly, i.e. if the companion isn't supported on web and
-        /// the hosting apps aren't available on the mobile platforms then the `uri` will open in a new browser window
-        /// on all the platforms.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appUri")]
-        public virtual AppsDynamiteSharedOpenLinkAppUri AppUri { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
-        public virtual string OnClose { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
-        public virtual string OpenAs { get; set; }
-
-        /// <summary>The URL to open.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the platform specific uri/intent to open for each client.</summary>
-    public class AppsDynamiteSharedOpenLinkAppUri : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An intent object to be opened in the corresponding android hosting app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("androidIntent")]
-        public virtual AppsDynamiteSharedOpenLinkAppUriIntent AndroidIntent { get; set; }
-
-        /// <summary>A companion uri string to be opened in the chat companion window. on the web.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("companionUri")]
-        public virtual string CompanionUri { get; set; }
-
-        /// <summary>A uri string to be opened in the corresponding iOS hosting app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosUri")]
-        public virtual string IosUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Android intent.</summary>
-    public class AppsDynamiteSharedOpenLinkAppUriIntent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of extra data for the android intent. For example, for a calendar event edit intent, the event title
-        /// information can be passed as extra data.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extraData")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedOpenLinkAppUriIntentExtraData> ExtraData { get; set; }
-
-        /// <summary>
-        /// An android intent action string for the {@link android.content.Intent} object. For example: for the view
-        /// intent action type, a valid value will be android.content.Intent.ACTION_VIEW.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentAction")]
-        public virtual string IntentAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Extra data for an android intent. Valid keys are defined in the hosting app contract.</summary>
-    public class AppsDynamiteSharedOpenLinkAppUriIntentExtraData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A key for the intent extra data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>Value for the given extra data key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6883,58 +6196,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A widget that creates a UI item (for example, a drop-down list) with options for users to select.
-    /// </summary>
-    public class AppsDynamiteSharedSelectionInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedSelectionInputSelectionItem> Items { get; set; }
-
-        /// <summary>The label displayed ahead of the switch control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text input which is used in formInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// If specified, the form is submitted when the selection changes. If not specified, you must specify a
-        /// separate button.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteSharedAction OnChangeAction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The item in the switch control. A radio button, at most one of the items is selected.</summary>
-    public class AppsDynamiteSharedSelectionInputSelectionItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first selected item is treated as
-        /// selected and the ones after are ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The text to be displayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The value associated with this item. The client should use this as a form input value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Defines the representation of a single matching space.</summary>
     public class AppsDynamiteSharedSpaceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6970,29 +6231,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>searching user's membership state in this space</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMembershipState")]
         public virtual string UserMembershipState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A container wrapping elements necessary for showing suggestion items used in text input autocomplete.
-    /// </summary>
-    public class AppsDynamiteSharedSuggestions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of suggestions items which will be used in are used in autocomplete.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedSuggestionsSuggestionItem> Items { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A suggestion item. Only supports text for now.</summary>
-    public class AppsDynamiteSharedSuggestionsSuggestionItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7121,65 +6359,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A text input is a UI item where users can input text. A text input can also have an onChange action and
-    /// suggestions.
-    /// </summary>
-    public class AppsDynamiteSharedTextInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The refresh function that returns suggestions based on the user's input text. If the callback is not
-        /// specified, autocomplete is done in client side based on the initial suggestion items.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
-        public virtual AppsDynamiteSharedAction AutoCompleteAction { get; set; }
-
-        /// <summary>The hint text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
-        public virtual string HintText { get; set; }
-
-        /// <summary>The initial suggestions made before any user input.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initialSuggestions")]
-        public virtual AppsDynamiteSharedSuggestions InitialSuggestions { get; set; }
-
-        /// <summary>At least one of label and hintText must be specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text input which is used in formInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The onChange action, for example, invoke a function.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteSharedAction OnChangeAction { get; set; }
-
-        /// <summary>The style of the text, for example, a single line or multiple lines.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The default value when there is no input from the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A paragraph of text that supports formatting. See [Text
-    /// formatting](workspace/add-ons/concepts/widgets#text_formatting") for details.
-    /// </summary>
-    public class AppsDynamiteSharedTextParagraph : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The text that's shown in the widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>User-block relationship</summary>
     public class AppsDynamiteSharedUserBlockRelationship : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7208,8 +6387,833 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An action that describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
+    /// handle the form.
+    /// </summary>
+    public class AppsDynamiteStorageAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Apps Script function to invoke when the containing element is clicked/activated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("function")]
+        public virtual string Function { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("interaction")]
+        public virtual string Interaction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
+        public virtual string LoadIndicator { get; set; }
+
+        /// <summary>List of action parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageActionActionParameter> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
+    /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
+    /// type and snooze time in the list of string parameters.
+    /// </summary>
+    public class AppsDynamiteStorageActionActionParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the parameter for the action script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the complete border style applied to widgets.</summary>
+    public class AppsDynamiteStorageBorderStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The corner radius for the border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cornerRadius")]
+        public virtual System.Nullable<int> CornerRadius { get; set; }
+
+        /// <summary>The colors to use when the type is `BORDER_TYPE_STROKE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strokeColor")]
+        public virtual Color StrokeColor { get; set; }
+
+        /// <summary>The border type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A button. Can be a text button or an image button.</summary>
+    public class AppsDynamiteStorageButton : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The alternative text used for accessibility. Has no effect when an icon is set; use `icon.alt_text` instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>If set, the button is filled with a solid background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; }
+
+        /// <summary>If true, the button is displayed in a disabled state and doesn't respond to user actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The icon image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual AppsDynamiteStorageIcon Icon { get; set; }
+
+        /// <summary>The action to perform when the button is clicked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
+
+        /// <summary>The text of the button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of buttons layed out horizontally.</summary>
+    public class AppsDynamiteStorageButtonList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageButton> Buttons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A card is a UI element that can contain UI widgets such as text and images. For more information, see Cards .
+    /// For example, the following JSON creates a card that has a header with the name, position, icons, and link for a
+    /// contact, followed by a section with contact information like email and phone number. ``` { "header": { "title":
+    /// "Heba Salam", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
+    /// "https://example.com/heba_salam.png", "imageAltText": "Avatar for Heba Salam" }, "sections" : [ { "header":
+    /// "Contact Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content":
+    /// "heba.salam@example.com" } }, { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, {
+    /// "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ {
+    /// "textButton": { "text": "Share", }, "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
+    /// "textButton": { "text": "Edit", }, "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
+    /// "viewType", "value": "EDIT" } ], "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
+    /// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink":
+    /// { "url": "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
+    /// </summary>
+    public class AppsDynamiteStorageCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The actions of this card. They are added to a card's generated toolbar menu. For example, the following JSON
+        /// constructs a card action menu with Settings and Send Feedback options: ``` "card_actions": [ {
+        /// "actionLabel": "Setting", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
+        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
+        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageCardCardAction> CardActions { get; set; }
+
+        /// <summary>The header of the card. A header usually contains a title and an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual AppsDynamiteStorageCardCardHeader Header { get; set; }
+
+        /// <summary>Name of the card, which is used as a identifier for the card in card navigation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Sections are separated by a line divider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageCardSection> Sections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A card action is the action associated with the card. For example, an invoice card might include actions such as
+    /// delete invoice, email invoice, or open the invoice in a browser.
+    /// </summary>
+    public class AppsDynamiteStorageCardCardAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label that displays as the action menu item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
+        public virtual string ActionLabel { get; set; }
+
+        /// <summary>The onclick action for this action item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteStorageCardCardHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alternative text of this image which is used for accessibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageAltText")]
+        public virtual string ImageAltText { get; set; }
+
+        /// <summary>The image's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; }
+
+        /// <summary>The URL of the image in the card header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; }
+
+        /// <summary>The subtitle of the card header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual string Subtitle { get; set; }
+
+        /// <summary>
+        /// The title of the card header. The title must be specified. The header has a fixed height: if both a title
+        /// and subtitle are specified, each takes up one line. If only the title is specified, it takes up both lines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A section contains a collection of widgets that are rendered vertically in the order that they are specified.
+    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties, for
+    /// example, float.
+    /// </summary>
+    public class AppsDynamiteStorageCardSection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether this section is collapsible. If a section is collapsible, the description must be given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsible")]
+        public virtual System.Nullable<bool> Collapsible { get; set; }
+
+        /// <summary>The header of the section. Formatted text is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
+        /// <summary>
+        /// The number of uncollapsible widgets. For example, when a section contains five widgets and the
+        /// `numUncollapsibleWidget` is set to `2`, the first two widgets are always shown and the last three are
+        /// collapsed as default. The `numUncollapsibleWidget` is taken into account only when collapsible is set to
+        /// `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
+        public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
+
+        /// <summary>A section must contain at least 1 widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageWidget> Widgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Columns widget that displays a single row of columns.</summary>
+    public class AppsDynamiteStorageColumns : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Each card supports up to 2 columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnItems")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageColumnsColumn> ColumnItems { get; set; }
+
+        /// <summary>Controls how the column resizes based on screen width.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrapStyle")]
+        public virtual string WrapStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Column that consists of widgets stacked vertically.</summary>
+    public class AppsDynamiteStorageColumnsColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The horizontal alignment of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; }
+
+        /// <summary>Specifies how the column content is sized horizontally.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalSizeStyle")]
+        public virtual string HorizontalSizeStyle { get; set; }
+
+        /// <summary>The vertical alignment of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
+        public virtual string VerticalAlignment { get; set; }
+
+        /// <summary>
+        /// LINT.ThenChange(//depot/google3/google/apps/card/v1/card.proto) Array of widgets included in the column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageColumnsColumnWidgets> Widgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LINT.IfChange The `column` widget can contain these widgets.</summary>
+    public class AppsDynamiteStorageColumnsColumnWidgets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ButtonList widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
+        public virtual AppsDynamiteStorageButtonList ButtonList { get; set; }
+
+        /// <summary>DateTimePicker widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
+        public virtual AppsDynamiteStorageDateTimePicker DateTimePicker { get; set; }
+
+        /// <summary>DecoratedText widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
+        public virtual AppsDynamiteStorageDecoratedText DecoratedText { get; set; }
+
+        /// <summary>Image widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual AppsDynamiteStorageImage Image { get; set; }
+
+        /// <summary>SelectionInput widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
+        public virtual AppsDynamiteStorageSelectionInput SelectionInput { get; set; }
+
+        /// <summary>TextInput widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual AppsDynamiteStorageTextInput TextInput { get; set; }
+
+        /// <summary>Text paragraph widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
+        public virtual AppsDynamiteStorageTextParagraph TextParagraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The widget that lets users to specify a date and time.</summary>
+    public class AppsDynamiteStorageDateTimePicker : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label for the field that displays to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the text input that's used in formInput, and uniquely identifies this input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Triggered when the user clicks Save or Clear from the date/time picker dialog. This is only triggered if the
+        /// value changed as a result of the Save/Clear operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
+
+        /// <summary>
+        /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
+        /// in the specified time zone. If not set, it uses the user's time zone setting on the client side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
+        public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
+
+        /// <summary>The type of the date/time picker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// The value to display as the default value before user input or previous user input. It is represented in
+        /// milliseconds (Epoch time). For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY` type,
+        /// only date of the epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used. For example,
+        /// you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
+        public virtual System.Nullable<long> ValueMsEpoch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that displays text with optional decorations such as a label above or below the text, an icon in front
+    /// of the text, a selection widget or a button after the text.
+    /// </summary>
+    public class AppsDynamiteStorageDecoratedText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The formatted text label that shows below the main text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
+        public virtual string BottomLabel { get; set; }
+
+        /// <summary>A button that can be clicked to trigger an action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("button")]
+        public virtual AppsDynamiteStorageButton Button { get; set; }
+
+        /// <summary>An icon displayed after the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
+        public virtual AppsDynamiteStorageIcon EndIcon { get; set; }
+
+        /// <summary>Deprecated in favor of start_icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual AppsDynamiteStorageIcon Icon { get; set; }
+
+        /// <summary>Only the top and bottom label and content region are clickable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
+
+        /// <summary>The icon displayed in front of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
+        public virtual AppsDynamiteStorageIcon StartIcon { get; set; }
+
+        /// <summary>A switch widget can be clicked to change its state or trigger an action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
+        public virtual AppsDynamiteStorageDecoratedTextSwitchControl SwitchControl { get; set; }
+
+        /// <summary>Required. The main widget formatted text. See Text formatting for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The formatted text label that shows above the main text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
+        public virtual string TopLabel { get; set; }
+
+        /// <summary>
+        /// The wrap text setting. If `true`, the text is wrapped and displayed in multiline. Otherwise, the text is
+        /// truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrapText")]
+        public virtual System.Nullable<bool> WrapText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteStorageDecoratedTextSwitchControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The control type, either switch or checkbox.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
+        public virtual string ControlType { get; set; }
+
+        /// <summary>The name of the switch widget that's used in formInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The action when the switch state is changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
+
+        /// <summary>If the switch is selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
+        public virtual System.Nullable<bool> Selected { get; set; }
+
+        /// <summary>The value is what is passed back in the callback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A divider that appears in between widgets.</summary>
+    public class AppsDynamiteStorageDivider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Grid widget that displays items in a configurable grid layout.</summary>
+    public class AppsDynamiteStorageGrid : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The border style to apply to each grid item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
+        public virtual AppsDynamiteStorageBorderStyle BorderStyle { get; set; }
+
+        /// <summary>
+        /// The number of columns to display in the grid. A default value is used if this field isn't specified, and
+        /// that default value is different depending on where the grid is shown (dialog versus companion).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
+        public virtual System.Nullable<int> ColumnCount { get; set; }
+
+        /// <summary>The items to display in the grid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageGridGridItem> Items { get; set; }
+
+        /// <summary>
+        /// This callback is reused by each individual grid item, but with the item's identifier and index in the items
+        /// list added to the callback's parameters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
+
+        /// <summary>The text that displays in the grid header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single item in the grid layout.</summary>
+    public class AppsDynamiteStorageGridGridItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A user-specified identifier for this grid item. This identifier is returned in the parent Grid's onClick
+        /// callback parameters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The image that displays in the grid item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual AppsDynamiteStorageImageComponent Image { get; set; }
+
+        /// <summary>The layout to use for the grid item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual string Layout { get; set; }
+
+        /// <summary>The grid item's subtitle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual string Subtitle { get; set; }
+
+        /// <summary>The horizontal alignment of the grid item's text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAlignment")]
+        public virtual string TextAlignment { get; set; }
+
+        /// <summary>The grid item's title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteStorageIcon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The description of the icon, used for accessibility. The default value is provided if you don't specify one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>The icon specified by a URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>
+        /// The crop style applied to the image. In some cases, applying a `CIRCLE` crop causes the image to be drawn
+        /// larger than a standard icon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; }
+
+        /// <summary>The icon specified by the string name of a list of known icons</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
+        public virtual string KnownIcon { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An image that is specified by a URL and can have an onClick action.</summary>
+    public class AppsDynamiteStorageImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alternative text of this image, used for accessibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>An image URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteStorageImageComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accessibility label for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>The border style to apply to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
+        public virtual AppsDynamiteStorageBorderStyle BorderStyle { get; set; }
+
+        /// <summary>The crop style to apply to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cropStyle")]
+        public virtual AppsDynamiteStorageImageCropStyle CropStyle { get; set; }
+
+        /// <summary>The image URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the crop style applied to an image.</summary>
+    public class AppsDynamiteStorageImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
+        public virtual System.Nullable<double> AspectRatio { get; set; }
+
+        /// <summary>The crop type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteStorageOnClick : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If specified, an action is triggered by this onClick.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual AppsDynamiteStorageAction Action { get; set; }
+
+        /// <summary>
+        /// Triggers host app action on click directly without invoking form actions. This is currently not available to
+        /// end-users and is used internal only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostAppAction")]
+        public virtual HostAppActionMarkup HostAppAction { get; set; }
+
+        /// <summary>
+        /// An add-on triggers this action when the action needs to open a link. This differs from the open_link above
+        /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
+        /// to do before the open link action response comes back.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
+        public virtual AppsDynamiteStorageAction OpenDynamicLinkAction { get; set; }
+
+        /// <summary>If specified, this onClick triggers an open link action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
+        public virtual AppsDynamiteStorageOpenLink OpenLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteStorageOpenLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Represents the platform specific uri/intent to open on each client. For example: A companion_url will open
+        /// in a companion window on the web. An iOS URL and android intent will open in the corresponding hosting apps.
+        /// If these platform specific URLs can't be handled correctly, i.e. if the companion isn't supported on web and
+        /// the hosting apps aren't available on the mobile platforms then the `uri` will open in a new browser window
+        /// on all the platforms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appUri")]
+        public virtual AppsDynamiteStorageOpenLinkAppUri AppUri { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
+        public virtual string OnClose { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
+        public virtual string OpenAs { get; set; }
+
+        /// <summary>The URL to open.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the platform specific uri/intent to open for each client.</summary>
+    public class AppsDynamiteStorageOpenLinkAppUri : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An intent object to be opened in the corresponding android hosting app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidIntent")]
+        public virtual AppsDynamiteStorageOpenLinkAppUriIntent AndroidIntent { get; set; }
+
+        /// <summary>A companion uri string to be opened in the chat companion window. on the web.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companionUri")]
+        public virtual string CompanionUri { get; set; }
+
+        /// <summary>A uri string to be opened in the corresponding iOS hosting app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosUri")]
+        public virtual string IosUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Android intent.</summary>
+    public class AppsDynamiteStorageOpenLinkAppUriIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of extra data for the android intent. For example, for a calendar event edit intent, the event title
+        /// information can be passed as extra data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraData")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageOpenLinkAppUriIntentExtraData> ExtraData { get; set; }
+
+        /// <summary>
+        /// An android intent action string for the {@link android.content.Intent} object. For example: for the view
+        /// intent action type, a valid value will be android.content.Intent.ACTION_VIEW.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentAction")]
+        public virtual string IntentAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extra data for an android intent. Valid keys are defined in the hosting app contract.</summary>
+    public class AppsDynamiteStorageOpenLinkAppUriIntentExtraData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A key for the intent extra data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Value for the given extra data key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that creates a UI item (for example, a drop-down list) with options for users to select.
+    /// </summary>
+    public class AppsDynamiteStorageSelectionInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageSelectionInputSelectionItem> Items { get; set; }
+
+        /// <summary>The label displayed ahead of the switch control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the text input which is used in formInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// If specified, the form is submitted when the selection changes. If not specified, you must specify a
+        /// separate button.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The item in the switch control. A radio button, at most one of the items is selected.</summary>
+    public class AppsDynamiteStorageSelectionInputSelectionItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first selected item is treated as
+        /// selected and the ones after are ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
+        public virtual System.Nullable<bool> Selected { get; set; }
+
+        /// <summary>The text to be displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The value associated with this item. The client should use this as a form input value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A container wrapping elements necessary for showing suggestion items used in text input autocomplete.
+    /// </summary>
+    public class AppsDynamiteStorageSuggestions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of suggestions items which will be used in are used in autocomplete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteStorageSuggestionsSuggestionItem> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion item. Only supports text for now.</summary>
+    public class AppsDynamiteStorageSuggestionsSuggestionItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A text input is a UI item where users can input text. A text input can also have an onChange action and
+    /// suggestions.
+    /// </summary>
+    public class AppsDynamiteStorageTextInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The refresh function that returns suggestions based on the user's input text. If the callback is not
+        /// specified, autocomplete is done in client side based on the initial suggestion items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
+        public virtual AppsDynamiteStorageAction AutoCompleteAction { get; set; }
+
+        /// <summary>The hint text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
+        public virtual string HintText { get; set; }
+
+        /// <summary>The initial suggestions made before any user input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialSuggestions")]
+        public virtual AppsDynamiteStorageSuggestions InitialSuggestions { get; set; }
+
+        /// <summary>At least one of label and hintText must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the text input which is used in formInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The onChange action, for example, invoke a function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
+
+        /// <summary>The style of the text, for example, a single line or multiple lines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The default value when there is no input from the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A paragraph of text that supports formatting. See [Text
+    /// formatting](workspace/add-ons/concepts/widgets#text_formatting") for details.
+    /// </summary>
+    public class AppsDynamiteStorageTextParagraph : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text that's shown in the widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
-    public class AppsDynamiteSharedWidget : Google.Apis.Requests.IDirectResponseSchema
+    public class AppsDynamiteStorageWidget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A list of buttons. For example, the following JSON creates two buttons. The first is a filled text button
@@ -7219,7 +7223,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// "https://example.com/calendar" } } }, ] } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
-        public virtual AppsDynamiteSharedButtonList ButtonList { get; set; }
+        public virtual AppsDynamiteStorageButtonList ButtonList { get; set; }
 
         /// <summary>
         /// Displays a single row of columns with widgets stacked vertically in each column. For example, the following
@@ -7230,7 +7234,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// "CENTER", "widgets": [ { "textParagraph": { "text": "Second column text paragraph", } } ] }, ] } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual AppsDynamiteSharedColumns Columns { get; set; }
+        public virtual AppsDynamiteStorageColumns Columns { get; set; }
 
         /// <summary>
         /// Displays a selection/input widget for date/time. For example, the following JSON creates a date/time picker
@@ -7238,7 +7242,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// appointment at:", "type": "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
-        public virtual AppsDynamiteSharedDateTimePicker DateTimePicker { get; set; }
+        public virtual AppsDynamiteStorageDateTimePicker DateTimePicker { get; set; }
 
         /// <summary>
         /// Displays a decorated text item in this widget. For example, the following JSON creates a decorated text
@@ -7248,13 +7252,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// "ControlType.CHECKBOX" } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
-        public virtual AppsDynamiteSharedDecoratedText DecoratedText { get; set; }
+        public virtual AppsDynamiteStorageDecoratedText DecoratedText { get; set; }
 
         /// <summary>
         /// Displays a divider. For example, the following JSON creates a divider: ``` "divider": { } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divider")]
-        public virtual AppsDynamiteSharedDivider Divider { get; set; }
+        public virtual AppsDynamiteStorageDivider Divider { get; set; }
 
         /// <summary>
         /// Displays a grid with a collection of items. For example, the following JSON creates a 2 column grid with a
@@ -7264,7 +7268,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// "textAlignment": "CENTER" ], "onClick": { "openLink": { "url":"https://www.example.com" } } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grid")]
-        public virtual AppsDynamiteSharedGrid Grid { get; set; }
+        public virtual AppsDynamiteStorageGrid Grid { get; set; }
 
         /// <summary>The horizontal alignment of this widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
@@ -7275,7 +7279,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// ``` "image": { "imageUrl": "https://example.com/heba_salam.png" "altText": "Avatar for Heba Salam" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual AppsDynamiteSharedImage Image { get; set; }
+        public virtual AppsDynamiteStorageImage Image { get; set; }
 
         /// <summary>
         /// Displays a switch control in this widget. For example, the following JSON creates a dropdown selection for
@@ -7285,7 +7289,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// false } ] } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
-        public virtual AppsDynamiteSharedSelectionInput SelectionInput { get; set; }
+        public virtual AppsDynamiteStorageSelectionInput SelectionInput { get; set; }
 
         /// <summary>
         /// Displays a text input in this widget. For example, the following JSON creates a text input for mail address:
@@ -7295,14 +7299,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
-        public virtual AppsDynamiteSharedTextInput TextInput { get; set; }
+        public virtual AppsDynamiteStorageTextInput TextInput { get; set; }
 
         /// <summary>
         /// Displays a text paragraph in this widget. For example, the following JSON creates a bolded text: ```
         /// "textParagraph": { "text": " *bold text*" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual AppsDynamiteSharedTextParagraph TextParagraph { get; set; }
+        public virtual AppsDynamiteStorageTextParagraph TextParagraph { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7671,7 +7675,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>Card AddOn attachment with the possibility for specifying editable widgets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardAddOnData")]
-        public virtual AppsDynamiteSharedCard CardAddOnData { get; set; }
+        public virtual AppsDynamiteStorageCard CardAddOnData { get; set; }
 
         /// <summary>Deprecated version of Gmail AddOn attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecatedAddOnData")]
@@ -8113,6 +8117,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Output only. Documents attached to an ongoing conference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachedDocuments")]
         public virtual System.Collections.Generic.IList<DocumentInfo> AttachedDocuments { get; set; }
+
+        /// <summary>List of available access types of the conference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableAccessTypes")]
+        public virtual System.Collections.Generic.IList<string> AvailableAccessTypes { get; set; }
 
         /// <summary>
         /// Output only. The set of reactions that clients are allowed to send and can expect to receive. Note that a
@@ -9842,8 +9850,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageAgeInDays")]
         public virtual System.Nullable<double> MessageAgeInDays { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSenderAffinityScore")]
+        public virtual System.Nullable<double> MessageSenderAffinityScore { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
         public virtual System.Nullable<double> TopicalityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("unjoinedSpaceAffinityScore")]
+        public virtual System.Nullable<double> UnjoinedSpaceAffinityScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14443,6 +14457,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// classes in google3/security/credentials/public/principal.h
     /// google3/java/com/google/security/credentials/Principal.java google3/security/credentials/go/principal.go unless
     /// direct proto access is essential. If you update this protocol buffer, please update the wrapper classes as well.
+    /// LINT.IfChange
     /// </summary>
     public class PrincipalProto : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14643,7 +14658,8 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// Indicates that the property can be used for generating facets. Cannot be true for properties whose type is
-        /// object. IsReturnable must be true to set this option. Only supported for boolean, enum, and text properties.
+        /// object. IsReturnable must be true to set this option. Only supported for boolean, enum, integer, and text
+        /// properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFacetable")]
         public virtual System.Nullable<bool> IsFacetable { get; set; }
@@ -15165,7 +15181,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// Principal associated with a given RBAC role. This principal is used by Sphinx Provisioning Service for RBAC
-    /// (go/cedi-auth) provisionable (go/sphinx-rbacz-design).
+    /// provisionable (go/sphinx-rbacz).
     /// </summary>
     public class RbacRoleProto : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15180,8 +15196,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string RbacNamespace { get; set; }
 
         /// <summary>
-        /// Format: "RbacNamespaceName.RbacRoleName(/field=value)*", e.g., "hr.v1.Reader",
-        /// "hr.v1.Reader/language=EN_US/country=USA/room=NYC-9th-11A201".
+        /// Format: "role/z?" - "role" is the Sphinx globally unique name of the Sphinx role that provisions the RBAC
+        /// role. - "/z?" suffix indicates which Zanzibar environment stores the role membership data ("/zd": dev,
+        /// "/zs": staging, "/zp": prod, "/zt": local test instance). Example: "mysystem_myrole/zp"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbacRoleName")]
         public virtual string RbacRoleName { get; set; }
@@ -15192,7 +15209,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// Principal associated with a given RBAC subject. This principal is used by Sphinx Provisioning Service for RBAC
-    /// (go/cedi-auth) provisionable (go/sphinx-rbacz-design).
+    /// provisionable (go/sphinx-rbacz).
     /// </summary>
     public class RbacSubjectProto : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18476,11 +18493,18 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Information about the broadcast to YouTube.</summary>
     public class YouTubeLiveBroadcastEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Input only. If the channel_id is for a YouTube Channel owned by a Brand Account, client is required to
+        /// populate this field with the obfuscated gaia id of the Brand account when starting the broadcast.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandAccountGaiaId")]
+        public virtual string BrandAccountGaiaId { get; set; }
+
         /// <summary>Input only. The broadcast id, used to control the lifecycle of the event on YouTube</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("broadcastId")]
         public virtual string BroadcastId { get; set; }
 
-        /// <summary>YouTube channel associated with the broadcast.</summary>
+        /// <summary>YouTube Channel associated with the broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
         public virtual string ChannelId { get; set; }
 

@@ -656,11 +656,22 @@ namespace Google.Apis.Kmsinventory.v1.Data
         /// <summary>
         /// The name of the Cloud KMS
         /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
-        /// used to protect this resource via CMEK. This field may be empty if the Cloud product owning the resource
-        /// does not provide key version data to Asset Inventory.
+        /// used to protect this resource via CMEK. This field is empty if the Google Cloud product owning the resource
+        /// does not provide key version data to Asset Inventory. If there are multiple key versions protecting the
+        /// resource, then this is same value as the first element of crypto_key_versions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersion")]
         public virtual string CryptoKeyVersion { get; set; }
+
+        /// <summary>
+        /// The names of the Cloud KMS
+        /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
+        /// used to protect this resource via CMEK. This field is empty if the Google Cloud product owning the resource
+        /// does not provide key versions data to Asset Inventory. The first element of this field is stored in
+        /// crypto_key_version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersions")]
+        public virtual System.Collections.Generic.IList<string> CryptoKeyVersions { get; set; }
 
         /// <summary>A key-value pair of the resource's labels (v1) to their values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

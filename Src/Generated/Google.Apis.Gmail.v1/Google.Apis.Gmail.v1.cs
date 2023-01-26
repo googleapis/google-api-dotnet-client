@@ -3063,7 +3063,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers.</summary>
+            /// <summary>
+            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage,
+            /// see [Sending email](https://developers.google.com/gmail/api/guides/sending).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -3073,7 +3076,10 @@ namespace Google.Apis.Gmail.v1
                 return new SendRequest(service, body, userId);
             }
 
-            /// <summary>Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers.</summary>
+            /// <summary>
+            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage,
+            /// see [Sending email](https://developers.google.com/gmail/api/guides/sending).
+            /// </summary>
             public class SendRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Send request.</summary>
@@ -3120,7 +3126,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers.</summary>
+            /// <summary>
+            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage,
+            /// see [Sending email](https://developers.google.com/gmail/api/guides/sending).
+            /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">

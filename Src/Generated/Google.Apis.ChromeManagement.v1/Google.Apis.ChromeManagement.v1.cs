@@ -1322,6 +1322,7 @@ namespace Google.Apis.ChromeManagement.v1
                 this.service = service;
                 Devices = new DevicesResource(service);
                 Events = new EventsResource(service);
+                Users = new UsersResource(service);
             }
 
             /// <summary>Gets the Devices resource.</summary>
@@ -1576,6 +1577,185 @@ namespace Google.Apis.ChromeManagement.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/telemetry/events";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Users resource.</summary>
+            public virtual UsersResource Users { get; }
+
+            /// <summary>The "users" collection of methods.</summary>
+            public class UsersResource
+            {
+                private const string Resource = "users";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public UsersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get telemetry user.</summary>
+                /// <param name="name">Required. Name of the `TelemetryUser` to return.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get telemetry user.</summary>
+                public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1TelemetryUser>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the `TelemetryUser` to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Read mask to specify which fields to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/telemetry/users/[^/]+$",
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List all telemetry users.</summary>
+                /// <param name="parent">
+                /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                /// request.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List all telemetry users.</summary>
+                public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1ListTelemetryUsersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                    /// request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Only include resources that match the filter. Supported filter fields: * user_id *
+                    /// user_org_unit_id
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Maximum number of results to return. Default value is 100. Maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Token to specify next page in the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Read mask to specify which fields to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/telemetry/users";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -2568,9 +2748,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// Information of the graphics subsystem. * This field is telemetry information and this will change over time as
     /// the device is utilized. * Data for this field is controlled via policy:
     /// [ReportDeviceGraphicsInfo](https://chromeenterprise.google/policies/#ReportDeviceGraphicsInfo) * Data Collection
-    /// Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the
-    /// device is offline, the collected data is stored locally, and will be reported when the device is next online: No
-    /// * Reported for affiliated users only: N/A
+    /// Frequency: 3 hours. * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device
+    /// is offline, the collected data is stored locally, and will be reported when the device is next online: No *
+    /// Reported for affiliated users only: N/A
     /// </summary>
     public class GoogleChromeManagementV1GraphicsStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2684,6 +2864,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Telemetry events returned in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telemetryEvents")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryEvent> TelemetryEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing telemetry users for a customer.</summary>
+    public class GoogleChromeManagementV1ListTelemetryUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to specify next page in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Telemetry users returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetryUsers")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryUser> TelemetryUsers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2934,6 +3129,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Current state of the os update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateState")]
         public virtual string UpdateState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Peripherals report.</summary>
+    public class GoogleChromeManagementV1PeripheralsReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp of when the report was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Reports of all usb connected devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usbPeripheralReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1UsbPeripheralReport> UsbPeripheralReport { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3213,6 +3423,63 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>List of usb devices that were either added or removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbPeripheralReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1UsbPeripheralReport> UsbPeripheralReport { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Telemetry data collected from a managed user.</summary>
+    public class GoogleChromeManagementV1TelemetryUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>G Suite Customer whose enterprise enrolled the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>Resource name of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Organization unit of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Telemetry data collected from a managed user and device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDevice")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryUserDevice> UserDevice { get; set; }
+
+        /// <summary>Email address of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>Directory ID of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Telemetry data collected for a managed user and device.</summary>
+    public class GoogleChromeManagementV1TelemetryUserDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Audio reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AudioStatusReport> AudioStatusReport { get; set; }
+
+        /// <summary>
+        /// The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in
+        /// the ChromeOS Devices tab.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>
+        /// Output only. Peripherals reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peripheralsReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1PeripheralsReport> PeripheralsReport { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

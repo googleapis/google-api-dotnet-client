@@ -322,8 +322,10 @@ namespace Google.Apis.AlertCenter.v1beta1
                 public virtual string AlertId { get; private set; }
 
                 /// <summary>
-                /// Optional. The unique identifier of the Google Workspace organization account of the customer the
-                /// alert is associated with. Inferred from the caller identity if not provided.
+                /// Optional. The unique identifier of the Google Workspace account of the customer the alert is
+                /// associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`).
+                /// Inferred from the caller identity if not provided. [Find your customer
+                /// ID](https://support.google.com/cloudidentity/answer/10070793).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomerId { get; set; }
@@ -398,8 +400,10 @@ namespace Google.Apis.AlertCenter.v1beta1
                 public virtual string AlertId { get; private set; }
 
                 /// <summary>
-                /// Optional. The unique identifier of the Google Workspace organization account of the customer the
-                /// alert feedback are associated with. Inferred from the caller identity if not provided.
+                /// Optional. The unique identifier of the Google Workspace account of the customer the alert is
+                /// associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`).
+                /// Inferred from the caller identity if not provided. [Find your customer
+                /// ID](https://support.google.com/cloudidentity/answer/10070793).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomerId { get; set; }
@@ -562,8 +566,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>
-            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
-            /// is associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace account of the customer the alert is associated
+            /// with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the
+            /// caller identity if not provided. [Find your customer
+            /// ID](https://support.google.com/cloudidentity/answer/10070793).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -626,8 +632,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>
-            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
-            /// is associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace account of the customer the alert is associated
+            /// with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the
+            /// caller identity if not provided. [Find your customer
+            /// ID](https://support.google.com/cloudidentity/answer/10070793).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -692,8 +700,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>
-            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
-            /// metadata is associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace account of the customer the alert metadata is
+            /// associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`).
+            /// Inferred from the caller identity if not provided. [Find your customer
+            /// ID](https://support.google.com/cloudidentity/answer/10070793).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -746,8 +756,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>
-            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alerts
-            /// are associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace account of the customer the alerts are
+            /// associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`).
+            /// Inferred from the caller identity if not provided. [Find your customer
+            /// ID](https://support.google.com/cloudidentity/answer/10070793).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -934,8 +946,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>
-            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
-            /// settings are associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace account of the customer the alert settings are
+            /// associated with. The `customer_id` must/ have the initial "C" stripped (for example, `046psxkn`).
+            /// Inferred from the caller identity if not provided. [Find your customer
+            /// ID](https://support.google.com/cloudidentity/answer/10070793).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -982,8 +996,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>
-            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
-            /// settings are associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace account of the customer the alert settings are
+            /// associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`).
+            /// Inferred from the caller identity if not provided. [Find your customer
+            /// ID](https://support.google.com/cloudidentity/answer/10070793).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -1199,7 +1215,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. The unique identifier of the Google account of the customer.</summary>
+        /// <summary>Output only. The unique identifier of the Google Workspace account of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
 
@@ -1279,7 +1295,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. The unique identifier of the Google account of the customer.</summary>
+        /// <summary>Output only. The unique identifier of the Google Workspace account of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
 
@@ -1310,7 +1326,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assignee")]
         public virtual string Assignee { get; set; }
 
-        /// <summary>Output only. The unique identifier of the Google account of the customer.</summary>
+        /// <summary>Output only. The unique identifier of the Google Workspace account of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
 
@@ -1475,13 +1491,15 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>A request to perform batch delete on alerts.</summary>
     public class BatchDeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. list of alert IDs.</summary>
+        /// <summary>Required. The list of alert IDs to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
         public virtual System.Collections.Generic.IList<string> AlertId { get; set; }
 
         /// <summary>
-        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are
-        /// associated with.
+        /// Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated
+        /// with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the
+        /// caller identity if not provided. [Find your customer
+        /// ID](https://support.google.com/cloudidentity/answer/10070793).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
@@ -1493,7 +1511,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Response to batch delete operation on alerts.</summary>
     public class BatchDeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status details for each failed alert_id.</summary>
+        /// <summary>The status details for each failed `alert_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
         public virtual System.Collections.Generic.IDictionary<string, Status> FailedAlertStatus { get; set; }
 
@@ -1508,13 +1526,15 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>A request to perform batch undelete on alerts.</summary>
     public class BatchUndeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. list of alert IDs.</summary>
+        /// <summary>Required. The list of alert IDs to undelete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
         public virtual System.Collections.Generic.IList<string> AlertId { get; set; }
 
         /// <summary>
-        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are
-        /// associated with.
+        /// Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated
+        /// with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the
+        /// caller identity if not provided. [Find your customer
+        /// ID](https://support.google.com/cloudidentity/answer/10070793).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
@@ -1526,7 +1546,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Response to batch undelete operation on alerts.</summary>
     public class BatchUndeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status details for each failed alert_id.</summary>
+        /// <summary>The status details for each failed `alert_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
         public virtual System.Collections.Generic.IDictionary<string, Status> FailedAlertStatus { get; set; }
 
@@ -2415,8 +2435,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     public class UndeleteAlertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert is
-        /// associated with. Inferred from the caller identity if not provided.
+        /// Optional. The unique identifier of the Google Workspace account of the customer the alert is associated
+        /// with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the
+        /// caller identity if not provided. [Find your customer
+        /// ID](https://support.google.com/cloudidentity/answer/10070793).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
