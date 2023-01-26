@@ -3975,6 +3975,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about a long-running Product operation.</summary>
+    public class ProductMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of warnings related to the associated operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningMessages")]
+        public virtual System.Collections.Generic.IList<string> WarningMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A reference to a Google Cloud Platform (GCP) `Project`.</summary>
     public class ProjectInfo : Google.Apis.Requests.IDirectResponseSchema
     {

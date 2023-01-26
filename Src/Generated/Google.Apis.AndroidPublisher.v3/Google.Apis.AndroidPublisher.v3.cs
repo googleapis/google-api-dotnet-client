@@ -6199,7 +6199,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                         /// <summary>
                         /// Required. A string representing version of the available regions being used for the
-                        /// specified resource. The current version is 2022/01.
+                        /// specified resource. The current version is 2022/02.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
@@ -6730,7 +6730,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                         /// <summary>
                         /// Required. A string representing version of the available regions being used for the
-                        /// specified resource. The current version is 2022/01.
+                        /// specified resource. The current version is 2022/02.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
@@ -7292,7 +7292,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 /// <summary>
                 /// Required. A string representing version of the available regions being used for the specified
-                /// resource. The current version is 2022/01.
+                /// resource. The current version is 2022/02.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
@@ -7601,7 +7601,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 /// <summary>
                 /// Required. A string representing version of the available regions being used for the specified
-                /// resource. The current version is 2022/01.
+                /// resource. The current version is 2022/02.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
@@ -11636,7 +11636,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>
         /// Required. A string representing version of the available regions being used for the specified resource. The
-        /// current version is 2022/01.
+        /// current version is 2022/02.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }

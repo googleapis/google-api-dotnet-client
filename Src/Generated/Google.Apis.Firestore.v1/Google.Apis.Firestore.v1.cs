@@ -2751,6 +2751,13 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Etag { get; set; }
 
                 /// <summary>
+                /// If set, will free the database_id associated with this database. uid will be used as the resource id
+                /// to identify this deleted database.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("freeId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> FreeId { get; set; }
+
+                /// <summary>
                 /// If set, validate the request and preview the response, but do not actually delete the database.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
@@ -2788,6 +2795,14 @@ namespace Google.Apis.Firestore.v1
                     RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                     {
                         Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("freeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "freeId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3932,11 +3947,15 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
+        /// <summary>Which namespace ids are being exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
+
         /// <summary>The state of the export operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
         public virtual string OperationState { get; set; }
 
-        /// <summary>Where the entities are being exported to.</summary>
+        /// <summary>Where the documents are being exported to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
         public virtual string OutputUriPrefix { get; set; }
 
@@ -4099,6 +4118,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The location of the documents being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
         public virtual string InputUriPrefix { get; set; }
+
+        /// <summary>Which namespace ids are being imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
         /// <summary>The state of the import operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]

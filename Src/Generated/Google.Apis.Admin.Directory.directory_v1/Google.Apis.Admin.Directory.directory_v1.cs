@@ -9721,9 +9721,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Updates a user using patch semantics. The update method should be used instead, since it also supports patch
-        /// semantics and has better performance. This method is unable to clear fields that contain repeated objects
-        /// (`addresses`, `phones`, etc). Use the update method instead.
+        /// Updates a user using patch semantics. The update method should be used instead, because it also supports
+        /// patch semantics and has better performance. If you're mapping an external identity to a Google identity, use
+        /// the [`update`](https://developers.google.com/admin-sdk/directory/v1/reference/users/update) method instead
+        /// of the `patch` method. This method is unable to clear fields that contain repeated objects (`addresses`,
+        /// `phones`, etc). Use the update method instead.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">
@@ -9736,9 +9738,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Updates a user using patch semantics. The update method should be used instead, since it also supports patch
-        /// semantics and has better performance. This method is unable to clear fields that contain repeated objects
-        /// (`addresses`, `phones`, etc). Use the update method instead.
+        /// Updates a user using patch semantics. The update method should be used instead, because it also supports
+        /// patch semantics and has better performance. If you're mapping an external identity to a Google identity, use
+        /// the [`update`](https://developers.google.com/admin-sdk/directory/v1/reference/users/update) method instead
+        /// of the `patch` method. This method is unable to clear fields that contain repeated objects (`addresses`,
+        /// `phones`, etc). Use the update method instead.
         /// </summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
@@ -11704,9 +11708,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class DirectoryChromeosdevicesCommandResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The payload for the command result. The following commands respond with a payload: -
-        /// DEVICE_START_CRD_SESSION: Payload is a stringified JSON object in the form: { "url": url }. The URL provides
-        /// a link to the CRD session.
+        /// The payload for the command result. The following commands respond with a payload: *
+        /// `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in the form: { "url": url }. The URL
+        /// provides a link to the Chrome Remote Desktop session.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandResultPayload")]
         public virtual string CommandResultPayload { get; set; }
@@ -11738,11 +11742,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// The payload for the command, provide it only if command supports it. The following commands support adding
-        /// payload: - SET_VOLUME: Payload is a stringified JSON object in the form: { "volume": 50 }. The volume has to
-        /// be an integer in the range [0,100]. - DEVICE_START_CRD_SESSION: Payload is optionally a stringified JSON
-        /// object in the form: { "ackedUserPresence": true }. ackedUserPresence is a boolean. If a device is being
-        /// used, ackedUserPresence must be set to true to acknowledge that you want to start a CRD session anyways. It
-        /// is false by default, so a CRD command will fail if used on an active device without this field.
+        /// payload: * `SET_VOLUME`: Payload is a stringified JSON object in the form: { "volume": 50 }. The volume has
+        /// to be an integer in the range [0,100]. * `DEVICE_START_CRD_SESSION`: Payload is optionally a stringified
+        /// JSON object in the form: { "ackedUserPresence": true }. `ackedUserPresence` is a boolean. By default,
+        /// `ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop session for an active device, set
+        /// `ackedUserPresence` to `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; }

@@ -2329,17 +2329,6 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for DeleteDataLabelingJob.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The basic metadata of the long running operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
-        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The long running operation metadata for DeleteLabelerPool.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2635,6 +2624,28 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Response of the import document operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The long running operation metadata for the ImportProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata for the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the ImportProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination processor version name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

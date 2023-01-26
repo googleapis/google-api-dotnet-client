@@ -3735,8 +3735,9 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field
-        /// contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        /// Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary.
+        /// This field contains a reference to that transport intermediary. This information can be used for debugging
+        /// purposes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transport")]
         public virtual Transport Transport { get; set; }

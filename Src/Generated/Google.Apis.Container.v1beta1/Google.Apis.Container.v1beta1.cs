@@ -6422,7 +6422,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
-        /// <summary>The image type to use for NAP created node.</summary>
+        /// <summary>
+        /// The image type to use for NAP created node. Please see
+        /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
@@ -8787,7 +8790,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be
-        /// used.
+        /// used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image
+        /// types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
@@ -10780,7 +10784,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
         public virtual VirtualNIC Gvnic { get; set; }
 
-        /// <summary>Required. The desired image type for the node pool.</summary>
+        /// <summary>
+        /// Required. The desired image type for the node pool. Please see
+        /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
