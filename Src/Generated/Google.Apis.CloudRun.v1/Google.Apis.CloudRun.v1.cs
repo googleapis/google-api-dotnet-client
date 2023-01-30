@@ -5826,7 +5826,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<EnvFromSource> EnvFrom { get; set; }
 
         /// <summary>
-        /// Required. URL of the Container image in Google Container Registry or Google Artifact Registry. More info:
+        /// Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry.
+        /// If the host is not provided, Dockerhub is assumed. More info:
         /// https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]

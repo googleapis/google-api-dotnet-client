@@ -1754,7 +1754,6 @@ namespace Google.Apis.Dataflow.v1b3
                 FlexTemplates = new FlexTemplatesResource(service);
                 Jobs = new JobsResource(service);
                 Snapshots = new SnapshotsResource(service);
-                Sql = new SqlResource(service);
                 Templates = new TemplatesResource(service);
             }
 
@@ -3848,111 +3847,6 @@ namespace Google.Apis.Dataflow.v1b3
                         RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "jobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-
-            /// <summary>Gets the Sql resource.</summary>
-            public virtual SqlResource Sql { get; }
-
-            /// <summary>The "sql" collection of methods.</summary>
-            public class SqlResource
-            {
-                private const string Resource = "sql";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public SqlResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses
-                /// correctly, and if able to look up schema information from DataCatalog, will validate that the query
-                /// analyzes properly as well.
-                /// </summary>
-                /// <param name="projectId">
-                /// Required. The ID of the Cloud Platform project that the job belongs to.
-                /// </param>
-                /// <param name="location">
-                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
-                /// which to direct the request.
-                /// </param>
-                public virtual ValidateRequest Validate(string projectId, string location)
-                {
-                    return new ValidateRequest(service, projectId, location);
-                }
-
-                /// <summary>
-                /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses
-                /// correctly, and if able to look up schema information from DataCatalog, will validate that the query
-                /// analyzes properly as well.
-                /// </summary>
-                public class ValidateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ValidateResponse>
-                {
-                    /// <summary>Constructs a new Validate request.</summary>
-                    public ValidateRequest(Google.Apis.Services.IClientService service, string projectId, string location) : base(service)
-                    {
-                        ProjectId = projectId;
-                        Location = location;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>
-                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
-                    /// which to direct the request.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Location { get; private set; }
-
-                    /// <summary>The sql query to validate.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Query { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "validate";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/sql:validate";
-
-                    /// <summary>Initializes Validate parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "query",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6634,9 +6528,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
     /// <summary>
     /// JobMetrics contains a collection of metrics describing the detailed progress of a Dataflow job. Metrics
-    /// correspond to user-defined and system-defined metrics in the job. This resource captures only the most recent
-    /// values of each metric; time-series data can be queried for them (under the same metric names) from Cloud
-    /// Monitoring.
+    /// correspond to user-defined and system-defined metrics in the job. For more information, see [Dataflow job
+    /// metrics] (https://cloud.google.com/dataflow/docs/guides/using-monitoring-intf). This resource captures only the
+    /// most recent values of each metric; time-series data can be queried for them (under the same metric names) from
+    /// Cloud Monitoring.
     /// </summary>
     public class JobMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7536,17 +7431,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a validated query.</summary>
-    public class QueryInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Includes an entry for each satisfied QueryProperty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryProperty")]
-        public virtual System.Collections.Generic.IList<string> QueryProperty { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>An instruction that reads records. Takes no inputs, produces one output.</summary>
     public class ReadInstruction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7664,67 +7548,74 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>The environment values to set at runtime.</summary>
     public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional experiment flags for the job, specified with the `--experiments` option.</summary>
+        /// <summary>
+        /// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
         public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; }
 
         /// <summary>
-        /// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified
-        /// in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3"
-        /// }.
+        /// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions
+        /// specified in the [labeling
+        /// restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object
+        /// containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
-        /// <summary>Whether to bypass the safety checks for the job's temporary directory. Use with caution.</summary>
+        /// <summary>
+        /// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bypassTempDirValidation")]
         public virtual System.Nullable<bool> BypassTempDirValidation { get; set; }
 
-        /// <summary>Whether to enable Streaming Engine for the job.</summary>
+        /// <summary>Optional. Whether to enable Streaming Engine for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
         public virtual System.Nullable<bool> EnableStreamingEngine { get; set; }
 
-        /// <summary>Configuration for VM IPs.</summary>
+        /// <summary>Optional. Configuration for VM IPs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual string IpConfiguration { get; set; }
 
         /// <summary>
-        /// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+        /// Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// The machine type to use for the job. Defaults to the value from the template if not specified.
+        /// Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
         /// <summary>
-        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during
-        /// execution, from 1 to 1000.
+        /// Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during
+        /// execution, from 1 to 1000. The default value is 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkers")]
         public virtual System.Nullable<int> MaxWorkers { get; set; }
 
         /// <summary>
-        /// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        /// Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network
+        /// "default".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>The initial number of Google Compute Engine instances for the job.</summary>
+        /// <summary>
+        /// Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
         public virtual System.Nullable<int> NumWorkers { get; set; }
 
-        /// <summary>The email address of the service account to run the job as.</summary>
+        /// <summary>Optional. The email address of the service account to run the job as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete
-        /// URL or an abbreviated path. Expected to be of the form
+        /// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a
+        /// complete URL or an abbreviated path. Expected to be of the form
         /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
         /// "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use
         /// the complete URL.
@@ -7733,32 +7624,33 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string Subnetwork { get; set; }
 
         /// <summary>
-        /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with
-        /// `gs://`.
+        /// Required. The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning
+        /// with `gs://`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempLocation")]
         public virtual string TempLocation { get; set; }
 
         /// <summary>
-        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which
-        /// worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
+        /// Required. The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        /// which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
         /// worker_region nor worker_zone is specified, default to the control plane's region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerRegion")]
         public virtual string WorkerRegion { get; set; }
 
         /// <summary>
-        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker
-        /// processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region
-        /// nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If
-        /// both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        /// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        /// which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither
+        /// worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on
+        /// available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerZone")]
         public virtual string WorkerZone { get; set; }
 
         /// <summary>
-        /// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
-        /// for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+        /// Optional. The Compute Engine [availability
+        /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to
+        /// run your pipeline. In the future, worker_zone will take precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
@@ -9041,21 +8933,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>User names for all collection outputs to this transform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputCollectionName")]
         public virtual System.Collections.Generic.IList<string> OutputCollectionName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response to the validation request.</summary>
-    public class ValidateResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Will be empty if validation succeeds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; }
-
-        /// <summary>Information about the validated query. Not defined if validation fails.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryInfo")]
-        public virtual QueryInfo QueryInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -14365,7 +14365,8 @@ namespace Google.Apis.Logging.v2.Data
         /// For
         /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"This
         /// is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been
-        /// configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        /// configured. It will be populated in cases where the CMEK settings are bound to a single key version.If this
+        /// field is populated, the kms_key is tied to a specific CryptoKeyVersion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; }
@@ -14783,7 +14784,7 @@ namespace Google.Apis.Logging.v2.Data
         /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]Projects listed in the
-        /// project_ids field are added to this list.
+        /// project_ids field are added to this list. A maximum of 100 resources may be specified in a single request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }

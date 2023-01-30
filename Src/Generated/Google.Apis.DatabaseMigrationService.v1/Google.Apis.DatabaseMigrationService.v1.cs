@@ -1532,7 +1532,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("commitId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CommitId { get; set; }
 
-                    /// <summary>Filter the returned entities based on AIP-160 standard</summary>
+                    /// <summary>Filter the returned entities based on AIP-160 standard.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1552,11 +1552,11 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>The tree to fetch</summary>
+                    /// <summary>The tree to fetch.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("tree", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<TreeEnum> Tree { get; set; }
 
-                    /// <summary>The tree to fetch</summary>
+                    /// <summary>The tree to fetch.</summary>
                     public enum TreeEnum
                     {
                         /// <summary>Unspecified tree type</summary>

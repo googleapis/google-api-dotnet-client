@@ -639,6 +639,13 @@ namespace Google.Apis.CloudDeploy.v1
                             public virtual string RolloutId { get; set; }
 
                             /// <summary>
+                            /// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at
+                            /// the first phase.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("startingPhaseId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string StartingPhaseId { get; set; }
+
+                            /// <summary>
                             /// Optional. If set to true, the request is validated and the user is provided with an
                             /// expected result, but no actual change is made.
                             /// </summary>
@@ -683,6 +690,14 @@ namespace Google.Apis.CloudDeploy.v1
                                 RequestParameters.Add("rolloutId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "rolloutId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("startingPhaseId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "startingPhaseId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

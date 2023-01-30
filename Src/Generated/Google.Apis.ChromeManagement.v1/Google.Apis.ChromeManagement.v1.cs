@@ -1549,8 +1549,9 @@ namespace Google.Apis.ChromeManagement.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Only include resources that match the filter. Supported filter fields: * device_id *
-                    /// user_id * device_org_unit_id * user_org_unit_id * timestamp * event_type
+                    /// Optional. Only include resources that match the filter. Supported filter fields: - device_id -
+                    /// user_id - device_org_unit_id - user_org_unit_id - timestamp - event_type The "timestamp" filter
+                    /// accepts either Epoch milliseconds or RFC 3339 formatted time surrounded by simple double quotes.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1728,7 +1729,7 @@ namespace Google.Apis.ChromeManagement.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Only include resources that match the filter. Supported filter fields: * user_id *
+                    /// Only include resources that match the filter. Supported filter fields: - user_id -
                     /// user_org_unit_id
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]

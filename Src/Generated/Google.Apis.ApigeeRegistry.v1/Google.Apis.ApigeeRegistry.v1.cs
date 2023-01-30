@@ -1847,6 +1847,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// An expression that can be used to filter the list. Filters use the Common Expression
+                        /// Language and can refer to all message fields.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
                         /// <summary>The maximum number of revisions to return per page.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1878,6 +1885,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/deployments/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -4066,6 +4081,13 @@ namespace Google.Apis.ApigeeRegistry.v1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
+                            /// <summary>
+                            /// An expression that can be used to filter the list. Filters use the Common Expression
+                            /// Language and can refer to all message fields.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
                             /// <summary>The maximum number of revisions to return per page.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
@@ -4097,6 +4119,14 @@ namespace Google.Apis.ApigeeRegistry.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/versions/[^/]+/specs/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
@@ -7451,7 +7481,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
 
         /// <summary>
         /// The full resource name (including revision ID) of the spec of the API being served by the deployment.
-        /// Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        /// Changes to this value will update the revision. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiSpecRevision")]
         public virtual string ApiSpecRevision { get; set; }
@@ -7664,6 +7695,13 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// The primary spec for this version. Format:
+        /// projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primarySpec")]
+        public virtual string PrimarySpec { get; set; }
+
+        /// <summary>
         /// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect
         /// single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
         /// "DEPRECATED", "RETIRED".
@@ -7690,6 +7728,14 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     public class Artifact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted
+        /// than those of labels, but should be generally used for small values of broad interest. Larger, topic-
+        /// specific metadata should be stored in Artifacts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
         /// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To
         /// access the contents of an artifact, use GetArtifactContents.
         /// </summary>
@@ -7706,6 +7752,17 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
         public virtual string Hash { get; set; }
+
+        /// <summary>
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations.
+        /// Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase
+        /// letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64
+        /// user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for
+        /// more information and examples of labels. System reserved label keys are prefixed with
+        /// "registry.googleapis.com/" and cannot be changed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// A content type specifier for the artifact. Content type specifiers are Media Types

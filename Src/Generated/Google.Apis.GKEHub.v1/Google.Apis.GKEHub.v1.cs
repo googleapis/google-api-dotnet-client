@@ -2428,6 +2428,15 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+    /// </summary>
+    public class CommonFleetDefaultMemberConfigSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for Config Sync</summary>
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3108,6 +3117,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Output only. When the Feature resource was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual object DeleteTime { get; set; }
+
+        /// <summary>Optional. Feature configuration applicable to all memberships of the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetDefaultMemberConfig")]
+        public virtual CommonFleetDefaultMemberConfigSpec FleetDefaultMemberConfig { get; set; }
 
         /// <summary>GCP labels for this Feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
