@@ -2161,6 +2161,10 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>VM instance status.</summary>
     public class InstanceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The VM boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
+        public virtual Disk BootDisk { get; set; }
+
         /// <summary>The Compute Engine machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
@@ -2796,6 +2800,13 @@ namespace Google.Apis.Batch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
+
+        /// <summary>
+        /// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope
+        /// that will be added by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

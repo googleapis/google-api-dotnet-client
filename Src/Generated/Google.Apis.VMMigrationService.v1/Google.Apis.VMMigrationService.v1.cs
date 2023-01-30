@@ -5592,7 +5592,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. The percentage progress of the current running replication cycle.</summary>
+        /// <summary>Output only. Details of the current running replication cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSyncInfo")]
         public virtual ReplicationCycle CurrentSyncInfo { get; set; }
 

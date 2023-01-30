@@ -963,6 +963,10 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
     /// <summary>A verification represents a verification attempt on a location.</summary>
     public class Verification : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Response announcement set only if the method is VETTED_PARTNER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("announcement")]
+        public virtual string Announcement { get; set; }
+
         /// <summary>The timestamp when the verification is requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -992,6 +996,10 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
         /// <summary>Set only if the method is MAIL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressData")]
         public virtual AddressVerificationData AddressData { get; set; }
+
+        /// <summary>Set only if the method is VETTED_PARTNER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("announcement")]
+        public virtual string Announcement { get; set; }
 
         /// <summary>Set only if the method is EMAIL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailData")]

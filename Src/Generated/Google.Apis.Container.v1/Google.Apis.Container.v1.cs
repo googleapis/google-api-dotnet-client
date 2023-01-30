@@ -6356,7 +6356,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
-        /// <summary>The image type to use for NAP created node.</summary>
+        /// <summary>
+        /// The image type to use for NAP created node. Please see
+        /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
@@ -6370,8 +6373,8 @@ namespace Google.Apis.Container.v1.Data
         /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
         /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This
         /// field is deprecated, min_cpu_platform should be specified using
-        /// https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform
-        /// field pass "automatic" as field value.
+        /// `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field
+        /// pass "automatic" as field value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -7763,6 +7766,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
         public virtual string ServicesIpv4CidrBlock { get; set; }
 
+        /// <summary>Output only. [Output only] The services IPv6 CIDR block for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv6CidrBlock")]
+        public virtual string ServicesIpv6CidrBlock { get; set; }
+
         /// <summary>
         /// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used
         /// for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork.
@@ -7774,6 +7781,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The IP stack type of the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
         public virtual string StackType { get; set; }
+
+        /// <summary>Output only. [Output only] The subnet's IPv6 CIDR block used by nodes and pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetIpv6CidrBlock")]
+        public virtual string SubnetIpv6CidrBlock { get; set; }
 
         /// <summary>
         /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an
@@ -8457,7 +8468,8 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be
-        /// used.
+        /// used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image
+        /// types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
@@ -8869,7 +8881,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; }
 
-        /// <summary>The version of the Kubernetes of this node.</summary>
+        /// <summary>
+        /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described
+        /// [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
     }
@@ -10385,7 +10400,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
         public virtual VirtualNIC Gvnic { get; set; }
 
-        /// <summary>Required. The desired image type for the node pool.</summary>
+        /// <summary>
+        /// Required. The desired image type for the node pool. Please see
+        /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 

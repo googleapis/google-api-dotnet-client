@@ -1984,6 +1984,33 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will
+    /// create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage
+    /// it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. *
+    /// Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The
+    /// system will try to use more slots immediately. * At a particular moment, the number of slots scaled is
+    /// determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to
+    /// the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an
+    /// alpha feature.
+    /// </summary>
+    public class Autoscale : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The slot capacity added to this reservation when autoscale happens. Will be between [0,
+        /// max_slots].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentSlots")]
+        public virtual System.Nullable<long> CurrentSlots { get; set; }
+
+        /// <summary>Number of slots to be scaled when needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
+        public virtual System.Nullable<long> MaxSlots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a BI Reservation.</summary>
     public class BiReservation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2031,6 +2058,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentStartTime")]
         public virtual object CommitmentStartTime { get; set; }
+
+        /// <summary>Edition of the capacity commitment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
 
         /// <summary>Output only. For FAILED commitment plan, provides the reason of failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureStatus")]
@@ -2174,6 +2205,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The configuration parameters for the auto scaling feature. Note this is an alpha feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscale")]
+        public virtual Autoscale Autoscale { get; set; }
+
         /// <summary>
         /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this
         /// reservation. This is a soft target due to asynchronous nature of the system and various optimizations for
@@ -2186,6 +2221,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>Output only. Creation time of the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; }
+
+        /// <summary>Edition of the reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
 
         /// <summary>
         /// If false, any query or pipeline job using this reservation will use idle slots from other reservations

@@ -2189,81 +2189,6 @@ namespace Google.Apis.Integrations.v1alpha
                         this.service = service;
                     }
 
-                    /// <summary>
-                    /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
-                    /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and set to
-                    /// the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed
-                    /// too. This RPC throws an exception if the version being archived is DRAFT, and if the `locked_by`
-                    /// user is not the same as the user performing the Archive. Audit fields updated include
-                    /// last_modified_timestamp, last_modified_by. Any existing lock is released when Archiving a
-                    /// integration. Currently, there is no unarchive mechanism.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The version to archive. Format:
-                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                    /// </param>
-                    public virtual ArchiveRequest Archive(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest body, string name)
-                    {
-                        return new ArchiveRequest(service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
-                    /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and set to
-                    /// the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed
-                    /// too. This RPC throws an exception if the version being archived is DRAFT, and if the `locked_by`
-                    /// user is not the same as the user performing the Archive. Audit fields updated include
-                    /// last_modified_timestamp, last_modified_by. Any existing lock is released when Archiving a
-                    /// integration. Currently, there is no unarchive mechanism.
-                    /// </summary>
-                    public class ArchiveRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionResponse>
-                    {
-                        /// <summary>Constructs a new Archive request.</summary>
-                        public ArchiveRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The version to archive. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "archive";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}:archive";
-
-                        /// <summary>Initializes Archive parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
-                            });
-                        }
-                    }
-
                     /// <summary>Create a integration with a draft version in the specified project.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -2336,75 +2261,6 @@ namespace Google.Apis.Integrations.v1alpha
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
-                    /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws an
-                    /// exception if the version being snapshot is not ACTIVE. Audit fields added include action,
-                    /// action_by, action_timestamp.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The version to deactivate. Format:
-                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                    /// </param>
-                    public virtual DeactivateRequest Deactivate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest body, string name)
-                    {
-                        return new DeactivateRequest(service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
-                    /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws an
-                    /// exception if the version being snapshot is not ACTIVE. Audit fields added include action,
-                    /// action_by, action_timestamp.
-                    /// </summary>
-                    public class DeactivateRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionResponse>
-                    {
-                        /// <summary>Constructs a new Deactivate request.</summary>
-                        public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The version to deactivate. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "deactivate";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}:deactivate";
-
-                        /// <summary>Initializes Deactivate parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
                             });
                         }
                     }
@@ -3100,73 +2956,6 @@ namespace Google.Apis.Integrations.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Validates the given integration. If the id doesn't exist, a NotFoundException is thrown. If
-                    /// validation fails a CanonicalCodeException is thrown. If there was no failure an empty response
-                    /// is returned.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The version to validate. Format:
-                    /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                    /// </param>
-                    public virtual ValidateRequest Validate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest body, string name)
-                    {
-                        return new ValidateRequest(service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Validates the given integration. If the id doesn't exist, a NotFoundException is thrown. If
-                    /// validation fails a CanonicalCodeException is thrown. If there was no failure an empty response
-                    /// is returned.
-                    /// </summary>
-                    public class ValidateRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionResponse>
-                    {
-                        /// <summary>Constructs a new Validate request.</summary>
-                        public ValidateRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The version to validate. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "validate";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}:validate";
-
-                        /// <summary>Initializes Validate parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+/versions/[^/]+$",
                             });
                         }
                     }
@@ -4346,7 +4135,6 @@ namespace Google.Apis.Integrations.v1alpha
                     {
                         this.service = service;
                         Executions = new ExecutionsResource(service);
-                        Executionsnapshots = new ExecutionsnapshotsResource(service);
                         Versions = new VersionsResource(service);
                     }
 
@@ -5045,129 +4833,6 @@ namespace Google.Apis.Integrations.v1alpha
                         }
                     }
 
-                    /// <summary>Gets the Executionsnapshots resource.</summary>
-                    public virtual ExecutionsnapshotsResource Executionsnapshots { get; }
-
-                    /// <summary>The "executionsnapshots" collection of methods.</summary>
-                    public class ExecutionsnapshotsResource
-                    {
-                        private const string Resource = "executionsnapshots";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public ExecutionsnapshotsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                        }
-
-                        /// <summary>
-                        /// Lists the snapshots of a given integration executions. This RPC is not being used.
-                        /// </summary>
-                        /// <param name="parent">
-                        /// Required. The parent resource name of the integration execution.
-                        /// </param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(service, parent);
-                        }
-
-                        /// <summary>
-                        /// Lists the snapshots of a given integration executions. This RPC is not being used.
-                        /// </summary>
-                        public class ListRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaListExecutionSnapshotsResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The parent resource name of the integration execution.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>
-                            /// Currently supports filter by `execution_info_id` or `execution_snapshot_id`.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string Filter { get; set; }
-
-                            /// <summary>Number of entries to be returned in a page.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>The token used to retrieve the next page results.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>
-                            /// View mask for the response data. If set, only the field specified will be returned as
-                            /// part of the result. If not set, all fields in event execution snapshot will be filled
-                            /// and returned.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object ReadMask { get; set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "list";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+parent}/executionsnapshots";
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
-                                });
-                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "readMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-                    }
-
                     /// <summary>Gets the Versions resource.</summary>
                     public virtual VersionsResource Versions { get; }
 
@@ -5183,81 +4848,6 @@ namespace Google.Apis.Integrations.v1alpha
                         public VersionsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
-                        }
-
-                        /// <summary>
-                        /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
-                        /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and
-                        /// set to the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are
-                        /// removed too. This RPC throws an exception if the version being archived is DRAFT, and if the
-                        /// `locked_by` user is not the same as the user performing the Archive. Audit fields updated
-                        /// include last_modified_timestamp, last_modified_by. Any existing lock is released when
-                        /// Archiving a integration. Currently, there is no unarchive mechanism.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">
-                        /// Required. The version to archive. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                        /// </param>
-                        public virtual ArchiveRequest Archive(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest body, string name)
-                        {
-                            return new ArchiveRequest(service, body, name);
-                        }
-
-                        /// <summary>
-                        /// Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the
-                        /// integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and
-                        /// set to the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are
-                        /// removed too. This RPC throws an exception if the version being archived is DRAFT, and if the
-                        /// `locked_by` user is not the same as the user performing the Archive. Audit fields updated
-                        /// include last_modified_timestamp, last_modified_by. Any existing lock is released when
-                        /// Archiving a integration. Currently, there is no unarchive mechanism.
-                        /// </summary>
-                        public class ArchiveRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionResponse>
-                        {
-                            /// <summary>Constructs a new Archive request.</summary>
-                            public ArchiveRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. The version to archive. Format:
-                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "archive";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+name}:archive";
-
-                            /// <summary>Initializes Archive parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
-                                });
-                            }
                         }
 
                         /// <summary>Create a integration with a draft version in the specified project.</summary>
@@ -5332,75 +4922,6 @@ namespace Google.Apis.Integrations.v1alpha
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
-                                });
-                            }
-                        }
-
-                        /// <summary>
-                        /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
-                        /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws
-                        /// an exception if the version being snapshot is not ACTIVE. Audit fields added include action,
-                        /// action_by, action_timestamp.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">
-                        /// Required. The version to deactivate. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                        /// </param>
-                        public virtual DeactivateRequest Deactivate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest body, string name)
-                        {
-                            return new DeactivateRequest(service, body, name);
-                        }
-
-                        /// <summary>
-                        /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED"
-                        /// after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws
-                        /// an exception if the version being snapshot is not ACTIVE. Audit fields added include action,
-                        /// action_by, action_timestamp.
-                        /// </summary>
-                        public class DeactivateRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionResponse>
-                        {
-                            /// <summary>Constructs a new Deactivate request.</summary>
-                            public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. The version to deactivate. Format:
-                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "deactivate";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+name}:deactivate";
-
-                            /// <summary>Initializes Deactivate parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
                                 });
                             }
                         }
@@ -5594,57 +5115,6 @@ namespace Google.Apis.Integrations.v1alpha
                             public override string RestPath => "v1alpha/{+name}";
 
                             /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>
-                        /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. RPC to get
-                        /// details of the Bundle
-                        /// </summary>
-                        /// <param name="name">Required. The bundle name.</param>
-                        public virtual GetBundleRequest GetBundle(string name)
-                        {
-                            return new GetBundleRequest(service, name);
-                        }
-
-                        /// <summary>
-                        /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. RPC to get
-                        /// details of the Bundle
-                        /// </summary>
-                        public class GetBundleRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaGetBundleResponse>
-                        {
-                            /// <summary>Constructs a new GetBundle request.</summary>
-                            public GetBundleRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The bundle name.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "getBundle";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+name}:getBundle";
-
-                            /// <summary>Initializes GetBundle parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -6085,59 +5555,6 @@ namespace Google.Apis.Integrations.v1alpha
                             }
                         }
 
-                        /// <summary>THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. RPC to update the Bundle</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Required. Bundle name</param>
-                        public virtual UpdateBundleRequest UpdateBundle(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUpdateBundleRequest body, string name)
-                        {
-                            return new UpdateBundleRequest(service, body, name);
-                        }
-
-                        /// <summary>THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. RPC to update the Bundle</summary>
-                        public class UpdateBundleRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUpdateBundleResponse>
-                        {
-                            /// <summary>Constructs a new UpdateBundle request.</summary>
-                            public UpdateBundleRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUpdateBundleRequest body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. Bundle name</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaUpdateBundleRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "updateBundle";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "PATCH";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+name}:updateBundle";
-
-                            /// <summary>Initializes UpdateBundle parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
-                                });
-                            }
-                        }
-
                         /// <summary>
                         /// Uploads an integration. The content can be a previously downloaded integration. Performs the
                         /// same function as CreateDraftIntegrationVersion, but accepts input in a string format, which
@@ -6203,138 +5620,6 @@ namespace Google.Apis.Integrations.v1alpha
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
                                 });
                             }
-                        }
-
-                        /// <summary>
-                        /// Validates the given integration. If the id doesn't exist, a NotFoundException is thrown. If
-                        /// validation fails a CanonicalCodeException is thrown. If there was no failure an empty
-                        /// response is returned.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">
-                        /// Required. The version to validate. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                        /// </param>
-                        public virtual ValidateRequest Validate(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest body, string name)
-                        {
-                            return new ValidateRequest(service, body, name);
-                        }
-
-                        /// <summary>
-                        /// Validates the given integration. If the id doesn't exist, a NotFoundException is thrown. If
-                        /// validation fails a CanonicalCodeException is thrown. If there was no failure an empty
-                        /// response is returned.
-                        /// </summary>
-                        public class ValidateRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionResponse>
-                        {
-                            /// <summary>Constructs a new Validate request.</summary>
-                            public ValidateRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. The version to validate. Format:
-                            /// projects/{project}/locations/{location}/integrations/{integration}/versions/{version}
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "validate";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+name}:validate";
-
-                            /// <summary>Initializes Validate parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+/versions/[^/]+$",
-                                });
-                            }
-                        }
-                    }
-
-                    /// <summary>
-                    /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Soft-deletes
-                    /// the bundle.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The bundle to archive. Format:
-                    /// projects/{project}/locations/{location}/integrations/{integration}
-                    /// </param>
-                    public virtual ArchiveBundleRequest ArchiveBundle(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveBundleRequest body, string name)
-                    {
-                        return new ArchiveBundleRequest(service, body, name);
-                    }
-
-                    /// <summary>
-                    /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Soft-deletes
-                    /// the bundle.
-                    /// </summary>
-                    public class ArchiveBundleRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveBundleResponse>
-                    {
-                        /// <summary>Constructs a new ArchiveBundle request.</summary>
-                        public ArchiveBundleRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveBundleRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The bundle to archive. Format:
-                        /// projects/{project}/locations/{location}/integrations/{integration}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaArchiveBundleRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "archiveBundle";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}:archiveBundle";
-
-                        /// <summary>Initializes ArchiveBundle parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
-                            });
                         }
                     }
 
@@ -7523,114 +6808,6 @@ namespace Google.Apis.Integrations.v1alpha
                         }
                     }
                 }
-
-                /// <summary>
-                /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Create a bundle.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The location resource of the request.</param>
-                public virtual CreateBundleRequest CreateBundle(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaCreateBundleRequest body, string parent)
-                {
-                    return new CreateBundleRequest(service, body, parent);
-                }
-
-                /// <summary>
-                /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Create a bundle.
-                /// </summary>
-                public class CreateBundleRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaCreateBundleResponse>
-                {
-                    /// <summary>Constructs a new CreateBundle request.</summary>
-                    public CreateBundleRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaCreateBundleRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The location resource of the request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaCreateBundleRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "createBundle";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}:createBundle";
-
-                    /// <summary>Initializes CreateBundle parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>This is a UI only method and will be moved away. Returns a list of common tasks.</summary>
-                /// <param name="parent">
-                /// Required. The location resource of the request. This is not going to be used but preserve the field
-                /// for future.
-                /// </param>
-                public virtual ListTaskEntitiesRequest ListTaskEntities(string parent)
-                {
-                    return new ListTaskEntitiesRequest(service, parent);
-                }
-
-                /// <summary>This is a UI only method and will be moved away. Returns a list of common tasks.</summary>
-                public class ListTaskEntitiesRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaListTaskEntitiesResponse>
-                {
-                    /// <summary>Constructs a new ListTaskEntities request.</summary>
-                    public ListTaskEntitiesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The location resource of the request. This is not going to be used but preserve the
-                    /// field for future.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "listTaskEntities";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}:listTaskEntities";
-
-                    /// <summary>Initializes ListTaskEntities parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the SfdcInstances resource.</summary>
@@ -8335,57 +7512,6 @@ namespace Google.Apis.Integrations.v1alpha
                     }
                 }
             }
-
-            /// <summary>This is a UI only method and will be moved away. Returns a list of common tasks.</summary>
-            /// <param name="parent">
-            /// Required. The location resource of the request. This is not going to be used but preserve the field for
-            /// future.
-            /// </param>
-            public virtual ListTaskEntitiesRequest ListTaskEntities(string parent)
-            {
-                return new ListTaskEntitiesRequest(service, parent);
-            }
-
-            /// <summary>This is a UI only method and will be moved away. Returns a list of common tasks.</summary>
-            public class ListTaskEntitiesRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaListTaskEntitiesResponse>
-            {
-                /// <summary>Constructs a new ListTaskEntities request.</summary>
-                public ListTaskEntitiesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The location resource of the request. This is not going to be used but preserve the field
-                /// for future.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "listTaskEntities";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}:listTaskEntities";
-
-                /// <summary>Initializes ListTaskEntities parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                    });
-                }
-            }
         }
     }
 }
@@ -8452,7 +7578,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
     /// <summary>
     /// Attributes are additional options that can be associated with each event property. For more information, see
-    /// go/integration-platform/event_bus/attributes_registry.md. Next available: 8
     /// </summary>
     public class EnterpriseCrmEventbusProtoAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8477,7 +7602,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isSearchable")]
         public virtual System.Nullable<bool> IsSearchable { get; set; }
 
-        /// <summary>See go/integration-platform/analytics/logging_task.md for details.</summary>
+        /// <summary>See</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logSettings")]
         public virtual EnterpriseCrmEventbusProtoLogSettings LogSettings { get; set; }
 
@@ -8511,8 +7636,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
     /// fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or
     /// both of these fields may be set, and also, the duration threshold value should be specified in the
     /// threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A
-    /// different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See
-    /// go/eventbus-alert-config-examples
+    /// different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
     /// </summary>
     public class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8818,7 +7942,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
     /// <summary>
     /// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
-    /// Please see go/cloud-crm-eng/platform/event_bus.md for more details.
     /// </summary>
     public class EnterpriseCrmEventbusProtoEventBusProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8965,7 +8088,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
     /// <summary>
     /// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for
-    /// each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+    /// each event in the event bus. Please see
     /// </summary>
     public class EnterpriseCrmEventbusProtoEventParameters : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9054,7 +8177,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the value and type of the field. Next Id: 8</summary>
+    /// <summary>Information about the value and type of the field.</summary>
     public class EnterpriseCrmEventbusProtoField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9065,7 +8188,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
         /// <summary>
         /// This holds the default values for the fields. This value is supplied by user so may or may not contain PII
-        /// or SPII data. This field will be scrubbed using DatapolScrubber#maybeScrub() with go/proto-sanitizer#level3
+        /// or SPII data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
         public virtual EnterpriseCrmEventbusProtoParameterValueType DefaultValue { get; set; }
@@ -9092,13 +8215,12 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ReferenceKey { get; set; }
 
         /// <summary>
-        /// This is the transform expression to fetch the input field value. for e.g. $param1$.CONCAT('test'). See
-        /// go/transform-functions-design for more details. Keep points - 1. Only input field can have a transform
-        /// expression. 2. If a transform expression is provided, reference_key will be ignored. 3. If no value is
-        /// returned after evaluation of transform expression, default_value can be mapped if provided. 4. The
-        /// field_type should be the type of the final object returned after the transform expression is evaluated.
-        /// Scrubs the transform expression before logging as value provided by user so may or may not contain PII or
-        /// SPII data.
+        /// This is the transform expression to fetch the input field value. for e.g. $param1$.CONCAT('test'). Keep
+        /// points - 1. Only input field can have a transform expression. 2. If a transform expression is provided,
+        /// reference_key will be ignored. 3. If no value is returned after evaluation of transform expression,
+        /// default_value can be mapped if provided. 4. The field_type should be the type of the final object returned
+        /// after the transform expression is evaluated. Scrubs the transform expression before logging as value
+        /// provided by user so may or may not contain PII or SPII data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformExpression")]
         public virtual EnterpriseCrmEventbusProtoTransformExpression TransformExpression { get; set; }
@@ -9107,9 +8229,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Field Mapping Config to map multiple output fields values from input fields values. Next id: 2
-    /// </summary>
+    /// <summary>Field Mapping Config to map multiple output fields values from input fields values.</summary>
     public class EnterpriseCrmEventbusProtoFieldMappingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("mappedFields")]
@@ -9227,7 +8347,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
     /// <summary>
     /// The LogSettings define the logging attributes for an event property. These attributes are used to map the
     /// property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII
-    /// information. See go/integration-platform/analytics/logging_task.md for details.
+    /// information.
     /// </summary>
     public class EnterpriseCrmEventbusProtoLogSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9283,7 +8403,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Mapped field is a pair of input field and output field. Next Id: 3</summary>
+    /// <summary>Mapped field is a pair of input field and output field.</summary>
     public class EnterpriseCrmEventbusProtoMappedField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The input field being mapped from.</summary>
@@ -9898,8 +9018,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
     }
 
     /// <summary>
-    /// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See
-    /// go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+    /// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
     /// </summary>
     public class EnterpriseCrmEventbusProtoTaskAlertConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10011,9 +9130,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
-    /// </summary>
+    /// <summary>TaskMetadata are attributes that are associated to every common Task we have.</summary>
     public class EnterpriseCrmEventbusProtoTaskMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10090,7 +9207,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
         /// <summary>
         /// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name
-        /// in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+        /// in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconLink")]
         public virtual string IconLink { get; set; }
@@ -10152,7 +9269,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
     /// <summary>
     /// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules
     /// should be included to compose the UI. Learn more about config module framework:
-    /// go/integration-platform-config-module-framework
     /// </summary>
     public class EnterpriseCrmEventbusProtoTaskUiConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10300,8 +9416,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
     }
 
     /// <summary>
-    /// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See
-    /// go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+    /// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
     /// </summary>
     public class EnterpriseCrmEventbusProtoWorkflowAlertConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10364,9 +9479,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdType")]
         public virtual string ThresholdType { get; set; }
 
-        /// <summary>
-        /// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
-        /// </summary>
+        /// <summary>The metric value, above or below which the alert should be triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdValue")]
         public virtual EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue ThresholdValue { get; set; }
 
@@ -10653,7 +9766,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
 
     /// <summary>
     /// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for
-    /// each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+    /// each event in the event bus. Please see
     /// </summary>
     public class EnterpriseCrmFrontendsEventbusProtoEventParameters : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11209,7 +10322,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inOutType")]
         public virtual string InOutType { get; set; }
 
-        /// <summary>Whether this parameter is a transient parameter. go/ip-transient-parameters</summary>
+        /// <summary>Whether this parameter is a transient parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTransient")]
         public virtual System.Nullable<bool> IsTransient { get; set; }
 
@@ -11714,34 +10827,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for ArchiveBundle.</summary>
-    public class GoogleCloudIntegrationsV1alphaArchiveBundleRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for ArchiveBundle.</summary>
-    public class GoogleCloudIntegrationsV1alphaArchiveBundleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for ArchiveIntegrationVersion.</summary>
-    public class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for ArchiveIntegrationVersion.</summary>
-    public class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Status for the execution attempt.</summary>
     public class GoogleCloudIntegrationsV1alphaAttemptStats : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12065,47 +11150,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Request to create a new
-    /// Bundle.
-    /// </summary>
-    public class GoogleCloudIntegrationsV1alphaCreateBundleRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. name of the bundle that will be created</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
-        public virtual string BundleId { get; set; }
-
-        /// <summary>A list of integrations that can be executed by the bundle</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integrations")]
-        public virtual System.Collections.Generic.IList<string> Integrations { get; set; }
-
-        /// <summary>
-        /// Optional. The prefix for the SA, it should be in the format "o". This is an optional field, and if empty
-        /// service account will be created per project, where we are creating bundle. This should only be used as the
-        /// org ID for which we want to run the integrations in the bundle.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondaryCustomerOrgId")]
-        public virtual string SecondaryCustomerOrgId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for create bundle.</summary>
-    public class GoogleCloudIntegrationsV1alphaCreateBundleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>It contains the bundle data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudIntegrationsV1alphaIntegrationBundleConfig Config { get; set; }
-
-        /// <summary>trigger_id of the bundle task</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
-        public virtual string TriggerId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Defines parameters for a single, canonical credential.</summary>
     public class GoogleCloudIntegrationsV1alphaCredential : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12148,20 +11192,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usernameAndPassword")]
         public virtual GoogleCloudIntegrationsV1alphaUsernameAndPassword UsernameAndPassword { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for DeactivateIntegrationVersion.</summary>
-    public class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for DeactivateIntegrationVersion.</summary>
-    public class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12470,17 +11500,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for GetBundle.</summary>
-    public class GoogleCloudIntegrationsV1alphaGetBundleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>It contains the bundle data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudIntegrationsV1alphaIntegrationBundleConfig Config { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>This message only contains a field of integer array.</summary>
     public class GoogleCloudIntegrationsV1alphaIntParameterArray : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12598,26 +11617,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Percentage threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
         public virtual System.Nullable<int> Percentage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This proto holds the core runner data in the bundle task. It is not expected to be directly edited by the user.
-    /// Instead, a default value will be provided at the task creation time.
-    /// </summary>
-    public class GoogleCloudIntegrationsV1alphaIntegrationBundleConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A bundle of integrations that can be executed by the task at runtime.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integrations")]
-        public virtual System.Collections.Generic.IList<string> Integrations { get; set; }
-
-        /// <summary>
-        /// Output only. The service account created and owned by IP and added to the customers GCP project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13020,21 +12019,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for listing the integration execution snapshot.</summary>
-    public class GoogleCloudIntegrationsV1alphaListExecutionSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The detailed information for the execution snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("executionSnapshots")]
-        public virtual System.Collections.Generic.IList<EnterpriseCrmEventbusProtoEventExecutionSnapshot> ExecutionSnapshots { get; set; }
-
-        /// <summary>The token returned in the previous response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response for listing the integration execution data.</summary>
     public class GoogleCloudIntegrationsV1alphaListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13181,17 +12165,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensions")]
         public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaSuspension> Suspensions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is a UI only method and will be moved away. Response for ListTaskEntities.</summary>
-    public class GoogleCloudIntegrationsV1alphaListTaskEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of the tasks.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taskEntities")]
-        public virtual System.Collections.Generic.IList<EnterpriseCrmFrontendsEventbusProtoTaskEntity> TaskEntities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14009,28 +12982,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Request message for Bundle update</summary>
-    public class GoogleCloudIntegrationsV1alphaUpdateBundleRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>It contains the updated bundle data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudIntegrationsV1alphaIntegrationBundleConfig Config { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for Bundle update</summary>
-    public class GoogleCloudIntegrationsV1alphaUpdateBundleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Contains updated bundle config</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudIntegrationsV1alphaIntegrationBundleConfig Config { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request for UploadIntegrationVersion.</summary>
     public class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14068,20 +13019,6 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for ValidateIntegrationVersion.</summary>
-    public class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for ValidateIntegrationVersion.</summary>
-    public class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

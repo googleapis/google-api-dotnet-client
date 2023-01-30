@@ -605,6 +605,10 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
         public virtual System.Nullable<int> ExpiresIn { get; set; }
 
+        /// <summary>Google issued ID token in response to the OAuth token exchange request for ID token flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id_token")]
+        public virtual string IdToken { get; set; }
+
         /// <summary>
         /// A refresh token, issued by Google, in response to the OAuth token exchange request for refresh token flow
         /// </summary>
@@ -617,7 +621,6 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
 
         /// <summary>
         /// The type of token. Field reserved for RFC compliance. See https://www.rfc-editor.org/rfc/rfc6749#section-5.1
-        /// Note: No token_type is returned for current implementation
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
         public virtual string TokenType { get; set; }

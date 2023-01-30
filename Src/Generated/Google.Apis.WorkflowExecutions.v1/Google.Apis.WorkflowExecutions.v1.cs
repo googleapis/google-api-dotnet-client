@@ -572,6 +572,22 @@ namespace Google.Apis.WorkflowExecutions.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// Optional. Filters applied to the [Executions.ListExecutions] results. The following fields
+                        /// are supported for filtering: executionID, state, startTime, endTime, duration,
+                        /// workflowRevisionID, stepName, and label.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The orderding applied to the [Executions.ListExecutions] results. By default the
+                        /// ordering is based on descending start time. The following fields are supported for order by:
+                        /// executionID, startTime, endTime, duration, state, and workflowRevisionID.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
                         /// Maximum number of executions to return per call. Max supported value depends on the selected
                         /// Execution view: it's 1000 for BASIC and 100 for FULL. The default value used if the field is
                         /// not specified is 100, regardless of the selected view. Values greater than the max value
@@ -637,6 +653,22 @@ namespace Google.Apis.WorkflowExecutions.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -793,6 +825,14 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Error Error { get; set; }
+
+        /// <summary>
+        /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no
+        /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. Label keys must start with a letter. International characters are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the execution. Format:
