@@ -4454,10 +4454,11 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -4465,8 +4466,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -4596,6 +4596,43 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// <summary>Cumulative number of entries created and entries updated as a result of import operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upsertedEntriesCount")]
         public virtual System.Nullable<long> UpsertedEntriesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata message for long-running operation returned by the ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map that maps name of each tagged column (or empty string in case of sole entry) to tagging operation
+        /// status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
+
+        /// <summary>State of the reconciliation operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for long-running operation returned by the ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of tags created in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdTagsCount")]
+        public virtual System.Nullable<long> CreatedTagsCount { get; set; }
+
+        /// <summary>Number of tags deleted in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedTagsCount")]
+        public virtual System.Nullable<long> DeletedTagsCount { get; set; }
+
+        /// <summary>Number of tags updated in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedTagsCount")]
+        public virtual System.Nullable<long> UpdatedTagsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

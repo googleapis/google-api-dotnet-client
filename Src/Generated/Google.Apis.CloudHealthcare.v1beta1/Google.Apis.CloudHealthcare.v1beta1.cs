@@ -14379,7 +14379,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message
         /// attributes contain a map with a string describing the action that has triggered the notification. For
-        /// example, "action":"CreateResource".
+        /// example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }

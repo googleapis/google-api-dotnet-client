@@ -3314,6 +3314,51 @@ namespace Google.Apis.ArtifactRegistry.v1
                 }
             }
 
+            /// <summary>Retrieves the VPCSC Config for the Project.</summary>
+            /// <param name="name">Required. The name of the VPCSCConfig resource.</param>
+            public virtual GetVpcscConfigRequest GetVpcscConfig(string name)
+            {
+                return new GetVpcscConfigRequest(service, name);
+            }
+
+            /// <summary>Retrieves the VPCSC Config for the Project.</summary>
+            public class GetVpcscConfigRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.VPCSCConfig>
+            {
+                /// <summary>Constructs a new GetVpcscConfig request.</summary>
+                public GetVpcscConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the VPCSCConfig resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getVpcscConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetVpcscConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/vpcscConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3395,6 +3440,79 @@ namespace Google.Apis.ArtifactRegistry.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the VPCSC Config for the Project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The name of the project's VPC SC Config. Always of the form:
+            /// projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always
+            /// set
+            /// </param>
+            public virtual UpdateVpcscConfigRequest UpdateVpcscConfig(Google.Apis.ArtifactRegistry.v1.Data.VPCSCConfig body, string name)
+            {
+                return new UpdateVpcscConfigRequest(service, body, name);
+            }
+
+            /// <summary>Updates the VPCSC Config for the Project.</summary>
+            public class UpdateVpcscConfigRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.VPCSCConfig>
+            {
+                /// <summary>Constructs a new UpdateVpcscConfig request.</summary>
+                public UpdateVpcscConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.VPCSCConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The name of the project's VPC SC Config. Always of the form:
+                /// projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response:
+                /// always set
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Field mask to support partial updates.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ArtifactRegistry.v1.Data.VPCSCConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateVpcscConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateVpcscConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/vpcscConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3592,10 +3710,11 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3603,8 +3722,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -3682,6 +3800,17 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a Docker remote repository.</summary>
+    public class DockerRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One of the publicly available Docker repositories supported by Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
+        public virtual string PublicRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3743,6 +3872,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The time when the File was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The time when the last attempt to refresh the file's data was made. Only set when the
+        /// repository is remote.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchTime")]
+        public virtual object FetchTime { get; set; }
 
         /// <summary>The hashes of the file content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashes")]
@@ -4177,6 +4313,17 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a Maven remote repository.</summary>
+    public class MavenRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One of the publicly available Maven repositories supported by Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
+        public virtual string PublicRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for
     /// repositories of the maven format type.
@@ -4226,6 +4373,17 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Version of this package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a Npm remote repository.</summary>
+    public class NpmRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One of the publicly available Npm repositories supported by Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
+        public virtual string PublicRepository { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4432,6 +4590,44 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a Python remote repository.</summary>
+    public class PythonRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One of the publicly available Python repositories supported by Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
+        public virtual string PublicRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Remote repository configuration.</summary>
+    public class RemoteRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the remote source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Specific settings for a Docker remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerRepository")]
+        public virtual DockerRepository DockerRepository { get; set; }
+
+        /// <summary>Specific settings for a Maven remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mavenRepository")]
+        public virtual MavenRepository MavenRepository { get; set; }
+
+        /// <summary>Specific settings for an Npm remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmRepository")]
+        public virtual NpmRepository NpmRepository { get; set; }
+
+        /// <summary>Specific settings for a Python remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonRepository")]
+        public virtual PythonRepository PythonRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Repository for storing artifacts with a specific format.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4469,11 +4665,19 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mavenConfig")]
         public virtual MavenRepositoryConfig MavenConfig { get; set; }
 
+        /// <summary>The mode of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Configuration specific for a Remote Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteRepositoryConfig")]
+        public virtual RemoteRepositoryConfig RemoteRepositoryConfig { get; set; }
 
         /// <summary>Output only. If set, the repository satisfies physical zone separation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
@@ -4489,6 +4693,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The time when the repository was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>Configuration specific for a Virtual Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualRepositoryConfig")]
+        public virtual VirtualRepositoryConfig VirtualRepositoryConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4701,6 +4909,48 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Artifact policy configuration for the repository contents.</summary>
+    public class UpstreamPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user-provided ID of the upstream policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Entries with a greater priority value take precedence in the pull order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>
+        /// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Artifact Registry VPC SC config that apply to a Project.</summary>
+    public class VPCSCConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the project's VPC SC Config. Always of the form:
+        /// projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The project per location VPC SC policy that defines the VPC SC behavior for the Remote Repository
+        /// (Allow/Deny).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcscPolicy")]
+        public virtual string VpcscPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The body of a version resource. A version resource represents a collection of components, such as files and
     /// other data. This may correspond to a version in many package management schemes.
@@ -4739,6 +4989,20 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The time when the version was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Virtual repository configuration.</summary>
+    public class VirtualRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies
+        /// cannot be set on a standard repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamPolicies")]
+        public virtual System.Collections.Generic.IList<UpstreamPolicy> UpstreamPolicies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

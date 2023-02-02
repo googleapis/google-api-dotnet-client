@@ -5873,6 +5873,51 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>
+        /// Fetches the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect
+        /// on GA4 property.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual FetchAutomatedGa4ConfigurationOptOutRequest FetchAutomatedGa4ConfigurationOptOut(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest body)
+        {
+            return new FetchAutomatedGa4ConfigurationOptOutRequest(service, body);
+        }
+
+        /// <summary>
+        /// Fetches the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect
+        /// on GA4 property.
+        /// </summary>
+        public class FetchAutomatedGa4ConfigurationOptOutRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse>
+        {
+            /// <summary>Constructs a new FetchAutomatedGa4ConfigurationOptOut request.</summary>
+            public FetchAutomatedGa4ConfigurationOptOutRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchAutomatedGa4ConfigurationOptOut";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:fetchAutomatedGa4ConfigurationOptOut";
+
+            /// <summary>Initializes FetchAutomatedGa4ConfigurationOptOut parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>Lookup for a single "GA4" Property.</summary>
         /// <param name="name">
         /// Required. The name of the property to lookup. Format: properties/{property_id} Example: "properties/1000"
@@ -6330,6 +6375,51 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     DefaultValue = null,
                     Pattern = @"^properties/[^/]+$",
                 });
+            }
+        }
+
+        /// <summary>
+        /// Sets the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect on
+        /// GA4 property.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SetAutomatedGa4ConfigurationOptOutRequest SetAutomatedGa4ConfigurationOptOut(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest body)
+        {
+            return new SetAutomatedGa4ConfigurationOptOutRequest(service, body);
+        }
+
+        /// <summary>
+        /// Sets the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect on
+        /// GA4 property.
+        /// </summary>
+        public class SetAutomatedGa4ConfigurationOptOutRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse>
+        {
+            /// <summary>Constructs a new SetAutomatedGa4ConfigurationOptOut request.</summary>
+            public SetAutomatedGa4ConfigurationOptOutRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setAutomatedGa4ConfigurationOptOut";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:setAutomatedGa4ConfigurationOptOut";
+
+            /// <summary>Initializes SetAutomatedGa4ConfigurationOptOut parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
             }
         }
 
@@ -8411,6 +8501,32 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for fetching the opt out status for the automated GA4 setup process.</summary>
+    public class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The UA property to get the opt out status. Note this request uses the internal property ID, not
+        /// the tracking ID of the form UA-XXXXXX-YY. Format: properties/{internalWebPropertyId} Example:
+        /// properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for fetching the opt out status for the automated GA4 setup process.</summary>
+    public class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The opt out status for the UA property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOut")]
+        public virtual System.Nullable<bool> OptOut { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A link between a GA4 property and a Firebase project.</summary>
     public class GoogleAnalyticsAdminV1alphaFirebaseLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9267,6 +9383,32 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for setting the opt out status for the automated GA4 setup process.</summary>
+    public class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOut")]
+        public virtual System.Nullable<bool> OptOut { get; set; }
+
+        /// <summary>
+        /// Required. The UA property to set the opt out status. Note this request uses the internal property ID, not
+        /// the tracking ID of the form UA-XXXXXX-YY. Format: properties/{internalWebPropertyId} Example:
+        /// properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for setting the opt out status for the automated GA4 setup process.</summary>
+    public class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -334,7 +334,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
                 /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
                 /// </summary>
-                public class CancelRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Empty>
+                public class CancelRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
                     public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudWorkstations.v1beta.Data.CancelOperationRequest body, string name) : base(service)
@@ -394,7 +394,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// the operation result. It does not cancel the operation. If the server doesn't support this method,
                 /// it returns `google.rpc.Code.UNIMPLEMENTED`.
                 /// </summary>
-                public class DeleteRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Empty>
+                public class DeleteRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2657,12 +2657,25 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
-    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
     /// </summary>
-    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The name of the encryption key that is stored in Google Cloud KMS, for example,
+        /// `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// The service account being used for the encryption request for the given KMS key. If absent, the Compute
+        /// Engine default service account is used. However, it is recommended to use a separate service account and to
+        /// follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyServiceAccount")]
+        public virtual string KmsKeyServiceAccount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2836,7 +2849,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// The generated bearer access token. To use this token, include it in an Authorization header of an HTTP
-        /// request sent to the associated workstation's hostname, e.g. "Authorization: Bearer ".
+        /// request sent to the associated workstation's hostname, for example, `Authorization: Bearer `.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; }
@@ -2845,6 +2858,17 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3023,32 +3047,28 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the metadata of the long-running operation.</summary>
+    /// <summary>Metadata for long-running operations.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; }
-
-        /// <summary>Output only. The time the operation was created.</summary>
+        /// <summary>Output only. Time that the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. The time the operation finished running.</summary>
+        /// <summary>Output only. Time that the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
+        /// <summary>Output only. Identifies whether the user has requested cancellation of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
@@ -3164,8 +3184,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>
         /// Output only. Service attachment URI for the workstation cluster. The service attachemnt is created when
         /// private endpoint is enabled. To access workstations in the cluster, configure access to the managed service
-        /// using (Private Service
-        /// Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
+        /// using [Private Service
+        /// Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentUri")]
         public virtual string ServiceAttachmentUri { get; set; }
@@ -3310,7 +3330,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>
         /// Output only. Host to which clients can send HTTPS traffic that will be received by the workstation.
         /// Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different
-        /// port, clients may prefix the host with the destination port in the format "{port}-{host}".
+        /// port, clients may prefix the host with the destination port in the format `{port}-{host}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -3464,6 +3484,19 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Human-readable name for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Encrypts resources of this workstation configuration using a customer-specified encryption key. If
+        /// specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this
+        /// encryption key. If this field is not set, the disks will be encrypted using a generated key.
+        /// Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is
+        /// rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk
+        /// with the new version of the key. Be sure to keep older versions of the key until the persistent disk is
+        /// recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the
+        /// workstation session will automatically be stopped within 7 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual CustomerEncryptionKey EncryptionKey { get; set; }
 
         /// <summary>
         /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an

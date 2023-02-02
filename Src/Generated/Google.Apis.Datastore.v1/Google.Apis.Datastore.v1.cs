@@ -2524,7 +2524,7 @@ namespace Google.Apis.Datastore.v1.Data
 
         /// <summary>
         /// The identifier of the transaction that was started as part of this Lookup request. Set only when
-        /// ReadOptions.begin_transaction was set in LookupRequest.read_options.
+        /// ReadOptions.new_transaction was set in LookupRequest.read_options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -3003,7 +3003,7 @@ namespace Google.Apis.Datastore.v1.Data
 
         /// <summary>
         /// The identifier of the transaction that was started as part of this RunAggregationQuery request. Set only
-        /// when ReadOptions.begin_transaction was set in RunAggregationQueryRequest.read_options.
+        /// when ReadOptions.new_transaction was set in RunAggregationQueryRequest.read_options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -3058,7 +3058,7 @@ namespace Google.Apis.Datastore.v1.Data
 
         /// <summary>
         /// The identifier of the transaction that was started as part of this RunQuery request. Set only when
-        /// ReadOptions.begin_transaction was set in RunQueryRequest.read_options.
+        /// ReadOptions.new_transaction was set in RunQueryRequest.read_options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }

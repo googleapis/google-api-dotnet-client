@@ -5369,7 +5369,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: The schema
         /// is available here: https://support.google.com/analytics/answer/3437719. * `user_event_ga4`: The schema is
-        /// available here: https://support.google.com/analytics/answer/7029846. Supported values for auto-completion
+        /// available here: https://support.google.com/analytics/answer/7029846. Supported values for autocomplete
         /// imports: * `suggestions` (default): One JSON completion suggestion per line. * `denylist`: One JSON deny
         /// suggestion per line. * `allowlist`: One JSON allow suggestion per line.
         /// </summary>
@@ -5546,7 +5546,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response of the auto-complete query.</summary>
+    /// <summary>Response of the autocomplete query.</summary>
     public class GoogleCloudRetailV2CompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

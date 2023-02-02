@@ -5160,7 +5160,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// go/message-quoting-client-to-server for details. LINT.ThenChange(
         /// //depot/google3/java/com/google/apps/dynamite/v1/allshared/parser/AnnotationSanitizer.java,
         /// //depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java,
-        /// //depot/google3/java/com/google/caribou/eli/mediation/chat/AnnotationTranslator.java )
+        /// //depot/google3/java/com/google/caribou/eli/mediation/chat/AnnotationConverter.java )
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredMessageFeaturesMetadata")]
         public virtual RequiredMessageFeaturesMetadata RequiredMessageFeaturesMetadata { get; set; }
@@ -9838,6 +9838,24 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class DynamiteMessagesScoringInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("commonContactCount")]
+        public virtual System.Nullable<long> CommonContactCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("commonCountToContactListCountRatio")]
+        public virtual System.Nullable<double> CommonCountToContactListCountRatio { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("commonCountToMembershipCountRatio")]
+        public virtual System.Nullable<double> CommonCountToMembershipCountRatio { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorGaiaId")]
+        public virtual System.Nullable<long> CreatorGaiaId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorInSearcherContactList")]
+        public virtual System.Nullable<bool> CreatorInSearcherContactList { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dasContactCount")]
+        public virtual System.Nullable<long> DasContactCount { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("finalScore")]
         public virtual System.Nullable<double> FinalScore { get; set; }
 
@@ -9852,6 +9870,12 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("messageSenderAffinityScore")]
         public virtual System.Nullable<double> MessageSenderAffinityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceId")]
+        public virtual System.Nullable<long> SpaceId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceMembershipCount")]
+        public virtual System.Nullable<long> SpaceMembershipCount { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
         public virtual System.Nullable<double> TopicalityScore { get; set; }
