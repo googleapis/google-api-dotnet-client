@@ -1077,6 +1077,15 @@ namespace Google.Apis.CloudRetail.v2alpha
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
+                            /// <summary>
+                            /// This value only applies to the case when the target product is of type PRIMARY. When
+                            /// deleting a product of VARIANT/COLLECTION type, this value will be ignored. When set to
+                            /// true, the subsequent variant products will be deleted. When set to false, if the primary
+                            /// product has active variant products, an error will be returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("cascadeDelete", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> CascadeDelete { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
 
@@ -1097,6 +1106,14 @@ namespace Google.Apis.CloudRetail.v2alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
+                                });
+                                RequestParameters.Add("cascadeDelete", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "cascadeDelete",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -6109,7 +6126,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: The schema
         /// is available here: https://support.google.com/analytics/answer/3437719. * `user_event_ga4`: The schema is
-        /// available here: https://support.google.com/analytics/answer/7029846. Supported values for auto-completion
+        /// available here: https://support.google.com/analytics/answer/7029846. Supported values for autocomplete
         /// imports: * `suggestions` (default): One JSON completion suggestion per line. * `denylist`: One JSON deny
         /// suggestion per line. * `allowlist`: One JSON allow suggestion per line.
         /// </summary>
@@ -6302,7 +6319,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response of the auto-complete query.</summary>
+    /// <summary>Response of the autocomplete query.</summary>
     public class GoogleCloudRetailV2alphaCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

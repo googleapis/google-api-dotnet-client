@@ -6439,8 +6439,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
         /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This
         /// field is deprecated, min_cpu_platform should be specified using
-        /// https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform
-        /// field pass "automatic" as field value.
+        /// `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field
+        /// pass "automatic" as field value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -9205,7 +9205,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; }
 
-        /// <summary>The version of the Kubernetes of this node.</summary>
+        /// <summary>
+        /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described
+        /// [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
     }

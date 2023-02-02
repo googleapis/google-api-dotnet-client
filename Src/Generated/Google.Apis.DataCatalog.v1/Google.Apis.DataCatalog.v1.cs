@@ -819,6 +819,73 @@ namespace Google.Apis.DataCatalog.v1
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Reconciles tags created with a given tag template on a given Entry. Reconciliation is an
+                        /// operation that given a list of tags creates or updates them on the entry. Additionally, the
+                        /// operation is also able to delete tags not mentioned in the tag list. It can be achieved by
+                        /// setting force_delete_missing parameter. Reconciliation is a long-running operation done in
+                        /// the background, so this method returns long-running operation resource. The resource can be
+                        /// queried with Operations.GetOperation which contains metadata and response.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. Name of Entry to be tagged.</param>
+                        public virtual ReconcileRequest Reconcile(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ReconcileTagsRequest body, string parent)
+                        {
+                            return new ReconcileRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Reconciles tags created with a given tag template on a given Entry. Reconciliation is an
+                        /// operation that given a list of tags creates or updates them on the entry. Additionally, the
+                        /// operation is also able to delete tags not mentioned in the tag list. It can be achieved by
+                        /// setting force_delete_missing parameter. Reconciliation is a long-running operation done in
+                        /// the background, so this method returns long-running operation resource. The resource can be
+                        /// queried with Operations.GetOperation which contains metadata and response.
+                        /// </summary>
+                        public class ReconcileRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Reconcile request.</summary>
+                            public ReconcileRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ReconcileTagsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of Entry to be tagged.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ReconcileTagsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "reconcile";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/tags:reconcile";
+
+                            /// <summary>Initializes Reconcile parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -5061,10 +5128,11 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -5072,8 +5140,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -6292,6 +6359,70 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentPolicyTag")]
         public virtual string ParentPolicyTag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata message for long-running operation returned by the ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map that maps name of each tagged column (or empty string in case of sole entry) to tagging operation
+        /// status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
+
+        /// <summary>State of the reconciliation operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true deletes from the entry tags related to given tag template and not mentioned in the tags
+        /// source. If set to false only creates and updates of the tags mentioned in the source will take place. Other
+        /// tags in that entry using the same tag template will be retained instead of being deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forceDeleteMissing")]
+        public virtual System.Nullable<bool> ForceDeleteMissing { get; set; }
+
+        /// <summary>Required. The name of the tag template, that will be used for reconciliation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagTemplate")]
+        public virtual string TagTemplate { get; set; }
+
+        /// <summary>
+        /// A list of tags to be applied on a given entry. Individual tags may specify tag template, but it must be the
+        /// same as the one in the ReconcileTagsRequest. The sole entry and each of its columns must be mentioned at
+        /// most once.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for long-running operation returned by the ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of tags created in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdTagsCount")]
+        public virtual System.Nullable<long> CreatedTagsCount { get; set; }
+
+        /// <summary>Number of tags deleted in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedTagsCount")]
+        public virtual System.Nullable<long> DeletedTagsCount { get; set; }
+
+        /// <summary>Number of tags updated in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedTagsCount")]
+        public virtual System.Nullable<long> UpdatedTagsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

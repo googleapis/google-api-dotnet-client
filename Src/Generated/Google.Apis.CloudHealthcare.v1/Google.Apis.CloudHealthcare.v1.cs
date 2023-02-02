@@ -13528,7 +13528,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
     public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The transformations to apply to the detected data.</summary>
+        /// <summary>
+        /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
         public virtual System.Collections.Generic.IList<InfoTypeTransformation> Transformations { get; set; }
 

@@ -1271,6 +1271,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
+        /// <summary>
+        /// Optional. If the Assessment is part of a Payment Transaction, provide details on Payment Lifecycle Events
+        /// that occur in the Transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionEvent")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TransactionEvent TransactionEvent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1282,7 +1289,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A recaptcha assessment resource.</summary>
+    /// <summary>A reCAPTCHA Enterprise assessment resource.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Assessment returned by account defender when a hashed_account_id is provided.</summary>
@@ -1403,13 +1410,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string HashedAccountId { get; set; }
 
         /// <summary>
-        /// Optional. The site key that was used to invoke reCAPTCHA on your site and generate the token.
+        /// Optional. The site key that was used to invoke reCAPTCHA Enterprise on your site and generate the token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteKey")]
         public virtual string SiteKey { get; set; }
 
         /// <summary>
-        /// Optional. The user response token provided by the reCAPTCHA client-side integration on your site.
+        /// Optional. The user response token provided by the reCAPTCHA Enterprise client-side integration on your site.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
@@ -1831,6 +1838,37 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valid")]
         public virtual System.Nullable<bool> Valid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes an event in the lifecycle of a payment transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1TransactionEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Timestamp when this transaction event occurred; otherwise assumed to be the time of the API call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; }
+
+        /// <summary>Optional. The type of this transaction event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// Optional. The reason or standardized code which corresponds with this transaction event, if one exists. E.g.
+        /// a CHARGEBACK Event with code 4553.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>
+        /// Optional. The value that corresponds with this transaction event, if one exists. E.g. A refund event where
+        /// $5.00 was refunded. Currency is obtained from the original transaction data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

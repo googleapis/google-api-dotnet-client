@@ -4014,6 +4014,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
+        /// <summary>Output only. Statistics for IngestConversations operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestConversationsStats")]
+        public virtual GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats IngestConversationsStats { get; set; }
+
         /// <summary>
         /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
         /// </summary>
@@ -4023,6 +4027,35 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Output only. The original request for ingest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of objects skipped because another conversation with the same transcript uri had
+        /// already been ingested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicatesSkippedCount")]
+        public virtual System.Nullable<int> DuplicatesSkippedCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of objects which were unable to be ingested due to errors. The errors are populated
+        /// in the partial_errors field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedIngestCount")]
+        public virtual System.Nullable<int> FailedIngestCount { get; set; }
+
+        /// <summary>Output only. The number of objects processed during the ingest operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedObjectCount")]
+        public virtual System.Nullable<int> ProcessedObjectCount { get; set; }
+
+        /// <summary>Output only. The number of new conversations added during this ingest operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulIngestCount")]
+        public virtual System.Nullable<int> SuccessfulIngestCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5179,6 +5212,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
+        /// <summary>Output only. Statistics for IngestConversations operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestConversationsStats")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats IngestConversationsStats { get; set; }
+
         /// <summary>
         /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
         /// </summary>
@@ -5188,6 +5225,35 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Output only. The original request for ingest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of objects skipped because another conversation with the same transcript uri had
+        /// already been ingested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicatesSkippedCount")]
+        public virtual System.Nullable<int> DuplicatesSkippedCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of objects which were unable to be ingested due to errors. The errors are populated
+        /// in the partial_errors field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedIngestCount")]
+        public virtual System.Nullable<int> FailedIngestCount { get; set; }
+
+        /// <summary>Output only. The number of objects processed during the ingest operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedObjectCount")]
+        public virtual System.Nullable<int> ProcessedObjectCount { get; set; }
+
+        /// <summary>Output only. The number of new conversations added during this ingest operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulIngestCount")]
+        public virtual System.Nullable<int> SuccessfulIngestCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

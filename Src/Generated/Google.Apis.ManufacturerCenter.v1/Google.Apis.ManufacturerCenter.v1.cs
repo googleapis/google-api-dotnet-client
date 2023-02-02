@@ -266,7 +266,330 @@ namespace Google.Apis.ManufacturerCenter.v1
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Languages = new LanguagesResource(service);
             Products = new ProductsResource(service);
+        }
+
+        /// <summary>Gets the Languages resource.</summary>
+        public virtual LanguagesResource Languages { get; }
+
+        /// <summary>The "languages" collection of methods.</summary>
+        public class LanguagesResource
+        {
+            private const string Resource = "languages";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LanguagesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                ProductCertifications = new ProductCertificationsResource(service);
+            }
+
+            /// <summary>Gets the ProductCertifications resource.</summary>
+            public virtual ProductCertificationsResource ProductCertifications { get; }
+
+            /// <summary>The "productCertifications" collection of methods.</summary>
+            public class ProductCertificationsResource
+            {
+                private const string Resource = "productCertifications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProductCertificationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Deletes a product certification by its name. This method can only be called by certification bodies.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the product certification to delete. Format:
+                /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a product certification by its name. This method can only be called by certification bodies.
+                /// </summary>
+                public class DeleteRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the product certification to delete. Format:
+                    /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/languages/[^/]+/productCertifications/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets a product certification by its name. This method can only be called by certification bodies.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the product certification to get. Format:
+                /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets a product certification by its name. This method can only be called by certification bodies.
+                /// </summary>
+                public class GetRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.ProductCertification>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the product certification to get. Format:
+                    /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/languages/[^/]+/productCertifications/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists product certifications from a specified certification body. This method can only be called by
+                /// certification bodies.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of product certifications. Format:
+                /// accounts/{account}/languages/{language_code}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists product certifications from a specified certification body. This method can only be called by
+                /// certification bodies.
+                /// </summary>
+                public class ListRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.ListProductCertificationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of product certifications. Format:
+                    /// accounts/{account}/languages/{language_code}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of product certifications to return. The service may return fewer
+                    /// than this value. If unspecified, at most 50 product certifications will be returned. The maximum
+                    /// value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListProductCertifications` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListProductCertifications` must match the call that provided the page token. Required if
+                    /// requesting the second or higher page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/productCertifications";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/languages/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates (or creates if allow_missing = true) a product certification which links certifications with
+                /// products. This method can only be called by certification bodies.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The unique name identifier of a product certification Format:
+                /// accounts/{account}/languages/{language_code}/productCertifications/{id} Where `id` is a some unique
+                /// identifier and `language_code` is a 2-letter ISO 639-1 code of a Shopping supported language
+                /// according to https://support.google.com/merchants/answer/160637.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.ManufacturerCenter.v1.Data.ProductCertification body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates (or creates if allow_missing = true) a product certification which links certifications with
+                /// products. This method can only be called by certification bodies.
+                /// </summary>
+                public class PatchRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.ProductCertification>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ManufacturerCenter.v1.Data.ProductCertification body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique name identifier of a product certification Format:
+                    /// accounts/{account}/languages/{language_code}/productCertifications/{id} Where `id` is a some
+                    /// unique identifier and `language_code` is a 2-letter ISO 639-1 code of a Shopping supported
+                    /// language according to https://support.google.com/merchants/answer/160637.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The list of fields to update according to aip.dev/134. However, only full update is
+                    /// supported as of right now. Therefore, it can be either ignored or set to "*". Setting any other
+                    /// values will returns UNIMPLEMENTED error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ManufacturerCenter.v1.Data.ProductCertification Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/languages/[^/]+/productCertifications/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
 
         /// <summary>Gets the Products resource.</summary>
@@ -1025,6 +1348,37 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Description of a certification.</summary>
+    public class Certification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the certification body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual string Authority { get; set; }
+
+        /// <summary>Optional. A URL link to the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual string Link { get; set; }
+
+        /// <summary>Optional. A URL link to the certification logo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual string Logo { get; set; }
+
+        /// <summary>Required. Name of the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The expiration date (UTC).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validUntil")]
+        public virtual string ValidUntil { get; set; }
+
+        /// <summary>Required. A custom value of the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The number of products in a single package. For more information, see
     /// https://support.google.com/manufacturers/answer/6124116#count.
@@ -1210,6 +1564,24 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListProductCertifications method.</summary>
+    public class ListProductCertificationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The product certifications from the specified certification body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCertifications")]
+        public virtual System.Collections.Generic.IList<ProductCertification> ProductCertifications { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1470,6 +1842,66 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>The target country of the product as a CLDR territory code (for example, US).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data matches with the vertical specification for product in
+    /// http://google3/googlebase/verticals/devel/product_certification
+    /// </summary>
+    public class ProductCertification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. This is the product's brand name. The brand is used to help identify your product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Required. A list of certifications to link to the described product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certification")]
+        public virtual System.Collections.Generic.IList<Certification> Certification { get; set; }
+
+        /// <summary>Optional. A 2-letter country code (ISO 3166-1 Alpha 2).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual System.Collections.Generic.IList<string> CountryCode { get; set; }
+
+        /// <summary>Output only. The statuses of the destinations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
+        public virtual System.Collections.Generic.IList<DestinationStatus> DestinationStatuses { get; set; }
+
+        /// <summary>Output only. A server-generated list of issues associated with the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<Issue> Issues { get; set; }
+
+        /// <summary>
+        /// Optional. These are the Manufacturer Part Numbers (MPN). MPNs are used to uniquely identify a specific
+        /// product among all products from the same manufacturer
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
+        public virtual System.Collections.Generic.IList<string> Mpn { get; set; }
+
+        /// <summary>
+        /// Required. The unique name identifier of a product certification Format:
+        /// accounts/{account}/languages/{language_code}/productCertifications/{id} Where `id` is a some unique
+        /// identifier and `language_code` is a 2-letter ISO 639-1 code of a Shopping supported language according to
+        /// https://support.google.com/merchants/answer/160637.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Another name for GTIN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCode")]
+        public virtual System.Collections.Generic.IList<string> ProductCode { get; set; }
+
+        /// <summary>Optional. These are your own product categorization system in your product data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productType")]
+        public virtual System.Collections.Generic.IList<string> ProductType { get; set; }
+
+        /// <summary>Required. This is to clearly identify the product you are certifying.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

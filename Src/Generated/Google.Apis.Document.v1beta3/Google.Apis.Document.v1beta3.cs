@@ -3066,6 +3066,28 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the created evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3137,6 +3159,67 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Response message for set default processor version method.</summary>
     public class GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata that represents a processor version being created.</summary>
+    public class GoogleCloudDocumentaiV1TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The test dataset validation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testDatasetValidation")]
+        public virtual GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation TestDatasetValidation { get; set; }
+
+        /// <summary>The training dataset validation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingDatasetValidation")]
+        public virtual GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation TrainingDatasetValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The dataset validation information. This includes any and all errors with documents and the dataset.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of dataset errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetErrorCount")]
+        public virtual System.Nullable<int> DatasetErrorCount { get; set; }
+
+        /// <summary>
+        /// Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single
+        /// dataset error is terminal for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> DatasetErrors { get; set; }
+
+        /// <summary>The total number of document errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentErrorCount")]
+        public virtual System.Nullable<int> DocumentErrorCount { get; set; }
+
+        /// <summary>
+        /// Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any
+        /// document with errors will not be used throughout training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> DocumentErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for the TrainProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the processor version produced by training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7537,6 +7620,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Config for Document OCR.</summary>
     public class GoogleCloudDocumentaiV1beta3OcrConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of advanced OCR options to further fine-tune OCR behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
+        public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
+
         /// <summary>
         /// Enables special handling for PDFs with existing text information. Results in better text extraction quality
         /// in such PDF inputs.
