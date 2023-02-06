@@ -3312,6 +3312,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1OsUpdateStatus> OsUpdateStatus { get; set; }
 
         /// <summary>
+        /// Output only. Peripherals reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peripheralsReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1PeripheralsReport> PeripheralsReport { get; set; }
+
+        /// <summary>
         /// Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the
         /// ChromeOS Devices tab.
         /// </summary>

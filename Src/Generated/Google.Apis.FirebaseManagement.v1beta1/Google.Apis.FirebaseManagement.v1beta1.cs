@@ -3434,6 +3434,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
+        /// only provided if the App is in the `DELETED` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
         /// The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
         /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
@@ -3591,6 +3598,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
+        /// only provided if the App is in the `DELETED` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
         /// The resource name of the Firebase App, in the format: projects/PROJECT_ID /iosApps/APP_ID or
         /// projects/PROJECT_ID/androidApps/APP_ID or projects/ PROJECT_ID/webApps/APP_ID
         /// </summary>
@@ -3733,6 +3747,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
+        /// only provided if the App is in the `DELETED` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>
         /// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID *
@@ -4343,6 +4364,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
+        /// only provided if the App is in the `DELETED` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>
         /// The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID *

@@ -881,7 +881,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after
             /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
             /// will be assigned during creation.
@@ -897,7 +897,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after
             /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
             /// will be assigned during creation.
@@ -950,7 +950,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Deletes a authorized orgs desc based on the resource name. The long-running operation from this RPC has
+            /// Deletes an authorized orgs desc based on the resource name. The long-running operation from this RPC has
             /// a successful status after the authorized orgs desc is removed from long-lasting storage.
             /// </summary>
             /// <param name="name">
@@ -963,7 +963,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Deletes a authorized orgs desc based on the resource name. The long-running operation from this RPC has
+            /// Deletes an authorized orgs desc based on the resource name. The long-running operation from this RPC has
             /// a successful status after the authorized orgs desc is removed from long-lasting storage.
             /// </summary>
             public class DeleteRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
@@ -1006,7 +1006,7 @@ namespace Google.Apis.AccessContextManager.v1
                 }
             }
 
-            /// <summary>Gets a authorized orgs desc based on the resource name.</summary>
+            /// <summary>Gets an authorized orgs desc based on the resource name.</summary>
             /// <param name="name">
             /// Required. Resource name for the Authorized Orgs Desc. Format:
             /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
@@ -1016,7 +1016,7 @@ namespace Google.Apis.AccessContextManager.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a authorized orgs desc based on the resource name.</summary>
+            /// <summary>Gets an authorized orgs desc based on the resource name.</summary>
             public class GetRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1136,7 +1136,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Updates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// Updates an authorized orgs desc. The long-running operation from this RPC has a successful status after
             /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. Only the organization list in
             /// `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and
@@ -1144,10 +1144,10 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Assigned by the server during creation. The last segment has an arbitrary length and has only URI
-            /// unreserved characters (as defined by [RFC 3986 Section
-            /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
-            /// creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+            /// Resource name for the `AuthorizedOrgsDesc`. Format:
+            /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc`
+            /// component must begin with a letter, followed by alphanumeric characters or `_`. After you create an
+            /// `AuthorizedOrgsDesc`, you cannot change its `name`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.AuthorizedOrgsDesc body, string name)
             {
@@ -1155,7 +1155,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Updates a authorized orgs desc. The long-running operation from this RPC has a successful status after
+            /// Updates an authorized orgs desc. The long-running operation from this RPC has a successful status after
             /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. Only the organization list in
             /// `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and
@@ -1172,10 +1172,10 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
                 /// <summary>
-                /// Assigned by the server during creation. The last segment has an arbitrary length and has only URI
-                /// unreserved characters (as defined by [RFC 3986 Section
-                /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
-                /// creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+                /// Resource name for the `AuthorizedOrgsDesc`. Format:
+                /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The
+                /// `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or
+                /// `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3080,45 +3080,49 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// `AuthorizedOrgsDesc` is a resource that contains a list of organizations for a authorization type and asset type
-    /// and its authorization direction.
-    /// </summary>
+    /// <summary>`AuthorizedOrgsDesc` contains data for an organization's authorization policy.</summary>
     public class AuthorizedOrgsDesc : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The asset type of this authorized orgs desc. e.g. device, credential strength.</summary>
+        /// <summary>
+        /// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and
+        /// `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
 
         /// <summary>
-        /// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate
-        /// this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as
-        /// `AUTHORIZATION_DIRECTION_TO` in this
-        /// AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this
-        /// org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to
-        /// take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this
-        /// AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this
-        /// org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to
-        /// take effect.
+        /// The direction of the authorization relationship between this organization and the organizations listed in
+        /// the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`:
+        /// Allows this organization to evaluate traffic in the organizations listed in the `orgs` field.
+        /// `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in
+        /// this organization. For the authorization relationship to take effect, all of the organizations must
+        /// authorize and specify the appropriate relationship direction. For example, if organization A authorized
+        /// organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the
+        /// authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the
+        /// authorization direction in their `AuthorizedOrgsDesc` resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationDirection")]
         public virtual string AuthorizationDirection { get; set; }
 
         /// <summary>
-        /// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+        /// A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationType")]
         public virtual string AuthorizationType { get; set; }
 
         /// <summary>
-        /// Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-        /// characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
-        /// not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+        /// Resource name for the `AuthorizedOrgsDesc`. Format:
+        /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc`
+        /// component must begin with a letter, followed by alphanumeric characters or `_`. After you create an
+        /// `AuthorizedOrgsDesc`, you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The list of organization ids in this AuthorizedOrgsDesc.</summary>
+        /// <summary>
+        /// The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example:
+        /// `organizations/123456`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgs")]
         public virtual System.Collections.Generic.IList<string> Orgs { get; set; }
 
@@ -3170,10 +3174,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3181,8 +3186,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -3634,7 +3638,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>
         /// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be
         /// allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format:
-        /// `projects/{project_number}` VPC format:
+        /// `projects/{project_number}` VPC network format:
         /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google
         /// Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case
         /// of allowing all Google Cloud resources only is not supported.
@@ -3709,7 +3713,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// <summary>A response to `ListAuthorizedOrgsDescsRequest`.</summary>
     public class ListAuthorizedOrgsDescsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of the Authorized Orgs Desc instances.</summary>
+        /// <summary>List of all the Authorized Orgs Desc instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedOrgsDescs")]
         public virtual System.Collections.Generic.IList<AuthorizedOrgsDesc> AuthorizedOrgsDescs { get; set; }
 
@@ -4005,9 +4009,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this
     /// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the
     /// request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
-    /// cannot overlap, a single Google Cloud project can only belong to a single regular Service Perimeter. Service
-    /// Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to
-    /// multiple Service Perimeter Bridges.
+    /// cannot overlap, a single Google Cloud project or VPC network can only belong to a single regular Service
+    /// Perimeter. Service Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud
+    /// project may belong to multiple Service Perimeter Bridges.
     /// </summary>
     public class ServicePerimeter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4025,10 +4029,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but
-        /// multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being
-        /// included in regular perimeter. For perimeter bridges, the restricted service list as well as access level
-        /// lists must be empty.
+        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular
+        /// perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge
+        /// without being included in regular perimeter. For perimeter bridges, the restricted service list as well as
+        /// access level lists must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
         public virtual string PerimeterType { get; set; }
@@ -4102,7 +4106,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs
-        /// are allowed. Project format: `projects/{project_number}` VPC format:
+        /// are allowed. Project format: `projects/{project_number}` VPC network format:
         /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]

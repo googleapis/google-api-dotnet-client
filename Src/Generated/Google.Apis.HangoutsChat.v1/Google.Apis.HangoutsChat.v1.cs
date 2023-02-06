@@ -687,9 +687,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
-                /// Requires [service account
-                /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+                /// Gets the metadata of a message attachment. The attachment data is fetched using the [media
+                /// API](https://developers.google.com/chat/api/reference/rest/v1/media/download). Requires [service
+                /// account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
@@ -700,9 +700,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
-                /// Requires [service account
-                /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+                /// Gets the metadata of a message attachment. The attachment data is fetched using the [media
+                /// API](https://developers.google.com/chat/api/reference/rest/v1/media/download). Requires [service
+                /// account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Attachment>
                 {
@@ -847,7 +847,8 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
                 /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start
-                /// or reply to a message thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+                /// or reply to a message
+                /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -1455,7 +1456,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Parameters that a Chat app can use to configure how it's response is posted.</summary>
+    /// <summary>Parameters that a Chat app can use to configure how its response is posted.</summary>
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1501,8 +1502,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// Annotations associated with the plain-text body of the message. Example plain-text message body: ``` Hello
     /// @FooBot how are you!" ``` The corresponding annotations metadata: ``` "annotations":[{ "type":"USER_MENTION",
-    /// "startIndex":6, "length":7, "userMention": { "user": { "name":"users/107946847022116401880",
-    /// "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }] ```
+    /// "startIndex":6, "length":7, "userMention": { "user": { "name":"users/{user}", "displayName":"FooBot",
+    /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }] ```
     /// </summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1675,7 +1676,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Widgets for Chat apps to specify.</summary>
     public class CardWithId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Card proto that allows Chat apps to specify UI elements and editable widgets.</summary>
+        /// <summary>
+        /// Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use this
+        /// card to present detailed information, gather information from users, and guide users to take a next step.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("card")]
         public virtual GoogleAppsCardV1Card Card { get; set; }
 
@@ -3322,7 +3326,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("argumentText")]
         public virtual string ArgumentText { get; set; }
 
-        /// <summary>User uploaded attachment.</summary>
+        /// <summary>User-uploaded attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
         public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; }
 
@@ -3337,7 +3341,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Richly formatted and interactive cards that display UI elements and editable widgets, such as: - Formatted
         /// text - Buttons - Clickable images - Checkboxes - Radio buttons - Input widgets. Cards are usually displayed
-        /// below the text-body of a Chat message, but can situationally appear other places, such as
+        /// below the text body of a Chat message, but can situationally appear other places, such as
         /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique identifier among
         /// cards in the same message and for identifying user input values. Currently supported widgets include: -
         /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` - `Divider`
@@ -3411,7 +3415,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The thread the message belongs to. For example usage, see [Start or reply to a message
-        /// thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+        /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thread")]
         public virtual Thread Thread { get; set; }
@@ -3654,8 +3658,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a `threadKey`
         /// or the thread.name. For example usage, see [Start or reply to a message
-        /// thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread). For other requests, this is an
-        /// output only field.
+        /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+        /// For other requests, this is an output only field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
         public virtual string ThreadKey { get; set; }

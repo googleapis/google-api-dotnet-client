@@ -7816,10 +7816,11 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -7827,8 +7828,7 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -7839,6 +7839,25 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Build information of the Instance if it's in `ACTIVE` state.</summary>
+    public class Build : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Commit ID of the latest commit in the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitId")]
+        public virtual string CommitId { get; set; }
+
+        /// <summary>Output only. Commit time of the latest commit in the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual object CommitTime { get; set; }
+
+        /// <summary>Output only. Path of the open source repository: github.com/apigee/registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual string Repo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7964,6 +7983,10 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
     /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Build info of the Instance if it's in `ACTIVE` state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual Build Build { get; set; }
+
         /// <summary>Required. Config of the Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual Config Config { get; set; }

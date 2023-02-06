@@ -696,6 +696,15 @@ namespace Google.Apis.Workflows.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Optional. The revision of the workflow to retrieve. If the revision_id is empty, the
+                    /// latest revision is retrieved. The format is "000001-a4d", where the first 6 characters define
+                    /// the zero-padded decimal revision number. They are followed by a hyphen and 3 hexadecimal
+                    /// characters. (go/wf_adr_clh_1)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("revisionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RevisionId { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -716,6 +725,14 @@ namespace Google.Apis.Workflows.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
+                        });
+                        RequestParameters.Add("revisionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "revisionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }

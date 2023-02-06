@@ -757,7 +757,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
 
                     /// <summary>
                     /// Filter applied to resulting executions. Currently only supports filtering executions by a
-                    /// specified schedule_id. Format: `schedule_id=`
+                    /// specified `schedule_id`. Format: `schedule_id=`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1473,6 +1473,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     public override string RestPath => "v1/{+name}:report";
 
                     /// <summary>Initializes Report parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Reports and processes an instance event.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual ReportEventRequest ReportEvent(Google.Apis.AIPlatformNotebooks.v1.Data.ReportInstanceEventRequest body, string name)
+                {
+                    return new ReportEventRequest(service, body, name);
+                }
+
+                /// <summary>Reports and processes an instance event.</summary>
+                public class ReportEventRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ReportEvent request.</summary>
+                    public ReportEventRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.ReportInstanceEventRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.ReportInstanceEventRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reportEvent";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:reportEvent";
+
+                    /// <summary>Initializes ReportEvent parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -3057,9 +3114,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     /// `software_config.kernels`, and the `PATCH` request body would specify the new value, as follows:
                     /// { "software_config":{ "kernels": [{ 'repository':
                     /// 'gcr.io/deeplearning-platform-release/pytorch-gpu', 'tag': 'latest' }], } } Currently, only the
-                    /// following fields can be updated: - software_config.kernels - software_config.post_startup_script
-                    /// - software_config.custom_gpu_driver_path - software_config.idle_shutdown -
-                    /// software_config.idle_shutdown_timeout - software_config.disable_terminal
+                    /// following fields can be updated: - `software_config.kernels` -
+                    /// `software_config.post_startup_script` - `software_config.custom_gpu_driver_path` -
+                    /// `software_config.idle_shutdown` - `software_config.idle_shutdown_timeout` -
+                    /// `software_config.disable_terminal` - `labels`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4143,7 +4201,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 {
     /// <summary>
     /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check
-    /// [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+    /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
+    /// TPUs are not supported.
     /// </summary>
     public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4183,10 +4242,11 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -4194,8 +4254,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -4336,8 +4395,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Nullable<bool> Boot { get; set; }
 
         /// <summary>
-        /// Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a
-        /// Linux operating system running within the instance. This name can be used to reference the device for
+        /// Indicates a unique device name of your choice that is reflected into the `/dev/disk/by-id/google-*` tree of
+        /// a Linux operating system running within the instance. This name can be used to reference the device for
         /// mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default
         /// device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google
         /// Compute Engine.This field is only applicable for persistent disks.
@@ -4367,7 +4426,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is
         /// SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent
         /// disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics
-        /// of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
+        /// of SCSI over NVMe, see Local SSD performance. Valid values: * `NVME` * `SCSI`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; }
@@ -4384,8 +4443,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
 
         /// <summary>
-        /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to
-        /// attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
+        /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`. If not specified, the default is
+        /// to attach the disk in `READ_WRITE` mode. Valid values: * `READ_ONLY` * `READ_WRITE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -4395,7 +4454,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Source { get; set; }
 
         /// <summary>
-        /// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
+        /// Indicates the type of the disk, either `SCRATCH` or `PERSISTENT`. Valid values: * `PERSISTENT` * `SCRATCH`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4720,8 +4779,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     {
         /// <summary>
         /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available
-        /// options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE *
-        /// VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+        /// options. Valid values: * `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` * `SECURE_BOOT` * `UEFI_COMPATIBLE`
+        /// * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4736,7 +4795,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration
         /// has [enough vCPUs and memory to support the `machine_type` you have
-        /// selected](/compute/docs/gpus/#gpus-list).
+        /// selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual AcceleratorConfig AcceleratorConfig { get; set; }
@@ -4832,7 +4891,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// Required. The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this
+        /// instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
@@ -5055,7 +5115,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// Locations that could not be reached. For example, ['us-west1-a', 'us-central1-b']. A ListInstancesResponse
+        /// Locations that could not be reached. For example, `['us-west1-a', 'us-central1-b']`. A ListInstancesResponse
         /// will only contain either instances or unreachables,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
@@ -5109,7 +5169,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<Runtime> Runtimes { get; set; }
 
         /// <summary>
-        /// Locations that could not be reached. For example, ['us-west1', 'us-central1']. A ListRuntimesResponse will
+        /// Locations that could not be reached. For example, `['us-west1', 'us-central1']`. A ListRuntimesResponse will
         /// only contain either runtimes or unreachables,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
@@ -5163,9 +5223,9 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Optional. Output only. Specifies a unique device name of your choice that is reflected into the
-        /// /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used
-        /// to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the
-        /// server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a
+        /// `/dev/disk/by-id/google-*` tree of a Linux operating system running within the instance. This name can be
+        /// used to reference the device for mounting, resizing, and so on, from within the instance. If not specified,
+        /// the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a
         /// number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
@@ -5197,7 +5257,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is
         /// SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent
         /// disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics
-        /// of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
+        /// of SCSI over NVMe, see Local SSD performance. Valid values: * `NVME` * `SCSI`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; }
@@ -5211,8 +5271,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
 
         /// <summary>
-        /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to
-        /// attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
+        /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`. If not specified, the default is
+        /// to attach the disk in `READ_WRITE` mode. Valid values: * `READ_ONLY` * `READ_WRITE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -5222,8 +5282,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Source { get; set; }
 
         /// <summary>
-        /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
-        /// Valid values: * PERSISTENT * SCRATCH
+        /// Specifies the type of the disk, either `SCRATCH` or `PERSISTENT`. If not specified, the default is
+        /// `PERSISTENT`. Valid values: * `PERSISTENT` * `SCRATCH`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5503,6 +5563,24 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for reporting a Managed Notebook Event.</summary>
+    public class ReportInstanceEventRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Event to be reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual Event Event__ { get; set; }
+
+        /// <summary>
+        /// Required. The VM hardware token for authenticating the VM.
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for notebook instances to report information to Notebooks API.</summary>
     public class ReportInstanceInfoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5582,7 +5660,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     public class RollbackInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The snapshot for rollback. Example: "projects/test-project/global/snapshots/krwlzipynril".
+        /// Required. The snapshot for rollback. Example: `projects/test-project/global/snapshots/krwlzipynril`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshot")]
         public virtual string TargetSnapshot { get; set; }
@@ -5605,6 +5683,15 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Output only. Runtime health_state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
         public virtual string HealthState { get; set; }
+
+        /// <summary>
+        /// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63
+        /// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        /// empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC
+        /// 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. Contains Runtime daemon metrics such as Service status and JupyterLab stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
@@ -5690,8 +5777,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>
         /// The ID of a supported feature. Read [Enabling guest operating system
         /// features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
-        /// to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT
-        /// * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+        /// to see a list of available options. Valid values: * `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` *
+        /// `SECURE_BOOT` * `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5820,7 +5907,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of
-        /// week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
@@ -5830,8 +5917,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-',
-        /// and underscores '_'.
+        /// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`,
+        /// and underscores `_`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -5952,7 +6039,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are
+    /// A set of Shielded Instance options. Check [Images using supported Shielded VM
+    /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are
     /// valid.
     /// </summary>
     public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -6173,7 +6261,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Target VM Image. Format: ainotebooks-vm/project/image-name/name.</summary>
+        /// <summary>Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetImage")]
         public virtual string TargetImage { get; set; }
 
@@ -6247,17 +6335,18 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     {
         /// <summary>
         /// Environment variables. At most 100 environment variables can be specified and unique. Example:
-        /// GCP_BUCKET=gs://my-bucket/samples/
+        /// `GCP_BUCKET=gs://my-bucket/samples/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
         /// <summary>
-        /// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the
-        /// Job should be peered. For example, `projects/12345/global/networks/myVPC`.
+        /// The full name of the Compute Engine
+        /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the Job should be
+        /// peered. For example, `projects/12345/global/networks/myVPC`.
         /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form
-        /// `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and
-        /// {network} is a network name. Private services access must already be configured for the network. If left
+        /// `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and
+        /// `{network}` is a network name. Private services access must already be configured for the network. If left
         /// unspecified, the job is not peered with any network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]

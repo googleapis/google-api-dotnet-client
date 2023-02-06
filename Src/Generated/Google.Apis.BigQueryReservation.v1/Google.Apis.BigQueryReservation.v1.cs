@@ -1984,16 +1984,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will
-    /// create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage
-    /// it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. *
-    /// Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The
-    /// system will try to use more slots immediately. * At a particular moment, the number of slots scaled is
-    /// determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to
-    /// the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an
-    /// alpha feature.
-    /// </summary>
+    /// <summary>Auto scaling settings.</summary>
     public class Autoscale : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
