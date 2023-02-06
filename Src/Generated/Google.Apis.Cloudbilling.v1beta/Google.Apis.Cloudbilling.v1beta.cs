@@ -895,6 +895,43 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Egress traffic between two regions.</summary>
+    public class InterRegionEgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data goes to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRegion")]
+        public virtual string DestinationRegion { get; set; }
+
+        /// <summary>VM to VM egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
+        public virtual Usage EgressRate { get; set; }
+
+        /// <summary>
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data comes from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
+        public virtual string SourceRegion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Egress traffic within the same region. When source region and destination region are in the same zone, using the
+    /// internal IP addresses, there isn't any egress charge.
+    /// </summary>
+    public class IntraRegionEgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>VM to VM egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
+        public virtual Usage EgressRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification of machine series, memory, and number of vCPUs.</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1324,6 +1361,19 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specify VM to VM egress.</summary>
+    public class VmToVmEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("interRegionEgress")]
+        public virtual InterRegionEgress InterRegionEgress { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("intraRegionEgress")]
+        public virtual IntraRegionEgress IntraRegionEgress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies usage on a single Google Cloud product over a time frame. Each Google Cloud product has its own
     /// message, containing specific product configuration parameters of the product usage amounts along each dimension
@@ -1373,6 +1423,10 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// <summary>Usage on Standard Tier Internet Egress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardTierEgressWorkload")]
         public virtual StandardTierEgressWorkload StandardTierEgressWorkload { get; set; }
+
+        /// <summary>Usage on Vm to Vm Egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmToVmEgressWorkload")]
+        public virtual VmToVmEgressWorkload VmToVmEgressWorkload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

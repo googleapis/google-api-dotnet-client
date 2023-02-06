@@ -1837,10 +1837,11 @@ namespace Google.Apis.Batch.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -1848,8 +1849,7 @@ namespace Google.Apis.Batch.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -2778,11 +2778,21 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>Script runnable.</summary>
     public class Script : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Script file path on the host VM.</summary>
+        /// <summary>
+        /// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang
+        /// line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute
+        /// the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script
+        /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by
+        /// default be excuted by `/bin/sh`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Shell script text.</summary>
+        /// <summary>
+        /// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example,
+        /// to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`,
+        /// `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -2877,6 +2887,10 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>Task Execution</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskExecution")]
         public virtual TaskExecution TaskExecution { get; set; }
+
+        /// <summary>Task State</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskState")]
+        public virtual string TaskState { get; set; }
 
         /// <summary>Type of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

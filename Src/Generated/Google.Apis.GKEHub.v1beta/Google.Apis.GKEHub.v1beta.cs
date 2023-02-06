@@ -1749,10 +1749,11 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -1760,8 +1761,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -2366,6 +2366,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>State for the migration of PolicyController from ACM -&gt; PoCo Hub.</summary>
+    public class ConfigManagementPolicyControllerMigration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Stage of the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stage")]
+        public virtual string Stage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to
     /// specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring",
@@ -2390,6 +2401,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>The state about the policy controller installation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
         public virtual ConfigManagementGatekeeperDeploymentState DeploymentState { get; set; }
+
+        /// <summary>Record state of ACM -&gt; PoCo Hub migration for this feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migration")]
+        public virtual ConfigManagementPolicyControllerMigration Migration { get; set; }
 
         /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -3276,6 +3291,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual System.Nullable<long> AuditIntervalSeconds { get; set; }
 
         /// <summary>
+        /// The maximum number of audit violations to be stored in a constraint. If not set, the internal default
+        /// (currently 20) will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintViolationLimit")]
+        public virtual System.Nullable<long> ConstraintViolationLimit { get; set; }
+
+        /// <summary>Map of deployment configs to deployments (“admission”, “audit”, “mutation”).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerPolicyControllerDeploymentConfig> DeploymentConfigs { get; set; }
+
+        /// <summary>
         /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently
         /// exist on the cluster.
         /// </summary>
@@ -3403,6 +3429,59 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerBundleInstallSpec> Bundles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deployment-specific configuration.</summary>
+    public class PolicyControllerPolicyControllerDeploymentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Container resource requirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerResources")]
+        public virtual PolicyControllerResourceRequirements ContainerResources { get; set; }
+
+        /// <summary>Pod anti-affinity enablement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podAntiAffinity")]
+        public virtual System.Nullable<bool> PodAntiAffinity { get; set; }
+
+        /// <summary>Pod replica count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
+        public virtual System.Nullable<long> ReplicaCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceList contains container resource requirements.</summary>
+    public class PolicyControllerResourceList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CPU requirement expressed in Kubernetes resource units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual string Cpu { get; set; }
+
+        /// <summary>Memory requirement expressed in Kubernetes resource units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memory")]
+        public virtual string Memory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceRequirements describes the compute resource requirements.</summary>
+    public class PolicyControllerResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Limits describes the maximum amount of compute resources allowed for use by the running container.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limits")]
+        public virtual PolicyControllerResourceList Limits { get; set; }
+
+        /// <summary>
+        /// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual PolicyControllerResourceList Requests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
