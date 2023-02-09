@@ -6524,8 +6524,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual ShortcutDetailsData ShortcutDetails { get; set; }
 
         /// <summary>
-        /// The size of the file's content in bytes. This is applicable to binary files in Google Drive and Google Docs
-        /// files.
+        /// The size of the file's content in bytes. This field is populated for files with binary content stored in
+        /// Google Drive and for Docs Editors files; it is not populated for shortcuts or folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }

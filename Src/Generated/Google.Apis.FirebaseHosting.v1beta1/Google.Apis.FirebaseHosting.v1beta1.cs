@@ -509,6 +509,67 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
+                    /// Gets the specified release for a site or channel. When used to get a release for a site, this
+                    /// can get releases for both the default `live` channel and any active preview channels for the
+                    /// specified site.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully-qualified resource name for the Hosting release, in either of the following
+                    /// formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID -
+                    /// sites/SITE_ID/releases/RELEASE_ID
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the specified release for a site or channel. When used to get a release for a site, this
+                    /// can get releases for both the default `live` channel and any active preview channels for the
+                    /// specified site.
+                    /// </summary>
+                    public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully-qualified resource name for the Hosting release, in either of the
+                        /// following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID -
+                        /// sites/SITE_ID/releases/RELEASE_ID
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/sites/[^/]+/channels/[^/]+/releases/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Lists the releases that have been created for the specified site or channel. When used to list
                     /// releases for a site, this list includes releases for both the default `live` channel and any
                     /// active preview channels for the specified site.
@@ -1331,6 +1392,67 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
+                /// Gets the specified release for a site or channel. When used to get a release for a site, this can
+                /// get releases for both the default `live` channel and any active preview channels for the specified
+                /// site.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The fully-qualified resource name for the Hosting release, in either of the following
+                /// formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+                /// 
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the specified release for a site or channel. When used to get a release for a site, this can
+                /// get releases for both the default `live` channel and any active preview channels for the specified
+                /// site.
+                /// </summary>
+                public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The fully-qualified resource name for the Hosting release, in either of the following
+                    /// formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID -
+                    /// sites/SITE_ID/releases/RELEASE_ID
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sites/[^/]+/releases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Lists the releases that have been created for the specified site or channel. When used to list
                 /// releases for a site, this list includes releases for both the default `live` channel and any active
                 /// preview channels for the specified site.
@@ -1752,6 +1874,65 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Get the specified version that has been created for the specified site. This can include versions
+                /// that were created for the default `live` channel or for any active preview channels for the
+                /// specified site.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The fully-qualified resource name for the version, in the format:
+                /// sites/SITE_ID/versions/VERSION_ID
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Get the specified version that has been created for the specified site. This can include versions
+                /// that were created for the default `live` channel or for any active preview channels for the
+                /// specified site.
+                /// </summary>
+                public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The fully-qualified resource name for the version, in the format:
+                    /// sites/SITE_ID/versions/VERSION_ID
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2626,6 +2807,67 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
+                /// Gets the specified release for a site or channel. When used to get a release for a site, this can
+                /// get releases for both the default `live` channel and any active preview channels for the specified
+                /// site.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The fully-qualified resource name for the Hosting release, in either of the following
+                /// formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+                /// 
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the specified release for a site or channel. When used to get a release for a site, this can
+                /// get releases for both the default `live` channel and any active preview channels for the specified
+                /// site.
+                /// </summary>
+                public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The fully-qualified resource name for the Hosting release, in either of the following
+                    /// formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID -
+                    /// sites/SITE_ID/releases/RELEASE_ID
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^sites/[^/]+/channels/[^/]+/releases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Lists the releases that have been created for the specified site or channel. When used to list
                 /// releases for a site, this list includes releases for both the default `live` channel and any active
                 /// preview channels for the specified site.
@@ -3433,6 +3675,64 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
+            /// Gets the specified release for a site or channel. When used to get a release for a site, this can get
+            /// releases for both the default `live` channel and any active preview channels for the specified site.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The fully-qualified resource name for the Hosting release, in either of the following formats:
+            /// - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// Gets the specified release for a site or channel. When used to get a release for a site, this can get
+            /// releases for both the default `live` channel and any active preview channels for the specified site.
+            /// </summary>
+            public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The fully-qualified resource name for the Hosting release, in either of the following
+                /// formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+                /// 
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^sites/[^/]+/releases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Lists the releases that have been created for the specified site or channel. When used to list releases
             /// for a site, this list includes releases for both the default `live` channel and any active preview
             /// channels for the specified site.
@@ -3848,6 +4148,63 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 public override string RestPath => "v1beta1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^sites/[^/]+/versions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Get the specified version that has been created for the specified site. This can include versions that
+            /// were created for the default `live` channel or for any active preview channels for the specified site.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The fully-qualified resource name for the version, in the format:
+            /// sites/SITE_ID/versions/VERSION_ID
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// Get the specified version that has been created for the specified site. This can include versions that
+            /// were created for the default `live` channel or for any active preview channels for the specified site.
+            /// </summary>
+            public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The fully-qualified resource name for the version, in the format:
+                /// sites/SITE_ID/versions/VERSION_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();

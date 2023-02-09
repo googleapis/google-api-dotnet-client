@@ -10432,6 +10432,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceTierSet")]
         public virtual DeviceTierSet DeviceTierSet { get; set; }
 
+        /// <summary>Definition of user country sets for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCountrySets")]
+        public virtual System.Collections.Generic.IList<UserCountrySet> UserCountrySets { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12792,6 +12796,27 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Number of users who have given this review a thumbs up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbsUpCount")]
         public virtual System.Nullable<int> ThumbsUpCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of user countries. A country set determines what variation of app content gets served to a specific
+    /// location.
+    /// </summary>
+    public class UserCountrySet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of country codes representing countries. A Country code is represented in ISO 3166 alpha-2 format. For
+        /// Example:- "IT" for Italy, "GE" for Georgia.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCodes")]
+        public virtual System.Collections.Generic.IList<string> CountryCodes { get; set; }
+
+        /// <summary>Country set name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

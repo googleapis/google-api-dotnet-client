@@ -301,10 +301,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 this.service = service;
             }
 
-            /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
+            /// <summary>Lists constraints that could be applied on the specified resource.</summary>
             /// <param name="parent">
-            /// Required. The Cloud resource that parents the constraint. Must be in one of the following forms: *
-            /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+            /// Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms:
+            /// * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
             /// `organizations/{organization_id}`
             /// </param>
             public virtual ListRequest List(string parent)
@@ -312,7 +312,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
+            /// <summary>Lists constraints that could be applied on the specified resource.</summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListConstraintsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -323,8 +323,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The Cloud resource that parents the constraint. Must be in one of the following forms: *
-                /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// Required. The Google Cloud resource that parents the constraint. Must be in one of the following
+                /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
                 /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -403,14 +403,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
+            /// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
             /// not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already
-            /// exists on the given Cloud resource.
+            /// exists on the given Google Cloud resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms: *
-            /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+            /// Required. The Google Cloud resource that will parent the new policy. Must be in one of the following
+            /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
             /// `organizations/{organization_id}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string parent)
@@ -419,9 +419,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
+            /// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
             /// not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already
-            /// exists on the given Cloud resource.
+            /// exists on the given Google Cloud resource.
             /// </summary>
             public class CreateRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
             {
@@ -434,8 +434,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms:
-                /// * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// Required. The Google Cloud resource that will parent the new policy. Must be in one of the following
+                /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
                 /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -472,18 +472,20 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
-            /// Org Policy does not exist.
+            /// Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// organization policy does not exist.
             /// </summary>
-            /// <param name="name">Required. Name of the policy to delete. See `Policy` for naming rules.</param>
+            /// <param name="name">
+            /// Required. Name of the policy to delete. See the policy entry for naming rules.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
             /// <summary>
-            /// Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
-            /// Org Policy does not exist.
+            /// Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// organization policy does not exist.
             /// </summary>
             public class DeleteRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleProtobufEmpty>
             {
@@ -494,7 +496,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Name of the policy to delete. See `Policy` for naming rules.</summary>
+                /// <summary>Required. Name of the policy to delete. See the policy entry for naming rules.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -523,8 +525,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-            /// value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+            /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+            /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
             /// <param name="name">Required. Resource name of the policy. See `Policy` for naming requirements.</param>
             public virtual GetRequest Get(string name)
@@ -533,8 +535,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-            /// value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+            /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+            /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
             public class GetRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
             {
@@ -574,9 +576,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-            /// hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set
-            /// because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource
+            /// Gets the effective policy on a resource. This is the result of merging policies in the resource
+            /// hierarchy and evaluating conditions. The returned policy will not have an `etag` or `condition` set
+            /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
             /// <param name="name">Required. The effective policy to compute. See `Policy` for naming rules.</param>
@@ -586,9 +588,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-            /// hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set
-            /// because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource
+            /// Gets the effective policy on a resource. This is the result of merging policies in the resource
+            /// hierarchy and evaluating conditions. The returned policy will not have an `etag` or `condition` set
+            /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
             public class GetEffectivePolicyRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
@@ -628,9 +630,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
             }
 
-            /// <summary>Retrieves all of the `Policies` that exist on a particular resource.</summary>
+            /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
             /// <param name="parent">
-            /// Required. The target Cloud resource that parents the set of constraints and policies that will be
+            /// Required. The target Google Cloud resource that parents the set of constraints and policies that will be
             /// returned from this call. Must be in one of the following forms: * `projects/{project_number}` *
             /// `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`
             /// </param>
@@ -639,7 +641,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Retrieves all of the `Policies` that exist on a particular resource.</summary>
+            /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListPoliciesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -650,9 +652,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The target Cloud resource that parents the set of constraints and policies that will be
-                /// returned from this call. Must be in one of the following forms: * `projects/{project_number}` *
-                /// `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`
+                /// Required. The target Google Cloud resource that parents the set of constraints and policies that
+                /// will be returned from this call. Must be in one of the following forms: *
+                /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -712,15 +715,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
             /// the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag
             /// supplied in the request does not match the persisted etag of the policy Note: the supplied policy will
             /// perform a full overwrite of all fields.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is
-            /// the name of the constraint which this Policy configures: *
+            /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is
+            /// the name of the constraint which this policy configures: *
             /// `projects/{project_number}/policies/{constraint_name}` *
             /// `folders/{folder_id}/policies/{constraint_name}` *
             /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -734,7 +737,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
             /// the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag
             /// supplied in the request does not match the persisted etag of the policy Note: the supplied policy will
             /// perform a full overwrite of all fields.
@@ -750,8 +753,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Immutable. The resource name of the Policy. Must be one of the following forms, where
-                /// constraint_name is the name of the constraint which this Policy configures: *
+                /// Immutable. The resource name of the policy. Must be one of the following forms, where
+                /// constraint_name is the name of the constraint which this policy configures: *
                 /// `projects/{project_number}/policies/{constraint_name}` *
                 /// `folders/{folder_id}/policies/{constraint_name}` *
                 /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -843,10 +846,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 this.service = service;
             }
 
-            /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
+            /// <summary>Lists constraints that could be applied on the specified resource.</summary>
             /// <param name="parent">
-            /// Required. The Cloud resource that parents the constraint. Must be in one of the following forms: *
-            /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+            /// Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms:
+            /// * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
             /// `organizations/{organization_id}`
             /// </param>
             public virtual ListRequest List(string parent)
@@ -854,7 +857,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
+            /// <summary>Lists constraints that could be applied on the specified resource.</summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListConstraintsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -865,8 +868,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The Cloud resource that parents the constraint. Must be in one of the following forms: *
-                /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// Required. The Google Cloud resource that parents the constraint. Must be in one of the following
+                /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
                 /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -945,7 +948,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
             /// organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the
             /// constraint already exists on the given organization.
             /// </summary>
@@ -959,7 +962,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
             /// organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the
             /// constraint already exists on the given organization.
             /// </summary>
@@ -1008,11 +1011,11 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Deletes a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// Deletes a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
             /// constraint does not exist.
             /// </summary>
             /// <param name="name">
-            /// Required. Name of the custom constraint to delete. See `CustomConstraint` for naming rules.
+            /// Required. Name of the custom constraint to delete. See the custom constraint entry for naming rules.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1020,7 +1023,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Deletes a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// Deletes a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
             /// constraint does not exist.
             /// </summary>
             public class DeleteRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleProtobufEmpty>
@@ -1033,7 +1036,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. Name of the custom constraint to delete. See `CustomConstraint` for naming rules.
+                /// Required. Name of the custom constraint to delete. See the custom constraint entry for naming rules.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1063,11 +1066,12 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-            /// CustomConstraint does not exist.
+            /// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom
+            /// constraint does not exist.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the custom constraint. See `CustomConstraint` for naming requirements.
+            /// Required. Resource name of the custom constraint. See the custom constraint entry for naming
+            /// requirements.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1075,8 +1079,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-            /// CustomConstraint does not exist.
+            /// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom
+            /// constraint does not exist.
             /// </summary>
             public class GetRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
             {
@@ -1088,7 +1092,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the custom constraint. See `CustomConstraint` for naming requirements.
+                /// Required. Resource name of the custom constraint. See the custom constraint entry for naming
+                /// requirements.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1118,11 +1123,11 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Retrieves all of the `CustomConstraints` that exist on a particular organization resource.
+            /// Retrieves all of the custom constraints that exist on a particular organization resource.
             /// </summary>
             /// <param name="parent">
-            /// Required. The target Cloud resource that parents the set of custom constraints that will be returned
-            /// from this call. Must be in one of the following forms: * `organizations/{organization_id}`
+            /// Required. The target Google Cloud resource that parents the set of custom constraints that will be
+            /// returned from this call. Must be in one of the following forms: * `organizations/{organization_id}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1130,7 +1135,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Retrieves all of the `CustomConstraints` that exist on a particular organization resource.
+            /// Retrieves all of the custom constraints that exist on a particular organization resource.
             /// </summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse>
             {
@@ -1142,8 +1147,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The target Cloud resource that parents the set of custom constraints that will be returned
-                /// from this call. Must be in one of the following forms: * `organizations/{organization_id}`
+                /// Required. The target Google Cloud resource that parents the set of custom constraints that will be
+                /// returned from this call. Must be in one of the following forms: * `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1203,15 +1208,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
             /// constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be
-            /// * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-            /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the
-            /// min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not
+            /// * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+            /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the
+            /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not
             /// counted.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name)
@@ -1220,7 +1225,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+            /// Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
             /// constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
             /// </summary>
             public class PatchRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
@@ -1235,10 +1240,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
 
                 /// <summary>
                 /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should
-                /// be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-                /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and
-                /// the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is
-                /// not counted.
+                /// be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+                /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and
+                /// the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/`
+                /// is not counted.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1292,14 +1297,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
+            /// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
             /// not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already
-            /// exists on the given Cloud resource.
+            /// exists on the given Google Cloud resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms: *
-            /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+            /// Required. The Google Cloud resource that will parent the new policy. Must be in one of the following
+            /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
             /// `organizations/{organization_id}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string parent)
@@ -1308,9 +1313,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
+            /// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
             /// not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already
-            /// exists on the given Cloud resource.
+            /// exists on the given Google Cloud resource.
             /// </summary>
             public class CreateRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
             {
@@ -1323,8 +1328,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms:
-                /// * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// Required. The Google Cloud resource that will parent the new policy. Must be in one of the following
+                /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
                 /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1361,18 +1366,20 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
-            /// Org Policy does not exist.
+            /// Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// organization policy does not exist.
             /// </summary>
-            /// <param name="name">Required. Name of the policy to delete. See `Policy` for naming rules.</param>
+            /// <param name="name">
+            /// Required. Name of the policy to delete. See the policy entry for naming rules.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
             /// <summary>
-            /// Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
-            /// Org Policy does not exist.
+            /// Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// organization policy does not exist.
             /// </summary>
             public class DeleteRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleProtobufEmpty>
             {
@@ -1383,7 +1390,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Name of the policy to delete. See `Policy` for naming rules.</summary>
+                /// <summary>Required. Name of the policy to delete. See the policy entry for naming rules.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1412,8 +1419,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-            /// value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+            /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+            /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
             /// <param name="name">Required. Resource name of the policy. See `Policy` for naming requirements.</param>
             public virtual GetRequest Get(string name)
@@ -1422,8 +1429,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-            /// value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+            /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+            /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
             public class GetRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
             {
@@ -1463,9 +1470,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-            /// hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set
-            /// because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource
+            /// Gets the effective policy on a resource. This is the result of merging policies in the resource
+            /// hierarchy and evaluating conditions. The returned policy will not have an `etag` or `condition` set
+            /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
             /// <param name="name">Required. The effective policy to compute. See `Policy` for naming rules.</param>
@@ -1475,9 +1482,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-            /// hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set
-            /// because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource
+            /// Gets the effective policy on a resource. This is the result of merging policies in the resource
+            /// hierarchy and evaluating conditions. The returned policy will not have an `etag` or `condition` set
+            /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
             public class GetEffectivePolicyRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
@@ -1517,9 +1524,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
             }
 
-            /// <summary>Retrieves all of the `Policies` that exist on a particular resource.</summary>
+            /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
             /// <param name="parent">
-            /// Required. The target Cloud resource that parents the set of constraints and policies that will be
+            /// Required. The target Google Cloud resource that parents the set of constraints and policies that will be
             /// returned from this call. Must be in one of the following forms: * `projects/{project_number}` *
             /// `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`
             /// </param>
@@ -1528,7 +1535,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Retrieves all of the `Policies` that exist on a particular resource.</summary>
+            /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListPoliciesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1539,9 +1546,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The target Cloud resource that parents the set of constraints and policies that will be
-                /// returned from this call. Must be in one of the following forms: * `projects/{project_number}` *
-                /// `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`
+                /// Required. The target Google Cloud resource that parents the set of constraints and policies that
+                /// will be returned from this call. Must be in one of the following forms: *
+                /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1601,15 +1609,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
             /// the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag
             /// supplied in the request does not match the persisted etag of the policy Note: the supplied policy will
             /// perform a full overwrite of all fields.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is
-            /// the name of the constraint which this Policy configures: *
+            /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is
+            /// the name of the constraint which this policy configures: *
             /// `projects/{project_number}/policies/{constraint_name}` *
             /// `folders/{folder_id}/policies/{constraint_name}` *
             /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -1623,7 +1631,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
             /// the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag
             /// supplied in the request does not match the persisted etag of the policy Note: the supplied policy will
             /// perform a full overwrite of all fields.
@@ -1639,8 +1647,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Immutable. The resource name of the Policy. Must be one of the following forms, where
-                /// constraint_name is the name of the constraint which this Policy configures: *
+                /// Immutable. The resource name of the policy. Must be one of the following forms, where
+                /// constraint_name is the name of the constraint which this policy configures: *
                 /// `projects/{project_number}/policies/{constraint_name}` *
                 /// `folders/{folder_id}/policies/{constraint_name}` *
                 /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -1731,10 +1739,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 this.service = service;
             }
 
-            /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
+            /// <summary>Lists constraints that could be applied on the specified resource.</summary>
             /// <param name="parent">
-            /// Required. The Cloud resource that parents the constraint. Must be in one of the following forms: *
-            /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+            /// Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms:
+            /// * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
             /// `organizations/{organization_id}`
             /// </param>
             public virtual ListRequest List(string parent)
@@ -1742,7 +1750,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
+            /// <summary>Lists constraints that could be applied on the specified resource.</summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListConstraintsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1753,8 +1761,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The Cloud resource that parents the constraint. Must be in one of the following forms: *
-                /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// Required. The Google Cloud resource that parents the constraint. Must be in one of the following
+                /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
                 /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1833,14 +1841,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
+            /// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
             /// not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already
-            /// exists on the given Cloud resource.
+            /// exists on the given Google Cloud resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms: *
-            /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+            /// Required. The Google Cloud resource that will parent the new policy. Must be in one of the following
+            /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
             /// `organizations/{organization_id}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string parent)
@@ -1849,9 +1857,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
+            /// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does
             /// not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already
-            /// exists on the given Cloud resource.
+            /// exists on the given Google Cloud resource.
             /// </summary>
             public class CreateRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
             {
@@ -1864,8 +1872,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms:
-                /// * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// Required. The Google Cloud resource that will parent the new policy. Must be in one of the following
+                /// forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
                 /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1902,18 +1910,20 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
-            /// Org Policy does not exist.
+            /// Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// organization policy does not exist.
             /// </summary>
-            /// <param name="name">Required. Name of the policy to delete. See `Policy` for naming rules.</param>
+            /// <param name="name">
+            /// Required. Name of the policy to delete. See the policy entry for naming rules.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
             /// <summary>
-            /// Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
-            /// Org Policy does not exist.
+            /// Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// organization policy does not exist.
             /// </summary>
             public class DeleteRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleProtobufEmpty>
             {
@@ -1924,7 +1934,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Name of the policy to delete. See `Policy` for naming rules.</summary>
+                /// <summary>Required. Name of the policy to delete. See the policy entry for naming rules.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1953,8 +1963,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-            /// value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+            /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+            /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
             /// <param name="name">Required. Resource name of the policy. See `Policy` for naming requirements.</param>
             public virtual GetRequest Get(string name)
@@ -1963,8 +1973,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-            /// value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+            /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+            /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
             public class GetRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
             {
@@ -2004,9 +2014,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-            /// hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set
-            /// because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource
+            /// Gets the effective policy on a resource. This is the result of merging policies in the resource
+            /// hierarchy and evaluating conditions. The returned policy will not have an `etag` or `condition` set
+            /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
             /// <param name="name">Required. The effective policy to compute. See `Policy` for naming rules.</param>
@@ -2016,9 +2026,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-            /// hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set
-            /// because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource
+            /// Gets the effective policy on a resource. This is the result of merging policies in the resource
+            /// hierarchy and evaluating conditions. The returned policy will not have an `etag` or `condition` set
+            /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
             public class GetEffectivePolicyRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy>
@@ -2058,9 +2068,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
             }
 
-            /// <summary>Retrieves all of the `Policies` that exist on a particular resource.</summary>
+            /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
             /// <param name="parent">
-            /// Required. The target Cloud resource that parents the set of constraints and policies that will be
+            /// Required. The target Google Cloud resource that parents the set of constraints and policies that will be
             /// returned from this call. Must be in one of the following forms: * `projects/{project_number}` *
             /// `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`
             /// </param>
@@ -2069,7 +2079,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Retrieves all of the `Policies` that exist on a particular resource.</summary>
+            /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
             public class ListRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2ListPoliciesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2080,9 +2090,10 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. The target Cloud resource that parents the set of constraints and policies that will be
-                /// returned from this call. Must be in one of the following forms: * `projects/{project_number}` *
-                /// `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`
+                /// Required. The target Google Cloud resource that parents the set of constraints and policies that
+                /// will be returned from this call. Must be in one of the following forms: *
+                /// `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` *
+                /// `organizations/{organization_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2142,15 +2153,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
             /// the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag
             /// supplied in the request does not match the persisted etag of the policy Note: the supplied policy will
             /// perform a full overwrite of all fields.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is
-            /// the name of the constraint which this Policy configures: *
+            /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is
+            /// the name of the constraint which this policy configures: *
             /// `projects/{project_number}/policies/{constraint_name}` *
             /// `folders/{folder_id}/policies/{constraint_name}` *
             /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -2164,7 +2175,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
+            /// Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or
             /// the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag
             /// supplied in the request does not match the persisted etag of the policy Note: the supplied policy will
             /// perform a full overwrite of all fields.
@@ -2180,8 +2191,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Immutable. The resource name of the Policy. Must be one of the following forms, where
-                /// constraint_name is the name of the constraint which this Policy configures: *
+                /// Immutable. The resource name of the policy. Must be one of the following forms, where
+                /// constraint_name is the name of the constraint which this policy configures: *
                 /// `projects/{project_number}/policies/{constraint_name}` *
                 /// `folders/{folder_id}/policies/{constraint_name}` *
                 /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -2254,7 +2265,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("launch")]
         public virtual string Launch { get; set; }
 
-        /// <summary>Specify `Constraint` for configurations of Cloud Platform resources.</summary>
+        /// <summary>Specify constraint for configurations of Google Cloud resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
 
@@ -2263,15 +2274,14 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// A `constraint` describes a way to restrict resource's configuration. For example, you could enforce a constraint
-    /// that controls which cloud services can be activated across an organization, or whether a Compute Engine instance
-    /// can have serial port connections established. `Constraints` can be configured by the organization's policy
-    /// administrator to fit the needs of the organization by setting a `policy` that includes `constraints` at
-    /// different locations in the organization's resource hierarchy. Policies are inherited down the resource hierarchy
-    /// from higher levels, but can also be overridden. For details about the inheritance rules please read about
-    /// `policies`. `Constraints` have a default behavior determined by the `constraint_default` field, which is the
-    /// enforcement behavior that is used in the absence of a `policy` being defined or inherited for the resource in
-    /// question.
+    /// A constraint describes a way to restrict resource's configuration. For example, you could enforce a constraint
+    /// that controls which Google Cloud services can be activated across an organization, or whether a Compute Engine
+    /// instance can have serial port connections established. Constraints can be configured by the organization policy
+    /// administrator to fit the needs of the organization by setting a policy that includes constraints at different
+    /// locations in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from
+    /// higher levels, but can also be overridden. For details about the inheritance rules please read about `policies`.
+    /// Constraints have a default behavior determined by the `constraint_default` field, which is the enforcement
+    /// behavior that is used in the absence of a policy being defined or inherited for the resource in question.
     /// </summary>
     public class GoogleCloudOrgpolicyV2Constraint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2279,12 +2289,12 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("booleanConstraint")]
         public virtual GoogleCloudOrgpolicyV2ConstraintBooleanConstraint BooleanConstraint { get; set; }
 
-        /// <summary>The evaluation behavior of this constraint in the absence of 'Policy'.</summary>
+        /// <summary>The evaluation behavior of this constraint in the absence of a policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
         public virtual string ConstraintDefault { get; set; }
 
         /// <summary>
-        /// Detailed description of what this `Constraint` controls as well as how and where it is enforced. Mutable.
+        /// Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -2298,7 +2308,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual GoogleCloudOrgpolicyV2ConstraintListConstraint ListConstraint { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name of the Constraint. Must be in one of the following forms: *
+        /// Immutable. The resource name of the constraint. Must be in one of the following forms: *
         /// `projects/{project_number}/constraints/{constraint_name}` *
         /// `folders/{folder_id}/constraints/{constraint_name}` *
         /// `organizations/{organization_id}/constraints/{constraint_name}` For example,
@@ -2312,7 +2322,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// A `Constraint` that is either enforced or not. For example a constraint
+    /// A constraint that is either enforced or not. For example, a constraint
     /// `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will
     /// not be opened to that instance.
     /// </summary>
@@ -2323,8 +2333,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// A `Constraint` that allows or disallows a list of string values, which are configured by an Organization's
-    /// policy administrator with a `Policy`.
+    /// A constraint that allows or disallows a list of string values, which are configured by an Organization Policy
+    /// administrator with a policy.
     /// </summary>
     public class GoogleCloudOrgpolicyV2ConstraintListConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2336,9 +2346,9 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Nullable<bool> SupportsIn { get; set; }
 
         /// <summary>
-        /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in
-        /// `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any
-        /// resource under the 'folders/123' folder.
+        /// Indicates whether subtrees of the Resource Manager resource hierarchy can be used in `Policy.allowed_values`
+        /// and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the
+        /// 'folders/123' folder.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsUnder")]
         public virtual System.Nullable<bool> SupportsUnder { get; set; }
@@ -2349,8 +2359,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
 
     /// <summary>
     /// A custom constraint defined by customers which can *only* be applied to the given resource types and
-    /// organization. By creating a custom constraint, customers can applied policies of this custom constraint.
-    /// *Creating a custom constraint itself does NOT apply any policy enforcement*.
+    /// organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating
+    /// a custom constraint itself does NOT apply any policy enforcement*.
     /// </summary>
     public class GoogleCloudOrgpolicyV2CustomConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2382,15 +2392,16 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
 
         /// <summary>
         /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
-        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-        /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min
-        /// length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the
+        /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not
+        /// counted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/"
+        /// Immutable. The resource instance type on which this policy applies. Format will be of the form : "/"
         /// Example: * `compute.googleapis.com/Instance`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
@@ -2423,13 +2434,13 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// The response returned from the ListCustomConstraints method. It will be empty if no `CustomConstraints` are set
+    /// The response returned from the ListCustomConstraints method. It will be empty if no custom constraints are set
     /// on the organization resource.
     /// </summary>
     public class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// All `CustomConstraints` that exist on the organization resource. It will be empty if no `CustomConstraints`
+        /// All custom constraints that exist on the organization resource. It will be empty if no custom constraints
         /// are set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
@@ -2447,7 +2458,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// The response returned from the ListPolicies method. It will be empty if no `Policies` are set on the resource.
+    /// The response returned from the ListPolicies method. It will be empty if no policies are set on the resource.
     /// </summary>
     public class GoogleCloudOrgpolicyV2ListPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2458,7 +2469,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>All `Policies` that exist on the resource. It will be empty if no `Policies` are set.</summary>
+        /// <summary>All policies that exist on the resource. It will be empty if no policies are set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2Policy> Policies { get; set; }
 
@@ -2467,8 +2478,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// Defines a Cloud Organization `Policy` which is used to specify `Constraints` for configurations of Cloud
-    /// Platform resources.
+    /// Defines an organization policy which is used to specify constraints for configurations of Google Cloud
+    /// resources.
     /// </summary>
     public class GoogleCloudOrgpolicyV2Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2477,15 +2488,15 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual GoogleCloudOrgpolicyV2AlternatePolicySpec Alternate { get; set; }
 
         /// <summary>
-        /// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing
+        /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing
         /// and future resources if it's enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRunSpec")]
         public virtual GoogleCloudOrgpolicyV2PolicySpec DryRunSpec { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the
-        /// name of the constraint which this Policy configures: *
+        /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the
+        /// name of the constraint which this policy configures: *
         /// `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` *
         /// `organizations/{organization_id}/policies/{constraint_name}` For example,
         /// "projects/123/policies/compute.disableSerialPortAccess". Note:
@@ -2504,50 +2515,50 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud
-    /// Platform resources.
+    /// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google
+    /// Cloud resources.
     /// </summary>
     public class GoogleCloudOrgpolicyV2PolicySpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is
-        /// ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a
-        /// `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a
-        /// read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will
-        /// be unset.
+        /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is
+        /// ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a
+        /// `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a
+        /// read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be
+        /// unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set
+        /// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set
         /// higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it
-        /// is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can
-        /// be set only for Policies which configure list constraints.
+        /// is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can
+        /// be set only for policies which configure list constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
         public virtual System.Nullable<bool> InheritFromParent { get; set; }
 
         /// <summary>
         /// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the
-        /// specific `Constraint` at this resource. This field can be set in policies for either list or boolean
+        /// specific constraint at this resource. This field can be set in policies for either list or boolean
         /// constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reset")]
         public virtual System.Nullable<bool> Reset { get; set; }
 
         /// <summary>
-        /// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: -
-        /// There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions
-        /// must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation,
-        /// PolicyRules with conditions that are true for a target resource take precedence.
+        /// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: -
+        /// There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions
+        /// must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation,
+        /// policy rules with conditions that are true for a target resource take precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> Rules { get; set; }
 
         /// <summary>
         /// Output only. The time stamp this was previously updated. This represents the last time a call to
-        /// `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+        /// `CreatePolicy` or `UpdatePolicy` was made for that policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -2557,7 +2568,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     public class GoogleCloudOrgpolicyV2PolicySpecPolicyRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Setting this to true means that all values are allowed. This field can be set only in Policies for list
+        /// Setting this to true means that all values are allowed. This field can be set only in policies for list
         /// constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAll")]
@@ -2577,21 +2588,21 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual GoogleTypeExpr Condition { get; set; }
 
         /// <summary>
-        /// Setting this to true means that all values are denied. This field can be set only in Policies for list
+        /// Setting this to true means that all values are denied. This field can be set only in policies for list
         /// constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyAll")]
         public virtual System.Nullable<bool> DenyAll { get; set; }
 
         /// <summary>
-        /// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can
-        /// be set only in Policies for boolean constraints.
+        /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be
+        /// set only in policies for boolean constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
         public virtual System.Nullable<bool> Enforce { get; set; }
 
         /// <summary>
-        /// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues Values { get; set; }
@@ -2602,7 +2613,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
 
     /// <summary>
     /// A message that holds specific allowed and denied values. This message can define specific values and subtrees of
-    /// Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied.
+    /// the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied.
     /// This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote
     /// resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value
     /// contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must

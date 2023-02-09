@@ -2236,6 +2236,57 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
                     }
 
+                    /// <summary>Gets a model.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Model to get. Format:
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a model.</summary>
+                    public class GetRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Model to get. Format:
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Lists all the models linked to this event store.</summary>
                     /// <param name="parent">
                     /// Required. The parent for which to list models. Format:
@@ -7985,8 +8036,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// will never return items with storageStatus of "EXPIRED" or "DELETED" regardless of filter choices. If
         /// `filterSyntaxV2` is set to true under the `params` field, then attribute-based expressions are expected
         /// instead of the above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND NOT
-        /// (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories:
-        /// ANY("Phones"))
+        /// (categories: ANY("Phones")) * (brands: ANY("Pixel")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
+        /// For more information, see [Filter recommendations](https://cloud.google.com/retail/docs/filter-recs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

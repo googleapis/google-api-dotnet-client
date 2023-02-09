@@ -1889,8 +1889,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The URL the Chat app should redirect the user to after they have completed an authorization or configuration
-        /// flow outside of Google Chat. See the [Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for
-        /// more information.
+        /// flow outside of Google Chat. For more information, see [Connect a Chat app with other services &amp;amp;
+        /// tools](https://developers.google.com/chat/how-tos/connect-web-services-tools).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
@@ -3284,16 +3284,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>
-        /// A Google Chat user or app. Format: `users/{user}` or `users/app` When `users/{user}`, represents a
-        /// [person](https://developers.google.com/people/api/rest/v1/people) in the People API or a
-        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API. When `users/app`, represents a Chat app creating membership for itself.
-        /// </summary>
+        /// <summary>The Google Chat user or app the membership corresponds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
 
-        /// <summary>Resource name of the membership. Format: spaces/{space}/members/{member}</summary>
+        /// <summary>
+        /// Resource name of the membership, assigned by the server. Format: spaces/{space}/members/{member}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3524,7 +3521,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// The space's display name. Required when [creating a
         /// space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create). For direct messages, this
-        /// field may be empty.
+        /// field may be empty. Supports up to 128 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -3567,12 +3564,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// Optional. A description of the space. It could describe the space's discussion topic, functional purpose, or
-        /// participants.
+        /// participants. Supports up to 150 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. The space's rules, expectations, and etiquette.</summary>
+        /// <summary>
+        /// Optional. The space's rules, expectations, and etiquette. Supports up to 5,000 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guidelines")]
         public virtual string Guidelines { get; set; }
 
@@ -3716,8 +3715,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
         /// <summary>
-        /// Resource name for a Google Chat user. For human users, represents a person in the People API or a user in
-        /// the Admin SDK Directory API. Format: `users/{user}`
+        /// Resource name for a Google Chat user. Format: `users/{user}`. `users/app` can be used as an alias for the
+        /// calling app bot user. For human users, `{user}` is the same user identifier as: - the `{person_id`} for the
+        /// [Person](https://developers.google.com/people/api/rest/v1/people) in the People API, where the Person
+        /// `resource_name` is `people/{person_id}`. For example, `users/123456789` in Chat API represents the same
+        /// person as `people/123456789` in People API. - the `id` for a
+        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
+        /// API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
