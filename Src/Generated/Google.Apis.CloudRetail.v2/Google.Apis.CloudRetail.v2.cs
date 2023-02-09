@@ -6533,8 +6533,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// will never return items with storageStatus of "EXPIRED" or "DELETED" regardless of filter choices. If
         /// `filterSyntaxV2` is set to true under the `params` field, then attribute-based expressions are expected
         /// instead of the above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND NOT
-        /// (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories:
-        /// ANY("Phones"))
+        /// (categories: ANY("Phones")) * (brands: ANY("Pixel")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
+        /// For more information, see [Filter recommendations](https://cloud.google.com/retail/docs/filter-recs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

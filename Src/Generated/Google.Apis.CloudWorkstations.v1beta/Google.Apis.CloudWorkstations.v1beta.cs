@@ -2588,10 +2588,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -2599,8 +2600,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -3169,6 +3169,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>Configuration options for private clusters.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default,
+        /// the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedProjects")]
+        public virtual System.Collections.Generic.IList<string> AllowedProjects { get; set; }
+
         /// <summary>
         /// Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint
         /// is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an

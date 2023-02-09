@@ -5141,8 +5141,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Nullable<int> Length { get; set; }
 
         /// <summary>
-        /// A unique client-assigned ID for this annotation. This is helpful in matching the back-filled annotations to
-        /// the original annotations on client side, without having to re-parse the message.
+        /// * A client-assigned ID for this annotation. This is helpful in matching the back-filled annotations to the
+        /// original annotations on client side, without having to re-parse the message. There is no guarantee an
+        /// annotation has a local_id, it's a purely client used and controlled field with no guarantee of uniqueness.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localId")]
         public virtual string LocalId { get; set; }
@@ -5187,8 +5188,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// A unique server-assigned ID for this annotation. This is helpful in matching annotation objects when fetched
-        /// from service.
+        /// * A unique server-assigned ID for this annotation. This is helpful in matching annotation objects when
+        /// fetched from service. All uploads should have a unique_id after the message they are attached to is
+        /// successfully sent. Url annotations that originally were uploads (i.e. policy violations) will have a
+        /// unique_id after the message they are attached to is successfully sent. No other url annotations should have
+        /// a unique_id. All drive annotations should have a unique_id after the message they are attached to is
+        /// successfully sent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
@@ -9864,6 +9869,9 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("joinedSpaceAffinityScore")]
         public virtual System.Nullable<double> JoinedSpaceAffinityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lastReadTimestampAgeInDays")]
+        public virtual System.Nullable<double> LastReadTimestampAgeInDays { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("messageAgeInDays")]
         public virtual System.Nullable<double> MessageAgeInDays { get; set; }
@@ -17823,7 +17831,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class UploadMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Opaque token. Clients shall simply pass it back to the Backend. This field will NOT be saved into storage.
+        /// Opaque token. Clients shall simply pass it back to the Backend. There is no guarantee the attachment_token
+        /// returned on subsequent reads is the same even if nothing has changed. This field will NOT be saved into
+        /// storage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentToken")]
         public virtual string AttachmentToken { get; set; }

@@ -6455,7 +6455,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A result of Resource Search, containing information of a cloud resource. Next ID: 31</summary>
+    /// <summary>A result of Resource Search, containing information of a cloud resource. Next ID: 32</summary>
     public class ResourceSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

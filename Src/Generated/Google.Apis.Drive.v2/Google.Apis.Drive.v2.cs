@@ -9592,8 +9592,8 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string FileExtension { get; set; }
 
         /// <summary>
-        /// The size of the file in bytes. This field is populated for files with content stored in Google Drive and for
-        /// files in Docs Editors; it isn't populated for shortcut files.
+        /// The size of the file's content in bytes. This field is populated for files with binary content stored in
+        /// Google Drive and for Docs Editors files; it is not populated for shortcuts or folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }

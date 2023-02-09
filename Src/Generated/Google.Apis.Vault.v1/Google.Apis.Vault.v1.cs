@@ -3018,7 +3018,8 @@ namespace Google.Apis.Vault.v1.Data
     public class HangoutsChatInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of Chat spaces IDs, as provided by the [Chat API](https://developers.google.com/hangouts/chat).
+        /// A list of Chat spaces IDs, as provided by the [Chat API](https://developers.google.com/chat). There is a
+        /// limit of exporting from 500 Chat spaces per request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roomId")]
         public virtual System.Collections.Generic.IList<string> RoomId { get; set; }
