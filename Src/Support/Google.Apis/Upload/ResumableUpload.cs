@@ -30,6 +30,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -283,7 +284,7 @@ namespace Google.Apis.Upload
         #region Progress Monitoring
 
         /// <summary>Class that communicates the progress of resumable uploads to a container.</summary>
-        private class ResumableUploadProgress : IUploadProgress
+        internal class ResumableUploadProgress : IUploadProgress
         {
             /// <summary>
             /// Create a ResumableUploadProgress instance.
@@ -306,11 +307,18 @@ namespace Google.Apis.Upload
                 Status = UploadStatus.Failed;
                 BytesSent = bytesSent;
                 Exception = exception;
+                ExceptionDispatchInfo = ExceptionDispatchInfo.Capture(exception);
             }
 
-            public UploadStatus Status { get; private set; }
-            public long BytesSent { get; private set; }
-            public Exception Exception { get; private set; }
+            public UploadStatus Status { get; }
+            public long BytesSent { get; }
+            public Exception Exception { get; }
+
+            /// <summary>
+            /// The original dispatch information for <see cref="Exception"/>. This is null
+            /// if and only if <see cref="Exception"/> is null.
+            /// </summary>
+            public ExceptionDispatchInfo ExceptionDispatchInfo { get; }
         }
 
         /// <summary>
