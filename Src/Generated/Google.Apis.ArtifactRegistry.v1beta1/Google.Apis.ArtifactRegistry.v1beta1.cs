@@ -410,7 +410,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     }
 
                     /// <summary>Gets a file.</summary>
-                    /// <param name="name">The name of the file to retrieve.</param>
+                    /// <param name="name">Required. The name of the file to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -426,7 +426,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the file to retrieve.</summary>
+                        /// <summary>Required. The name of the file to retrieve.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -456,7 +456,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
 
                     /// <summary>Lists files.</summary>
                     /// <param name="parent">
-                    /// The name of the repository whose files will be listed. For example:
+                    /// Required. The name of the repository whose files will be listed. For example:
                     /// "projects/p1/locations/us-central1/repositories/repo1
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -475,7 +475,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         }
 
                         /// <summary>
-                        /// The name of the repository whose files will be listed. For example:
+                        /// Required. The name of the repository whose files will be listed. For example:
                         /// "projects/p1/locations/us-central1/repositories/repo1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2113,7 +2113,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     /// <summary>Files store content that is potentially associated with Packages or Versions.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time when the File was created.</summary>
+        /// <summary>Output only. The time when the File was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -2137,7 +2137,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
         public virtual System.Nullable<long> SizeBytes { get; set; }
 
-        /// <summary>The time when the File was last updated.</summary>
+        /// <summary>Output only. The time when the File was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

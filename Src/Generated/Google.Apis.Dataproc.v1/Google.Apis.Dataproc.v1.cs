@@ -1101,6 +1101,26 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. A filter for the batches to return in the response.A filter is a logical expression
+                    /// constraining the values of various fields in each batch resource. Filters are case sensitive,
+                    /// and may contain multiple clauses combined with logical operators (AND/OR). Supported fields are
+                    /// batch_id, batch_uuid, state, and create_time.e.g. state = RUNNING and create_time &amp;lt;
+                    /// "2023-01-01T00:00:00Z" filters for batches in state RUNNING that were created before
+                    /// 2023-01-01See https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed description
+                    /// of the filter syntax and a list of supported comparisons.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field(s) on which to sort the list of batches.Currently the only supported sort orders
+                    /// are unspecified (empty) and create_time desc to sort by most recently created batches first.See
+                    /// https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of batches to return in each response. The service may return fewer
                     /// than this value. The default page size is 20; the maximum page size is 1000.
                     /// </summary>
@@ -1134,6 +1154,22 @@ namespace Google.Apis.Dataproc.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -6457,10 +6493,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See
         /// Compute Engine AcceleratorTypes
-        /// (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
-        /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-        /// projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 nvidia-tesla-k80Auto Zone
-        /// Exception: If you are using the Dataproc Auto Zone Placement
+        /// (https://cloud.google.com/compute/docs/reference/v1/acceleratorTypes).Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-tesla-k80
+        /// projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-tesla-k80 nvidia-tesla-k80Auto Zone Exception: If
+        /// you are using the Dataproc Auto Zone Placement
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
         /// feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80.
         /// </summary>
@@ -6790,8 +6826,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service
         /// account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example,
         /// my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a
-        /// Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
-        /// unique identifier) representing a user that has been recently deleted. For example,
+        /// Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents
+        /// all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}:
+        /// An email address (plus unique identifier) representing a user that has been recently deleted. For example,
         /// alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid}
         /// and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
         /// email address (plus unique identifier) representing a service account that has been recently deleted. For
@@ -6800,8 +6837,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier)
         /// representing a Google group that has been recently deleted. For example,
         /// admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to
-        /// group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain
-        /// (primary) that represents all the users of that domain. For example, google.com or example.com.
+        /// group:{emailid} and the recovered group retains the role in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -6881,9 +6917,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control
         /// the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster
-        /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and
-        /// values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be
-        /// specified.
+        /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default
+        /// values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config
+        /// must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualClusterConfig")]
         public virtual VirtualClusterConfig VirtualClusterConfig { get; set; }
@@ -7171,6 +7207,23 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A request to collect cluster diagnostic information.</summary>
     public class DiagnoseClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Time interval in which diagnosis should be carried out on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosisInterval")]
+        public virtual Interval DiagnosisInterval { get; set; }
+
+        /// <summary>
+        /// Optional. DEPRECATED Specifies the job on which diagnosis is to be performed. Format:
+        /// projects/{project}/regions/{region}/jobs/{job}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual string Job { get; set; }
+
+        /// <summary>
+        /// Optional. DEPRECATED Specifies the yarn application on which diagnosis is to be performed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yarnApplicationId")]
+        public virtual string YarnApplicationId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7330,9 +7383,30 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Optional. A Cloud Storage bucket used to stage workload dependencies, config files, and store workload
+        /// output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket, Cloud
+        /// Dataproc will determine a Cloud Storage location according to the region where your workload is running, and
+        /// then create and manage project-level, per-location staging and temporary buckets. This field requires a
+        /// Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stagingBucket")]
+        public virtual string StagingBucket { get; set; }
+
         /// <summary>Optional. Subnetwork URI to connect workload to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; }
+
+        /// <summary>
+        /// Optional. The duration after which the workload will be terminated. When the workload passes this ttl, it
+        /// will be unconditionally killed without waiting for ongoing work to finish. Minimum value is 10 minutes;
+        /// maximum value is 14 days (see JSON representation of Duration
+        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified,
+        /// the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or
+        /// when the ttl has passed, whichever comes first. If ttl is not specified for a session, it defaults to 24h.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7416,8 +7490,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project
         /// is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
         /// (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short
-        /// name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
-        /// projects/[project_id]/regions/global/default default
+        /// name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/[region]/default
+        /// projects/[project_id]/regions/[region]/default default
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
@@ -7467,8 +7542,8 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with
         /// network_uri.A full URL, partial URI, or short name are valid. Examples:
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
-        /// projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/[region]/subnetworks/sub0
+        /// projects/[project_id]/regions/[region]/subnetworks/sub0 sub0
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; }
@@ -7481,11 +7556,11 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>
-        /// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in
-        /// the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the
-        /// corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI,
-        /// or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
-        /// projects/[project_id]/zones/[zone] us-central1-f
+        /// Optional. The Compute Engine zone where the Dataproc cluster will be located. If omitted, the service will
+        /// pick a zone in the cluster's Compute Engine region. On a get request, zone will always be present.A full
+        /// URL, partial URI, or short name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone]
+        /// [zone]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneUri")]
         public virtual string ZoneUri { get; set; }
@@ -7915,10 +7990,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or
         /// image family.Image examples:
-        /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id]
         /// projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most
         /// recent image from the family:
-        /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name]
         /// projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be
         /// inferred from SoftwareConfig.image_version or the system default.
         /// </summary>
@@ -7943,9 +8018,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name
         /// are valid. Examples:
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
-        /// projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you
-        /// are using the Dataproc Auto Zone Placement
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2
+        /// projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are
+        /// using the Dataproc Auto Zone Placement
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
         /// feature, you must use the short name of the machine type resource, for example, n1-standard-2.
         /// </summary>
@@ -8033,6 +8108,31 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8723,8 +8823,8 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Required. The URI of a sole-tenant node group resource
         /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A
         /// full URL, partial URI, or node group name are valid. Examples:
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1
-        /// projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/nodeGroups/node-group-1
+        /// projects/[project_id]/zones/[zone]/nodeGroups/node-group-1 node-group-1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupUri")]
         public virtual string NodeGroupUri { get; set; }
@@ -10143,7 +10243,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
     /// <summary>
     /// The Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such
-    /// as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke).
+    /// as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
     /// </summary>
     public class VirtualClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {

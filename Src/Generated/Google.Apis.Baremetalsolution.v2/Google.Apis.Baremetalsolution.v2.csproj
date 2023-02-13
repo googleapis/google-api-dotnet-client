@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Baremetalsolution.v2 Client Library</Title>
-    <Version>1.59.0.2934</Version>
+    <Version>1.59.0.2958</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

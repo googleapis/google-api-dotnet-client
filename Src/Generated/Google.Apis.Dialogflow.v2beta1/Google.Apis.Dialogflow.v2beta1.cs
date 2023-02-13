@@ -24919,6 +24919,35 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper
+    /// time while the client is playing back the response audio from a previous request. When the client sees the
+    /// utterance, it should stop the playback and immediately get ready for receiving the responses for the current
+    /// request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing
+    /// back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which
+    /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
+    /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
+    /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
+    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
+    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
+    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
+    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration that is not eligible for barge-in at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noBargeInDuration")]
+        public virtual object NoBargeInDuration { get; set; }
+
+        /// <summary>Total duration for the playback at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDuration")]
+        public virtual object TotalDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for EntityTypes.BatchCreateEntities.</summary>
     public class GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26534,6 +26563,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Required. Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
+
+        /// <summary>Configuration of barge-in behavior during the streaming of input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bargeInConfig")]
+        public virtual GoogleCloudDialogflowV2beta1BargeInConfig BargeInConfig { get; set; }
 
         /// <summary>
         /// Only used in Participants.AnalyzeContent and Participants.StreamingAnalyzeContent. If `false` and
@@ -29106,6 +29139,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The request message for Conversations.SuggestConversationSummary.</summary>
     public class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for a human assist query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
+        public virtual GoogleCloudDialogflowV2beta1AssistQueryParameters AssistQueryParams { get; set; }
+
         /// <summary>
         /// Max number of messages prior to and including [latest_message] to use as context when compiling the
         /// suggestion. By default 500 and at most 1000.

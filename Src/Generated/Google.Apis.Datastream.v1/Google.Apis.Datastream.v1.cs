@@ -3485,6 +3485,13 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual MysqlRdbms IncludeObjects { get; set; }
 
         /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0),
+        /// the system's default value will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
+        public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
+
+        /// <summary>
         /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the
         /// system's default value will be used.
         /// </summary>
@@ -3769,6 +3776,13 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual OracleRdbms IncludeObjects { get; set; }
 
         /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0),
+        /// the system's default value will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
+        public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
+
+        /// <summary>
         /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the
         /// system's default value will be used.
         /// </summary>
@@ -3918,6 +3932,13 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>PostgreSQL objects to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual PostgresqlRdbms IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0),
+        /// the system's default value will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
+        public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
 
         /// <summary>
         /// Required. The name of the publication that includes the set of all tables that are defined in the stream's

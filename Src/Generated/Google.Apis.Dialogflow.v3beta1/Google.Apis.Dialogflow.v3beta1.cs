@@ -10778,6 +10778,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1AdvancedSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination.
+        /// Exposed at the following levels: - Agent level - Flow level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioExportGcsDestination")]
+        public virtual GoogleCloudDialogflowCxV3beta1GcsDestination AudioExportGcsDestination { get; set; }
+
+        /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech
         /// logging. Exposed at the following levels: - Agent level.
         /// </summary>
@@ -10889,6 +10896,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> SupportedLanguageCodes { get; set; }
+
+        /// <summary>
+        /// Settings on instructing the speech synthesizer on how to generate the output audio content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textToSpeechSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1TextToSpeechSettings TextToSpeechSettings { get; set; }
 
         /// <summary>
         /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
@@ -12359,6 +12372,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The new value of the parameter. A null value clears the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or
+    /// transcripts) outside of Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Google Cloud Storage URI for the exported objects. A URI is of the form:
+        /// gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the
+        /// Dialogflow operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14535,6 +14566,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings related to speech generating.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TextToSpeechSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configuration of how speech should be synthesized, mapping from language
+        /// (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig> SynthesizeSpeechConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

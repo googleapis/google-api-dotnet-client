@@ -4601,12 +4601,11 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata message for long-running operation returned by the ReconcileTags.</summary>
+    /// <summary>Long-running operation metadata message returned by the ReconcileTags.</summary>
     public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Map that maps name of each tagged column (or empty string in case of sole entry) to tagging operation
-        /// status.
+        /// Maps the name of each tagged column (or empty string for a sole entry) to tagging operation status.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
@@ -4619,7 +4618,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for long-running operation returned by the ReconcileTags.</summary>
+    /// <summary>Long-running operation response message returned by ReconcileTags.</summary>
     public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of tags created in the request.</summary>
@@ -5212,8 +5211,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     public class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If `true`, include Google Cloud Platform (GCP) public datasets in the search results. Info on GCP public
-        /// datasets is available at https://cloud.google.com/public-datasets/. By default, GCP public datasets are
+        /// If `true`, include Google Cloud public datasets in the search results. Info on Google Cloud public datasets
+        /// is available at https://cloud.google.com/public-datasets/. By default, Google Cloud public datasets are
         /// excluded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeGcpPublicDatasets")]
@@ -5516,7 +5515,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
 
     /// <summary>
     /// A tag template defines a tag, which can have one or more typed fields. The template is used to create and attach
-    /// the tag to GCP resources. [Tag template
+    /// the tag to Google Cloud resources. [Tag template
     /// roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles) provide permissions to create,
     /// edit, and use the template. See, for example, the [TagTemplate
     /// User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role, which includes permission to use
@@ -5632,7 +5631,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
 
         /// <summary>
         /// Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy
-        /// is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        /// is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual GoogleCloudDatacatalogV1beta1TaxonomyService Service { get; set; }
@@ -5652,7 +5651,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
         public virtual string Identity { get; set; }
 
-        /// <summary>The GCP service name.</summary>
+        /// <summary>The Google Cloud service name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

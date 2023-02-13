@@ -623,7 +623,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>
     /// A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace
     /// contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A
-    /// trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there might be
+    /// trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous. There might be
     /// gaps or overlaps between spans in a trace.
     /// </summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
@@ -747,9 +747,9 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual Module LoadModule { get; set; }
 
         /// <summary>
-        /// An un-mangled function name, if `function_name` is
-        /// [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can be fully-qualified (up to 1024
-        /// bytes).
+        /// An un-mangled function name, if `function_name` is mangled. To get information about name mangling, run
+        /// [this search](https://www.google.com/search?q=cxx+name+mangling). The name can be fully-qualified (up to
+        /// 1024 bytes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFunctionName")]
         public virtual TruncatableString OriginalFunctionName { get; set; }

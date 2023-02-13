@@ -4489,6 +4489,21 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Runtime settings for the App Engine flexible environment.</summary>
+    public class FlexibleRuntimeSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operating system of the application runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
+        public virtual string OperatingSystem { get; set; }
+
+        /// <summary>The runtime version of an App Engine flexible application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the given google.cloud.location.Location.</summary>
     public class GoogleAppengineV1betaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5865,6 +5880,10 @@ namespace Google.Apis.Appengine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorHandlers")]
         public virtual System.Collections.Generic.IList<ErrorHandler> ErrorHandlers { get; set; }
+
+        /// <summary>Settings for App Engine flexible runtimes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexibleRuntimeSettings")]
+        public virtual FlexibleRuntimeSettings FlexibleRuntimeSettings { get; set; }
 
         /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL

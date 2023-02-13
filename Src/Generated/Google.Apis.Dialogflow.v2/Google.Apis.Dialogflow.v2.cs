@@ -27667,6 +27667,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Conversations.SuggestConversationSummary.</summary>
     public class GoogleCloudDialogflowV2SuggestConversationSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for a human assist query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
+        public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
+
         /// <summary>
         /// Max number of messages prior to and including [latest_message] to use as context when compiling the
         /// suggestion. By default 500 and at most 1000.

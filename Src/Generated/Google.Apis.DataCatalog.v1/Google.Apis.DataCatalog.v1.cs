@@ -821,12 +821,11 @@ namespace Google.Apis.DataCatalog.v1
                         }
 
                         /// <summary>
-                        /// Reconciles tags created with a given tag template on a given Entry. Reconciliation is an
-                        /// operation that given a list of tags creates or updates them on the entry. Additionally, the
-                        /// operation is also able to delete tags not mentioned in the tag list. It can be achieved by
-                        /// setting force_delete_missing parameter. Reconciliation is a long-running operation done in
-                        /// the background, so this method returns long-running operation resource. The resource can be
-                        /// queried with Operations.GetOperation which contains metadata and response.
+                        /// `ReconcileTags` creates or updates a list of tags on the entry. If the
+                        /// ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not
+                        /// included in the input tag list. `ReconcileTags` returns a long-running operation resource
+                        /// that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a
+                        /// ReconcileTagsResponse message.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of Entry to be tagged.</param>
@@ -836,12 +835,11 @@ namespace Google.Apis.DataCatalog.v1
                         }
 
                         /// <summary>
-                        /// Reconciles tags created with a given tag template on a given Entry. Reconciliation is an
-                        /// operation that given a list of tags creates or updates them on the entry. Additionally, the
-                        /// operation is also able to delete tags not mentioned in the tag list. It can be achieved by
-                        /// setting force_delete_missing parameter. Reconciliation is a long-running operation done in
-                        /// the background, so this method returns long-running operation resource. The resource can be
-                        /// queried with Operations.GetOperation which contains metadata and response.
+                        /// `ReconcileTags` creates or updates a list of tags on the entry. If the
+                        /// ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not
+                        /// included in the input tag list. `ReconcileTags` returns a long-running operation resource
+                        /// that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a
+                        /// ReconcileTagsResponse message.
                         /// </summary>
                         public class ReconcileRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
                         {
@@ -1154,12 +1152,11 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
-                    /// Imports entries from some source (e.g. dump in a Cloud Storage bucket) to the Data Catalog. Dump
-                    /// here is a snapshot of the third-party system state, that needs to be ingested in the Data
-                    /// Catalog. Import of entries is a sync operation that reconciles state of the third-party system
-                    /// and Data Catalog. ImportEntries is a long-running operation done in the background, so this
-                    /// method returns long-running operation resource. The resource can be queried with
-                    /// Operations.GetOperation which contains metadata and response.
+                    /// Imports entries from a source, such as data previously dumped into a Cloud Storage bucket, into
+                    /// Data Catalog. `ImportEntries` accepts source data snapshots of third-party system state. Import
+                    /// of entries is a sync operation that reconciles the state of the third-party system with Data
+                    /// Catalog. `ImportEntries` returns a long-running operation resource that can be queried with
+                    /// Operations.GetOperation to return ImportEntriesMetadata and an ImportEntriesResponse message.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Target entry group for ingested entries.</param>
@@ -1169,12 +1166,11 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
-                    /// Imports entries from some source (e.g. dump in a Cloud Storage bucket) to the Data Catalog. Dump
-                    /// here is a snapshot of the third-party system state, that needs to be ingested in the Data
-                    /// Catalog. Import of entries is a sync operation that reconciles state of the third-party system
-                    /// and Data Catalog. ImportEntries is a long-running operation done in the background, so this
-                    /// method returns long-running operation resource. The resource can be queried with
-                    /// Operations.GetOperation which contains metadata and response.
+                    /// Imports entries from a source, such as data previously dumped into a Cloud Storage bucket, into
+                    /// Data Catalog. `ImportEntries` accepts source data snapshots of third-party system state. Import
+                    /// of entries is a sync operation that reconciles the state of the third-party system with Data
+                    /// Catalog. `ImportEntries` returns a long-running operation resource that can be queried with
+                    /// Operations.GetOperation to return ImportEntriesMetadata and an ImportEntriesResponse message.
                     /// </summary>
                     public class ImportRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
                     {
@@ -6364,12 +6360,11 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata message for long-running operation returned by the ReconcileTags.</summary>
+    /// <summary>Long-running operation metadata message returned by the ReconcileTags.</summary>
     public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Map that maps name of each tagged column (or empty string in case of sole entry) to tagging operation
-        /// status.
+        /// Maps the name of each tagged column (or empty string for a sole entry) to tagging operation status.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
@@ -6386,21 +6381,19 @@ namespace Google.Apis.DataCatalog.v1.Data
     public class GoogleCloudDatacatalogV1ReconcileTagsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If set to true deletes from the entry tags related to given tag template and not mentioned in the tags
-        /// source. If set to false only creates and updates of the tags mentioned in the source will take place. Other
-        /// tags in that entry using the same tag template will be retained instead of being deleted.
+        /// If set to `true`, deletes entry tags related to a tag template not listed in the tags source from an entry.
+        /// If set to `false`, unlisted tags are retained.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forceDeleteMissing")]
         public virtual System.Nullable<bool> ForceDeleteMissing { get; set; }
 
-        /// <summary>Required. The name of the tag template, that will be used for reconciliation.</summary>
+        /// <summary>Required. The name of the tag template, which is used for reconciliation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagTemplate")]
         public virtual string TagTemplate { get; set; }
 
         /// <summary>
-        /// A list of tags to be applied on a given entry. Individual tags may specify tag template, but it must be the
-        /// same as the one in the ReconcileTagsRequest. The sole entry and each of its columns must be mentioned at
-        /// most once.
+        /// A list of tags to apply to an entry. A tag can specify a tag template, which must be the template specified
+        /// in the `ReconcileTagsRequest`. The sole entry and each of its columns must be mentioned at most once.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> Tags { get; set; }
@@ -6409,7 +6402,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for long-running operation returned by the ReconcileTags.</summary>
+    /// <summary>Long-running operation response message returned by ReconcileTags.</summary>
     public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of tags created in the request.</summary>
@@ -6581,8 +6574,8 @@ namespace Google.Apis.DataCatalog.v1.Data
     public class GoogleCloudDatacatalogV1SearchCatalogRequestScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If `true`, include Google Cloud Platform (GCP) public datasets in search results. By default, they are
-        /// excluded. See [Google Cloud Public Datasets](/public-datasets) for more information.
+        /// If `true`, include Google Cloud public datasets in search results. By default, they are excluded. See
+        /// [Google Cloud Public Datasets](/public-datasets) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeGcpPublicDatasets")]
         public virtual System.Nullable<bool> IncludeGcpPublicDatasets { get; set; }
@@ -6997,7 +6990,7 @@ namespace Google.Apis.DataCatalog.v1.Data
 
     /// <summary>
     /// A tag template defines a tag that can have one or more typed fields. The template is used to create tags that
-    /// are attached to GCP resources. [Tag template roles]
+    /// are attached to Google Cloud resources. [Tag template roles]
     /// (https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles) provide permissions to create, edit,
     /// and use the template. For example, see the [TagTemplate User]
     /// (https://cloud.google.com/data-catalog/docs/how-to/template-user) role that includes a permission to use the tag
@@ -7131,7 +7124,7 @@ namespace Google.Apis.DataCatalog.v1.Data
 
         /// <summary>
         /// Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy
-        /// is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        /// is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual GoogleCloudDatacatalogV1TaxonomyService Service { get; set; }
@@ -7151,7 +7144,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
         public virtual string Identity { get; set; }
 
-        /// <summary>The GCP service name.</summary>
+        /// <summary>The Google Cloud service name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
