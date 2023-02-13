@@ -3809,6 +3809,12 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }
 
+        /// <summary>
+        /// Output only. Whether the lifecycle of this membership is managed by a google cluster platform service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
+        public virtual System.Nullable<bool> GoogleManaged { get; set; }
+
         /// <summary>Output only. Useful Kubernetes-specific metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesMetadata")]
         public virtual KubernetesMetadata KubernetesMetadata { get; set; }

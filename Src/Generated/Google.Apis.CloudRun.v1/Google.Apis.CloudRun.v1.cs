@@ -6443,6 +6443,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
+        /// <summary>Port number to access on the container. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
         /// <summary>Not supported by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
         public virtual string Scheme { get; set; }

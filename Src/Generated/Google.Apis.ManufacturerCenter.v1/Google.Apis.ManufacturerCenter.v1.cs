@@ -1847,10 +1847,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The data matches with the vertical specification for product in
-    /// http://google3/googlebase/verticals/devel/product_certification
-    /// </summary>
+    /// <summary>Product certification data.</summary>
     public class ProductCertification : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

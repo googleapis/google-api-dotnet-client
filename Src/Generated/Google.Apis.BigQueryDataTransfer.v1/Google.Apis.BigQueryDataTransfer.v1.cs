@@ -1245,7 +1245,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     public virtual string AuthorizationCode { get; set; }
 
                     /// <summary>
-                    /// Optional service account name. If this field is set, the transfer config will be created with
+                    /// Optional service account email. If this field is set, the transfer config will be created with
                     /// this service account's credentials. It requires that the requesting user calling this API has
                     /// permissions to act as this service account. Note that not all data sources support service
                     /// account credentials when creating a transfer config. For the latest list of data sources, read
@@ -1577,7 +1577,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     public virtual string AuthorizationCode { get; set; }
 
                     /// <summary>
-                    /// Optional service account name. If this field is set, the transfer config will be created with
+                    /// Optional service account email. If this field is set, the transfer config will be created with
                     /// this service account's credentials. It requires that the requesting user calling this API has
                     /// permissions to act as this service account. Note that not all data sources support service
                     /// account credentials when creating a transfer config. For the latest list of data sources, read
@@ -2497,7 +2497,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 public virtual string AuthorizationCode { get; set; }
 
                 /// <summary>
-                /// Optional service account name. If this field is set, the transfer config will be created with this
+                /// Optional service account email. If this field is set, the transfer config will be created with this
                 /// service account's credentials. It requires that the requesting user calling this API has permissions
                 /// to act as this service account. Note that not all data sources support service account credentials
                 /// when creating a transfer config. For the latest list of data sources, read about [using service
@@ -2826,7 +2826,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 public virtual string AuthorizationCode { get; set; }
 
                 /// <summary>
-                /// Optional service account name. If this field is set, the transfer config will be created with this
+                /// Optional service account email. If this field is set, the transfer config will be created with this
                 /// service account's credentials. It requires that the requesting user calling this API has permissions
                 /// to act as this service account. Note that not all data sources support service account credentials
                 /// when creating a transfer config. For the latest list of data sources, read about [using service

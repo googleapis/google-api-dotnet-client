@@ -806,6 +806,67 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
                 }
 
+                /// <summary>RenameInstance sets a new name for an instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the
+                /// conventions in https://cloud.google.com/apis/design/resource_names. Format:
+                /// `projects/{project}/locations/{location}/instances/{instance}`
+                /// </param>
+                public virtual RenameRequest Rename(Google.Apis.Baremetalsolution.v2.Data.RenameInstanceRequest body, string name)
+                {
+                    return new RenameRequest(service, body, name);
+                }
+
+                /// <summary>RenameInstance sets a new name for an instance.</summary>
+                public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Rename request.</summary>
+                    public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RenameInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow
+                    /// the conventions in https://cloud.google.com/apis/design/resource_names. Format:
+                    /// `projects/{project}/locations/{location}/instances/{instance}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.RenameInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rename";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:rename";
+
+                    /// <summary>Initializes Rename parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Perform an ungraceful, hard reset on a server. Equivalent to shutting the power off and then turning
                 /// it back on.
@@ -2245,6 +2306,59 @@ namespace Google.Apis.Baremetalsolution.v2
                         this.service = service;
                     }
 
+                    /// <summary>Skips lun's cooloff and deletes it now. Lun must be in cooloff state.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the lun.</param>
+                    public virtual EvictRequest Evict(Google.Apis.Baremetalsolution.v2.Data.EvictLunRequest body, string name)
+                    {
+                        return new EvictRequest(service, body, name);
+                    }
+
+                    /// <summary>Skips lun's cooloff and deletes it now. Lun must be in cooloff state.</summary>
+                    public class EvictRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Evict request.</summary>
+                        public EvictRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.EvictLunRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the lun.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Baremetalsolution.v2.Data.EvictLunRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "evict";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}:evict";
+
+                        /// <summary>Initializes Evict parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/luns/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Get details of a single storage logical unit number(LUN).</summary>
                     /// <param name="name">Required. Name of the resource.</param>
                     public virtual GetRequest Get(string name)
@@ -2676,6 +2790,59 @@ namespace Google.Apis.Baremetalsolution.v2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
                             });
                         }
+                    }
+                }
+
+                /// <summary>Skips volume's cooloff and deletes it now. Volume must be in cooloff state.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the Volume.</param>
+                public virtual EvictRequest Evict(Google.Apis.Baremetalsolution.v2.Data.EvictVolumeRequest body, string name)
+                {
+                    return new EvictRequest(service, body, name);
+                }
+
+                /// <summary>Skips volume's cooloff and deletes it now. Volume must be in cooloff state.</summary>
+                public class EvictRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Evict request.</summary>
+                    public EvictRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.EvictVolumeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the Volume.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.EvictVolumeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "evict";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:evict";
+
+                    /// <summary>Initializes Evict parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
                     }
                 }
 
@@ -3158,6 +3325,20 @@ namespace Google.Apis.Baremetalsolution.v2.Data
 
     /// <summary>Message for enabling the interactive serial console on an instance.</summary>
     public class EnableInteractiveSerialConsoleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for skip lun cooloff and delete it.</summary>
+    public class EvictLunRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for skip volume cooloff and delete it.</summary>
+    public class EvictVolumeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3680,6 +3861,12 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Display if this LUN is a boot LUN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootLun")]
         public virtual System.Nullable<bool> BootLun { get; set; }
+
+        /// <summary>
+        /// Output only. Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>An identifier for the LUN, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -4243,6 +4430,24 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message requesting rename of a server.</summary>
+    public class RenameInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The `name` field is used to identify the instance. Format:
+        /// projects/{project}/locations/{location}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual Instance Instance { get; set; }
+
+        /// <summary>Required. The new `name` of the instance. Format: {instancename}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message requesting to reset a server.</summary>
     public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4496,6 +4701,12 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emergencySizeGib")]
         public virtual System.Nullable<long> EmergencySizeGib { get; set; }
+
+        /// <summary>
+        /// Output only. Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>An identifier for the `Volume`, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

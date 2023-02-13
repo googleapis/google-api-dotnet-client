@@ -9931,8 +9931,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
     /// <summary>
     /// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows,
-    /// columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly
-    /// granted access through the DataAttribute. Principals with access to the containing resource are not implicitly
+    /// columns in BigQuery Tables). When associated with data, the data is only accessible to principals explicitly
+    /// granted access through the DataAccessSpec. Principals with access to the containing resource are not implicitly
     /// granted access.
     /// </summary>
     public class GoogleCloudDataplexV1DataAccessSpec : Google.Apis.Requests.IDirectResponseSchema
@@ -13030,8 +13030,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service
         /// account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example,
         /// my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a
-        /// Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
-        /// unique identifier) representing a user that has been recently deleted. For example,
+        /// Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents
+        /// all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}:
+        /// An email address (plus unique identifier) representing a user that has been recently deleted. For example,
         /// alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid}
         /// and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
         /// email address (plus unique identifier) representing a service account that has been recently deleted. For
@@ -13040,8 +13041,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier)
         /// representing a Google group that has been recently deleted. For example,
         /// admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to
-        /// group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain
-        /// (primary) that represents all the users of that domain. For example, google.com or example.com.
+        /// group:{emailid} and the recovered group retains the role in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }

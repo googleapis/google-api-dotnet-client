@@ -662,6 +662,71 @@ namespace Google.Apis.ChromeManagement.v1
             }
 
             /// <summary>
+            /// Count of Chrome Browsers that have been recently enrolled, have new policy to be synced, or have no
+            /// recent activity.
+            /// </summary>
+            /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
+            public virtual CountChromeBrowsersNeedingAttentionRequest CountChromeBrowsersNeedingAttention(string customer)
+            {
+                return new CountChromeBrowsersNeedingAttentionRequest(service, customer);
+            }
+
+            /// <summary>
+            /// Count of Chrome Browsers that have been recently enrolled, have new policy to be synced, or have no
+            /// recent activity.
+            /// </summary>
+            public class CountChromeBrowsersNeedingAttentionRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>
+            {
+                /// <summary>Constructs a new CountChromeBrowsersNeedingAttention request.</summary>
+                public CountChromeBrowsersNeedingAttentionRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The customer ID or "my_customer" prefixed with "customers/".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Optional. The ID of the organizational unit. If omitted, all data will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeBrowsersNeedingAttention";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countChromeBrowsersNeedingAttention";
+
+                /// <summary>Initializes CountChromeBrowsersNeedingAttention parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
             /// Generate report of the number of devices expiring in each month of the selected time frame. Devices are
             /// grouped by auto update expiration date and model. Further information can be found
             /// [here](https://support.google.com/chrome/a/answer/10564947).
@@ -2315,6 +2380,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Total number of matching app requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing counts for browsers that need attention.</summary>
+    public class GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of browsers that haven’t had any recent activity</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noRecentActivityCount")]
+        public virtual System.Nullable<long> NoRecentActivityCount { get; set; }
+
+        /// <summary>Number of browsers that are pending an OS update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingBrowserUpdateCount")]
+        public virtual System.Nullable<long> PendingBrowserUpdateCount { get; set; }
+
+        /// <summary>Number of browsers that have been recently enrolled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentlyEnrolledCount")]
+        public virtual System.Nullable<long> RecentlyEnrolledCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
