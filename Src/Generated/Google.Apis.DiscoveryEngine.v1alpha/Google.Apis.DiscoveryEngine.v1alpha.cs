@@ -2277,7 +2277,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Required. The Document resource full name, of the form:
-        /// projects//locations//dataStores//branches//documents/
+        /// projects/{project\_id}/locations/{location}/dataStores/{data\_store\_id}/branches/{branch\_id}/documents/{document\_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

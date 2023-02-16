@@ -8610,6 +8610,14 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ContentType { get; set; }
 
         /// <summary>
+        /// A user provided content type header to use for the check. The invalid configurations outlined in the
+        /// content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED
+        /// and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customContentType")]
+        public virtual string CustomContentType { get; set; }
+
+        /// <summary>
         /// The list of headers to send as part of the Uptime check request. If two headers have the same key and
         /// different values, they should be entered as a single header, with the value being a comma-separated list of
         /// all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering

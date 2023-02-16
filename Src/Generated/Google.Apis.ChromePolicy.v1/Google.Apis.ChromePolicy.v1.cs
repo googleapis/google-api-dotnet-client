@@ -1413,6 +1413,13 @@ namespace Google.Apis.ChromePolicy.v1.Data
 {
     public class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// In the event that this policy was deprecated in favor of another policy, the fully qualified namespace(s) of
+        /// the new policies as they will show in PolicyAPI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecatedInFavorOf")]
+        public virtual System.Collections.Generic.IList<string> DeprecatedInFavorOf { get; set; }
+
         /// <summary>Description about current life cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

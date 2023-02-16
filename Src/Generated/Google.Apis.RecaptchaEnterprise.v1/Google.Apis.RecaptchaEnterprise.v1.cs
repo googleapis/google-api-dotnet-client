@@ -1272,8 +1272,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
         /// <summary>
-        /// Optional. If the Assessment is part of a Payment Transaction, provide details on Payment Lifecycle Events
-        /// that occur in the Transaction.
+        /// Optional. If the assessment is part of a payment transaction, provide details on payment lifecycle events
+        /// that occur in the transaction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionEvent")]
         public virtual GoogleCloudRecaptchaenterpriseV1TransactionEvent TransactionEvent { get; set; }
@@ -1857,15 +1857,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string EventType { get; set; }
 
         /// <summary>
-        /// Optional. The reason or standardized code which corresponds with this transaction event, if one exists. E.g.
-        /// a CHARGEBACK Event with code 4553.
+        /// Optional. The reason or standardized code that corresponds with this transaction event, if one exists. For
+        /// example, a CHARGEBACK event with code 6005.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
         /// <summary>
-        /// Optional. The value that corresponds with this transaction event, if one exists. E.g. A refund event where
-        /// $5.00 was refunded. Currency is obtained from the original transaction data.
+        /// Optional. The value that corresponds with this transaction event, if one exists. For example, a refund event
+        /// where $5.00 was refunded. Currency is obtained from the original transaction data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }

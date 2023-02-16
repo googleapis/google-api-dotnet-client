@@ -2204,7 +2204,7 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual System.Collections.Generic.IList<DateRange> DateRanges { get; set; }
 
         /// <summary>
-        /// Dimension filters allow you to ask for only specific dimension values in the report. To learn more, see
+        /// Dimension filters let you ask for only specific dimension values in the report. To learn more, see
         /// [Fundamentals of Dimension
         /// Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters) for
         /// examples. Metrics cannot be used in this filter.

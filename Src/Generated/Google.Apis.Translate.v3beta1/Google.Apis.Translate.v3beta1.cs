@@ -2496,7 +2496,8 @@ namespace Google.Apis.Translate.v3beta1.Data
 
         /// <summary>
         /// Optional. If true, use the text removal server to remove the shadow text on background image for native pdf
-        /// translation.
+        /// translation. Shadow removal feature can only be enabled when is_translate_native_pdf_only: false
+        /// &amp;amp;&amp;amp; pdf_native_only: false
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableShadowRemovalNativePdf")]
         public virtual System.Nullable<bool> EnableShadowRemovalNativePdf { get; set; }

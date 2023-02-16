@@ -13118,9 +13118,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string KoreanBusinessRegistrationNumber { get; set; }
 
         /// <summary>
-        /// The phone number of the business. This can only be updated if a verified phone number is not already set. To
-        /// replace a verified phone number use the `Accounts.requestphoneverification` and
-        /// `Accounts.verifyphonenumber`.
+        /// The phone number of the business in [E.164](https://en.wikipedia.org/wiki/E.164) format. This can only be
+        /// updated if a verified phone number is not already set. To replace a verified phone number use the
+        /// `Accounts.requestphoneverification` and `Accounts.verifyphonenumber`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
