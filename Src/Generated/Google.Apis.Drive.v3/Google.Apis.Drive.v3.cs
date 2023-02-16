@@ -6106,6 +6106,13 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDriveMembersOnlyRestriction")]
             public virtual System.Nullable<bool> CanChangeDriveMembersOnlyRestriction { get; set; }
 
+            /// <summary>
+            /// Whether the current user can change the sharingFoldersRequiresOrganizerPermission restriction of this
+            /// shared drive.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeSharingFoldersRequiresOrganizerPermissionRestriction")]
+            public virtual System.Nullable<bool> CanChangeSharingFoldersRequiresOrganizerPermissionRestriction { get; set; }
+
             /// <summary>Whether the current user can comment on files in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
             public virtual System.Nullable<bool> CanComment { get; set; }
@@ -6198,6 +6205,13 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Whether access to items inside this shared drive is restricted to its members.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("driveMembersOnly")]
             public virtual System.Nullable<bool> DriveMembersOnly { get; set; }
+
+            /// <summary>
+            /// If true, only users with the organizer role can share folders. If false, users with either the organizer
+            /// role or the file organizer role can share folders.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingFoldersRequiresOrganizerPermission")]
+            public virtual System.Nullable<bool> SharingFoldersRequiresOrganizerPermission { get; set; }
         }
     }
 
@@ -7842,6 +7856,13 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDomainUsersOnlyRestriction")]
             public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; }
 
+            /// <summary>
+            /// Whether the current user can change the sharingFoldersRequiresOrganizerPermission restriction of this
+            /// Team Drive.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeSharingFoldersRequiresOrganizerPermissionRestriction")]
+            public virtual System.Nullable<bool> CanChangeSharingFoldersRequiresOrganizerPermissionRestriction { get; set; }
+
             /// <summary>Whether the current user can change the background of this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeTeamDriveBackground")]
             public virtual System.Nullable<bool> CanChangeTeamDriveBackground { get; set; }
@@ -7942,6 +7963,13 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domainUsersOnly")]
             public virtual System.Nullable<bool> DomainUsersOnly { get; set; }
+
+            /// <summary>
+            /// If true, only users with the organizer role can share folders. If false, users with either the organizer
+            /// role or the file organizer role can share folders.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingFoldersRequiresOrganizerPermission")]
+            public virtual System.Nullable<bool> SharingFoldersRequiresOrganizerPermission { get; set; }
 
             /// <summary>
             /// Whether access to items inside this Team Drive is restricted to members of this Team Drive.

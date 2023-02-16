@@ -6024,8 +6024,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input:
         /// - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for
         /// commitment-based offers The response may additionally include the following output-only Parameters: -
-        /// assigned_units: The number of licenses assigned to users. For GCP billing accounts, the following Parameter
-        /// may be accepted as input: - display_name: The display name of the billing account.
+        /// assigned_units: The number of licenses assigned to users. For GCP billing subaccounts, the following
+        /// Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
@@ -7739,8 +7739,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input:
         /// - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for
         /// commitment-based offers The response may additionally include the following output-only Parameters: -
-        /// assigned_units: The number of licenses assigned to users. For GCP billing accounts, the following Parameter
-        /// may be accepted as input: - display_name: The display name of the billing account.
+        /// assigned_units: The number of licenses assigned to users. For GCP billing subaccounts, the following
+        /// Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1alpha1Parameter> Parameters { get; set; }

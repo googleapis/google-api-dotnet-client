@@ -19,7 +19,8 @@
     "CALL_CLICKS",
     "WEBSITE_CLICKS",
     "BUSINESS_BOOKINGS",
-    "BUSINESS_FOOD_ORDERS"
+    "BUSINESS_FOOD_ORDERS",
+    "BUSINESS_FOOD_MENU_CLICKS"
   ],
   "Google.Apis.BusinessProfilePerformance.v1.LocationsResource+GetDailyMetricsTimeSeriesRequest.DailySubEntityTypeDayOfWeekEnum": [
     "DAY_OF_WEEK_UNSPECIFIED",

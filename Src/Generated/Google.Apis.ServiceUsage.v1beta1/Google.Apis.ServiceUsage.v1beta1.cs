@@ -2700,6 +2700,10 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationDeadline")]
         public virtual System.Nullable<double> OperationDeadline { get; set; }
 
+        /// <summary>The map between request protocol and the backend address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overridesByRequestProtocol")]
+        public virtual System.Collections.Generic.IDictionary<string, BackendRule> OverridesByRequestProtocol { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("pathTranslation")]
         public virtual string PathTranslation { get; set; }
 

@@ -1847,9 +1847,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update").
-            /// Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to
-            /// match all fields.
+            /// Required. The list of fields to be updated. Field names must be in snake case (for example,
+            /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with
+            /// the string "*" to match all fields.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -6848,8 +6848,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
         /// <summary>
         /// Acknowledges the terms of user data collection for the specified property. This acknowledgement must be
-        /// completed (either in the Google Analytics UI or via this API) before MeasurementProtocolSecret resources may
-        /// be created.
+        /// completed (either in the Google Analytics UI or through this API) before MeasurementProtocolSecret resources
+        /// may be created.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="property">Required. The property for which to acknowledge user data collection.</param>
@@ -6860,8 +6860,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
         /// <summary>
         /// Acknowledges the terms of user data collection for the specified property. This acknowledgement must be
-        /// completed (either in the Google Analytics UI or via this API) before MeasurementProtocolSecret resources may
-        /// be created.
+        /// completed (either in the Google Analytics UI or through this API) before MeasurementProtocolSecret resources
+        /// may be created.
         /// </summary>
         public class AcknowledgeUserDataCollectionRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse>
         {
@@ -10402,7 +10402,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Developers
-        /// Console as a Redirect URI
+        /// Console as a Redirect URI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
@@ -10434,8 +10434,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccessDateRange> DateRanges { get; set; }
 
         /// <summary>
-        /// Dimension filters allow you to restrict report response to specific dimension values which match the filter.
-        /// For example, filtering on access records of a single user. To learn more, see [Fundamentals of Dimension
+        /// Dimension filters let you restrict report response to specific dimension values which match the filter. For
+        /// example, filtering on access records of a single user. To learn more, see [Fundamentals of Dimension
         /// Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters) for
         /// examples. Metrics cannot be used in this filter.
         /// </summary>

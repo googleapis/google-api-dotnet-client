@@ -1942,14 +1942,18 @@ namespace Google.Apis.AndroidManagement.v1
             }
         }
 
-        /// <summary>Creates an enterprise. This is the last step in the enterprise signup flow.</summary>
+        /// <summary>
+        /// Creates an enterprise. This is the last step in the enterprise signup flow. See also: SigninDetail
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.Enterprise body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates an enterprise. This is the last step in the enterprise signup flow.</summary>
+        /// <summary>
+        /// Creates an enterprise. This is the last step in the enterprise signup flow. See also: SigninDetail
+        /// </summary>
         public class CreateRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Enterprise>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2227,7 +2231,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
         }
 
-        /// <summary>Updates an enterprise.</summary>
+        /// <summary>Updates an enterprise. See also: SigninDetail</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Enterprise body, string name)
@@ -2235,7 +2239,7 @@ namespace Google.Apis.AndroidManagement.v1
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Updates an enterprise.</summary>
+        /// <summary>Updates an enterprise. See also: SigninDetail</summary>
         public class PatchRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Enterprise>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3796,7 +3800,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabledNotificationTypes")]
         public virtual System.Collections.Generic.IList<string> EnabledNotificationTypes { get; set; }
 
-        /// <summary>The name of the enterprise displayed to users.</summary>
+        /// <summary>
+        /// The name of the enterprise displayed to users. This field has a maximum length of 100 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseDisplayName")]
         public virtual string EnterpriseDisplayName { get; set; }
 

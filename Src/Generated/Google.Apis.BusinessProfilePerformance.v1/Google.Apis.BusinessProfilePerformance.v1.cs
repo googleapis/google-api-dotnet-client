@@ -580,6 +580,13 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 /// <summary>The number of food orders received from the business profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("BUSINESS_FOOD_ORDERS")]
                 BUSINESSFOODORDERS = 10,
+
+                /// <summary>
+                /// The number of clicks to view or interact with the menu content on the business profile. Multiple
+                /// clicks by a unique user within a single day are counted as 1.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_FOOD_MENU_CLICKS")]
+                BUSINESSFOODMENUCLICKS = 11,
             }
 
             /// <summary>

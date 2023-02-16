@@ -2744,6 +2744,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
 
+        /// <summary>The cvss v2 score for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV2")]
+        public virtual CVSS CvssV2 { get; set; }
+
         /// <summary>Output only. CVSS version used to populate cvss_score and severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
         public virtual string CvssVersion { get; set; }

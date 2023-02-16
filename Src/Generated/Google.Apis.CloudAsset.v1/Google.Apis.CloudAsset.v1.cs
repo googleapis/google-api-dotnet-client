@@ -598,7 +598,7 @@ namespace Google.Apis.CloudAsset.v1
         /// <param name="parent">
         /// Required. The name of the project/folder/organization where this feed should be created in. It can only be
         /// an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID
-        /// (such as "projects/my-project-id")", or a project number (such as "projects/12345").
+        /// (such as "projects/my-project-id"), or a project number (such as "projects/12345").
         /// </param>
         public virtual CreateRequest Create(Google.Apis.CloudAsset.v1.Data.CreateFeedRequest body, string parent)
         {
@@ -619,7 +619,7 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Required. The name of the project/folder/organization where this feed should be created in. It can only
             /// be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a
-            /// project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
+            /// project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345").
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -958,7 +958,7 @@ namespace Google.Apis.CloudAsset.v1
         /// <param name="parent">
         /// Required. The name of the project/folder/organization where this saved_query should be created in. It can
         /// only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a
-        /// project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
+        /// project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345").
         /// </param>
         public virtual CreateRequest Create(Google.Apis.CloudAsset.v1.Data.SavedQuery body, string parent)
         {
@@ -979,7 +979,7 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Required. The name of the project/folder/organization where this saved_query should be created in. It
             /// can only be an organization number (such as "organizations/123"), a folder number (such as
-            /// "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
+            /// "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
             /// "projects/12345").
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
