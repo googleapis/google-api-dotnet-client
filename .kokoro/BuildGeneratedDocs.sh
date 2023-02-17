@@ -65,7 +65,7 @@ build_site() {
   sed -i "s/\\\$title/$package/g" $directory/index.md  
   sed -i "s/\\\$entry_namespace/$package/g" $directory/index.md  
   
-  dotnet docfx metadata -f --disableGitFeatures $json
+  dotnet docfx metadata --disableGitFeatures $json
   dotnet docfx build --disableGitFeatures $json
 
   if [ ! -d $directory/obj/api ]
