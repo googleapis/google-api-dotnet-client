@@ -42,7 +42,7 @@ build_site() {
   sed -i "s/\\\$title/Google API support libraries/g" $directory/index.md
   sed -i "s/\\\$entry_namespace/$entry_namespace/g" $directory/index.md  
   
-  dotnet docfx metadata -f --disableGitFeatures $json
+  dotnet docfx metadata --disableGitFeatures $json
   dotnet docfx build --disableGitFeatures $json
   
   if [ ! -d $directory/obj/api ]
