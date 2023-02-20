@@ -7417,6 +7417,51 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
                     }
 
+                    /// <summary>Gets metrics associated with the FHIR store.</summary>
+                    /// <param name="name">The resource name of the FHIR store to get metrics for.</param>
+                    public virtual GetFHIRStoreMetricsRequest GetFHIRStoreMetrics(string name)
+                    {
+                        return new GetFHIRStoreMetricsRequest(service, name);
+                    }
+
+                    /// <summary>Gets metrics associated with the FHIR store.</summary>
+                    public class GetFHIRStoreMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.FhirStoreMetrics>
+                    {
+                        /// <summary>Constructs a new GetFHIRStoreMetrics request.</summary>
+                        public GetFHIRStoreMetricsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The resource name of the FHIR store to get metrics for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getFHIRStoreMetrics";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:getFHIRStoreMetrics";
+
+                        /// <summary>Initializes GetFHIRStoreMetrics parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
                     /// and does not have a policy set.
@@ -11752,6 +11797,45 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Count of resources and total storage size by type for a given FHIR store.</summary>
+    public class FhirStoreMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of FHIR resources in the store of this resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The FHIR resource type this metric applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>
+        /// The total amount of structured storage used by FHIR resources of this resource type in the store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageSizeBytes")]
+        public virtual System.Nullable<long> StructuredStorageSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of metrics for a given FHIR store.</summary>
+    public class FhirStoreMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of FhirStoreMetric by resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<FhirStoreMetric> Metrics { get; set; }
+
+        /// <summary>
+        /// The resource name of the FHIR store to get metrics for, in the format
+        /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
