@@ -1,4 +1,4 @@
-[![GitHub Actions status](https://img.shields.io/github/workflow/status/googleapis/google-api-dotnet-client/Build)](https://github.com/googleapis/google-api-dotnet-client/actions?query=workflow%3ABuild)
+[![GitHub Actions status](https://img.shields.io/github/actions/workflow/status/googleapis/google-api-dotnet-client/build.yml)](https://github.com/googleapis/google-api-dotnet-client/actions/workflows/build.yml))
 
 # Google APIs client Library for .NET
 
