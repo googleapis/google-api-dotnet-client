@@ -954,12 +954,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual CheckInfo CheckInfo { get; set; }
 
         /// <summary>
-        /// Esf migration server override during check v2 migration. This is temporary and Chemist internal only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("esfMigrationServerOverride")]
-        public virtual EsfMigrationServerOverride EsfMigrationServerOverride { get; set; }
-
-        /// <summary>
         /// The same operation_id value used in the CheckRequest. Used for logging and diagnostics purposes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
@@ -1069,17 +1063,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
         public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Esf migration server override during chemist check v2 migration</summary>
-    public class EsfMigrationServerOverride : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Esf migration override mode</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("overrideMode")]
-        public virtual string OverrideMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

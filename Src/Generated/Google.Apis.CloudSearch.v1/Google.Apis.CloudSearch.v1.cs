@@ -6230,8 +6230,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Deprecated. Use segmented_membership_counts instead which also includes other counts such as rosters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numMembers")]
         public virtual System.Nullable<int> NumMembers { get; set; }
+
+        /// <summary>Member counts object with types of members and their respective counts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentedMembershipCounts")]
+        public virtual AppsDynamiteSharedSegmentedMembershipCounts SegmentedMembershipCounts { get; set; }
 
         /// <summary>searching user's membership state in this space</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMembershipState")]
@@ -6411,6 +6418,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>List of action parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<AppsDynamiteStorageActionActionParameter> Parameters { get; set; }
+
+        /// <summary>
+        /// Indicates whether form values persist after the action. The default value is `false`. If `true`, form values
+        /// remain after the action is triggered. When using
+        /// [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator) for actions,
+        /// `persist_values` = `true`is recommended, as it ensures that any changes made by the user after form or on
+        /// change actions are sent to the server are not overwritten by the response. If `false`, the form values are
+        /// cleared when the action is triggered. When `persist_values` is set to `false`, it is strongly recommended
+        /// that the card use [LoadIndicator.SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+        /// for all actions, as this locks the UI to ensure no changes are made by the user while the action is being
+        /// processed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
+        public virtual System.Nullable<bool> PersistValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13601,6 +13622,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
         public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
 
+        /// <summary>
+        /// Value of coproc's message delete history record extension that exports /wonder/message_mapping/{vertical}
+        /// attribute of deleted messages which have smartmail label (eg. ^cob_sm_invoice, etc).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wonderCardMappings")]
+        public virtual System.Collections.Generic.IList<WonderCardDelete> WonderCardMappings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18241,6 +18269,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
+        /// <summary>
+        /// Specific reason for the user mention failing, for fine-grained processing by clients (i.e. specific error
+        /// message for space limit exceeded case) IMPORTANT: Set this only for FAILED_TO_ADD case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMentionError")]
+        public virtual string UserMentionError { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18467,6 +18502,43 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Read-only Widgets</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
         public virtual TextParagraph TextParagraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message delete history record extension that exports /wonder/message_mapping/{vertical} attribute of deleted
+    /// messages which have any smartmail label (eg. ^cob_sm_invoice). go/how-dd-card-deletion
+    /// </summary>
+    public class WonderCardDelete : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contains &amp;lt;{@code WonderCardType} enum value, value of /wonder/message_mapping/{vertical} attribute of
+        /// deleted message&amp;gt; pairs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageMappings")]
+        public virtual System.Collections.Generic.IDictionary<string, WonderMessageMapping> MessageMappings { get; set; }
+
+        /// <summary>Message ID of the original deleted message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("msgId")]
+        public virtual System.Nullable<ulong> MsgId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Card mapping attached to original message as an attribute stored at /wonder/message_mapping/{vertical} Next ID:
+    /// 2
+    /// </summary>
+    public class WonderMessageMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of wonder card (client-generated) message IDs generated based on the original message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wonderCardMessageId")]
+        public virtual System.Collections.Generic.IList<string> WonderCardMessageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

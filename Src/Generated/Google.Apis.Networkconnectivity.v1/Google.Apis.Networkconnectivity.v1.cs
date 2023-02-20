@@ -644,7 +644,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>The maximum number of results per page that should be returned.</summary>
+                        /// <summary>The maximum number of results per page to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2912,7 +2912,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>The maximum number of results per page that should be returned.</summary>
+                    /// <summary>The maximum number of results to return per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 

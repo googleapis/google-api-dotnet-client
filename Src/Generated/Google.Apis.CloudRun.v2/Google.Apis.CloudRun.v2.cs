@@ -3051,7 +3051,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2GRPCAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+        /// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the
+        /// exposed port of the container, which is the value of container.ports[0].containerPort.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
@@ -3079,7 +3080,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Port number to access on the container. Must be in the range 1 to 65535.</summary>
+        /// <summary>
+        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the
+        /// exposed port of the container, which is the value of container.ports[0].containerPort.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
@@ -3942,7 +3946,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the
+        /// exposed port of the container, which is the value of container.ports[0].containerPort.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }

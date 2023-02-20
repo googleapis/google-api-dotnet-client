@@ -619,7 +619,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                             /// Optional. An ID to identify requests. Specify a unique request ID so that if you must
                             /// retry your request, the server will know to ignore the request if it has already been
                             /// completed. The server will guarantee that for at least 60 minutes since the first
-                            /// request. For example, consider a situation where you make an initial request and t he
+                            /// request. For example, consider a situation where you make an initial request and the
                             /// request times out. If you make the request again with the same request ID, the server
                             /// can check if original operation with the same request ID was received, and if so, will
                             /// ignore the second request. This prevents clients from accidentally creating duplicate
@@ -925,7 +925,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry
                         /// your request, the server will know to ignore the request if it has already been completed.
                         /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                        /// consider a situation where you make an initial request and t he request times out. If you
+                        /// consider a situation where you make an initial request and the request times out. If you
                         /// make the request again with the same request ID, the server can check if original operation
                         /// with the same request ID was received, and if so, will ignore the second request. This
                         /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
@@ -1019,7 +1019,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry
                         /// your request, the server will know to ignore the request if it has already been completed.
                         /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                        /// consider a situation where you make an initial request and t he request times out. If you
+                        /// consider a situation where you make an initial request and the request times out. If you
                         /// make the request again with the same request ID, the server can check if original operation
                         /// with the same request ID was received, and if so, will ignore the second request. This
                         /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
@@ -1449,7 +1449,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry
                         /// your request, the server will know to ignore the request if it has already been completed.
                         /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                        /// consider a situation where you make an initial request and t he request times out. If you
+                        /// consider a situation where you make an initial request and the request times out. If you
                         /// make the request again with the same request ID, the server can check if original operation
                         /// with the same request ID was received, and if so, will ignore the second request. This
                         /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
@@ -1920,7 +1920,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry
                         /// your request, the server will know to ignore the request if it has already been completed.
                         /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                        /// consider a situation where you make an initial request and t he request times out. If you
+                        /// consider a situation where you make an initial request and the request times out. If you
                         /// make the request again with the same request ID, the server can check if original operation
                         /// with the same request ID was received, and if so, will ignore the second request. This
                         /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
@@ -2080,7 +2080,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and t he request times out. If you make the request
+                    /// situation where you make an initial request and the request times out. If you make the request
                     /// again with the same request ID, the server can check if original operation with the same request
                     /// ID was received, and if so, will ignore the second request. This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -2164,7 +2164,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and t he request times out. If you make the request
+                    /// situation where you make an initial request and the request times out. If you make the request
                     /// again with the same request ID, the server can check if original operation with the same request
                     /// ID was received, and if so, will ignore the second request. This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -2529,7 +2529,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and t he request times out. If you make the request
+                    /// situation where you make an initial request and the request times out. If you make the request
                     /// again with the same request ID, the server can check if original operation with the same request
                     /// ID was received, and if so, will ignore the second request. This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -2784,7 +2784,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and t he request times out. If you make the request
+                    /// situation where you make an initial request and the request times out. If you make the request
                     /// again with the same request ID, the server can check if original operation with the same request
                     /// ID was received, and if so, will ignore the second request. This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -2870,7 +2870,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and t he request times out. If you make the request
+                    /// situation where you make an initial request and the request times out. If you make the request
                     /// again with the same request ID, the server can check if original operation with the same request
                     /// ID was received, and if so, will ignore the second request. This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -3176,7 +3176,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and t he request times out. If you make the request
+                    /// situation where you make an initial request and the request times out. If you make the request
                     /// again with the same request ID, the server can check if original operation with the same request
                     /// ID was received, and if so, will ignore the second request. This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -3832,7 +3832,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that
         /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
-        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// request and the request times out. If you make the request again with the same request ID, the server can
         /// check if original operation with the same request ID was received, and if so, will ignore the second
         /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
         /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -4511,7 +4511,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that
         /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
-        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// request and the request times out. If you make the request again with the same request ID, the server can
         /// check if original operation with the same request ID was received, and if so, will ignore the second
         /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
         /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -4555,7 +4555,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that
         /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
-        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// request and the request times out. If you make the request again with the same request ID, the server can
         /// check if original operation with the same request ID was received, and if so, will ignore the second
         /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
         /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -4663,7 +4663,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that
         /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
-        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// request and the request times out. If you make the request again with the same request ID, the server can
         /// check if original operation with the same request ID was received, and if so, will ignore the second
         /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
         /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -5052,6 +5052,79 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     }
 
     /// <summary>
+    /// Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+    /// </summary>
+    public class NameConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether or not the name constraints are marked critical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("critical")]
+        public virtual System.Nullable<bool> Critical { get; set; }
+
+        /// <summary>
+        /// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to
+        /// the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`,
+        /// `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDnsNames")]
+        public virtual System.Collections.Generic.IList<string> ExcludedDnsNames { get; set; }
+
+        /// <summary>
+        /// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate
+        /// all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all
+        /// email addresses in that domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> ExcludedEmailAddresses { get; set; }
+
+        /// <summary>
+        /// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as
+        /// specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedIpRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludedIpRanges { get; set; }
+
+        /// <summary>
+        /// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain
+        /// with a leading period (like `.example.com`)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedUris")]
+        public virtual System.Collections.Generic.IList<string> ExcludedUris { get; set; }
+
+        /// <summary>
+        /// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to
+        /// the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`,
+        /// `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permittedDnsNames")]
+        public virtual System.Collections.Generic.IList<string> PermittedDnsNames { get; set; }
+
+        /// <summary>
+        /// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate
+        /// all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all
+        /// email addresses in that domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permittedEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> PermittedEmailAddresses { get; set; }
+
+        /// <summary>
+        /// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as
+        /// specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permittedIpRanges")]
+        public virtual System.Collections.Generic.IList<string> PermittedIpRanges { get; set; }
+
+        /// <summary>
+        /// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain
+        /// with a leading period (like `.example.com`)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permittedUris")]
+        public virtual System.Collections.Generic.IList<string> PermittedUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     /// </summary>
     public class ObjectId : Google.Apis.Requests.IDirectResponseSchema
@@ -5303,7 +5376,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that
         /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
-        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// request and the request times out. If you make the request again with the same request ID, the server can
         /// check if original operation with the same request ID was received, and if so, will ignore the second
         /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
         /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -5612,7 +5685,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that
         /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
-        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// request and the request times out. If you make the request again with the same request ID, the server can
         /// check if original operation with the same request ID was received, and if so, will ignore the second
         /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
         /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -5673,6 +5746,10 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// <summary>Optional. Indicates the intended use for keys that correspond to a certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyUsage")]
         public virtual KeyUsage KeyUsage { get; set; }
+
+        /// <summary>Optional. Describes the X.509 name constraints extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameConstraints")]
+        public virtual NameConstraints NameConstraints { get; set; }
 
         /// <summary>
         /// Optional. Describes the X.509 certificate policy object identifiers, per

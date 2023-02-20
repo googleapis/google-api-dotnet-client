@@ -2160,7 +2160,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
-                    /// <summary>Required. ID to use for the cluster.</summary>
+                    /// <summary>Required. ID to use for the workstation cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("workstationClusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WorkstationClusterId { get; set; }
 
@@ -2211,7 +2211,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 }
 
                 /// <summary>Deletes the specified workstation cluster.</summary>
-                /// <param name="name">Required. Name of the cluster to delete.</param>
+                /// <param name="name">Required. Name of the workstation cluster to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -2227,27 +2227,26 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the cluster to delete.</summary>
+                    /// <summary>Required. Name of the workstation cluster to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set, the request will be rejected if the latest version of the cluster on the server does not
-                    /// have this etag.
+                    /// If set, the request will be rejected if the latest version of the workstation cluster on the
+                    /// server does not have this etag.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// If set, any workstation configurations and workstations in the cluster will also be deleted.
-                    /// Otherwise, the request will work only if the cluster has no configurations or workstations.
+                    /// If set, any workstation configurations and workstations in the workstation cluster are also
+                    /// deleted. Otherwise, the request only works if the workstation cluster has no configurations or
+                    /// workstations.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
-                    /// <summary>
-                    /// If set, validate the request and preview the review, but do not actually apply it.
-                    /// </summary>
+                    /// <summary>If set, validate the request and preview the review, but do not apply it.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -2437,13 +2436,15 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set, and the cluster is not found, a new cluster will be created. In this situation,
-                    /// update_mask is ignored.
+                    /// If set, and the workstation cluster is not found, a new workstation cluster will be created. In
+                    /// this situation, update_mask is ignored.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
-                    /// <summary>Required. Mask specifying which fields in the cluster should be updated.</summary>
+                    /// <summary>
+                    /// Required. Mask that specifies which fields in the workstation cluster should be updated.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2657,21 +2658,22 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
+    /// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
     /// </summary>
     public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the encryption key that is stored in Google Cloud KMS, for example,
+        /// The name of the Google Cloud KMS encryption key. For example,
         /// `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// The service account being used for the encryption request for the given KMS key. If absent, the Compute
-        /// Engine default service account is used. However, it is recommended to use a separate service account and to
-        /// follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+        /// The service account to use with the specified KMS key. We recommend that you use a separate service account
+        /// and follow KMS best practices. For more information, see [Separation of
+        /// duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding`
+        /// [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyServiceAccount")]
         public virtual string KmsKeyServiceAccount { get; set; }
@@ -2954,7 +2956,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
-        /// <summary>The requested clusters.</summary>
+        /// <summary>The requested workstation clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workstationClusters")]
         public virtual System.Collections.Generic.IList<WorkstationCluster> WorkstationClusters { get; set; }
 
@@ -3493,14 +3495,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Encrypts resources of this workstation configuration using a customer-specified encryption key. If
-        /// specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this
-        /// encryption key. If this field is not set, the disks will be encrypted using a generated key.
-        /// Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is
-        /// rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk
-        /// with the new version of the key. Be sure to keep older versions of the key until the persistent disk is
-        /// recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the
-        /// workstation session will automatically be stopped within 7 hours.
+        /// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified,
+        /// the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption
+        /// key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption
+        /// keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation
+        /// instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be
+        /// sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the
+        /// persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically
+        /// be stopped within 7 hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual CustomerEncryptionKey EncryptionKey { get; set; }
@@ -3546,8 +3548,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that
-        /// workstations using this config should never time out. Must be greater than 0 and less than 24 hours if
-        /// encryption_key is set. Defaults to 12 hours.
+        /// workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours
+        /// if encryption_key is set. Defaults to 12 hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningTimeout")]
         public virtual object RunningTimeout { get; set; }

@@ -1667,6 +1667,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; }
 
+        /// <summary>Optional. The available maintenance versions that an instance could update to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> AvailableMaintenanceVersions { get; set; }
+
         /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to
         /// DIRECT_PEERING.
@@ -1724,6 +1728,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. Date and time of upcoming maintenance events which have been scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
+
+        /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
 
         /// <summary>Required. Redis memory size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]

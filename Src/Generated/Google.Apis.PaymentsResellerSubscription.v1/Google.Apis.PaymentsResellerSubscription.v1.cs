@@ -1670,6 +1670,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Individual line item definition of a subscription.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The price of the product/service in this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount Amount { get; set; }
+
         /// <summary>Output only. Description of this line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

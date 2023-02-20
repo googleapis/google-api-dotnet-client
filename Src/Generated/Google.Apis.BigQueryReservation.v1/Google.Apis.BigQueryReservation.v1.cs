@@ -2050,7 +2050,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentStartTime")]
         public virtual object CommitmentStartTime { get; set; }
 
-        /// <summary>Edition of the capacity commitment.</summary>
+        /// <summary>Do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
@@ -2213,7 +2213,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; }
 
-        /// <summary>Edition of the reservation.</summary>
+        /// <summary>Do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 

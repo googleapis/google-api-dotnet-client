@@ -1201,6 +1201,251 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
 
+            /// <summary>Get a summary of printing done by each printer.</summary>
+            /// <param name="customer">
+            /// Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer
+            /// associated to the account making the request.
+            /// </param>
+            public virtual CountPrintJobsByPrinterRequest CountPrintJobsByPrinter(string customer)
+            {
+                return new CountPrintJobsByPrinterRequest(service, customer);
+            }
+
+            /// <summary>Get a summary of printing done by each printer.</summary>
+            public class CountPrintJobsByPrinterRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountPrintJobsByPrinterResponse>
+            {
+                /// <summary>Constructs a new CountPrintJobsByPrinter request.</summary>
+                public CountPrintJobsByPrinterRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer
+                /// associated to the account making the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not
+                /// supported in this filter. Note: Only &amp;gt;= and &amp;lt;= comparators are supported in this
+                /// filter. Supported filter fields: * completion_time
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Field used to order results. If omitted, results will be ordered in ascending order of the 'printer'
+                /// field. Supported order_by fields: * printer * job_count * device_count * user_count
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Maximum number of results to return. Maximum and default are 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token to specify the page of the response to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The ID of the organizational unit for printers. If specified, only data for printers from the
+                /// specified organizational unit will be returned. If omitted, data for printers from all
+                /// organizational units will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("printerOrgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PrinterOrgUnitId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countPrintJobsByPrinter";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countPrintJobsByPrinter";
+
+                /// <summary>Initializes CountPrintJobsByPrinter parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("printerOrgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "printerOrgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Get a summary of printing done by each user.</summary>
+            /// <param name="customer">
+            /// Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer
+            /// associated to the account making the request.
+            /// </param>
+            public virtual CountPrintJobsByUserRequest CountPrintJobsByUser(string customer)
+            {
+                return new CountPrintJobsByUserRequest(service, customer);
+            }
+
+            /// <summary>Get a summary of printing done by each user.</summary>
+            public class CountPrintJobsByUserRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountPrintJobsByUserResponse>
+            {
+                /// <summary>Constructs a new CountPrintJobsByUser request.</summary>
+                public CountPrintJobsByUserRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer
+                /// associated to the account making the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not
+                /// supported in this filter. Note: Only &amp;gt;= and &amp;lt;= comparators are supported in this
+                /// filter. Supported filter fields: * completion_time
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Field used to order results. If omitted, results will be ordered in ascending order of the
+                /// 'user_email' field. Supported order_by fields: * user_email * job_count * printer_count *
+                /// device_count
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Maximum number of results to return. Maximum and default are 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token to specify the page of the response to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The ID of the organizational unit for printers. If specified, only print jobs initiated with
+                /// printers from the specified organizational unit will be counted. If omitted, all print jobs will be
+                /// counted.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("printerOrgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PrinterOrgUnitId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countPrintJobsByUser";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countPrintJobsByUser";
+
+                /// <summary>Initializes CountPrintJobsByUser parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("printerOrgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "printerOrgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Generate report of devices that have a specified app installed.</summary>
             /// <param name="customer">
             /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
@@ -2512,6 +2757,50 @@ namespace Google.Apis.ChromeManagement.v1.Data
     }
 
     /// <summary>
+    /// Response containing a summary printing report for each printer from the specified organizational unit for the
+    /// requested time interval.
+    /// </summary>
+    public class GoogleChromeManagementV1CountPrintJobsByPrinterResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pagination token for requesting the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of PrinterReports matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printerReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1PrinterReport> PrinterReports { get; set; }
+
+        /// <summary>Total number of printers matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response containing a summary printing report for each user that has initiated a print job with a printer from
+    /// the specified organizational unit during the requested time interval.
+    /// </summary>
+    public class GoogleChromeManagementV1CountPrintJobsByUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pagination token for requesting the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Total number of users matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>List of UserPrintReports matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrintReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1UserPrintReport> UserPrintReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// CPU specifications for the device * This field provides device information, which is static and will not change
     /// over time. * Data for this field is controlled via policy:
     /// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
@@ -3235,6 +3524,41 @@ namespace Google.Apis.ChromeManagement.v1.Data
     }
 
     /// <summary>
+    /// Report for CountPrintJobsByPrinter, contains statistics on printer usage. Contains the total number of print
+    /// jobs initiated with this printer, the number of users and the number of devices that have initiated at least one
+    /// print job with this printer.
+    /// </summary>
+    public class GoogleChromeManagementV1PrinterReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of chrome devices that have been used to send print jobs to the specified printer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCount")]
+        public virtual System.Nullable<long> DeviceCount { get; set; }
+
+        /// <summary>Number of print jobs sent to the printer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCount")]
+        public virtual System.Nullable<long> JobCount { get; set; }
+
+        /// <summary>Printer name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printer")]
+        public virtual string Printer { get; set; }
+
+        /// <summary>Printer API ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printerId")]
+        public virtual string PrinterId { get; set; }
+
+        /// <summary>Printer model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printerModel")]
+        public virtual string PrinterModel { get; set; }
+
+        /// <summary>Number of users that have sent print jobs to the printer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCount")]
+        public virtual System.Nullable<long> UserCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Status data for storage. * This field is telemetry information and this will change over time as the device is
     /// utilized. * Data for this field is controlled via policy:
     /// [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus) * Data
@@ -3673,6 +3997,36 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Vendor ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vid")]
         public virtual System.Nullable<int> Vid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Report for CountPrintJobsByUser, contains printing statistics for a user. Contains the number of printers, the
+    /// number of devices used to initiate print jobs, and the number of print jobs initiated.
+    /// </summary>
+    public class GoogleChromeManagementV1UserPrintReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of chrome devices that have been used to initiate print jobs by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCount")]
+        public virtual System.Nullable<long> DeviceCount { get; set; }
+
+        /// <summary>Number of print jobs initiated by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCount")]
+        public virtual System.Nullable<long> JobCount { get; set; }
+
+        /// <summary>Number of printers used by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printerCount")]
+        public virtual System.Nullable<long> PrinterCount { get; set; }
+
+        /// <summary>The primary e-mail address of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>The unique Directory API ID of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
