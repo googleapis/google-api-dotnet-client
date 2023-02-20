@@ -7175,7 +7175,7 @@
      ]
     },
     "getFromFamily": {
-     "description": "Returns the latest image that is part of an image family and is not deprecated.",
+     "description": "Returns the latest image that is part of an image family and is not deprecated. For more information on image families, see Public image families documentation.",
      "flatPath": "projects/{project}/global/images/family/{family}",
      "httpMethod": "GET",
      "id": "compute.images.getFromFamily",
@@ -7192,7 +7192,7 @@
        "type": "string"
       },
       "project": {
-       "description": "Project ID for this request.",
+       "description": "The image project that the image belongs to. For example, to get a CentOS image, specify centos-cloud as the image project.",
        "location": "path",
        "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
        "required": true,
@@ -9241,6 +9241,66 @@
   },
   "instanceTemplates": {
    "methods": {
+    "aggregatedList": {
+     "description": "Retrieves the list of all InstanceTemplates resources, regional and global, available to the specified project.",
+     "flatPath": "projects/{project}/aggregated/instanceTemplates",
+     "httpMethod": "GET",
+     "id": "compute.instanceTemplates.aggregatedList",
+     "parameterOrder": [
+      "project"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "includeAllScopes": {
+       "description": "Indicates whether every visible scope for each scope type (zone, region, global) should be included in the response. For new resource types added after this field, the flag has no effect as new resource types will always include every visible scope for each scope type in response. For resource types which predate this field, if this flag is omitted or false, only scopes of the scope types where the resource type is expected to be found will be included.",
+       "location": "query",
+       "type": "boolean"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Name of the project scoping this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/aggregated/instanceTemplates",
+     "response": {
+      "$ref": "InstanceTemplateAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "delete": {
      "description": "Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone. It is not possible to delete templates that are already in use by a managed instance group.",
      "flatPath": "projects/{project}/global/instanceTemplates/{instanceTemplate}",
@@ -23237,6 +23297,205 @@
     }
    }
   },
+  "regionInstanceTemplates": {
+   "methods": {
+    "delete": {
+     "description": "Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "httpMethod": "DELETE",
+     "id": "compute.regionInstanceTemplates.delete",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instanceTemplate"
+     ],
+     "parameters": {
+      "instanceTemplate": {
+       "description": "The name of the instance template to delete.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "description": "Returns the specified instance template. Gets a list of available instance templates by making a list() request.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "httpMethod": "GET",
+     "id": "compute.regionInstanceTemplates.get",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instanceTemplate"
+     ],
+     "parameters": {
+      "instanceTemplate": {
+       "description": "The name of the instance template.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "response": {
+      "$ref": "InstanceTemplate"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "description": "Creates an instance template in the specified project and region using the global instance template whose URL is included in the request.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates",
+     "httpMethod": "POST",
+     "id": "compute.regionInstanceTemplates.insert",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates",
+     "request": {
+      "$ref": "InstanceTemplate"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "description": "Retrieves a list of instance templates that are contained within the specified project and region.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates",
+     "httpMethod": "GET",
+     "id": "compute.regionInstanceTemplates.list",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the regions for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates",
+     "response": {
+      "$ref": "InstanceTemplateList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
   "regionInstances": {
    "methods": {
     "bulkInsert": {
@@ -36022,7 +36281,7 @@
    }
   }
  },
- "revision": "20230201",
+ "revision": "20230210",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -40717,6 +40976,47 @@
      "description": "Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.",
      "format": "int32",
      "type": "integer"
+    }
+   },
+   "type": "object"
+  },
+  "CustomErrorResponsePolicy": {
+   "description": "Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.",
+   "id": "CustomErrorResponsePolicy",
+   "properties": {
+    "errorResponseRules": {
+     "description": "Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.",
+     "items": {
+      "$ref": "CustomErrorResponsePolicyCustomErrorResponseRule"
+     },
+     "type": "array"
+    },
+    "errorService": {
+     "description": "The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CustomErrorResponsePolicyCustomErrorResponseRule": {
+   "description": "Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.",
+   "id": "CustomErrorResponsePolicyCustomErrorResponseRule",
+   "properties": {
+    "matchResponseCodes": {
+     "description": "Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "overrideResponseCode": {
+     "description": "The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.",
+     "format": "int32",
+     "type": "integer"
+    },
+    "path": {
+     "description": "The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters",
+     "type": "string"
     }
    },
    "type": "object"
@@ -45523,6 +45823,10 @@
    "description": "The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.",
    "id": "HttpRouteRule",
    "properties": {
+    "customErrorResponsePolicy": {
+     "$ref": "CustomErrorResponsePolicy",
+     "description": "customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing."
+    },
     "description": {
      "description": "The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.",
      "type": "string"
@@ -45848,7 +46152,7 @@
      "type": "string"
     },
     "family": {
-     "description": "The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.",
+     "description": "The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.",
      "type": "string"
     },
     "guestOsFeatures": {
@@ -48975,6 +49279,10 @@
      "$ref": "InstanceProperties",
      "description": "The instance properties for this instance template."
     },
+    "region": {
+     "description": "[Output Only] URL of the region where the instance template resides. Only applicable for regional resources.",
+     "type": "string"
+    },
     "selfLink": {
      "description": "[Output Only] The URL for this instance template. The server defines this URL.",
      "type": "string"
@@ -48986,6 +49294,127 @@
     "sourceInstanceParams": {
      "$ref": "SourceInstanceParams",
      "description": "The source instance params to use to create this instance template."
+    }
+   },
+   "type": "object"
+  },
+  "InstanceTemplateAggregatedList": {
+   "description": "Contains a list of InstanceTemplatesScopedList.",
+   "id": "InstanceTemplateAggregatedList",
+   "properties": {
+    "id": {
+     "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+     "type": "string"
+    },
+    "items": {
+     "additionalProperties": {
+      "$ref": "InstanceTemplatesScopedList",
+      "description": "The name of the scope that contains this set of instance templates."
+     },
+     "description": "A list of InstanceTemplatesScopedList resources.",
+     "type": "object"
+    },
+    "kind": {
+     "default": "compute#instanceTemplateAggregatedList",
+     "description": "Type of resource.",
+     "type": "string"
+    },
+    "nextPageToken": {
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+     "type": "string"
+    },
+    "selfLink": {
+     "description": "[Output Only] Server-defined URL for this resource.",
+     "type": "string"
+    },
+    "warning": {
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+        "LARGE_DEPLOYMENT_WARNING",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "PARTIAL_SUCCESS",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "Warning about failed cleanup of transient changes made by a failed operation.",
+        "A link to a deprecated resource was created.",
+        "When deploying and at least one of the resources has a type marked as deprecated",
+        "The user created a boot disk that is larger than image size.",
+        "When deploying and at least one of the resources has a type marked as experimental",
+        "Warning that is present in an external api call",
+        "Warning that value of a field has been overridden. Deprecated unused field.",
+        "The operation involved use of an injected kernel, which is deprecated.",
+        "A WEIGHTED_MAGLEV backend service is associated with a health check that is not of type HTTP/HTTPS/HTTP2.",
+        "When deploying a deployment with a exceedingly large number of resources",
+        "A resource depends on a missing type",
+        "The route's nextHopIp address is not assigned to an instance on the network.",
+        "The route's next hop instance cannot ip forward.",
+        "The route's nextHopInstance URL refers to an instance that does not have an ipv6 interface on the same network as the route.",
+        "The route's nextHopInstance URL refers to an instance that does not exist.",
+        "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+        "The route's next hop instance does not have a status of RUNNING.",
+        "Error which is not critical. We decided to continue the process despite the mentioned error.",
+        "No results are present on a particular list page.",
+        "Success is reported, but some results may be missing due to errors",
+        "The user attempted to use a resource that requires a TOS they have not accepted.",
+        "Warning that a resource is in use.",
+        "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+        "When a resource schema validation is ignored.",
+        "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+        "When undeclared properties in the schema are present",
+        "A given scope cannot be reached."
+       ],
+       "type": "string"
+      },
+      "data": {
+       "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
+       "items": {
+        "properties": {
+         "key": {
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+          "type": "string"
+         },
+         "value": {
+          "description": "[Output Only] A warning data value corresponding to the key.",
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "message": {
+       "description": "[Output Only] A human-readable description of the warning code.",
+       "type": "string"
+      }
+     },
+     "type": "object"
     }
    },
    "type": "object"
@@ -49020,6 +49449,108 @@
     },
     "warning": {
      "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+        "LARGE_DEPLOYMENT_WARNING",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "PARTIAL_SUCCESS",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "Warning about failed cleanup of transient changes made by a failed operation.",
+        "A link to a deprecated resource was created.",
+        "When deploying and at least one of the resources has a type marked as deprecated",
+        "The user created a boot disk that is larger than image size.",
+        "When deploying and at least one of the resources has a type marked as experimental",
+        "Warning that is present in an external api call",
+        "Warning that value of a field has been overridden. Deprecated unused field.",
+        "The operation involved use of an injected kernel, which is deprecated.",
+        "A WEIGHTED_MAGLEV backend service is associated with a health check that is not of type HTTP/HTTPS/HTTP2.",
+        "When deploying a deployment with a exceedingly large number of resources",
+        "A resource depends on a missing type",
+        "The route's nextHopIp address is not assigned to an instance on the network.",
+        "The route's next hop instance cannot ip forward.",
+        "The route's nextHopInstance URL refers to an instance that does not have an ipv6 interface on the same network as the route.",
+        "The route's nextHopInstance URL refers to an instance that does not exist.",
+        "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+        "The route's next hop instance does not have a status of RUNNING.",
+        "Error which is not critical. We decided to continue the process despite the mentioned error.",
+        "No results are present on a particular list page.",
+        "Success is reported, but some results may be missing due to errors",
+        "The user attempted to use a resource that requires a TOS they have not accepted.",
+        "Warning that a resource is in use.",
+        "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+        "When a resource schema validation is ignored.",
+        "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+        "When undeclared properties in the schema are present",
+        "A given scope cannot be reached."
+       ],
+       "type": "string"
+      },
+      "data": {
+       "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
+       "items": {
+        "properties": {
+         "key": {
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+          "type": "string"
+         },
+         "value": {
+          "description": "[Output Only] A warning data value corresponding to the key.",
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "message": {
+       "description": "[Output Only] A human-readable description of the warning code.",
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "InstanceTemplatesScopedList": {
+   "id": "InstanceTemplatesScopedList",
+   "properties": {
+    "instanceTemplates": {
+     "description": "[Output Only] A list of instance templates that are contained within the specified project and zone.",
+     "items": {
+      "$ref": "InstanceTemplate"
+     },
+     "type": "array"
+    },
+    "warning": {
+     "description": "[Output Only] An informational warning that replaces the list of instance templates when the list is empty.",
      "properties": {
       "code": {
        "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
@@ -57690,6 +58221,10 @@
    "description": "A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.",
    "id": "PathMatcher",
    "properties": {
+    "defaultCustomErrorResponsePolicy": {
+     "$ref": "CustomErrorResponsePolicy",
+     "description": "defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing."
+    },
     "defaultRouteAction": {
      "$ref": "HttpRouteAction",
      "description": "defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction."
@@ -57735,6 +58270,10 @@
    "description": "A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.",
    "id": "PathRule",
    "properties": {
+    "customErrorResponsePolicy": {
+     "$ref": "CustomErrorResponsePolicy",
+     "description": "customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing."
+    },
     "paths": {
      "description": "The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.",
      "items": {
@@ -71253,6 +71792,10 @@
     "creationTimestamp": {
      "description": "[Output Only] Creation timestamp in RFC3339 text format.",
      "type": "string"
+    },
+    "defaultCustomErrorResponsePolicy": {
+     "$ref": "CustomErrorResponsePolicy",
+     "description": "defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the Load Balancer level and applies only when no policy has been defined for the error code at lower levels like PathMatcher, RouteRule and PathRule within this UrlMap. For example, consider a UrlMap with the following configuration: - defaultCustomErrorResponsePolicy containing policies for responding to 5xx and 4xx errors - A PathMatcher configured for *.example.com has defaultCustomErrorResponsePolicy for 4xx. If a request for http://www.example.com/ encounters a 404, the policy in pathMatcher.defaultCustomErrorResponsePolicy will be enforced. When the request for http://www.example.com/ encounters a 502, the policy in UrlMap.defaultCustomErrorResponsePolicy will be enforced. When a request that does not match any host in *.example.com such as http://www.myotherexample.com/, encounters a 404, UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing."
     },
     "defaultRouteAction": {
      "$ref": "HttpRouteAction",

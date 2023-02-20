@@ -4355,6 +4355,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildArtifacts")]
         public virtual System.Collections.Generic.IList<BuildArtifact> BuildArtifacts { get; set; }
 
+        /// <summary>Output only. Information around the state of the Release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual ReleaseCondition Condition { get; set; }
+
         /// <summary>Output only. Time at which the `Release` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4438,6 +4442,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string Uid { get; set; }
     }
 
+    /// <summary>ReleaseCondition contains all conditions relevant to a Release.</summary>
+    public class ReleaseCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details around the Releases's overall status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseReadyCondition")]
+        public virtual ReleaseReadyCondition ReleaseReadyCondition { get; set; }
+
+        /// <summary>Details around the support state of the release's skaffold version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skaffoldSupportedCondition")]
+        public virtual SkaffoldSupportedCondition SkaffoldSupportedCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Payload proto for "clouddeploy.googleapis.com/release_notification" Platform Log event that describes the
     /// failure to send release status change Pub/Sub notification.
@@ -4455,6 +4474,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you
+    /// cannot create a rollout with the release.
+    /// </summary>
+    public class ReleaseReadyCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an
+        /// invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what
+        /// is wrong with the Release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<bool> Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4676,12 +4713,45 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+    /// </summary>
+    public class SkaffoldSupportedCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which this release's version of skaffold will enter maintenance mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
+        public virtual object MaintenanceModeTime { get; set; }
+
+        /// <summary>The skaffold support state for this release's version of skaffold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skaffoldSupportState")]
+        public virtual string SkaffoldSupportState { get; set; }
+
+        /// <summary>True if the version of skaffold used by this release is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<bool> Status { get; set; }
+
+        /// <summary>The time at which this release's version of skaffold will no longer be supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
+        public virtual object SupportExpirationTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of a supported Skaffold version.</summary>
     public class SkaffoldVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The time at which this version of skaffold will enter maintenance mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
+        public virtual object MaintenanceModeTime { get; set; }
+
         /// <summary>Date when this version is expected to no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportEndDate")]
         public virtual Date SupportEndDate { get; set; }
+
+        /// <summary>The time at which this version of skaffold will no longer be supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
+        public virtual object SupportExpirationTime { get; set; }
 
         /// <summary>Release version number. For example, "1.20.3".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]

@@ -6591,10 +6591,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>
-        /// An identifier that uniquely identifies the operation. You can use this identifier to retrieve the Operations
-        /// resource that has information about the operation.
-        /// </summary>
+        /// <summary>Unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

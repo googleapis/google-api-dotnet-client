@@ -1346,6 +1346,87 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateAsyncRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                public class CreateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new CreateAsync request.</summary>
+                    public CreateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "createAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/buckets:createAsync";
+
+                    /// <summary>Initializes CreateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
                 /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
@@ -1561,9 +1642,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -1582,9 +1661,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -1726,6 +1803,99 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The full resource name of the bucket to update.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                /// </param>
+                public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
+                {
+                    return new UpdateAsyncRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                public class UpdateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateAsync request.</summary>
+                    public UpdateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the bucket to update.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
+                    /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:updateAsync";
+
+                    /// <summary>Initializes UpdateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -4532,6 +4702,87 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateAsyncRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                public class CreateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new CreateAsync request.</summary>
+                    public CreateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "createAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/buckets:createAsync";
+
+                    /// <summary>Initializes CreateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
                 /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
@@ -4747,9 +4998,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -4768,9 +5017,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -4912,6 +5159,99 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The full resource name of the bucket to update.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                /// </param>
+                public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
+                {
+                    return new UpdateAsyncRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                public class UpdateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateAsync request.</summary>
+                    public UpdateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the bucket to update.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
+                    /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:updateAsync";
+
+                    /// <summary>Initializes UpdateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -6735,6 +7075,86 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
+            /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+            /// created, the bucket's location cannot be changed.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource in which to create the log bucket:
+            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+            /// </param>
+            public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+            {
+                return new CreateAsyncRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+            /// created, the bucket's location cannot be changed.
+            /// </summary>
+            public class CreateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+            {
+                /// <summary>Constructs a new CreateAsync request.</summary>
+                public CreateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
+                /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BucketId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "createAsync";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/buckets:createAsync";
+
+                /// <summary>Initializes CreateAsync parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucketId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
             /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days,
             /// the bucket will be purged and all log entries in the bucket will be permanently deleted.
             /// </summary>
@@ -6950,11 +7370,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a log bucket. This method replaces the following fields in the existing bucket with values from
-            /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-            /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-            /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be
-            /// changed.
+            /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION
+            /// will be returned.After a bucket has been created, the bucket's location cannot be changed.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -6971,11 +7388,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a log bucket. This method replaces the following fields in the existing bucket with values from
-            /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-            /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-            /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be
-            /// changed.
+            /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION
+            /// will be returned.After a bucket has been created, the bucket's location cannot be changed.
             /// </summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
@@ -7115,6 +7529,99 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+            /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be
+            /// changed.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The full resource name of the bucket to update.
+            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+            /// example:"projects/my-project/locations/global/buckets/my-bucket"
+            /// </param>
+            public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
+            {
+                return new UpdateAsyncRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+            /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be
+            /// changed.
+            /// </summary>
+            public class UpdateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateAsync request.</summary>
+                public UpdateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full resource name of the bucket to update.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be
+                /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
+                /// updated.For a detailed FieldMask definition, see:
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=retention_days
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateAsync";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:updateAsync";
+
+                /// <summary>Initializes UpdateAsync parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -8767,6 +9274,87 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateAsyncRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                public class CreateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new CreateAsync request.</summary>
+                    public CreateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "createAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/buckets:createAsync";
+
+                    /// <summary>Initializes CreateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
                 /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
@@ -8982,9 +9570,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -9003,9 +9589,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -9147,6 +9731,99 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The full resource name of the bucket to update.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                /// </param>
+                public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
+                {
+                    return new UpdateAsyncRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                public class UpdateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateAsync request.</summary>
+                    public UpdateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the bucket to update.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
+                    /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:updateAsync";
+
+                    /// <summary>Initializes UpdateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -11589,6 +12266,87 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
+                {
+                    return new CreateAsyncRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been
+                /// created, the bucket's location cannot be changed.
+                /// </summary>
+                public class CreateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new CreateAsync request.</summary>
+                    public CreateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BucketId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "createAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/buckets:createAsync";
+
+                    /// <summary>Initializes CreateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
                 /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
@@ -11804,9 +12562,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -11825,9 +12581,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
-                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
                 /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
                 /// be changed.
                 /// </summary>
@@ -11969,6 +12723,99 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The full resource name of the bucket to update.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                /// </param>
+                public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
+                {
+                    return new UpdateAsyncRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
+                /// </summary>
+                public class UpdateAsyncRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateAsync request.</summary>
+                    public UpdateAsyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the bucket to update.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
+                    /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateAsync";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:updateAsync";
+
+                    /// <summary>Initializes UpdateAsync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -14298,6 +15145,33 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for LongRunningUpdateBucket Operations.</summary>
+    public class BucketMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>LongRunningCreateBucket RPC request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createBucketRequest")]
+        public virtual CreateBucketRequest CreateBucketRequest { get; set; }
+
+        /// <summary>The end time of an operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The create time of an operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>State of an operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>LongRunningUpdateBucket RPC request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateBucketRequest")]
+        public virtual UpdateBucketRequest UpdateBucketRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can
     /// be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does
@@ -14459,6 +15333,34 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Number of log entries copied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logEntriesCopiedCount")]
         public virtual System.Nullable<long> LogEntriesCopiedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The parameters to CreateBucket.</summary>
+    public class CreateBucketRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The new bucket. The region specified in the new bucket must be compliant with any Location
+        /// Restriction Org Policy. The name field in the bucket is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual LogBucket Bucket { get; set; }
+
+        /// <summary>
+        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and
+        /// can include only letters, digits, underscores, hyphens, and periods.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketId")]
+        public virtual string BucketId { get; set; }
+
+        /// <summary>
+        /// Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+        /// For example:"projects/my-project/locations/global"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14961,6 +15863,12 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Describes a repository in which log entries are stored.</summary>
     public class LogBucket : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsEnabled")]
+        public virtual System.Nullable<bool> AnalyticsEnabled { get; set; }
+
         /// <summary>
         /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted
         /// using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings
@@ -16271,6 +17179,38 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>The parameters to UndeleteBucket.</summary>
     public class UndeleteBucketRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The parameters to UpdateBucket.</summary>
+    public class UpdateBucketRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The updated bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual LogBucket Bucket { get; set; }
+
+        /// <summary>
+        /// Required. The full resource name of the bucket to update.
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+        /// example:"projects/my-project/locations/global/buckets/my-bucket"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be
+        /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a
+        /// detailed FieldMask definition, see:
+        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+        /// example: updateMask=retention_days
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

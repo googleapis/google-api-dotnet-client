@@ -2404,10 +2404,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1DecoratedText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The text that appears below `text`. Always truncates. Supports simple formatting. See Text formatting for
-        /// formatting details.
-        /// </summary>
+        /// <summary>The text that appears below `text`. Always truncates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
         public virtual string BottomLabel { get; set; }
 
@@ -2449,10 +2446,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
-        /// <summary>
-        /// The text that appears above `text`. Always truncates. Supports simple formatting. See Text formatting for
-        /// formatting details.
-        /// </summary>
+        /// <summary>The text that appears above `text`. Always truncates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
 
