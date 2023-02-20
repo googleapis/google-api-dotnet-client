@@ -6310,6 +6310,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string AndroidId { get; set; }
 
         /// <summary>
+        /// The internal hardware codename of the device. This comes from android.os.Build.DEVICE. (field named "device"
+        /// per logs/wireless/android/android_checkin.proto)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string DeviceValue { get; set; }
+
+        /// <summary>The build fingerprint of the device if known.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestBuildFingerprint")]
+        public virtual string LatestBuildFingerprint { get; set; }
+
+        /// <summary>The manufacturer of the device. This comes from android.os.Build.MANUFACTURER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maker")]
+        public virtual string Maker { get; set; }
+
+        /// <summary>
         /// Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment
         /// configurations. Possible values include: - "managedDevice", a device that has the EMM's device policy
         /// controller (DPC) as the device owner. - "managedProfile", a device that has a profile managed by the DPC
@@ -6321,13 +6336,31 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; }
 
+        /// <summary>The model name of the device. This comes from android.os.Build.MODEL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
         /// <summary>The policy enforced on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
+        /// <summary>The product name of the device. This comes from android.os.Build.PRODUCT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; }
+
         /// <summary>The device report updated with the latest app states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("report")]
         public virtual DeviceReport Report { get; set; }
+
+        /// <summary>
+        /// Retail brand for the device, if set. See https://developer.android.com/reference/android/os/Build.html#BRAND
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retailBrand")]
+        public virtual string RetailBrand { get; set; }
+
+        /// <summary>API compatibility version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual System.Nullable<int> SdkVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

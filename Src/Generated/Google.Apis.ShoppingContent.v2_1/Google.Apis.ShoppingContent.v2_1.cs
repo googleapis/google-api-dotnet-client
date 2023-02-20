@@ -40,6 +40,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Buyongoogleprograms = new BuyongoogleprogramsResource(this);
             Collections = new CollectionsResource(this);
             Collectionstatuses = new CollectionstatusesResource(this);
+            Conversionsources = new ConversionsourcesResource(this);
             Csses = new CssesResource(this);
             Datafeeds = new DatafeedsResource(this);
             Datafeedstatuses = new DatafeedstatusesResource(this);
@@ -120,6 +121,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Collectionstatuses resource.</summary>
         public virtual CollectionstatusesResource Collectionstatuses { get; }
+
+        /// <summary>Gets the Conversionsources resource.</summary>
+        public virtual ConversionsourcesResource Conversionsources { get; }
 
         /// <summary>Gets the Csses resource.</summary>
         public virtual CssesResource Csses { get; }
@@ -3433,6 +3437,429 @@ namespace Google.Apis.ShoppingContent.v2_1
                     Name = "pageToken",
                     IsRequired = false,
                     ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "conversionsources" collection of methods.</summary>
+    public class ConversionsourcesResource
+    {
+        private const string Resource = "conversionsources";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ConversionsourcesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a new conversion source.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ConversionSource body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>Creates a new conversion source.</summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ConversionSource>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ConversionSource body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that owns the new conversion source.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ConversionSource Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/conversionsources";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Archives an existing conversion source. It will be recoverable for 30 days. This archiving behavior is not
+        /// typical in the Content API and unique to this service.
+        /// </summary>
+        /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
+        /// <param name="conversionSourceId">Required. The ID of the conversion source to be deleted.</param>
+        public virtual DeleteRequest Delete(long merchantId, string conversionSourceId)
+        {
+            return new DeleteRequest(service, merchantId, conversionSourceId);
+        }
+
+        /// <summary>
+        /// Archives an existing conversion source. It will be recoverable for 30 days. This archiving behavior is not
+        /// typical in the Content API and unique to this service.
+        /// </summary>
+        public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, long merchantId, string conversionSourceId) : base(service)
+            {
+                MerchantId = merchantId;
+                ConversionSourceId = conversionSourceId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that owns the new conversion source.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The ID of the conversion source to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("conversionSourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ConversionSourceId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/conversionsources/{conversionSourceId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conversionSourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conversionSourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Fetches a conversion source.</summary>
+        /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
+        /// <param name="conversionSourceId">Required. The REST ID of the collection.</param>
+        public virtual GetRequest Get(long merchantId, string conversionSourceId)
+        {
+            return new GetRequest(service, merchantId, conversionSourceId);
+        }
+
+        /// <summary>Fetches a conversion source.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ConversionSource>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string conversionSourceId) : base(service)
+            {
+                MerchantId = merchantId;
+                ConversionSourceId = conversionSourceId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that owns the new conversion source.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The REST ID of the collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("conversionSourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ConversionSourceId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/conversionsources/{conversionSourceId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conversionSourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conversionSourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves the list of conversion sources the caller has access to.</summary>
+        /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves the list of conversion sources the caller has access to.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListConversionSourcesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that owns the new conversion source.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is
+            /// used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`.
+            /// Regardless of pagination, at most `200` conversion sources are returned in total.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>If true, also returns archived conversion sources.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/conversionsources";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates information of an existing conversion source.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
+        /// <param name="conversionSourceId">Required. The ID of the conversion source to be updated.</param>
+        public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.ConversionSource body, long merchantId, string conversionSourceId)
+        {
+            return new PatchRequest(service, body, merchantId, conversionSourceId);
+        }
+
+        /// <summary>Updates information of an existing conversion source.</summary>
+        public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ConversionSource>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ConversionSource body, long merchantId, string conversionSourceId) : base(service)
+            {
+                MerchantId = merchantId;
+                ConversionSourceId = conversionSourceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that owns the new conversion source.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The ID of the conversion source to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("conversionSourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ConversionSourceId { get; private set; }
+
+            /// <summary>Required. List of fields being updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ConversionSource Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/conversionsources/{conversionSourceId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conversionSourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conversionSourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Re-enables an archived conversion source.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
+        /// <param name="conversionSourceId">Required. The ID of the conversion source to be undeleted.</param>
+        public virtual UndeleteRequest Undelete(Google.Apis.ShoppingContent.v2_1.Data.UndeleteConversionSourceRequest body, long merchantId, string conversionSourceId)
+        {
+            return new UndeleteRequest(service, body, merchantId, conversionSourceId);
+        }
+
+        /// <summary>Re-enables an archived conversion source.</summary>
+        public class UndeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Undelete request.</summary>
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.UndeleteConversionSourceRequest body, long merchantId, string conversionSourceId) : base(service)
+            {
+                MerchantId = merchantId;
+                ConversionSourceId = conversionSourceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that owns the new conversion source.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The ID of the conversion source to be undeleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("conversionSourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ConversionSourceId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.UndeleteConversionSourceRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "undelete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/conversionsources/{conversionSourceId}:undelete";
+
+            /// <summary>Initializes Undelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conversionSourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conversionSourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -12949,6 +13376,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessInformation")]
         public virtual AccountBusinessInformation BusinessInformation { get; set; }
 
+        /// <summary>Settings for conversion tracking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionSettings")]
+        public virtual AccountConversionSettings ConversionSettings { get; set; }
+
         /// <summary>ID of CSS the account belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cssId")]
         public virtual System.Nullable<ulong> CssId { get; set; }
@@ -13131,6 +13562,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneVerificationStatus")]
         public virtual string PhoneVerificationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for conversion tracking.</summary>
+    public class AccountConversionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When enabled, free listing URLs have a parameter to enable conversion tracking for products owned by the
+        /// current merchant account. See [auto-tagging](https://support.google.com/merchants/answer/11127659).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeListingsAutoTaggingEnabled")]
+        public virtual System.Nullable<bool> FreeListingsAutoTaggingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14225,6 +14670,48 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents attribution settings for conversion sources receiving pre-attribution data.</summary>
+    public class AttributionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Lookback windows (in days) used for attribution in this source. Supported values are 7, 30, 60,
+        /// 90.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionLookbackWindowInDays")]
+        public virtual System.Nullable<int> AttributionLookbackWindowInDays { get; set; }
+
+        /// <summary>Required. Attribution model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionModel")]
+        public virtual string AttributionModel { get; set; }
+
+        /// <summary>
+        /// Immutable. Unordered list. List of different conversion types a conversion event can be classified as. A
+        /// standard "purchase" type will be automatically created if this list is empty at creation time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionType")]
+        public virtual System.Collections.Generic.IList<AttributionSettingsConversionType> ConversionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message representing a types of conversion events</summary>
+    public class AttributionSettingsConversionType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Option indicating if the type should be included in Merchant Center reporting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeInReporting")]
+        public virtual System.Nullable<bool> IncludeInReporting { get; set; }
+
+        /// <summary>Output only. Conversion event name, as it'll be reported by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Fields related to the [Best Sellers reports](https://support.google.com/merchants/answer/9488679).
     /// </summary>
@@ -14679,6 +15166,45 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>How this issue affects the serving of the collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servability")]
         public virtual string Servability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion
+    /// sources.
+    /// </summary>
+    public class ConversionSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Generated by the Content API upon creation of a new `ConversionSource`. Format: [a-z]{4}:.+ The
+        /// four characters before the colon represent the type of conversio source. Content after the colon represents
+        /// the ID of the conversion source within that type. The ID of two different conversion sources might be the
+        /// same across different types. The following type prefixes are supported: - galk: For GoogleAnalyticsLink
+        /// sources. - mcdn: For MerchantCenterDestination sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionSourceId")]
+        public virtual string ConversionSourceId { get; set; }
+
+        /// <summary>
+        /// Output only. The time when an archived conversion source becomes permanently deleted and is no longer
+        /// available to undelete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Immutable. Conversion Source of type "Link to Google Analytics Property".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAnalyticsLink")]
+        public virtual GoogleAnalyticsLink GoogleAnalyticsLink { get; set; }
+
+        /// <summary>Conversion Source of type "Merchant Center Tag Destination".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterDestination")]
+        public virtual MerchantCenterDestination MerchantCenterDestination { get; set; }
+
+        /// <summary>Output only. Current state of this conversion source. Can't be edited through the API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15690,6 +16216,28 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
+    /// "Google Analytics Link" sources can be used to get conversion data from an existing Google Analytics property
+    /// into the linked Merchant Center account.
+    /// </summary>
+    public class GoogleAnalyticsLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Attribution settings for the linked Google Analytics property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
+        public virtual AttributionSettings AttributionSettings { get; set; }
+
+        /// <summary>Required. Immutable. ID of the Google Analytics property the merchant is linked to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
+        public virtual System.Nullable<long> PropertyId { get; set; }
+
+        /// <summary>Output only. Name of the Google Analytics property the merchant is linked to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
+        public virtual string PropertyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `numItems`,
     /// `postalCodeGroupNames`, or `location` must be set.
     /// </summary>
@@ -16342,6 +16890,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the ListConversionSources method.</summary>
+    public class ListConversionSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of conversion sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionSources")]
+        public virtual System.Collections.Generic.IList<ConversionSource> ConversionSources { get; set; }
+
+        /// <summary>Token to be used to fetch the next results page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for the `ListCsses` method</summary>
     public class ListCssesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16635,6 +17198,38 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
         public virtual System.Nullable<double> Ratio { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// "Merchant Center Destination" sources can be used to send conversion events from a website using a Google tag
+    /// directly to a Merchant Center account where the source is created.
+    /// </summary>
+    public class MerchantCenterDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Attribution settings being used for the Merchant Center Destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
+        public virtual AttributionSettings AttributionSettings { get; set; }
+
+        /// <summary>
+        /// Required. Three-letter currency code (ISO 4217). The currency code defines in which currency the conversions
+        /// sent to this destination will be reported in Merchant Center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Output only. Merchant Center Destination ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationId")]
+        public virtual string DestinationId { get; set; }
+
+        /// <summary>
+        /// Required. Merchant-specified display name for the destination. This is the name that identifies the
+        /// conversion source within the Merchant Center UI. Limited to 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20451,7 +21046,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The REST ID of the product. Content API methods that operate on products take this as their `productId`
-        /// parameter. The REST ID for a product is of the form channel:contentLanguage: targetCountry: offerId.
+        /// parameter. The REST ID for a product has one of the 2 forms channel:contentLanguage: targetCountry: offerId
+        /// or channel:contentLanguage:feedLabel: offerId.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -24653,6 +25249,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
         public virtual System.Nullable<long> MinTransitTimeInDays { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the UndeleteConversionSource method.</summary>
+    public class UndeleteConversionSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
