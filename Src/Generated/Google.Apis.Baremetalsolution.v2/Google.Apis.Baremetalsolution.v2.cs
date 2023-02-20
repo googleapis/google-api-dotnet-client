@@ -809,9 +809,8 @@ namespace Google.Apis.Baremetalsolution.v2
                 /// <summary>RenameInstance sets a new name for an instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the
-                /// conventions in https://cloud.google.com/apis/design/resource_names. Format:
-                /// `projects/{project}/locations/{location}/instances/{instance}`
+                /// Required. The `name` field is used to identify the instance. Format:
+                /// projects/{project}/locations/{location}/instances/{instance}
                 /// </param>
                 public virtual RenameRequest Rename(Google.Apis.Baremetalsolution.v2.Data.RenameInstanceRequest body, string name)
                 {
@@ -819,7 +818,7 @@ namespace Google.Apis.Baremetalsolution.v2
                 }
 
                 /// <summary>RenameInstance sets a new name for an instance.</summary>
-                public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Instance>
                 {
                     /// <summary>Constructs a new Rename request.</summary>
                     public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RenameInstanceRequest body, string name) : base(service)
@@ -830,9 +829,8 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
 
                     /// <summary>
-                    /// Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow
-                    /// the conventions in https://cloud.google.com/apis/design/resource_names. Format:
-                    /// `projects/{project}/locations/{location}/instances/{instance}`
+                    /// Required. The `name` field is used to identify the instance. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4433,16 +4431,9 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>Message requesting rename of a server.</summary>
     public class RenameInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The `name` field is used to identify the instance. Format:
-        /// projects/{project}/locations/{location}/instances/{instance}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; }
-
         /// <summary>Required. The new `name` of the instance. Format: {instancename}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("newName")]
+        public virtual string NewName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
