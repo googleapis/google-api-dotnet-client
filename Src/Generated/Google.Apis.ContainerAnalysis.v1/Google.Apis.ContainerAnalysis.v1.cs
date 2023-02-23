@@ -5594,6 +5594,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
 
+        /// <summary>The full description of the v2 CVSS for this vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV2")]
+        public virtual CVSS CvssV2 { get; set; }
+
         /// <summary>The full description of the CVSSv3 for this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
         public virtual CVSSv3 CvssV3 { get; set; }
@@ -5638,6 +5642,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
+
+        /// <summary>The cvss v2 score for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV2")]
+        public virtual CVSS CvssV2 { get; set; }
 
         /// <summary>Output only. CVSS version used to populate cvss_score and severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]

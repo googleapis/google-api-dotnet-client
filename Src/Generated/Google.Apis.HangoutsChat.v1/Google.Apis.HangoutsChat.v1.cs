@@ -2034,7 +2034,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// An action that describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
-    /// handle the form.
+    /// handle the form. If the action is triggered, the form values are sent to the server.
     /// </summary>
     public class GoogleAppsCardV1Action : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2070,15 +2070,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Indicates whether form values persist after the action. The default value is `false`. If `true`, form values
-        /// remain after the action is triggered. When using
-        /// [LoadIndicator.NONE](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-        /// for actions, `persist_values` = `true`is recommended, as it ensures that any changes made by the user after
-        /// form or on change actions are sent to the server are not overwritten by the response. If `false`, the form
-        /// values are cleared when the action is triggered. When `persist_values` is set to `false`, it is strongly
-        /// recommended that the card use
-        /// [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-        /// for all actions, as this locks the UI to ensure no changes are made by the user while the action is being
-        /// processed. Not supported by Chat apps.
+        /// remain after the action is triggered. To let the user make changes while the action is being processed, set
+        /// [LoadIndicator](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+        /// to `NONE`. For [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) in Chat
+        /// apps, you must also set the action's
+        /// [ResponseType](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#responsetype) to
+        /// `UPDATE_MESSAGE` and use the same
+        /// [`card_id`](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#CardWithId) from the
+        /// card that contained the action. If `false`, the form values are cleared when the action is triggered. To
+        /// prevent the user from making changes while the action is being processed, set
+        /// [LoadIndicator](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+        /// to `SPINNER`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
         public virtual System.Nullable<bool> PersistValues { get; set; }
@@ -2414,7 +2416,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// An icon displayed after the text. Supports
-        /// [standard](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
+        /// [built-in](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
         /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
@@ -2432,11 +2434,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
         public virtual GoogleAppsCardV1Icon StartIcon { get; set; }
 
-        /// <summary>
-        /// A switch widget can be clicked to change its state and trigger an action. Currently supported in
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
-        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
-        /// </summary>
+        /// <summary>A switch widget can be clicked to change its state and trigger an action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
         public virtual GoogleAppsCardV1SwitchControl SwitchControl { get; set; }
 
@@ -2474,13 +2472,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of rows
     /// is determined by items divided by columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items
-    /// and 2 columns has 6 rows. Currently supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
-    /// Support for [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
-    /// For example, the following JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine
-    /// collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ {
-    /// "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": {
-    /// "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url":
-    /// "https://www.example.com" } } } ```
+    /// and 2 columns has 6 rows. For example, the following JSON creates a 2 column grid with a single item: ```
+    /// "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
+    /// "cornerRadius": 4 }, "items": [ { "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": {
+    /// "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ],
+    /// "onClick": { "openLink": { "url": "https://www.example.com" } } } ```
     /// </summary>
     public class GoogleAppsCardV1Grid : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2546,7 +2542,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// An icon displayed in a widget on a card. Supports
-    /// [standard](https://developers.google.com/chat/api/guides/message-formats/cards) and
+    /// [built-in](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
     /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
     /// </summary>
     public class GoogleAppsCardV1Icon : Google.Apis.Requests.IDirectResponseSchema
@@ -2572,15 +2568,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The crop style applied to the image. In some cases, applying a `CIRCLE` crop causes the image to be drawn
-        /// larger than a standard icon.
+        /// larger than a built-in icon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
         /// <summary>
-        /// Display one of the standard icons provided by Google Workspace. For example, to display an airplane icon,
-        /// specify `AIRPLANE`. For a bus, specify `BUS`. For a full list of supported icons, see [standard
-        /// icons](https://developers.google.com/chat/api/guides/message-formats/cards).
+        /// Display one of the built-in icons provided by Google Workspace. For example, to display an airplane icon,
+        /// specify `AIRPLANE`. For a bus, specify `BUS`. For a full list of supported icons, see [built-in
+        /// icons](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
         public virtual string KnownIcon { get; set; }
@@ -2752,9 +2748,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// with form inputs, see [Receive form
     /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you need to
     /// collect data from users that matches options you set, use a selection input. To collect abstract data from
-    /// users, use the text input widget instead. Only supported in
-    /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
-    /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) coming soon.
+    /// users, use the text input widget instead.
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2860,8 +2854,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget. Only supported on the
-    /// `decoratedText` widget. Currently supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
-    /// Support for [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
+    /// `decoratedText` widget.
     /// </summary>
     public class GoogleAppsCardV1SwitchControl : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2902,8 +2895,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// process the value of entered text during form input events. For details about working with form inputs, see
     /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you
     /// need to collect abstract data from users, use a text input. To collect defined data from users, use the
-    /// selection input widget instead. Only supported in [dialogs](https://developers.google.com/chat/how-tos/dialogs).
-    /// Support for [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) coming soon.
+    /// selection input widget instead.
     /// </summary>
     public class GoogleAppsCardV1TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3037,11 +3029,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of
         /// rows is determined by the upper bounds of the number items divided by the number of columns. A grid with 10
-        /// items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. Currently supported in
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
-        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon. For example,
-        /// the following JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine collection of
-        /// items", "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": {
+        /// items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. For example, the following
+        /// JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine collection of items",
+        /// "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": {
         /// "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type":
         /// "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url":
         /// "https://www.example.com" } } } ```
@@ -3059,26 +3049,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Displays a selection control that lets users select items. Selection controls can be check boxes, radio
-        /// buttons, switches, or dropdown menus. Currently supported in
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
-        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon. For example,
-        /// the following JSON creates a dropdown menu that lets users choose a size: ``` "selectionInput": { "name":
-        /// "size", "label": "Size" "type": "DROPDOWN", "items": [ { "text": "S", "value": "small", "selected": false },
-        /// { "text": "M", "value": "medium", "selected": true }, { "text": "L", "value": "large", "selected": false },
-        /// { "text": "XL", "value": "extra_large", "selected": false } ] } ```
+        /// buttons, switches, or dropdown menus. For example, the following JSON creates a dropdown menu that lets
+        /// users choose a size: ``` "selectionInput": { "name": "size", "label": "Size" "type": "DROPDOWN", "items": [
+        /// { "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true },
+        /// { "text": "L", "value": "large", "selected": false }, { "text": "XL", "value": "extra_large", "selected":
+        /// false } ] } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
         public virtual GoogleAppsCardV1SelectionInput SelectionInput { get; set; }
 
         /// <summary>
-        /// Displays a text box that users can type into. Currently supported in
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Support for [card
-        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards) is coming soon. For example,
-        /// the following JSON creates a text input for an email address: ``` "textInput": { "name": "mailing_address",
-        /// "label": "Mailing Address" } ``` As another example, the following JSON creates a text input for a
-        /// programming language with static suggestions: ``` "textInput": { "name": "preferred_programing_language",
-        /// "label": "Preferred Language", "initialSuggestions": { "items": [ { "text": "C++" }, { "text": "Java" }, {
-        /// "text": "JavaScript" }, { "text": "Python" } ] } } ```
+        /// Displays a text box that users can type into. For example, the following JSON creates a text input for an
+        /// email address: ``` "textInput": { "name": "mailing_address", "label": "Mailing Address" } ``` As another
+        /// example, the following JSON creates a text input for a programming language with static suggestions: ```
+        /// "textInput": { "name": "preferred_programing_language", "label": "Preferred Language", "initialSuggestions":
+        /// { "items": [ { "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
         public virtual GoogleAppsCardV1TextInput TextInput { get; set; }

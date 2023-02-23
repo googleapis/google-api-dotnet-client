@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ServerlessVPCAccess.v1.ServerlessVPCAccessBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ServerlessVPCAccess.v1.ServerlessVPCAccessBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

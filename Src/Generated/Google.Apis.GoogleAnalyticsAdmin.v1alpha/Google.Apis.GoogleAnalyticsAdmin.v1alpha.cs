@@ -1932,6 +1932,83 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
+        /// Returns a customized report of data access records. The report provides records of each time a user reads
+        /// Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be
+        /// requested for a property. The property must be in Google Analytics 360. This method is only available to
+        /// Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and
+        /// other products like Firebase &amp;amp; Admob that can retrieve data from Google Analytics through a linkage.
+        /// These records don't include property configuration changes like adding a stream or changing a property's
+        /// time zone. For configuration change history, see
+        /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="entity">
+        /// The Data Access Report is requested for this property. For example if "123" is your GA4 property ID, then
+        /// entity should be "properties/123".
+        /// </param>
+        public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest body, string entity)
+        {
+            return new RunAccessReportRequest(service, body, entity);
+        }
+
+        /// <summary>
+        /// Returns a customized report of data access records. The report provides records of each time a user reads
+        /// Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be
+        /// requested for a property. The property must be in Google Analytics 360. This method is only available to
+        /// Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and
+        /// other products like Firebase &amp;amp; Admob that can retrieve data from Google Analytics through a linkage.
+        /// These records don't include property configuration changes like adding a stream or changing a property's
+        /// time zone. For configuration change history, see
+        /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        /// </summary>
+        public class RunAccessReportRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportResponse>
+        {
+            /// <summary>Constructs a new RunAccessReport request.</summary>
+            public RunAccessReportRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest body, string entity) : base(service)
+            {
+                Entity = entity;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The Data Access Report is requested for this property. For example if "123" is your GA4 property ID,
+            /// then entity should be "properties/123".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Entity { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "runAccessReport";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+entity}:runAccessReport";
+
+            /// <summary>Initializes RunAccessReport parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Searches through all changes to an account or its children given the specified set of filters.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2010,6 +2087,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             DataStreams = new DataStreamsResource(service);
             DisplayVideo360AdvertiserLinkProposals = new DisplayVideo360AdvertiserLinkProposalsResource(service);
             DisplayVideo360AdvertiserLinks = new DisplayVideo360AdvertiserLinksResource(service);
+            ExpandedDataSets = new ExpandedDataSetsResource(service);
             FirebaseLinks = new FirebaseLinksResource(service);
             GoogleAdsLinks = new GoogleAdsLinksResource(service);
             SearchAds360Links = new SearchAds360LinksResource(service);
@@ -5413,6 +5491,322 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinks/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the ExpandedDataSets resource.</summary>
+        public virtual ExpandedDataSetsResource ExpandedDataSets { get; }
+
+        /// <summary>The "expandedDataSets" collection of methods.</summary>
+        public class ExpandedDataSetsResource
+        {
+            private const string Resource = "expandedDataSets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ExpandedDataSetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a ExpandedDataSet.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a ExpandedDataSet.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/expandedDataSets";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a ExpandedDataSet on a property.</summary>
+            /// <param name="name">Required. Example format: properties/1234/expandedDataSets/5678</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a ExpandedDataSet on a property.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234/expandedDataSets/5678</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/expandedDataSets/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup for a single ExpandedDataSet.</summary>
+            /// <param name="name">
+            /// Required. The name of the Audience to get. Example format: properties/1234/expandedDataSets/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Lookup for a single ExpandedDataSet.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Audience to get. Example format: properties/1234/expandedDataSets/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/expandedDataSets/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists ExpandedDataSets on a property.</summary>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists ExpandedDataSets on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListExpandedDataSets` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListExpandedDataSet` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/expandedDataSets";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a ExpandedDataSet on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. The resource name for this ExpandedDataSet resource. Format:
+            /// properties/{property_id}/expandedDataSets/{expanded_data_set}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a ExpandedDataSet on a property.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. The resource name for this ExpandedDataSet resource. Format:
+                /// properties/{property_id}/expandedDataSets/{expanded_data_set}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/expandedDataSets/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -10115,6 +10509,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>List of DisplayVideo360AdvertiserLinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> DisplayVideo360AdvertiserLinks { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListExpandedDataSets RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of ExpandedDataSet. These will be ordered stably, but in an arbitrary order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedDataSets")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaExpandedDataSet> ExpandedDataSets { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no

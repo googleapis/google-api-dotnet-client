@@ -4238,7 +4238,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Describing the nested structure, or composition of an entity.</summary>
+        /// <summary>Description the nested structure, or composition of an entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty> Properties { get; set; }
 

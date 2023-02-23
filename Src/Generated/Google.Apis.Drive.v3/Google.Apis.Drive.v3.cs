@@ -636,7 +636,9 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Subscribes to changes for a user.</summary>
+        /// <summary>
+        /// Subscribes to changes for a user. To use this method, you must include the pageToken query parameter.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="pageToken">
         /// The token for continuing a previous list request on the next page. This should be set to the value of
@@ -647,7 +649,9 @@ namespace Google.Apis.Drive.v3
             return new WatchRequest(service, body, pageToken);
         }
 
-        /// <summary>Subscribes to changes for a user.</summary>
+        /// <summary>
+        /// Subscribes to changes for a user. To use this method, you must include the pageToken query parameter.
+        /// </summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
@@ -3746,7 +3750,10 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a permission for a file or shared drive.</summary>
+        /// <summary>
+        /// Creates a permission for a file or shared drive. For more information on creating permissions, see Share
+        /// files, folders &amp;amp; drives.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file or shared drive.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.Permission body, string fileId)
@@ -3754,7 +3761,10 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(service, body, fileId);
         }
 
-        /// <summary>Creates a permission for a file or shared drive.</summary>
+        /// <summary>
+        /// Creates a permission for a file or shared drive. For more information on creating permissions, see Share
+        /// files, folders &amp;amp; drives.
+        /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -7316,7 +7326,7 @@ namespace Google.Apis.Drive.v3.Data
     }
 
     /// <summary>
-    /// A permission for a file. A permission grants a user, group, domain or the world access to a file or a folder
+    /// A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder
     /// hierarchy.
     /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
@@ -7337,14 +7347,17 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The "pretty" name of the value of the permission. The following is a list of examples for each type of
-        /// permission:   - user - User's full name, as defined for their Google account, such as "Joe Smith."  - group
+        /// permission:   - user - User's full name, as defined for their Google Account, such as "Joe Smith."  - group
         /// - Name of the Google Group, such as "The Company Administrators."  - domain - String domain name, such as
-        /// "thecompany.com."  - anyone - No displayName is present.
+        /// "your-company.com."  - anyone - No displayName is present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The domain to which this permission refers.</summary>
+        /// <summary>
+        /// The domain to which this permission refers. The following options are currently allowed:   - The entire
+        /// domain, such as "your-company.com."  - A target audience, such as "ID.audience.googledomains.com."
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -7354,8 +7367,8 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The time at which this permission will expire (RFC 3339 date-time). Expiration times have the following
-        /// restrictions:   - They cannot be set on shared drive items  - They can only be set on user and group
-        /// permissions  - The time must be in the future  - The time cannot be more than a year in the future
+        /// restrictions:   - They cannot be set on shared drive items.  - They can only be set on user and group
+        /// permissions.  - The time must be in the future.  - The time cannot be more than one year in the future.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw { get; set; }
@@ -7381,14 +7394,14 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Whether the account associated with this permission is a pending owner. Only populated for user type
-        /// permissions for files that are not in a shared drive.
+        /// permissions for files that aren't in a shared drive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingOwner")]
         public virtual System.Nullable<bool> PendingOwner { get; set; }
 
         /// <summary>
-        /// Details of whether the permissions on this shared drive item are inherited or directly on this item. This is
-        /// an output-only field which is present only for shared drive items.
+        /// Details of whether the permissions on this shared drive item are inherited or are directly on this item.
+        /// This is an output-only field that's present only for shared drive items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDetails")]
         public virtual System.Collections.Generic.IList<PermissionDetailsData> PermissionDetails { get; set; }
@@ -7411,7 +7424,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The type of the grantee. Valid values are:   - user  - group  - domain  - anyone  When creating a
         /// permission, if type is user or group, you must provide an emailAddress for the user or group. When type is
-        /// domain, you must provide a domain. There isn't extra information required for a anyone type.
+        /// domain, you must provide a domain. There isn't extra information required for the anyone type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -7427,8 +7440,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Details of whether the permissions on this shared drive item are inherited or directly on this item. This is
-        /// an output-only field which is present only for shared drive items.
+        /// Details of whether the permissions on this shared drive item are inherited or are directly on this item.
+        /// This is an output-only field that's present only for shared drive items.
         /// </summary>
         public class PermissionDetailsData
         {
@@ -7446,14 +7459,14 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// The permission type for this user. While new values may be added in future, the following are currently
-            /// possible:   - file  - member
+            /// allowed:   - file  - member
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
             public virtual string PermissionType { get; set; }
 
             /// <summary>
             /// The primary role for this user. While new values may be added in the future, the following are currently
-            /// possible:   - organizer  - fileOrganizer  - writer  - commenter  - reader
+            /// allowed:   - organizer  - fileOrganizer  - writer  - commenter  - reader
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }

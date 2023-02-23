@@ -4564,10 +4564,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Ports { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Scope determines how configuration across multiple Gateway instances are merged. The
-        /// configuration for multiple Gateway instances with the same scope will be merged as presented as a single
-        /// coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can
-        /// only have letters, numbers, hyphens.
+        /// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration
+        /// for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to
+        /// the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have
+        /// letters, numbers, hyphens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }

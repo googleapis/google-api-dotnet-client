@@ -1307,6 +1307,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual GoogleCloudRecaptchaenterpriseV1Event Event__ { get; set; }
 
+        /// <summary>Assessment returned by Fraud Prevention when TransactionData is provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fraudPreventionAssessment")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment FraudPreventionAssessment { get; set; }
+
         /// <summary>
         /// Output only. The resource name for the Assessment in the format
         /// "projects/{project}/assessments/{assessment}".
@@ -1422,6 +1426,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Token { get; set; }
 
         /// <summary>
+        /// Optional. Data describing a payment transaction to be assessed. Sending this data enables reCAPTCHA
+        /// Enterprise Fraud Prevention and the FraudPreventionAssessment component in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionData")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TransactionData TransactionData { get; set; }
+
+        /// <summary>
         /// Optional. The user agent present in the request from the user's device related to this event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
@@ -1430,6 +1441,56 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Optional. The IP address in the request from the user's device related to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIpAddress")]
         public virtual string UserIpAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Assessment for Fraud Prevention.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Assessment of this transaction for risk of being part of a card testing attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardTestingVerdict")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict CardTestingVerdict { get; set; }
+
+        /// <summary>Assessment of this transaction for risk of a stolen instrument.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stolenInstrumentVerdict")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict StolenInstrumentVerdict { get; set; }
+
+        /// <summary>
+        /// Probability (0-1) of this transaction being fraudulent. Summarizes the combined risk of attack vectors
+        /// below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionRisk")]
+        public virtual System.Nullable<float> TransactionRisk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about card testing fraud, where an adversary is testing fraudulently obtained cards or brute forcing
+    /// their details.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Probability (0-1) of this transaction attempt being part of a card testing attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual System.Nullable<float> Risk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about stolen instrument fraud, where the user is not the legitimate owner of the instrument being
+    /// used for the purchase.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Probability (0-1) of this transaction being executed with a stolen instrument.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual System.Nullable<float> Risk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1838,6 +1899,196 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valid")]
         public virtual System.Nullable<bool> Valid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Transaction data associated with a payment protected by reCAPTCHA Enterprise. All fields are optional.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1TransactionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Address associated with the payment method when applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAddress")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataAddress BillingAddress { get; set; }
+
+        /// <summary>The Bank Identification Number - generally the first 6 or 8 digits of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardBin")]
+        public virtual string CardBin { get; set; }
+
+        /// <summary>The last four digits of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardLastFour")]
+        public virtual string CardLastFour { get; set; }
+
+        /// <summary>The currency code in ISO-4217 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Information about the payment gateway's response to the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayInfo")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo GatewayInfo { get; set; }
+
+        /// <summary>Items purchased in this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1TransactionDataItem> Items { get; set; }
+
+        /// <summary>Information about the user or users fulfilling the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchants")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1TransactionDataUser> Merchants { get; set; }
+
+        /// <summary>
+        /// The payment method for the transaction. The allowed values are: * credit-card * debit-card * gift-card *
+        /// processor-{name} (If a third-party is used, for example, processor-paypal) * custom-{name} (If an
+        /// alternative method is used, for example, custom-crypto)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentMethod")]
+        public virtual string PaymentMethod { get; set; }
+
+        /// <summary>Destination address if this transaction involves shipping a physical item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingAddress")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataAddress ShippingAddress { get; set; }
+
+        /// <summary>The value of shipping in the specified currency. 0 for free or no shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingValue")]
+        public virtual System.Nullable<double> ShippingValue { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the transaction. This custom identifier can be used to reference this transaction in
+        /// the future, for example, labeling a refund or chargeback event. Two attempts at the same transaction should
+        /// use the same transaction id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
+        public virtual string TransactionId { get; set; }
+
+        /// <summary>Information about the user paying/initiating the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataUser User { get; set; }
+
+        /// <summary>The decimal value of the transaction in the specified currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Structured address format for billing and shipping addresses.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The first lines of the address. The first line generally contains the street name and number, and further
+        /// lines may include information such as an apartment number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual System.Collections.Generic.IList<string> Address { get; set; }
+
+        /// <summary>The state, province, or otherwise administrative area of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
+        /// <summary>The town/city of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; }
+
+        /// <summary>The postal or ZIP code of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>The recipient name, potentially including information such as "care of".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
+        public virtual string Recipient { get; set; }
+
+        /// <summary>The CLDR country/region of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the transaction from the gateway.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// AVS response code from the gateway (available only when reCAPTCHA Enterprise is called after authorization).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avsResponseCode")]
+        public virtual string AvsResponseCode { get; set; }
+
+        /// <summary>
+        /// CVV response code from the gateway (available only when reCAPTCHA Enterprise is called after authorization).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvvResponseCode")]
+        public virtual string CvvResponseCode { get; set; }
+
+        /// <summary>Gateway response code describing the state of the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayResponseCode")]
+        public virtual string GatewayResponseCode { get; set; }
+
+        /// <summary>Name of the gateway service (for example, stripe, square, paypal).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Line items being purchased in this transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1TransactionDataItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When a merchant is specified, its corresponding account_id. Necessary to populate marketplace-style
+        /// transactions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantAccountId")]
+        public virtual string MerchantAccountId { get; set; }
+
+        /// <summary>The full name of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The quantity of this item that is being purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; }
+
+        /// <summary>The value per item that the user is paying, in the transaction currency, after discounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a user's account involved in the transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1TransactionDataUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Unique account identifier for this user. If using account defender, this should match the hashed_account_id
+        /// field. Otherwise, a unique and persistent identifier for this account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>The epoch milliseconds of the user's account creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationMs")]
+        public virtual System.Nullable<long> CreationMs { get; set; }
+
+        /// <summary>The email address of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Whether the email has been verified to be accessible by the user (OTP or similar).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailVerified")]
+        public virtual System.Nullable<bool> EmailVerified { get; set; }
+
+        /// <summary>The phone number of the user, with country code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>Whether the phone number has been verified to be accessible by the user (OTP or similar).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneVerified")]
+        public virtual System.Nullable<bool> PhoneVerified { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

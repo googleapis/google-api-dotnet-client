@@ -302,7 +302,96 @@ namespace Google.Apis.PolicySimulator.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                OrgPolicyViolationsPreviews = new OrgPolicyViolationsPreviewsResource(service);
                 Replays = new ReplaysResource(service);
+            }
+
+            /// <summary>Gets the OrgPolicyViolationsPreviews resource.</summary>
+            public virtual OrgPolicyViolationsPreviewsResource OrgPolicyViolationsPreviews { get; }
+
+            /// <summary>The "orgPolicyViolationsPreviews" collection of methods.</summary>
+            public class OrgPolicyViolationsPreviewsResource
+            {
+                private const string Resource = "orgPolicyViolationsPreviews";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OrgPolicyViolationsPreviewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/orgPolicyViolationsPreviews/[^/]+/operations/.*$",
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the Replays resource.</summary>
@@ -321,7 +410,6 @@ namespace Google.Apis.PolicySimulator.v1beta1
                 {
                     this.service = service;
                     Operations = new OperationsResource(service);
-                    Results = new ResultsResource(service);
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -487,224 +575,6 @@ namespace Google.Apis.PolicySimulator.v1beta1
                                 Pattern = null,
                             });
                         }
-                    }
-                }
-
-                /// <summary>Gets the Results resource.</summary>
-                public virtual ResultsResource Results { get; }
-
-                /// <summary>The "results" collection of methods.</summary>
-                public class ResultsResource
-                {
-                    private const string Resource = "results";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ResultsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Lists the results of running a Replay.</summary>
-                    /// <param name="parent">
-                    /// Required. The Replay whose results are listed, in the following format:
-                    /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}` Example:
-                    /// `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>Lists the results of running a Replay.</summary>
-                    public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The Replay whose results are listed, in the following format:
-                        /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`
-                        /// Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// The maximum number of ReplayResult objects to return. Defaults to 5000. The maximum value is
-                        /// 5000; values above 5000 are rounded down to 5000.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// A page token, received from a previous Simulator.ListReplayResults call. Provide this token
-                        /// to retrieve the next page of results. When paginating, all other parameters provided to
-                        /// [Simulator.ListReplayResults[] must match the call that provided the page token.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/results";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+/replays/[^/]+$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Creates and starts a Replay using the given ReplayConfig.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent resource where this Replay will be created. This resource must be a project,
-                /// folder, or organization with a location. Example: `projects/my-example-project/locations/global`
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates and starts a Replay using the given ReplayConfig.</summary>
-                public class CreateRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent resource where this Replay will be created. This resource must be a
-                    /// project, folder, or organization with a location. Example:
-                    /// `projects/my-example-project/locations/global`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/replays";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Gets the specified Replay. Each `Replay` is available for at least 7 days.</summary>
-                /// <param name="name">
-                /// Required. The name of the Replay to retrieve, in the following format:
-                /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where
-                /// `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`. Example:
-                /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets the specified Replay. Each `Replay` is available for at least 7 days.</summary>
-                public class GetRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the Replay to retrieve, in the following format:
-                    /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where
-                    /// `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`.
-                    /// Example:
-                    /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/locations/[^/]+/replays/[^/]+$",
-                        });
                     }
                 }
             }
@@ -902,7 +772,96 @@ namespace Google.Apis.PolicySimulator.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                OrgPolicyViolationsPreviews = new OrgPolicyViolationsPreviewsResource(service);
                 Replays = new ReplaysResource(service);
+            }
+
+            /// <summary>Gets the OrgPolicyViolationsPreviews resource.</summary>
+            public virtual OrgPolicyViolationsPreviewsResource OrgPolicyViolationsPreviews { get; }
+
+            /// <summary>The "orgPolicyViolationsPreviews" collection of methods.</summary>
+            public class OrgPolicyViolationsPreviewsResource
+            {
+                private const string Resource = "orgPolicyViolationsPreviews";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OrgPolicyViolationsPreviewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/orgPolicyViolationsPreviews/[^/]+/operations/.*$",
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the Replays resource.</summary>
@@ -921,7 +880,6 @@ namespace Google.Apis.PolicySimulator.v1beta1
                 {
                     this.service = service;
                     Operations = new OperationsResource(service);
-                    Results = new ResultsResource(service);
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -1089,224 +1047,6 @@ namespace Google.Apis.PolicySimulator.v1beta1
                         }
                     }
                 }
-
-                /// <summary>Gets the Results resource.</summary>
-                public virtual ResultsResource Results { get; }
-
-                /// <summary>The "results" collection of methods.</summary>
-                public class ResultsResource
-                {
-                    private const string Resource = "results";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ResultsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Lists the results of running a Replay.</summary>
-                    /// <param name="parent">
-                    /// Required. The Replay whose results are listed, in the following format:
-                    /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}` Example:
-                    /// `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>Lists the results of running a Replay.</summary>
-                    public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The Replay whose results are listed, in the following format:
-                        /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`
-                        /// Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// The maximum number of ReplayResult objects to return. Defaults to 5000. The maximum value is
-                        /// 5000; values above 5000 are rounded down to 5000.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// A page token, received from a previous Simulator.ListReplayResults call. Provide this token
-                        /// to retrieve the next page of results. When paginating, all other parameters provided to
-                        /// [Simulator.ListReplayResults[] must match the call that provided the page token.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/results";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+/replays/[^/]+$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Creates and starts a Replay using the given ReplayConfig.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent resource where this Replay will be created. This resource must be a project,
-                /// folder, or organization with a location. Example: `projects/my-example-project/locations/global`
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates and starts a Replay using the given ReplayConfig.</summary>
-                public class CreateRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent resource where this Replay will be created. This resource must be a
-                    /// project, folder, or organization with a location. Example:
-                    /// `projects/my-example-project/locations/global`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/replays";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Gets the specified Replay. Each `Replay` is available for at least 7 days.</summary>
-                /// <param name="name">
-                /// Required. The name of the Replay to retrieve, in the following format:
-                /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where
-                /// `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`. Example:
-                /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets the specified Replay. Each `Replay` is available for at least 7 days.</summary>
-                public class GetRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the Replay to retrieve, in the following format:
-                    /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where
-                    /// `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`.
-                    /// Example:
-                    /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/replays/[^/]+$",
-                        });
-                    }
-                }
             }
         }
     }
@@ -1341,7 +1081,96 @@ namespace Google.Apis.PolicySimulator.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                OrgPolicyViolationsPreviews = new OrgPolicyViolationsPreviewsResource(service);
                 Replays = new ReplaysResource(service);
+            }
+
+            /// <summary>Gets the OrgPolicyViolationsPreviews resource.</summary>
+            public virtual OrgPolicyViolationsPreviewsResource OrgPolicyViolationsPreviews { get; }
+
+            /// <summary>The "orgPolicyViolationsPreviews" collection of methods.</summary>
+            public class OrgPolicyViolationsPreviewsResource
+            {
+                private const string Resource = "orgPolicyViolationsPreviews";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OrgPolicyViolationsPreviewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/orgPolicyViolationsPreviews/[^/]+/operations/.*$",
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the Replays resource.</summary>
@@ -1360,7 +1189,6 @@ namespace Google.Apis.PolicySimulator.v1beta1
                 {
                     this.service = service;
                     Operations = new OperationsResource(service);
-                    Results = new ResultsResource(service);
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -1528,224 +1356,6 @@ namespace Google.Apis.PolicySimulator.v1beta1
                         }
                     }
                 }
-
-                /// <summary>Gets the Results resource.</summary>
-                public virtual ResultsResource Results { get; }
-
-                /// <summary>The "results" collection of methods.</summary>
-                public class ResultsResource
-                {
-                    private const string Resource = "results";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ResultsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Lists the results of running a Replay.</summary>
-                    /// <param name="parent">
-                    /// Required. The Replay whose results are listed, in the following format:
-                    /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}` Example:
-                    /// `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>Lists the results of running a Replay.</summary>
-                    public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The Replay whose results are listed, in the following format:
-                        /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`
-                        /// Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// The maximum number of ReplayResult objects to return. Defaults to 5000. The maximum value is
-                        /// 5000; values above 5000 are rounded down to 5000.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// A page token, received from a previous Simulator.ListReplayResults call. Provide this token
-                        /// to retrieve the next page of results. When paginating, all other parameters provided to
-                        /// [Simulator.ListReplayResults[] must match the call that provided the page token.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/results";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/replays/[^/]+$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Creates and starts a Replay using the given ReplayConfig.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent resource where this Replay will be created. This resource must be a project,
-                /// folder, or organization with a location. Example: `projects/my-example-project/locations/global`
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates and starts a Replay using the given ReplayConfig.</summary>
-                public class CreateRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent resource where this Replay will be created. This resource must be a
-                    /// project, folder, or organization with a location. Example:
-                    /// `projects/my-example-project/locations/global`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/replays";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Gets the specified Replay. Each `Replay` is available for at least 7 days.</summary>
-                /// <param name="name">
-                /// Required. The name of the Replay to retrieve, in the following format:
-                /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where
-                /// `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`. Example:
-                /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets the specified Replay. Each `Replay` is available for at least 7 days.</summary>
-                public class GetRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1beta1.Data.GoogleCloudPolicysimulatorV1beta1Replay>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the Replay to retrieve, in the following format:
-                    /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where
-                    /// `{resource-id}` is the ID of the project, folder, or organization that owns the `Replay`.
-                    /// Example:
-                    /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/replays/[^/]+$",
-                        });
-                    }
-                }
             }
         }
     }
@@ -1849,240 +1459,6 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A summary and comparison of the member's access under the current (baseline) policies and the proposed
-    /// (simulated) policies for a single access tuple.
-    /// </summary>
-    public class GoogleCloudPolicysimulatorV1beta1AccessStateDiff : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// How the member's access, specified in the AccessState field, changed between the current (baseline) policies
-        /// and proposed (simulated) policies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessChange")]
-        public virtual string AccessChange { get; set; }
-
-        /// <summary>
-        /// The results of evaluating the access tuple under the current (baseline) policies. If the AccessState
-        /// couldn't be fully evaluated, this field explains why.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseline")]
-        public virtual GoogleCloudPolicysimulatorV1beta1ExplainedAccess Baseline { get; set; }
-
-        /// <summary>
-        /// The results of evaluating the access tuple under the proposed (simulated) policies. If the AccessState
-        /// couldn't be fully evaluated, this field explains why.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("simulated")]
-        public virtual GoogleCloudPolicysimulatorV1beta1ExplainedAccess Simulated { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about the principal, resource, and permission to check.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1AccessTuple : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The full resource name that identifies the resource. For example,
-        /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. For examples of
-        /// full resource names for Google Cloud services, see
-        /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; }
-
-        /// <summary>
-        /// Required. The IAM permission to check for the specified principal and resource. For a complete list of IAM
-        /// permissions, see https://cloud.google.com/iam/help/permissions/reference. For a complete list of predefined
-        /// IAM roles and the permissions in each role, see https://cloud.google.com/iam/help/roles/reference.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual string Permission { get; set; }
-
-        /// <summary>
-        /// Required. The principal whose access you want to check, in the form of the email address that represents
-        /// that principal. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`.
-        /// The principal must be a Google Account or a service account. Other types of principals are not supported.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
-        public virtual string Principal { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about how a binding in a policy affects a principal's ability to use a permission.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1BindingExplanation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Indicates whether _this binding_ provides the specified permission to the specified principal for
-        /// the specified resource. This field does _not_ indicate whether the principal actually has the permission for
-        /// the resource. There might be another binding that overrides this binding. To determine whether the principal
-        /// actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; }
-
-        /// <summary>
-        /// A condition expression that prevents this binding from granting access unless the expression evaluates to
-        /// `true`. To learn about IAM Conditions, see https://cloud.google.com/iam/docs/conditions-overview.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GoogleTypeExpr Condition { get; set; }
-
-        /// <summary>
-        /// Indicates whether each principal in the binding includes the principal specified in the request, either
-        /// directly or indirectly. Each key identifies a principal in the binding, and each value indicates whether the
-        /// principal in the binding includes the principal in the request. For example, suppose that a binding includes
-        /// the following principals: * `user:alice@example.com` * `group:product-eng@example.com` The principal in the
-        /// replayed access tuple is `user:bob@example.com`. This user is a principal of the group
-        /// `group:product-eng@example.com`. For the first principal in the binding, the key is
-        /// `user:alice@example.com`, and the `membership` field in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For
-        /// the second principal in the binding, the key is `group:product-eng@example.com`, and the `membership` field
-        /// in the value is set to `MEMBERSHIP_INCLUDED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
-        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership> Memberships { get; set; }
-
-        /// <summary>The relevance of this binding to the overall determination for the entire policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
-        public virtual string Relevance { get; set; }
-
-        /// <summary>
-        /// The role that this binding grants. For example, `roles/compute.serviceAgent`. For a complete list of
-        /// predefined IAM roles, as well as the permissions in each role, see
-        /// https://cloud.google.com/iam/help/roles/reference.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>Indicates whether the role granted by this binding contains the specified permission.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rolePermission")]
-        public virtual string RolePermission { get; set; }
-
-        /// <summary>
-        /// The relevance of the permission's existence, or nonexistence, in the role to the overall determination for
-        /// the entire policy.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rolePermissionRelevance")]
-        public virtual string RolePermissionRelevance { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about whether the binding includes the principal.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Indicates whether the binding includes the principal.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
-        public virtual string Membership { get; set; }
-
-        /// <summary>The relevance of the principal's status to the overall determination for the binding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
-        public virtual string Relevance { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Details about how a set of policies, listed in ExplainedPolicy, resulted in a certain AccessState when replaying
-    /// an access tuple.
-    /// </summary>
-    public class GoogleCloudPolicysimulatorV1beta1ExplainedAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Whether the member in the access tuple has permission to access the resource in the access tuple under the
-        /// given policies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessState")]
-        public virtual string AccessState { get; set; }
-
-        /// <summary>
-        /// If the AccessState is `UNKNOWN`, this field contains a list of errors explaining why the result is
-        /// `UNKNOWN`. If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
-
-        /// <summary>
-        /// If the AccessState is `UNKNOWN`, this field contains the policies that led to that result. If the
-        /// `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1beta1ExplainedPolicy> Policies { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about how a specific IAM Policy contributed to the access check.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates whether _this policy_ provides the specified permission to the specified principal for the
-        /// specified resource. This field does _not_ indicate whether the principal actually has the permission for the
-        /// resource. There might be another policy that overrides this policy. To determine whether the principal
-        /// actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; }
-
-        /// <summary>
-        /// Details about how each binding in the policy affects the principal's ability, or inability, to use the
-        /// permission for the resource. If the user who created the Replay does not have access to the policy, this
-        /// field is omitted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingExplanations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1beta1BindingExplanation> BindingExplanations { get; set; }
-
-        /// <summary>
-        /// The full resource name that identifies the resource. For example,
-        /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the user who
-        /// created the Replay does not have access to the policy, this field is omitted. For examples of full resource
-        /// names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; }
-
-        /// <summary>
-        /// The IAM policy attached to the resource. If the user who created the Replay does not have access to the
-        /// policy, this field is empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual GoogleIamV1Policy Policy { get; set; }
-
-        /// <summary>
-        /// The relevance of this policy to the overall determination in the TroubleshootIamPolicyResponse. If the user
-        /// who created the Replay does not have access to the policy, this field is omitted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
-        public virtual string Relevance { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for Simulator.ListReplayResults.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A token that you can use to retrieve the next page of ReplayResult objects. If this field is omitted, there
-        /// are no subsequent pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The results of running a Replay.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replayResults")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1beta1ReplayResult> ReplayResults { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A resource describing a `Replay`, or simulation.</summary>
     public class GoogleCloudPolicysimulatorV1beta1Replay : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2134,77 +1510,12 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The difference between the results of evaluating an access tuple under the current (baseline) policies and under
-    /// the proposed (simulated) policies. This difference explains how a member's access could change if the proposed
-    /// policies were applied.
-    /// </summary>
-    public class GoogleCloudPolicysimulatorV1beta1ReplayDiff : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A summary and comparison of the member's access under the current (baseline) policies and the proposed
-        /// (simulated) policies for a single access tuple. The evaluation of the member's access is reported in the
-        /// AccessState field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessDiff")]
-        public virtual GoogleCloudPolicysimulatorV1beta1AccessStateDiff AccessDiff { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata about a Replay operation.</summary>
     public class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The result of replaying a single access tuple against a simulated state.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1ReplayResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The access tuple that was replayed. This field includes information about the member, resource, and
-        /// permission that were involved in the access attempt.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessTuple")]
-        public virtual GoogleCloudPolicysimulatorV1beta1AccessTuple AccessTuple { get; set; }
-
-        /// <summary>
-        /// The difference between the member's access under the current (baseline) policies and the member's access
-        /// under the proposed (simulated) policies. This field is only included for access tuples that were
-        /// successfully replayed and had different results under the current policies and the proposed policies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diff")]
-        public virtual GoogleCloudPolicysimulatorV1beta1ReplayDiff Diff { get; set; }
-
-        /// <summary>
-        /// The error that caused the access tuple replay to fail. This field is only included for access tuples that
-        /// were not replayed successfully.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; }
-
-        /// <summary>The latest date this access tuple was seen in the logs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastSeenDate")]
-        public virtual GoogleTypeDate LastSeenDate { get; set; }
-
-        /// <summary>
-        /// The resource name of the `ReplayResult`, in the following format:
-        /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}/results/{replay-result-id}`,
-        /// where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example:
-        /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/1234`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The Replay that the access tuple was included in.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2321,10 +1632,11 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -2332,8 +1644,7 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
