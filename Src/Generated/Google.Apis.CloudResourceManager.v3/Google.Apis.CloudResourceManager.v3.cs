@@ -4634,6 +4634,10 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
         public virtual string TagKey { get; set; }
 
+        /// <summary>The parent name of the tag key. Must be in the format `organizations/{organization_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKeyParentName")]
+        public virtual string TagKeyParentName { get; set; }
+
         /// <summary>Resource name for TagValue in the format `tagValues/456`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
         public virtual string TagValue { get; set; }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ACMEDNS.v1.ACMEDNSBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ACMEDNS.v1.ACMEDNSBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

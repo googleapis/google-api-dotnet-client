@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SubscriptionLinking.v1.SubscriptionLinkingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SubscriptionLinking.v1.SubscriptionLinkingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

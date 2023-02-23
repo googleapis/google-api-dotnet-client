@@ -1174,6 +1174,12 @@ namespace Google.Apis.CloudDataplex.v1
                     [Google.Apis.Util.RequestParameterAttribute("dataScanId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataScanId { get; set; }
 
+                    /// <summary>
+                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan Body { get; set; }
 
@@ -1204,6 +1210,14 @@ namespace Google.Apis.CloudDataplex.v1
                         RequestParameters.Add("dataScanId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dataScanId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1569,6 +1583,12 @@ namespace Google.Apis.CloudDataplex.v1
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
+                    /// <summary>
+                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan Body { get; set; }
 
@@ -1599,6 +1619,14 @@ namespace Google.Apis.CloudDataplex.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -9785,6 +9813,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Status of the resource referenced by an asset.</summary>
     public class GoogleCloudDataplexV1AssetResourceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Service account associated with the BigQuery Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedAccessIdentity")]
+        public virtual string ManagedAccessIdentity { get; set; }
+
         /// <summary>Additional information about the current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
@@ -10074,8 +10106,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataAttributeBindingPath> Paths { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity
-        /// resource is supported in the form:
+        /// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only
+        /// entity resource is supported in the form:
         /// projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the
         /// same project and region as the attribute binding, and there can only exist one active binding for a
         /// resource.

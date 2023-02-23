@@ -1818,6 +1818,45 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Error information for a modification request of a specific policy on a specific target.</summary>
+    public class GoogleChromePolicyVersionsV1PolicyModificationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The non-field errors related to the modification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>Output only. The error messages related to the modification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldErrors")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicyModificationFieldError> FieldErrors { get; set; }
+
+        /// <summary>Output only. The specific policy schema modification that had an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
+
+        /// <summary>Output only. The specific policy target modification that had error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTargetKey")]
+        public virtual GoogleChromePolicyVersionsV1PolicyTargetKey PolicyTargetKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details of the errors encountered during a policy modification request. This message will be returned as part of
+    /// the details of a google.rpc.Status returned to the user when there is an error in their request.
+    /// </summary>
+    public class GoogleChromePolicyVersionsV1PolicyModificationErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of specific policy modifications errors that may have occurred during a modifying request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modificationErrors")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicyModificationError> ModificationErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Error information for a modification request of a specific field on a specific policy.</summary>
     public class GoogleChromePolicyVersionsV1PolicyModificationFieldError : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1816,6 +1816,49 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     }
 
     /// <summary>
+    /// Assessment provides all information that is related to a single vulnerability for this product.
+    /// </summary>
+    public class Assessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual string Cve { get; set; }
+
+        /// <summary>A detailed description of this Vex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
+        public virtual string LongDescription { get; set; }
+
+        /// <summary>
+        /// Holds a list of references associated with this vulnerability item and assessment. These uris have
+        /// additional information about the vulnerability and the assessment itself. E.g. Link to a document which
+        /// details how this assessment concluded the state of this vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedUris")]
+        public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUris { get; set; }
+
+        /// <summary>Specifies details on how to handle (and presumably, fix) a vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediations")]
+        public virtual System.Collections.Generic.IList<Remediation> Remediations { get; set; }
+
+        /// <summary>A one sentence description of this Vex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
+        public virtual string ShortDescription { get; set; }
+
+        /// <summary>Provides the state of this Vulnerability assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Contains information about this vulnerability, this will change with time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threats")]
+        public virtual System.Collections.Generic.IList<Threat> Threats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the
     /// attached signature. If the verifier trusts the public key of the signer, then verifying the signature is
     /// sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is
@@ -4313,6 +4356,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
 
+        /// <summary>The cvss v2 score for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV2")]
+        public virtual CVSS CvssV2 { get; set; }
+
+        /// <summary>The cvss v3 score for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
+        public virtual CVSS CvssV3 { get; set; }
+
         /// <summary>Output only. CVSS version used to populate cvss_score and severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
         public virtual string CvssVersion { get; set; }
@@ -4354,6 +4405,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The type of package; whether native or non native(ruby gems, node.js packages etc)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("vexAssessment")]
+        public virtual VexAssessment VexAssessment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4740,6 +4794,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>A note describing a package vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerability")]
         public virtual Vulnerability Vulnerability { get; set; }
+
+        /// <summary>A note describing a vulnerability assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityAssessment")]
+        public virtual VulnerabilityAssessmentNote VulnerabilityAssessment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5211,6 +5269,30 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Product contains information about a product and how to uniquely identify it.</summary>
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericUri")]
+        public virtual string GenericUri { get; set; }
+
+        /// <summary>
+        /// Token that identifies a product so that it can be referred to from other parts in the document. There is no
+        /// predefined format as long as it uniquely identifies a group in the context of the current document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Name of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that
     /// project.
@@ -5224,6 +5306,31 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The name of the repo. Leave empty for the default repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Publisher contains information about the publisher of this Note.</summary>
+    public class Publisher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a
+        /// globally unique identifier for that issuing party. Example: https://csaf.io
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual string Context { get; set; }
+
+        /// <summary>
+        /// Provides information about the authority of the issuing party to release the document, in particular, the
+        /// party's constituency and responsibilities or other obligations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuingAuthority")]
+        public virtual string IssuingAuthority { get; set; }
+
+        /// <summary>Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5283,6 +5390,29 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Output only. The type of relationship between the source and target SPDX elements</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies details on how to handle (and presumably, fix) a vulnerability.</summary>
+    public class Remediation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains a comprehensive human-readable discussion of the remediation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Contains the date from which the remediation is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationTime")]
+        public virtual object RemediationTime { get; set; }
+
+        /// <summary>The type of remediation that can be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationType")]
+        public virtual string RemediationType { get; set; }
+
+        /// <summary>Contains the URL where to obtain the remediation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationUri")]
+        public virtual RelatedUrl RemediationUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5529,6 +5659,24 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains the vulnerability kinetic information. This information can change as the vulnerability ages and new
+    /// information becomes available.
+    /// </summary>
+    public class Threat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a thorough human-readable discussion of the threat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The type of threat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
+        public virtual string ThreatType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Start and end times for a build execution phase. Next ID: 3</summary>
     public class TimeSpan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5571,6 +5719,44 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The iteration of the package build from the above version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+    /// </summary>
+    public class VexAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual string Cve { get; set; }
+
+        /// <summary>
+        /// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form:
+        /// `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noteName")]
+        public virtual string NoteName { get; set; }
+
+        /// <summary>Holds a list of references associated with this vulnerability item and assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedUris")]
+        public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUris { get; set; }
+
+        /// <summary>Specifies details on how to handle (and presumably, fix) a vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediations")]
+        public virtual System.Collections.Generic.IList<Remediation> Remediations { get; set; }
+
+        /// <summary>Provides the state of this Vulnerability assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Contains information about this vulnerability, this will change with time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threats")]
+        public virtual System.Collections.Generic.IList<Threat> Threats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5648,6 +5834,43 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsDetails")]
         public virtual System.Collections.Generic.IList<WindowsDetail> WindowsDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+    /// </summary>
+    public class VulnerabilityAssessmentNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a vulnerability assessment for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assessment")]
+        public virtual Assessment Assessment { get; set; }
+
+        /// <summary>Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>A detailed description of this Vex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
+        public virtual string LongDescription { get; set; }
+
+        /// <summary>The product affected by this vex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; }
+
+        /// <summary>Publisher details of this Note.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual Publisher Publisher { get; set; }
+
+        /// <summary>A one sentence description of this Vex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
+        public virtual string ShortDescription { get; set; }
+
+        /// <summary>The title of the note. E.g. `Vex-Debian-11.4`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
