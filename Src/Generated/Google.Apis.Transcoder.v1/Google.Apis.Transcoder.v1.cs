@@ -1087,6 +1087,17 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("codec")]
         public virtual string Codec { get; set; }
 
+        /// <summary>The name for this particular audio stream that will be added to the HLS/DASH manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
         /// <summary>The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapping")]
         public virtual System.Collections.Generic.IList<AudioMapping> Mapping { get; set; }
@@ -2208,6 +2219,17 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codec")]
         public virtual string Codec { get; set; }
+
+        /// <summary>The name for this particular text stream that will be added to the HLS/DASH manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapping")]

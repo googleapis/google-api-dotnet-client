@@ -316,9 +316,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                 /// <summary>Creates a new connection profile in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent, which owns this collection of connection profiles.
-                /// </param>
+                /// <param name="parent">Required. The parent which owns this collection of connection profiles.</param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.ConnectionProfile body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -335,7 +333,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of connection profiles.</summary>
+                    /// <summary>Required. The parent which owns this collection of connection profiles.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -344,9 +342,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string ConnectionProfileId { get; set; }
 
                     /// <summary>
-                    /// Optional. A unique id used to identify the request. If the server receives two requests with the
-                    /// same id, then the second request will be ignored. It is recommended to always set this value to
-                    /// a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
                     /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -463,10 +461,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -637,9 +635,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 }
 
                 /// <summary>Retrieves a list of all connection profiles in a given project and location.</summary>
-                /// <param name="parent">
-                /// Required. The parent, which owns this collection of connection profiles.
-                /// </param>
+                /// <param name="parent">Required. The parent which owns this collection of connection profiles.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -655,7 +651,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of connection profiles.</summary>
+                    /// <summary>Required. The parent which owns this collection of connection profiles.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -678,7 +674,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// <summary>
                     /// The maximum number of connection profiles to return. The service may return fewer than this
                     /// value. If unspecified, at most 50 connection profiles will be returned. The maximum value is
-                    /// 1000; values above 1000 will be coerced to 1000.
+                    /// 1000; values above 1000 are coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -777,9 +773,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. A unique id used to identify the request. If the server receives two requests with the
-                    /// same id, then the second request will be ignored. It is recommended to always set this value to
-                    /// a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
                     /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -793,8 +789,8 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual System.Nullable<bool> SkipValidation { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the connection profile
-                    /// resource by the update.
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// conversion workspace resource.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1108,18 +1104,18 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
                 }
 
-                /// <summary>Apply draft tree onto a specific destination database</summary>
+                /// <summary>Applies draft tree onto a specific destination database.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the conversion workspace resource to apply draft to destination for. in the form
-                /// of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                /// Required. The name of the conversion workspace resource for which to apply the draft tree. Must be
+                /// in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                 /// </param>
                 public virtual ApplyRequest Apply(Google.Apis.DatabaseMigrationService.v1.Data.ApplyConversionWorkspaceRequest body, string name)
                 {
                     return new ApplyRequest(service, body, name);
                 }
 
-                /// <summary>Apply draft tree onto a specific destination database</summary>
+                /// <summary>Applies draft tree onto a specific destination database.</summary>
                 public class ApplyRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Apply request.</summary>
@@ -1131,8 +1127,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the conversion workspace resource to apply draft to destination for. in the
-                    /// form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// Required. The name of the conversion workspace resource for which to apply the draft tree. Must
+                    /// be in the form of:
+                    /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1282,7 +1279,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <summary>Creates a new conversion workspace in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent, which owns this collection of conversion workspaces.
+                /// Required. The parent which owns this collection of conversion workspaces.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.ConversionWorkspace body, string parent)
                 {
@@ -1300,7 +1297,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of conversion workspaces.</summary>
+                    /// <summary>Required. The parent which owns this collection of conversion workspaces.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1309,10 +1306,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string ConversionWorkspaceId { get; set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1385,10 +1382,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1427,8 +1424,8 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                 /// <summary>Retrieves a list of committed revisions of a specific conversion workspace.</summary>
                 /// <param name="conversionWorkspace">
-                /// Required. Name of the conversion workspace resource whose revisions are listed. in the form of:
-                /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                /// Required. Name of the conversion workspace resource whose revisions are listed. Must be in the form
+                /// of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                 /// </param>
                 public virtual DescribeConversionWorkspaceRevisionsRequest DescribeConversionWorkspaceRevisions(string conversionWorkspace)
                 {
@@ -1446,13 +1443,13 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the conversion workspace resource whose revisions are listed. in the form of:
-                    /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// Required. Name of the conversion workspace resource whose revisions are listed. Must be in the
+                    /// form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ConversionWorkspace { get; private set; }
 
-                    /// <summary>Optional. Optional filter to request a specific commit id</summary>
+                    /// <summary>Optional. Optional filter to request a specific commit ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("commitId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CommitId { get; set; }
 
@@ -1489,14 +1486,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 }
 
                 /// <summary>
-                /// Use this method to describe the database entities tree for a specific conversion workspace and a
-                /// specific tree type. The DB Entities are not a resource like conversion workspace or mapping rule,
-                /// and they can not be created, updated or deleted like one. Instead they are simple data objects
-                /// describing the structure of the client database.
+                /// Describes the database entities tree for a specific conversion workspace and a specific tree type.
+                /// Database entities are not resources like conversion workspaces or mapping rules, and they can't be
+                /// created, updated or deleted. Instead, they are simple data objects describing the structure of the
+                /// client database.
                 /// </summary>
                 /// <param name="conversionWorkspace">
-                /// Required. Name of the conversion workspace resource whose DB entities are described in the form of:
-                /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                /// Required. Name of the conversion workspace resource whose database entities are described. Must be
+                /// in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                 /// </param>
                 public virtual DescribeDatabaseEntitiesRequest DescribeDatabaseEntities(string conversionWorkspace)
                 {
@@ -1504,10 +1501,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 }
 
                 /// <summary>
-                /// Use this method to describe the database entities tree for a specific conversion workspace and a
-                /// specific tree type. The DB Entities are not a resource like conversion workspace or mapping rule,
-                /// and they can not be created, updated or deleted like one. Instead they are simple data objects
-                /// describing the structure of the client database.
+                /// Describes the database entities tree for a specific conversion workspace and a specific tree type.
+                /// Database entities are not resources like conversion workspaces or mapping rules, and they can't be
+                /// created, updated or deleted. Instead, they are simple data objects describing the structure of the
+                /// client database.
                 /// </summary>
                 public class DescribeDatabaseEntitiesRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.DescribeDatabaseEntitiesResponse>
                 {
@@ -1519,14 +1516,15 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the conversion workspace resource whose DB entities are described in the form
-                    /// of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// Required. Name of the conversion workspace resource whose database entities are described. Must
+                    /// be in the form of:
+                    /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ConversionWorkspace { get; private set; }
 
                     /// <summary>
-                    /// Request a specific commit id. If not specified, the entities from the latest commit are
+                    /// Request a specific commit ID. If not specified, the entities from the latest commit are
                     /// returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("commitId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1537,7 +1535,8 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// The maximum number of entities to return. The service may return fewer than this value.
+                    /// The maximum number of entities to return. The service may return fewer entities than the value
+                    /// specifies.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1559,19 +1558,19 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// <summary>The tree to fetch.</summary>
                     public enum TreeEnum
                     {
-                        /// <summary>Unspecified tree type</summary>
+                        /// <summary>Unspecified tree type.</summary>
                         [Google.Apis.Util.StringValueAttribute("DB_TREE_TYPE_UNSPECIFIED")]
                         DBTREETYPEUNSPECIFIED = 0,
 
-                        /// <summary>The source database tree</summary>
+                        /// <summary>The source database tree.</summary>
                         [Google.Apis.Util.StringValueAttribute("SOURCE_TREE")]
                         SOURCETREE = 1,
 
-                        /// <summary>The draft database tree</summary>
+                        /// <summary>The draft database tree.</summary>
                         [Google.Apis.Util.StringValueAttribute("DRAFT_TREE")]
                         DRAFTTREE = 2,
 
-                        /// <summary>The destination database tree</summary>
+                        /// <summary>The destination database tree.</summary>
                         [Google.Apis.Util.StringValueAttribute("DESTINATION_TREE")]
                         DESTINATIONTREE = 3,
                     }
@@ -1782,7 +1781,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                 /// <summary>Lists conversion workspaces in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The parent, which owns this collection of conversion workspaces.
+                /// Required. The parent which owns this collection of conversion workspaces.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1799,7 +1798,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of conversion workspaces.</summary>
+                    /// <summary>Required. The parent which owns this collection of conversion workspaces.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1810,14 +1809,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// either =, !=, &amp;gt;, or &amp;lt;. For example, list conversion workspaces created this year
                     /// by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested
                     /// fields. For example, you could specify **source.version = "12.c.1"** to select all conversion
-                    /// workspaces with source database version equal to 12.c.1
+                    /// workspaces with source database version equal to 12.c.1.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
                     /// The maximum number of conversion workspaces to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 sets will be returned.
+                    /// value. If unspecified, at most 50 sets are returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1909,17 +1908,17 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the conversion workspace
-                    /// resource by the update.
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// conversion workspace resource.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1970,15 +1969,15 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
                 }
 
-                /// <summary>Rollbacks a conversion workspace to the last committed spanshot.</summary>
+                /// <summary>Rolls back a conversion workspace to the last committed snapshot.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Name of the conversion workspace resource to rollback to.</param>
+                /// <param name="name">Required. Name of the conversion workspace resource to roll back to.</param>
                 public virtual RollbackRequest Rollback(Google.Apis.DatabaseMigrationService.v1.Data.RollbackConversionWorkspaceRequest body, string name)
                 {
                     return new RollbackRequest(service, body, name);
                 }
 
-                /// <summary>Rollbacks a conversion workspace to the last committed spanshot.</summary>
+                /// <summary>Rolls back a conversion workspace to the last committed snapshot.</summary>
                 public class RollbackRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Rollback request.</summary>
@@ -1989,7 +1988,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the conversion workspace resource to rollback to.</summary>
+                    /// <summary>Required. Name of the conversion workspace resource to roll back to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2024,12 +2023,12 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 }
 
                 /// <summary>
-                /// Use this method to search/list the background jobs for a specific conversion workspace. The
-                /// background jobs are not a resource like conversion workspace or mapping rule, and they can not be
-                /// created, updated or deleted like one. Instead they are a way to expose the data plane jobs log.
+                /// Searches/lists the background jobs for a specific conversion workspace. The background jobs are not
+                /// resources like conversion workspaces or mapping rules, and they can't be created, updated or
+                /// deleted. Instead, they are a way to expose the data plane jobs log.
                 /// </summary>
                 /// <param name="conversionWorkspace">
-                /// Required. Name of the conversion workspace resource whos jobs are listed. in the form of:
+                /// Required. Name of the conversion workspace resource whose jobs are listed, in the form of:
                 /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                 /// </param>
                 public virtual SearchBackgroundJobsRequest SearchBackgroundJobs(string conversionWorkspace)
@@ -2038,9 +2037,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 }
 
                 /// <summary>
-                /// Use this method to search/list the background jobs for a specific conversion workspace. The
-                /// background jobs are not a resource like conversion workspace or mapping rule, and they can not be
-                /// created, updated or deleted like one. Instead they are a way to expose the data plane jobs log.
+                /// Searches/lists the background jobs for a specific conversion workspace. The background jobs are not
+                /// resources like conversion workspaces or mapping rules, and they can't be created, updated or
+                /// deleted. Instead, they are a way to expose the data plane jobs log.
                 /// </summary>
                 public class SearchBackgroundJobsRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.SearchBackgroundJobsResponse>
                 {
@@ -2052,14 +2051,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the conversion workspace resource whos jobs are listed. in the form of:
+                    /// Required. Name of the conversion workspace resource whose jobs are listed, in the form of:
                     /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ConversionWorkspace { get; private set; }
 
                     /// <summary>
-                    /// Optional. If supplied, will only return jobs that completed until (not including) the given
+                    /// Optional. If provided, only returns jobs that completed until (not including) the given
                     /// timestamp.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("completedUntilTime", Google.Apis.Util.RequestParameterType.Query)]
@@ -2067,13 +2066,13 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                     /// <summary>
                     /// Optional. The maximum number of jobs to return. The service may return fewer than this value. If
-                    /// unspecified, at most 100 jobs will be returned. The maximum value is 100; values above 100 will
-                    /// be coerced to 100.
+                    /// unspecified, at most 100 jobs are returned. The maximum value is 100; values above 100 are
+                    /// coerced to 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("maxSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> MaxSize { get; set; }
 
-                    /// <summary>Optional. Whether or not to return just the most recent job per job type</summary>
+                    /// <summary>Optional. Whether or not to return just the most recent job per job type,</summary>
                     [Google.Apis.Util.RequestParameterAttribute("returnMostRecentPerJobType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ReturnMostRecentPerJobType { get; set; }
 
@@ -2128,7 +2127,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <summary>Imports a snapshot of the source database into the conversion workspace.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the conversion workspace resource to seed with new database structure. in the form of:
+                /// Name of the conversion workspace resource to seed with new database structure, in the form of:
                 /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                 /// </param>
                 public virtual SeedRequest Seed(Google.Apis.DatabaseMigrationService.v1.Data.SeedConversionWorkspaceRequest body, string name)
@@ -2148,7 +2147,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
 
                     /// <summary>
-                    /// Name of the conversion workspace resource to seed with new database structure. in the form of:
+                    /// Name of the conversion workspace resource to seed with new database structure, in the form of:
                     /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2342,7 +2341,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                 /// <summary>Creates a new migration job in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent, which owns this collection of migration jobs.</param>
+                /// <param name="parent">Required. The parent which owns this collection of migration jobs.</param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.MigrationJob body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -2359,7 +2358,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of migration jobs.</summary>
+                    /// <summary>Required. The parent which owns this collection of migration jobs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2368,10 +2367,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string MigrationJobId { get; set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2451,10 +2450,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2678,7 +2677,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 }
 
                 /// <summary>Lists migration jobs in a given project and location.</summary>
-                /// <param name="parent">Required. The parent, which owns this collection of migrationJobs.</param>
+                /// <param name="parent">Required. The parent which owns this collection of migrationJobs.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2694,7 +2693,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of migrationJobs.</summary>
+                    /// <summary>Required. The parent which owns this collection of migrationJobs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2720,7 +2719,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// <summary>
                     /// The maximum number of migration jobs to return. The service may return fewer than this value. If
                     /// unspecified, at most 50 migration jobs will be returned. The maximum value is 1000; values above
-                    /// 1000 will be coerced to 1000.
+                    /// 1000 are coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2820,17 +2819,17 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// A unique id used to identify the request. If the server receives two requests with the same id,
-                    /// then the second request will be ignored. It is recommended to always set this value to a UUID.
-                    /// The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-                    /// The maximum length is 40 characters.
+                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
+                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
+                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+                    /// maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the migration job
-                    /// resource by the update.
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// conversion workspace resource.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3691,9 +3690,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string PrivateConnectionId { get; set; }
 
                     /// <summary>
-                    /// Optional. A unique id used to identify the request. If the server receives two requests with the
-                    /// same id, then the second request will be ignored. It is recommended to always set this value to
-                    /// a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
                     /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3779,9 +3778,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. A unique id used to identify the request. If the server receives two requests with the
-                    /// same id, then the second request will be ignored. It is recommended to always set this value to
-                    /// a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
                     /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3901,7 +3900,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                     /// <summary>
                     /// Maximum number of private connections to return. If unspecified, at most 50 private connections
-                    /// that will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// that are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3968,6 +3967,87 @@ namespace Google.Apis.DatabaseMigrationService.v1
                             Pattern = null,
                         });
                     }
+                }
+            }
+
+            /// <summary>
+            /// Fetches a set of static IP addresses that need to be allowlisted by the customer when using the
+            /// static-IP connectivity method.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The resource name for the location for which static IPs should be returned. Must be in the
+            /// format `projects/*/locations/*`.
+            /// </param>
+            public virtual FetchStaticIpsRequest FetchStaticIps(string name)
+            {
+                return new FetchStaticIpsRequest(service, name);
+            }
+
+            /// <summary>
+            /// Fetches a set of static IP addresses that need to be allowlisted by the customer when using the
+            /// static-IP connectivity method.
+            /// </summary>
+            public class FetchStaticIpsRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.FetchStaticIpsResponse>
+            {
+                /// <summary>Constructs a new FetchStaticIps request.</summary>
+                public FetchStaticIpsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name for the location for which static IPs should be returned. Must be in the
+                /// format `projects/*/locations/*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Maximum number of IPs to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A page token, received from a previous `FetchStaticIps` call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchStaticIps";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:fetchStaticIps";
+
+                /// <summary>Initializes FetchStaticIps parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
 
@@ -4229,7 +4309,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     {
         /// <summary>
         /// Job completion comment, such as how many entities were seeded, how many warnings were found during
-        /// conversion and similar information.
+        /// conversion, and similar information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionComment")]
         public virtual string CompletionComment { get; set; }
@@ -4242,11 +4322,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
         public virtual object FinishTime { get; set; }
 
-        /// <summary>The background job log entry id</summary>
+        /// <summary>The background job log entry ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Import rules job details</summary>
+        /// <summary>Import rules job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importRulesJobDetails")]
         public virtual ImportRulesJobDetails ImportRulesJobDetails { get; set; }
 
@@ -4261,7 +4341,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestAutocommit")]
         public virtual System.Nullable<bool> RequestAutocommit { get; set; }
 
-        /// <summary>Seed job details</summary>
+        /// <summary>Seed job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seedJobDetails")]
         public virtual SeedJobDetails SeedJobDetails { get; set; }
 
@@ -4486,77 +4566,77 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Column is not used as an independent entity, it is retrieved as part of a Table entity.</summary>
     public class ColumnEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Is the column of array type</summary>
+        /// <summary>Is the column of array type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("array")]
         public virtual System.Nullable<bool> Array { get; set; }
 
-        /// <summary>If the column is array, of which length</summary>
+        /// <summary>If the column is array, of which length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayLength")]
         public virtual System.Nullable<int> ArrayLength { get; set; }
 
-        /// <summary>Is the column auto-generated/identity</summary>
+        /// <summary>Is the column auto-generated/identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGenerated")]
         public virtual System.Nullable<bool> AutoGenerated { get; set; }
 
-        /// <summary>Charset override - instead of table level charset</summary>
+        /// <summary>Charset override - instead of table level charset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("charset")]
         public virtual string Charset { get; set; }
 
-        /// <summary>Collation override - instead of table level collation</summary>
+        /// <summary>Collation override - instead of table level collation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
-        /// <summary>Comment associated with the column</summary>
+        /// <summary>Comment associated with the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>Column data type</summary>
+        /// <summary>Column data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
-        /// <summary>Default value of the column</summary>
+        /// <summary>Default value of the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
         public virtual string DefaultValue { get; set; }
 
-        /// <summary>Column fractional second precision - used for timestamp based datatypes</summary>
+        /// <summary>Column fractional second precision - used for timestamp based datatypes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionalSecondsPrecision")]
         public virtual System.Nullable<int> FractionalSecondsPrecision { get; set; }
 
-        /// <summary>Column length - e.g. varchar (50)</summary>
+        /// <summary>Column length - e.g. varchar (50).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
         public virtual System.Nullable<long> Length { get; set; }
 
-        /// <summary>Column name</summary>
+        /// <summary>Column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Is the column nullable</summary>
+        /// <summary>Is the column nullable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
         public virtual System.Nullable<bool> Nullable { get; set; }
 
-        /// <summary>Column order in the table</summary>
+        /// <summary>Column order in the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
         public virtual System.Nullable<int> OrdinalPosition { get; set; }
 
-        /// <summary>Column precision - when relevant</summary>
+        /// <summary>Column precision - when relevant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precision")]
         public virtual System.Nullable<int> Precision { get; set; }
 
-        /// <summary>Column scale - when relevant</summary>
+        /// <summary>Column scale - when relevant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<int> Scale { get; set; }
 
         /// <summary>
-        /// Specifies the list of values allowed in the column. List is empty if set values is not required
+        /// Specifies the list of values allowed in the column. List is empty if setValues is not required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setValues")]
         public virtual System.Collections.Generic.IList<string> SetValues { get; set; }
 
-        /// <summary>Is the column a UDT</summary>
+        /// <summary>Is the column a UDT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("udt")]
         public virtual System.Nullable<bool> Udt { get; set; }
 
@@ -4653,31 +4733,31 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// </summary>
     public class ConstraintEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>The name of the table constraint</summary>
+        /// <summary>The name of the table constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Reference Columns which may be associated with the constraint. eg: if the constraint is a FOREIGN_KEY, this
-        /// represents the list of full names of referenced columns by the foreign key.
+        /// Reference columns which may be associated with the constraint. For example, if the constraint is a
+        /// FOREIGN_KEY, this represents the list of full names of referenced columns by the foreign key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceColumns")]
         public virtual System.Collections.Generic.IList<string> ReferenceColumns { get; set; }
 
         /// <summary>
-        /// Reference table which may be associated with the constraint. eg: if the constraint is a FOREIGN_KEY, this
-        /// represents the list of full name of the referenced table by the foreign key.
+        /// Reference table which may be associated with the constraint. For example, if the constraint is a
+        /// FOREIGN_KEY, this represents the list of full name of the referenced table by the foreign key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceTable")]
         public virtual string ReferenceTable { get; set; }
 
         /// <summary>
-        /// Table columns used as part of the Constraint for e.g. primary key constraint should list the columns which
-        /// constitutes the key
+        /// Table columns used as part of the Constraint, for example primary key constraint should list the columns
+        /// which constitutes the key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumns")]
         public virtual System.Collections.Generic.IList<string> TableColumns { get; set; }
@@ -4691,7 +4771,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string TableName { get; set; }
 
         /// <summary>
-        /// Type of constraint - e.g. unique, primary key, foreign key (currently only primary key is supported)
+        /// Type of constraint, for example unique, primary key, foreign key (currently only primary key is supported).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4711,7 +4791,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual DatabaseEngineInfo Destination { get; set; }
 
-        /// <summary>The display name for the workspace</summary>
+        /// <summary>The display name for the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -4725,12 +4805,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// Output only. Whether the workspace has uncommitted changes (changes which were made after the workspace was
-        /// committed)
+        /// committed).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasUncommittedChanges")]
         public virtual System.Nullable<bool> HasUncommittedChanges { get; set; }
 
-        /// <summary>Output only. The latest commit id</summary>
+        /// <summary>Output only. The latest commit ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestCommitId")]
         public virtual string LatestCommitId { get; set; }
 
@@ -4775,7 +4855,9 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'ConvertConversionWorkspace' request.</summary>
     public class ConvertConversionWorkspaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Should the conversion workspace be committed automatically after the conversion.</summary>
+        /// <summary>
+        /// Specifies whether the conversion workspace is to be committed automatically after the conversion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCommit")]
         public virtual System.Nullable<bool> AutoCommit { get; set; }
 
@@ -4790,14 +4872,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The type and version of a source or destination DB.</summary>
+    /// <summary>The type and version of a source or destination database.</summary>
     public class DatabaseEngineInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Engine Type.</summary>
+        /// <summary>Required. Engine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
-        /// <summary>Required. Engine named version, for e.g. 12.c.1</summary>
+        /// <summary>Required. Engine named version, for example 12.c.1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -4806,16 +4888,16 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     }
 
     /// <summary>
-    /// The base entity type for all the database related entities The message contains the entity name, the name of its
-    /// parent, its type and the specific details per its type
+    /// The base entity type for all the database related entities. The message contains the entity name, the name of
+    /// its parent, the entity type, and the specific details per entity type.
     /// </summary>
     public class DatabaseEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Function</summary>
+        /// <summary>Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseFunction")]
         public virtual FunctionEntity DatabaseFunction { get; set; }
 
-        /// <summary>Package</summary>
+        /// <summary>Package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databasePackage")]
         public virtual PackageEntity DatabasePackage { get; set; }
 
@@ -4839,7 +4921,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual SchemaEntity Schema { get; set; }
 
-        /// <summary>Sequence</summary>
+        /// <summary>Sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sequence")]
         public virtual SequenceEntity Sequence { get; set; }
 
@@ -4847,11 +4929,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
         public virtual string ShortName { get; set; }
 
-        /// <summary>Stored Procedure</summary>
+        /// <summary>Stored procedure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedProcedure")]
         public virtual StoredProcedureEntity StoredProcedure { get; set; }
 
-        /// <summary>Synonym</summary>
+        /// <summary>Synonym.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonym")]
         public virtual SynonymEntity Synonym { get; set; }
 
@@ -4863,7 +4945,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tree")]
         public virtual string Tree { get; set; }
 
-        /// <summary>View</summary>
+        /// <summary>View.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual ViewEntity View { get; set; }
 
@@ -4905,7 +4987,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Collections.Generic.IList<DatabaseEntity> DatabaseEntities { get; set; }
 
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -4957,22 +5039,22 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     {
         /// <summary>
         /// Target entity full name. The draft entity can also include a column, index or constraint using the same
-        /// naming notation schema.table.column
+        /// naming notation schema.table.column.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draftEntity")]
         public virtual string DraftEntity { get; set; }
 
         /// <summary>
-        /// Entity mapping log entries. Multiple rules can be effective and contribute changes to a converted entity
-        /// such as, a rule can handle the entity name, another rule can handle an entity type. In addition, rules which
-        /// did not change the entity are also logged along the with the reason preventing them to do so.
+        /// Entity mapping log entries. Multiple rules can be effective and contribute changes to a converted entity,
+        /// such as a rule can handle the entity name, another rule can handle an entity type. In addition, rules which
+        /// did not change the entity are also logged along with the reason preventing them to do so.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mappingLog")]
         public virtual System.Collections.Generic.IList<EntityMappingLogEntry> MappingLog { get; set; }
 
         /// <summary>
         /// Source entity full name. The source entity can also be a column, index or constraint using the same naming
-        /// notation schema.table.column
+        /// notation schema.table.column.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceEntity")]
         public virtual string SourceEntity { get; set; }
@@ -4988,11 +5070,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mappingComment")]
         public virtual string MappingComment { get; set; }
 
-        /// <summary>Which rule caused it.</summary>
+        /// <summary>Which rule caused this log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
         public virtual string RuleId { get; set; }
 
-        /// <summary>Rule revision id</summary>
+        /// <summary>Rule revision ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleRevisionId")]
         public virtual string RuleRevisionId { get; set; }
 
@@ -5044,6 +5126,24 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for a 'FetchStaticIps' request.</summary>
+    public class FetchStaticIpsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of static IPs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticIps")]
+        public virtual System.Collections.Generic.IList<string> StaticIps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Forward SSH Tunnel connectivity.</summary>
     public class ForwardSshTunnelConnectivity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5074,11 +5174,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Function's parent is a schema.</summary>
     public class FunctionEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>The SQL code which creates the function</summary>
+        /// <summary>The SQL code which creates the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlCode")]
         public virtual string SqlCode { get; set; }
 
@@ -5097,7 +5197,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vmCreationConfig")]
         public virtual VmCreationConfig VmCreationConfig { get; set; }
 
-        /// <summary>The port that will be open on the bastion host</summary>
+        /// <summary>The port that will be open on the bastion host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmPort")]
         public virtual System.Nullable<int> VmPort { get; set; }
 
@@ -5155,7 +5255,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoCommit")]
         public virtual System.Nullable<bool> AutoCommit { get; set; }
 
-        /// <summary>One or more rules files</summary>
+        /// <summary>One or more rules files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesFiles")]
         public virtual System.Collections.Generic.IList<RulesFile> RulesFiles { get; set; }
 
@@ -5167,14 +5267,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details regarding an Import Rules background job</summary>
+    /// <summary>Details regarding an Import Rules background job.</summary>
     public class ImportRulesJobDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The requested file format</summary>
+        /// <summary>The requested file format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
         public virtual string FileFormat { get; set; }
 
-        /// <summary>File names used for the import rules job</summary>
+        /// <summary>File names used for the import rules job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<string> Files { get; set; }
 
@@ -5185,26 +5285,26 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Index is not used as an independent entity, it is retrieved as part of a Table entity.</summary>
     public class IndexEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>The name of the index</summary>
+        /// <summary>The name of the index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Table columns used as part of the Index for e.g. B-TREE index should list the columns which constitutes the
-        /// index.
+        /// Table columns used as part of the Index, for example B-TREE index should list the columns which constitutes
+        /// the index.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumns")]
         public virtual System.Collections.Generic.IList<string> TableColumns { get; set; }
 
-        /// <summary>Type of index - e.g. B-TREE</summary>
+        /// <summary>Type of index, for example B-TREE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>boolean value indicating whether the index is unique</summary>
+        /// <summary>Boolean value indicating whether the index is unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unique")]
         public virtual System.Nullable<bool> Unique { get; set; }
 
@@ -5220,7 +5320,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Collections.Generic.IList<ConnectionProfile> ConnectionProfiles { get; set; }
 
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -5242,7 +5342,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Collections.Generic.IList<ConversionWorkspace> ConversionWorkspaces { get; set; }
 
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -5279,7 +5379,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Collections.Generic.IList<MigrationJob> MigrationJobs { get; set; }
 
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -5312,7 +5412,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     public class ListPrivateConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -5650,7 +5750,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Package's parent is a schema.</summary>
     public class PackageEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
@@ -5661,7 +5761,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageBody")]
         public virtual string PackageBody { get; set; }
 
-        /// <summary>The SQL code which creates the package</summary>
+        /// <summary>The SQL code which creates the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageSqlCode")]
         public virtual string PackageSqlCode { get; set; }
 
@@ -5859,11 +5959,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The resource's name.</summary>
+        /// <summary>The name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The state of the Private Connection.</summary>
+        /// <summary>Output only. The state of the private connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -5871,7 +5971,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>VPC Peering Config.</summary>
+        /// <summary>VPC peering configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcPeeringConfig")]
         public virtual VpcPeeringConfig VpcPeeringConfig { get; set; }
 
@@ -5971,16 +6071,16 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of a single rules file</summary>
+    /// <summary>Details of a single rules file.</summary>
     public class RulesFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text content of the rules that needs to be converted</summary>
+        /// <summary>The text content of the rules that needs to be converted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesContent")]
         public virtual string RulesContent { get; set; }
 
         /// <summary>
-        /// The filename of the rules that needs to be converted. This is used mainly so future logs of the import rules
-        /// job will contain this detail and can therefore be searched by it later
+        /// The filename of the rules that needs to be converted. The filename is used mainly so that future logs of the
+        /// import rules job contain it, and can therefore be searched by it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesSourceFilename")]
         public virtual string RulesSourceFilename { get; set; }
@@ -5991,13 +6091,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
     /// <summary>
     /// Schema typically has no parent entity, but can have a parent entity DatabaseInstance (for database engines which
-    /// supports it). For some database engines the term schema and user can be used interchangeably when they refer to
+    /// support it). For some database engines, the terms schema and user can be used interchangeably when they refer to
     /// a namespace or a collection of other database entities. Can store additional information which is schema
     /// specific.
     /// </summary>
     public class SchemaEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
@@ -6035,10 +6135,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details regarding a Seed background job</summary>
+    /// <summary>Details regarding a Seed background job.</summary>
     public class SeedJobDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The connection profile which was used for the seed job</summary>
+        /// <summary>The connection profile which was used for the seed job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProfile")]
         public virtual string ConnectionProfile { get; set; }
 
@@ -6049,31 +6149,31 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Sequence's parent is a schema.</summary>
     public class SequenceEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates number of entries to cache / precreate</summary>
+        /// <summary>Indicates number of entries to cache / precreate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cache")]
         public virtual System.Nullable<long> Cache { get; set; }
 
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>Indicates whether the sequence value should cycle through</summary>
+        /// <summary>Indicates whether the sequence value should cycle through.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cycle")]
         public virtual System.Nullable<bool> Cycle { get; set; }
 
-        /// <summary>Increment value for the sequence</summary>
+        /// <summary>Increment value for the sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("increment")]
         public virtual System.Nullable<long> Increment { get; set; }
 
-        /// <summary>Maximum number for the sequence represented as bytes to accommodate large numbers</summary>
+        /// <summary>Maximum number for the sequence represented as bytes to accommodate large. numbers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual string MaxValue { get; set; }
 
-        /// <summary>Minimum number for the sequence represented as bytes to accommodate large numbers</summary>
+        /// <summary>Minimum number for the sequence represented as bytes to accommodate large. numbers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual string MinValue { get; set; }
 
-        /// <summary>Start number for the sequence represented as bytes to accommodate large numbers</summary>
+        /// <summary>Start number for the sequence represented as bytes to accommodate large. numbers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startValue")]
         public virtual string StartValue { get; set; }
 
@@ -6213,9 +6313,9 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     }
 
     /// <summary>
-    /// The source database will allow incoming connections from the destination database's public IP. You can retrieve
-    /// the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional
-    /// configuration is required.
+    /// The source database will allow incoming connections from the public IP of the destination database. You can
+    /// retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No
+    /// additional configuration is required.
     /// </summary>
     public class StaticIpConnectivity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6269,11 +6369,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Stored procedure's parent is a schema.</summary>
     public class StoredProcedureEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>The SQL code which creates the stored procedure</summary>
+        /// <summary>The SQL code which creates the stored procedure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlCode")]
         public virtual string SqlCode { get; set; }
 
@@ -6284,16 +6384,16 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Synonym's parent is a schema.</summary>
     public class SynonymEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>The name of the entity for which the synonym is being created (the source)</summary>
+        /// <summary>The name of the entity for which the synonym is being created (the source).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceEntity")]
         public virtual string SourceEntity { get; set; }
 
         /// <summary>
-        /// The type of the entity for which the synonym is being created (usually a table or a sequence)
+        /// The type of the entity for which the synonym is being created (usually a table or a sequence).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; }
@@ -6305,23 +6405,23 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Table's parent is a schema.</summary>
     public class TableEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Table Columns.</summary>
+        /// <summary>Table columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<ColumnEntity> Columns { get; set; }
 
-        /// <summary>Comment associated with the table</summary>
+        /// <summary>Comment associated with the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
-        /// <summary>Table Constraints.</summary>
+        /// <summary>Table constraints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
         public virtual System.Collections.Generic.IList<ConstraintEntity> Constraints { get; set; }
 
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>Table Indices.</summary>
+        /// <summary>Table indices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indices")]
         public virtual System.Collections.Generic.IList<IndexEntity> Indices { get; set; }
 
@@ -6362,23 +6462,23 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Trigger is not used as an independent entity, it is retrieved as part of a Table entity.</summary>
     public class TriggerEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
-        /// <summary>The name of the trigger</summary>
+        /// <summary>The name of the trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The SQL code which creates the trigger</summary>
+        /// <summary>The SQL code which creates the trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlCode")]
         public virtual string SqlCode { get; set; }
 
-        /// <summary>Indicates when the trigger fires, e.g. BEFORE STATEMENT, AFTER EACH ROW</summary>
+        /// <summary>Indicates when the trigger fires, for example BEFORE STATEMENT, AFTER EACH ROW.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerType")]
         public virtual string TriggerType { get; set; }
 
-        /// <summary>The DML, DDL, or database events that fires the trigger, e.g. INSERT, UPDATE</summary>
+        /// <summary>The DML, DDL, or database events that fire the trigger, for example INSERT, UPDATE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeringEvents")]
         public virtual System.Collections.Generic.IList<string> TriggeringEvents { get; set; }
 
@@ -6417,11 +6517,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>View's parent is a schema.</summary>
     public class ViewEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>View Constraints.</summary>
+        /// <summary>View constraints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
         public virtual System.Collections.Generic.IList<ConstraintEntity> Constraints { get; set; }
 
-        /// <summary>Custom engine specific features</summary>
+        /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
@@ -6463,14 +6563,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The VPC Peering configuration is used to create VPC peering with the consumer's VPC.</summary>
+    /// <summary>The VPC peering configuration is used to create VPC peering with the consumer's VPC.</summary>
     public class VpcPeeringConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A free subnet for peering. (CIDR of /29)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
         public virtual string Subnet { get; set; }
 
-        /// <summary>Required. Fully qualified name of the VPC DMS will peer to.</summary>
+        /// <summary>Required. Fully qualified name of the VPC that Database Migration Service will peer to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcName")]
         public virtual string VpcName { get; set; }
 

@@ -3032,12 +3032,51 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information of a display device.</summary>
+    public class GoogleChromeManagementV1DisplayDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Display height in millimeters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayHeightMm")]
+        public virtual System.Nullable<int> DisplayHeightMm { get; set; }
+
+        /// <summary>Output only. Display device name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Display width in millimeters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayWidthMm")]
+        public virtual System.Nullable<int> DisplayWidthMm { get; set; }
+
+        /// <summary>Output only. Is display internal or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internal")]
+        public virtual System.Nullable<bool> Internal__ { get; set; }
+
+        /// <summary>Output only. Year of manufacture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufactureYear")]
+        public virtual System.Nullable<int> ManufactureYear { get; set; }
+
+        /// <summary>Output only. Three letter manufacturer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturerId")]
+        public virtual string ManufacturerId { get; set; }
+
+        /// <summary>Output only. Manufacturer product code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual System.Nullable<int> ModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information for a display.</summary>
     public class GoogleChromeManagementV1DisplayInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Represents the graphics card device id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; }
+
+        /// <summary>Output only. Display device name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. Indicates if display is internal or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
@@ -3113,6 +3152,18 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Information about the graphics adapter (GPU).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adapterInfo")]
         public virtual GoogleChromeManagementV1GraphicsAdapterInfo AdapterInfo { get; set; }
+
+        /// <summary>Output only. Information about the display(s) of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDevices")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DisplayDevice> DisplayDevices { get; set; }
+
+        /// <summary>Output only. Is ePrivacy screen supported or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eprivacySupported")]
+        public virtual System.Nullable<bool> EprivacySupported { get; set; }
+
+        /// <summary>Output only. Information about the internal touch screen(s) of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("touchScreenInfo")]
+        public virtual GoogleChromeManagementV1TouchScreenInfo TouchScreenInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3958,6 +4009,40 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>The maximum number of keys that can be used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxKeys")]
         public virtual System.Nullable<long> MaxKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of an internal touch screen device.</summary>
+    public class GoogleChromeManagementV1TouchScreenDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Touch screen device display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Touch screen device is stylus capable or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stylusCapable")]
+        public virtual System.Nullable<bool> StylusCapable { get; set; }
+
+        /// <summary>Output only. Number of touch points supported on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("touchPointCount")]
+        public virtual System.Nullable<int> TouchPointCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information on the device touch screen.</summary>
+    public class GoogleChromeManagementV1TouchScreenInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of the internal touch screen devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TouchScreenDevice> Devices { get; set; }
+
+        /// <summary>Output only. Touchpad library name used by the input stack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("touchpadLibrary")]
+        public virtual string TouchpadLibrary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

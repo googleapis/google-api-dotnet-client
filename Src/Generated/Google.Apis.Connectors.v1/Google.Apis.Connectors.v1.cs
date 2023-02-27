@@ -2836,6 +2836,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectory")]
         public virtual string ServiceDirectory { get; set; }
 
+        /// <summary>Optional. Ssl config of a connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
+        public virtual SslConfig SslConfig { get; set; }
+
         /// <summary>Output only. Current status of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ConnectionStatus Status { get; set; }
@@ -3017,6 +3021,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Role grant configurations for this connector version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleGrants")]
         public virtual System.Collections.Generic.IList<RoleGrant> RoleGrants { get; set; }
+
+        /// <summary>Output only. Ssl configuration supported by the Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfigTemplate")]
+        public virtual SslConfigTemplate SslConfigTemplate { get; set; }
 
         /// <summary>Output only. Information about the runtime features supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedRuntimeFeatures")]
@@ -3964,6 +3972,80 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>The user account used to authenticate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SSL Configuration of a connection</summary>
+    public class SslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional SSL related field values</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
+        public virtual System.Collections.Generic.IList<ConfigVariable> AdditionalVariables { get; set; }
+
+        /// <summary>Type of Client Cert (PEM/JKS/.. etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertType")]
+        public virtual string ClientCertType { get; set; }
+
+        /// <summary>Client Certificate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual Secret ClientCertificate { get; set; }
+
+        /// <summary>Client Private Key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKey")]
+        public virtual Secret ClientPrivateKey { get; set; }
+
+        /// <summary>Secret containing the passphrase protecting the Client Private Key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKeyPass")]
+        public virtual Secret ClientPrivateKeyPass { get; set; }
+
+        /// <summary>Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServerCertificate")]
+        public virtual Secret PrivateServerCertificate { get; set; }
+
+        /// <summary>Type of Server Cert (PEM/JKS/.. etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertType")]
+        public virtual string ServerCertType { get; set; }
+
+        /// <summary>Trust Model of the SSL connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustModel")]
+        public virtual string TrustModel { get; set; }
+
+        /// <summary>Controls the ssl type for the given connector version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Bool for enabling SSL</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
+        public virtual System.Nullable<bool> UseSsl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ssl config details of a connector version</summary>
+    public class SslConfigTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Any additional fields that need to be rendered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
+        public virtual System.Collections.Generic.IList<ConfigVariableTemplate> AdditionalVariables { get; set; }
+
+        /// <summary>List of supported Client Cert Types</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertType")]
+        public virtual System.Collections.Generic.IList<string> ClientCertType { get; set; }
+
+        /// <summary>Boolean for determining if the connector version mandates TLS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTlsMandatory")]
+        public virtual System.Nullable<bool> IsTlsMandatory { get; set; }
+
+        /// <summary>List of supported Server Cert Types</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertType")]
+        public virtual System.Collections.Generic.IList<string> ServerCertType { get; set; }
+
+        /// <summary>Controls the ssl type for the given connector version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslType")]
+        public virtual string SslType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

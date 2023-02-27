@@ -5622,6 +5622,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Output only. Details of the last replication cycle. This will be updated whenever a replication cycle is
+        /// finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastReplicationCycle")]
+        public virtual ReplicationCycle LastReplicationCycle { get; set; }
+
+        /// <summary>
         /// Output only. The most updated snapshot created time in the source that finished replication.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
@@ -5699,6 +5706,36 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Output only. URL(s) pointing to additional information on handling the current error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpLinks")]
         public virtual System.Collections.Generic.IList<Link> HelpLinks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents migration resource warning information that can be used with google.rpc.Status message.
+    /// MigrationWarning is used to present the user with warning information in migration operations.
+    /// </summary>
+    public class MigrationWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Suggested action for solving the warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionItem")]
+        public virtual LocalizedMessage ActionItem { get; set; }
+
+        /// <summary>The warning code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>URL(s) pointing to additional information on handling the current warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpLinks")]
+        public virtual System.Collections.Generic.IList<Link> HelpLinks { get; set; }
+
+        /// <summary>The localized warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningMessage")]
+        public virtual LocalizedMessage WarningMessage { get; set; }
+
+        /// <summary>The time the warning occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningTime")]
+        public virtual object WarningTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5908,6 +5945,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The accumulated duration the replication cycle was paused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPauseDuration")]
         public virtual object TotalPauseDuration { get; set; }
+
+        /// <summary>Output only. Warnings that occurred during the cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<MigrationWarning> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

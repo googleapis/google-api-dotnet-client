@@ -6192,7 +6192,8 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that
-        /// parallelism is limited to 1 and the success of that task signals the success of the execution.
+        /// parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to
+        /// 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<int> TaskCount { get; set; }
@@ -7993,7 +7994,9 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
 
-        /// <summary>Optional. Number of retries allowed per task, before marking this job failed.</summary>
+        /// <summary>
+        /// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
         public virtual System.Nullable<int> MaxRetries { get; set; }
 
@@ -8008,7 +8011,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed
         /// and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full
-        /// timeout.
+        /// timeout. Defaults to 600 seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<long> TimeoutSeconds { get; set; }

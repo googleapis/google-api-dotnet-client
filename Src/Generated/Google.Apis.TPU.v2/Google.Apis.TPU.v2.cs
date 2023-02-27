@@ -1546,9 +1546,28 @@ namespace Google.Apis.TPU.v2
 }
 namespace Google.Apis.TPU.v2.Data
 {
+    /// <summary>A TPU accelerator configuration.</summary>
+    public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Topology of TPU in chips.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topology")]
+        public virtual string Topology { get; set; }
+
+        /// <summary>Required. Type of TPU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A accelerator type that a Node can be configured with.</summary>
     public class AcceleratorType : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The accelerator config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfigs")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> AcceleratorConfigs { get; set; }
+
         /// <summary>The resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1872,6 +1891,10 @@ namespace Google.Apis.TPU.v2.Data
     /// <summary>A TPU instance.</summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The AccleratorConfig for the TPU Node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
+        public virtual AcceleratorConfig AcceleratorConfig { get; set; }
+
         /// <summary>Required. The type of hardware accelerators associated with this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }

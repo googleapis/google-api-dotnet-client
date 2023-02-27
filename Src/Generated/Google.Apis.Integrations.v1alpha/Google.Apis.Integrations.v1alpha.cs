@@ -5623,6 +5623,51 @@ namespace Google.Apis.Integrations.v1alpha
                         }
                     }
 
+                    /// <summary>Delete the selected integration and all versions inside</summary>
+                    /// <param name="name">Required. The location resource of the request.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Delete the selected integration and all versions inside</summary>
+                    public class DeleteRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The location resource of the request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Executes integrations synchronously by passing the trigger id in the request body. The request
                     /// is not returned until the requested executions are either fulfilled or experienced an error. If
@@ -10067,6 +10112,16 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual System.Nullable<bool> DisableStrictTypeValidation { get; set; }
 
         /// <summary>
+        /// Optional Error catcher config id of the error catch flow which will be executed when execution error happens
+        /// in the task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigId")]
+        public virtual string ErrorCatcherConfigId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTaskType")]
+        public virtual string ExternalTaskType { get; set; }
+
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy.
         /// This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
@@ -10211,7 +10266,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration detail of a trigger. Next available id: 17</summary>
+    /// <summary>Configuration detail of a trigger. Next available id: 18</summary>
     public class EnterpriseCrmFrontendsEventbusProtoTriggerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10237,6 +10292,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledClients")]
         public virtual System.Collections.Generic.IList<string> EnabledClients { get; set; }
+
+        /// <summary>
+        /// Optional Error catcher config id of the error catch flow which will be executed when execution error happens
+        /// in the task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigId")]
+        public virtual string ErrorCatcherConfigId { get; set; }
 
         /// <summary>The user created label for a particular trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
@@ -10684,6 +10746,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectory")]
         public virtual string ServiceDirectory { get; set; }
 
+        /// <summary>Optional. Ssl config of a connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
+        public virtual GoogleCloudConnectorsV1SslConfig SslConfig { get; set; }
+
         /// <summary>Output only. Current status of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleCloudConnectorsV1ConnectionStatus Status { get; set; }
@@ -10790,6 +10856,53 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SSL Configuration of a connection</summary>
+    public class GoogleCloudConnectorsV1SslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional SSL related field values</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
+        public virtual System.Collections.Generic.IList<GoogleCloudConnectorsV1ConfigVariable> AdditionalVariables { get; set; }
+
+        /// <summary>Type of Client Cert (PEM/JKS/.. etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertType")]
+        public virtual string ClientCertType { get; set; }
+
+        /// <summary>Client Certificate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual GoogleCloudConnectorsV1Secret ClientCertificate { get; set; }
+
+        /// <summary>Client Private Key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKey")]
+        public virtual GoogleCloudConnectorsV1Secret ClientPrivateKey { get; set; }
+
+        /// <summary>Secret containing the passphrase protecting the Client Private Key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKeyPass")]
+        public virtual GoogleCloudConnectorsV1Secret ClientPrivateKeyPass { get; set; }
+
+        /// <summary>Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServerCertificate")]
+        public virtual GoogleCloudConnectorsV1Secret PrivateServerCertificate { get; set; }
+
+        /// <summary>Type of Server Cert (PEM/JKS/.. etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertType")]
+        public virtual string ServerCertType { get; set; }
+
+        /// <summary>Trust Model of the SSL connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustModel")]
+        public virtual string TrustModel { get; set; }
+
+        /// <summary>Controls the ssl type for the given connector version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Bool for enabling SSL</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
+        public virtual System.Nullable<bool> UseSsl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11224,6 +11337,40 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>All regions where Connector Platform is provisioned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<string> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration detail of a error catch task</summary>
+    public class GoogleCloudIntegrationsV1alphaErrorCatcherConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User-provided description intended to give more business context about the error catcher config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. An error catcher id is string representation for the error catcher config. Within a workflow,
+        /// error_catch_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatchId")]
+        public virtual string ErrorCatchId { get; set; }
+
+        /// <summary>
+        /// Required. A number to uniquely identify each error catcher config within the workflow on UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherNumber")]
+        public virtual string ErrorCatcherNumber { get; set; }
+
+        /// <summary>Optional. The user created label for a particular error catcher. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Required. The set of start tasks that are to be executed for the error catch flow</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startErrorTasks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaNextTask> StartErrorTasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11706,6 +11853,12 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> ErrorCatcherConfigs { get; set; }
+
+        /// <summary>
         /// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the
         /// user making the call.
         /// </summary>
@@ -11792,6 +11945,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Optional. The integration description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Optional. Error Catch Task configuration for the integration. It's optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> ErrorCatcherConfigs { get; set; }
 
         /// <summary>
         /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This
@@ -12833,6 +12990,17 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Optional Error catcher config id of the error catch flow which will be executed when execution
+        /// error happens in the task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigId")]
+        public virtual string ErrorCatcherConfigId { get; set; }
+
+        /// <summary>Optional. External task type of the task</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTaskType")]
+        public virtual string ExternalTaskType { get; set; }
+
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy.
         /// This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
@@ -12935,6 +13103,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Optional Error catcher config id of the error catch flow which will be executed when execution
+        /// error happens in the task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigId")]
+        public virtual string ErrorCatcherConfigId { get; set; }
 
         /// <summary>Optional. The user created label for a particular trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]

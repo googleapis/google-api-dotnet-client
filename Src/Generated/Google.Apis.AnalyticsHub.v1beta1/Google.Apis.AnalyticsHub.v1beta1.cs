@@ -2158,6 +2158,10 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
     /// <summary>Restricted export config, used to configure restricted export on linked dataset.</summary>
     public class RestrictedExportConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, enable restricted export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
         /// <summary>If true, restrict direct table access(read api/tabledata.list) on linked table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictDirectTableAccess")]
         public virtual System.Nullable<bool> RestrictDirectTableAccess { get; set; }
