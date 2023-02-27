@@ -18,6 +18,7 @@ using Google.Apis.Auth;
 using Google.Apis.Auth.OAuth2;
 using IntegrationTests.IntegrationTests.Utils;
 using IntegrationTests.Utils;
+using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -44,6 +45,10 @@ namespace IntegrationTests
 
             var verificationOptions = new SignedTokenVerificationOptions();
             verificationOptions.TrustedAudiences.Add("https://this.is.a.test");
+            // The test is flaky without this, because on accasion everything happens so fast
+            // that generation and validation happen in the same instant, and we require the token
+            // to have been generated in the past.
+            verificationOptions.IssuedAtClockTolerance = TimeSpan.FromMilliseconds(1);
 
             var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync(), verificationOptions);
             Assert.NotNull(payload);
@@ -70,6 +75,10 @@ namespace IntegrationTests
 
             var verificationOptions = new SignedTokenVerificationOptions();
             verificationOptions.TrustedAudiences.Add("https://this.is.a.test");
+            // The test is flaky without this, because on accasion everything happens so fast
+            // that generation and validation happen in the same instant, and we require the token
+            // to have been generated in the past.
+            verificationOptions.IssuedAtClockTolerance = TimeSpan.FromMilliseconds(1);
 
             var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync(), verificationOptions);
             Assert.NotNull(payload);
