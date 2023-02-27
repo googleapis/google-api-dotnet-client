@@ -1153,10 +1153,12 @@ namespace Google.Apis.DataCatalog.v1
 
                     /// <summary>
                     /// Imports entries from a source, such as data previously dumped into a Cloud Storage bucket, into
-                    /// Data Catalog. `ImportEntries` accepts source data snapshots of third-party system state. Import
-                    /// of entries is a sync operation that reconciles the state of the third-party system with Data
-                    /// Catalog. `ImportEntries` returns a long-running operation resource that can be queried with
-                    /// Operations.GetOperation to return ImportEntriesMetadata and an ImportEntriesResponse message.
+                    /// Data Catalog. Import of entries is a sync operation that reconciles the state of the third-party
+                    /// system with the Data Catalog. `ImportEntries` accepts source data snapshots of a third-party
+                    /// system. Snapshot should be delivered as a .wire or base65-encoded .txt file containing a
+                    /// sequence of Protocol Buffer messages of DumpItem type. `ImportEntries` returns a long-running
+                    /// operation resource that can be queried with Operations.GetOperation to return
+                    /// ImportEntriesMetadata and an ImportEntriesResponse message.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Target entry group for ingested entries.</param>
@@ -1167,10 +1169,12 @@ namespace Google.Apis.DataCatalog.v1
 
                     /// <summary>
                     /// Imports entries from a source, such as data previously dumped into a Cloud Storage bucket, into
-                    /// Data Catalog. `ImportEntries` accepts source data snapshots of third-party system state. Import
-                    /// of entries is a sync operation that reconciles the state of the third-party system with Data
-                    /// Catalog. `ImportEntries` returns a long-running operation resource that can be queried with
-                    /// Operations.GetOperation to return ImportEntriesMetadata and an ImportEntriesResponse message.
+                    /// Data Catalog. Import of entries is a sync operation that reconciles the state of the third-party
+                    /// system with the Data Catalog. `ImportEntries` accepts source data snapshots of a third-party
+                    /// system. Snapshot should be delivered as a .wire or base65-encoded .txt file containing a
+                    /// sequence of Protocol Buffer messages of DumpItem type. `ImportEntries` returns a long-running
+                    /// operation resource that can be queried with Operations.GetOperation to return
+                    /// ImportEntriesMetadata and an ImportEntriesResponse message.
                     /// </summary>
                     public class ImportRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
                     {

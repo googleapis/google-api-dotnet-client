@@ -451,6 +451,13 @@ namespace Google.Apis.GKEHub.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise,
+                    /// the request will only work if the Membership has no subresource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
                     /// retry your request, the server will know to ignore the request if it has already been completed.
                     /// The server will guarantee that for at least 60 minutes after the first request. For example,
@@ -483,6 +490,14 @@ namespace Google.Apis.GKEHub.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {

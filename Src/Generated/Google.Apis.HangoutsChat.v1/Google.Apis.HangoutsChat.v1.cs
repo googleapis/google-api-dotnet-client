@@ -3304,7 +3304,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
 
-        /// <summary>Plain-text body of the message with all Chat app mentions stripped out.</summary>
+        /// <summary>Output only. Plain-text body of the message with all Chat app mentions stripped out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentText")]
         public virtual string ArgumentText { get; set; }
 
@@ -3315,7 +3315,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Deprecated: Use `cards_v2` instead. Rich, formatted and interactive cards that can be used to display UI
         /// elements such as: formatted texts, buttons, clickable images. Cards are normally displayed below the
-        /// plain-text body of the message.
+        /// plain-text body of the message. `cards` and `cards_v2` can have a maximum size of 32 KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
         public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
@@ -3324,9 +3324,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Richly formatted and interactive cards that display UI elements and editable widgets, such as: - Formatted
         /// text - Buttons - Clickable images - Checkboxes - Radio buttons - Input widgets. Cards are usually displayed
         /// below the text body of a Chat message, but can situationally appear other places, such as
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique identifier among
-        /// cards in the same message and for identifying user input values. Currently supported widgets include: -
-        /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` - `Divider`
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). `cards_v2` and `cards` can have a maximum
+        /// size of 32 KB. The `cardId` is a unique identifier among cards in the same message and for identifying user
+        /// input values. Currently supported widgets include: - `TextParagraph` - `DecoratedText` - `Image` -
+        /// `ButtonList` - `Divider` - `TextInput` - `SelectionInput` (CHECKBOX, RADIO_BUTTON, SWITCH, DROPDOWN) -
+        /// `Grid`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
         public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }

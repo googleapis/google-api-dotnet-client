@@ -3033,8 +3033,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is
-        /// limited to 1 and the success of that task signals the success of the execution. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<int> TaskCount { get; set; }
@@ -4168,7 +4167,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
 
-        /// <summary>Number of retries allowed per Task, before marking this Task failed.</summary>
+        /// <summary>Number of retries allowed per Task, before marking this Task failed. Defaults to 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
         public virtual System.Nullable<int> MaxRetries { get; set; }
 
@@ -4183,7 +4182,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and
         /// kill associated containers. This applies per attempt of a task, meaning each retry can run for the full
-        /// timeout.
+        /// timeout. Defaults to 600 seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }

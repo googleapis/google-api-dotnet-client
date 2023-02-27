@@ -7314,6 +7314,13 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcePdKmsKeyName")]
         public virtual string GcePdKmsKeyName { get; set; }
 
+        /// <summary>
+        /// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all
+        /// instances in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7491,8 +7498,8 @@ namespace Google.Apis.Dataproc.v1.Data
         /// is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
         /// (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short
         /// name are valid. Examples:
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/[region]/default
-        /// projects/[project_id]/regions/[region]/default default
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default
+        /// projects/[project_id]/global/networks/default default
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }

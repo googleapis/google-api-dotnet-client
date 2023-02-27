@@ -4829,6 +4829,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPartitionExpirationMs")]
         public virtual System.Nullable<long> DefaultPartitionExpirationMs { get; set; }
 
+        /// <summary>[Output-only] The default rounding mode of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRoundingMode")]
+        public virtual string DefaultRoundingMode { get; set; }
+
         /// <summary>
         /// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000
         /// milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an
@@ -8819,6 +8823,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCollation")]
         public virtual string DefaultCollation { get; set; }
 
+        /// <summary>[Output-only] The default rounding mode of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRoundingMode")]
+        public virtual string DefaultRoundingMode { get; set; }
+
         /// <summary>[Optional] A user-friendly description of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -9218,6 +9226,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precision")]
         public virtual System.Nullable<long> Precision { get; set; }
+
+        /// <summary>
+        /// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roundingMode")]
+        public virtual string RoundingMode { get; set; }
 
         /// <summary>[Optional] See documentation for precision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]

@@ -2590,7 +2590,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queueingPolicy")]
         public virtual QueueingPolicy QueueingPolicy { get; set; }
 
-        /// <summary>Output only. State of the QueuedResource request</summary>
+        /// <summary>Output only. State of the QueuedResource request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual QueuedResourceState State { get; set; }
 

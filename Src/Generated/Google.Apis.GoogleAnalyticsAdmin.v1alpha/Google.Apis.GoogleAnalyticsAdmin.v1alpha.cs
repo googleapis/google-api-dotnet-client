@@ -1943,8 +1943,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="entity">
-        /// The Data Access Report is requested for this property. For example if "123" is your GA4 property ID, then
-        /// entity should be "properties/123".
+        /// The Data Access Report supports requesting at the property level or account level. If requested at the
+        /// account level, Data Access Reports include all access for all properties under that account. To request at
+        /// the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID. To
+        /// request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4 Account ID.
         /// </param>
         public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest body, string entity)
         {
@@ -1972,8 +1974,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// The Data Access Report is requested for this property. For example if "123" is your GA4 property ID,
-            /// then entity should be "properties/123".
+            /// The Data Access Report supports requesting at the property level or account level. If requested at the
+            /// account level, Data Access Reports include all access for all properties under that account. To request
+            /// at the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID.
+            /// To request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4
+            /// Account ID.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
@@ -7843,8 +7848,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="entity">
-        /// The Data Access Report is requested for this property. For example if "123" is your GA4 property ID, then
-        /// entity should be "properties/123".
+        /// The Data Access Report supports requesting at the property level or account level. If requested at the
+        /// account level, Data Access Reports include all access for all properties under that account. To request at
+        /// the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID. To
+        /// request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4 Account ID.
         /// </param>
         public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest body, string entity)
         {
@@ -7872,8 +7879,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// The Data Access Report is requested for this property. For example if "123" is your GA4 property ID,
-            /// then entity should be "properties/123".
+            /// The Data Access Report supports requesting at the property level or account level. If requested at the
+            /// account level, Data Access Reports include all access for all properties under that account. To request
+            /// at the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID.
+            /// To request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4
+            /// Account ID.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
@@ -10901,7 +10911,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in
-        /// [AccessQuota](#AccessQuota).
+        /// [AccessQuota](#AccessQuota). For account-level requests, this field must be false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnEntityQuota")]
         public virtual System.Nullable<bool> ReturnEntityQuota { get; set; }
@@ -10935,7 +10945,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricHeaders")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccessMetricHeader> MetricHeaders { get; set; }
 
-        /// <summary>The quota state for this Analytics property including this request.</summary>
+        /// <summary>
+        /// The quota state for this Analytics property including this request. This field doesn't work with
+        /// account-level requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quota")]
         public virtual GoogleAnalyticsAdminV1alphaAccessQuota Quota { get; set; }
 
