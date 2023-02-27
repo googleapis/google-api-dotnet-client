@@ -58,7 +58,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Help link to the application default credentials feature.</summary>
         private const string HelpPermalink =
-            "https://developers.google.com/accounts/docs/application-default-credentials";
+            "https://cloud.google.com/docs/authentication/provide-credentials-adc";
 
         /// <summary>GCloud configuration directory on Linux/Mac, relative to $HOME.</summary>
         private static readonly string CloudSDKConfigDirectoryUnix = Path.Combine(".config", "gcloud");
@@ -89,12 +89,8 @@ namespace Google.Apis.Auth.OAuth2
                 ?? await GetAdcFromWellKnownFileAsync().ConfigureAwait(false)
                 // 3. Then try the compute engine.
                 ?? await GetAdcFromComputeAsync().ConfigureAwait(false)
-                // If everything we tried has failed, throw an exception.
-                ?? throw new InvalidOperationException(
-                    "The Application Default Credentials are not available. " +
-                    "They are available if running in Google Compute Engine. " +
-                    $"Otherwise, the environment variable {CredentialEnvironmentVariable} must be defined pointing to a file defining the credentials. " +
-                    $"See {HelpPermalink} for more information.");
+            // If everything we tried has failed, throw an exception.
+                ?? throw new InvalidOperationException($"Your default credentials were not found. To set up Application Default Credentials, see {HelpPermalink}.");
 
             return credential.CreateWithEnvironmentQuotaProject();
 

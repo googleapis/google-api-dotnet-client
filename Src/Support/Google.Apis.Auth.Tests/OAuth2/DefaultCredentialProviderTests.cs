@@ -407,7 +407,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             }
             catch (InvalidOperationException e)
             {
-                Assert.Contains("The Application Default Credentials are not available", e.Message);
+                Assert.Contains("Your default credentials were not found.", e.Message);
             }
         }
 
