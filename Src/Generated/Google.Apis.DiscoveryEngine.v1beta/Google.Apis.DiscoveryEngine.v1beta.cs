@@ -291,8 +291,847 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the Collections resource.</summary>
+            public virtual CollectionsResource Collections { get; }
+
+            /// <summary>The "collections" collection of methods.</summary>
+            public class CollectionsResource
+            {
+                private const string Resource = "collections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CollectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DataStores = new DataStoresResource(service);
+                }
+
+                /// <summary>Gets the DataStores resource.</summary>
+                public virtual DataStoresResource DataStores { get; }
+
+                /// <summary>The "dataStores" collection of methods.</summary>
+                public class DataStoresResource
+                {
+                    private const string Resource = "dataStores";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DataStoresResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Branches = new BranchesResource(service);
+                        ServingConfigs = new ServingConfigsResource(service);
+                        UserEvents = new UserEventsResource(service);
+                    }
+
+                    /// <summary>Gets the Branches resource.</summary>
+                    public virtual BranchesResource Branches { get; }
+
+                    /// <summary>The "branches" collection of methods.</summary>
+                    public class BranchesResource
+                    {
+                        private const string Resource = "branches";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public BranchesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Documents = new DocumentsResource(service);
+                        }
+
+                        /// <summary>Gets the Documents resource.</summary>
+                        public virtual DocumentsResource Documents { get; }
+
+                        /// <summary>The "documents" collection of methods.</summary>
+                        public class DocumentsResource
+                        {
+                            private const string Resource = "documents";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public DocumentsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Creates a Document.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// </param>
+                            public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument body, string parent)
+                            {
+                                return new CreateRequest(service, body, parent);
+                            }
+
+                            /// <summary>Creates a Document.</summary>
+                            public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Required. The ID to use for the Document, which will become the final component of
+                                /// the Document.name. If the caller does not have permission to create the Document,
+                                /// regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This
+                                /// field must be unique among all Documents with the same parent. Otherwise, an
+                                /// ALREADY_EXISTS error is returned. This field must conform to
+                                /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
+                                /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string DocumentId { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+parent}/documents";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                                    });
+                                    RequestParameters.Add("documentId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "documentId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Deletes a Document.</summary>
+                            /// <param name="name">
+                            /// Required. Full resource name of Document, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// If the caller does not have permission to delete the Document, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned. If the Document to delete does not
+                            /// exist, a NOT_FOUND error is returned.
+                            /// </param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(service, name);
+                            }
+
+                            /// <summary>Deletes a Document.</summary>
+                            public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Full resource name of Document, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                                /// If the caller does not have permission to delete the Document, regardless of whether
+                                /// or not it exists, a PERMISSION_DENIED error is returned. If the Document to delete
+                                /// does not exist, a NOT_FOUND error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Gets a Document.</summary>
+                            /// <param name="name">
+                            /// Required. Full resource name of Document, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// If the caller does not have permission to access the Document, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned. If the requested Document does not
+                            /// exist, a NOT_FOUND error is returned.
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>Gets a Document.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Full resource name of Document, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                                /// If the caller does not have permission to access the Document, regardless of whether
+                                /// or not it exists, a PERMISSION_DENIED error is returned. If the requested Document
+                                /// does not exist, a NOT_FOUND error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing
+                            /// items will be created. Note: It is possible for a subset of the Documents to be
+                            /// successfully updated.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent branch resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// Requires create/update permission.
+                            /// </param>
+                            public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportDocumentsRequest body, string parent)
+                            {
+                                return new ImportRequest(service, body, parent);
+                            }
+
+                            /// <summary>
+                            /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing
+                            /// items will be created. Note: It is possible for a subset of the Documents to be
+                            /// successfully updated.
+                            /// </summary>
+                            public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Import request.</summary>
+                                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportDocumentsRequest body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent branch resource name, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                                /// Requires create/update permission.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportDocumentsRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "import";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+parent}/documents:import";
+
+                                /// <summary>Initializes Import parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Gets a list of Documents.</summary>
+                            /// <param name="parent">
+                            /// Required. The parent branch resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// Use `default_branch` as the branch ID, to list documents under the default branch. If
+                            /// the caller does not have permission to list Documentss under this branch, regardless of
+                            /// whether or not this branch exists, a PERMISSION_DENIED error is returned.
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(service, parent);
+                            }
+
+                            /// <summary>Gets a list of Documents.</summary>
+                            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListDocumentsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent branch resource name, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                                /// Use `default_branch` as the branch ID, to list documents under the default branch.
+                                /// If the caller does not have permission to list Documentss under this branch,
+                                /// regardless of whether or not this branch exists, a PERMISSION_DENIED error is
+                                /// returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Maximum number of Documents to return. If unspecified, defaults to 100. The maximum
+                                /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is
+                                /// negative, an INVALID_ARGUMENT error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// A page token ListDocumentsResponse.next_page_token, received from a previous
+                                /// DocumentService.ListDocuments call. Provide this to retrieve the subsequent page.
+                                /// When paginating, all other parameters provided to DocumentService.ListDocuments must
+                                /// match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is
+                                /// returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+parent}/documents";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Updates a Document.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Immutable. The full resource name of the document. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+                            /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                            /// </param>
+                            public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument body, string name)
+                            {
+                                return new PatchRequest(service, body, name);
+                            }
+
+                            /// <summary>Updates a Document.</summary>
+                            public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument>
+                            {
+                                /// <summary>Constructs a new Patch request.</summary>
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Immutable. The full resource name of the document. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+                                /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>
+                                /// If set to true, and the Document is not found, a new Document will be created.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "patch";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "PATCH";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+name}";
+
+                                /// <summary>Initializes Patch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "allowMissing",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the ServingConfigs resource.</summary>
+                    public virtual ServingConfigsResource ServingConfigs { get; }
+
+                    /// <summary>The "servingConfigs" collection of methods.</summary>
+                    public class ServingConfigsResource
+                    {
+                        private const string Resource = "servingConfigs";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ServingConfigsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. Full resource name of the format:
+                        /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can
+                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// </param>
+                        public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
+                        {
+                            return new RecommendRequest(service, body, servingConfig);
+                        }
+
+                        /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
+                        public class RecommendRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendResponse>
+                        {
+                            /// <summary>Constructs a new Recommend request.</summary>
+                            public RecommendRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of the format:
+                            /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can
+                            /// request recommendations from your model, you must create at least one serving config for
+                            /// it.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "recommend";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+servingConfig}:recommend";
+
+                            /// <summary>Initializes Recommend parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the UserEvents resource.</summary>
+                    public virtual UserEventsResource UserEvents { get; }
+
+                    /// <summary>The "userEvents" collection of methods.</summary>
+                    public class UserEventsResource
+                    {
+                        private const string Resource = "userEvents";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public UserEventsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Writes a single user event from the browser. This uses a GET request to due to browser
+                        /// restriction of POST-ing to a 3rd party domain. This method is used only by the Discovery
+                        /// Engine API JavaScript pixel and Google Tag Manager. Users should not call this method
+                        /// directly.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent DataStore resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                        /// </param>
+                        public virtual CollectRequest Collect(string parent)
+                        {
+                            return new CollectRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// Writes a single user event from the browser. This uses a GET request to due to browser
+                        /// restriction of POST-ing to a 3rd party domain. This method is used only by the Discovery
+                        /// Engine API JavaScript pixel and Google Tag Manager. Users should not call this method
+                        /// directly.
+                        /// </summary>
+                        public class CollectRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleApiHttpBody>
+                        {
+                            /// <summary>Constructs a new Collect request.</summary>
+                            public CollectRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent DataStore resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The event timestamp in milliseconds. This prevents browser caching of otherwise
+                            /// identical get requests. The name is abbreviated to reduce the payload bytes.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("ets", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> Ets { get; set; }
+
+                            /// <summary>
+                            /// The URL including cgi-parameters but excluding the hash fragment with a length limit of
+                            /// 5,000 characters. This is often more useful than the referer URL, because many browsers
+                            /// only send the domain for 3rd party requests.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Uri { get; set; }
+
+                            /// <summary>
+                            /// Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("userEvent", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string UserEvent { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "collect";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/userEvents:collect";
+
+                            /// <summary>Initializes Collect parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                                RequestParameters.Add("ets", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "ets",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "uri",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("userEvent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userEvent",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Bulk import of User events. Request processing might be synchronous. Events that already
+                        /// exist are skipped. Use this method for backfilling historical user events.
+                        /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the
+                        /// items to be successfully inserted. Operation.metadata is of type ImportMetadata.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Parent DataStore resource name, of the form
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// </param>
+                        public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest body, string parent)
+                        {
+                            return new ImportRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Bulk import of User events. Request processing might be synchronous. Events that already
+                        /// exist are skipped. Use this method for backfilling historical user events.
+                        /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the
+                        /// items to be successfully inserted. Operation.metadata is of type ImportMetadata.
+                        /// </summary>
+                        public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Import request.</summary>
+                            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent DataStore resource name, of the form
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "import";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/userEvents:import";
+
+                            /// <summary>Initializes Import parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Writes a single user event.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent DataStore resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                        /// </param>
+                        public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent)
+                        {
+                            return new WriteRequest(service, body, parent);
+                        }
+
+                        /// <summary>Writes a single user event.</summary>
+                        public class WriteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent>
+                        {
+                            /// <summary>Constructs a new Write request.</summary>
+                            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent DataStore resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "write";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/userEvents:write";
+
+                            /// <summary>Initializes Write parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the DataStores resource.</summary>
@@ -357,7 +1196,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The parent resource name, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument body, string parent)
                         {
@@ -377,7 +1216,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The parent resource name, such as
-                            /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -435,7 +1274,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Deletes a Document.</summary>
                         /// <param name="name">
                         /// Required. Full resource name of Document, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                         /// If the caller does not have permission to delete the Document, regardless of whether or not
                         /// it exists, a PERMISSION_DENIED error is returned. If the Document to delete does not exist,
                         /// a NOT_FOUND error is returned.
@@ -457,7 +1296,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of Document, such as
-                            /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                             /// If the caller does not have permission to delete the Document, regardless of whether or
                             /// not it exists, a PERMISSION_DENIED error is returned. If the Document to delete does not
                             /// exist, a NOT_FOUND error is returned.
@@ -492,7 +1331,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Document.</summary>
                         /// <param name="name">
                         /// Required. Full resource name of Document, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                         /// If the caller does not have permission to access the Document, regardless of whether or not
                         /// it exists, a PERMISSION_DENIED error is returned. If the requested Document does not exist,
                         /// a NOT_FOUND error is returned.
@@ -514,7 +1353,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of Document, such as
-                            /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                             /// If the caller does not have permission to access the Document, regardless of whether or
                             /// not it exists, a PERMISSION_DENIED error is returned. If the requested Document does not
                             /// exist, a NOT_FOUND error is returned.
@@ -554,7 +1393,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The parent branch resource name, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                         /// Requires create/update permission.
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportDocumentsRequest body, string parent)
@@ -579,7 +1418,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The parent branch resource name, such as
-                            /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                             /// Requires create/update permission.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -618,10 +1457,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a list of Documents.</summary>
                         /// <param name="parent">
                         /// Required. The parent branch resource name, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}`. Use
-                        /// `default_branch` as the branch ID, to list documents under the default branch. If the caller
-                        /// does not have permission to list Documentss under this branch, regardless of whether or not
-                        /// this branch exists, a PERMISSION_DENIED error is returned.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                        /// Use `default_branch` as the branch ID, to list documents under the default branch. If the
+                        /// caller does not have permission to list Documentss under this branch, regardless of whether
+                        /// or not this branch exists, a PERMISSION_DENIED error is returned.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -640,9 +1479,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The parent branch resource name, such as
-                            /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}`. Use
-                            /// `default_branch` as the branch ID, to list documents under the default branch. If the
-                            /// caller does not have permission to list Documentss under this branch, regardless of
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// Use `default_branch` as the branch ID, to list documents under the default branch. If
+                            /// the caller does not have permission to list Documentss under this branch, regardless of
                             /// whether or not this branch exists, a PERMISSION_DENIED error is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -709,7 +1548,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. The full resource name of the document. Format:
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
                         /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument body, string name)
@@ -730,7 +1569,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Immutable. The full resource name of the document. Format:
-                            /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
                             /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1324,8 +2163,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
                     /// Required. Full resource name of the format:
-                    /// projects/*/locations/global/dataStores/*/servingConfigs/* Before you can request recommendations
-                    /// from your model, you must create at least one serving config for it.
+                    /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can request
+                    /// recommendations from your model, you must create at least one serving config for it.
                     /// </param>
                     public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                     {
@@ -1345,8 +2184,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// projects/*/locations/global/dataStores/*/servingConfigs/* Before you can request
-                        /// recommendations from your model, you must create at least one serving config for it.
+                        /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can
+                        /// request recommendations from your model, you must create at least one serving config for it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -1406,7 +2245,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The parent DataStore resource name, such as
-                    /// `projects/{project}/locations/{location}/dataStores/{data_store}`.
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
                     /// </param>
                     public virtual CollectRequest Collect(string parent)
                     {
@@ -1429,7 +2268,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The parent DataStore resource name, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1512,7 +2351,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Parent DataStore resource name, of the form
-                    /// `projects/{project}/locations/{location}/dataStores/{data_store}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest body, string parent)
                     {
@@ -1537,7 +2376,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Parent DataStore resource name, of the form
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1576,7 +2415,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent DataStore resource name, such as
-                    /// `projects/{project}/locations/{location}/dataStores/{data_store}`.
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
                     /// </param>
                     public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent)
                     {
@@ -1596,7 +2435,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The parent DataStore resource name, such as
-                        /// `projects/{project}/locations/{location}/dataStores/{data_store}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2033,25 +2872,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>
-        /// The API request payload, represented as a protocol buffer. Most API request types are supported. For
-        /// example: "type.googleapis.com/google.cloud.discoveryengine.v1alpha.DocumentService.CreateDocumentRequest"
-        /// "type.googleapis.com/google.cloud.discoveryengine.v1alpha.UserEventService.WriteUserEventRequest"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestPayload")]
-        public virtual System.Collections.Generic.IDictionary<string, object> RequestPayload { get; set; }
-
-        /// <summary>
-        /// The API response payload, represented as a protocol buffer. This is used to log some "soft errors", where
-        /// the response is valid but we consider there are some quality issues like unjoined events. The following API
-        /// responses are supported and no PII is included:
-        /// "google.cloud.discoveryengine.v1alpha.RecommendationService.Recommend"
-        /// "google.cloud.discoveryengine.v1alpha.UserEventService.WriteUserEvent"
-        /// "google.cloud.discoveryengine.v1alpha.UserEventService.CollectUserEvent"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responsePayload")]
-        public virtual System.Collections.Generic.IDictionary<string, object> ResponsePayload { get; set; }
-
         /// <summary>The service context in which this error has occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
         public virtual GoogleCloudDiscoveryengineLoggingServiceContext ServiceContext { get; set; }
@@ -2076,9 +2896,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
-    /// The error payload that is populated on LRO import APIs. Including:
-    /// "google.cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments"
-    /// "google.cloud.discoveryengine.v1alpha.UserEventService.ImportUserEvents"
+    /// The error payload that is populated on LRO import APIs, including the following: *
+    /// `google.cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments` *
+    /// `google.cloud.discoveryengine.v1alpha.UserEventService.ImportUserEvents`
     /// </summary>
     public class GoogleCloudDiscoveryengineLoggingImportErrorContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2113,7 +2933,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Describes a running service that sends errors.</summary>
     public class GoogleCloudDiscoveryengineLoggingServiceContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An identifier of the service. For example, "discoveryengine.googleapis.com".</summary>
+        /// <summary>An identifier of the service—for example, `discoveryengine.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
@@ -2125,8 +2945,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineLoggingSourceLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Human-readable name of a function or method. For example, "
-        /// google.cloud.discoveryengine.v1alpha.RecommendationService.Recommend".
+        /// Human-readable name of a function or method—for example,
+        /// `google.cloud.discoveryengine.v1alpha.RecommendationService.Recommend`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
         public virtual string FunctionName { get; set; }
@@ -2353,7 +3173,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Immutable. The full resource name of the document. Format:
-        /// `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
         /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2390,7 +3210,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The Document resource full name, of the form:
-        /// projects/{project\_id}/locations/{location}/dataStores/{data\_store\_id}/branches/{branch\_id}/documents/{document\_id}
+        /// projects/{project\_id}/locations/{location}/collections/{collection\_id}/dataStores/{data\_store\_id}/branches/{branch\_id}/documents/{document\_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

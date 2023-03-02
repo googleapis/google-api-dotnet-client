@@ -4717,6 +4717,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeIntegrationAnalysisPercentage")]
         public virtual System.Nullable<double> RuntimeIntegrationAnalysisPercentage { get; set; }
 
+        /// <summary>
+        /// Percentage of conversations created using the UploadConversation endpoint to analyze automatically, between
+        /// [0, 100].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadConversationAnalysisPercentage")]
+        public virtual System.Nullable<double> UploadConversationAnalysisPercentage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

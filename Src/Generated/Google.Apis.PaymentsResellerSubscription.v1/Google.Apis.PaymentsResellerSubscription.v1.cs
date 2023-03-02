@@ -1670,7 +1670,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Individual line item definition of a subscription.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The price of the product/service in this line item.</summary>
+        /// <summary>
+        /// Output only. The price of the product/service in this line item. The amount could be the wholesale price, or
+        /// it can include a cost of sale based on the contract.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount Amount { get; set; }
 
@@ -1679,9 +1682,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. It is set only if the line item has its own free trial applied. End time of the line item free
-        /// trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same as
-        /// createTime if no free trial promotion is specified.
+        /// Output only. If the line item has its own free trial promotion, it is set after the line item is activated.
+        /// End time of the line item free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It
+        /// will be set the same as createTime if no free trial promotion is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemFreeTrialEndTime")]
         public virtual object LineItemFreeTrialEndTime { get; set; }

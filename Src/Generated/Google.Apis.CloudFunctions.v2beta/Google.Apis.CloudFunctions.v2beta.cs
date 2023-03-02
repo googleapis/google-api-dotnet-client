@@ -1734,6 +1734,13 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTrigger")]
         public virtual EventTrigger EventTrigger { get; set; }
 
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must
+        /// match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>Labels associated with this Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -1790,6 +1797,19 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
     /// <summary>Request of `GenerateSourceUploadUrl` method.</summary>
     public class GenerateUploadUrlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function source code objects
+        /// in intermediate Cloud Storage buckets. When you generate an upload url and upload your source code, it gets
+        /// copied to an intermediate Cloud Storage bucket. The source code is then copied to a versioned directory in
+        /// the sources bucket in the consumer project during the function deployment. It must match the pattern
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. The Google Cloud
+        /// Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be granted
+        /// the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the
+        /// Key/KeyRing/Project/Organization (least access preferred).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

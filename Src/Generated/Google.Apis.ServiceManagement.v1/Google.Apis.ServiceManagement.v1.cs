@@ -4341,6 +4341,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; }
 
+        /// <summary>
+        /// Optional link to proto reference documentation. Example:
+        /// https://cloud.google.com/pubsub/lite/docs/reference/rpc
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoReferenceDocumentationUri")]
+        public virtual string ProtoReferenceDocumentationUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

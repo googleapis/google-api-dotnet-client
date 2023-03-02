@@ -5078,7 +5078,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new fields with potential PII, so they
-    /// get scrubbed when logging protos for errors. NEXT TAG: 29
+    /// get scrubbed when logging protos for errors. NEXT TAG: 31
     /// </summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5092,7 +5092,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual CardCapabilityMetadata CardCapabilityMetadata { get; set; }
 
         /// <summary>
-        /// Whether the annotation should be rendered as a chip. If this is missing or unspecified, fallback to
+        /// Whether the annotation should be rendered as a preview chip. If this is missing or unspecified, fallback to
         /// should_not_render on the metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chipRenderType")]
@@ -5128,11 +5128,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("incomingWebhookChangedMetadata")]
         public virtual IncomingWebhookChangedMetadata IncomingWebhookChangedMetadata { get; set; }
 
+        /// <summary>The inline render format of this annotation. go/drive-smart-chips-chat-v2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineRenderFormat")]
+        public virtual string InlineRenderFormat { get; set; }
+
         /// <summary>
         /// LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationConfigUpdated")]
         public virtual IntegrationConfigUpdatedMetadata IntegrationConfigUpdated { get; set; }
+
+        /// <summary>Additional interaction data for this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactionData")]
+        public virtual InteractionData InteractionData { get; set; }
 
         /// <summary>
         /// Length of the text_body substring beginning from start_index the Annotation corresponds to.
@@ -12231,6 +12239,25 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Interaction data for an annotation, which may be supplemental to the metadata oneof. For example, this will
+    /// contain the fully built navigation target for smart chips. NEXT TAG: 2
+    /// </summary>
+    public class InteractionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A general navigation target associated with the annotation this message is contained in. For smart chips,
+        /// this will be the destination of the tap/click target and will be returned by the server. For scenarios where
+        /// the chip originated from a user-provided url, this value will be provided by clients; otherwise it will be
+        /// built by the corresponding metadata parts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual SafeUrlProto Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class InviteAcceptedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("participantId")]
@@ -13653,6 +13680,10 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class MessageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Message author’s user type (human/bot).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorUserType")]
+        public virtual string AuthorUserType { get; set; }
+
         /// <summary>The content of a matching message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }

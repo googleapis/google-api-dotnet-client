@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PublicCertificateAuthority.v1alpha1.PublicCertificateAuthorityBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PublicCertificateAuthority.v1alpha1.PublicCertificateAuthorityBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

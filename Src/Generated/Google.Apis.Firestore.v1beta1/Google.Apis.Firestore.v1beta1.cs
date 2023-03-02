@@ -1268,7 +1268,7 @@ namespace Google.Apis.Firestore.v1beta1
                     }
                 }
 
-                /// <summary>Listens to changes.</summary>
+                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
                 /// Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
@@ -1278,7 +1278,7 @@ namespace Google.Apis.Firestore.v1beta1
                     return new ListenRequest(service, body, database);
                 }
 
-                /// <summary>Listens to changes.</summary>
+                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
                 public class ListenRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.ListenResponse>
                 {
                     /// <summary>Constructs a new Listen request.</summary>
@@ -1708,7 +1708,10 @@ namespace Google.Apis.Firestore.v1beta1
                     }
                 }
 
-                /// <summary>Streams batches of document updates and deletes, in order.</summary>
+                /// <summary>
+                /// Streams batches of document updates and deletes, in order. This method is only available via the
+                /// gRPC API (not REST).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
                 /// Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is
@@ -1719,7 +1722,10 @@ namespace Google.Apis.Firestore.v1beta1
                     return new WriteRequest(service, body, database);
                 }
 
-                /// <summary>Streams batches of document updates and deletes, in order.</summary>
+                /// <summary>
+                /// Streams batches of document updates and deletes, in order. This method is only available via the
+                /// gRPC API (not REST).
+                /// </summary>
                 public class WriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.WriteResponse>
                 {
                     /// <summary>Constructs a new Write request.</summary>
