@@ -14713,7 +14713,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Fields related to the [Best Sellers reports](https://support.google.com/merchants/answer/9488679).
+    /// Fields related to the [Best sellers reports](https://support.google.com/merchants/answer/9488679).
     /// </summary>
     public class BestSellers : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20783,7 +20783,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Price Competitiveness fields requested by the merchant in the query. Field values are only set if the merchant
+    /// Price competitiveness fields requested by the merchant in the query. Field values are only set if the merchant
     /// queries `PriceCompetitivenessProductView`. https://support.google.com/merchants/answer/9626903
     /// </summary>
     public class PriceCompetitiveness : Google.Apis.Requests.IDirectResponseSchema
@@ -20808,7 +20808,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Price Insights fields requested by the merchant in the query. Field values are only set if the merchant queries
+    /// Price insights fields requested by the merchant in the query. Field values are only set if the merchant queries
     /// `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926
     /// </summary>
     public class PriceInsights : Google.Apis.Requests.IDirectResponseSchema
@@ -22900,7 +22900,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ReportRow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Best Sellers fields requested by the merchant in the query. Field values are only set if the merchant
+        /// Best sellers fields requested by the merchant in the query. Field values are only set if the merchant
         /// queries `BestSellersProductClusterView` or `BestSellersBrandView`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bestSellers")]
@@ -22921,14 +22921,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual Metrics Metrics { get; set; }
 
         /// <summary>
-        /// Price Competitiveness fields requested by the merchant in the query. Field values are only set if the
+        /// Price competitiveness fields requested by the merchant in the query. Field values are only set if the
         /// merchant queries `PriceCompetitivenessProductView`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceCompetitiveness")]
         public virtual PriceCompetitiveness PriceCompetitiveness { get; set; }
 
         /// <summary>
-        /// Price Insights fields requested by the merchant in the query. Field values are only set if the merchant
+        /// Price insights fields requested by the merchant in the query. Field values are only set if the merchant
         /// queries `PriceInsightsProductView`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceInsights")]

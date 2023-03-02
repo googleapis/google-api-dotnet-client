@@ -1857,6 +1857,18 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Maintainer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Material : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
@@ -2083,6 +2095,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashDigest")]
         public virtual string HashDigest { get; set; }
+
+        /// <summary>The maintainer of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintainer")]
+        public virtual Maintainer Maintainer { get; set; }
 
         /// <summary>The OS affected by a vulnerability Used to generate the cpe_uri for OS packages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("os")]

@@ -2802,6 +2802,12 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 
+        /// <summary>
+        /// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

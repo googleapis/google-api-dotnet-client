@@ -972,7 +972,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Gets a DataScanJob resource.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the DataScanJob:
-                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
+                    /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
                     /// where project refers to a project_id or project_number and location_id refers to a GCP region.
                     /// </param>
                     public virtual GetRequest Get(string name)
@@ -992,7 +992,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the DataScanJob:
-                        /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/dataScanJobs/{data_scan_job_id}
+                        /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
                         /// where project refers to a project_id or project_number and location_id refers to a GCP
                         /// region.
                         /// </summary>
@@ -11304,6 +11304,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>URI Endpoints to access sessions associated with the Environment.</summary>
     public class GoogleCloudDataplexV1EnvironmentEndpoints : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. URI to serve notebook APIs</summary>
@@ -11387,6 +11388,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for sessions created for this environment.</summary>
     public class GoogleCloudDataplexV1EnvironmentSessionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -11408,6 +11410,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status of sessions created for this environment.</summary>
     public class GoogleCloudDataplexV1EnvironmentSessionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12179,6 +12182,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. State of Session</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 

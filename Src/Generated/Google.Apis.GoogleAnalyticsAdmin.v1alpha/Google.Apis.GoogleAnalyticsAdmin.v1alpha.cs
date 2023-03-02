@@ -7409,6 +7409,49 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
+        /// Deletes a connected site tag for a Universal Analytics property. Note: this has no effect on GA4 properties.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual DeleteConnectedSiteTagRequest DeleteConnectedSiteTag(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest body)
+        {
+            return new DeleteConnectedSiteTagRequest(service, body);
+        }
+
+        /// <summary>
+        /// Deletes a connected site tag for a Universal Analytics property. Note: this has no effect on GA4 properties.
+        /// </summary>
+        public class DeleteConnectedSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+        {
+            /// <summary>Constructs a new DeleteConnectedSiteTag request.</summary>
+            public DeleteConnectedSiteTagRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "deleteConnectedSiteTag";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:deleteConnectedSiteTag";
+
+            /// <summary>Initializes DeleteConnectedSiteTag parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Fetches the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect
         /// on GA4 property.
         /// </summary>
@@ -7760,6 +7803,49 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+
+        /// <summary>
+        /// Lists the connected site tags for a Universal Analytics property. Note: this has no effect on GA4 property.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ListConnectedSiteTagsRequest ListConnectedSiteTags(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest body)
+        {
+            return new ListConnectedSiteTagsRequest(service, body);
+        }
+
+        /// <summary>
+        /// Lists the connected site tags for a Universal Analytics property. Note: this has no effect on GA4 property.
+        /// </summary>
+        public class ListConnectedSiteTagsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse>
+        {
+            /// <summary>Constructs a new ListConnectedSiteTags request.</summary>
+            public ListConnectedSiteTagsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listConnectedSiteTags";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:listConnectedSiteTags";
+
+            /// <summary>Initializes ListConnectedSiteTags parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
             }
         }
 
@@ -9359,6 +9445,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeAdvertisingId")]
         public virtual System.Nullable<bool> IncludeAdvertisingId { get; set; }
 
+        /// <summary>If set true, enables intraday export to the linked Google Cloud project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intradayExportEnabled")]
+        public virtual System.Nullable<bool> IntradayExportEnabled { get; set; }
+
         /// <summary>
         /// Output only. Resource name of this BigQuery link. Format:
         /// 'properties/{property_id}/bigQueryLinks/{bigquery_link_id}' Format: 'properties/1234/bigQueryLinks/abc567'
@@ -9538,6 +9628,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a specific Connected Site Tag.</summary>
+    public class GoogleAnalyticsAdminV1alphaConnectedSiteTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. User-provided display name for the connected site tag. Must be less than 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Measurement ID to forward events to. Also known as “G-ID” (For example: G-12345).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
+        public virtual string MeasurementId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A conversion event in a Google Analytics property.</summary>
     public class GoogleAnalyticsAdminV1alphaConversionEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9555,7 +9664,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual System.Nullable<bool> Custom { get; set; }
 
-        /// <summary>Output only. If set, this event can currently be deleted via DeleteConversionEvent.</summary>
+        /// <summary>Output only. If set, this event can currently be deleted with DeleteConversionEvent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletable")]
         public virtual System.Nullable<bool> Deletable { get; set; }
 
@@ -9898,6 +10007,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for DeleteConnectedSiteTag RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The measurement ID of the tag to remove from the Universal Analytics property. Also known as "G-ID".
+        /// Example: "G-12345"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
+        public virtual string MeasurementId { get; set; }
+
+        /// <summary>
+        /// The Universal Analytics property to delete connected site tags for. This API does not support GA4
+        /// properties. Format: properties/{universalAnalyticsPropertyId} Example: properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10423,6 +10553,54 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ListConnectedSiteTags RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum number of resources to return. The service may return fewer than this value, even if there are
+        /// additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher
+        /// values will be coerced to the maximum)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous `ListConnectedSiteTags` call. Provide this to retrieve the subsequent
+        /// page. When paginating, all other parameters provided to `ListConnectedSiteTags` must match the call that
+        /// provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// The Universal Analytics property to fetch connected site tags for. This does not work on GA4 properties.
+        /// Format: `properties/1234`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListConnectedSiteTags RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The site tags for the Universal Analytics property</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedSiteTags")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaConnectedSiteTag> ConnectedSiteTags { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListConversionEvents RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListConversionEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10760,7 +10938,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>
         /// Immutable. The property type for this Property resource. When creating a property, if the type is
         /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
-        /// types cannot yet be created via Google Analytics Admin API.
+        /// types cannot yet be created with the Google Analytics Admin API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
         public virtual string PropertyType { get; set; }
@@ -10823,7 +11001,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual GoogleAnalyticsAdminV1alphaAccount Account { get; set; }
 
         /// <summary>
-        /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Developers
+        /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud
         /// Console as a Redirect URI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]

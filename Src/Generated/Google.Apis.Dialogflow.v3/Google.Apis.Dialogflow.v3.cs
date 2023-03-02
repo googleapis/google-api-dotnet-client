@@ -9557,8 +9557,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
-        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are
+        /// reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> VersionConfigs { get; set; }
@@ -11168,6 +11168,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Request of MatchIntent.</summary>
     public class GoogleCloudDialogflowCxV3MatchIntentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Persist session parameter changes from `query_params`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistParameterChanges")]
+        public virtual System.Nullable<bool> PersistParameterChanges { get; set; }
+
         /// <summary>Required. The input specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInput")]
         public virtual GoogleCloudDialogflowCxV3QueryInput QueryInput { get; set; }
@@ -13571,8 +13575,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
-        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are
+        /// reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; }

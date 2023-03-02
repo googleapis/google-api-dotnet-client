@@ -1860,7 +1860,7 @@ namespace Google.Apis.Firestore.v1
                     }
                 }
 
-                /// <summary>Listens to changes.</summary>
+                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
                 /// Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
@@ -1870,7 +1870,7 @@ namespace Google.Apis.Firestore.v1
                     return new ListenRequest(service, body, database);
                 }
 
-                /// <summary>Listens to changes.</summary>
+                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
                 public class ListenRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListenResponse>
                 {
                     /// <summary>Constructs a new Listen request.</summary>
@@ -2300,7 +2300,10 @@ namespace Google.Apis.Firestore.v1
                     }
                 }
 
-                /// <summary>Streams batches of document updates and deletes, in order.</summary>
+                /// <summary>
+                /// Streams batches of document updates and deletes, in order. This method is only available via the
+                /// gRPC API (not REST).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
                 /// Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is
@@ -2311,7 +2314,10 @@ namespace Google.Apis.Firestore.v1
                     return new WriteRequest(service, body, database);
                 }
 
-                /// <summary>Streams batches of document updates and deletes, in order.</summary>
+                /// <summary>
+                /// Streams batches of document updates and deletes, in order. This method is only available via the
+                /// gRPC API (not REST).
+                /// </summary>
                 public class WriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.WriteResponse>
                 {
                     /// <summary>Constructs a new Write request.</summary>
@@ -3901,6 +3907,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
         public virtual string ConcurrencyMode { get; set; }
 
+        /// <summary>Output only. The timestamp at which this database was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
         /// delete requests to ensure the client has an up-to-date value before proceeding.
@@ -3934,6 +3944,17 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>Output only. The system-generated UUID4 for this Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp at which this database was most recently updated. Note this only includes updates
+        /// to the database resource and not data contained by the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ExportDocuments.</summary>

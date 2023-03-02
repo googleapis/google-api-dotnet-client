@@ -5828,6 +5828,12 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudIdentityInfo")]
         public virtual GoogleCloudChannelV1CloudIdentityInfo CloudIdentityInfo { get; set; }
 
+        /// <summary>
+        /// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationId")]
+        public virtual string CorrelationId { get; set; }
+
         /// <summary>Output only. Time when the customer was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

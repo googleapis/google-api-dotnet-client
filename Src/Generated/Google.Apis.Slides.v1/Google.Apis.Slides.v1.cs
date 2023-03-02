@@ -901,8 +901,8 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>
         /// The image URL. The image is fetched once at insertion time and a copy is stored for display inside the
         /// presentation. Images must be less than 50 MB in size, can't exceed 25 megapixels, and must be in one of PNG,
-        /// JPEG, or GIF formats. The provided URL can be up to 2 KB in length. The URL is saved with the image, and
-        /// exposed through the Image.source_url field.
+        /// JPEG, or GIF formats. The provided URL must be publicly accessible and up to 2 KB in length. The URL is
+        /// saved with the image, and exposed through the Image.source_url field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }

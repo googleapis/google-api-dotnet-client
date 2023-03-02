@@ -345,7 +345,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -425,7 +425,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -634,7 +634,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1174,6 +1174,21 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
 }
 namespace Google.Apis.CCAIPlatform.v1alpha1.Data
 {
+    /// <summary>Message storing info about the first admin user. Next ID: 3</summary>
+    public class AdminUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Last/family name of the first admin user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+        public virtual string FamilyName { get; set; }
+
+        /// <summary>Optional. First/given name of the first admin user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
+        public virtual string GivenName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1181,9 +1196,13 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ContactCenter object</summary>
+    /// <summary>Message describing ContactCenter object Next ID: 14</summary>
     public class ContactCenter : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Info about the first admin user, such as given name and family name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminUser")]
+        public virtual AdminUser AdminUser { get; set; }
+
         /// <summary>
         /// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud
         /// identity
@@ -1234,7 +1253,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual URIs Uris { get; set; }
 
-        /// <summary>Optional. Email address of the first admin users.</summary>
+        /// <summary>Optional. Email address of the first admin user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
 

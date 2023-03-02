@@ -3592,7 +3592,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual System.Nullable<bool> Custom { get; set; }
 
-        /// <summary>Output only. If set, this event can currently be deleted via DeleteConversionEvent.</summary>
+        /// <summary>Output only. If set, this event can currently be deleted with DeleteConversionEvent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletable")]
         public virtual System.Nullable<bool> Deletable { get; set; }
 
@@ -4221,7 +4221,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         /// <summary>
         /// Immutable. The property type for this Property resource. When creating a property, if the type is
         /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
-        /// types cannot yet be created via Google Analytics Admin API.
+        /// types cannot yet be created with the Google Analytics Admin API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
         public virtual string PropertyType { get; set; }
@@ -4284,7 +4284,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual GoogleAnalyticsAdminV1betaAccount Account { get; set; }
 
         /// <summary>
-        /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Developers
+        /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud
         /// Console as a Redirect URI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]

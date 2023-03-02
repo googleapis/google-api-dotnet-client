@@ -19349,8 +19349,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
-        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are
+        /// reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> VersionConfigs { get; set; }
@@ -21398,8 +21398,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
-        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are
+        /// reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; }
@@ -24217,6 +24217,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>
+        /// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If
+        /// agent defines synthesization options as well, agent settings overrides the option here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttsConfig")]
+        public virtual GoogleCloudDialogflowV2SynthesizeSpeechConfig TtsConfig { get; set; }
 
         /// <summary>Output only. Update time of the conversation profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
