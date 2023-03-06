@@ -2724,6 +2724,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
         public virtual System.Collections.Generic.IList<EnumOption> EnumOptions { get; set; }
 
+        /// <summary>Indicates if current template is part of advanced settings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAdvanced")]
+        public virtual System.Nullable<bool> IsAdvanced { get; set; }
+
         /// <summary>Key of the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }

@@ -1844,6 +1844,8 @@ namespace Google.Apis.GKEHub.v1beta
                     /// <param name="name">
                     /// The resource name for the rbacrolebinding
                     /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+                    /// or
+                    /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1beta.Data.RBACRoleBinding body, string name)
                     {
@@ -1864,6 +1866,8 @@ namespace Google.Apis.GKEHub.v1beta
                         /// <summary>
                         /// The resource name for the rbacrolebinding
                         /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -5104,7 +5108,8 @@ namespace Google.Apis.GKEHub.v1beta.Data
 
         /// <summary>
         /// The resource name for the rbacrolebinding
-        /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+        /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}` or
+        /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

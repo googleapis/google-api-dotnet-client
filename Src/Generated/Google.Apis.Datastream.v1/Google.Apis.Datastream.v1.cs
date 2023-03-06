@@ -3776,15 +3776,15 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual OracleRdbms IncludeObjects { get; set; }
 
         /// <summary>
-        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0),
-        /// the system's default value will be used.
+        /// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0),
+        /// the system's default value is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
         public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
 
         /// <summary>
-        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the
-        /// system's default value will be used.
+        /// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the
+        /// system's default value is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
         public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }

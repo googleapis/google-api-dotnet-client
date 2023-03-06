@@ -4420,13 +4420,19 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Identifies the cluster-scoped resources to restore from the Backup.</summary>
+    /// <summary>
+    /// Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a
+    /// restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources
+    /// automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob -
+    /// metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node -
+    /// snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore
+    /// configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
+    /// </summary>
     public class ClusterResourceRestoreScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of "types" of cluster-scoped resources to be restored from the Backup. An empty list means that NO
-        /// cluster-scoped resources will be restored. Note that Namespaces and PersistentVolume restoration is handled
-        /// separately and is not governed by this field.
+        /// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected
+        /// resources will be restored. Mutually exclusive to any other field in the message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedGroupKinds")]
         public virtual System.Collections.Generic.IList<GroupKind> SelectedGroupKinds { get; set; }
@@ -5027,7 +5033,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
     }
 
-    /// <summary>Configuration of a restore. Next id: 9</summary>
+    /// <summary>Configuration of a restore. Next id: 11</summary>
     public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5259,8 +5265,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// is compared against the fields matched by the target_json_path expression (and must also have passed the
         /// previous filters). Substitution will not be performed against fields whose value does not match this
         /// expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will
-        /// undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for for this field will
-        /// only match empty fields.
+        /// undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only
+        /// match empty fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalValuePattern")]
         public virtual string OriginalValuePattern { get; set; }

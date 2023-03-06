@@ -1573,8 +1573,9 @@ namespace Google.Apis.Batch.v1.Data
     public class Container : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If set to true, external network access to and from container will be blocked. The container will use the
-        /// default internal network 'goog-internal'.
+        /// If set to true, external network access to and from container will be blocked, containers that are with
+        /// block_external_network as true can still communicate with each other, network cannot be specified in the
+        /// `container.options` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockExternalNetwork")]
         public virtual System.Nullable<bool> BlockExternalNetwork { get; set; }
@@ -1628,7 +1629,7 @@ namespace Google.Apis.Batch.v1.Data
 
     /// <summary>
     /// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD
-    /// partitions. https://cloud.google.com/compute/docs/disks#pdspecs.
+    /// partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and
     /// https://cloud.google.com/compute/docs/disks#localssds.
     /// </summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
@@ -1641,11 +1642,11 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string DiskInterface { get; set; }
 
         /// <summary>
-        /// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1)
-        /// Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the
+        /// Name of a public or custom image used as the data source. For example, the following are all valid URLs: *
+        /// Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the
         /// image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in
-        /// short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian
-        /// images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+        /// short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian
+        /// images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -1735,7 +1736,7 @@ namespace Google.Apis.Batch.v1.Data
         public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
 
         /// <summary>
-        /// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the
+        /// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the
         /// VM is deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
@@ -1753,8 +1754,8 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string MachineType { get; set; }
 
         /// <summary>
-        /// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`.
-        /// Not yet implemented.
+        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not
+        /// yet implemented.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -2130,9 +2131,9 @@ namespace Google.Apis.Batch.v1.Data
     {
         /// <summary>
         /// The URL of an existing network resource. You can specify the network as a full or partial URL. For example,
-        /// the following are all valid URLs:
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-        /// projects/{project}/global/networks/{network} global/networks/{network}
+        /// the following are all valid URLs: *
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} *
+        /// projects/{project}/global/networks/{network} * global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -2148,9 +2149,9 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or
-        /// partial URL. For example, the following are all valid URLs:
-        /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork}
-        /// projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+        /// partial URL. For example, the following are all valid URLs: *
+        /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} *
+        /// projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
@@ -2512,7 +2513,7 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requireHostsFile")]
         public virtual System.Nullable<bool> RequireHostsFile { get; set; }
 
-        /// <summary>Number of Tasks in the TaskGroup. default is 1</summary>
+        /// <summary>Number of Tasks in the TaskGroup. Default is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<long> TaskCount { get; set; }
 

@@ -4919,7 +4919,8 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>
         /// Specific type of the event. Read-only. Possible values are:   - "default" - A regular event or not further
-        /// specified.  - "outOfOffice" - An out-of-office event.  - "focusTime" - A focus-time event.
+        /// specified.  - "outOfOffice" - An out-of-office event.  - "focusTime" - A focus-time event.  -
+        /// "workingLocation" - A working location event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -5119,6 +5120,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
+
+        /// <summary>Working Location event data. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingLocationProperties")]
+        public virtual EventWorkingLocationProperties WorkingLocationProperties { get; set; }
 
         /// <summary>The creator of the event. Read-only.</summary>
         public class CreatorData
@@ -5411,6 +5416,59 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    public class EventWorkingLocationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If present, specifies that the user is working from a custom location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLocation")]
+        public virtual CustomLocationData CustomLocation { get; set; }
+
+        /// <summary>If present, specifies that the user is working at home.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homeOffice")]
+        public virtual object HomeOffice { get; set; }
+
+        /// <summary>If present, specifies that the user is working from an office.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("officeLocation")]
+        public virtual OfficeLocationData OfficeLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+
+        /// <summary>If present, specifies that the user is working from a custom location.</summary>
+        public class CustomLocationData
+        {
+            /// <summary>An optional extra label for additional information.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("label")]
+            public virtual string Label { get; set; }
+        }
+
+        /// <summary>If present, specifies that the user is working from an office.</summary>
+        public class OfficeLocationData
+        {
+            /// <summary>
+            /// An optional building identifier. This should reference a building ID in the organization's Resources
+            /// database.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
+            public virtual string BuildingId { get; set; }
+
+            /// <summary>An optional arbitrary desk identifier.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("deskId")]
+            public virtual string DeskId { get; set; }
+
+            /// <summary>An optional arbitrary floor identifier.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("floorId")]
+            public virtual string FloorId { get; set; }
+
+            /// <summary>An optional arbitrary floor section identifier.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("floorSectionId")]
+            public virtual string FloorSectionId { get; set; }
+
+            /// <summary>An optional extra label for additional information.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("label")]
+            public virtual string Label { get; set; }
+        }
     }
 
     public class Events : Google.Apis.Requests.IDirectResponseSchema

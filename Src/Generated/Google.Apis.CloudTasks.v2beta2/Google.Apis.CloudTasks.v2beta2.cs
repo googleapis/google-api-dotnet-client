@@ -2579,14 +2579,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// will set it to the current time. Task De-duplication: Explicitly specifying a task ID enables task
         /// de-duplication. If a task's ID is identical to that of an existing task or a task that was deleted or
         /// completed recently then the call will fail with ALREADY_EXISTS. If the task's queue was created using Cloud
-        /// Tasks, then another task with the same name can't be created for ~1hour after the original task was deleted
+        /// Tasks, then another task with the same name can't be created for ~1 hour after the original task was deleted
         /// or completed. If the task's queue was created using queue.yaml or queue.xml, then another task with the same
-        /// name can't be created for ~9days after the original task was deleted or completed. Because there is an extra
-        /// lookup cost to identify duplicate task names, these CreateTask calls have significantly increased latency.
-        /// Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that
-        /// are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and
-        /// error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task
-        /// ids to store and serve tasks efficiently.
+        /// name can't be created for ~9 days after the original task was deleted or completed. Because there is an
+        /// extra lookup cost to identify duplicate task names, these CreateTask calls have significantly increased
+        /// latency. Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task
+        /// ids that are sequential or have sequential prefixes, for example using a timestamp, causes an increase in
+        /// latency and error rates in all task commands. The infrastructure relies on an approximately uniform
+        /// distribution of task ids to store and serve tasks efficiently.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
         public virtual Task Task { get; set; }
@@ -2827,8 +2827,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual System.Collections.Generic.IList<HeaderOverride> HeaderOverrides { get; set; }
 
         /// <summary>
-        /// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that
-        /// if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        /// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if
+        /// the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; }
@@ -2850,7 +2850,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
         public virtual OidcToken OidcToken { get; set; }
 
-        /// <summary>Uri override. When specified, modifies the execution Uri for all the tasks in the queue.</summary>
+        /// <summary>Uri override. When specified, overrides the execution Uri for all the tasks in the queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriOverride")]
         public virtual UriOverride UriOverride { get; set; }
 
@@ -3058,7 +3058,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>PathOverride. Path message defines path override for HTTP targets.</summary>
     public class PathOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URI path (e.g., a/b/c). Default is Empty string.</summary>
+        /// <summary>The URI path (e.g., /users/1234). Default is an empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
@@ -3182,7 +3182,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>QueryOverride. Query message defines query override for HTTP targets.</summary>
     public class QueryOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The query parameters (e.g., qparam1=123&amp;qparam2=456). Default is Empty string.</summary>
+        /// <summary>The query parameters (e.g., qparam1=123&amp;qparam2=456). Default is an empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
         public virtual string QueryParams { get; set; }
 
@@ -3680,22 +3680,22 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     public class UriOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is
-        /// "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to
-        /// "https://example.net". Host value cannot be an empty string.
+        /// Host override. When specified, replaces the host part of the task URL. For example, if the task URL is
+        /// "https://www.google.com," and host value is set to "example.net", the overridden URI will be changed to
+        /// "https://example.net." Host value cannot be an empty string (INVALID_ARGUMENT).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
         /// <summary>
-        /// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty
+        /// URI path. When specified, replaces the existing path of the task URL. Setting the path value to an empty
         /// string clears the URI path segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathOverride")]
         public virtual PathOverride PathOverride { get; set; }
 
         /// <summary>
-        /// Port override. When specified, will replace the port part of the task URI. For instance, for a URI
+        /// Port override. When specified, replaces the port part of the task URI. For instance, for a URI
         /// http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that
         /// the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
         /// </summary>
@@ -3703,7 +3703,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual System.Nullable<long> Port { get; set; }
 
         /// <summary>
-        /// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty
+        /// URI Query. When specified, replaces the query part of the task URI. Setting the query value to an empty
         /// string clears the URI query segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryOverride")]

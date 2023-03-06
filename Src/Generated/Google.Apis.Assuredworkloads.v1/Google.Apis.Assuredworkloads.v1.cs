@@ -1572,6 +1572,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Represents the Ekm Provisioning State of the given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningResponse")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse EkmProvisioningResponse { get; set; }
+
         /// <summary>
         /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
         /// Europe/Canada customers.
@@ -1658,6 +1662,25 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>External key management systems(EKM) Provisioning response</summary>
+    public class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates Ekm provisioning error if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorDomain")]
+        public virtual string EkmProvisioningErrorDomain { get; set; }
+
+        /// <summary>Detailed error message if Ekm provisioning fails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMessage")]
+        public virtual string EkmProvisioningErrorMessage { get; set; }
+
+        /// <summary>Indicates Ekm enrollment Provisioning of a given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningState")]
+        public virtual string EkmProvisioningState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring,
     /// callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
@@ -1685,7 +1708,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Permissions granted to the AW Partner SA account for the customer workload</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Allow partner to view data and logs</summary>
+        /// <summary>Allow the partner to view inspectability logs and monitoring violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLogsViewer")]
         public virtual System.Nullable<bool> DataLogsViewer { get; set; }
 

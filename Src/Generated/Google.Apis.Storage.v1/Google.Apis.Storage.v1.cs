@@ -4971,6 +4971,10 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("includeTrailingDelimiter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTrailingDelimiter { get; set; }
 
+            /// <summary>Filter results to objects and prefixes that match this glob pattern.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("matchGlob", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MatchGlob { get; set; }
+
             /// <summary>
             /// Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are
             /// omitted, fewer total results may be returned than requested. The service will use this parameter or
@@ -5064,6 +5068,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "includeTrailingDelimiter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("matchGlob", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matchGlob",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

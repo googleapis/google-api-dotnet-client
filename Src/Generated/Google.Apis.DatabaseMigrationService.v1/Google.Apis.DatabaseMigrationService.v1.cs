@@ -4252,6 +4252,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details regarding an Apply background job.</summary>
+    public class ApplyJobDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The connection profile which was used for the apply job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionProfile")]
+        public virtual string ConnectionProfile { get; set; }
+
+        /// <summary>AIP-160 based filter used to specify the entities to apply</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -4307,6 +4322,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Execution log of a background job.</summary>
     public class BackgroundJobLogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Apply job details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyJobDetails")]
+        public virtual ApplyJobDetails ApplyJobDetails { get; set; }
+
         /// <summary>
         /// Job completion comment, such as how many entities were seeded, how many warnings were found during
         /// conversion, and similar information.
@@ -4317,6 +4336,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Job completion state, i.e. the final state after the job completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionState")]
         public virtual string CompletionState { get; set; }
+
+        /// <summary>Convert job details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertJobDetails")]
+        public virtual ConvertJobDetails ConvertJobDetails { get; set; }
 
         /// <summary>The timestamp when the background job was finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
@@ -4865,6 +4888,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// Filter the entities to convert. Leaving this field empty will convert all of the entities. Supports Google
         /// AIP-160 style filtering.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details regarding a Convert background job.</summary>
+    public class ConvertJobDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AIP-160 based filter used to specify the entities to convert</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
