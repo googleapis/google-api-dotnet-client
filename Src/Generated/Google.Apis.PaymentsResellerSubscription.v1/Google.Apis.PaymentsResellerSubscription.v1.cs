@@ -1682,8 +1682,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. If the line item has its own free trial promotion, it is set after the line item is activated.
-        /// End time of the line item free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It
+        /// Output only. The free trial end time will be populated after the line item is successfully processed. End
+        /// time of the line item free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It
         /// will be set the same as createTime if no free trial promotion is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemFreeTrialEndTime")]

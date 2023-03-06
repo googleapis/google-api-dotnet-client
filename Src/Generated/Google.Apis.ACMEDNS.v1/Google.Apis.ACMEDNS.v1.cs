@@ -258,7 +258,8 @@ namespace Google.Apis.ACMEDNS.v1
         /// Gets the ACME challenge set for a given domain name. Domain names must be provided in Punycode.
         /// </summary>
         /// <param name="rootDomain">
-        /// Required. SLD + TLD domain name to list challenges. This MAY be Unicode or Punycode.
+        /// Required. SLD + TLD domain name to list challenges. For example, this would be "google.com" for any FQDN
+        /// under "google.com". That includes challenges for "subdomain.google.com". This MAY be Unicode or Punycode.
         /// </param>
         public virtual GetRequest Get(string rootDomain)
         {
@@ -277,7 +278,11 @@ namespace Google.Apis.ACMEDNS.v1
                 InitParameters();
             }
 
-            /// <summary>Required. SLD + TLD domain name to list challenges. This MAY be Unicode or Punycode.</summary>
+            /// <summary>
+            /// Required. SLD + TLD domain name to list challenges. For example, this would be "google.com" for any FQDN
+            /// under "google.com". That includes challenges for "subdomain.google.com". This MAY be Unicode or
+            /// Punycode.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("rootDomain", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RootDomain { get; private set; }
 
@@ -311,7 +316,8 @@ namespace Google.Apis.ACMEDNS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="rootDomain">
-        /// Required. SLD + TLD domain name to update records for. This MAY be Unicode or Punycode.
+        /// Required. SLD + TLD domain name to update records for. For example, this would be "google.com" for any FQDN
+        /// under "google.com". That includes challenges for "subdomain.google.com". This MAY be Unicode or Punycode.
         /// </param>
         public virtual RotateChallengesRequest RotateChallenges(Google.Apis.ACMEDNS.v1.Data.RotateChallengesRequest body, string rootDomain)
         {
@@ -333,7 +339,9 @@ namespace Google.Apis.ACMEDNS.v1
             }
 
             /// <summary>
-            /// Required. SLD + TLD domain name to update records for. This MAY be Unicode or Punycode.
+            /// Required. SLD + TLD domain name to update records for. For example, this would be "google.com" for any
+            /// FQDN under "google.com". That includes challenges for "subdomain.google.com". This MAY be Unicode or
+            /// Punycode.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("rootDomain", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RootDomain { get; private set; }

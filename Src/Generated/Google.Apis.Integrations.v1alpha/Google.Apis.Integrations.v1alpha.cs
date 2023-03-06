@@ -1898,12 +1898,14 @@ namespace Google.Apis.Integrations.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Standard filter field, we support filtering on all fields in
-                        /// EventExecutionParamIndexes table. All fields support for EQUALS, in additional:
-                        /// CreateTimestamp support for LESS_THAN, GREATER_THAN ParameterKey, ParameterValue,
-                        /// ParameterType support for HAS For example: "parameter_value" HAS \"parameter1\" Also
-                        /// supports operators like AND, OR, NOT For example, trigger_id=\"id1\" AND
-                        /// event_execution_state=\"FAILED\"
+                        /// Optional. Standard filter field, we support filtering on following fields: workflow_name:
+                        /// the name of the integration. CreateTimestamp: the execution created time.
+                        /// event_execution_state: the state of the executions. execution_id: the id of the execution.
+                        /// trigger_id: the id of the trigger. parameter_type: the type of the parameters involved in
+                        /// the execution. All fields support for EQUALS, in additional: CreateTimestamp support for
+                        /// LESS_THAN, GREATER_THAN ParameterType support for HAS For example: "parameter_type" HAS
+                        /// \"string\" Also supports operators like AND, OR, NOT For example, trigger_id=\"id1\" AND
+                        /// workflow_name=\"testWorkflow\"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -4559,12 +4561,14 @@ namespace Google.Apis.Integrations.v1alpha
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. Standard filter field, we support filtering on all fields in
-                            /// EventExecutionParamIndexes table. All fields support for EQUALS, in additional:
-                            /// CreateTimestamp support for LESS_THAN, GREATER_THAN ParameterKey, ParameterValue,
-                            /// ParameterType support for HAS For example: "parameter_value" HAS \"parameter1\" Also
-                            /// supports operators like AND, OR, NOT For example, trigger_id=\"id1\" AND
-                            /// event_execution_state=\"FAILED\"
+                            /// Optional. Standard filter field, we support filtering on following fields:
+                            /// workflow_name: the name of the integration. CreateTimestamp: the execution created time.
+                            /// event_execution_state: the state of the executions. execution_id: the id of the
+                            /// execution. trigger_id: the id of the trigger. parameter_type: the type of the parameters
+                            /// involved in the execution. All fields support for EQUALS, in additional: CreateTimestamp
+                            /// support for LESS_THAN, GREATER_THAN ParameterType support for HAS For example:
+                            /// "parameter_type" HAS \"string\" Also supports operators like AND, OR, NOT For example,
+                            /// trigger_id=\"id1\" AND workflow_name=\"testWorkflow\"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -5620,6 +5624,51 @@ namespace Google.Apis.Integrations.v1alpha
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
                                 });
                             }
+                        }
+                    }
+
+                    /// <summary>Delete the selected integration and all versions inside</summary>
+                    /// <param name="name">Required. The location resource of the request.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Delete the selected integration and all versions inside</summary>
+                    public class DeleteRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The location resource of the request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/integrations/[^/]+$",
+                            });
                         }
                     }
 
@@ -7728,6 +7777,46 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    public class EnterpriseCrmEventbusProtoCloudKmsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The id of GCP project where the KMS key is stored. If not provided, assume the key is stored in
+        /// the same GCP project defined in Client (tag 14).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectId")]
+        public virtual string GcpProjectId { get; set; }
+
+        /// <summary>
+        /// A Cloud KMS key is a named object containing one or more key versions, along with metadata for the key. A
+        /// key exists on exactly one key ring tied to a specific location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; }
+
+        /// <summary>
+        /// A key ring organizes keys in a specific Google Cloud location and allows you to manage access control on
+        /// groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be
+        /// unique within a given location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyRingName")]
+        public virtual string KeyRingName { get; set; }
+
+        /// <summary>
+        /// Optional. Each version of a key contains key material used for encryption or signing. A key's version is
+        /// represented by an integer, starting at 1. To decrypt data or verify a signature, you must use the same key
+        /// version that was used to encrypt or sign the data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyVersionName")]
+        public virtual string KeyVersionName { get; set; }
+
+        /// <summary>Location name of the key ring, e.g. "us-west1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationName")]
+        public virtual string LocationName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud Scheduler Trigger configuration</summary>
     public class EnterpriseCrmEventbusProtoCloudSchedulerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8957,9 +9046,21 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audit")]
         public virtual EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit Audit { get; set; }
 
+        /// <summary>The event data user sends as request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>KMS info, used by cmek/gmek integration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKmsConfig")]
+        public virtual EnterpriseCrmEventbusProtoCloudKmsConfig CloudKmsConfig { get; set; }
+
         /// <summary>Auto-generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdTimestamp")]
         public virtual object CreatedTimestamp { get; set; }
+
+        /// <summary>Encrypted SuspensionResolutionInfo</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedSuspensionResolutionInfo")]
+        public virtual string EncryptedSuspensionResolutionInfo { get; set; }
 
         /// <summary>Required. ID of the associated execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventExecutionInfoId")]
@@ -8997,6 +9098,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Required. The name of the originating workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workflowName")]
         public virtual string WorkflowName { get; set; }
+
+        /// <summary>Wrapped dek</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedDek")]
+        public virtual string WrappedDek { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10067,6 +10172,16 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual System.Nullable<bool> DisableStrictTypeValidation { get; set; }
 
         /// <summary>
+        /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the
+        /// task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherId")]
+        public virtual string ErrorCatcherId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTaskType")]
+        public virtual string ExternalTaskType { get; set; }
+
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy.
         /// This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
@@ -10211,7 +10326,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration detail of a trigger. Next available id: 17</summary>
+    /// <summary>Configuration detail of a trigger. Next available id: 19</summary>
     public class EnterpriseCrmFrontendsEventbusProtoTriggerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10237,6 +10352,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledClients")]
         public virtual System.Collections.Generic.IList<string> EnabledClients { get; set; }
+
+        /// <summary>
+        /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the
+        /// task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherId")]
+        public virtual string ErrorCatcherId { get; set; }
 
         /// <summary>The user created label for a particular trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
@@ -10684,6 +10806,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectory")]
         public virtual string ServiceDirectory { get; set; }
 
+        /// <summary>Optional. Ssl config of a connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
+        public virtual GoogleCloudConnectorsV1SslConfig SslConfig { get; set; }
+
         /// <summary>Output only. Current status of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleCloudConnectorsV1ConnectionStatus Status { get; set; }
@@ -10790,6 +10916,53 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SSL Configuration of a connection</summary>
+    public class GoogleCloudConnectorsV1SslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional SSL related field values</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
+        public virtual System.Collections.Generic.IList<GoogleCloudConnectorsV1ConfigVariable> AdditionalVariables { get; set; }
+
+        /// <summary>Type of Client Cert (PEM/JKS/.. etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertType")]
+        public virtual string ClientCertType { get; set; }
+
+        /// <summary>Client Certificate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual GoogleCloudConnectorsV1Secret ClientCertificate { get; set; }
+
+        /// <summary>Client Private Key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKey")]
+        public virtual GoogleCloudConnectorsV1Secret ClientPrivateKey { get; set; }
+
+        /// <summary>Secret containing the passphrase protecting the Client Private Key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKeyPass")]
+        public virtual GoogleCloudConnectorsV1Secret ClientPrivateKeyPass { get; set; }
+
+        /// <summary>Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServerCertificate")]
+        public virtual GoogleCloudConnectorsV1Secret PrivateServerCertificate { get; set; }
+
+        /// <summary>Type of Server Cert (PEM/JKS/.. etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertType")]
+        public virtual string ServerCertType { get; set; }
+
+        /// <summary>Trust Model of the SSL connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustModel")]
+        public virtual string TrustModel { get; set; }
+
+        /// <summary>Controls the ssl type for the given connector version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Bool for enabling SSL</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
+        public virtual System.Nullable<bool> UseSsl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11122,6 +11295,21 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration detail of coordinate, it used for UI</summary>
+    public class GoogleCloudIntegrationsV1alphaCoordinate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. X axis of the coordinate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<int> X { get; set; }
+
+        /// <summary>Required. Y axis of the coordinate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<int> Y { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for CreateAppsScriptProject rpc call.</summary>
     public class GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11224,6 +11412,47 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>All regions where Connector Platform is provisioned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<string> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration detail of a error catch task</summary>
+    public class GoogleCloudIntegrationsV1alphaErrorCatcherConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User-provided description intended to give more business context about the error catcher config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. An error catcher id is string representation for the error catcher config. Within a workflow,
+        /// error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the
+        /// workflow
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherId")]
+        public virtual string ErrorCatcherId { get; set; }
+
+        /// <summary>
+        /// Required. A number to uniquely identify each error catcher config within the workflow on UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherNumber")]
+        public virtual string ErrorCatcherNumber { get; set; }
+
+        /// <summary>Optional. The user created label for a particular error catcher. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual GoogleCloudIntegrationsV1alphaCoordinate Position { get; set; }
+
+        /// <summary>Required. The set of start tasks that are to be executed for the error catch flow</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startErrorTasks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaNextTask> StartErrorTasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11706,6 +11935,12 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> ErrorCatcherConfigs { get; set; }
+
+        /// <summary>
         /// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the
         /// user making the call.
         /// </summary>
@@ -11792,6 +12027,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Optional. The integration description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Optional. Error Catch Task configuration for the integration. It's optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> ErrorCatcherConfigs { get; set; }
 
         /// <summary>
         /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This
@@ -12833,6 +13072,17 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error
+        /// happens in the task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherId")]
+        public virtual string ErrorCatcherId { get; set; }
+
+        /// <summary>Optional. External task type of the task</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTaskType")]
+        public virtual string ExternalTaskType { get; set; }
+
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy.
         /// This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
@@ -12860,6 +13110,12 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Optional. The customized parameters the user can pass to this task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudIntegrationsV1alphaEventParameter> Parameters { get; set; }
+
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual GoogleCloudIntegrationsV1alphaCoordinate Position { get; set; }
 
         /// <summary>Optional. Determines what action to take upon successful task completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successPolicy")]
@@ -12936,6 +13192,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error
+        /// happens in the task
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCatcherId")]
+        public virtual string ErrorCatcherId { get; set; }
+
         /// <summary>Optional. The user created label for a particular trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
@@ -12943,6 +13206,12 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Optional. Dictates how next tasks will be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextTasksExecutionPolicy")]
         public virtual string NextTasksExecutionPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual GoogleCloudIntegrationsV1alphaCoordinate Position { get; set; }
 
         /// <summary>
         /// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g.

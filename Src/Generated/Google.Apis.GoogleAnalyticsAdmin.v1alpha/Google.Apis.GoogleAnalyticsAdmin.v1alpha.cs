@@ -9638,10 +9638,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Measurement ID to forward events to. Also known as “G-ID” (For example: G-12345).
+        /// Required. "Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (For example:
+        /// G-12345).
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
-        public virtual string MeasurementId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("tagId")]
+        public virtual string TagId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10016,18 +10017,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The measurement ID of the tag to remove from the Universal Analytics property. Also known as "G-ID".
-        /// Example: "G-12345"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
-        public virtual string MeasurementId { get; set; }
-
-        /// <summary>
         /// The Universal Analytics property to delete connected site tags for. This API does not support GA4
         /// properties. Format: properties/{universalAnalyticsPropertyId} Example: properties/1234
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual string Property { get; set; }
+
+        /// <summary>
+        /// Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (For example: G-12345).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagId")]
+        public virtual string TagId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

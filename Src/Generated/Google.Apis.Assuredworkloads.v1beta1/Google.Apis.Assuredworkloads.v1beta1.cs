@@ -1825,6 +1825,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Represents the Ekm Provisioning State of the given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningResponse")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse EkmProvisioningResponse { get; set; }
+
         /// <summary>
         /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
         /// Europe/Canada customers.
@@ -1929,6 +1933,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Count of active Violations which haven't been acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
         public virtual System.Nullable<int> ActiveViolationCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>External key management systems(EKM) Provisioning response</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates Ekm provisioning error if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorDomain")]
+        public virtual string EkmProvisioningErrorDomain { get; set; }
+
+        /// <summary>Detailed error message if Ekm provisioning fails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMessage")]
+        public virtual string EkmProvisioningErrorMessage { get; set; }
+
+        /// <summary>Indicates Ekm enrollment Provisioning of a given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningState")]
+        public virtual string EkmProvisioningState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

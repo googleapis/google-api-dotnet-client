@@ -493,8 +493,8 @@ namespace Google.Apis.WorkflowExecutions.v1
                             EXECUTIONVIEWUNSPECIFIED = 0,
 
                             /// <summary>
-                            /// Includes only basic metadata about the execution. Following fields are returned: name,
-                            /// start_time, end_time, duration, state and workflow_revision_id.
+                            /// Includes only basic metadata about the execution. The following fields are returned:
+                            /// name, start_time, end_time, duration, state, and workflow_revision_id.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
@@ -580,7 +580,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. The orderding applied to the [Executions.ListExecutions] results. By default the
+                        /// Optional. The ordering applied to the [Executions.ListExecutions] results. By default the
                         /// ordering is based on descending start time. The following fields are supported for order by:
                         /// executionID, startTime, endTime, duration, state, and workflowRevisionID.
                         /// </summary>
@@ -599,7 +599,8 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// <summary>
                         /// A page token, received from a previous `ListExecutions` call. Provide this to retrieve the
                         /// subsequent page. When paginating, all other parameters provided to `ListExecutions` must
-                        /// match the call that provided the page token.
+                        /// match the call that provided the page token. Note that pagination is applied to dynamic
+                        /// data. The list of executions returned can change between page requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -622,8 +623,8 @@ namespace Google.Apis.WorkflowExecutions.v1
                             EXECUTIONVIEWUNSPECIFIED = 0,
 
                             /// <summary>
-                            /// Includes only basic metadata about the execution. Following fields are returned: name,
-                            /// start_time, end_time, duration, state and workflow_revision_id.
+                            /// Includes only basic metadata about the execution. The following fields are returned:
+                            /// name, start_time, end_time, duration, state, and workflow_revision_id.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
@@ -828,8 +829,9 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
 
         /// <summary>
         /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no
-        /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and
-        /// dashes. Label keys must start with a letter. International characters are allowed.
+        /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and
+        /// dashes. Label keys must start with a letter. International characters are allowed. By default, labels are
+        /// inherited from the workflow but are overridden by any labels associated with the execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

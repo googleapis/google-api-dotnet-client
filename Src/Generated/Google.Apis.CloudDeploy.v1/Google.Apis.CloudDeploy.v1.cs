@@ -3243,6 +3243,31 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An advanceChildRollout Job.</summary>
+    public class AdvanceChildRolloutJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AdvanceChildRolloutJobRun contains information specific to a advanceChildRollout `JobRun`.</summary>
+    public class AdvanceChildRolloutJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the `ChildRollout`. Format is projects/{project}/
+        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>Output only. the ID of the ChildRollout's Phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutPhaseId")]
+        public virtual string RolloutPhaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specifying an Anthos Cluster.</summary>
     public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3404,6 +3429,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ChildRollouts job composition</summary>
+    public class ChildRolloutJobs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of AdvanceChildRolloutJobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advanceRolloutJobs")]
+        public virtual System.Collections.Generic.IList<Job> AdvanceRolloutJobs { get; set; }
+
+        /// <summary>Output only. List of CreateChildRolloutJobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createRolloutJobs")]
+        public virtual System.Collections.Generic.IList<Job> CreateRolloutJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specifying where to deploy a Cloud Run Service.</summary>
     public class CloudRunLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3455,6 +3495,31 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>All supported versions of Skaffold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedVersions")]
         public virtual System.Collections.Generic.IList<SkaffoldVersion> SupportedVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A createChildRollout Job.</summary>
+    public class CreateChildRolloutJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CreateChildRolloutJobRun contains information specific to a createChildRollout `JobRun`.</summary>
+    public class CreateChildRolloutJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the `ChildRollout`. Format is projects/{project}/
+        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>Output only. The ID of the childRollout Phase initiated by this JobRun.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutPhaseId")]
+        public virtual string RolloutPhaseId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3793,6 +3858,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Job represents an operation for a `Rollout`.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. An advanceChildRollout Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advanceChildRolloutJob")]
+        public virtual AdvanceChildRolloutJob AdvanceChildRolloutJob { get; set; }
+
+        /// <summary>Output only. A createChildRollout Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createChildRolloutJob")]
+        public virtual CreateChildRolloutJob CreateChildRolloutJob { get; set; }
+
         /// <summary>Output only. A deploy Job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
         public virtual DeployJob DeployJob { get; set; }
@@ -3825,6 +3898,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// </summary>
     public class JobRun : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Information specific to an advanceChildRollout `JobRun`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advanceChildRolloutJobRun")]
+        public virtual AdvanceChildRolloutJobRun AdvanceChildRolloutJobRun { get; set; }
+
+        /// <summary>Output only. Information specific to a createChildRollout `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createChildRolloutJobRun")]
+        public virtual CreateChildRolloutJobRun CreateChildRolloutJobRun { get; set; }
+
         /// <summary>Output only. Time at which the `JobRun` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4097,6 +4178,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information specifying a multiTarget.</summary>
+    public class MultiTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The target_ids of this multiTarget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetIds")]
+        public virtual System.Collections.Generic.IList<string> TargetIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4182,6 +4274,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Phase represents a collection of jobs that are logically grouped together for a `Rollout`.</summary>
     public class Phase : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. ChildRollout job composition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childRolloutJobs")]
+        public virtual ChildRolloutJobs ChildRolloutJobs { get; set; }
+
         /// <summary>Output only. Deployment job composition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentJobs")]
         public virtual DeploymentJobs DeploymentJobs { get; set; }
@@ -4561,6 +4657,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approveTime")]
         public virtual object ApproveTime { get; set; }
 
+        /// <summary>
+        /// Output only. Name of the `ControllerRollout`. Format is projects/{project}/
+        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controllerRollout")]
+        public virtual string ControllerRollout { get; set; }
+
         /// <summary>Output only. Time at which the `Rollout` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4893,6 +4996,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Information specifying a multiTarget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiTarget")]
+        public virtual MultiTarget MultiTarget { get; set; }
 
         /// <summary>
         /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
