@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "docfx": {
-      "version": "2.62.1",
+      "version": "2.62.2",
       "commands": [
         "docfx"
       ]
