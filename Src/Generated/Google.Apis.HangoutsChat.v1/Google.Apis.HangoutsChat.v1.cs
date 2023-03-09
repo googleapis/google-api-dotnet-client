@@ -609,7 +609,7 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous list memberships call. Provide this to retrieve the
+                /// A page token, received from a previous call to list memberships. Provide this to retrieve the
                 /// subsequent page. When paginating, all other parameters provided should match the call that provided
                 /// the page token. Passing different values to the other parameters may lead to unexpected results.
                 /// </summary>
@@ -1395,7 +1395,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Optional. The maximum number of spaces to return. The service may return fewer than this value. If
             /// unspecified, at most 100 spaces are returned. The maximum value is 1000; values above 1000 are coerced
-            /// to 1000. Negative values return an INVALID_ARGUMENT error.
+            /// to 1000. Negative values return an `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -3324,11 +3324,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Richly formatted and interactive cards that display UI elements and editable widgets, such as: - Formatted
         /// text - Buttons - Clickable images - Checkboxes - Radio buttons - Input widgets. Cards are usually displayed
         /// below the text body of a Chat message, but can situationally appear other places, such as
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). `cards_v2` and `cards` can have a maximum
-        /// size of 32 KB. The `cardId` is a unique identifier among cards in the same message and for identifying user
-        /// input values. Currently supported widgets include: - `TextParagraph` - `DecoratedText` - `Image` -
-        /// `ButtonList` - `Divider` - `TextInput` - `SelectionInput` (CHECKBOX, RADIO_BUTTON, SWITCH, DROPDOWN) -
-        /// `Grid`
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Each card can have a maximum size of 32 KB.
+        /// The `cardId` is a unique identifier among cards in the same message and for identifying user input values.
+        /// Currently supported widgets include: - `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` -
+        /// `Divider` - `TextInput` - `SelectionInput` - `Grid`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
         public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
@@ -3374,7 +3373,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The user who created the message.</summary>
+        /// <summary>
+        /// Output only. The user who created the message. If your Chat app [authenticates as a
+        /// user](https://developers.google.com/chat/api/guides/auth/users), the output populates the
+        /// [user](https://developers.google.com/chat/api/reference/rest/v1/User) `name` and `type`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sender")]
         public virtual User Sender { get; set; }
 
@@ -3383,9 +3386,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual SlashCommand SlashCommand { get; set; }
 
         /// <summary>
-        /// The space the message belongs to. When accessed with [user
-        /// authentication](https://developers.google.com/chat/api/guides/auth/users), only the name of the Space is
-        /// populated.
+        /// If your Chat app [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users), the
+        /// output populates the [space](https://developers.google.com/chat/api/reference/rest/v1/spaces) `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }

@@ -1685,7 +1685,7 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates the metadate for a shared drive.</summary>
+        /// <summary>Updates the metadata for a shared drive.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.Drive body, string driveId)
@@ -1693,7 +1693,7 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(service, body, driveId);
         }
 
-        /// <summary>Updates the metadate for a shared drive.</summary>
+        /// <summary>Updates the metadata for a shared drive.</summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1709,8 +1709,8 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; private set; }
 
             /// <summary>
-            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
-            /// if they are an administrator of the domain to which the shared drive belongs.
+            /// Issue the request as a domain administrator. If set to true, then the requester is granted access if
+            /// they're an administrator of the domain to which the shared drive belongs.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -5976,7 +5976,7 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>
         /// An image file and cropping parameters from which a background image for this shared drive is set. This is a
-        /// write only field; it can only be set on drive.drives.update requests that don't set themeId. When specified,
+        /// write-only field; it can only be set on drive.drives.update requests that don't set themeId. When specified,
         /// all fields of the backgroundImageFile must be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
@@ -5991,8 +5991,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual CapabilitiesData Capabilities { get; set; }
 
         /// <summary>
-        /// The color of this shared drive as an RGB hex string. It can only be set on a drive.drives.update request
-        /// that does not set themeId.
+        /// The color of this shared drive as an RGB hex string. It can only be set on drive.drives.update requests that
+        /// don't set themeId.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
         public virtual string ColorRgb { get; set; }
@@ -6039,10 +6039,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual RestrictionsData Restrictions { get; set; }
 
         /// <summary>
-        /// The ID of the theme from which the background image and color will be set. The set of possible driveThemes
-        /// can be retrieved from a drive.about.get response. When not specified on a drive.drives.create request, a
-        /// random theme is chosen from which the background image and color are set. This is a write-only field; it can
-        /// only be set on requests that don't set colorRgb or backgroundImageFile.
+        /// The ID of the theme from which the background image and color are set. The set of possible driveThemes can
+        /// be retrieved from a drive.about.get response. When not specified on a drive.drives.create request, a random
+        /// theme is chosen from which the background image and color are set. This is a write-only field; it can only
+        /// be set on requests that don't set colorRgb or backgroundImageFile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeId")]
         public virtual string ThemeId { get; set; }
@@ -6052,7 +6052,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// An image file and cropping parameters from which a background image for this shared drive is set. This is a
-        /// write only field; it can only be set on drive.drives.update requests that don't set themeId. When specified,
+        /// write-only field; it can only be set on drive.drives.update requests that don't set themeId. When specified,
         /// all fields of the backgroundImageFile must be set.
         /// </summary>
         public class BackgroundImageFileData

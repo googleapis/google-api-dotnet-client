@@ -9612,7 +9612,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// Indicates that was no attempt to scan a message or attachment because it was not applicable in the given
         /// context (e.g. atomic mutuate). If this is true, scan_outcome should not be set. This flag is used to
         /// identify messages that DLP did not attempt to scan for monitoring scan coverage. Contents that DLP attempted
-        /// to scan but skipped can be identified by DlpScanOutcome.SCAN_SKIPPED_* reasons.
+        /// to scan but skipped can be identified by DlpScanOutcome.SCAN_SKIPPED_* reasons. DEPRECATED: The prober can
+        /// determine this from the context.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanNotApplicableForContext")]
         public virtual System.Nullable<bool> ScanNotApplicableForContext { get; set; }
@@ -9886,6 +9887,9 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("creatorInSearcherContactList")]
         public virtual System.Nullable<bool> CreatorInSearcherContactList { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdingMultiplier")]
+        public virtual System.Nullable<double> CrowdingMultiplier { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("dasContactCount")]
         public virtual System.Nullable<long> DasContactCount { get; set; }
@@ -13427,14 +13431,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// Data Loss Prevention scan information for this message. Messages are evaluated in the backend on create
-        /// message/topic and edit message actions. DEPRECATED: use dlp_scan_summary instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpScanOutcome")]
-        public virtual string DlpScanOutcome { get; set; }
-
-        /// <summary>
-        /// Data Loss Prevention scan information for this message. Messages are evaluated in the backend on create
-        /// message/topic and edit message actions.
+        /// message/topic and edit message actions. DEPRECATED: Use DATA_LOSS_PREVENTION Annotation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
         public virtual DlpScanSummary DlpScanSummary { get; set; }

@@ -1246,6 +1246,18 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
+        /// released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1341,6 +1353,18 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
+        /// released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1427,6 +1451,18 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
+        /// released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1515,6 +1551,18 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
+        /// released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

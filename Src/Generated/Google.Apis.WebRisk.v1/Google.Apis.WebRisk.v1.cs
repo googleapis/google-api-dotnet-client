@@ -404,7 +404,6 @@ namespace Google.Apis.WebRisk.v1
             this.service = service;
             Operations = new OperationsResource(service);
             Submissions = new SubmissionsResource(service);
-            Uris = new UrisResource(service);
         }
 
         /// <summary>Gets the Operations resource.</summary>
@@ -597,11 +596,7 @@ namespace Google.Apis.WebRisk.v1
 
             /// <summary>
             /// Lists operations that match the specified filter in the request. If the server doesn't support this
-            /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding
-            /// to use different resource name schemes, such as `users/*/operations`. To override the binding, API
-            /// services can add a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For
-            /// backwards compatibility, the default name includes the operations collection id, however overriding
-            /// users must ensure the name binding is the parent resource, without the operations collection id.
+            /// method, it returns `UNIMPLEMENTED`.
             /// </summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
@@ -611,11 +606,7 @@ namespace Google.Apis.WebRisk.v1
 
             /// <summary>
             /// Lists operations that match the specified filter in the request. If the server doesn't support this
-            /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding
-            /// to use different resource name schemes, such as `users/*/operations`. To override the binding, API
-            /// services can add a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For
-            /// backwards compatibility, the default name includes the operations collection id, however overriding
-            /// users must ensure the name binding is the parent resource, without the operations collection id.
+            /// method, it returns `UNIMPLEMENTED`.
             /// </summary>
             public class ListRequest : WebRiskBaseServiceRequest<Google.Apis.WebRisk.v1.Data.GoogleLongrunningListOperationsResponse>
             {
@@ -765,99 +756,6 @@ namespace Google.Apis.WebRisk.v1
                 public override string RestPath => "v1/{+parent}/submissions";
 
                 /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the Uris resource.</summary>
-        public virtual UrisResource Uris { get; }
-
-        /// <summary>The "uris" collection of methods.</summary>
-        public class UrisResource
-        {
-            private const string Resource = "uris";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public UrisResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Submits a URI suspected of containing malicious content to be reviewed. Returns a
-            /// google.longrunning.Operation which, once the review is complete, is updated with its result. You can use
-            /// the [Pub/Sub API] (https://cloud.google.com/pubsub) to receive notifications for the returned Operation.
-            /// If the result verifies the existence of malicious content, the site will be added to the [Google's
-            /// Social Engineering lists] (https://support.google.com/webmasters/answer/6350487/) in order to protect
-            /// users that could get exposed to this threat in the future. Only allowlisted projects can use this method
-            /// during Early Access. Please reach out to Sales or your customer engineer to obtain access.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. The name of the project that is making the submission. This string is in the format
-            /// "projects/{project_number}".
-            /// </param>
-            public virtual SubmitRequest Submit(Google.Apis.WebRisk.v1.Data.GoogleCloudWebriskV1SubmitUriRequest body, string parent)
-            {
-                return new SubmitRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Submits a URI suspected of containing malicious content to be reviewed. Returns a
-            /// google.longrunning.Operation which, once the review is complete, is updated with its result. You can use
-            /// the [Pub/Sub API] (https://cloud.google.com/pubsub) to receive notifications for the returned Operation.
-            /// If the result verifies the existence of malicious content, the site will be added to the [Google's
-            /// Social Engineering lists] (https://support.google.com/webmasters/answer/6350487/) in order to protect
-            /// users that could get exposed to this threat in the future. Only allowlisted projects can use this method
-            /// during Early Access. Please reach out to Sales or your customer engineer to obtain access.
-            /// </summary>
-            public class SubmitRequest : WebRiskBaseServiceRequest<Google.Apis.WebRisk.v1.Data.GoogleLongrunningOperation>
-            {
-                /// <summary>Constructs a new Submit request.</summary>
-                public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.WebRisk.v1.Data.GoogleCloudWebriskV1SubmitUriRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the project that is making the submission. This string is in the format
-                /// "projects/{project_number}".
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.WebRisk.v1.Data.GoogleCloudWebriskV1SubmitUriRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "submit";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+parent}/uris:submit";
-
-                /// <summary>Initializes Submit parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1376,46 +1274,9 @@ namespace Google.Apis.WebRisk.v1.Data
     /// <summary>Wraps a URI that might be displaying malicious content.</summary>
     public class GoogleCloudWebriskV1Submission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// ThreatTypes found to be associated with the submitted URI after reviewing it. This might be empty if the URI
-        /// was not added to any list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threatTypes")]
-        public virtual System.Collections.Generic.IList<string> ThreatTypes { get; set; }
-
         /// <summary>Required. The URI that is being reported for malicious content to be analyzed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for the Submit URI long-running operation.</summary>
-    public class GoogleCloudWebriskV1SubmitUriMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Creation time of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>The state of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Latest update time of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to send a potentially malicious URI to WebRisk.</summary>
-    public class GoogleCloudWebriskV1SubmitUriRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The submission that contains the URI to be scanned.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("submission")]
-        public virtual GoogleCloudWebriskV1Submission Submission { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

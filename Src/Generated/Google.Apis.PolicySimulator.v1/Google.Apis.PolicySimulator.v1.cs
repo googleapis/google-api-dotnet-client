@@ -483,12 +483,7 @@ namespace Google.Apis.PolicySimulator.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -498,12 +493,7 @@ namespace Google.Apis.PolicySimulator.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1.Data.GoogleLongrunningListOperationsResponse>
                     {
@@ -867,11 +857,7 @@ namespace Google.Apis.PolicySimulator.v1
 
         /// <summary>
         /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use
-        /// different resource name schemes, such as `users/*/operations`. To override the binding, API services can add
-        /// a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For backwards
-        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
-        /// the name binding is the parent resource, without the operations collection id.
+        /// it returns `UNIMPLEMENTED`.
         /// </summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
@@ -881,11 +867,7 @@ namespace Google.Apis.PolicySimulator.v1
 
         /// <summary>
         /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use
-        /// different resource name schemes, such as `users/*/operations`. To override the binding, API services can add
-        /// a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For backwards
-        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
-        /// the name binding is the parent resource, without the operations collection id.
+        /// it returns `UNIMPLEMENTED`.
         /// </summary>
         public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1.Data.GoogleLongrunningListOperationsResponse>
         {
@@ -1172,12 +1154,7 @@ namespace Google.Apis.PolicySimulator.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -1187,12 +1164,7 @@ namespace Google.Apis.PolicySimulator.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1.Data.GoogleLongrunningListOperationsResponse>
                     {
@@ -1700,12 +1672,7 @@ namespace Google.Apis.PolicySimulator.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -1715,12 +1682,7 @@ namespace Google.Apis.PolicySimulator.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : PolicySimulatorBaseServiceRequest<Google.Apis.PolicySimulator.v1.Data.GoogleLongrunningListOperationsResponse>
                     {
@@ -2382,103 +2344,6 @@ namespace Google.Apis.PolicySimulator.v1.Data
 
     /// <summary>Summary statistics about the replayed log entries.</summary>
     public class GoogleCloudPolicysimulatorV1ReplayResultsSummary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The number of replayed log entries with a difference between baseline and simulated policies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("differenceCount")]
-        public virtual System.Nullable<int> DifferenceCount { get; set; }
-
-        /// <summary>The number of log entries that could not be replayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
-        public virtual System.Nullable<int> ErrorCount { get; set; }
-
-        /// <summary>The total number of log entries replayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logCount")]
-        public virtual System.Nullable<int> LogCount { get; set; }
-
-        /// <summary>The date of the newest log entry replayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newestDate")]
-        public virtual GoogleTypeDate NewestDate { get; set; }
-
-        /// <summary>The date of the oldest log entry replayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oldestDate")]
-        public virtual GoogleTypeDate OldestDate { get; set; }
-
-        /// <summary>
-        /// The number of replayed log entries with no difference between baseline and simulated policies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unchangedCount")]
-        public virtual System.Nullable<int> UnchangedCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A resource describing a `Replay`, or simulation.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1Replay : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The configuration used for the `Replay`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudPolicysimulatorV1beta1ReplayConfig Config { get; set; }
-
-        /// <summary>
-        /// Output only. The resource name of the `Replay`, which has the following format:
-        /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}`
-        /// is the ID of the project, folder, or organization that owns the Replay. Example:
-        /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. Summary statistics about the replayed log entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resultsSummary")]
-        public virtual GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary ResultsSummary { get; set; }
-
-        /// <summary>Output only. The current state of the `Replay`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The configuration used for a Replay.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1ReplayConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The logs to use as input for the Replay.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logSource")]
-        public virtual string LogSource { get; set; }
-
-        /// <summary>
-        /// A mapping of the resources that you want to simulate policies for and the policies that you want to
-        /// simulate. Keys are the full resource names for the resources. For example,
-        /// `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google
-        /// Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy
-        /// objects representing the policies that you want to simulate. Replays automatically take into account any IAM
-        /// policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not
-        /// need to include these policies in the policy overlay.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyOverlay")]
-        public virtual System.Collections.Generic.IDictionary<string, GoogleIamV1Policy> PolicyOverlay { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata about a Replay operation.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time when the request was received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Summary statistics about the replayed log entries.</summary>
-    public class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The number of replayed log entries with a difference between baseline and simulated policies.

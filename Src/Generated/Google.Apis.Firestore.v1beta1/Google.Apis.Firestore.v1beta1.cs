@@ -1268,7 +1268,9 @@ namespace Google.Apis.Firestore.v1beta1
                     }
                 }
 
-                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
+                /// <summary>
+                /// Listens to changes. This method is only available via gRPC or WebChannel (not REST).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
                 /// Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
@@ -1278,7 +1280,9 @@ namespace Google.Apis.Firestore.v1beta1
                     return new ListenRequest(service, body, database);
                 }
 
-                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
+                /// <summary>
+                /// Listens to changes. This method is only available via gRPC or WebChannel (not REST).
+                /// </summary>
                 public class ListenRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.ListenResponse>
                 {
                     /// <summary>Constructs a new Listen request.</summary>
@@ -1709,8 +1713,8 @@ namespace Google.Apis.Firestore.v1beta1
                 }
 
                 /// <summary>
-                /// Streams batches of document updates and deletes, in order. This method is only available via the
-                /// gRPC API (not REST).
+                /// Streams batches of document updates and deletes, in order. This method is only available via gRPC or
+                /// WebChannel (not REST).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
@@ -1723,8 +1727,8 @@ namespace Google.Apis.Firestore.v1beta1
                 }
 
                 /// <summary>
-                /// Streams batches of document updates and deletes, in order. This method is only available via the
-                /// gRPC API (not REST).
+                /// Streams batches of document updates and deletes, in order. This method is only available via gRPC or
+                /// WebChannel (not REST).
                 /// </summary>
                 public class WriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.WriteResponse>
                 {
@@ -3447,7 +3451,12 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The response for Firestore.RunAggregationQuery.</summary>
     public class RunAggregationQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time at which the aggregate value is valid for.</summary>
+        /// <summary>
+        /// The time at which the aggregate result was computed. This is always monotonically increasing; in this case,
+        /// the previous AggregationResult in the result stream are guaranteed not to have changed between their
+        /// `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will
+        /// be sent, and this represents the time at which the query was run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; }
 
@@ -3628,7 +3637,10 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual System.Collections.Generic.IList<Order> OrderBy { get; set; }
 
-        /// <summary>The projection to return.</summary>
+        /// <summary>
+        /// Optional sub-set of the fields to return. This acts as a DocumentMask over the documents returned from a
+        /// query. When not set, assumes that the caller wants all fields returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("select")]
         public virtual Projection Select { get; set; }
 

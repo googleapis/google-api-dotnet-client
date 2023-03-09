@@ -1913,10 +1913,6 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycle")]
         public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifecycle { get; set; }
 
-        /// <summary>Deprecated field because of typo.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifeycle")]
-        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifeycle { get; set; }
-
         /// <summary>Output only. Description about the policy schema for user consumption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDescription")]
         public virtual string PolicyDescription { get; set; }
@@ -2197,9 +2193,9 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for
-        /// example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema
-        /// name. Wildcards cannot be used in namespace directly. Please read
+        /// Required. The schema filter to apply to the resolve request. Specify a schema name to view a particular
+        /// schema, for example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of
+        /// the schema name. Wildcards cannot be used in namespace directly. Please read
         /// https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
         /// example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
         /// "chrome.*", "chrome.*.apps.*"

@@ -484,6 +484,238 @@ namespace Google.Apis.BusinessProfilePerformance.v1
         }
 
         /// <summary>
+        ///  Returns the values for each date from a given time range and optionally the sub entity type, where
+        /// applicable, that are associated with the specific daily metrics. Example request: `GET
+        /// https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&amp;amp;dailyMetrics=CALL_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
+        /// </summary>
+        /// <param name="location">
+        /// Required. The location for which the time series should be fetched. Format: locations/{location_id} where
+        /// location_id is an unobfuscated listing id.
+        /// </param>
+        public virtual FetchMultiDailyMetricsTimeSeriesRequest FetchMultiDailyMetricsTimeSeries(string location)
+        {
+            return new FetchMultiDailyMetricsTimeSeriesRequest(service, location);
+        }
+
+        /// <summary>
+        ///  Returns the values for each date from a given time range and optionally the sub entity type, where
+        /// applicable, that are associated with the specific daily metrics. Example request: `GET
+        /// https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&amp;amp;dailyMetrics=CALL_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
+        /// </summary>
+        public class FetchMultiDailyMetricsTimeSeriesRequest : BusinessProfilePerformanceBaseServiceRequest<Google.Apis.BusinessProfilePerformance.v1.Data.FetchMultiDailyMetricsTimeSeriesResponse>
+        {
+            /// <summary>Constructs a new FetchMultiDailyMetricsTimeSeries request.</summary>
+            public FetchMultiDailyMetricsTimeSeriesRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+            {
+                Location = location;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The location for which the time series should be fetched. Format: locations/{location_id}
+            /// where location_id is an unobfuscated listing id.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Location { get; private set; }
+
+            /// <summary>Required. The metrics to retrieve time series for.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="DailyMetricsList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("dailyMetrics", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<DailyMetricsEnum> DailyMetrics { get; set; }
+
+            /// <summary>Required. The metrics to retrieve time series for.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="DailyMetrics"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("dailyMetrics", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<DailyMetricsEnum> DailyMetricsList { get; set; }
+
+            /// <summary>Required. The metrics to retrieve time series for.</summary>
+            public enum DailyMetricsEnum
+            {
+                /// <summary>Represents the default unknown value.</summary>
+                [Google.Apis.Util.StringValueAttribute("DAILY_METRIC_UNKNOWN")]
+                DAILYMETRICUNKNOWN = 0,
+
+                /// <summary>
+                /// Business impressions on Google Maps on Desktop devices. Multiple impressions by a unique user within
+                /// a single day are counted as a single impression.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_IMPRESSIONS_DESKTOP_MAPS")]
+                BUSINESSIMPRESSIONSDESKTOPMAPS = 1,
+
+                /// <summary>
+                /// Business impressions on Google Search on Desktop devices. Multiple impressions by a unique user
+                /// within a single day are counted as a single impression.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_IMPRESSIONS_DESKTOP_SEARCH")]
+                BUSINESSIMPRESSIONSDESKTOPSEARCH = 2,
+
+                /// <summary>
+                /// Business impressions on Google Maps on Mobile devices. Multiple impressions by a unique user within
+                /// a single day are counted as a single impression.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_IMPRESSIONS_MOBILE_MAPS")]
+                BUSINESSIMPRESSIONSMOBILEMAPS = 3,
+
+                /// <summary>
+                /// Business impressions on Google Search on Mobile devices. Multiple impressions by a unique user
+                /// within a single day are counted as a single impression.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_IMPRESSIONS_MOBILE_SEARCH")]
+                BUSINESSIMPRESSIONSMOBILESEARCH = 4,
+
+                /// <summary>The number of message conversations received on the business profile.</summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_CONVERSATIONS")]
+                BUSINESSCONVERSATIONS = 5,
+
+                /// <summary>The number of times a direction request was requested to the business location.</summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_DIRECTION_REQUESTS")]
+                BUSINESSDIRECTIONREQUESTS = 6,
+
+                /// <summary>The number of times the business profile call button was clicked.</summary>
+                [Google.Apis.Util.StringValueAttribute("CALL_CLICKS")]
+                CALLCLICKS = 7,
+
+                /// <summary>The number of times the business profile website was clicked.</summary>
+                [Google.Apis.Util.StringValueAttribute("WEBSITE_CLICKS")]
+                WEBSITECLICKS = 8,
+
+                /// <summary>The number of bookings received from the business profile.</summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_BOOKINGS")]
+                BUSINESSBOOKINGS = 9,
+
+                /// <summary>The number of food orders received from the business profile.</summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_FOOD_ORDERS")]
+                BUSINESSFOODORDERS = 10,
+
+                /// <summary>
+                /// The number of clicks to view or interact with the menu content on the business profile. Multiple
+                /// clicks by a unique user within a single day are counted as 1.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BUSINESS_FOOD_MENU_CLICKS")]
+                BUSINESSFOODMENUCLICKS = 11,
+            }
+
+            /// <summary>
+            /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself
+            /// or a year and month where the day isn't significant.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dailyRange.endDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DailyRangeEndDateDay { get; set; }
+
+            /// <summary>
+            /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dailyRange.endDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DailyRangeEndDateMonth { get; set; }
+
+            /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dailyRange.endDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DailyRangeEndDateYear { get; set; }
+
+            /// <summary>
+            /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself
+            /// or a year and month where the day isn't significant.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dailyRange.startDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DailyRangeStartDateDay { get; set; }
+
+            /// <summary>
+            /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dailyRange.startDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DailyRangeStartDateMonth { get; set; }
+
+            /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dailyRange.startDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DailyRangeStartDateYear { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchMultiDailyMetricsTimeSeries";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+location}:fetchMultiDailyMetricsTimeSeries";
+
+            /// <summary>Initializes FetchMultiDailyMetricsTimeSeries parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^locations/[^/]+$",
+                });
+                RequestParameters.Add("dailyMetrics", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyMetrics",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dailyRange.endDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyRange.endDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dailyRange.endDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyRange.endDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dailyRange.endDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyRange.endDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dailyRange.startDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyRange.startDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dailyRange.startDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyRange.startDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dailyRange.startDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dailyRange.startDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         ///  Returns the values for each date from a given time range that are associated with the specific daily
         /// metric. Example request: `GET
         /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
@@ -809,6 +1041,44 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 namespace Google.Apis.BusinessProfilePerformance.v1.Data
 {
     /// <summary>
+    /// Represents a single datapoint, where each datapoint is a DailyMetric-DailySubEntityType-TimeSeries tuple.
+    /// </summary>
+    public class DailyMetricTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DailyMetric that the TimeSeries represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyMetric")]
+        public virtual string DailyMetric { get; set; }
+
+        /// <summary>
+        /// The DailySubEntityType that the TimeSeries represents. Will not be present when breakdown does not exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailySubEntityType")]
+        public virtual DailySubEntityType DailySubEntityType { get; set; }
+
+        /// <summary>List of datapoints where each datapoint is a date-value pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
+        public virtual TimeSeries TimeSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents all possible subentity types that are associated with DailyMetrics.</summary>
+    public class DailySubEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the day of the week. Eg: MONDAY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; }
+
+        /// <summary>Represents the time of the day in 24 hour format. Eg: 13:34:20</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOfDay")]
+        public virtual TimeOfDay TimeOfDay { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
     /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
@@ -849,6 +1119,17 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
         /// <summary>The value of the datapoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the response for FetchMultiDailyMetricsTimeSeries.</summary>
+    public class FetchMultiDailyMetricsTimeSeriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DailyMetrics and their corresponding time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiDailyMetricTimeSeries")]
+        public virtual System.Collections.Generic.IList<MultiDailyMetricTimeSeries> MultiDailyMetricTimeSeries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -898,6 +1179,17 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a list of tuples of DailyMetric-DailySubEntityType-TimeSeries.</summary>
+    public class MultiDailyMetricTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of DailyMetric-TimeSeries pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyMetricTimeSeries")]
+        public virtual System.Collections.Generic.IList<DailyMetricTimeSeries> DailyMetricTimeSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a single search keyword and its value.</summary>
     public class SearchKeywordCount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -911,6 +1203,38 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
         /// <summary>The lower-cased string that the user entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchKeyword")]
         public virtual string SearchKeyword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

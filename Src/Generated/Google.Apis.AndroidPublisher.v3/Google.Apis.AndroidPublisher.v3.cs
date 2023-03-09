@@ -10231,8 +10231,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     }
 
     /// <summary>
-    /// LINT.IfChange A group of devices. A group is defined by a set of device selectors. A device belongs to the group
-    /// if it matches any selector (logical OR).
+    /// A group of devices. A group is defined by a set of device selectors. A device belongs to the group if it matches
+    /// any selector (logical OR).
     /// </summary>
     public class DeviceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10417,7 +10417,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Configuration describing device targeting criteria for the content of an app.</summary>
+    /// <summary>Configuration describing device targeting criteria for the content of an app.</summary>
     public class DeviceTierConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Definition of device groups for the app.</summary>
