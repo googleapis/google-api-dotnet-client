@@ -819,71 +819,6 @@ namespace Google.Apis.DataCatalog.v1
                                 });
                             }
                         }
-
-                        /// <summary>
-                        /// `ReconcileTags` creates or updates a list of tags on the entry. If the
-                        /// ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not
-                        /// included in the input tag list. `ReconcileTags` returns a long-running operation resource
-                        /// that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a
-                        /// ReconcileTagsResponse message.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Required. Name of Entry to be tagged.</param>
-                        public virtual ReconcileRequest Reconcile(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ReconcileTagsRequest body, string parent)
-                        {
-                            return new ReconcileRequest(service, body, parent);
-                        }
-
-                        /// <summary>
-                        /// `ReconcileTags` creates or updates a list of tags on the entry. If the
-                        /// ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not
-                        /// included in the input tag list. `ReconcileTags` returns a long-running operation resource
-                        /// that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a
-                        /// ReconcileTagsResponse message.
-                        /// </summary>
-                        public class ReconcileRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
-                        {
-                            /// <summary>Constructs a new Reconcile request.</summary>
-                            public ReconcileRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ReconcileTagsRequest body, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. Name of Entry to be tagged.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ReconcileTagsRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "reconcile";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+parent}/tags:reconcile";
-
-                            /// <summary>Initializes Reconcile parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
-                                });
-                            }
-                        }
                     }
 
                     /// <summary>
@@ -2810,12 +2745,7 @@ namespace Google.Apis.DataCatalog.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -2825,12 +2755,7 @@ namespace Google.Apis.DataCatalog.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.ListOperationsResponse>
                 {
@@ -5645,6 +5570,17 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Wrapper for any item that can be contained in the dump.</summary>
+    public class GoogleCloudDatacatalogV1DumpItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Entry and its tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taggedEntry")]
+        public virtual GoogleCloudDatacatalogV1TaggedEntry TaggedEntry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Entry metadata. A Data Catalog entry represents another resource in Google Cloud Platform (such as a BigQuery
     /// dataset or a Pub/Sub topic) or outside of it. You can use the `linked_resource` field in the entry resource to
@@ -6364,67 +6300,6 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Long-running operation metadata message returned by the ReconcileTags.</summary>
-    public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Maps the name of each tagged column (or empty string for a sole entry) to tagging operation status.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
-
-        /// <summary>State of the reconciliation operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for ReconcileTags.</summary>
-    public class GoogleCloudDatacatalogV1ReconcileTagsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If set to `true`, deletes entry tags related to a tag template not listed in the tags source from an entry.
-        /// If set to `false`, unlisted tags are retained.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("forceDeleteMissing")]
-        public virtual System.Nullable<bool> ForceDeleteMissing { get; set; }
-
-        /// <summary>Required. The name of the tag template, which is used for reconciliation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagTemplate")]
-        public virtual string TagTemplate { get; set; }
-
-        /// <summary>
-        /// A list of tags to apply to an entry. A tag can specify a tag template, which must be the template specified
-        /// in the `ReconcileTagsRequest`. The sole entry and each of its columns must be mentioned at most once.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> Tags { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Long-running operation response message returned by ReconcileTags.</summary>
-    public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of tags created in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdTagsCount")]
-        public virtual System.Nullable<long> CreatedTagsCount { get; set; }
-
-        /// <summary>Number of tags deleted in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deletedTagsCount")]
-        public virtual System.Nullable<long> DeletedTagsCount { get; set; }
-
-        /// <summary>Number of tags updated in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updatedTagsCount")]
-        public virtual System.Nullable<long> UpdatedTagsCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for RenameTagTemplateFieldEnumValue.</summary>
     public class GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7079,6 +6954,31 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Required. The type of value this tag field can contain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual GoogleCloudDatacatalogV1FieldType Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Wrapper containing Entry and information about Tags that should and should not be attached to it.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1TaggedEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Tags that should be deleted from the Data Catalog. Caller should populate template name and column only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absentTags")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> AbsentTags { get; set; }
+
+        /// <summary>
+        /// Tags that should be ingested into the Data Catalog. Caller should populate template name, column and fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentTags")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> PresentTags { get; set; }
+
+        /// <summary>Non-encrypted Data Catalog v1 Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("v1Entry")]
+        public virtual GoogleCloudDatacatalogV1Entry V1Entry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

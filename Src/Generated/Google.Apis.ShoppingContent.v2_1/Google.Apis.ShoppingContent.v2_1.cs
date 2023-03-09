@@ -1055,7 +1055,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Claims the website of a Merchant Center sub-account.</summary>
+        /// <summary>
+        /// Claims the website of a Merchant Center sub-account. Merchant accounts with approved third-party CSSs aren't
+        /// required to claim a website.
+        /// </summary>
         /// <param name="merchantId">
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
         /// multi-client account and `accountId` must be the ID of a sub-account of this account.
@@ -1066,7 +1069,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new ClaimwebsiteRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Claims the website of a Merchant Center sub-account.</summary>
+        /// <summary>
+        /// Claims the website of a Merchant Center sub-account. Merchant accounts with approved third-party CSSs aren't
+        /// required to claim a website.
+        /// </summary>
         public class ClaimwebsiteRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsClaimWebsiteResponse>
         {
             /// <summary>Constructs a new Claimwebsite request.</summary>
@@ -15559,7 +15565,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Feed label for the DatafeedTarget. Either `country` or `feedLabel` is required. If both `feedLabel` and
-        /// `country` is specified, the values must match.
+        /// `country` is specified, the values must match. Must be less than or equal to 20 uppercase letters (A-Z),
+        /// numbers (0-9), and dashes (-).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
@@ -21023,7 +21030,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalSellerId")]
         public virtual string ExternalSellerId { get; set; }
 
-        /// <summary>Feed label for the item. Either `targetCountry` or `feedLabel` is required.</summary>
+        /// <summary>
+        /// Feed label for the item. Either `targetCountry` or `feedLabel` is required. Must be less than or equal to 20
+        /// uppercase letters (A-Z), numbers (0-9), and dashes (-).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
 
@@ -21837,8 +21847,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Product fields. Values are only set for fields requested explicitly in the request's search query. Available
-    /// only to selected merchants. Submit the [interest form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
+    /// Product fields. Values are only set for fields requested explicitly in the request's search query.
     /// </summary>
     public class ProductView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22943,8 +22952,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Product fields requested by the merchant in the query. Field values are only set if the merchant queries
-        /// `ProductView`. Available only to selected merchants. Submit the [interest
-        /// form](https://forms.gle/7Uy8htzAN8oNokz9A) to request access.
+        /// `ProductView`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productView")]
         public virtual ProductView ProductView { get; set; }

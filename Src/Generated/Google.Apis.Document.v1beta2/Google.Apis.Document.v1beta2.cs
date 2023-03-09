@@ -727,6 +727,47 @@ namespace Google.Apis.Document.v1beta2
 }
 namespace Google.Apis.Document.v1beta2.Data
 {
+    /// <summary>Metadata of the auto-labeling documents operation.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The list of individual auto-labeling statuses of the dataset documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualAutoLabelStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus> IndividualAutoLabelStatuses { get; set; }
+
+        /// <summary>Total number of the auto-labeling documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
+        public virtual System.Nullable<int> TotalDocumentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of individual documents in the auto-labeling process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The gcs_uri of the auto-labeling document, which uniquely identifies a dataset document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The status of the document auto-labeling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response proto of AutoLabelDocuments method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic metadata of the long running operation.</summary>

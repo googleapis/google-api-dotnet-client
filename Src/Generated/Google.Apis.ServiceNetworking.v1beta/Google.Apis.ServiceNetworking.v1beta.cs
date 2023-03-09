@@ -1771,6 +1771,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>Enum type definition.</summary>
     public class Enum : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>Enum value definitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumvalue")]
         public virtual System.Collections.Generic.IList<EnumValue> Enumvalue { get; set; }
@@ -3606,6 +3610,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The list of fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<Field> Fields { get; set; }

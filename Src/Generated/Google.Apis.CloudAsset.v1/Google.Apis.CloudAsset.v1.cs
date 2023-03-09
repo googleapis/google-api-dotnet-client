@@ -3909,15 +3909,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string AttachedResource { get; set; }
 
         /// <summary>
-        /// The folder(s) that this IAM policy belongs to, in the form of folders/{FOLDER_NUMBER}. This field is
-        /// available when the IAM policy belongs(directly or cascadingly) to one or more folders.
+        /// The folder(s) that this IAM policy belongs to, in the format of folders/{FOLDER_NUMBER}. This field is
+        /// available when the IAM policy belongs (directly or cascadingly) to one or more folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<string> Folders { get; set; }
 
         /// <summary>
-        /// The organization that this IAM policy belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
-        /// field is available when the IAM policy belongs(directly or cascadingly) to an organization.
+        /// The organization that this IAM policy belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This
+        /// field is available when the IAM policy belongs (directly or cascadingly) to an organization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; }
@@ -3927,7 +3927,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual Policy Policy { get; set; }
 
         /// <summary>
-        /// The project that this IAM policy belongs to, in the form of projects/{PROJECT_NUMBER}. This field is
+        /// The project that this IAM policy belongs to, in the format of projects/{PROJECT_NUMBER}. This field is
         /// available when the IAM policy belongs to a project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
@@ -3944,8 +3944,8 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available
-        /// when the resource belongs(directly or cascadingly) to one or more folders.
+        /// The folder(s) that this resource belongs to, in the format of folders/{FOLDER_NUMBER}. This field is
+        /// available when the resource belongs (directly or cascadingly) to one or more folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<string> Folders { get; set; }
@@ -3958,8 +3958,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string FullResourceName { get; set; }
 
         /// <summary>
-        /// The organization that this resource belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
-        /// field is available when the resource belongs(directly or cascadingly) to an organization.
+        /// The organization that this resource belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This
+        /// field is available when the resource belongs (directly or cascadingly) to an organization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; }
@@ -3972,8 +3972,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// The project that this resource belongs to, in the form of projects/{PROJECT_NUMBER}. This field is available
-        /// when the resource belongs to a project.
+        /// The project that this resource belongs to, in the format of projects/{PROJECT_NUMBER}. This field is
+        /// available when the resource belongs to a project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }

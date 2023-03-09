@@ -7481,8 +7481,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string RoleId { get; set; }
 
             /// <summary>
-            /// The user's primary email address, alias email address, or unique user ID. If included in the request,
-            /// returns role assignments only for this user.
+            /// The primary email address, alias email address, or unique user or group ID. If included in the request,
+            /// returns role assignments only for this user or group.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserKey { get; set; }

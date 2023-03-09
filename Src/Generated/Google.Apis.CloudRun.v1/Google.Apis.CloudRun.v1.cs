@@ -5927,7 +5927,9 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Port number the container listens on. This must be a valid port number, 0 &amp;lt; x &amp;lt; 65536.
+        /// Port number the container listens on. If present, this must be a valid port number, 0 &amp;lt; x &amp;lt;
+        /// 65536. If not present, it will default to port 8080. For more information, see
+        /// https://cloud.google.com/run/docs/container-contract#port
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
         public virtual System.Nullable<int> ContainerPortValue { get; set; }

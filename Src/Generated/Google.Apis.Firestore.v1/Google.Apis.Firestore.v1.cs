@@ -1860,7 +1860,9 @@ namespace Google.Apis.Firestore.v1
                     }
                 }
 
-                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
+                /// <summary>
+                /// Listens to changes. This method is only available via gRPC or WebChannel (not REST).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
                 /// Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
@@ -1870,7 +1872,9 @@ namespace Google.Apis.Firestore.v1
                     return new ListenRequest(service, body, database);
                 }
 
-                /// <summary>Listens to changes. This method is only available via the gRPC API (not REST).</summary>
+                /// <summary>
+                /// Listens to changes. This method is only available via gRPC or WebChannel (not REST).
+                /// </summary>
                 public class ListenRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListenResponse>
                 {
                     /// <summary>Constructs a new Listen request.</summary>
@@ -2301,8 +2305,8 @@ namespace Google.Apis.Firestore.v1
                 }
 
                 /// <summary>
-                /// Streams batches of document updates and deletes, in order. This method is only available via the
-                /// gRPC API (not REST).
+                /// Streams batches of document updates and deletes, in order. This method is only available via gRPC or
+                /// WebChannel (not REST).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
@@ -2315,8 +2319,8 @@ namespace Google.Apis.Firestore.v1
                 }
 
                 /// <summary>
-                /// Streams batches of document updates and deletes, in order. This method is only available via the
-                /// gRPC API (not REST).
+                /// Streams batches of document updates and deletes, in order. This method is only available via gRPC or
+                /// WebChannel (not REST).
                 /// </summary>
                 public class WriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.WriteResponse>
                 {
@@ -2677,9 +2681,7 @@ namespace Google.Apis.Firestore.v1
 
                 /// <summary>
                 /// Required. The ID to use for the database, which will become the final component of the database's
-                /// resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first
-                /// character a letter and the last a letter or a number. Must not be UUID-like
-                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+                /// resource name. The value must be set to "(default)".
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("databaseId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DatabaseId { get; set; }
@@ -2757,13 +2759,6 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Etag { get; set; }
 
                 /// <summary>
-                /// If set, will free the database_id associated with this database. uid will be used as the resource id
-                /// to identify this deleted database.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("freeId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> FreeId { get; set; }
-
-                /// <summary>
                 /// If set, validate the request and preview the response, but do not actually delete the database.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
@@ -2801,14 +2796,6 @@ namespace Google.Apis.Firestore.v1
                     RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                     {
                         Name = "etag",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("freeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "freeId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4906,7 +4893,12 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The response for Firestore.RunAggregationQuery.</summary>
     public class RunAggregationQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time at which the aggregate value is valid for.</summary>
+        /// <summary>
+        /// The time at which the aggregate result was computed. This is always monotonically increasing; in this case,
+        /// the previous AggregationResult in the result stream are guaranteed not to have changed between their
+        /// `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will
+        /// be sent, and this represents the time at which the query was run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; }
 
@@ -5087,7 +5079,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual System.Collections.Generic.IList<Order> OrderBy { get; set; }
 
-        /// <summary>The projection to return.</summary>
+        /// <summary>
+        /// Optional sub-set of the fields to return. This acts as a DocumentMask over the documents returned from a
+        /// query. When not set, assumes that the caller wants all fields returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("select")]
         public virtual Projection Select { get; set; }
 

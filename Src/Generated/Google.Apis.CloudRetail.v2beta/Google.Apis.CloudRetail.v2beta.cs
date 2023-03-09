@@ -702,6 +702,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
+                        /// It is recommended to use the ProductService.AddLocalInventories method instead of
+                        /// ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories achieves the same
+                        /// results but provides more fine-grained control over ingesting local inventory data.
                         /// Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
@@ -725,6 +728,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
+                        /// It is recommended to use the ProductService.AddLocalInventories method instead of
+                        /// ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories achieves the same
+                        /// results but provides more fine-grained control over ingesting local inventory data.
                         /// Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
@@ -1363,6 +1369,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
+                        /// It is recommended to use the ProductService.RemoveLocalInventories method instead of
+                        /// ProductService.RemoveFulfillmentPlaces. ProductService.RemoveLocalInventories achieves the
+                        /// same results but provides more fine-grained control over ingesting local inventory data.
                         /// Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
@@ -1386,6 +1395,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
+                        /// It is recommended to use the ProductService.RemoveLocalInventories method instead of
+                        /// ProductService.RemoveFulfillmentPlaces. ProductService.RemoveLocalInventories achieves the
+                        /// same results but provides more fine-grained control over ingesting local inventory data.
                         /// Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
@@ -8417,9 +8429,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// Output only. A list of local inventories specific to different places. This is only available for users who
-        /// have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and
-        /// ProductService.RemoveLocalInventories APIs.
+        /// Output only. A list of local inventories specific to different places. This field can be managed by
+        /// ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained,
+        /// high-volume updates are necessary.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localInventories")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaLocalInventory> LocalInventories { get; set; }
@@ -10206,6 +10218,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionDetail")]
         public virtual GoogleCloudRetailV2betaCompletionDetail CompletionDetail { get; set; }
+
+        /// <summary>
+        /// Represents the domain of the user event, for projects that combine domains. For example: retailer can have
+        /// events from multiple domains like retailer-main, retailer-baby, retailer-meds, etc. under one project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
 
         /// <summary>
         /// Only required for UserEventService.ImportUserEvents method. Timestamp of when the user event happened.

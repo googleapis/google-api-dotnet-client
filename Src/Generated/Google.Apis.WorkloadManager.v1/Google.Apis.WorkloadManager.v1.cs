@@ -315,8 +315,8 @@ namespace Google.Apis.WorkloadManager.v1
                 /// <summary>Creates a new Evaluation in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The resource name of the evaluation location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                /// Required. The resource prefix of the evaluation location using the form:
+                /// `projects/{project_id}/locations/{location_id}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.WorkloadManager.v1.Data.Evaluation body, string parent)
                 {
@@ -335,16 +335,13 @@ namespace Google.Apis.WorkloadManager.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the evaluation location using the form:
-                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                    /// Required. The resource prefix of the evaluation location using the form:
+                    /// `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// evaluation_id from the method_signature of Create RPC
-                    /// </summary>
+                    /// <summary>Required. Id of the requesting object</summary>
                     [Google.Apis.Util.RequestParameterAttribute("evaluationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string EvaluationId { get; set; }
 
@@ -352,7 +349,7 @@ namespace Google.Apis.WorkloadManager.v1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1521,7 +1518,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
         /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
         /// the server can check if original operation with the same request ID was received, and if so, will ignore the
         /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
         /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).

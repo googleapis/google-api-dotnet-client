@@ -2317,6 +2317,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Shows if dry run is supported for this constraint or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsDryRun")]
+        public virtual System.Nullable<bool> SupportsDryRun { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

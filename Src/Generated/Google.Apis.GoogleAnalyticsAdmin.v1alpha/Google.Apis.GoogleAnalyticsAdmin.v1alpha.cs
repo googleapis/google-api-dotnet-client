@@ -461,8 +461,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Deletes information about multiple users' links to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account or property that owns the access bindings. The parent field in the
-            /// DeleteAccessBindingRequest messages must either be empty or match this field. Formats: -
+            /// Required. The account or property that owns the access bindings. The parent of all provided values for
+            /// the 'names' field in DeleteAccessBindingRequest messages must match this field. Formats: -
             /// accounts/{account} - properties/{property}
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest body, string parent)
@@ -482,8 +482,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Required. The account or property that owns the access bindings. The parent field in the
-                /// DeleteAccessBindingRequest messages must either be empty or match this field. Formats: -
+                /// Required. The account or property that owns the access bindings. The parent of all provided values
+                /// for the 'names' field in DeleteAccessBindingRequest messages must match this field. Formats: -
                 /// accounts/{account} - properties/{property}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -589,8 +589,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates information about multiple access bindings to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account or property that owns the access bindings. The parent field in the
-            /// UpdateAccessBindingRequest messages must either be empty or match this field. Formats: -
+            /// Required. The account or property that owns the access bindings. The parent of all provided
+            /// AccessBinding in UpdateAccessBindingRequest messages must match this field. Formats: -
             /// accounts/{account} - properties/{property}
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest body, string parent)
@@ -610,8 +610,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Required. The account or property that owns the access bindings. The parent field in the
-                /// UpdateAccessBindingRequest messages must either be empty or match this field. Formats: -
+                /// Required. The account or property that owns the access bindings. The parent of all provided
+                /// AccessBinding in UpdateAccessBindingRequest messages must match this field. Formats: -
                 /// accounts/{account} - properties/{property}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2186,8 +2186,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Deletes information about multiple users' links to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account or property that owns the access bindings. The parent field in the
-            /// DeleteAccessBindingRequest messages must either be empty or match this field. Formats: -
+            /// Required. The account or property that owns the access bindings. The parent of all provided values for
+            /// the 'names' field in DeleteAccessBindingRequest messages must match this field. Formats: -
             /// accounts/{account} - properties/{property}
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest body, string parent)
@@ -2207,8 +2207,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Required. The account or property that owns the access bindings. The parent field in the
-                /// DeleteAccessBindingRequest messages must either be empty or match this field. Formats: -
+                /// Required. The account or property that owns the access bindings. The parent of all provided values
+                /// for the 'names' field in DeleteAccessBindingRequest messages must match this field. Formats: -
                 /// accounts/{account} - properties/{property}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2314,8 +2314,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates information about multiple access bindings to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account or property that owns the access bindings. The parent field in the
-            /// UpdateAccessBindingRequest messages must either be empty or match this field. Formats: -
+            /// Required. The account or property that owns the access bindings. The parent of all provided
+            /// AccessBinding in UpdateAccessBindingRequest messages must match this field. Formats: -
             /// accounts/{account} - properties/{property}
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest body, string parent)
@@ -2335,8 +2335,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Required. The account or property that owns the access bindings. The parent field in the
-                /// UpdateAccessBindingRequest messages must either be empty or match this field. Formats: -
+                /// Required. The account or property that owns the access bindings. The parent of all provided
+                /// AccessBinding in UpdateAccessBindingRequest messages must match this field. Formats: -
                 /// accounts/{account} - properties/{property}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4580,6 +4580,65 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
+            /// Returns the enhanced measurement settings for this data stream. Note that the stream must enable
+            /// enhanced measurement for these settings to take effect.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the settings to lookup. Format:
+            /// properties/{property}/dataStreams/{data_stream}/enhancedMeasurementSettings Example:
+            /// "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+            /// </param>
+            public virtual GetEnhancedMeasurementSettingsRequest GetEnhancedMeasurementSettings(string name)
+            {
+                return new GetEnhancedMeasurementSettingsRequest(service, name);
+            }
+
+            /// <summary>
+            /// Returns the enhanced measurement settings for this data stream. Note that the stream must enable
+            /// enhanced measurement for these settings to take effect.
+            /// </summary>
+            public class GetEnhancedMeasurementSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
+            {
+                /// <summary>Constructs a new GetEnhancedMeasurementSettings request.</summary>
+                public GetEnhancedMeasurementSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the settings to lookup. Format:
+                /// properties/{property}/dataStreams/{data_stream}/enhancedMeasurementSettings Example:
+                /// "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getEnhancedMeasurementSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetEnhancedMeasurementSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+/enhancedMeasurementSettings$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
             /// </summary>
             /// <param name="name">
@@ -4774,6 +4833,89 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the enhanced measurement settings for this data stream. Note that the stream must enable
+            /// enhanced measurement for these settings to take effect.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Resource name of the Enhanced Measurement Settings. Format:
+            /// properties/{property_id}/dataStreams/{data_stream}/enhancedMeasurementSettings Example:
+            /// "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+            /// </param>
+            public virtual UpdateEnhancedMeasurementSettingsRequest UpdateEnhancedMeasurementSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings body, string name)
+            {
+                return new UpdateEnhancedMeasurementSettingsRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the enhanced measurement settings for this data stream. Note that the stream must enable
+            /// enhanced measurement for these settings to take effect.
+            /// </summary>
+            public class UpdateEnhancedMeasurementSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
+            {
+                /// <summary>Constructs a new UpdateEnhancedMeasurementSettings request.</summary>
+                public UpdateEnhancedMeasurementSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Resource name of the Enhanced Measurement Settings. Format:
+                /// properties/{property_id}/dataStreams/{data_stream}/enhancedMeasurementSettings Example:
+                /// "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateEnhancedMeasurementSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes UpdateEnhancedMeasurementSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+/enhancedMeasurementSettings$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -7346,6 +7488,51 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
+        /// Creates a connected site tag for a Universal Analytics property. You can create a maximum of 20 connected
+        /// site tags per property. Note: This API cannot be used on GA4 properties.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateConnectedSiteTagRequest CreateConnectedSiteTag(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest body)
+        {
+            return new CreateConnectedSiteTagRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates a connected site tag for a Universal Analytics property. You can create a maximum of 20 connected
+        /// site tags per property. Note: This API cannot be used on GA4 properties.
+        /// </summary>
+        public class CreateConnectedSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse>
+        {
+            /// <summary>Constructs a new CreateConnectedSiteTag request.</summary>
+            public CreateConnectedSiteTagRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createConnectedSiteTag";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:createConnectedSiteTag";
+
+            /// <summary>Initializes CreateConnectedSiteTag parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
@@ -7807,7 +7994,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
-        /// Lists the connected site tags for a Universal Analytics property. Note: this has no effect on GA4 property.
+        /// Lists the connected site tags for a Universal Analytics property. A maximum of 20 connected site tags will
+        /// be returned. Note: this has no effect on GA4 property.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ListConnectedSiteTagsRequest ListConnectedSiteTags(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest body)
@@ -7816,7 +8004,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
-        /// Lists the connected site tags for a Universal Analytics property. Note: this has no effect on GA4 property.
+        /// Lists the connected site tags for a Universal Analytics property. A maximum of 20 connected site tags will
+        /// be returned. Note: this has no effect on GA4 property.
         /// </summary>
         public class ListConnectedSiteTagsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse>
         {
@@ -9552,6 +9741,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLinkProposal")]
         public virtual GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal DisplayVideo360AdvertiserLinkProposal { get; set; }
 
+        /// <summary>A snapshot of EnhancedMeasurementSettings resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedMeasurementSettings")]
+        public virtual GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings EnhancedMeasurementSettings { get; set; }
+
         /// <summary>A snapshot of an ExpandedDataSet resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedDataSet")]
         public virtual GoogleAnalyticsAdminV1alphaExpandedDataSet ExpandedDataSet { get; set; }
@@ -9695,6 +9888,31 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CreateConnectedSiteTag RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The tag to add to the Universal Analytics property</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedSiteTag")]
+        public virtual GoogleAnalyticsAdminV1alphaConnectedSiteTag ConnectedSiteTag { get; set; }
+
+        /// <summary>
+        /// The Universal Analytics property to create connected site tags for. This API does not support GA4
+        /// properties. Format: properties/{universalAnalyticsPropertyId} Example: properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CreateConnectedSiteTag RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10156,6 +10374,86 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Singleton resource under a WebDataStream, configuring measurement of additional site interactions and content.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If enabled, capture a file download event each time a link is clicked with a common document, compressed
+        /// file, application, video, or audio extension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileDownloadsEnabled")]
+        public virtual System.Nullable<bool> FileDownloadsEnabled { get; set; }
+
+        /// <summary>
+        /// If enabled, capture a form interaction event each time a visitor interacts with a form on your website.
+        /// False by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formInteractionsEnabled")]
+        public virtual System.Nullable<bool> FormInteractionsEnabled { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the Enhanced Measurement Settings. Format:
+        /// properties/{property_id}/dataStreams/{data_stream}/enhancedMeasurementSettings Example:
+        /// "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// If enabled, capture an outbound click event each time a visitor clicks a link that leads them away from your
+        /// domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outboundClicksEnabled")]
+        public virtual System.Nullable<bool> OutboundClicksEnabled { get; set; }
+
+        /// <summary>
+        /// If enabled, capture a page view event each time the website changes the browser history state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageChangesEnabled")]
+        public virtual System.Nullable<bool> PageChangesEnabled { get; set; }
+
+        /// <summary>If enabled, capture scroll events each time a visitor gets to the bottom of a page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scrollsEnabled")]
+        public virtual System.Nullable<bool> ScrollsEnabled { get; set; }
+
+        /// <summary>
+        /// Required. URL query parameters to interpret as site search parameters. Max length is 1024 characters. Must
+        /// not be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQueryParameter")]
+        public virtual string SearchQueryParameter { get; set; }
+
+        /// <summary>
+        /// If enabled, capture a view search results event each time a visitor performs a search on your site (based on
+        /// a query parameter).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteSearchEnabled")]
+        public virtual System.Nullable<bool> SiteSearchEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates whether Enhanced Measurement Settings will be used to automatically measure interactions and
+        /// content on this web stream. Changing this value does not affect the settings themselves, but determines
+        /// whether they are respected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamEnabled")]
+        public virtual System.Nullable<bool> StreamEnabled { get; set; }
+
+        /// <summary>Additional URL query parameters. Max length is 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriQueryParameter")]
+        public virtual string UriQueryParameter { get; set; }
+
+        /// <summary>
+        /// If enabled, capture video play, progress, and complete events as visitors view embedded videos on your site.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoEngagementEnabled")]
+        public virtual System.Nullable<bool> VideoEngagementEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource message representing a GA4 ExpandedDataSet.</summary>
     public class GoogleAnalyticsAdminV1alphaExpandedDataSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10557,24 +10855,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The maximum number of resources to return. The service may return fewer than this value, even if there are
-        /// additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher
-        /// values will be coerced to the maximum)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; }
-
-        /// <summary>
-        /// A page token, received from a previous `ListConnectedSiteTags` call. Provide this to retrieve the subsequent
-        /// page. When paginating, all other parameters provided to `ListConnectedSiteTags` must match the call that
-        /// provided the page token.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; }
-
-        /// <summary>
-        /// The Universal Analytics property to fetch connected site tags for. This does not work on GA4 properties.
-        /// Format: `properties/1234`
+        /// The Universal Analytics property to fetch connected site tags for. This does not work on GA4 properties. A
+        /// maximum of 20 connected site tags will be returned. Example Format: `properties/1234`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual string Property { get; set; }
@@ -10586,16 +10868,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Response message for ListConnectedSiteTags RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The site tags for the Universal Analytics property</summary>
+        /// <summary>
+        /// The site tags for the Universal Analytics property. A maximum of 20 connected site tags will be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedSiteTags")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaConnectedSiteTag> ConnectedSiteTags { get; set; }
-
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

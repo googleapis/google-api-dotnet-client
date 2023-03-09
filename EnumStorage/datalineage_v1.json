@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Datalineage.v1.DatalineageBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Datalineage.v1.DatalineageBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

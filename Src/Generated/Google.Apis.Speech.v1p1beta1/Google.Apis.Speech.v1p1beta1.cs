@@ -1746,7 +1746,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
         /// <summary>
         /// If 'true', enables speaker detection for each recognized word in the top alternative of the recognition
-        /// result using a speaker_tag provided in the WordInfo. Note: Use diarization_config instead.
+        /// result using a speaker_label provided in the WordInfo. Note: Use diarization_config instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; }
@@ -1981,7 +1981,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>
         /// If 'true', enables speaker detection for each recognized word in the top alternative of the recognition
-        /// result using a speaker_tag provided in the WordInfo.
+        /// result using a speaker_label provided in the WordInfo.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; }
@@ -2240,10 +2240,19 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual object EndTime { get; set; }
 
         /// <summary>
+        /// Output only. A label value assigned for every unique speaker within the audio. This field specifies which
+        /// speaker was detected to have spoken this word. For some models, like medical_conversation this can be actual
+        /// speaker role, for example "patient" or "provider", but generally this would be a number identifying a
+        /// speaker. This field is only set if enable_speaker_diarization = 'true' and only for the top alternative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
+
+        /// <summary>
         /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
         /// which one of those speakers was detected to have spoken this word. Value ranges from '1' to
-        /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
-        /// alternative.
+        /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only for the top
+        /// alternative. Note: Use speaker_label instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
         public virtual System.Nullable<int> SpeakerTag { get; set; }

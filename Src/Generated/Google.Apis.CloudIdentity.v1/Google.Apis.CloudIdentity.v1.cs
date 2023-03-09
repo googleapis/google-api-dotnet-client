@@ -2923,7 +2923,12 @@ namespace Google.Apis.CloudIdentity.v1
                 /// field. Users can search on label attributes of groups. CONTAINS match ('in') is supported on labels.
                 /// Identity-mapped groups are uniquely identified by both a `member_key_id` and a
                 /// `member_key_namespace`, which requires an additional query input: `member_key_namespace`. Example
-                /// query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in labels`
+                /// query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in labels` Query may optionally
+                /// contain equality operators on the parent of the group restricting the search within a particular
+                /// customer, e.g. `parent == 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
+                /// example, 'C046psxkn'). This filtering is only supported for Admins with groups read permissons on
+                /// the input customer. Example query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in
+                /// labels &amp;amp;&amp;amp; parent == 'customers/C046psxkn'`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
@@ -3582,12 +3587,16 @@ namespace Google.Apis.CloudIdentity.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Required. The search query. Must be specified in [Common Expression
-            /// Language](https://opensource.google/projects/cel). May only contain equality operators on the parent and
-            /// inclusion operators on labels (e.g., `parent == 'customers/{customer_id}' &amp;amp;&amp;amp;
-            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer_id` must begin with
-            /// "C" (for example, 'C046psxkn'). [Find your customer ID.]
-            /// (https://support.google.com/cloudidentity/answer/10070793)
+            /// Required. The search query. * Must be specified in [Common Expression
+            /// Language](https://opensource.google/projects/cel). * Must contain equality operators on the parent, e.g.
+            /// `parent == 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+            /// [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793) * Can contain
+            /// optional inclusion operators on `labels` such as `'cloudidentity.googleapis.com/groups.discussion_forum'
+            /// in labels`). * Can contain an optional equality operator on `domain_name`. e.g. `domain_name ==
+            /// 'abc.com'` * Can contain optional `startsWith/contains/equality` operators on `group_key`, e.g.
+            /// `group_key.startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@abc.com'` * Can contain
+            /// optional `startsWith/contains/equality` operators on `display_name`, such as
+            /// `display_name.startsWith('dev')` , `display_name.contains('dev')`, `display_name == 'dev'`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -4170,9 +4179,9 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The
-            /// only currently-supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`.
-            /// Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the
-            /// profiles for the customer that the caller (authenticated user) belongs to.
+            /// only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting
+            /// the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for
+            /// the customer that the caller (authenticated user) belongs to.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -4486,8 +4495,8 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>
-            /// A CEL expression to filter the results. The only currently-supported filter is filtering by customer.
-            /// For example: `customer==customers/C0123abc`. Omitting the filter or specifying a filter of
+            /// A CEL expression to filter the results. The only supported filter is filtering by customer. For example:
+            /// `customer==customers/C0123abc`. Omitting the filter or specifying a filter of
             /// `customer==customers/my_customer` will return the assignments for the customer that the caller
             /// (authenticated user) belongs to.
             /// </summary>
@@ -5534,6 +5543,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
     /// </summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Additional group keys associated with the Group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalGroupKeys")]
+        public virtual System.Collections.Generic.IList<EntityKey> AdditionalGroupKeys { get; set; }
+
         /// <summary>Output only. The time when the `Group` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -6164,15 +6177,15 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>
         /// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out
         /// link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML
-        /// `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        /// `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoutRedirectUri")]
         public virtual string LogoutRedirectUri { get; set; }
 
         /// <summary>
         /// Required. The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is
-        /// the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the
-        /// `HTTP-Redirect` binding.
+        /// the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect`
+        /// binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleSignOnServiceUri")]
         public virtual string SingleSignOnServiceUri { get; set; }
@@ -6186,7 +6199,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     {
         /// <summary>
         /// Output only. The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login.
-        /// Currently assumed to accept response messages via the `HTTP-POST` binding.
+        /// Assumed to accept response messages via the `HTTP-POST` binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assertionConsumerServiceUri")]
         public virtual string AssertionConsumerServiceUri { get; set; }

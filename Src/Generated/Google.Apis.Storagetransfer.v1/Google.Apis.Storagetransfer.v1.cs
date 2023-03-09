@@ -2547,6 +2547,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorBreakdowns")]
         public virtual System.Collections.Generic.IList<ErrorSummary> ErrorBreakdowns { get; set; }
 
+        /// <summary>Cloud Logging configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
         /// <summary>A globally unique ID assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

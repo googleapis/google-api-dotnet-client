@@ -4567,6 +4567,673 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specification for the BigQuery connection.</summary>
+    public class GoogleCloudDatacatalogV1BigQueryConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specification for the BigQuery connection to a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
+        public virtual GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec CloudSql { get; set; }
+
+        /// <summary>The type of the BigQuery connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>True if there are credentials attached to the BigQuery connection; false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasCredential")]
+        public virtual System.Nullable<bool> HasCredential { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see
+    /// [Introduction to partitioned tables]
+    /// (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
+    /// </summary>
+    public class GoogleCloudDatacatalogV1BigQueryDateShardedSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The Data Catalog resource name of the dataset entry the current table belongs to. For example:
+        /// `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>Output only. BigQuery resource name of the latest shard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestShardResource")]
+        public virtual string LatestShardResource { get; set; }
+
+        /// <summary>Output only. Total number of shards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
+        public virtual System.Nullable<long> ShardCount { get; set; }
+
+        /// <summary>
+        /// Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`.
+        /// For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tablePrefix")]
+        public virtual string TablePrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fields specific for BigQuery routines.</summary>
+    public class GoogleCloudDatacatalogV1BigQueryRoutineSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Paths of the imported libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importedLibraries")]
+        public virtual System.Collections.Generic.IList<string> ImportedLibraries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a BigQuery table.</summary>
+    public class GoogleCloudDatacatalogV1BigQueryTableSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The table source type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableSourceType")]
+        public virtual string TableSourceType { get; set; }
+
+        /// <summary>
+        /// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableSpec")]
+        public virtual GoogleCloudDatacatalogV1TableSpec TableSpec { get; set; }
+
+        /// <summary>Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewSpec")]
+        public virtual GoogleCloudDatacatalogV1ViewSpec ViewSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Business Context of the entry.</summary>
+    public class GoogleCloudDatacatalogV1BusinessContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contact people for the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual GoogleCloudDatacatalogV1Contacts Contacts { get; set; }
+
+        /// <summary>Entry overview fields for rich text descriptions of entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryOverview")]
+        public virtual GoogleCloudDatacatalogV1EntryOverview EntryOverview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for the BigQuery connection to a Cloud SQL instance.</summary>
+    public class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Cloud SQL instance ID in the format of `project:location:instance`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>Type of the Cloud SQL database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A column within a schema. Columns can be nested inside other columns.</summary>
+    public class GoogleCloudDatacatalogV1ColumnSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>Optional. Default value for the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual string DefaultValue { get; set; }
+
+        /// <summary>
+        /// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8
+        /// string with the maximum size of 2000 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
+        public virtual string GcRule { get; set; }
+
+        /// <summary>Optional. Most important inclusion of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highestIndexingType")]
+        public virtual string HighestIndexingType { get; set; }
+
+        /// <summary>Looker specific column info of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lookerColumnSpec")]
+        public virtual GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec LookerColumnSpec { get; set; }
+
+        /// <summary>
+        /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only
+        /// `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Optional. Ordinal position</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
+        public virtual System.Nullable<int> OrdinalPosition { get; set; }
+
+        /// <summary>Optional. Schema of sub-columns. A column can have zero or more sub-columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subcolumns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1ColumnSchema> Subcolumns { get; set; }
+
+        /// <summary>Required. Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Column info specific to Looker System.</summary>
+    public class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Looker specific column type of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common statistics on the entry's usage. They can be set on any system.</summary>
+    public class GoogleCloudDatacatalogV1CommonUsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>View count in source system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
+        public virtual System.Nullable<long> ViewCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact people for the entry.</summary>
+    public class GoogleCloudDatacatalogV1Contacts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of contact people for the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("people")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1ContactsPerson> People { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A contact person for the entry.</summary>
+    public class GoogleCloudDatacatalogV1ContactsPerson : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Designation of the person, for example, Data Steward.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("designation")]
+        public virtual string Designation { get; set; }
+
+        /// <summary>Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Physical location of an entry.</summary>
+    public class GoogleCloudDatacatalogV1DataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Full name of a resource as defined by the service. For example:
+        /// `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Service that physically stores the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>Output only. Data Catalog entry name, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEntry")]
+        public virtual string SourceEntry { get; set; }
+
+        /// <summary>Detailed properties of the underlying storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageProperties")]
+        public virtual GoogleCloudDatacatalogV1StorageProperties StorageProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION`
+    /// type. Only one of internal specs can be set at the time, and cannot be changed later.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1DataSourceConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Fields specific to BigQuery connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConnectionSpec")]
+        public virtual GoogleCloudDatacatalogV1BigQueryConnectionSpec BigqueryConnectionSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to a table resource. Valid only for entries with the `TABLE` type.</summary>
+    public class GoogleCloudDatacatalogV1DatabaseTableSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Spec what aplies to tables that are actually views. Not set for "real" tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseViewSpec")]
+        public virtual GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec DatabaseViewSpec { get; set; }
+
+        /// <summary>
+        /// Output only. Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexTable")]
+        public virtual GoogleCloudDatacatalogV1DataplexTableSpec DataplexTable { get; set; }
+
+        /// <summary>Type of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to database view.</summary>
+    public class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a singular table this view reflects one to one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
+        public virtual string BaseTable { get; set; }
+
+        /// <summary>SQL query used to generate this view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlQuery")]
+        public virtual string SqlQuery { get; set; }
+
+        /// <summary>Type of this view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewType")]
+        public virtual string ViewType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other
+    /// systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into
+    /// the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name
+    /// et cetera) within the Data Catalog.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1DataplexExternalTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the Data Catalog entry representing the external table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCatalogEntry")]
+        public virtual string DataCatalogEntry { get; set; }
+
+        /// <summary>Fully qualified name (FQN) of the external table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedName")]
+        public virtual string FullyQualifiedName { get; set; }
+
+        /// <summary>Google Cloud resource name of the external table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudResource")]
+        public virtual string GoogleCloudResource { get; set; }
+
+        /// <summary>Service in which the external table is registered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("system")]
+        public virtual string System { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entry specyfication for a Dataplex fileset.</summary>
+    public class GoogleCloudDatacatalogV1DataplexFilesetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Common Dataplex fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexSpec")]
+        public virtual GoogleCloudDatacatalogV1DataplexSpec DataplexSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common Dataplex fields.</summary>
+    public class GoogleCloudDatacatalogV1DataplexSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage
+        /// bucket or BigQuery dataset) of the entity is attached.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>Compression format of the data, e.g., zip, gzip etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionFormat")]
+        public virtual string CompressionFormat { get; set; }
+
+        /// <summary>Format of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchema DataFormat { get; set; }
+
+        /// <summary>
+        /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as
+        /// the correspondingly Dataplex lake / zone / asset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entry specification for a Dataplex table.</summary>
+    public class GoogleCloudDatacatalogV1DataplexTableSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Common Dataplex fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexSpec")]
+        public virtual GoogleCloudDatacatalogV1DataplexSpec DataplexSpec { get; set; }
+
+        /// <summary>
+        /// List of external tables registered by Dataplex in other systems based on the same underlying data. External
+        /// tables allow to query this data in those systems.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTables")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1DataplexExternalTable> ExternalTables { get; set; }
+
+        /// <summary>Indicates if the table schema is managed by the user or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userManaged")]
+        public virtual System.Nullable<bool> UserManaged { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for any item that can be contained in the dump.</summary>
+    public class GoogleCloudDatacatalogV1DumpItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Entry and its tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taggedEntry")]
+        public virtual GoogleCloudDatacatalogV1TaggedEntry TaggedEntry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Entry metadata. A Data Catalog entry represents another resource in Google Cloud Platform (such as a BigQuery
+    /// dataset or a Pub/Sub topic) or outside of it. You can use the `linked_resource` field in the entry resource to
+    /// refer to the original resource ID of the source system. An entry resource contains resource details, for
+    /// example, its schema. Additionally, you can attach flexible metadata to an entry in the form of a Tag.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1Entry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more
+        /// information, see [Introduction to partitioned tables]
+        /// (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDateShardedSpec")]
+        public virtual GoogleCloudDatacatalogV1BigQueryDateShardedSpec BigqueryDateShardedSpec { get; set; }
+
+        /// <summary>
+        /// Output only. Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryTableSpec")]
+        public virtual GoogleCloudDatacatalogV1BigQueryTableSpec BigqueryTableSpec { get; set; }
+
+        /// <summary>Business Context of the entry. Not supported for BigQuery datasets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessContext")]
+        public virtual GoogleCloudDatacatalogV1BusinessContext BusinessContext { get; set; }
+
+        /// <summary>Output only. Physical location of the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual GoogleCloudDatacatalogV1DataSource DataSource { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a data source connection. Valid only for entries with the
+        /// `DATA_SOURCE_CONNECTION` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceConnectionSpec")]
+        public virtual GoogleCloudDatacatalogV1DataSourceConnectionSpec DataSourceConnectionSpec { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseTableSpec")]
+        public virtual GoogleCloudDatacatalogV1DatabaseTableSpec DatabaseTableSpec { get; set; }
+
+        /// <summary>
+        /// Entry description that can consist of several sentences or paragraphs that describe entry contents. The
+        /// description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new
+        /// lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in
+        /// UTF-8. Default value is an empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty
+        /// string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesetSpec")]
+        public virtual GoogleCloudDatacatalogV1FilesetSpec FilesetSpec { get; set; }
+
+        /// <summary>
+        /// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced
+        /// systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the
+        /// entries. FQNs take two forms: * For non-regionalized resources:
+        /// `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources:
+        /// `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table:
+        /// `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedName")]
+        public virtual string FullyQualifiedName { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsFilesetSpec")]
+        public virtual GoogleCloudDatacatalogV1GcsFilesetSpec GcsFilesetSpec { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates the entry's source system that Data Catalog integrates with, such as BigQuery,
+        /// Pub/Sub, or Dataproc Metastore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integratedSystem")]
+        public virtual string IntegratedSystem { get; set; }
+
+        /// <summary>
+        /// Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to
+        /// custom entries. Synced entries have unmodifiable labels that come from the source system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the
+        /// [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example,
+        /// the `linked_resource` for a table resource from BigQuery is:
+        /// `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when
+        /// the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field
+        /// is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z),
+        /// numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The
+        /// maximum size is 200 bytes when encoded in UTF-8.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedResource")]
+        public virtual string LinkedResource { get; set; }
+
+        /// <summary>
+        /// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to
+        /// `LOOKER`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lookerSystemSpec")]
+        public virtual GoogleCloudDatacatalogV1LookerSystemSpec LookerSystemSpec { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources
+        /// might not be stored in the location specified in its name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Additional information related to the entry. Private to the current user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalDetails")]
+        public virtual GoogleCloudDatacatalogV1PersonalDetails PersonalDetails { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a user-defined function or procedure. Valid only for entries with the
+        /// `ROUTINE` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineSpec")]
+        public virtual GoogleCloudDatacatalogV1RoutineSpec RoutineSpec { get; set; }
+
+        /// <summary>Schema of the entry. An entry might not have any schema attached to it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDatacatalogV1Schema Schema { get; set; }
+
+        /// <summary>
+        /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a
+        /// system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is
+        /// optional and defaults to an empty timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSystemTimestamps")]
+        public virtual GoogleCloudDatacatalogV1SystemTimestamps SourceSystemTimestamps { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a relational database system. Only settable when `user_specified_system` is
+        /// equal to `SQL_DATABASE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlDatabaseSystemSpec")]
+        public virtual GoogleCloudDatacatalogV1SqlDatabaseSystemSpec SqlDatabaseSystemSpec { get; set; }
+
+        /// <summary>
+        /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only
+        /// `FILESET` enum value is allowed. All other entries created in Data Catalog must use the
+        /// `user_specified_type`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Resource usage statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageSignal")]
+        public virtual GoogleCloudDatacatalogV1UsageSignal UsageSignal { get; set; }
+
+        /// <summary>
+        /// Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The
+        /// `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a
+        /// letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character
+        /// and at most 64 characters long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSpecifiedSystem")]
+        public virtual string UserSpecifiedSystem { get; set; }
+
+        /// <summary>
+        /// Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum.
+        /// When creating an entry, first check the type values in the enum. If there are no appropriate types for the
+        /// new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the
+        /// following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain
+        /// letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSpecifiedType")]
+        public virtual string UserSpecifiedType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entry overview fields for rich text descriptions of entries.</summary>
+    public class GoogleCloudDatacatalogV1EntryOverview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be
+        /// formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded
+        /// images. The maximum length of the text without images is 100 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.</summary>
+    public class GoogleCloudDatacatalogV1FilesetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexFileset")]
+        public virtual GoogleCloudDatacatalogV1DataplexFilesetSpec DataplexFileset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of a single file in Cloud Storage.</summary>
+    public class GoogleCloudDatacatalogV1GcsFileSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Full file path. Example: `gs://bucket_name/a/b.txt`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>Output only. Creation, modification, and expiration timestamps of a Cloud Storage file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsTimestamps")]
+        public virtual GoogleCloudDatacatalogV1SystemTimestamps GcsTimestamps { get; set; }
+
+        /// <summary>Output only. File size in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a Cloud Storage fileset entry.</summary>
+    public class GoogleCloudDatacatalogV1GcsFilesetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard
+        /// Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket
+        /// wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all
+        /// files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and
+        /// all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` *
+        /// `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` *
+        /// `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in
+        /// `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by
+        /// `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the
+        /// `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        /// You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePatterns")]
+        public virtual System.Collections.Generic.IList<string> FilePatterns { get; set; }
+
+        /// <summary>
+        /// Output only. Sample files contained in this fileset, not all files contained in this fileset are represented
+        /// here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleGcsFileSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GcsFileSpec> SampleGcsFileSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata message for long-running operation returned by the ImportEntries.</summary>
     public class GoogleCloudDatacatalogV1ImportEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4601,37 +5268,501 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Long-running operation metadata message returned by the ReconcileTags.</summary>
-    public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Specification that applies to entries that are part `LOOKER` system (user_specified_type)</summary>
+    public class GoogleCloudDatacatalogV1LookerSystemSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Maps the name of each tagged column (or empty string for a sole entry) to tagging operation status.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
+        /// <summary>Name of the parent Looker Instance. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentInstanceDisplayName")]
+        public virtual string ParentInstanceDisplayName { get; set; }
 
-        /// <summary>State of the reconciliation operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
+        /// <summary>
+        /// ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentInstanceId")]
+        public virtual string ParentInstanceId { get; set; }
+
+        /// <summary>Name of the parent Model. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentModelDisplayName")]
+        public virtual string ParentModelDisplayName { get; set; }
+
+        /// <summary>ID of the parent Model. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentModelId")]
+        public virtual string ParentModelId { get; set; }
+
+        /// <summary>Name of the parent View. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentViewDisplayName")]
+        public virtual string ParentViewDisplayName { get; set; }
+
+        /// <summary>ID of the parent View. Empty if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentViewId")]
+        public virtual string ParentViewId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Long-running operation response message returned by ReconcileTags.</summary>
-    public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Entry metadata relevant only to the user and private to them.</summary>
+    public class GoogleCloudDatacatalogV1PersonalDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of tags created in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdTagsCount")]
-        public virtual System.Nullable<long> CreatedTagsCount { get; set; }
+        /// <summary>Set if the entry is starred; unset otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starTime")]
+        public virtual object StarTime { get; set; }
 
-        /// <summary>Number of tags deleted in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deletedTagsCount")]
-        public virtual System.Nullable<long> DeletedTagsCount { get; set; }
+        /// <summary>True if the entry is starred by the user; false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; }
 
-        /// <summary>Number of tags updated in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updatedTagsCount")]
-        public virtual System.Nullable<long> UpdatedTagsCount { get; set; }
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing
+    /// source data.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Schema in Avro JSON format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avro")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema Avro { get; set; }
+
+        /// <summary>Marks a CSV-encoded data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csv")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema Csv { get; set; }
+
+        /// <summary>Marks an ORC-encoded data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orc")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema Orc { get; set; }
+
+        /// <summary>Marks a Parquet-encoded data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parquet")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema Parquet { get; set; }
+
+        /// <summary>Schema in protocol buffer format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protobuf")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema Protobuf { get; set; }
+
+        /// <summary>Schema in Thrift format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thrift")]
+        public virtual GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema Thrift { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Schema in Avro JSON format.</summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JSON source of the Avro schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Marks a CSV-encoded data source.</summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Marks an ORC-encoded data source.</summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Marks a Parquet-encoded data source.</summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Schema in protocol buffer format.</summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Protocol buffer source of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Schema in Thrift format.</summary>
+    public class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Thrift IDL source of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.</summary>
+    public class GoogleCloudDatacatalogV1RoutineSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fields specific for BigQuery routines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryRoutineSpec")]
+        public virtual GoogleCloudDatacatalogV1BigQueryRoutineSpec BigqueryRoutineSpec { get; set; }
+
+        /// <summary>The body of the routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
+        public virtual string DefinitionBody { get; set; }
+
+        /// <summary>
+        /// The language the routine is written in. The exact value depends on the source system. For BigQuery routines,
+        /// possible values are: * `SQL` * `JAVASCRIPT`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>
+        /// Return type of the argument. The exact value depends on the source system and the language.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnType")]
+        public virtual string ReturnType { get; set; }
+
+        /// <summary>Arguments of the routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineArguments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1RoutineSpecArgument> RoutineArguments { get; set; }
+
+        /// <summary>The type of the routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
+        public virtual string RoutineType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input or output argument of a function or stored procedure.</summary>
+    public class GoogleCloudDatacatalogV1RoutineSpecArgument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies whether the argument is input or output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The name of the argument. A return argument of a function might not have a name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Type of the argument. The exact value depends on the source system and the language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.</summary>
+    public class GoogleCloudDatacatalogV1Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is
+        /// 10,000. The maximum nested depth is 15 levels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1ColumnSchema> Columns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
+    /// </summary>
+    public class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Version of the database engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3;
+        /// AZURE_SQL = 4; } Host of the enclousing database instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceHost")]
+        public virtual string InstanceHost { get; set; }
+
+        /// <summary>
+        /// SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine
+        /// of the enclosing database instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlEngine")]
+        public virtual string SqlEngine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details the properties of the underlying storage.</summary>
+    public class GoogleCloudDatacatalogV1StorageProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: *
+        /// `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`:
+        /// matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`:
+        /// matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two
+        /// characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain
+        /// a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files
+        /// that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches
+        /// all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` *
+        /// `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePattern")]
+        public virtual System.Collections.Generic.IList<string> FilePattern { get; set; }
+
+        /// <summary>File type in MIME format, for example, `text/plain`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+        public virtual string FileType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Timestamps associated with this resource in a particular system.</summary>
+    public class GoogleCloudDatacatalogV1SystemTimestamps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation timestamp of the resource within the given system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. Expiration timestamp of the resource within the given system. Currently only applicable to
+        /// BigQuery resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on
+        /// the source system, not every modification updates this timestamp. For example, BigQuery timestamps every
+        /// metadata modification but not data or permission changes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Normal BigQuery table specification.</summary>
+    public class GoogleCloudDatacatalogV1TableSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this
+        /// field is the Data Catalog resource name of the date-sharded grouped entry. For example:
+        /// `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise,
+        /// `grouped_entry` is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupedEntry")]
+        public virtual string GroupedEntry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Tags contain custom metadata and are attached to Data Catalog resources. Tags conform with the specification of
+    /// their tag template. See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for
+    /// information on the permissions needed to create or view tags.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1Tag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resources like entry can have schemas associated with them. This scope allows you to attach tags to an
+        /// individual column based on that schema. To attach a tag to a nested column, separate column names with a dot
+        /// (`.`). Example: `column.nested_column`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>
+        /// Required. Maps the ID of a tag field to its value and additional information about that field. Tag template
+        /// defines valid field IDs. A tag must have at least 1 field and at most 500 fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1TagField> Fields { get; set; }
+
+        /// <summary>
+        /// The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag
+        /// itself might not be stored in the location specified in its name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the tag template this tag uses. Example:
+        /// `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE_ID}` This field cannot be modified
+        /// after creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual string Template { get; set; }
+
+        /// <summary>Output only. The display name of the tag template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateDisplayName")]
+        public virtual string TemplateDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the value and additional information on a field within a Tag.</summary>
+    public class GoogleCloudDatacatalogV1TagField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of a tag field with a boolean type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Output only. The display name of this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The value of a tag field with a double type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>
+        /// The value of a tag field with an enum type. This value must be one of the allowed values listed in this
+        /// enum.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValue")]
+        public virtual GoogleCloudDatacatalogV1TagFieldEnumValue EnumValue { get; set; }
+
+        /// <summary>
+        /// Output only. The order of this field with respect to other fields in this tag. Can be set by Tag. For
+        /// example, a higher value can indicate a more important field. The value can be negative. Multiple fields can
+        /// have the same order, and field orders within a tag don't have to be sequential.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual System.Nullable<int> Order { get; set; }
+
+        /// <summary>
+        /// The value of a tag field with a rich text type. The maximum length is 10 MiB as this value holds HTML
+        /// descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richtextValue")]
+        public virtual string RichtextValue { get; set; }
+
+        /// <summary>The value of a tag field with a string type. The maximum length is 2000 UTF-8 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The value of a tag field with a timestamp type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual object TimestampValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An enum value.</summary>
+    public class GoogleCloudDatacatalogV1TagFieldEnumValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the enum value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Wrapper containing Entry and information about Tags that should and should not be attached to it.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1TaggedEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Tags that should be deleted from the Data Catalog. Caller should populate template name and column only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absentTags")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> AbsentTags { get; set; }
+
+        /// <summary>
+        /// Tags that should be ingested into the Data Catalog. Caller should populate template name, column and fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentTags")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> PresentTags { get; set; }
+
+        /// <summary>Non-encrypted Data Catalog v1 Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("v1Entry")]
+        public virtual GoogleCloudDatacatalogV1Entry V1Entry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare
+    /// cases, an update may fail but will be performed again on the next day.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1UsageSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D",
+        /// "30D", "Lifetime"}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonUsageWithinTimeRange")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1CommonUsageStats> CommonUsageWithinTimeRange { get; set; }
+
+        /// <summary>Favorite count in the source system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("favoriteCount")]
+        public virtual System.Nullable<long> FavoriteCount { get; set; }
+
+        /// <summary>The end timestamp of the duration of usage statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are
+        /// `{"24H", "7D", "30D"}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageWithinTimeRange")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1UsageStats> UsageWithinTimeRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Detailed statistics on the entry's usage. Usage statistics have the following limitations: - Only BigQuery
+    /// tables have them. - They only include BigQuery query jobs. - They might be underestimated because wildcard table
+    /// references are not yet counted. For more information, see [Querying multiple tables using a wildcard table]
+    /// (https://cloud.google.com/bigquery/docs/querying-wildcard-tables)
+    /// </summary>
+    public class GoogleCloudDatacatalogV1UsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of cancelled attempts to use the underlying entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCancellations")]
+        public virtual System.Nullable<float> TotalCancellations { get; set; }
+
+        /// <summary>The number of successful uses of the underlying entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCompletions")]
+        public virtual System.Nullable<float> TotalCompletions { get; set; }
+
+        /// <summary>Total time spent only on successful uses, in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExecutionTimeForCompletionsMillis")]
+        public virtual System.Nullable<float> TotalExecutionTimeForCompletionsMillis { get; set; }
+
+        /// <summary>The number of failed attempts to use the underlying entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFailures")]
+        public virtual System.Nullable<float> TotalFailures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Table view specification.</summary>
+    public class GoogleCloudDatacatalogV1ViewSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The query that defines the table view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewQuery")]
+        public virtual string ViewQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
