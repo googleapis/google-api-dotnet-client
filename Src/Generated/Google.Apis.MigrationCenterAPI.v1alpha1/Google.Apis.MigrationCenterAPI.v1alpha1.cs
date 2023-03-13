@@ -366,6 +366,59 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     }
                 }
 
+                /// <summary>Updates the parameters of a list of assets.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Parent value for batch asset update.</param>
+                public virtual BatchUpdateRequest BatchUpdate(Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchUpdateAssetsRequest body, string parent)
+                {
+                    return new BatchUpdateRequest(service, body, parent);
+                }
+
+                /// <summary>Updates the parameters of a list of assets.</summary>
+                public class BatchUpdateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchUpdateAssetsResponse>
+                {
+                    /// <summary>Constructs a new BatchUpdate request.</summary>
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchUpdateAssetsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for batch asset update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchUpdateAssetsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchUpdate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/assets:batchUpdate";
+
+                    /// <summary>Initializes BatchUpdate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Creates a new asset in a given project and location. Deprecated: Use ReportAssetFrames instead.
                 /// </summary>
@@ -2544,6 +2597,31 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to update a list of assets.</summary>
+    public class BatchUpdateAssetsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The request message specifying the resources to update. A maximum of 1000 assets can be modified
+        /// in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateAssetRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for updating a list of assets.</summary>
+    public class BatchUpdateAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Update asset content. The content only includes values after field mask being applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about the bios.</summary>
     public class BiosDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3858,6 +3936,37 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to update an asset.</summary>
+    public class UpdateAssetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource being updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual Asset Asset { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update.
+        /// The values specified in the `update_mask` field are relative to the resource, not the full request. A field
+        /// will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3812,6 +3812,23 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     }
 
     /// <summary>
+    /// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for
+    /// repositories of the docker format type.
+    /// </summary>
+    public class DockerRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does
+        /// not prevent tags from being created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("immutableTags")]
+        public virtual System.Nullable<bool> ImmutableTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4631,13 +4648,19 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>A Repository for storing artifacts with a specific format.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time when the repository was created.</summary>
+        /// <summary>Output only. The time when the repository was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>The user-provided description of the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerConfig")]
+        public virtual DockerRepositoryConfig DockerConfig { get; set; }
 
         /// <summary>The format of packages that are stored in the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
@@ -4690,7 +4713,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
         public virtual System.Nullable<long> SizeBytes { get; set; }
 
-        /// <summary>The time when the repository was last updated.</summary>
+        /// <summary>Output only. The time when the repository was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

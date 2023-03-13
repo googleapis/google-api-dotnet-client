@@ -1826,6 +1826,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
         public virtual string Cve { get; set; }
 
+        /// <summary>Contains information about the impact of this vulnerability, this will change with time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impacts")]
+        public virtual System.Collections.Generic.IList<string> Impacts { get; set; }
+
+        /// <summary>
+        /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual Justification Justification { get; set; }
+
         /// <summary>A detailed description of this Vex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
         public virtual string LongDescription { get; set; }
@@ -1849,10 +1859,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Provides the state of this Vulnerability assessment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>Contains information about this vulnerability, this will change with time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threats")]
-        public virtual System.Collections.Generic.IList<Threat> Threats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4529,6 +4535,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Justification provides the justification when the state of the assessment if NOT_AFFECTED.</summary>
+    public class Justification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional details on why this justification was chosen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The justification type for this vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justificationType")]
+        public virtual string JustificationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class KnowledgeBase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The KB name (generally of the form KB[0-9]+ i.e. KB123456).</summary>
@@ -5659,24 +5680,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Contains the vulnerability kinetic information. This information can change as the vulnerability ages and new
-    /// information becomes available.
-    /// </summary>
-    public class Threat : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Represents a thorough human-readable discussion of the threat.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; }
-
-        /// <summary>The type of threat.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
-        public virtual string ThreatType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Start and end times for a build execution phase. Next ID: 3</summary>
     public class TimeSpan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5735,6 +5738,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
         public virtual string Cve { get; set; }
 
+        /// <summary>Contains information about the impact of this vulnerability, this will change with time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impacts")]
+        public virtual System.Collections.Generic.IList<string> Impacts { get; set; }
+
+        /// <summary>
+        /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual Justification Justification { get; set; }
+
         /// <summary>
         /// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form:
         /// `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
@@ -5753,10 +5766,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Provides the state of this Vulnerability assessment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>Contains information about this vulnerability, this will change with time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threats")]
-        public virtual System.Collections.Generic.IList<Threat> Threats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -294,6 +294,7 @@ namespace Google.Apis.Baremetalsolution.v2
                 Instances = new InstancesResource(service);
                 Networks = new NetworksResource(service);
                 NfsShares = new NfsSharesResource(service);
+                Nfsshares = new NfssharesResource(service);
                 Operations = new OperationsResource(service);
                 ProvisioningConfigs = new ProvisioningConfigsResource(service);
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
@@ -806,7 +807,10 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
                 }
 
-                /// <summary>RenameInstance sets a new name for an instance.</summary>
+                /// <summary>
+                /// RenameInstance sets a new name for an instance. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The `name` field is used to identify the instance. Format:
@@ -817,7 +821,10 @@ namespace Google.Apis.Baremetalsolution.v2
                     return new RenameRequest(service, body, name);
                 }
 
-                /// <summary>RenameInstance sets a new name for an instance.</summary>
+                /// <summary>
+                /// RenameInstance sets a new name for an instance. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
                 public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Instance>
                 {
                     /// <summary>Constructs a new Rename request.</summary>
@@ -1303,6 +1310,71 @@ namespace Google.Apis.Baremetalsolution.v2
                         });
                     }
                 }
+
+                /// <summary>
+                /// RenameNetwork sets a new name for a network. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the network. Format:
+                /// projects/{project}/locations/{location}/networks/{network}
+                /// </param>
+                public virtual RenameRequest Rename(Google.Apis.Baremetalsolution.v2.Data.RenameNetworkRequest body, string name)
+                {
+                    return new RenameRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// RenameNetwork sets a new name for a network. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
+                public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Network>
+                {
+                    /// <summary>Constructs a new Rename request.</summary>
+                    public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RenameNetworkRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the network. Format:
+                    /// projects/{project}/locations/{location}/networks/{network}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.RenameNetworkRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rename";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:rename";
+
+                    /// <summary>Initializes Rename parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networks/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the NfsShares resource.</summary>
@@ -1618,6 +1690,89 @@ namespace Google.Apis.Baremetalsolution.v2
                 }
             }
 
+            /// <summary>Gets the Nfsshares resource.</summary>
+            public virtual NfssharesResource Nfsshares { get; }
+
+            /// <summary>The "nfsshares" collection of methods.</summary>
+            public class NfssharesResource
+            {
+                private const string Resource = "nfsshares";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NfssharesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// RenameNfsShare sets a new name for an nfsshare. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the nfsshare. Format:
+                /// projects/{project}/locations/{location}/nfsshares/{nfsshare}
+                /// </param>
+                public virtual RenameRequest Rename(Google.Apis.Baremetalsolution.v2.Data.RenameNfsShareRequest body, string name)
+                {
+                    return new RenameRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// RenameNfsShare sets a new name for an nfsshare. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
+                public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.NfsShare>
+                {
+                    /// <summary>Constructs a new Rename request.</summary>
+                    public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RenameNfsShareRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the nfsshare. Format:
+                    /// projects/{project}/locations/{location}/nfsshares/{nfsshare}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.RenameNfsShareRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rename";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:rename";
+
+                    /// <summary>Initializes Rename parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/nfsshares/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -1635,20 +1790,14 @@ namespace Google.Apis.Baremetalsolution.v2
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Get details about an operation. This method used only to work around CCFE lack of passthrough LRO
-                /// support (b/221498758).
-                /// </summary>
+                /// <summary>Get details about an operation.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>
-                /// Get details about an operation. This method used only to work around CCFE lack of passthrough LRO
-                /// support (b/221498758).
-                /// </summary>
+                /// <summary>Get details about an operation.</summary>
                 public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3048,6 +3197,71 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
                 }
 
+                /// <summary>
+                /// RenameVolume sets a new name for a volume. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the volume. Format:
+                /// projects/{project}/locations/{location}/volumes/{volume}
+                /// </param>
+                public virtual RenameRequest Rename(Google.Apis.Baremetalsolution.v2.Data.RenameVolumeRequest body, string name)
+                {
+                    return new RenameRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// RenameVolume sets a new name for a volume. Use with caution, previous names become immediately
+                /// invalidated.
+                /// </summary>
+                public class RenameRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Volume>
+                {
+                    /// <summary>Constructs a new Rename request.</summary>
+                    public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RenameVolumeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the volume. Format:
+                    /// projects/{project}/locations/{location}/volumes/{volume}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.RenameVolumeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rename";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:rename";
+
+                    /// <summary>Initializes Rename parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Emergency Volume resize.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="volume">Required. Volume to resize.</param>
@@ -3407,6 +3621,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Output only. Create a time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The firmware version for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
+        public virtual string FirmwareVersion { get; set; }
 
         /// <summary>
         /// True if you enable hyperthreading for the server, otherwise false. The default value is false.
@@ -4431,9 +4649,42 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>Message requesting rename of a server.</summary>
     public class RenameInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The new `name` of the instance. Format: {instancename}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newName")]
-        public virtual string NewName { get; set; }
+        /// <summary>Required. The new `id` of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newInstanceId")]
+        public virtual string NewInstanceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message requesting rename of a server.</summary>
+    public class RenameNetworkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new `id` of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newNetworkId")]
+        public virtual string NewNetworkId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message requesting rename of a server.</summary>
+    public class RenameNfsShareRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new `id` of the nfsshare.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newNfsshareId")]
+        public virtual string NewNfsshareId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message requesting rename of a server.</summary>
+    public class RenameVolumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new `id` of the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newVolumeId")]
+        public virtual string NewVolumeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

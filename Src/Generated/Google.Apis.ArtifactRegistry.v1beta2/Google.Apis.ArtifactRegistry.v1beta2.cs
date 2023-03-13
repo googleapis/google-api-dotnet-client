@@ -3344,7 +3344,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
     /// <summary>A Repository for storing artifacts with a specific format.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time when the repository was created.</summary>
+        /// <summary>Output only. The time when the repository was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -3395,7 +3395,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
         public virtual System.Nullable<long> SizeBytes { get; set; }
 
-        /// <summary>The time when the repository was last updated.</summary>
+        /// <summary>Output only. The time when the repository was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

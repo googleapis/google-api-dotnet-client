@@ -3741,6 +3741,51 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
 
+            /// <summary>Returns the EkmConfig singleton resource for a given project and location.</summary>
+            /// <param name="name">Required. The name of the EkmConfig to get.</param>
+            public virtual GetEkmConfigRequest GetEkmConfig(string name)
+            {
+                return new GetEkmConfigRequest(service, name);
+            }
+
+            /// <summary>Returns the EkmConfig singleton resource for a given project and location.</summary>
+            public class GetEkmConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.EkmConfig>
+            {
+                /// <summary>Constructs a new GetEkmConfig request.</summary>
+                public GetEkmConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the EkmConfig to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getEkmConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetEkmConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/ekmConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3822,6 +3867,75 @@ namespace Google.Apis.CloudKMS.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the EkmConfig singleton resource for a given project and location.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. The resource name for the EkmConfig in the format `projects/*/locations/*/ekmConfig`.
+            /// </param>
+            public virtual UpdateEkmConfigRequest UpdateEkmConfig(Google.Apis.CloudKMS.v1.Data.EkmConfig body, string name)
+            {
+                return new UpdateEkmConfigRequest(service, body, name);
+            }
+
+            /// <summary>Updates the EkmConfig singleton resource for a given project and location.</summary>
+            public class UpdateEkmConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.EkmConfig>
+            {
+                /// <summary>Constructs a new UpdateEkmConfig request.</summary>
+                public UpdateEkmConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.EkmConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. The resource name for the EkmConfig in the format `projects/*/locations/*/ekmConfig`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudKMS.v1.Data.EkmConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateEkmConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateEkmConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/ekmConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4304,6 +4418,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual object DestroyTime { get; set; }
 
         /// <summary>
+        /// Output only. The root cause of the most recent external destruction failure. Only present if state is
+        /// EXTERNAL_DESTRUCTION_FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDestructionFailureReason")]
+        public virtual string ExternalDestructionFailureReason { get; set; }
+
+        /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that
         /// are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// </summary>
@@ -4313,6 +4434,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Output only. The time this CryptoKeyVersion's key material was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
         public virtual object GenerateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The root cause of the most recent generation failure. Only present if state is
+        /// GENERATION_FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationFailureReason")]
+        public virtual string GenerationFailureReason { get; set; }
 
         /// <summary>
         /// Output only. The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
@@ -4491,6 +4619,29 @@ namespace Google.Apis.CloudKMS.v1.Data
     }
 
     /// <summary>
+    /// An EkmConfig is a singleton resource that represents configuration parameters that apply to all CryptoKeys and
+    /// CryptoKeyVersions with a ProtectionLevel of EXTERNAL_VPC in a given project and location.
+    /// </summary>
+    public class EkmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of the default EkmConnection. Setting this field to the empty string removes the
+        /// default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEkmConnection")]
+        public virtual string DefaultEkmConnection { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for the EkmConfig in the format `projects/*/locations/*/ekmConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// An EkmConnection represents an individual EKM connection. It can be used for creating CryptoKeys and
     /// CryptoKeyVersions with a ProtectionLevel of EXTERNAL_VPC, as well as performing cryptographic operations using
     /// keys created within the EkmConnection.
@@ -4501,9 +4652,22 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
+        /// KeyManagementMode is CLOUD_KMS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoSpacePath")]
+        public virtual string CryptoSpacePath { get; set; }
+
         /// <summary>Optional. Etag of the currently stored EkmConnection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyManagementMode")]
+        public virtual string KeyManagementMode { get; set; }
 
         /// <summary>
         /// Output only. The resource name for the EkmConnection in the format

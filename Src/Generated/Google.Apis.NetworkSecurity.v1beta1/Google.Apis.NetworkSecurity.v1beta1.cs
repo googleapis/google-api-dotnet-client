@@ -474,7 +474,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -560,7 +560,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -842,7 +842,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1156,12 +1156,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -1171,12 +1166,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListOperationsResponse>
                 {
@@ -1467,7 +1457,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1553,7 +1543,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1915,7 +1905,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -3503,12 +3493,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -3518,12 +3503,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListOperationsResponse>
                 {
@@ -4316,7 +4296,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
         /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
         /// the server can check if original operation with the same request ID was received, and if so, will ignore the
         /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
         /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -4508,7 +4488,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
         /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
         /// the server can check if original operation with the same request ID was received, and if so, will ignore the
         /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
         /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -5166,7 +5146,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
         /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
         /// the server can check if original operation with the same request ID was received, and if so, will ignore the
         /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
         /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
