@@ -2158,7 +2158,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; }
 
-        /// <summary>Required. The DNS name suffix for the zones e.g. `example.com`.</summary>
+        /// <summary>
+        /// Required. The DNS name suffix for the zones e.g. `example.com.`. Cloud DNS requires that a DNS suffix ends
+        /// with a trailing dot.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
         public virtual string DnsSuffix { get; set; }
 
@@ -3140,7 +3143,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IList<string> Data { get; set; }
 
-        /// <summary>Required. The DNS or domain name of the record set, e.g. `test.example.com`.</summary>
+        /// <summary>
+        /// Required. The DNS or domain name of the record set, e.g. `test.example.com`. Cloud DNS requires that a DNS
+        /// suffix ends with a trailing dot.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -3159,7 +3165,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     /// <summary>Represents a DNS zone resource.</summary>
     public class DnsZone : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The DNS name suffix of this zone e.g. `example.com.`.</summary>
+        /// <summary>
+        /// The DNS name suffix of this zone e.g. `example.com.`. Cloud DNS requires that a DNS suffix ends with a
+        /// trailing dot.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
         public virtual string DnsSuffix { get; set; }
 

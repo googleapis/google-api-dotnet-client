@@ -2834,6 +2834,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BigQuery destination configuration</summary>
     public class BigQueryDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4111,6 +4112,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// </summary>
     public class SourceHierarchyDatasets : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The dataset template to use for dynamic dataset creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetTemplate")]
         public virtual DatasetTemplate DatasetTemplate { get; set; }
 
@@ -4155,7 +4157,10 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Static IP address connectivity.</summary>
+    /// <summary>
+    /// Static IP address connectivity. Used when the source database is configured to allow incoming connections from
+    /// the Datastream public IP addresses for the region specified in the connection profile.
+    /// </summary>
     public class StaticServiceIpConnectivity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

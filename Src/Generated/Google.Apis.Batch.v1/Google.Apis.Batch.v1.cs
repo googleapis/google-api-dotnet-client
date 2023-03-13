@@ -1661,7 +1661,7 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
-        /// <summary>Name of a snapshot used as the data source.</summary>
+        /// <summary>Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
         public virtual string Snapshot { get; set; }
 
@@ -1737,7 +1737,7 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the
-        /// VM is deleted.
+        /// VM is deleted. Batch API now only supports booting from image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
         public virtual Disk BootDisk { get; set; }

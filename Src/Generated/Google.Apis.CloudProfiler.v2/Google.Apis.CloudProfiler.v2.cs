@@ -55,7 +55,7 @@ namespace Google.Apis.CloudProfiler.v2
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Stackdriver Profiler API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Profiler API.</summary>
         public class Scope
         {
             /// <summary>
@@ -73,7 +73,7 @@ namespace Google.Apis.CloudProfiler.v2
             public static string MonitoringWrite = "https://www.googleapis.com/auth/monitoring.write";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Stackdriver Profiler API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Profiler API.</summary>
         public static class ScopeConstants
         {
             /// <summary>

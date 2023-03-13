@@ -2744,6 +2744,122 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
+                /// List entitlement history. Possible error codes: * PERMISSION_DENIED: The reseller account making the
+                /// request and the provided reseller account are different. * INVALID_ARGUMENT: Missing or invalid
+                /// required fields in the request. * NOT_FOUND: The parent resource doesn't exist. Usually the result
+                /// of an invalid name parameter. * INTERNAL: Any non-user error related to a technical issue in the
+                /// backend. In this case, contact CloudChannel support. * UNKNOWN: Any non-user error related to a
+                /// technical issue in the backend. In this case, contact Cloud Channel support. Return value: List of
+                /// EntitlementChanges.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the entitlement for which to list entitlement changes. The `-`
+                /// wildcard may be used to match entitlements across a customer. Formats: *
+                /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} *
+                /// accounts/{account_id}/customers/{customer_id}/entitlements/-
+                /// </param>
+                public virtual ListEntitlementChangesRequest ListEntitlementChanges(string parent)
+                {
+                    return new ListEntitlementChangesRequest(service, parent);
+                }
+
+                /// <summary>
+                /// List entitlement history. Possible error codes: * PERMISSION_DENIED: The reseller account making the
+                /// request and the provided reseller account are different. * INVALID_ARGUMENT: Missing or invalid
+                /// required fields in the request. * NOT_FOUND: The parent resource doesn't exist. Usually the result
+                /// of an invalid name parameter. * INTERNAL: Any non-user error related to a technical issue in the
+                /// backend. In this case, contact CloudChannel support. * UNKNOWN: Any non-user error related to a
+                /// technical issue in the backend. In this case, contact Cloud Channel support. Return value: List of
+                /// EntitlementChanges.
+                /// </summary>
+                public class ListEntitlementChangesRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListEntitlementChangesResponse>
+                {
+                    /// <summary>Constructs a new ListEntitlementChanges request.</summary>
+                    public ListEntitlementChangesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the entitlement for which to list entitlement changes. The `-`
+                    /// wildcard may be used to match entitlements across a customer. Formats: *
+                    /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} *
+                    /// accounts/{account_id}/customers/{customer_id}/entitlements/-
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filters applied to the list results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of entitlement changes to return. The service may return fewer than
+                    /// this value. If unspecified, returns at most 10 entitlement changes. The maximum value is 50; the
+                    /// server will coerce values above 50.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous CloudChannelService.ListEntitlementChanges
+                    /// call. Provide this to retrieve the subsequent page. When paginating, all other parameters
+                    /// provided to CloudChannelService.ListEntitlementChanges must match the call that provided the
+                    /// page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listEntitlementChanges";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:listEntitlementChanges";
+
+                    /// <summary>Initializes ListEntitlementChanges parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+/entitlements/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Returns the requested Offer resource. Possible error codes: * PERMISSION_DENIED: The entitlement
                 /// doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or
                 /// invalid. * NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource.
@@ -4036,6 +4152,14 @@ namespace Google.Apis.Cloudchannel.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// Optional. A boolean flag that determines if a response returns future offers 30 days from now. If
+                /// the show_future_offers is true, the response will only contain offers that are scheduled to be
+                /// available 30 days from now.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showFutureOffers", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowFutureOffers { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -4084,6 +4208,14 @@ namespace Google.Apis.Cloudchannel.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showFutureOffers", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showFutureOffers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6060,6 +6192,73 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Change event entry for Entitlement order history</summary>
+    public class GoogleCloudChannelV1EntitlementChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Entitlement's activation reason</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationReason")]
+        public virtual string ActivationReason { get; set; }
+
+        /// <summary>Cancellation reason for the Entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancellationReason")]
+        public virtual string CancellationReason { get; set; }
+
+        /// <summary>The change action type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; }
+
+        /// <summary>The submitted time of the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. Resource name of an entitlement in the form:
+        /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
+        public virtual string Entitlement { get; set; }
+
+        /// <summary>
+        /// Required. Resource name of the Offer at the time of change. Takes the form:
+        /// accounts/{account_id}/offers/{offer_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offer")]
+        public virtual string Offer { get; set; }
+
+        /// <summary>
+        /// Human-readable identifier that shows what operator made a change. When the operator_type is RESELLER, this
+        /// is the user's email address. For all other operator types, this is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
+        /// <summary>Operator type responsible for the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorType")]
+        public virtual string OperatorType { get; set; }
+
+        /// <summary>e.g. purchase_number change reason, entered by CRS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherChangeReason")]
+        public virtual string OtherChangeReason { get; set; }
+
+        /// <summary>
+        /// Extended parameters, such as: purchase_order_number, gcp_details; internal_correlation_id,
+        /// long_running_operation_id, order_id; etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
+
+        /// <summary>Service provisioned for an Entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedService")]
+        public virtual GoogleCloudChannelV1ProvisionedService ProvisionedService { get; set; }
+
+        /// <summary>Suspension reason for the Entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
+        public virtual string SuspensionReason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents Pub/Sub message content describing entitlement update.</summary>
     public class GoogleCloudChannelV1EntitlementEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6237,6 +6436,21 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// A token to retrieve the next page of results. Pass to ListCustomersRequest.page_token to obtain that page.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CloudChannelService.ListEntitlementChanges</summary>
+    public class GoogleCloudChannelV1ListEntitlementChangesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of entitlement changes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementChanges")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1EntitlementChange> EntitlementChanges { get; set; }
+
+        /// <summary>A token to list the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
