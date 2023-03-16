@@ -4653,9 +4653,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<int> Scale { get; set; }
 
-        /// <summary>
-        /// Specifies the list of values allowed in the column. List is empty if setValues is not required.
-        /// </summary>
+        /// <summary>Specifies the list of values allowed in the column. Only used for set data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setValues")]
         public virtual System.Collections.Generic.IList<string> SetValues { get; set; }
 

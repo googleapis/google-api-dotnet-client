@@ -7951,6 +7951,85 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
+            /// <summary>Consumes a purchase for an inapp item.</summary>
+            /// <param name="packageName">
+            /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+            /// </param>
+            /// <param name="productId">The inapp product SKU (for example, 'com.some.thing.inapp1').</param>
+            /// <param name="token">
+            /// The token provided to the user's device when the inapp product was purchased.
+            /// </param>
+            public virtual ConsumeRequest Consume(string packageName, string productId, string token)
+            {
+                return new ConsumeRequest(service, packageName, productId, token);
+            }
+
+            /// <summary>Consumes a purchase for an inapp item.</summary>
+            public class ConsumeRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Consume request.</summary>
+                public ConsumeRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    Token = token;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The inapp product SKU (for example, 'com.some.thing.inapp1').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>The token provided to the user's device when the inapp product was purchased.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "consume";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:consume";
+
+                /// <summary>Initializes Consume parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Checks the purchase and consumption status of an inapp item.</summary>
             /// <param name="packageName">
             /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').

@@ -2645,6 +2645,13 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
+            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. This is used by
+            /// the Working Location developer preview and only the default value is allowed for non-opted-in users.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
+
+            /// <summary>
             /// Specifies an event ID in the iCalendar format to be provided in the response. Optional. Use this if you
             /// want to search for an event by its iCalendar ID.
             /// </summary>
@@ -2805,6 +2812,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventTypes",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3585,6 +3600,13 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
+            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. This is used by
+            /// the Working Location developer preview and only the default value is allowed for non-opted-in users.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
+
+            /// <summary>
             /// Specifies an event ID in the iCalendar format to be provided in the response. Optional. Use this if you
             /// want to search for an event by its iCalendar ID.
             /// </summary>
@@ -3751,6 +3773,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventTypes",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

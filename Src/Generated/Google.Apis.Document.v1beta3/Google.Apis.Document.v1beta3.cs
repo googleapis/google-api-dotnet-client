@@ -424,12 +424,7 @@ namespace Google.Apis.Document.v1beta3
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -439,12 +434,7 @@ namespace Google.Apis.Document.v1beta3
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningListOperationsResponse>
                 {
@@ -1203,6 +1193,65 @@ namespace Google.Apis.Document.v1beta3
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Imports a processor version from source processor version.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The destination processor name to create the processor version in. Format:
+                    /// `projects/{project}/locations/{location}/processors/{processor}`
+                    /// </param>
+                    public virtual ImportProcessorVersionRequest ImportProcessorVersion(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest body, string parent)
+                    {
+                        return new ImportProcessorVersionRequest(service, body, parent);
+                    }
+
+                    /// <summary>Imports a processor version from source processor version.</summary>
+                    public class ImportProcessorVersionRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new ImportProcessorVersion request.</summary>
+                        public ImportProcessorVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The destination processor name to create the processor version in. Format:
+                        /// `projects/{project}/locations/{location}/processors/{processor}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "importProcessorVersion";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+parent}/processorVersions:importProcessorVersion";
+
+                        /// <summary>Initializes ImportProcessorVersion parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
                             });
                         }
                     }
@@ -7566,6 +7615,45 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The long running operation metadata for the ImportProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata for the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The request message for the ImportProcessorVersion method. This method requires Document AI Service Agent of the
+    /// destination project in the source project's IAM with [Document AI Editor
+    /// role](https://cloud.google.com/document-ai/docs/access-control/iam-roles). The destination project is specified
+    /// as part of the `parent` field. The source project is specified as part of `source` field. The Service Agent for
+    /// Document AI can be found in https://cloud.google.com/iam/docs/service-agents.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The source processor version to import from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersionSource")]
+        public virtual string ProcessorVersionSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the ImportProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination processor version name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response from ListEvaluations.</summary>
     public class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7655,11 +7743,42 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
 
         /// <summary>
+        /// Enables intelligent document quality scores after OCR. Can help with diagnosing why OCR responses are of
+        /// poor quality for a given input. Adds additional latency comparable to regular OCR to the process call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageQualityScores")]
+        public virtual System.Nullable<bool> EnableImageQualityScores { get; set; }
+
+        /// <summary>
         /// Enables special handling for PDFs with existing text information. Results in better text extraction quality
         /// in such PDF inputs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNativePdfParsing")]
         public virtual System.Nullable<bool> EnableNativePdfParsing { get; set; }
+
+        /// <summary>Includes symbol level OCR information if set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSymbol")]
+        public virtual System.Nullable<bool> EnableSymbol { get; set; }
+
+        /// <summary>Hints for the OCR model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hints")]
+        public virtual GoogleCloudDocumentaiV1beta3OcrConfigHints Hints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Hints for OCR Engine</summary>
+    public class GoogleCloudDocumentaiV1beta3OcrConfigHints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of BCP-47 language codes to use for OCR. In most cases, not specifying it yields the best results since
+        /// it enables automatic language detection. For languages based on the Latin alphabet, setting hints is not
+        /// needed. In rare cases, when the language of the text in the image is known, setting a hint will help get
+        /// better results (although it will be a significant hindrance if the hint is wrong).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
+        public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -13426,7 +13426,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailPhotoEtag")]
         public virtual string ThumbnailPhotoEtag { get; set; }
 
-        /// <summary>Output only. Photo Url of the user (Read-only)</summary>
+        /// <summary>Output only. The URL of the user's profile photo. The URL might be temporary or private.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailPhotoUrl")]
         public virtual string ThumbnailPhotoUrl { get; set; }
 

@@ -553,7 +553,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// not associated with the given account. * INTERNAL: Any non-user error related to technical issues in
                 /// the backend. In this case, contact Cloud Channel support. Return Value: If successful, the
                 /// ChannelPartnerRepricingConfig resources. The data for each resource is displayed in the ascending
-                /// order of: * channel partner ID * RepricingConfig.effective_invoice_month *
+                /// order of: * Channel Partner ID * RepricingConfig.effective_invoice_month *
                 /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error.
                 /// </summary>
                 /// <param name="parent">
@@ -573,7 +573,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// not associated with the given account. * INTERNAL: Any non-user error related to technical issues in
                 /// the backend. In this case, contact Cloud Channel support. Return Value: If successful, the
                 /// ChannelPartnerRepricingConfig resources. The data for each resource is displayed in the ascending
-                /// order of: * channel partner ID * RepricingConfig.effective_invoice_month *
+                /// order of: * Channel Partner ID * RepricingConfig.effective_invoice_month *
                 /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error.
                 /// </summary>
                 public class ListRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse>
@@ -1869,7 +1869,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// associated with the given account. * INTERNAL: Any non-user error related to technical issues in the
                 /// backend. In this case, contact Cloud Channel support. Return Value: If successful, the
                 /// CustomerRepricingConfig resources. The data for each resource is displayed in the ascending order
-                /// of: * customer ID * RepricingConfig.EntitlementGranularity.entitlement *
+                /// of: * Customer ID * RepricingConfig.EntitlementGranularity.entitlement *
                 /// RepricingConfig.effective_invoice_month * CustomerRepricingConfig.update_time If unsuccessful,
                 /// returns an error.
                 /// </summary>
@@ -1890,7 +1890,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// associated with the given account. * INTERNAL: Any non-user error related to technical issues in the
                 /// backend. In this case, contact Cloud Channel support. Return Value: If successful, the
                 /// CustomerRepricingConfig resources. The data for each resource is displayed in the ascending order
-                /// of: * customer ID * RepricingConfig.EntitlementGranularity.entitlement *
+                /// of: * Customer ID * RepricingConfig.EntitlementGranularity.entitlement *
                 /// RepricingConfig.effective_invoice_month * CustomerRepricingConfig.update_time If unsuccessful,
                 /// returns an error.
                 /// </summary>

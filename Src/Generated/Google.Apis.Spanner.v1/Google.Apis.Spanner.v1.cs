@@ -637,12 +637,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -652,12 +647,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
                 {
@@ -1514,12 +1504,7 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -1529,12 +1514,7 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
                     {
@@ -2863,12 +2843,7 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -2878,12 +2853,7 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
                     {
@@ -4945,12 +4915,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -4960,12 +4925,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
                 {
@@ -6727,6 +6687,14 @@ namespace Google.Apis.Spanner.v1.Data
     public class ExecuteSqlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// If this is for a partitioned query and this field is set to `true`, the request will be executed via Spanner
+        /// independent compute resources. If the field is set to `true` but the request does not set `partition_token`,
+        /// the API will return an `INVALID_ARGUMENT` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataBoostEnabled")]
+        public virtual System.Nullable<bool> DataBoostEnabled { get; set; }
+
+        /// <summary>
         /// It is not always possible for Cloud Spanner to infer the right SQL type from a JSON value. For example,
         /// values of type `BYTES` and values of type `STRING` both appear in params as JSON strings. In these cases,
         /// `param_types` can be used to specify the exact SQL type for some or all of the SQL statement parameters. See
@@ -7037,7 +7005,8 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// The number of nodes allocated to this instance. At most one of either node_count or processing_units should
-        /// be present in the message. This may be zero in API responses for instances that are not yet in state
+        /// be present in the message. Users can set the node_count field to specify the target number of nodes
+        /// allocated to the instance. This may be zero in API responses for instances that are not yet in state
         /// `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
         /// information about nodes and processing units.
         /// </summary>
@@ -7046,8 +7015,9 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// The number of processing units allocated to this instance. At most one of processing_units or node_count
-        /// should be present in the message. This may be zero in API responses for instances that are not yet in state
-        /// `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
+        /// should be present in the message. Users can set the processing_units field to specify the target number of
+        /// processing units allocated to the instance. This may be zero in API responses for instances that are not yet
+        /// in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
         /// information about nodes and processing units.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
@@ -8271,6 +8241,14 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The columns of table to be returned for each row matching this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<string> Columns { get; set; }
+
+        /// <summary>
+        /// If this is for a partitioned read and this field is set to `true`, the request will be executed via Spanner
+        /// independent compute resources. If the field is set to `true` but the request does not set `partition_token`,
+        /// the API will return an `INVALID_ARGUMENT` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataBoostEnabled")]
+        public virtual System.Nullable<bool> DataBoostEnabled { get; set; }
 
         /// <summary>
         /// If non-empty, the name of an index on table. This index is used instead of the table primary key when

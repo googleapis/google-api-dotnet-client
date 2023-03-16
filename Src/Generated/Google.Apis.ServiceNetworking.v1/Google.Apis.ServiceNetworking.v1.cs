@@ -2768,7 +2768,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rubySettings")]
         public virtual RubySettings RubySettings { get; set; }
 
-        /// <summary>Version of the API to apply these settings to.</summary>
+        /// <summary>
+        /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the
+        /// version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 

@@ -3412,7 +3412,7 @@
    }
   }
  },
- "revision": "20230304",
+ "revision": "20230226",
  "rootUrl": "https://dlp.googleapis.com/",
  "schemas": {
   "GooglePrivacyDlpV2Action": {
@@ -5590,7 +5590,6 @@
       "CHILE",
       "CHINA",
       "COLOMBIA",
-      "CROATIA",
       "DENMARK",
       "FRANCE",
       "FINLAND",
@@ -5604,7 +5603,6 @@
       "JAPAN",
       "KOREA",
       "MEXICO",
-      "NEW_ZEALAND",
       "THE_NETHERLANDS",
       "NORWAY",
       "PARAGUAY",
@@ -5622,7 +5620,8 @@
       "UNITED_STATES",
       "URUGUAY",
       "VENEZUELA",
-      "INTERNAL"
+      "INTERNAL",
+      "NEW_ZEALAND"
      ],
      "enumDescriptions": [
       "Unused location",
@@ -5635,7 +5634,6 @@
       "The infoType is typically used in Chile.",
       "The infoType is typically used in China.",
       "The infoType is typically used in Colombia.",
-      "The infoType is typically used in Croatia.",
       "The infoType is typically used in Denmark.",
       "The infoType is typically used in France.",
       "The infoType is typically used in Finland.",
@@ -5649,7 +5647,6 @@
       "The infoType is typically used in Japan.",
       "The infoType is typically used in Korea.",
       "The infoType is typically used in Mexico.",
-      "The infoType is typically used in New Zealand.",
       "The infoType is typically used in the Netherlands.",
       "The infoType is typically used in Norway.",
       "The infoType is typically used in Paraguay.",
@@ -5667,7 +5664,8 @@
       "The infoType is typically used in the United States.",
       "The infoType is typically used in Uruguay.",
       "The infoType is typically used in Venezuela.",
-      "The infoType is typically used in Google internally."
+      "The infoType is typically used in Google internally.",
+      "The infoType is typically used in New Zealand."
      ],
      "type": "string"
     },

@@ -1706,6 +1706,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
         public virtual string Recipient { get; set; }
 
+        /// <summary>The sent time of the email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentTime")]
+        public virtual object SentTime { get; set; }
+
         /// <summary>The email subject text (only available for reported emails).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectText")]
         public virtual string SubjectText { get; set; }

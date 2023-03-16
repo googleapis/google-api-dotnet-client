@@ -3930,6 +3930,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Optional arguments to enable specific features of builds.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Option to specify how default logs buckets are setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLogsBucketBehavior")]
+        public virtual string DefaultLogsBucketBehavior { get; set; }
+
         /// <summary>
         /// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space
         /// will be used by the operating system and build utilities. Also note that this is the minimum disk size that
@@ -6601,13 +6605,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     public class Publisher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a
-        /// globally unique identifier for that issuing party. Example: https://csaf.io
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual string Context { get; set; }
-
-        /// <summary>
         /// Provides information about the authority of the issuing party to release the document, in particular, the
         /// party's constituency and responsibilities or other obligations.
         /// </summary>
@@ -6617,6 +6614,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a
+        /// globally unique identifier for that issuing party. Example: https://csaf.io
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherNamespace")]
+        public virtual string PublisherNamespace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6736,10 +6740,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Contains a comprehensive human-readable discussion of the remediation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
-
-        /// <summary>Contains the date from which the remediation is available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("remediationTime")]
-        public virtual object RemediationTime { get; set; }
 
         /// <summary>The type of remediation that can be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediationType")]
