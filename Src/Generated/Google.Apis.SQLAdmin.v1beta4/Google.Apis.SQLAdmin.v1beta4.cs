@@ -64,7 +64,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the sqladmin API (prod).</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud SQL Admin API.</summary>
         public class Scope
         {
             /// <summary>
@@ -77,7 +77,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public static string SqlserviceAdmin = "https://www.googleapis.com/auth/sqlservice.admin";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the sqladmin API (prod).</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud SQL Admin API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -2944,6 +2944,132 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 this.service = service;
             }
 
+            /// <summary>Get Disk Shrink Config for a given instance.</summary>
+            /// <param name="project">Project ID of the project that contains the instance.</param>
+            /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+            public virtual GetDiskShrinkConfigRequest GetDiskShrinkConfig(string project, string instance)
+            {
+                return new GetDiskShrinkConfigRequest(service, project, instance);
+            }
+
+            /// <summary>Get Disk Shrink Config for a given instance.</summary>
+            public class GetDiskShrinkConfigRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesGetDiskShrinkConfigResponse>
+            {
+                /// <summary>Constructs a new GetDiskShrinkConfig request.</summary>
+                public GetDiskShrinkConfigRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+                {
+                    Project = project;
+                    Instance = instance;
+                    InitParameters();
+                }
+
+                /// <summary>Project ID of the project that contains the instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Instance { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getDiskShrinkConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/getDiskShrinkConfig";
+
+                /// <summary>Initializes GetDiskShrinkConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Perform Disk Shrink on primary instance.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="project">Project ID of the project that contains the instance.</param>
+            /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+            public virtual PerformDiskShrinkRequest PerformDiskShrink(Google.Apis.SQLAdmin.v1beta4.Data.PerformDiskShrinkContext body, string project, string instance)
+            {
+                return new PerformDiskShrinkRequest(service, body, project, instance);
+            }
+
+            /// <summary>Perform Disk Shrink on primary instance.</summary>
+            public class PerformDiskShrinkRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+            {
+                /// <summary>Constructs a new PerformDiskShrink request.</summary>
+                public PerformDiskShrinkRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.PerformDiskShrinkContext body, string project, string instance) : base(service)
+                {
+                    Project = project;
+                    Instance = instance;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Project ID of the project that contains the instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Instance { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SQLAdmin.v1beta4.Data.PerformDiskShrinkContext Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "performDiskShrink";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/performDiskShrink";
+
+                /// <summary>Initializes PerformDiskShrink parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Reschedules the maintenance on the given instance.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="project">ID of the project that contains the instance.</param>
@@ -2989,6 +3115,73 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance";
 
                 /// <summary>Initializes RescheduleMaintenance parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Reset Replica Size to primary instance disk size.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="project">ID of the project that contains the read replica.</param>
+            /// <param name="instance">Cloud SQL read replica instance name.</param>
+            public virtual ResetReplicaSizeRequest ResetReplicaSize(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesResetReplicaSizeRequest body, string project, string instance)
+            {
+                return new ResetReplicaSizeRequest(service, body, project, instance);
+            }
+
+            /// <summary>Reset Replica Size to primary instance disk size.</summary>
+            public class ResetReplicaSizeRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+            {
+                /// <summary>Constructs a new ResetReplicaSize request.</summary>
+                public ResetReplicaSizeRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesResetReplicaSizeRequest body, string project, string instance) : base(service)
+                {
+                    Project = project;
+                    Instance = instance;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>ID of the project that contains the read replica.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Cloud SQL read replica instance name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Instance { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesResetReplicaSizeRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "resetReplicaSize";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/resetReplicaSize";
+
+                /// <summary>Initializes ResetReplicaSize parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -5844,6 +6037,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Perform disk shrink context.</summary>
+    public class PerformDiskShrinkContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The target disk shrink size in GigaBytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSizeGb")]
+        public virtual System.Nullable<long> TargetSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Read-replica configuration for connecting to the primary instance.</summary>
     public class ReplicaConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6145,6 +6349,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instance get disk shrink config response.</summary>
+    public class SqlInstancesGetDiskShrinkConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always `sql#getDiskShrinkConfig`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The minimum size to which a disk can be shrunk in GigaBytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimalTargetSizeGb")]
+        public virtual System.Nullable<long> MinimalTargetSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reschedule options for maintenance windows.</summary>
     public class SqlInstancesRescheduleMaintenanceRequestBody : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6152,6 +6371,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reschedule")]
         public virtual Reschedule Reschedule { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Instance reset replica size request.</summary>
+    public class SqlInstancesResetReplicaSizeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

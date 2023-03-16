@@ -5940,6 +5940,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Optional arguments to enable specific features of builds.</summary>
     public class BuildOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Option to specify how default logs buckets are setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLogsBucketBehavior")]
+        public virtual string DefaultLogsBucketBehavior { get; set; }
+
         /// <summary>
         /// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space
         /// will be used by the operating system and build utilities. Also note that this is the minimum disk size that

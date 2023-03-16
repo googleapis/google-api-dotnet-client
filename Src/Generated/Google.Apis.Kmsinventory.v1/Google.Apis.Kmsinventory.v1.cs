@@ -887,6 +887,13 @@ namespace Google.Apis.Kmsinventory.v1.Data
         public virtual object DestroyTime { get; set; }
 
         /// <summary>
+        /// Output only. The root cause of the most recent external destruction failure. Only present if state is
+        /// EXTERNAL_DESTRUCTION_FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDestructionFailureReason")]
+        public virtual string ExternalDestructionFailureReason { get; set; }
+
+        /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that
         /// are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// </summary>
@@ -896,6 +903,13 @@ namespace Google.Apis.Kmsinventory.v1.Data
         /// <summary>Output only. The time this CryptoKeyVersion's key material was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
         public virtual object GenerateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The root cause of the most recent generation failure. Only present if state is
+        /// GENERATION_FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationFailureReason")]
+        public virtual string GenerationFailureReason { get; set; }
 
         /// <summary>
         /// Output only. The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.

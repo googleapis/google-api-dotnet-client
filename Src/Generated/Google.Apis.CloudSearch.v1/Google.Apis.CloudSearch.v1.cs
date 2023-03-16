@@ -2217,11 +2217,7 @@ namespace Google.Apis.CloudSearch.v1
 
             /// <summary>
             /// Lists operations that match the specified filter in the request. If the server doesn't support this
-            /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding
-            /// to use different resource name schemes, such as `users/*/operations`. To override the binding, API
-            /// services can add a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For
-            /// backwards compatibility, the default name includes the operations collection id, however overriding
-            /// users must ensure the name binding is the parent resource, without the operations collection id.
+            /// method, it returns `UNIMPLEMENTED`.
             /// </summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
@@ -2231,11 +2227,7 @@ namespace Google.Apis.CloudSearch.v1
 
             /// <summary>
             /// Lists operations that match the specified filter in the request. If the server doesn't support this
-            /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding
-            /// to use different resource name schemes, such as `users/*/operations`. To override the binding, API
-            /// services can add a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For
-            /// backwards compatibility, the default name includes the operations collection id, however overriding
-            /// users must ensure the name binding is the parent resource, without the operations collection id.
+            /// method, it returns `UNIMPLEMENTED`.
             /// </summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListOperationsResponse>
             {
@@ -6943,6 +6935,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
         public virtual string KnownIcon { get; set; }
 
+        /// <summary>
+        /// Display one of the [Google Material Icons](https://fonts.google.com/icons). For example, to display a [check
+        /// box
+        /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048),
+        /// use "material_icon": { "name": "check_box" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materialIcon")]
+        public virtual AppsDynamiteStorageMaterialIcon MaterialIcon { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6997,6 +6998,49 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The crop type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A [Google Font Icon](https://fonts.google.com/icons), which includes over 2500+ options. For example, to display
+    /// a [check box
+    /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048)
+    /// with customized weight and grade, write { "name": "check_box", "fill": true, "weight": 300, "grade": -25 }
+    /// </summary>
+    public class AppsDynamiteStorageMaterialIcon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether it renders a filled icon. Default value is false. See Customization in [Google Font
+        /// Icon](https://fonts.google.com/icons) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fill")]
+        public virtual System.Nullable<bool> Fill { get; set; }
+
+        /// <summary>
+        /// Weight and grade affect a symbol’s thickness. Adjustments to grade are more granular than adjustments to
+        /// weight and have a small impact on the size of the symbol. Choose from {-25, 0, 200}. If absent, default
+        /// value is 0. If any other value is specified, a broken image icon will be displayed. See Customization in
+        /// [Google Font Icon](https://fonts.google.com/icons) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grade")]
+        public virtual System.Nullable<int> Grade { get; set; }
+
+        /// <summary>
+        /// The icon name defined in the [Google Material Icon](https://fonts.google.com/icons) in snake_case. e.g.
+        /// "check_box". Any invalid name will be trimmed as empty string result in the icon falied to render.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The stroke weight of the icon. Choose from {100, 200, 300, 400, 500, 600, 700}. If absent, default value is
+        /// 400. If any other value is specified, a broken image icon will be displayed. See Customization in [Google
+        /// Font Icon](https://fonts.google.com/icons) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

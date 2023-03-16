@@ -12075,6 +12075,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual string ParentTemplateId { get; set; }
 
         /// <summary>
+        /// Optional. The run-as service account email, if set and auth config is not configured, that will be used to
+        /// generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAsServiceAccount")]
+        public virtual string RunAsServiceAccount { get; set; }
+
+        /// <summary>
         /// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can
         /// be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be
         /// same as the HEAD. So users should always use "HEAD" tag to identify the head.

@@ -2472,11 +2472,7 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>
         /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use
-        /// different resource name schemes, such as `users/*/operations`. To override the binding, API services can add
-        /// a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For backwards
-        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
-        /// the name binding is the parent resource, without the operations collection id.
+        /// it returns `UNIMPLEMENTED`.
         /// </summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
@@ -2486,11 +2482,7 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>
         /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use
-        /// different resource name schemes, such as `users/*/operations`. To override the binding, API services can add
-        /// a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For backwards
-        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
-        /// the name binding is the parent resource, without the operations collection id.
+        /// it returns `UNIMPLEMENTED`.
         /// </summary>
         public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListOperationsResponse>
         {
@@ -3503,6 +3495,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
+
+        /// <summary>
+        /// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on
+        /// dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly
+        /// one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRunAccessLevels")]
+        public virtual System.Collections.Generic.IList<string> DryRunAccessLevels { get; set; }
 
         /// <summary>
         /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in

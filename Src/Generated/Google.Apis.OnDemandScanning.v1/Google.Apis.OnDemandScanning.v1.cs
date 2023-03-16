@@ -1728,6 +1728,21 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Justification provides the justification when the state of the assessment if NOT_AFFECTED.</summary>
+    public class Justification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional details on why this justification was chosen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The justification type for this vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justificationType")]
+        public virtual string JustificationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Jwt : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2318,6 +2333,25 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies details on how to handle (and presumably, fix) a vulnerability.</summary>
+    public class Remediation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains a comprehensive human-readable discussion of the remediation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The type of remediation that can be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationType")]
+        public virtual string RemediationType { get; set; }
+
+        /// <summary>Contains the URL where to obtain the remediation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationUri")]
+        public virtual RelatedUrl RemediationUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A unique identifier for a Cloud Repo.</summary>
     public class RepoId : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2751,6 +2785,50 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+    /// </summary>
+    public class VexAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual string Cve { get; set; }
+
+        /// <summary>Contains information about the impact of this vulnerability, this will change with time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impacts")]
+        public virtual System.Collections.Generic.IList<string> Impacts { get; set; }
+
+        /// <summary>
+        /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual Justification Justification { get; set; }
+
+        /// <summary>
+        /// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form:
+        /// `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noteName")]
+        public virtual string NoteName { get; set; }
+
+        /// <summary>Holds a list of references associated with this vulnerability item and assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedUris")]
+        public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUris { get; set; }
+
+        /// <summary>Specifies details on how to handle (and presumably, fix) a vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediations")]
+        public virtual System.Collections.Generic.IList<Remediation> Remediations { get; set; }
+
+        /// <summary>Provides the state of this Vulnerability assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An occurrence of a severity vulnerability on a resource.</summary>
     public class VulnerabilityOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2815,6 +2893,9 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("vexAssessment")]
+        public virtual VexAssessment VexAssessment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

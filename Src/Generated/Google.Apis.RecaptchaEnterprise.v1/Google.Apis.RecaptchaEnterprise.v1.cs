@@ -1397,6 +1397,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The event being assessed.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Event : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1407,11 +1408,30 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ExpectedAction { get; set; }
 
         /// <summary>
+        /// Optional. Optional flag for a reCAPTCHA express request for an assessment without a token. If enabled,
+        /// `site_key` must reference a SCORE key with WAF feature set to EXPRESS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("express")]
+        public virtual System.Nullable<bool> Express { get; set; }
+
+        /// <summary>
         /// Optional. Unique stable hashed user identifier for the request. The identifier must be hashed using
         /// hmac-sha256 with stable secret.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
+
+        /// <summary>Optional. Optional HTTP header information about the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>Optional. Optional JA3 fingerprint for SSL clients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ja3")]
+        public virtual string Ja3 { get; set; }
+
+        /// <summary>Optional. The URI resource the user requested that triggered an assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedUri")]
+        public virtual string RequestedUri { get; set; }
 
         /// <summary>
         /// Optional. The site key that was used to invoke reCAPTCHA Enterprise on your site and generate the token.
@@ -1522,7 +1542,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1AndroidKeySettings AndroidSettings { get; set; }
 
-        /// <summary>The timestamp corresponding to the creation of this Key.</summary>
+        /// <summary>Output only. The timestamp corresponding to the creation of this Key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -1866,6 +1886,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Properties of the provided event token.</summary>
     public class GoogleCloudRecaptchaenterpriseV1TokenProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Action name provided at token generation.</summary>

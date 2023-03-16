@@ -5404,6 +5404,42 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Long-running operation metadata message returned by the ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Maps the name of each tagged column (or empty string for a sole entry) to tagging operation status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IDictionary<string, Status> Errors { get; set; }
+
+        /// <summary>State of the reconciliation operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Long-running operation response message returned by ReconcileTags.</summary>
+    public class GoogleCloudDatacatalogV1ReconcileTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of tags created in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdTagsCount")]
+        public virtual System.Nullable<long> CreatedTagsCount { get; set; }
+
+        /// <summary>Number of tags deleted in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedTagsCount")]
+        public virtual System.Nullable<long> DeletedTagsCount { get; set; }
+
+        /// <summary>Number of tags updated in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedTagsCount")]
+        public virtual System.Nullable<long> UpdatedTagsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.</summary>
     public class GoogleCloudDatacatalogV1RoutineSpec : Google.Apis.Requests.IDirectResponseSchema
     {

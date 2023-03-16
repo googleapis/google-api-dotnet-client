@@ -1683,6 +1683,60 @@ namespace Google.Apis.Games.v1
             }
         }
 
+        /// <summary>
+        /// Get the application player ids for the currently authenticated player across all requested games by the same
+        /// developer as the calling application. This will only return ids for players that actually have an id (scoped
+        /// or otherwise) with that game.
+        /// </summary>
+        public virtual GetMultipleApplicationPlayerIdsRequest GetMultipleApplicationPlayerIds()
+        {
+            return new GetMultipleApplicationPlayerIdsRequest(service);
+        }
+
+        /// <summary>
+        /// Get the application player ids for the currently authenticated player across all requested games by the same
+        /// developer as the calling application. This will only return ids for players that actually have an id (scoped
+        /// or otherwise) with that game.
+        /// </summary>
+        public class GetMultipleApplicationPlayerIdsRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.GetMultipleApplicationPlayerIdsResponse>
+        {
+            /// <summary>Constructs a new GetMultipleApplicationPlayerIds request.</summary>
+            public GetMultipleApplicationPlayerIdsRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The application IDs from the Google Play developer console for the games to return scoped ids
+            /// for.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("applicationIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ApplicationIds { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getMultipleApplicationPlayerIds";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/players/me/multipleApplicationPlayerIds";
+
+            /// <summary>Initializes GetMultipleApplicationPlayerIds parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("applicationIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Retrieves scoped player identifiers for currently authenticated user.</summary>
         public virtual GetScopedPlayerIdsRequest GetScopedPlayerIds()
         {
@@ -3156,6 +3210,21 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Primary scoped player identifier for an application.</summary>
+    public class ApplicationPlayerId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The application that this player identifier is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        /// <summary>The player identifier for the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
+        public virtual string PlayerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A third party application verification response resource.</summary>
     public class ApplicationVerifyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3506,6 +3575,20 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The minimum number of steps for the achievement to be set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Nullable<int> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GetMultipleApplicationPlayerIds rpc.</summary>
+    public class GetMultipleApplicationPlayerIdsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The requested applications along with the scoped ids for tha player, if that player has an id
+        /// for the application. If not, the application is not included in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playerIds")]
+        public virtual System.Collections.Generic.IList<ApplicationPlayerId> PlayerIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
