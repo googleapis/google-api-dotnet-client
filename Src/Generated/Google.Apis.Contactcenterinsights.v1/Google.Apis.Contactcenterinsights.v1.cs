@@ -3613,25 +3613,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for creating an issue.</summary>
-    public class GoogleCloudContactcenterinsightsV1CreateIssueMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>The original request for creation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual GoogleCloudContactcenterinsightsV1CreateIssueRequest Request { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata for creating an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3659,21 +3640,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual GoogleCloudContactcenterinsightsV1IssueModel IssueModel { get; set; }
 
         /// <summary>Required. The parent resource of the issue model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to create an issue.</summary>
-    public class GoogleCloudContactcenterinsightsV1CreateIssueRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The values for the new issue.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
-        public virtual GoogleCloudContactcenterinsightsV1Issue Issue { get; set; }
-
-        /// <summary>Required. The parent resource of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 

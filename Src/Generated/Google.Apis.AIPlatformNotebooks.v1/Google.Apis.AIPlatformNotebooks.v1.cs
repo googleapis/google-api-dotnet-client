@@ -2563,12 +2563,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -2578,12 +2573,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.ListOperationsResponse>
                 {
@@ -5867,6 +5857,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Optional. Use a list of container images to use as Kernels in the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernels")]
         public virtual System.Collections.Generic.IList<ContainerImage> Kernels { get; set; }
+
+        /// <summary>Bool indicating whether mixer client should be disabled. Default: False</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mixerDisabled")]
+        public virtual System.Nullable<bool> MixerDisabled { get; set; }
 
         /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron

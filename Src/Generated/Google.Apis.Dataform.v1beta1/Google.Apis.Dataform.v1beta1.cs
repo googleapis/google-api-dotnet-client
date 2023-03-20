@@ -3149,6 +3149,51 @@ namespace Google.Apis.Dataform.v1beta1
                     }
                 }
 
+                /// <summary>Computes a Repository's Git access token status.</summary>
+                /// <param name="name">Required. The repository's name.</param>
+                public virtual ComputeAccessTokenStatusRequest ComputeAccessTokenStatus(string name)
+                {
+                    return new ComputeAccessTokenStatusRequest(service, name);
+                }
+
+                /// <summary>Computes a Repository's Git access token status.</summary>
+                public class ComputeAccessTokenStatusRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ComputeRepositoryAccessTokenStatusResponse>
+                {
+                    /// <summary>Constructs a new ComputeAccessTokenStatus request.</summary>
+                    public ComputeAccessTokenStatusRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The repository's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "computeAccessTokenStatus";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:computeAccessTokenStatus";
+
+                    /// <summary>Initializes ComputeAccessTokenStatus parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Creates a new Repository in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -3284,7 +3329,7 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Fetches a Repository's history of changes. The Repository must not have a value for
+                /// Fetches a Repository's history of commits. The Repository must not have a value for
                 /// `git_remote_settings.url`.
                 /// </summary>
                 /// <param name="name">Required. The repository's name.</param>
@@ -3294,7 +3339,7 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Fetches a Repository's history of changes. The Repository must not have a value for
+                /// Fetches a Repository's history of commits. The Repository must not have a value for
                 /// `git_remote_settings.url`.
                 /// </summary>
                 public class FetchHistoryRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.FetchRepositoryHistoryResponse>
@@ -3311,7 +3356,7 @@ namespace Google.Apis.Dataform.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. Maximum number of paths to return. The server may return fewer items than requested.
+                    /// Optional. Maximum number of commits to return. The server may return fewer items than requested.
                     /// If unspecified, the server will pick an appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -4566,6 +4611,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>This action's identifier. Unique within the compilation result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual Target Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`ComputeRepositoryAccessTokenStatus` response message.</summary>
+    public class ComputeRepositoryAccessTokenStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the status of the Git access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenStatus")]
+        public virtual string TokenStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

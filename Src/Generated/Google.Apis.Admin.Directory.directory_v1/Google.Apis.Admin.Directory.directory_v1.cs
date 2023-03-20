@@ -7465,6 +7465,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
+            /// <summary>
+            /// When set to `true`, fetches indirect role assignments (i.e. role assignment via a group) as well as
+            /// direct ones. Defaults to `false`. You must specify `user_key` or the indirect role assignments will not
+            /// be included.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeIndirectRoleAssignments", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeIndirectRoleAssignments { get; set; }
+
             /// <summary>Maximum number of results to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -7505,6 +7513,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     Name = "customer",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeIndirectRoleAssignments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeIndirectRoleAssignments",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -12888,6 +12904,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTo")]
         public virtual string AssignedTo { get; set; }
+
+        /// <summary>Output only. The type of the assignee (`USER` or `GROUP`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeType")]
+        public virtual string AssigneeType { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
