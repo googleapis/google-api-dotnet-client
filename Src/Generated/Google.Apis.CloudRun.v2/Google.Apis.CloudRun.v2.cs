@@ -2379,8 +2379,7 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set to true, and if the Service does not exist, it will create a new one. Caller must have
-                    /// both create and update permissions for this call if this is set to true.
+                    /// This field is currently not used by Cloud Run; setting it does not have any effect.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -2887,9 +2886,10 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
-        /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
-        /// Launch Stages](https://cloud.google.com/terms/launch-stages).
+        /// The least stable launch stage needed to create this resource, as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note
+        /// that this value might not be what was used as input. For example, if ALPHA was provided as input in the
+        /// parent resource, but only BETA and GA-level features are were, this field will be BETA.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -3190,7 +3190,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// The launch stage as defined by [Google Cloud Platform Launch
         /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
-        /// value is specified, GA is assumed.
+        /// value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview
+        /// features in that stage. On read (or output), describes whether the resource uses preview features. For
+        /// example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be
+        /// BETA on output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -3503,9 +3506,10 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
-        /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
-        /// Launch Stages](https://cloud.google.com/terms/launch-stages).
+        /// The least stable launch stage needed to create this resource, as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note
+        /// that this value might not be what was used as input. For example, if ALPHA was provided as input in the
+        /// parent resource, but only BETA and GA-level features are were, this field will be BETA.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -3863,7 +3867,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// The launch stage as defined by [Google Cloud Platform Launch
         /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
-        /// value is specified, GA is assumed.
+        /// value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview
+        /// features in that stage. On read (or output), describes whether the resource uses preview features. For
+        /// example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be
+        /// BETA on output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }

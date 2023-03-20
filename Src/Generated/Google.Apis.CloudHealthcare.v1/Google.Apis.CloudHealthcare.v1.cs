@@ -5722,7 +5722,9 @@ namespace Google.Apis.CloudHealthcare.v1
 
                             /// <summary>
                             /// String of comma-delimited FHIR resource types. If provided, only resources of the
-                            /// specified resource type(s) are returned.
+                            /// specified resource type(s) are returned. Specifying multiple `_type` parameters isn't
+                            /// supported. For example, the result of `_type=Observation&amp;amp;_type=Encounter` is
+                            /// undefined. Use `_type=Observation,Encounter` instead.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("_type", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Type { get; set; }

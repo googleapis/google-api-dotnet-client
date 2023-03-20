@@ -4066,7 +4066,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A detailed representation of a GooGet artifact.</summary>
+    /// <summary>A detailed representation of a KFP artifact.</summary>
     public class KfpArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

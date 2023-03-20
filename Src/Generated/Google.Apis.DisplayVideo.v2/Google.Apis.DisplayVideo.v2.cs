@@ -27014,7 +27014,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// The [targeting expansion](//support.google.com/displayvideo/answer/10191558) settings of the line item. This
-        /// config is only applicable when eligible audience list targeting is assigned to the line item.
+        /// config is only applicable when eligible audience list targeting is assigned to the line item. Beginning
+        /// **March 25, 2023**, these settings may represent the [optimized targeting
+        /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature
+        /// will be rolled out to all partners by mid-April 2023.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
         public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
@@ -29255,7 +29258,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
     /// <summary>
     /// Settings that control the targeting expansion of the line item. Targeting expansion allows the line item to
-    /// reach a larger audience based on the original audience list and the targeting expansion level.
+    /// reach a larger audience based on the original audience list and the targeting expansion level. Beginning **March
+    /// 25, 2023**, these settings may represent the [optimized targeting
+    /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature will
+    /// be rolled out to all partners by mid-April 2023.
     /// </summary>
     public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29263,12 +29269,26 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// Required. Whether to exclude first-party audiences from use in targeting expansion or optimized targeting.
         /// Similar audiences of the excluded first-party lists will not be excluded. Only applicable when a first-party
         /// audience is positively targeted (directly or included in a combined audience), otherwise this selection will
-        /// be ignored.
+        /// be ignored. Beginning **March 25, 2023**, this field may be deprecated with the replacement of targeting
+        /// expansion with [optimized targeting](//support.google.com/displayvideo/answer/12060859). Upon deprecation,
+        /// this field will be set to `false`. If this field is set to `true` when deprecated, all positive first-party
+        /// audience targeting assigned to this line item will be replaced with negative targeting of the same
+        /// first-party audiences to ensure the continued exclusion of those audiences. This field will be deprecated
+        /// for all partners by mid-April 2023.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFirstPartyAudience")]
         public virtual System.Nullable<bool> ExcludeFirstPartyAudience { get; set; }
 
-        /// <summary>Required. Magnitude of expansion for applicable targeting under this line item.</summary>
+        /// <summary>
+        /// Required. Magnitude of expansion for applicable targeting under this line item. Beginning **March 25,
+        /// 2023**, the behavior of this field may change in the following ways with the replacement of targeting
+        /// expansion with [optimized targeting](//support.google.com/displayvideo/answer/12060859): * This field will
+        /// represent the optimized targeting checkbox, with a `NO_EXPANSION` value representing optimized targeting
+        /// turned off and a `LEAST_EXPANSION` value representing optimized targeting turned on. * `NO_EXPANSION` will
+        /// be the default value for the field and will be automatically assigned if you do not set the field. * If you
+        /// set the field to any value other than `NO_EXPANSION`, it will automatically be set to `LEAST_EXPANSION`.
+        /// This behavior will be rolled out to all partners by mid-April 2023.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansionLevel")]
         public virtual string TargetingExpansionLevel { get; set; }
 

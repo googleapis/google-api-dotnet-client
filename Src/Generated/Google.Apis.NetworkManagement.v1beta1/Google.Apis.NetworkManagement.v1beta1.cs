@@ -1212,12 +1212,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -1227,12 +1222,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.ListOperationsResponse>
                     {
@@ -1891,6 +1881,18 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string CloudSqlInstance { get; set; }
 
         /// <summary>
+        /// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol
+        /// Forwarding. Format: projects/{project}/global/forwardingRules/{id} or
+        /// projects/{project}/regions/{region}/forwardingRules/{id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
+        public virtual string ForwardingRule { get; set; }
+
+        /// <summary>Output only. Specifies the type of the target of the forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRuleTarget")]
+        public virtual string ForwardingRuleTarget { get; set; }
+
+        /// <summary>
         /// A cluster URI for [Google Kubernetes Engine
         /// master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         /// </summary>
@@ -1908,6 +1910,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related
+        /// to load balancers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerId")]
+        public virtual string LoadBalancerId { get; set; }
+
+        /// <summary>Output only. Type of the load balancer the forwarding rule points to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
+        public virtual string LoadBalancerType { get; set; }
 
         /// <summary>A Compute Engine network URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]

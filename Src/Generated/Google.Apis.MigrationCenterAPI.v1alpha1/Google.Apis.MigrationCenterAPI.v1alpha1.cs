@@ -291,8 +291,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
             {
                 this.service = service;
                 Assets = new AssetsResource(service);
+                Groups = new GroupsResource(service);
                 ImportJobs = new ImportJobsResource(service);
                 Operations = new OperationsResource(service);
+                PreferenceSets = new PreferenceSetsResource(service);
                 Sources = new SourcesResource(service);
             }
 
@@ -366,6 +368,59 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     }
                 }
 
+                /// <summary>Deletes list of Assets.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Parent value for batch asset delete.</param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchDeleteAssetsRequest body, string parent)
+                {
+                    return new BatchDeleteRequest(service, body, parent);
+                }
+
+                /// <summary>Deletes list of Assets.</summary>
+                public class BatchDeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Empty>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchDeleteAssetsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for batch asset delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchDeleteAssetsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/assets:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the parameters of a list of assets.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Parent value for batch asset update.</param>
@@ -419,103 +474,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     }
                 }
 
-                /// <summary>
-                /// Creates a new asset in a given project and location. Deprecated: Use ReportAssetFrames instead.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
-                public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Asset body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>
-                /// Creates a new asset in a given project and location. Deprecated: Use ReportAssetFrames instead.
-                /// </summary>
-                public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.Asset body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Value for parent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    [Google.Apis.Util.RequestParameterAttribute("assetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string AssetId { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.Asset Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha1/{+parent}/assets";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("assetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "assetId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Deletes an asset.</summary>
+                /// <summary>Deletes an asset. Deprecated: Please use BatchDeleteAssets API instead.</summary>
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes an asset.</summary>
+                /// <summary>Deletes an asset. Deprecated: Please use BatchDeleteAssets API instead.</summary>
                 public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -612,7 +578,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                         [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_BASIC")]
                         ASSETVIEWBASIC = 1,
 
-                        /// <summary>The asset view includes all the metadata of an asset.</summary>
+                        /// <summary>
+                        /// The asset view includes all the metadata of an asset and performance data.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_FULL")]
                         ASSETVIEWFULL = 2,
 
@@ -710,7 +678,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                         [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_BASIC")]
                         ASSETVIEWBASIC = 1,
 
-                        /// <summary>The asset view includes all the metadata of an asset.</summary>
+                        /// <summary>
+                        /// The asset view includes all the metadata of an asset and performance data.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_FULL")]
                         ASSETVIEWFULL = 2,
 
@@ -783,7 +753,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     }
                 }
 
-                /// <summary>Updates the parameters of an asset.</summary>
+                /// <summary>
+                /// Updates the parameters of an asset. Deprecated: Please use BatchUpdateAssets API instead.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. The full name of the asset.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Asset body, string name)
@@ -791,7 +763,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the parameters of an asset.</summary>
+                /// <summary>
+                /// Updates the parameters of an asset. Deprecated: Please use BatchUpdateAssets API instead.
+                /// </summary>
                 public class PatchRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -940,6 +914,519 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 }
             }
 
+            /// <summary>Gets the Groups resource.</summary>
+            public virtual GroupsResource Groups { get; }
+
+            /// <summary>The "groups" collection of methods.</summary>
+            public class GroupsResource
+            {
+                private const string Resource = "groups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Adds assets to a group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="group">Required. Group reference.</param>
+                public virtual AddAssetsRequest AddAssets(Google.Apis.MigrationCenterAPI.v1alpha1.Data.AddAssetsToGroupRequest body, string group)
+                {
+                    return new AddAssetsRequest(service, body, group);
+                }
+
+                /// <summary>Adds assets to a group.</summary>
+                public class AddAssetsRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new AddAssets request.</summary>
+                    public AddAssetsRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.AddAssetsToGroupRequest body, string group) : base(service)
+                    {
+                        Group = group;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Group reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("group", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Group { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.AddAssetsToGroupRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "addAssets";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+group}:addAssets";
+
+                    /// <summary>Initializes AddAssets parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("group", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "group",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a new group in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new group in a given project and location.</summary>
+                public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. User specified ID for the group. It will become the last component of the group name.
+                    /// The ID must be unique within the project, must conform with RFC-1034, is restricted to
+                    /// lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular
+                    /// expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GroupId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/groups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("groupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "groupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a group.</summary>
+                /// <param name="name">Required. Name of the group resource.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a group.</summary>
+                public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the group resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a group.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the details of a group.</summary>
+                public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all groups in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for `ListGroupsRequest`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all groups in a given project and location.</summary>
+                public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for `ListGroupsRequest`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field to sort by. See https://google.aip.dev/132#ordering for more details.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Requested page size. Server may return fewer items than requested. If unspecified, server will
+                    /// pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/groups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The name of the group.</param>
+                public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a group.</summary>
+                public class PatchRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Output only. The name of the group.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `Group` resource by
+                    /// the update. The values specified in the `update_mask` are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. A single * value in the mask lets you
+                    /// to overwrite all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Removes assets from a group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="group">Required. Group reference.</param>
+                public virtual RemoveAssetsRequest RemoveAssets(Google.Apis.MigrationCenterAPI.v1alpha1.Data.RemoveAssetsFromGroupRequest body, string group)
+                {
+                    return new RemoveAssetsRequest(service, body, group);
+                }
+
+                /// <summary>Removes assets from a group.</summary>
+                public class RemoveAssetsRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RemoveAssets request.</summary>
+                    public RemoveAssetsRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.RemoveAssetsFromGroupRequest body, string group) : base(service)
+                    {
+                        Group = group;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Group reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("group", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Group { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.RemoveAssetsFromGroupRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removeAssets";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+group}:removeAssets";
+
+                    /// <summary>Initializes RemoveAssets parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("group", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "group",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the ImportJobs resource.</summary>
             public virtual ImportJobsResource ImportJobs { get; }
 
@@ -955,6 +1442,327 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 public ImportJobsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ImportDataFiles = new ImportDataFilesResource(service);
+                }
+
+                /// <summary>Gets the ImportDataFiles resource.</summary>
+                public virtual ImportDataFilesResource ImportDataFiles { get; }
+
+                /// <summary>The "importDataFiles" collection of methods.</summary>
+                public class ImportDataFilesResource
+                {
+                    private const string Resource = "importDataFiles";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ImportDataFilesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates an import data file.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Name of the parent of the ImportDataFile.</param>
+                    public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportDataFile body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates an import data file.</summary>
+                    public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportDataFile body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the parent of the ImportDataFile.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The ID of the new data file.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("importDataFileId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ImportDataFileId { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportDataFile Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/importDataFiles";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/importJobs/[^/]+$",
+                            });
+                            RequestParameters.Add("importDataFileId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "importDataFileId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Delete an import data file.</summary>
+                    /// <param name="name">Required. Name of the ImportDataFile to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Delete an import data file.</summary>
+                    public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the ImportDataFile to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes after the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/importJobs/[^/]+/importDataFiles/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets an import data file.</summary>
+                    /// <param name="name">Required. Name of the ImportDataFile.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets an import data file.</summary>
+                    public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportDataFile>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the ImportDataFile.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/importJobs/[^/]+/importDataFiles/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List import data files.</summary>
+                    /// <param name="parent">Required. Name of the parent of the `ImportDataFiles` resource.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List import data files.</summary>
+                    public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListImportDataFilesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the parent of the `ImportDataFiles` resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of data files to return. The service may return fewer than this value. If
+                        /// unspecified, at most 500 data files will be returned. The maximum value is 1000; values
+                        /// above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListImportDataFiles` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to `ListImportDataFiles`
+                        /// must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/importDataFiles";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/importJobs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates an import job.</summary>
@@ -1065,6 +1873,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to `true`, any `ImportDataFiles` of this job will also be deleted If set to
+                    /// `false`, the request only works if the job has no data files.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -1097,6 +1912,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/importJobs/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -1704,12 +2527,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -1719,12 +2537,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListOperationsResponse>
                 {
@@ -1791,6 +2604,396 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PreferenceSets resource.</summary>
+            public virtual PreferenceSetsResource PreferenceSets { get; }
+
+            /// <summary>The "preferenceSets" collection of methods.</summary>
+            public class PreferenceSetsResource
+            {
+                private const string Resource = "preferenceSets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PreferenceSetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new preference set in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new preference set in a given project and location.</summary>
+                public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("preferenceSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PreferenceSetId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/preferenceSets";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("preferenceSetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "preferenceSetId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a preference set.</summary>
+                /// <param name="name">Required. Name of the group resource.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a preference set.</summary>
+                public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the group resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/preferenceSets/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a preference set.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the details of a preference set.</summary>
+                public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/preferenceSets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the preference sets in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for `ListPreferenceSetsRequest`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all the preference sets in a given project and location.</summary>
+                public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListPreferenceSetsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for `ListPreferenceSetsRequest`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Field to sort by. See https://google.aip.dev/132#ordering for more details.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Requested page size. Server may return fewer items than requested. If unspecified, at most 500
+                    /// preference sets will be returned. The maximum value is 1000; values above 1000 will be coerced
+                    /// to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/preferenceSets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a preference set.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. Name of the preference set.</param>
+                public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a preference set.</summary>
+                public class PatchRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Output only. Name of the preference set.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `PreferenceSet`
+                    /// resource by the update. The values specified in the `update_mask` field are relative to the
+                    /// resource, not the full request. A field will be overwritten if it is in the mask. A single *
+                    /// value in the mask lets you to overwrite all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/preferenceSets/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2252,6 +3455,51 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 }
             }
 
+            /// <summary>Gets the details of regional settings.</summary>
+            /// <param name="name">Required. Name of the resource.</param>
+            public virtual GetSettingsRequest GetSettings(string name)
+            {
+                return new GetSettingsRequest(service, name);
+            }
+
+            /// <summary>Gets the details of regional settings.</summary>
+            public class GetSettingsRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Settings>
+            {
+                /// <summary>Constructs a new GetSettings request.</summary>
+                public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Name of the resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}";
+
+                /// <summary>Initializes GetSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/settings$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -2340,11 +3588,136 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     });
                 }
             }
+
+            /// <summary>Updates the regional-level project settings.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Output only. The name of the resource.</param>
+            public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Settings body, string name)
+            {
+                return new UpdateSettingsRequest(service, body, name);
+            }
+
+            /// <summary>Updates the regional-level project settings.</summary>
+            public class UpdateSettingsRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateSettings request.</summary>
+                public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.Settings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Output only. The name of the resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you
+                /// must retry your request, the server will know to ignore the request if it has already been
+                /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                /// example, consider a situation where you make an initial request and the request times out. If you
+                /// make the request again with the same request ID, the server can check if original operation with the
+                /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+                /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception
+                /// that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestId { get; set; }
+
+                /// <summary>
+                /// Required. Field mask is used to specify the fields to be overwritten in the `Settings` resource by
+                /// the update. The values specified in the `update_mask` field are relative to the resource, not the
+                /// full request. A field will be overwritten if it is in the mask. A single * value in the mask lets
+                /// you to overwrite all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.MigrationCenterAPI.v1alpha1.Data.Settings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}";
+
+                /// <summary>Initializes UpdateSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/settings$",
+                    });
+                    RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 }
 namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 {
+    /// <summary>A request to add assets to a group.</summary>
+    public class AddAssetsToGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When this value is set to `false` and one of the given assets is already an existing member of the
+        /// group, the operation fails with an `Already Exists` error. When set to `true` this situation is silently
+        /// ignored by the server. Default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowExisting")]
+        public virtual System.Nullable<bool> AllowExisting { get; set; }
+
+        /// <summary>
+        /// Required. List of assets to be added. The maximum number of assets that can be added in a single request is
+        /// 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual AssetList Assets { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to aggregate one or more values.</summary>
     public class AggregateAssetsValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2534,6 +3907,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// </summary>
     public class Asset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The list of groups that the asset is assigned to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedGroups")]
+        public virtual System.Collections.Generic.IList<string> AssignedGroups { get; set; }
+
         /// <summary>Generic asset attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
@@ -2542,6 +3919,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. The list of insights associated with the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightList")]
+        public virtual InsightList InsightList { get; set; }
+
         /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2549,6 +3930,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. The full name of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Performance data for the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceData")]
+        public virtual AssetPerformanceData PerformanceData { get; set; }
 
         /// <summary>Output only. The list of sources contributing to the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
@@ -2597,6 +3982,85 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Lists the asset IDs of all assets.</summary>
+    public class AssetList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of asset IDs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetIds")]
+        public virtual System.Collections.Generic.IList<string> AssetIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Performance data for an asset.</summary>
+    public class AssetPerformanceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 420 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyResourceUsageAggregations")]
+        public virtual System.Collections.Generic.IList<DailyResourceUsageAggregation> DailyResourceUsageAggregations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AWS EC2 specific details.</summary>
+    public class AwsEc2PlatformDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the machine in the AWS format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>AWS platform's machine type label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypeLabel")]
+        public virtual string MachineTypeLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Azure VM specific details.</summary>
+    public class AzureVmPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the machine in the Azure format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Azure platform's machine type label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypeLabel")]
+        public virtual string MachineTypeLabel { get; set; }
+
+        /// <summary>Azure platform's provisioning state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningState")]
+        public virtual string ProvisioningState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to delete a list of asset.</summary>
+    public class BatchDeleteAssetsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When this value is set to `true` the request is a no-op for non-existing assets. See
+        /// https://google.aip.dev/135#delete-if-existing for additional details. Default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Required. The IDs of the assets to delete. A maximum of 10 assets can be deleted in a batch. format:
+        /// projects/{project}/locations/{location}/asset/{name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to update a list of assets.</summary>
     public class BatchUpdateAssetsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2622,26 +4086,26 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about the bios.</summary>
+    /// <summary>Details about the BIOS.</summary>
     public class BiosDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Bios manufacturer.</summary>
+        /// <summary>BIOS manufacturer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biosManufacturer")]
         public virtual string BiosManufacturer { get; set; }
 
-        /// <summary>Bios name.</summary>
+        /// <summary>BIOS name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biosName")]
         public virtual string BiosName { get; set; }
 
-        /// <summary>Bios release date.</summary>
+        /// <summary>BIOS release date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biosReleaseDate")]
         public virtual string BiosReleaseDate { get; set; }
 
-        /// <summary>Bios version.</summary>
+        /// <summary>BIOS version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biosVersion")]
         public virtual string BiosVersion { get; set; }
 
-        /// <summary>SMBios UUID.</summary>
+        /// <summary>SMBIOS UUID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smbiosUuid")]
         public virtual string SmbiosUuid { get; set; }
 
@@ -2656,6 +4120,69 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Compute engine migration target.</summary>
+    public class ComputeEngineMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the suggested shape for the migration target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual ComputeEngineShapeDescriptor Shape { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user preferences relating to Compute Engine target platform.</summary>
+    public class ComputeEnginePreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// License type to consider when calculating costs for virtual machine insights and recommendations. If
+        /// unspecified, costs are calculated based on the default licensing plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
+        public virtual string LicenseType { get; set; }
+
+        /// <summary>Preferences concerning the machine types to consider on Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
+        public virtual MachinePreferences MachinePreferences { get; set; }
+
+        /// <summary>
+        /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage
+        /// data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentDiskType")]
+        public virtual string PersistentDiskType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compute Engine target shape descriptor.</summary>
+    public class ComputeEngineShapeDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of logical cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalCoreCount")]
+        public virtual System.Nullable<int> LogicalCoreCount { get; set; }
+
+        /// <summary>Compute Engine machine type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Memory in mebibytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Number of physical cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalCoreCount")]
+        public virtual System.Nullable<int> PhysicalCoreCount { get; set; }
+
+        /// <summary>Compute Engine machine series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("series")]
+        public virtual string Series { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CPU usage sample.</summary>
     public class CpuUsageSample : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2665,6 +4192,104 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizedPercentage")]
         public virtual System.Nullable<float> UtilizedPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Usage data aggregation for a single day.</summary>
+    public class DailyResourceUsageAggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CPU usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual DailyResourceUsageAggregationCPU Cpu { get; set; }
+
+        /// <summary>Aggregation date. Day boundaries are at midnight UTC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>Disk usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual DailyResourceUsageAggregationDisk Disk { get; set; }
+
+        /// <summary>Memory usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memory")]
+        public virtual DailyResourceUsageAggregationMemory Memory { get; set; }
+
+        /// <summary>Network usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual DailyResourceUsageAggregationNetwork Network { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistical aggregation of CPU usage.</summary>
+    public class DailyResourceUsageAggregationCPU : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CPU utilization percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationPercentage")]
+        public virtual DailyResourceUsageAggregationStats UtilizationPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistical aggregation of disk usage.</summary>
+    public class DailyResourceUsageAggregationDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disk I/O operations per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iops")]
+        public virtual DailyResourceUsageAggregationStats Iops { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistical aggregation of memory usage.</summary>
+    public class DailyResourceUsageAggregationMemory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Memory utilization percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationPercentage")]
+        public virtual DailyResourceUsageAggregationStats UtilizationPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistical aggregation of network usage.</summary>
+    public class DailyResourceUsageAggregationNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Network egress in B/s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressBps")]
+        public virtual DailyResourceUsageAggregationStats EgressBps { get; set; }
+
+        /// <summary>Network ingress in B/s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressBps")]
+        public virtual DailyResourceUsageAggregationStats IngressBps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistical aggregation of samples for a single resource usage.</summary>
+    public class DailyResourceUsageAggregationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average usage value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("average")]
+        public virtual System.Nullable<float> Average { get; set; }
+
+        /// <summary>Median usage value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("median")]
+        public virtual System.Nullable<float> Median { get; set; }
+
+        /// <summary>95th percentile usage value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ninteyFifthPercentile")]
+        public virtual System.Nullable<float> NinteyFifthPercentile { get; set; }
+
+        /// <summary>Peak usage value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peak")]
+        public virtual System.Nullable<float> Peak { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2798,15 +4423,15 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Disk Capacity (required).</summary>
+        /// <summary>Disk capacity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCapacityBytes")]
         public virtual System.Nullable<long> TotalCapacityBytes { get; set; }
 
-        /// <summary>Disk Free Space.</summary>
+        /// <summary>Disk free space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalFreeBytes")]
         public virtual System.Nullable<long> TotalFreeBytes { get; set; }
 
-        /// <summary>Optional. Optional disk VMware details.</summary>
+        /// <summary>VMware disk details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareConfig")]
         public virtual VmwareDiskConfig VmwareConfig { get; set; }
 
@@ -2860,6 +4485,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Disk partition list.</summary>
     public class DiskPartitionList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Partition entries.</summary>
@@ -2938,6 +4564,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the fit level of an asset for migration to a specific target.</summary>
+    public class FitDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fit level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fitLevel")]
+        public virtual string FitLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Collection of frame data.</summary>
     public class Frames : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3008,6 +4645,62 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Generic platform details.</summary>
+    public class GenericPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Free text representation of the machine location. The format of this field should not be relied on.
+        /// Different VMs in the same location may have different string values for this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GKE migration target.</summary>
+    public class GoogleKubernetesEngineMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have
+    /// something in common, while allowing users to add annotations to the group. An asset can belong to multiple
+    /// groups.
+    /// </summary>
+    public class Group : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the group was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User-friendly display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Labels as key value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The name of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The timestamp when the group was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Guest OS config information.</summary>
     public class GuestConfigDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3065,6 +4758,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Guest installed application list.</summary>
     public class GuestInstalledApplicationList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Application entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<GuestInstalledApplication> Entries { get; set; }
 
@@ -3106,7 +4800,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineName")]
         public virtual string MachineName { get; set; }
 
-        /// <summary>Runtime network information (connections ports).</summary>
+        /// <summary>Runtime network information (connections, ports).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInfo")]
         public virtual RuntimeNetworkInfo NetworkInfo { get; set; }
 
@@ -3152,6 +4846,37 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A resource that represents a payload file in an import job.</summary>
+    public class ImportDataFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the file was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The payload format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>Output only. The name of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the import data file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Information about a file that is uploaded to a storage service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadFileInfo")]
+        public virtual UploadFileInfo UploadFileInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that reports the errors encountered while processing an import job.</summary>
     public class ImportError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3181,6 +4906,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. The timestamp when the import job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The report with the results of running the import job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionReport")]
@@ -3256,6 +4985,32 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An insight about an asset.</summary>
+    public class Insight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. An insight about potential migrations for an asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationInsight")]
+        public virtual MigrationInsight MigrationInsight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing insights list.</summary>
+    public class InsightList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Insights of the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual System.Collections.Generic.IList<Insight> Insights { get; set; }
+
+        /// <summary>Output only. Update timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing assets.</summary>
     public class ListAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3264,6 +5019,47 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
         /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response for listing groups.</summary>
+    public class ListGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Group</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<Group> Groups { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for listing payload files of an import job.</summary>
+    public class ListImportDataFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of import data files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importDataFiles")]
+        public virtual System.Collections.Generic.IList<ImportDataFile> ImportDataFiles { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3324,6 +5120,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing preference sets.</summary>
+    public class ListPreferenceSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of PreferenceSets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferenceSets")]
+        public virtual System.Collections.Generic.IList<PreferenceSet> PreferenceSets { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing sources.</summary>
     public class ListSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3375,12 +5190,69 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not
+    /// all machine types are available in all zones and regions.
+    /// </summary>
+    public class MachinePreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is
+        /// applied on the machine series.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMachineSeries")]
+        public virtual System.Collections.Generic.IList<MachineSeries> AllowedMachineSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Compute Engine machine series.</summary>
+    public class MachineSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Code to identify a Compute Engine machine series. Consult
+        /// https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the
+        /// available series.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Memory usage sample.</summary>
     public class MemoryUsageSample : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Percentage of system memory utilized. Must be in the interval [0, 100].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizedPercentage")]
         public virtual System.Nullable<float> UtilizedPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An insight about potential migrations for an asset.</summary>
+    public class MigrationInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A Google Compute Engine target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTarget")]
+        public virtual ComputeEngineMigrationTarget ComputeEngineTarget { get; set; }
+
+        /// <summary>
+        /// Output only. Description of how well the asset this insight is associated with fits the proposed migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fit")]
+        public virtual FitDescriptor Fit { get; set; }
+
+        /// <summary>Output only. A Google Kubernetes Engine target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeTarget")]
+        public virtual GoogleKubernetesEngineMigrationTarget GkeTarget { get; set; }
+
+        /// <summary>Output only. A VMWare Engine target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineTarget")]
+        public virtual VmwareEngineMigrationTarget VmwareEngineTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3405,9 +5277,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of network adapters.</summary>
     public class NetworkAdapterList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Network Adapter descriptions.</summary>
+        /// <summary>Network adapter descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAdapters")]
         public virtual System.Collections.Generic.IList<NetworkAdapterDetails> NetworkAdapters { get; set; }
 
@@ -3418,7 +5291,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of network address.</summary>
     public class NetworkAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If DHCP is used to assign addresses.</summary>
+        /// <summary>Whether DHCP is used to assign addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignment")]
         public virtual string Assignment { get; set; }
 
@@ -3445,6 +5318,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>List of allocated/assigned network addresses.</summary>
     public class NetworkAddressList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Network address entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<NetworkAddress> Addresses { get; set; }
 
@@ -3493,6 +5367,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Network connection list.</summary>
     public class NetworkConnectionList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Network connection entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<NetworkConnection> Entries { get; set; }
 
@@ -3699,12 +5574,121 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Platform specific details for Physical Machines.</summary>
+    public class PhysicalPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Free text representation of the machine location. The format of this field should not be relied on.
+        /// Different machines in the same location may have different string values for this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the platform.</summary>
     public class PlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>AWS EC2 specific details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEc2Details")]
+        public virtual AwsEc2PlatformDetails AwsEc2Details { get; set; }
+
+        /// <summary>Azure VM specific details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureVmDetails")]
+        public virtual AzureVmPlatformDetails AzureVmDetails { get; set; }
+
+        /// <summary>Generic platform details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericDetails")]
+        public virtual GenericPlatformDetails GenericDetails { get; set; }
+
+        /// <summary>Physical machines platform details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalDetails")]
+        public virtual PhysicalPlatformDetails PhysicalDetails { get; set; }
+
         /// <summary>VMware specific details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareDetails")]
         public virtual VmwarePlatformDetails VmwareDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The preferences that apply to all assets in a given context.</summary>
+    public class PreferenceSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the preference set was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>A description of the preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Name of the preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The timestamp when the preference set was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>A set of preferences that applies to all virtual machines in the context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualMachinePreferences")]
+        public virtual VirtualMachinePreferences VirtualMachinePreferences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user preferences relating to target regions.</summary>
+    public class RegionPreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region
+        /// names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredRegions")]
+        public virtual System.Collections.Generic.IList<string> PreferredRegions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to remove assets from a group.</summary>
+    public class RemoveAssetsFromGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When this value is set to `false` and one of the given assets is not an existing member of the
+        /// group, the operation fails with a `Not Found` error. When set to `true` this situation is silently ignored
+        /// by the server. Default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Required. List of assets to be removed. The maximum number of assets that can be removed in a single request
+        /// is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual AssetList Assets { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3766,6 +5750,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>List of running guest OS processes.</summary>
     public class RunningProcessList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Running process entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
         public virtual System.Collections.Generic.IList<RunningProcess> Processes { get; set; }
 
@@ -3811,6 +5796,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>List of running guest OS services.</summary>
     public class RunningServiceList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Running service entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<RunningService> Services { get; set; }
 
@@ -3847,6 +5833,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>SELinux mode enforcing / permissive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the Migration Center settings related to the project.</summary>
+    public class Settings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The preference set used by default for a project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
+        public virtual string PreferenceSet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3972,6 +5973,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A resource that contains a URI to which a data file can be uploaded.</summary>
+    public class UploadFileInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Upload URI for the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Output only. Expiration time of the upload URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriExpirationTime")]
+        public virtual object UriExpirationTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to validate an import job.</summary>
     public class ValidateImportJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4009,19 +6025,19 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of the VM architecture.</summary>
     public class VirtualMachineArchitectureDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Bios Details.</summary>
+        /// <summary>BIOS Details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bios")]
         public virtual BiosDetails Bios { get; set; }
 
-        /// <summary>CPU architecture e.g.: "x64-based PC", "x86_64", "i686" etc.</summary>
+        /// <summary>CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuArchitecture")]
         public virtual string CpuArchitecture { get; set; }
 
-        /// <summary>CPU manufacturer e.g.: "Intel", "AMD".</summary>
+        /// <summary>CPU manufacturer, e.g., "Intel", "AMD".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManufacturer")]
         public virtual string CpuManufacturer { get; set; }
 
-        /// <summary>CPU name e.g. "Intel Xeon E5-2690", "AMD EPYC 7571" etc.</summary>
+        /// <summary>CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuName")]
         public virtual string CpuName { get; set; }
 
@@ -4029,7 +6045,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuSocketCount")]
         public virtual System.Nullable<int> CpuSocketCount { get; set; }
 
-        /// <summary>Number of cpu threads allocated to the machine.</summary>
+        /// <summary>Number of CPU threads allocated to the machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuThreadCount")]
         public virtual System.Nullable<int> CpuThreadCount { get; set; }
 
@@ -4037,7 +6053,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 
-        /// <summary>CPU hyperthreading support (inner enum).</summary>
+        /// <summary>CPU hyperthreading support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperthreading")]
         public virtual string Hyperthreading { get; set; }
 
@@ -4056,6 +6072,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
         public virtual System.Nullable<int> CoreCount { get; set; }
 
+        /// <summary>VM creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>Guest OS information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOs")]
         public virtual GuestOsDetails GuestOs { get; set; }
@@ -4071,6 +6091,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The name of the operating system running on the VirtualMachine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osName")]
         public virtual string OsName { get; set; }
+
+        /// <summary>The version of the operating system running on the virtual machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
 
         /// <summary>Platform information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
@@ -4108,7 +6132,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vmNetwork")]
         public virtual VirtualMachineNetworkDetails VmNetwork { get; set; }
 
-        /// <summary>Virtual Machine uniqe identifier.</summary>
+        /// <summary>Virtual Machine unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmUuid")]
         public virtual string VmUuid { get; set; }
 
@@ -4139,24 +6163,67 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of network adapters and settings</summary>
+    /// <summary>Details of network adapters and settings.</summary>
     public class VirtualMachineNetworkDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Default GW address. Top-level object, will be later encriched by full RouteInfo.</summary>
+        /// <summary>Default gateway address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultGw")]
         public virtual string DefaultGw { get; set; }
 
-        /// <summary>List of Network Adapters.</summary>
+        /// <summary>List of network adapters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAdapters")]
         public virtual NetworkAdapterList NetworkAdapters { get; set; }
 
-        /// <summary>IP Address of the machine.</summary>
+        /// <summary>IP address of the machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryIpAddress")]
         public virtual string PrimaryIpAddress { get; set; }
 
-        /// <summary>MAC Address of the machine. This property is used to uniqly identify the machine.</summary>
+        /// <summary>MAC address of the machine. This property is used to uniqly identify the machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryMacAddress")]
         public virtual string PrimaryMacAddress { get; set; }
+
+        /// <summary>Public IP address of the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and
+    /// pricing track, for your migrated virtual machines. The set of preferences influence recommendations for
+    /// migrating virtual machine assets.
+    /// </summary>
+    public class VirtualMachinePreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you
+        /// are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitmentPlan")]
+        public virtual string CommitmentPlan { get; set; }
+
+        /// <summary>
+        /// Compute Engine preferences concern insights and recommendations for Compute Engine target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEnginePreferences")]
+        public virtual ComputeEnginePreferences ComputeEnginePreferences { get; set; }
+
+        /// <summary>
+        /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration
+        /// service API region is often a good value to start with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionPreferences")]
+        public virtual RegionPreferences RegionPreferences { get; set; }
+
+        /// <summary>
+        /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to
+        /// calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a
+        /// moderate sizing optimization strategy is often a good value to start with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizingOptimizationStrategy")]
+        public virtual string SizingOptimizationStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4181,6 +6248,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vmdkDiskMode")]
         public virtual string VmdkDiskMode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VMWare engine migration target.</summary>
+    public class VmwareEngineMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

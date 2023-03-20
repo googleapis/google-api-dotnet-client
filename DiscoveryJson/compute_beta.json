@@ -2457,6 +2457,48 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "bulkInsert": {
+     "description": "Bulk create a set of disks.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/bulkInsert",
+     "httpMethod": "POST",
+     "id": "compute.disks.bulkInsert",
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/bulkInsert",
+     "request": {
+      "$ref": "BulkInsertDiskResource"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "createSnapshot": {
      "description": "Creates a snapshot of a specified persistent disk. For regular snapshot creation, consider using snapshots.insert instead, as that method supports more features, such as creating snapshots in a project different from the source disk project.",
      "flatPath": "projects/{project}/zones/{zone}/disks/{disk}/createSnapshot",
@@ -2946,6 +2988,145 @@
      "path": "projects/{project}/zones/{zone}/disks/{resource}/setLabels",
      "request": {
       "$ref": "ZoneSetLabelsRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "startAsyncReplication": {
+     "description": "Starts asynchronous replication. Must be invoked on the primary disk.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/{disk}/startAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.disks.startAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/{disk}/startAsyncReplication",
+     "request": {
+      "$ref": "DisksStartAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopAsyncReplication": {
+     "description": "Stops asynchronous replication. Can be invoked either on the primary or on the secondary disk.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/{disk}/stopAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.disks.stopAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/{disk}/stopAsyncReplication",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopGroupAsyncReplication": {
+     "description": "Stops asynchronous replication for a consistency group of disks. Can be invoked either in the primary or secondary scope.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/stopGroupAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.disks.stopGroupAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request. This must be the zone of the primary or secondary disks in the consistency group.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/stopGroupAsyncReplication",
+     "request": {
+      "$ref": "DisksStopGroupAsyncReplicationResource"
      },
      "response": {
       "$ref": "Operation"
@@ -20623,6 +20804,48 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
+    "bulkInsert": {
+     "description": "Bulk create a set of disks.",
+     "flatPath": "projects/{project}/regions/{region}/disks/bulkInsert",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.bulkInsert",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/bulkInsert",
+     "request": {
+      "$ref": "BulkInsertDiskResource"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "createSnapshot": {
      "description": "Creates a snapshot of a specified persistent disk. For regular snapshot creation, consider using snapshots.insert instead, as that method supports more features, such as creating snapshots in a project different from the source disk project.",
      "flatPath": "projects/{project}/regions/{region}/disks/{disk}/createSnapshot",
@@ -21107,6 +21330,145 @@
      "path": "projects/{project}/regions/{region}/disks/{resource}/setLabels",
      "request": {
       "$ref": "RegionSetLabelsRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "startAsyncReplication": {
+     "description": "Starts asynchronous replication. Must be invoked on the primary disk.",
+     "flatPath": "projects/{project}/regions/{region}/disks/{disk}/startAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.startAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "region",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/{disk}/startAsyncReplication",
+     "request": {
+      "$ref": "RegionDisksStartAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopAsyncReplication": {
+     "description": "Stops asynchronous replication. Can be invoked either on the primary or on the secondary disk.",
+     "flatPath": "projects/{project}/regions/{region}/disks/{disk}/stopAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.stopAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "region",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/{disk}/stopAsyncReplication",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopGroupAsyncReplication": {
+     "description": "Stops asynchronous replication for a consistency group of disks. Can be invoked either in the primary or secondary scope.",
+     "flatPath": "projects/{project}/regions/{region}/disks/stopGroupAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.stopGroupAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request. This must be the region of the primary or secondary disks in the consistency group.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/stopGroupAsyncReplication",
+     "request": {
+      "$ref": "DisksStopGroupAsyncReplicationResource"
      },
      "response": {
       "$ref": "Operation"
@@ -40117,6 +40479,17 @@
    },
    "type": "object"
   },
+  "BulkInsertDiskResource": {
+   "description": "A transient resource used in compute.disks.bulkInsert and compute.regionDisks.bulkInsert. It is only used to process requests and is not persisted.",
+   "id": "BulkInsertDiskResource",
+   "properties": {
+    "sourceConsistencyGroupPolicy": {
+     "description": "The URL of the DiskConsistencyGroupPolicy for the group of disks to clone. This may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/projects/project/regions/region /resourcePolicies/resourcePolicy - projects/project/regions/region/resourcePolicies/resourcePolicy - regions/region/resourcePolicies/resourcePolicy ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "BulkInsertInstanceResource": {
    "description": "A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.",
    "id": "BulkInsertInstanceResource",
@@ -41128,6 +41501,17 @@
      ],
      "type": "string"
     },
+    "asyncPrimaryDisk": {
+     "$ref": "DiskAsyncReplication",
+     "description": "Disk asynchronously replicated into this disk."
+    },
+    "asyncSecondaryDisks": {
+     "additionalProperties": {
+      "$ref": "DiskAsyncReplicationList"
+     },
+     "description": "[Output Only] A list of disks this disk is asynchronously replicated to.",
+     "type": "object"
+    },
     "creationTimestamp": {
      "description": "[Output Only] Creation timestamp in RFC3339 text format.",
      "type": "string"
@@ -41273,6 +41657,10 @@
      },
      "type": "array"
     },
+    "resourceStatus": {
+     "$ref": "DiskResourceStatus",
+     "description": "[Output Only] Status information for the disk resource."
+    },
     "satisfiesPzs": {
      "description": "[Output Only] Reserved for future use.",
      "type": "boolean"
@@ -41284,6 +41672,14 @@
     "sizeGb": {
      "description": "Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.",
      "format": "int64",
+     "type": "string"
+    },
+    "sourceConsistencyGroupPolicy": {
+     "description": "[Output Only] URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.",
+     "type": "string"
+    },
+    "sourceConsistencyGroupPolicyId": {
+     "description": "[Output Only] ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.",
      "type": "string"
     },
     "sourceDisk": {
@@ -41504,6 +41900,29 @@
    },
    "type": "object"
   },
+  "DiskAsyncReplication": {
+   "id": "DiskAsyncReplication",
+   "properties": {
+    "disk": {
+     "description": "The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk ",
+     "type": "string"
+    },
+    "diskId": {
+     "description": "[Output Only] The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DiskAsyncReplicationList": {
+   "id": "DiskAsyncReplicationList",
+   "properties": {
+    "asyncReplicationDisk": {
+     "$ref": "DiskAsyncReplication"
+    }
+   },
+   "type": "object"
+  },
   "DiskInstantiationConfig": {
    "description": "A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.",
    "id": "DiskInstantiationConfig",
@@ -41689,6 +42108,47 @@
      },
      "description": "Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.",
      "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "DiskResourceStatus": {
+   "id": "DiskResourceStatus",
+   "properties": {
+    "asyncPrimaryDisk": {
+     "$ref": "DiskResourceStatusAsyncReplicationStatus"
+    },
+    "asyncSecondaryDisks": {
+     "additionalProperties": {
+      "$ref": "DiskResourceStatusAsyncReplicationStatus"
+     },
+     "description": "Key: disk, value: AsyncReplicationStatus message",
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "DiskResourceStatusAsyncReplicationStatus": {
+   "id": "DiskResourceStatusAsyncReplicationStatus",
+   "properties": {
+    "state": {
+     "enum": [
+      "ACTIVE",
+      "CREATED",
+      "STARTING",
+      "STATE_UNSPECIFIED",
+      "STOPPED",
+      "STOPPING"
+     ],
+     "enumDescriptions": [
+      "Replication is active.",
+      "Secondary disk is created and is waiting for replication to start.",
+      "Replication is starting.",
+      "",
+      "Replication is stopped.",
+      "Replication is stopping."
+     ],
+     "type": "string"
     }
    },
    "type": "object"
@@ -42232,6 +42692,27 @@
       }
      },
      "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "DisksStartAsyncReplicationRequest": {
+   "id": "DisksStartAsyncReplicationRequest",
+   "properties": {
+    "asyncSecondaryDisk": {
+     "description": "The secondary disk to start asynchronous replication to. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DisksStopGroupAsyncReplicationResource": {
+   "description": "A transient resource used in compute.disks.stopGroupAsyncReplication and compute.regionDisks.stopGroupAsyncReplication. It is only used to process requests and is not persisted.",
+   "id": "DisksStopGroupAsyncReplicationResource",
+   "properties": {
+    "resourcePolicy": {
+     "description": "The URL of the DiskConsistencyGroupPolicy for the group of disks to stop. This may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/projects/project/regions/region /resourcePolicies/resourcePolicy - projects/project/regions/region/resourcePolicies/resourcePolicy - regions/region/resourcePolicies/resourcePolicy ",
+     "type": "string"
     }
    },
    "type": "object"
@@ -44324,12 +44805,14 @@
       "MULTI_IP_SUBNET",
       "SECURE_BOOT",
       "SEV_CAPABLE",
+      "SEV_LIVE_MIGRATABLE",
       "SEV_SNP_CAPABLE",
       "UEFI_COMPATIBLE",
       "VIRTIO_SCSI_MULTIQUEUE",
       "WINDOWS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -45285,10 +45768,10 @@
       "UNKNOWN"
      ],
      "enumDescriptions": [
-      "",
-      "",
-      "",
-      ""
+      "Endpoint is being drained.",
+      "Endpoint is healthy.",
+      "Endpoint is unhealthy.",
+      "Health status of the endpoint is unknown."
      ],
      "type": "string"
     }
@@ -60101,6 +60584,16 @@
    },
    "type": "object"
   },
+  "RegionDisksStartAsyncReplicationRequest": {
+   "id": "RegionDisksStartAsyncReplicationRequest",
+   "properties": {
+    "asyncSecondaryDisk": {
+     "description": "The secondary disk to start asynchronous replication to. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "RegionInstanceGroupList": {
    "description": "Contains a list of InstanceGroup resources.",
    "id": "RegionInstanceGroupList",
@@ -61741,6 +62234,10 @@
     "description": {
      "type": "string"
     },
+    "diskConsistencyGroupPolicy": {
+     "$ref": "ResourcePolicyDiskConsistencyGroupPolicy",
+     "description": "Resource policy for disk consistency groups."
+    },
     "groupPlacementPolicy": {
      "$ref": "ResourcePolicyGroupPlacementPolicy",
      "description": "Resource policy for instances for placement configuration."
@@ -61954,6 +62451,12 @@
      "type": "string"
     }
    },
+   "type": "object"
+  },
+  "ResourcePolicyDiskConsistencyGroupPolicy": {
+   "description": "Resource policy for disk consistency groups.",
+   "id": "ResourcePolicyDiskConsistencyGroupPolicy",
+   "properties": {},
    "type": "object"
   },
   "ResourcePolicyGroupPlacementPolicy": {

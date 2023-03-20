@@ -595,6 +595,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("benchmarkIndex")]
         public virtual System.Nullable<double> BenchmarkIndex { get; set; }
 
+        /// <summary>The version of libraries with which these results were generated. Ex: axe-core.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credits")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Credits { get; set; }
+
         /// <summary>The user agent string of the version of Chrome used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUserAgent")]
         public virtual string HostUserAgent { get; set; }
@@ -613,6 +617,37 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>Internationalized strings that are formatted to the locale in configSettings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rendererFormattedStrings")]
         public virtual RendererFormattedStrings RendererFormattedStrings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing an Entity.</summary>
+    public class LhrEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. An optional category name for the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Optional. An optional homepage URL of the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homepage")]
+        public virtual string Homepage { get; set; }
+
+        /// <summary>Optional. An optional flag indicating if the entity is the first party.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFirstParty")]
+        public virtual System.Nullable<bool> IsFirstParty { get; set; }
+
+        /// <summary>Optional. An optional flag indicating if the entity is not recognized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isUnrecognized")]
+        public virtual System.Nullable<bool> IsUnrecognized { get; set; }
+
+        /// <summary>Required. Name of the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. A list of URL origin strings that belong to this entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origins")]
+        public virtual System.Collections.Generic.IList<string> Origins { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -729,6 +764,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configSettings")]
         public virtual ConfigSettings ConfigSettings { get; set; }
 
+        /// <summary>Entity classification data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<LhrEntity> Entities { get; set; }
+
         /// <summary>Environment settings that were used when making this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual Environment Environment { get; set; }
@@ -737,9 +776,17 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fetchTime")]
         public virtual string FetchTime { get; set; }
 
+        /// <summary>URL displayed on the page after Lighthouse finishes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalDisplayedUrl")]
+        public virtual string FinalDisplayedUrl { get; set; }
+
         /// <summary>The final resolved url that was audited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
+
+        /// <summary>Screenshot data of the full page, along with node rects relevant to the audit results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullPageScreenshot")]
+        public virtual object FullPageScreenshot { get; set; }
 
         /// <summary>The internationalization strings that are required to render the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("i18n")]
@@ -748,6 +795,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The lighthouse version that was used to generate this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lighthouseVersion")]
         public virtual string LighthouseVersion { get; set; }
+
+        /// <summary>URL of the main document request of the final navigation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainDocumentUrl")]
+        public virtual string MainDocumentUrl { get; set; }
 
         /// <summary>The original requested url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedUrl")]

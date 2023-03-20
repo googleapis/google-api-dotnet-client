@@ -636,7 +636,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>An expression that filters the results listed in the response.</summary>
+                        /// <summary>An expression that filters the list of results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -1234,7 +1234,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1314,7 +1314,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1528,7 +1528,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// example, consider a situation where you make an initial request and the request times out. If
                     /// you make the request again with the same request ID, the server can check if original operation
                     /// with the same request ID was received, and if so, will ignore the second request. This prevents
                     /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
@@ -1783,12 +1783,7 @@ namespace Google.Apis.Networkconnectivity.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -1798,12 +1793,7 @@ namespace Google.Apis.Networkconnectivity.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningListOperationsResponse>
                 {
@@ -2904,7 +2894,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>An expression that filters the results listed in the response.</summary>
+                    /// <summary>An expression that filters the list of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3834,8 +3824,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<Hub> Hubs { get; set; }
 
         /// <summary>
-        /// The next pagination token in the List response. It should be used as page_token for the following request.
-        /// An empty value means no more result.
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3889,8 +3879,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class ListSpokesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The next pagination token in the List response. It should be used as page_token for the following request.
-        /// An empty value means no more result.
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
