@@ -1662,7 +1662,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rubySettings")]
         public virtual RubySettings RubySettings { get; set; }
 
-        /// <summary>Version of the API to apply these settings to.</summary>
+        /// <summary>
+        /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the
+        /// version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -2530,9 +2533,9 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>
         /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs
         /// that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration::
-        /// publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1
-        /// minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds:
-        /// 54000 # 90 minutes
+        /// publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running:
+        /// initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6
+        /// minutes total_poll_timeout: seconds: 54000 # 90 minutes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longRunning")]
         public virtual LongRunning LongRunning { get; set; }
@@ -2723,7 +2726,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     /// a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The
     /// mixin construct implies that all methods in `AccessControl` are also declared with same name and
     /// request/response types in `Storage`. A documentation generator or annotation processor will see the effective
-    /// `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the
+    /// `Storage.GetAcl` method after inherting documentation and annotations as follows: service Storage { // Get the
     /// underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
     /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the
     /// `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are
@@ -3647,7 +3650,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
 
         /// <summary>
         /// The resource name of the quota limit. An example name would be:
-        /// `services/compute.googleapis.com/projects/123/quotas/metrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        /// `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
         /// The resource name is intended to be opaque and should not be parsed for its component strings, since its
         /// representation could change in the future.
         /// </summary>
@@ -3704,7 +3707,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
 
         /// <summary>
         /// The resource name of the quota settings on this metric for this consumer. An example name would be:
-        /// `services/serviceconsumermanagement.googleapis.com/projects/123/quota/metrics/compute.googleapis.com%2Fcpus
+        /// `services/serviceconsumermanagement.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus`
         /// The resource name is intended to be opaque and should not be parsed for its component strings, since its
         /// representation could change in the future.
         /// </summary>
@@ -3858,7 +3861,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
 
         /// <summary>
         ///  If this map is nonempty, then this policy applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an policy on a limit with the unit 1/{project}/{region} could contain an entry with
+        /// limit unit. For example, a policy on a limit with the unit 1/{project}/{region} could contain an entry with
         /// the key "region" and the value "us-east-1"; the policy is only applied to quota consumed in that region.
         /// This map has the following restrictions: * Keys that are not defined in the limit's unit are not valid keys.
         /// Any string appearing in {brackets} in the unit (besides {project} or {user}) is a defined key. * "project"

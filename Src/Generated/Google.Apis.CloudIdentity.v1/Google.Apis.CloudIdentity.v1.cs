@@ -2869,6 +2869,120 @@ namespace Google.Apis.CloudIdentity.v1
                 }
             }
 
+            /// <summary>Searches direct groups of a member.</summary>
+            /// <param name="parent">
+            /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive
+            /// memberships in. Format: groups/{group_id}, where group_id is always '-' as this API will search across
+            /// all groups for a given member.
+            /// </param>
+            public virtual SearchDirectGroupsRequest SearchDirectGroups(string parent)
+            {
+                return new SearchDirectGroupsRequest(service, parent);
+            }
+
+            /// <summary>Searches direct groups of a member.</summary>
+            public class SearchDirectGroupsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.SearchDirectGroupsResponse>
+            {
+                /// <summary>Constructs a new SearchDirectGroups request.</summary>
+                public SearchDirectGroupsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
+                /// transitive memberships in. Format: groups/{group_id}, where group_id is always '-' as this API will
+                /// search across all groups for a given member.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The ordering of membership relation for the display name or email in the response. The syntax for
+                /// this field can be found at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+                /// Example: Sort by the ascending display name: order_by="group_name" or order_by="group_name asc".
+                /// Sort by the descending display name: order_by="group_name desc". Sort by the ascending group key:
+                /// order_by="group_key" or order_by="group_key asc". Sort by the descending group key:
+                /// order_by="group_key desc".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>The default page size is 200 (max 1000).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The next_page_token value returned from a previous list request, if any</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Required. A CEL expression that MUST include member specification AND label(s). Users can search on
+                /// label attributes of groups. CONTAINS match ('in') is supported on labels. Identity-mapped groups are
+                /// uniquely identified by both a `member_key_id` and a `member_key_namespace`, which requires an
+                /// additional query input: `member_key_namespace`. Example query: `member_key_id ==
+                /// 'member_key_id_value' &amp;amp;&amp;amp; 'label_value' in labels`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "searchDirectGroups";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/memberships:searchDirectGroups";
+
+                /// <summary>Initializes SearchDirectGroups parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^groups/[^/]+$",
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// Search transitive groups of a member. **Note:** This feature is only available to Google Workspace
             /// Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts.
@@ -5954,6 +6068,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. Delivery setting associated with the membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliverySetting")]
+        public virtual string DeliverySetting { get; set; }
+
         /// <summary>
         /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`.
         /// Shall be of the form `groups/{group}/memberships/{membership}`.
@@ -5998,6 +6116,50 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>Resource name of the group that the members belong to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing membership relation.</summary>
+    public class MembershipRelation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An extended description to help users determine the purpose of a `Group`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The display name of the `Group`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the
+        /// form `groups/{group_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>The `EntityKey` of the `Group`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
+        public virtual EntityKey GroupKey { get; set; }
+
+        /// <summary>
+        /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of
+        /// the form `groups/{group_id}/memberships/{membership_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
+
+        /// <summary>The `MembershipRole`s that apply to the `Membership`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<MembershipRole> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6221,6 +6383,23 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inboundSamlSsoProfile")]
         public virtual string InboundSamlSsoProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for MembershipsService.SearchDirectGroups.</summary>
+    public class SearchDirectGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of direct groups satisfying the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
+        public virtual System.Collections.Generic.IList<MembershipRelation> Memberships { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results available for listing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -4666,6 +4666,57 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+    /// </summary>
+    public class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of clusters for the Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBigtableClusterSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec> CloudBigtableClusterSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec that applies to clusters of an Instance of Cloud Bigtable.</summary>
+    public class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A link back to the parent resource, in this case Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedResource")]
+        public virtual string LinkedResource { get; set; }
+
+        /// <summary>Location of the cluster, typically a Cloud zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Type of the resource. For a cluster this would be "CLUSTER".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+    /// </summary>
+    public class GoogleCloudDatacatalogV1CloudBigtableSystemSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Display name of the Instance. This is user specified and different from the resource name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceDisplayName")]
+        public virtual string InstanceDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification for the BigQuery connection to a Cloud SQL instance.</summary>
     public class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4997,6 +5048,13 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessContext")]
         public virtual GoogleCloudDatacatalogV1BusinessContext BusinessContext { get; set; }
 
+        /// <summary>
+        /// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to
+        /// `CLOUD_BIGTABLE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBigtableSystemSpec")]
+        public virtual GoogleCloudDatacatalogV1CloudBigtableSystemSpec CloudBigtableSystemSpec { get; set; }
+
         /// <summary>Output only. Physical location of the entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual GoogleCloudDatacatalogV1DataSource DataSource { get; set; }
@@ -5108,6 +5166,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// <summary>Schema of the entry. An entry might not have any schema attached to it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual GoogleCloudDatacatalogV1Schema Schema { get; set; }
+
+        /// <summary>Specification that applies to a Service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceSpec")]
+        public virtual GoogleCloudDatacatalogV1ServiceSpec ServiceSpec { get; set; }
 
         /// <summary>
         /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a
@@ -5504,6 +5566,19 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1ColumnSchema> Columns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1ServiceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBigtableInstanceSpec")]
+        public virtual GoogleCloudDatacatalogV1CloudBigtableInstanceSpec CloudBigtableInstanceSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

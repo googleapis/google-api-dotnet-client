@@ -3554,9 +3554,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The schema to use when parsing the data from the source. Supported values for imports: * `user_event`
-        /// (default): One JSON UserEvent per line. * `document` (default): One JSON Document per line. Each document
-        /// must have a valid document.id.
+        /// The schema to use when parsing the data from the source. Supported values for user event imports: *
+        /// `user_event` (default): One UserEvent per row. Supported values for document imports: * `document`
+        /// (default): One Document format per row. Each document must have a valid Document.id and one of
+        /// Document.json_data or Document.struct_data. * `custom_data`: One custom data per row in arbitrary format
+        /// that conforms the defined Schema of the data store. This can only be used by the Generic Data Store
+        /// vertical.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -3609,151 +3612,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>End user selected CompleteQueryResponse.CompletionResult.suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedSuggestion")]
         public virtual string SelectedSuggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines circumstances to be checked before allowing a behavior</summary>
-    public class GoogleCloudDiscoveryengineV1alphaCondition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Range of time(s) specifying when condition is active. Maximum of 10 time ranges.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRange")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConditionTimeRange> ActiveTimeRange { get; set; }
-
-        /// <summary>Optional. Search only A list of terms to match the query on. Maximum of 10 query terms.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConditionQueryTerm> QueryTerms { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Matcher for search request query</summary>
-    public class GoogleCloudDiscoveryengineV1alphaConditionQueryTerm : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the search query needs to exactly match the query term.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullMatch")]
-        public virtual System.Nullable<bool> FullMatch { get; set; }
-
-        /// <summary>
-        /// The specific query value to match against Must be lowercase, must be UTF-8. Can have at most 3 space
-        /// separated terms if full_match is true. Cannot be an empty string. Maximum length of 5000 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Used for time-dependent conditions.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaConditionTimeRange : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>End of time range. Range is inclusive. Must be in the future.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>Start of time range. Range is inclusive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Defines a conditioned behavior to employ during serving. Must be attached to a [ServingConfig] to be considered
-    /// at serving time. Permitted actions dependent on Solution Type.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaControl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. List of all [ServingConfig] ids this control is attached to. May take up to 10 minutes to
-        /// update after changes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
-        public virtual System.Collections.Generic.IList<string> AssociatedServingConfigIds { get; set; }
-
-        /// <summary>Defines a boost-type control</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("boostAction")]
-        public virtual GoogleCloudDiscoveryengineV1alphaControlBoostAction BoostAction { get; set; }
-
-        /// <summary>
-        /// Determines when the associated action will trigger. Omit to always apply the action. Currently only a single
-        /// condition may be specified. Otherwise an INVALID ARGUMENT error is thrown.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCondition> Conditions { get; set; }
-
-        /// <summary>
-        /// Required. Human readable name. The identifier used in UI views. Must be UTF-8 encoded string. Length limit
-        /// is 128 characters. Otherwise an INVALID ARGUMENT error is thrown.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Defines a filter-type control Currently not supported by Recommendation</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterAction")]
-        public virtual GoogleCloudDiscoveryengineV1alphaControlFilterAction FilterAction { get; set; }
-
-        /// <summary>Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. What solution the control belongs to. Must be compatible with vertical of resource. Otherwise an
-        /// INVALID ARGUMENT error is thrown.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
-        public virtual string SolutionType { get; set; }
-
-        /// <summary>
-        /// Specifies the use case for the control. Affects what condition fields can be set. Only applies to
-        /// SOLUTION_TYPE_SEARCH. Currently only allow one use case per control. Must be set when solution_type is
-        /// SolutionType.SOLUTION_TYPE_SEARCH.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useCases")]
-        public virtual System.Collections.Generic.IList<string> UseCases { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Adjusts order of products in returned list.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaControlBoostAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
-        /// (No-op).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
-        public virtual System.Nullable<float> Boost { get; set; }
-
-        /// <summary>
-        /// Required. Specifies which products to apply the boost to. If no filter is provided all products will be
-        /// boosted (No-op). Syntax documentation: https://cloud.google.com/retail/docs/filter-and-order Maximum length
-        /// is 5000 characters. Otherwise an INVALID ARGUMENT error is thrown.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Specified which products may be included in results. Uses same filter as boost.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaControlFilterAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. A filter to apply on the matching condition results. Required Syntax documentation:
-        /// https://cloud.google.com/retail/docs/filter-and-order Maximum length is 5000 characters. Otherwise an
-        /// INVALID ARGUMENT error is thrown.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3813,7 +3671,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentDocumentId")]
         public virtual string ParentDocumentId { get; set; }
 
-        /// <summary>Required. The identifier of the schema located in the same data store.</summary>
+        /// <summary>The identifier of the schema located in the same data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaId")]
         public virtual string SchemaId { get; set; }
 
@@ -3876,8 +3734,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Required. Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match the full
         /// object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such
-        /// as `gs://bucket/directory/*.json`. A request can contain at most 100 files or 100000 files if the
-        /// data_schema is `content`. And each file can be up to 2 GB.
+        /// as `gs://bucket/directory/*.json`. A request can contain at most 100 files (or 100,000 files if
+        /// `data_schema` is `content`). Each file can be up to 2 GB (or 100 MB if `data_schema` is `content`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
         public virtual System.Collections.Generic.IList<string> InputUris { get; set; }
@@ -4319,6 +4177,29 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines the structure and layout of a type of document data.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JSON representation of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual string JsonSchema { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the schema, in the format of
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`.
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The structured representation of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Detailed search information.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4695,6 +4576,29 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the structure and layout of a type of document data.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JSON representation of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual string JsonSchema { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the schema, in the format of
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`.
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The structured representation of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

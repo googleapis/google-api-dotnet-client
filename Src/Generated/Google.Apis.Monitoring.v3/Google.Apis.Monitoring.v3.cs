@@ -7544,6 +7544,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoClose")]
         public virtual object AutoClose { get; set; }
 
+        /// <summary>Control how notifications will be sent out, on a per-channel basis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationChannelStrategy")]
+        public virtual System.Collections.Generic.IList<NotificationChannelStrategy> NotificationChannelStrategy { get; set; }
+
         /// <summary>
         /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that
         /// are not log-based.
@@ -8277,7 +8281,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower
     /// bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &amp;lt;= i &amp;lt;
-    /// N-1): scale * (growth_factor ^ i). Lower bound (1 &amp;lt;= i &amp;lt; N): scale * (growth_factor ^ (i - 1)).
+    /// N-1): scale * (growth_factor ^ i).Lower bound (1 &amp;lt;= i &amp;lt; N): scale * (growth_factor ^ (i - 1)).
     /// </summary>
     public class Exponential : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8840,7 +8844,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket
     /// represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2
     /// (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &amp;lt;= i &amp;lt; N-1): offset + (width *
-    /// i). Lower bound (1 &amp;lt;= i &amp;lt; N): offset + (width * (i - 1)).
+    /// i).Lower bound (1 &amp;lt;= i &amp;lt; N): offset + (width * (i - 1)).
     /// </summary>
     public class Linear : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9850,6 +9854,29 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Control over how the notification channels in notification_channels are notified when this alert fires, on a
+    /// per-channel basis.
+    /// </summary>
+    public class NotificationChannelStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full REST resource name for the notification channels that these settings apply to. Each of these
+        /// correspond to the name field in one of the NotificationChannel objects referenced in the
+        /// notification_channels field of this AlertPolicy. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationChannelNames")]
+        public virtual System.Collections.Generic.IList<string> NotificationChannelNames { get; set; }
+
+        /// <summary>The frequency at which to send reminder notifications for open incidents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renotifyInterval")]
+        public virtual object RenotifyInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Control over the rate of notifications sent to this alert policy's notification channels.</summary>
     public class NotificationRateLimit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10623,6 +10650,10 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The list of fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<Field> Fields { get; set; }

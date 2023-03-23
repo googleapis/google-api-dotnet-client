@@ -2873,7 +2873,10 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rubySettings")]
         public virtual RubySettings RubySettings { get; set; }
 
-        /// <summary>Version of the API to apply these settings to.</summary>
+        /// <summary>
+        /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the
+        /// version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -4432,9 +4435,9 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>
         /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs
         /// that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration::
-        /// publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1
-        /// minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds:
-        /// 54000 # 90 minutes
+        /// publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running:
+        /// initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6
+        /// minutes total_poll_timeout: seconds: 54000 # 90 minutes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longRunning")]
         public virtual LongRunning LongRunning { get; set; }
@@ -4625,7 +4628,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The
     /// mixin construct implies that all methods in `AccessControl` are also declared with same name and
     /// request/response types in `Storage`. A documentation generator or annotation processor will see the effective
-    /// `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the
+    /// `Storage.GetAcl` method after inherting documentation and annotations as follows: service Storage { // Get the
     /// underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
     /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the
     /// `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are

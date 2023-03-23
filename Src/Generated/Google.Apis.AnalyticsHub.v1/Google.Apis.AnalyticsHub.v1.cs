@@ -2162,10 +2162,6 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>If true, restrict direct table access(read api/tabledata.list) on linked table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restrictDirectTableAccess")]
-        public virtual System.Nullable<bool> RestrictDirectTableAccess { get; set; }
-
         /// <summary>If true, restrict export of query result derived from restricted linked dataset table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictQueryResult")]
         public virtual System.Nullable<bool> RestrictQueryResult { get; set; }

@@ -8671,6 +8671,52 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated with the finding.
+    /// </summary>
+    public class CloudDlpDataProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the data profile, for example, `projects/123/locations/europe/tableProfiles/8383929`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
+        public virtual string DataProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about the Cloud Data Loss Prevention (Cloud DLP) [inspection
+    /// job](https://cloud.google.com/dlp/docs/concepts-job-triggers) that produced the finding.
+    /// </summary>
+    public class CloudDlpInspection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Cloud DLP scanned the complete resource or a sampled subset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullScan")]
+        public virtual System.Nullable<bool> FullScan { get; set; }
+
+        /// <summary>
+        /// The [type of information](https://cloud.google.com/dlp/docs/infotypes-reference) found, for example,
+        /// `EMAIL_ADDRESS` or `STREET_ADDRESS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual string InfoType { get; set; }
+
+        /// <summary>The number of times Cloud DLP found this infoType within this job and resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypeCount")]
+        public virtual System.Nullable<long> InfoTypeCount { get; set; }
+
+        /// <summary>
+        /// Name of the inspection job, for example, `projects/123/locations/europe/dlpJobs/i-8383929`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
+        public virtual string InspectJob { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
     public class Compliance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9115,6 +9161,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Cloud DLP data profile associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpDataProfile")]
+        public virtual CloudDlpDataProfile CloudDlpDataProfile { get; set; }
+
+        /// <summary>Cloud DLP inspection associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpInspection")]
+        public virtual CloudDlpInspection CloudDlpInspection { get; set; }
+
         /// <summary>Contains compliance information for security standards associated to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliances")]
         public virtual System.Collections.Generic.IList<Compliance> Compliances { get; set; }
@@ -9215,6 +9269,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual MitreAttack MitreAttack { get; set; }
 
         /// <summary>
+        /// Unique identifier of the module which generated the finding. Example:
+        /// folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleName")]
+        public virtual string ModuleName { get; set; }
+
+        /// <summary>
         /// Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a
         /// finding, a finding provider shouldn't set the value of mute.
         /// </summary>
@@ -9244,6 +9305,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>Next steps associate to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
         public virtual string NextSteps { get; set; }
+
+        /// <summary>Contains information about the org policy constraints associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraints")]
+        public virtual System.Collections.Generic.IList<OrgPolicyConstraint> OrgPolicyConstraints { get; set; }
 
         /// <summary>
         /// The relative resource name of the source the finding belongs to. See:
@@ -9693,9 +9758,25 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// </summary>
     public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Timestamp this resource value config was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Description of the resource value config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Name for the resource value config</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// List of resource labels to search for, evaluated with AND. E.g. "resource_labels_selector": {"key": "value",
+        /// "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
         /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
@@ -9723,6 +9804,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
         public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
+
+        /// <summary>Output only. Timestamp this resource value config was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10724,6 +10809,20 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates data about a constraint associated with an organization policy.</summary>
+    public class OrgPolicyConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the constraint. Example:
+        /// "organizations/{organization_id}/constraints/{constraint_name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

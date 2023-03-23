@@ -6995,7 +6995,7 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string FormUrl { get; set; }
 
         /// <summary>
-        /// URL of the form responses document. Only set if respsonses have been recorded and only when the requesting
+        /// URL of the form responses document. Only set if responses have been recorded and only when the requesting
         /// user is an editor of the form. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseUrl")]

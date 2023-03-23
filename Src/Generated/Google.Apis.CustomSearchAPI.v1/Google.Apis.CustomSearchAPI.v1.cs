@@ -1906,7 +1906,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         /// <summary>Image belonging to a custom search result.</summary>
         public class ImageData
         {
-            /// <summary>The size of the image, in pixels.</summary>
+            /// <summary>The size of the image, in bytes.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("byteSize")]
             public virtual System.Nullable<int> ByteSize { get; set; }
 

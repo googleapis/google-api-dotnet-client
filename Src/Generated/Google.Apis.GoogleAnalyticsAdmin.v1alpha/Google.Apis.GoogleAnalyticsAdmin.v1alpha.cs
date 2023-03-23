@@ -10467,8 +10467,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Immutable. A logical expression of ExpandedDataSet filters applied to dimension included in the
-        /// ExpandedDataSet. This filter is used to reduce the number of rows and thus the change of encountering `other
-        /// row`.
+        /// ExpandedDataSet. This filter is used to reduce the number of rows and thus the chance of encountering
+        /// `other` row.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterExpression")]
         public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression DimensionFilterExpression { get; set; }
@@ -10540,7 +10540,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual GoogleAnalyticsAdminV1alphaExpandedDataSetFilter Filter { get; set; }
 
         /// <summary>
-        /// A filter expression to be NOT'ed (i.e., inverted, complemented). It must include a dimension_filter. This
+        /// A filter expression to be NOT'ed (that is, inverted, complemented). It must include a dimension_filter. This
         /// cannot be set on the top level ExpandedDataSetFilterExpression.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notExpression")]
