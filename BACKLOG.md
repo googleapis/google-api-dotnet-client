@@ -30,14 +30,6 @@ the request and want to put work into it.
 - Status: Investigation required.
 - Action: Unlikely, this repo is in maintenance mode.
 
-## Polly integration for HttpClient
-
-- Issue [#1414](https://github.com/googleapis/google-api-dotnet-client/issues/1414)
-- Status: workaround feasible with small amounts of customer code
-- Action: Unlikely, this repo is in maintenance mode. We wouldn't
-  want to add a Polly dependency just for this, and it doesn't seem
-  worth creating a new library.
-
 ## Blazor support
 
 - Issue [#1427 Server side Blazor and OAuth](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
