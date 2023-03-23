@@ -1509,8 +1509,10 @@ namespace Google.Apis.CloudIAP.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// The field mask specifying which IAP settings should be updated. If omitted, the all of the settings are
-            /// updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+            /// The field mask specifying which IAP settings should be updated. If omitted, then all of the settings are
+            /// updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+            /// Note: All IAP reauth settings must always be set together, using the field mask:
+            /// `iapSettings.accessSettings.reauthSettings`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }

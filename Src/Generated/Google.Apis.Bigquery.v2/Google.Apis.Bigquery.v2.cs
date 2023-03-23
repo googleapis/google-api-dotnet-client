@@ -6603,6 +6603,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>
+        /// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuous")]
+        public virtual System.Nullable<bool> Continuous { get; set; }
+
+        /// <summary>
         /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported:
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must
         /// already exist. If it does not, a 'notFound' error is returned in the job result. The default value is
@@ -7884,6 +7890,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>
+        /// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuous")]
+        public virtual System.Nullable<bool> Continuous { get; set; }
+
+        /// <summary>
         /// If true, creates a new session, where session id will be a server generated random id. If false, runs query
         /// with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
         /// </summary>
@@ -8649,6 +8661,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<string> JarUris { get; set; }
 
         /// <summary>
+        /// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of
+        /// main_class and main_jar_uri field should be set for Java/Scala language type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
+        public virtual string MainClass { get; set; }
+
+        /// <summary>
         /// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the
         /// main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set
         /// for Java/Scala language type.
@@ -8718,8 +8737,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual StandardSqlStructType StructType { get; set; }
 
         /// <summary>
-        /// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE",
-        /// "ARRAY").
+        /// Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeKind")]
         public virtual string TypeKind { get; set; }

@@ -1781,6 +1781,13 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
+            /// The customer to scope this list request to. For example: "customers/abcd1234". If unset, will return all
+            /// labels within the current customer.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
+            /// <summary>
             /// The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the
             /// default configured language are used.
             /// </summary>
@@ -1883,6 +1890,14 @@ namespace Google.Apis.DriveLabels.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                 {
                     Name = "languageCode",
@@ -2252,6 +2267,13 @@ namespace Google.Apis.DriveLabels.v2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>
+            /// The customer to scope this request to. For example: "customers/abcd1234". If unset, will return settings
+            /// within the current customer.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getCapabilities";
 
@@ -2272,6 +2294,14 @@ namespace Google.Apis.DriveLabels.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^users/[^/]+/capabilities$",
+                });
+                RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }

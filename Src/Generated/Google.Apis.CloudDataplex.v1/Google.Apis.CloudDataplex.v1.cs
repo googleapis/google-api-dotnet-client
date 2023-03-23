@@ -9124,12 +9124,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding
-                /// to use different resource name schemes, such as users/*/operations. To override the binding, API
-                /// services can add a binding such as "/v1/{name=users/*}/operations" to their service configuration.
-                /// For backwards compatibility, the default name includes the operations collection id, however
-                /// overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns UNIMPLEMENTED.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -9139,12 +9134,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding
-                /// to use different resource name schemes, such as users/*/operations. To override the binding, API
-                /// services can add a binding such as "/v1/{name=users/*}/operations" to their service configuration.
-                /// For backwards compatibility, the default name includes the operations collection id, however
-                /// overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns UNIMPLEMENTED.
                 /// </summary>
                 public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningListOperationsResponse>
                 {
@@ -10931,6 +10921,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual string Entity { get; set; }
+
+        /// <summary>
+        /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan
+        /// against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format:
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

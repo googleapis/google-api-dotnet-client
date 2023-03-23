@@ -27064,6 +27064,10 @@ namespace Google.Apis.Dfareporting.v3_5.Data
 
             [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
             public virtual string StartDate { get; set; }
+
+            /// <summary>The timezone when the report will run.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
+            public virtual string Timezone { get; set; }
         }
     }
 

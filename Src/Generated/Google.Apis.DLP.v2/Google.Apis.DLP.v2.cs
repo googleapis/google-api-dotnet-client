@@ -8936,6 +8936,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The results of an Action.</summary>
+    public class GooglePrivacyDlpV2ActionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Outcome of a de-identification action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifyDetails")]
+        public virtual GooglePrivacyDlpV2DeidentifyDataSourceDetails DeidentifyDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ActivateJobTrigger.</summary>
     public class GooglePrivacyDlpV2ActivateJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10342,6 +10353,40 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The results of a Deidentify action from an Inspect job.</summary>
+    public class GooglePrivacyDlpV2DeidentifyDataSourceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Stats about de-identification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifyStats")]
+        public virtual GooglePrivacyDlpV2DeidentifyDataSourceStats DeidentifyStats { get; set; }
+
+        /// <summary>De-identification config used for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedOptions")]
+        public virtual GooglePrivacyDlpV2RequestedDeidentifyOptions RequestedOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of what was modified during a transformation.</summary>
+    public class GooglePrivacyDlpV2DeidentifyDataSourceStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of successfully applied transformations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationCount")]
+        public virtual System.Nullable<long> TransformationCount { get; set; }
+
+        /// <summary>Number of errors encountered while trying to apply transformations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationErrorCount")]
+        public virtual System.Nullable<long> TransformationErrorCount { get; set; }
+
+        /// <summary>Total size in bytes that were transformed in some way.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformedBytes")]
+        public virtual System.Nullable<long> TransformedBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DeidentifyTemplates contains instructions on how to de-identify content. See
     /// https://cloud.google.com/dlp/docs/concepts-templates to learn more.
@@ -10532,6 +10577,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Combines all of the information about a DLP job.</summary>
     public class GooglePrivacyDlpV2DlpJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Events that should occur after the job has completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionDetails")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ActionDetails> ActionDetails { get; set; }
+
         /// <summary>Time when the job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -12982,6 +13031,33 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Replace each matching finding with the name of the info_type.</summary>
     public class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>De-id options.</summary>
+    public class GooglePrivacyDlpV2RequestedDeidentifyOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotDeidentifyTemplate")]
+        public virtual GooglePrivacyDlpV2DeidentifyTemplate SnapshotDeidentifyTemplate { get; set; }
+
+        /// <summary>
+        /// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job
+        /// was run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotImageRedactTemplate")]
+        public virtual GooglePrivacyDlpV2DeidentifyTemplate SnapshotImageRedactTemplate { get; set; }
+
+        /// <summary>
+        /// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job
+        /// was run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotStructuredDeidentifyTemplate")]
+        public virtual GooglePrivacyDlpV2DeidentifyTemplate SnapshotStructuredDeidentifyTemplate { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

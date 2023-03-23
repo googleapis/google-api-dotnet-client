@@ -6681,6 +6681,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTime { get; set; }
 
+        /// <summary>Fleet information for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
+        public virtual Fleet Fleet { get; set; }
+
         /// <summary>Output only. Unique id for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7497,6 +7501,31 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Event types to allowlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual System.Collections.Generic.IList<string> EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fleet is the fleet configuration for the cluster.</summary>
+    public class Fleet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Output only] The full resource name of the registered fleet membership of the cluster, in the format
+        /// `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
+
+        /// <summary>[Output only] Whether the cluster has been registered through the fleet API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preRegistered")]
+        public virtual System.Nullable<bool> PreRegistered { get; set; }
+
+        /// <summary>
+        /// The Fleet host project(project ID or project number) where this cluster will be registered to. This field
+        /// cannot be changed after the cluster has been registered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

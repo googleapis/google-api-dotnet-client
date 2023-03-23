@@ -2050,7 +2050,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentStartTime")]
         public virtual object CommitmentStartTime { get; set; }
 
-        /// <summary>Do not use.</summary>
+        /// <summary>Edition of the capacity commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
@@ -2184,6 +2184,13 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     public class MoveAssignmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The optional assignment ID. A new assignment name is generated if this field is empty. This field can
+        /// contain only lowercase alphanumeric characters or dashes. Max length is 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignmentId")]
+        public virtual string AssignmentId { get; set; }
+
+        /// <summary>
         /// The new reservation ID, e.g.: `projects/myotherproject/locations/US/reservations/team2-prod`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationId")]
@@ -2213,7 +2220,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; }
 
-        /// <summary>Do not use.</summary>
+        /// <summary>Edition of the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 

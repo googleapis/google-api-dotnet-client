@@ -21101,7 +21101,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item
+        /// Additional URLs of lifestyle images of the item. Used to explicitly identify images that showcase your item
         /// in a real-world context. See the Help Center article for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifestyleImageLinks")]

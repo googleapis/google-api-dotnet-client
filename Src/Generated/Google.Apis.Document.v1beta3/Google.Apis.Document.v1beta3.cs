@@ -7635,7 +7635,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The source processor version to import from.</summary>
+        /// <summary>The source processor version to import from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersionSource")]
         public virtual string ProcessorVersionSource { get; set; }
 

@@ -273,6 +273,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
         {
             this.service = service;
             Assessments = new AssessmentsResource(service);
+            Firewallpolicies = new FirewallpoliciesResource(service);
             Keys = new KeysResource(service);
             Relatedaccountgroupmemberships = new RelatedaccountgroupmembershipsResource(service);
             Relatedaccountgroups = new RelatedaccountgroupsResource(service);
@@ -415,6 +416,340 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Firewallpolicies resource.</summary>
+        public virtual FirewallpoliciesResource Firewallpolicies { get; }
+
+        /// <summary>The "firewallpolicies" collection of methods.</summary>
+        public class FirewallpoliciesResource
+        {
+            private const string Resource = "firewallpolicies";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FirewallpoliciesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterprise actions can be
+            /// executed. A project may have a maximum of 1000 policies.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project this policy will apply to, in the format "projects/{project}".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterprise actions can be
+            /// executed. A project may have a maximum of 1000 policies.
+            /// </summary>
+            public class CreateRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project this policy will apply to, in the format "projects/{project}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/firewallpolicies";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes the specified firewall policy.</summary>
+            /// <param name="name">
+            /// Required. The name of the policy to be deleted, in the format
+            /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes the specified firewall policy.</summary>
+            public class DeleteRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the policy to be deleted, in the format
+                /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/firewallpolicies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns the specified firewall policy.</summary>
+            /// <param name="name">
+            /// Required. The name of the requested policy, in the format
+            /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Returns the specified firewall policy.</summary>
+            public class GetRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the requested policy, in the format
+                /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/firewallpolicies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns the list of all firewall policies that belong to a project.</summary>
+            /// <param name="parent">
+            /// Required. The name of the project to list the policies for, in the format "projects/{project}".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns the list of all firewall policies that belong to a project.</summary>
+            public class ListRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project to list the policies for, in the format "projects/{project}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of policies to return. Default is 10. Max limit is 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. The next_page_token value returned from a previous. ListFirewallPoliciesRequest, if any.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/firewallpolicies";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the specified firewall policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The resource name for the FirewallPolicy in the format
+            /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the specified firewall policy.</summary>
+            public class PatchRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The resource name for the FirewallPolicy in the format
+                /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The mask to control which fields of the policy get updated. If the mask is not present,
+                /// all fields will be updated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/firewallpolicies/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1245,6 +1580,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPackageNames")]
         public virtual System.Collections.Generic.IList<string> AllowedPackageNames { get; set; }
 
+        /// <summary>
+        /// Set to true for keys that are used in an Android application that is available for download in app stores in
+        /// addition to the Google Play Store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportNonGoogleAppStoreDistribution")]
+        public virtual System.Nullable<bool> SupportNonGoogleAppStoreDistribution { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1306,6 +1648,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>The event being assessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual GoogleCloudRecaptchaenterpriseV1Event Event__ { get; set; }
+
+        /// <summary>
+        /// Assessment returned when firewall policies belonging to the project are evaluated using the field
+        /// firewall_policy_evaluation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyAssessment")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment FirewallPolicyAssessment { get; set; }
 
         /// <summary>Assessment returned by Fraud Prevention when TransactionData is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fraudPreventionAssessment")]
@@ -1408,11 +1757,18 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ExpectedAction { get; set; }
 
         /// <summary>
-        /// Optional. Optional flag for a reCAPTCHA express request for an assessment without a token. If enabled,
-        /// `site_key` must reference a SCORE key with WAF feature set to EXPRESS.
+        /// Optional. Flag for a reCAPTCHA express request for an assessment without a token. If enabled, `site_key`
+        /// must reference a SCORE key with WAF feature set to EXPRESS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("express")]
         public virtual System.Nullable<bool> Express { get; set; }
+
+        /// <summary>
+        /// Optional. Flag for enabling firewall policy config assessment. If this flag is enabled, the firewall policy
+        /// will be evaluated and a suggested firewall action will be returned in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyEvaluation")]
+        public virtual System.Nullable<bool> FirewallPolicyEvaluation { get; set; }
 
         /// <summary>
         /// Optional. Unique stable hashed user identifier for the request. The identifier must be hashed using
@@ -1421,7 +1777,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
 
-        /// <summary>Optional. Optional HTTP header information about the request.</summary>
+        /// <summary>Optional. HTTP header information about the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<string> Headers { get; set; }
 
@@ -1461,6 +1817,168 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Optional. The IP address in the request from the user's device related to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIpAddress")]
         public virtual string UserIpAddress { get; set; }
+
+        /// <summary>
+        /// Optional. Flag for running WAF token assessment. If enabled, the token must be specified, and have been
+        /// created by a WAF-enabled key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wafTokenAssessment")]
+        public virtual System.Nullable<bool> WafTokenAssessment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An individual action. Each action represents what to do if a policy matches.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The user request did not match any policy and should be allowed access to the requested resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allow")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction Allow { get; set; }
+
+        /// <summary>This action will deny access to a given page. The user will get an HTTP error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("block")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction Block { get; set; }
+
+        /// <summary>This action will redirect the request to a ReCaptcha interstitial to attach a token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirect")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction Redirect { get; set; }
+
+        /// <summary>
+        /// This action will set a custom header but allow the request to continue to the customer backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setHeader")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction SetHeader { get; set; }
+
+        /// <summary>This action will transparently serve a different page to an offending user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitute")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction Substitute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An allow action continues processing a request unimpeded.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A block action serves an HTTP error code a prevents the request from hitting the backend.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial
+    /// page to attach a token.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom
+    /// protection implemented on the backend.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The header key to set in the request to the backend server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The header value to set in the request to the backend server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A substitute action transparently serves a different page than the one requested.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A FirewallPolicy represents a single matching pattern and resulting actions to take.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The actions that the caller should take regarding user access. There should be at most one terminal action.
+        /// A terminal action is any action that forces a response, such as AllowAction, BlockAction or
+        /// SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy
+        /// can contain up to 16 actions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1FirewallAction> Actions { get; set; }
+
+        /// <summary>
+        /// A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an
+        /// incoming user request. If this condition evaluates to true and the requested path matched the path pattern,
+        /// the associated actions should be executed by the caller. The condition string is checked for CEL syntax
+        /// correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and
+        /// its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a
+        /// max length of 500 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>
+        /// A description of what this policy aims to achieve, for convenience purposes. The description can at most
+        /// include 256 UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The resource name for the FirewallPolicy in the format
+        /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The path for which this policy applies, specified as a glob pattern. For more information on glob, see the
+        /// [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy config assessment.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the processing of a policy config fails, an error will be populated and the firewall_policy will be left
+        /// empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>
+        /// Output only. The policy that matched the request. If more than one policy may match, this is the first
+        /// match. If no policy matches the incoming request, the policy field will be left empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicy")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallPolicy FirewallPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1542,7 +2060,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1AndroidKeySettings AndroidSettings { get; set; }
 
-        /// <summary>Output only. The timestamp corresponding to the creation of this Key.</summary>
+        /// <summary>Output only. The timestamp corresponding to the creation of this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -1573,6 +2091,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Settings for keys that can be used by websites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1WebKeySettings WebSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to request to list firewall policies belonging to a key.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> FirewallPolicies { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results. It is set to empty if no policies remain in results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2205,6 +2740,35 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

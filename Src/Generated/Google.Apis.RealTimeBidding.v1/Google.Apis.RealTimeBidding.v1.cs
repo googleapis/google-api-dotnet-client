@@ -4173,6 +4173,14 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string HelpCenterUrl { get; set; }
 
         /// <summary>
+        /// Whether or not the policy topic is missing a certificate. Some policy topics require a certificate to
+        /// unblock serving in some regions. For more information about creative certification, refer to:
+        /// https://support.google.com/authorizedbuyers/answer/7450776
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("missingCertificate")]
+        public virtual System.Nullable<bool> MissingCertificate { get; set; }
+
+        /// <summary>
         /// Policy topic this entry refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or
         /// "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and
         /// may change at any time. Can be used to filter the response of the creatives.list method
