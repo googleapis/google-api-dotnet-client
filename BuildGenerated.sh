@@ -88,7 +88,7 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
     echo "Skipping revision/etag-only check of discovery docs"
   else
     # Revert changes that only affect the revision
-    for discovery in $(git status -s -- DiscoveryJson | grep -E '^ M' | cut "-d " -f3)
+    for discovery in $(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
     do
       # All but the last lines of grep here are removing extraneous output from git diff.
       # The last lines identify lines that are just changes to "revision" or "etag".
