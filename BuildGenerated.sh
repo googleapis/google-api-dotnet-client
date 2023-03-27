@@ -93,7 +93,7 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
       # All but the last lines of grep here are removing extraneous output from git diff.
       # The last lines identify lines that are just changes to "revision" or "etag".
       if [[ ! $(git diff --unified=0 -- $discovery 2>&1 | \
-                grep -v "warning: LF" | \
+                grep -v "warning:" | \
                 grep -v "original line endings" |
                 grep -v '\-\-\-' | \
                 grep -v '+++' | \
