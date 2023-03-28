@@ -79,9 +79,9 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
   echo Deleting existing \'$DISCOVERY_DOC_DIR\' directory...
   rm -rf $DISCOVERY_DOC_DIR
   # Download all discovery docs
-  dotnet run -p $TOOLS_DIR/DiscoveryDocDownloader -- $DISCOVERY_DOC_DIR
+  dotnet run --project $TOOLS_DIR/DiscoveryDocDownloader -- $DISCOVERY_DOC_DIR
   # Patch discovery docs
-  dotnet run -p $TOOLS_DIR/DiscoveryDocPatcher -- $DISCOVERY_DOC_DIR
+  dotnet run --project $TOOLS_DIR/DiscoveryDocPatcher -- $DISCOVERY_DOC_DIR
   
   if [[ $SKIPREVERT == "TRUE" ]]
   then
