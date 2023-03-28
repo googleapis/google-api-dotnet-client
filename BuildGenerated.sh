@@ -122,7 +122,7 @@ then
     # Only generate libraries for discovery docs that have changed or are new.
     modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
     added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^\?\?' | cut "-d " -f2)
-    needs_generation=(${modified[@]}, ${added[@]})
+    needs_generation=(${modified[@]} ${added[@]})
   else
     needs_generation=$(find $DISCOVERY_DOC_DIR -name '*.json')
   fi
