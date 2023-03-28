@@ -2,7 +2,7 @@ name: Build
 on: [push, pull_request]
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env:
       DOTNET_NOLOGO: true
 
@@ -17,26 +17,20 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    # We use the .NET Core 1.1, 2.0, 2.1 and 3.1 SDK runtimes for additional testing
-    - name: Setup .NET Core 1.1
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 1.1.x
-    - name: Setup .NET Core 2.0
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 2.0.x
-    - name: Setup .NET Core 2.1
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 2.1.x
+    # We use the .NET Core 3.1 SDK runtime for additional testing
     - name: Setup .NET Core 3.1
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 3.1.x
 
-    - name: Build and test
+    - name: Build
       run:
         ./BuildSupport.sh
-        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build -c Release
-        dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build -c Release
+
+    - name: Test
+      run: |
+        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework netcoreapp3.1 -c Release
+        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework net6.0 -c Release
+        dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build --framework netcoreapp3.1 -c Release
+        dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build --framework net6.0 -c Release
+
