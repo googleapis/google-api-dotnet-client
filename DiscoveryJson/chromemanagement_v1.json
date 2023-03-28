@@ -596,7 +596,7 @@
        ]
       },
       "findInstalledAppDevices": {
-       "description": "Generate report of devices that have a specified app installed.",
+       "description": "Generate report of managed Chrome browser devices that have a specified app installed.",
        "flatPath": "v1/customers/{customersId}/reports:findInstalledAppDevices",
        "httpMethod": "GET",
        "id": "chromemanagement.customers.reports.findInstalledAppDevices",
@@ -896,7 +896,7 @@
    }
   }
  },
- "revision": "20230322",
+ "revision": "20230327",
  "rootUrl": "https://chromemanagement.googleapis.com/",
  "schemas": {
   "GoogleChromeManagementV1AndroidAppInfo": {

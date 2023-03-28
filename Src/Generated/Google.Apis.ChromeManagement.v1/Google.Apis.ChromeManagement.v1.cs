@@ -1446,7 +1446,9 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
 
-            /// <summary>Generate report of devices that have a specified app installed.</summary>
+            /// <summary>
+            /// Generate report of managed Chrome browser devices that have a specified app installed.
+            /// </summary>
             /// <param name="customer">
             /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
             /// </param>
@@ -1455,7 +1457,9 @@ namespace Google.Apis.ChromeManagement.v1
                 return new FindInstalledAppDevicesRequest(service, customer);
             }
 
-            /// <summary>Generate report of devices that have a specified app installed.</summary>
+            /// <summary>
+            /// Generate report of managed Chrome browser devices that have a specified app installed.
+            /// </summary>
             public class FindInstalledAppDevicesRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FindInstalledAppDevicesResponse>
             {
                 /// <summary>Constructs a new FindInstalledAppDevices request.</summary>

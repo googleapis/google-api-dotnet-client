@@ -4041,7 +4041,10 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Gets a track.</summary>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
-            /// <param name="track">Identifier of the track.</param>
+            /// <param name="track">
+            /// Identifier of the track. [More on track
+            /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+            /// </param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
                 return new GetRequest(service, packageName, editId, track);
@@ -4067,7 +4070,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Identifier of the track.</summary>
+                /// <summary>
+                /// Identifier of the track. [More on track
+                /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4174,7 +4180,10 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
-            /// <param name="track">Identifier of the track.</param>
+            /// <param name="track">
+            /// Identifier of the track. [More on track
+            /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
             {
                 return new PatchRequest(service, body, packageName, editId, track);
@@ -4201,7 +4210,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Identifier of the track.</summary>
+                /// <summary>
+                /// Identifier of the track. [More on track
+                /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4255,7 +4267,10 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
-            /// <param name="track">Identifier of the track.</param>
+            /// <param name="track">
+            /// Identifier of the track. [More on track
+            /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
             {
                 return new UpdateRequest(service, body, packageName, editId, track);
@@ -4282,7 +4297,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Identifier of the track.</summary>
+                /// <summary>
+                /// Identifier of the track. [More on track
+                /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -12623,7 +12641,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
         public virtual System.Collections.Generic.IList<TrackRelease> Releases { get; set; }
 
-        /// <summary>Identifier of the track.</summary>
+        /// <summary>
+        /// Identifier of the track. Form factor tracks have a special prefix as an identifier, for example
+        /// `wear:production`, `automotive:production`. [More on track
+        /// name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string TrackValue { get; set; }
 

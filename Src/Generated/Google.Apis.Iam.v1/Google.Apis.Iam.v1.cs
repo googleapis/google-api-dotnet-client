@@ -598,6 +598,326 @@ namespace Google.Apis.Iam.v1
                             }
                         }
                     }
+
+                    /// <summary>Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The provider to create this key in.</param>
+                    public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderKey body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider.</summary>
+                    public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkforcePoolProviderKey body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The provider to create this key in.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the key, which becomes the final component of the resource name.
+                        /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderKeyId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string WorkforcePoolProviderKeyId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.WorkforcePoolProviderKey Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/keys";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+$",
+                            });
+                            RequestParameters.Add("workforcePoolProviderKeyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "workforcePoolProviderKeyId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a WorkforcePoolProviderKey. You can undelete a key for 30 days. After 30 days, deletion
+                    /// is permanent.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the key to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a WorkforcePoolProviderKey. You can undelete a key for 30 days. After 30 days, deletion
+                    /// is permanent.
+                    /// </summary>
+                    public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the key to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/keys/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a WorkforcePoolProviderKey.</summary>
+                    /// <param name="name">Required. The name of the key to retrieve.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a WorkforcePoolProviderKey.</summary>
+                    public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderKey>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the key to retrieve.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/keys/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists all non-deleted WorkforcePoolProviderKeys in a WorkforcePoolProvider. If `show_deleted` is
+                    /// set to `true`, then deleted keys are also listed.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The provider resource to list encryption keys for. Format:
+                    /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists all non-deleted WorkforcePoolProviderKeys in a WorkforcePoolProvider. If `show_deleted` is
+                    /// set to `true`, then deleted keys are also listed.
+                    /// </summary>
+                    public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkforcePoolProviderKeysResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The provider resource to list encryption keys for. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of keys to return. If unspecified, all keys are returned. The maximum
+                        /// value is 10; values above 10 are truncated to 10.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListWorkforcePoolProviderKeys` call. Provide this to
+                        /// retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Whether to return soft-deleted keys.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/keys";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Undeletes a WorkforcePoolProviderKey, as long as it was deleted fewer than 30 days ago.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the key to undelete.</param>
+                    public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderKeyRequest body, string name)
+                    {
+                        return new UndeleteRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Undeletes a WorkforcePoolProviderKey, as long as it was deleted fewer than 30 days ago.
+                    /// </summary>
+                    public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Undelete request.</summary>
+                        public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderKeyRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the key to undelete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderKeyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "undelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:undelete";
+
+                        /// <summary>Initializes Undelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/keys/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -2866,6 +3186,328 @@ namespace Google.Apis.Iam.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+/keys/[^/]+/operations/[^/]+$",
                                     });
                                 }
+                            }
+                        }
+
+                        /// <summary>
+                        /// Create a new WorkloadIdentityPoolProviderKey in a WorkloadIdentityPoolProvider.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The parent provider resource to create the key in.</param>
+                        public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProviderKey body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Create a new WorkloadIdentityPoolProviderKey in a WorkloadIdentityPoolProvider.
+                        /// </summary>
+                        public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProviderKey body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent provider resource to create the key in.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The ID to use for the key, which becomes the final component of the resource
+                            /// name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("workloadIdentityPoolProviderKeyId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string WorkloadIdentityPoolProviderKeyId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProviderKey Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/keys";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+$",
+                                });
+                                RequestParameters.Add("workloadIdentityPoolProviderKeyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "workloadIdentityPoolProviderKeyId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes an WorkloadIdentityPoolProviderKey. You can undelete a key for 30 days. After 30
+                        /// days, deletion is permanent.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the encryption key to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes an WorkloadIdentityPoolProviderKey. You can undelete a key for 30 days. After 30
+                        /// days, deletion is permanent.
+                        /// </summary>
+                        public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the encryption key to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+/keys/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets an individual WorkloadIdentityPoolProviderKey.</summary>
+                        /// <param name="name">Required. The name of the key to retrieve.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets an individual WorkloadIdentityPoolProviderKey.</summary>
+                        public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProviderKey>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the key to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+/keys/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists all non-deleted WorkloadIdentityPoolProviderKeys in a project. If show_deleted is set
+                        /// to `true`, then deleted pools are also listed.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent provider resource to list encryption keys for.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists all non-deleted WorkloadIdentityPoolProviderKeys in a project. If show_deleted is set
+                        /// to `true`, then deleted pools are also listed.
+                        /// </summary>
+                        public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkloadIdentityPoolProviderKeysResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent provider resource to list encryption keys for.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The maximum number of keys to return. If unspecified, all keys are returned. The maximum
+                            /// value is 10; values above 10 are truncated to 10.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListWorkloadIdentityPoolProviderKeys` call.
+                            /// Provide this to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Whether to return soft deleted resources as well.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/keys";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "showDeleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Undeletes an WorkloadIdentityPoolProviderKey, as long as it was deleted fewer than 30 days
+                        /// ago.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The name of the encryption key to undelete.</param>
+                        public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolProviderKeyRequest body, string name)
+                        {
+                            return new UndeleteRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Undeletes an WorkloadIdentityPoolProviderKey, as long as it was deleted fewer than 30 days
+                        /// ago.
+                        /// </summary>
+                        public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Undelete request.</summary>
+                            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolProviderKeyRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the encryption key to undelete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolProviderKeyRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "undelete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:undelete";
+
+                            /// <summary>Initializes Undelete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+/keys/[^/]+$",
+                                });
                             }
                         }
                     }
@@ -6762,6 +7404,39 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a public key data along with its format.</summary>
+    public class KeyData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The format of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>Output only. The key data. The format of the key is represented by the format field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Immutable. The specifications for the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keySpec")]
+        public virtual string KeySpec { get; set; }
+
+        /// <summary>
+        /// Output only. Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+        /// Only present if the key data represents a X.509 certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notAfterTime")]
+        public virtual object NotAfterTime { get; set; }
+
+        /// <summary>
+        /// Output only. Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+        /// Only present if the key data represents a X.509 certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notBeforeTime")]
+        public virtual object NotBeforeTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to lint a Cloud IAM policy object.</summary>
     public class LintPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6878,6 +7553,24 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListWorkforcePoolProviderKeys.</summary>
+    public class ListWorkforcePoolProviderKeysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of WorkforcePoolProviderKeys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderKeys")]
+        public virtual System.Collections.Generic.IList<WorkforcePoolProviderKey> WorkforcePoolProviderKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListWorkforcePoolProviders.</summary>
     public class ListWorkforcePoolProvidersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6909,6 +7602,24 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>A list of pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePools")]
         public virtual System.Collections.Generic.IList<WorkforcePool> WorkforcePools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListWorkloadIdentityPoolProviderKeys.</summary>
+    public class ListWorkloadIdentityPoolProviderKeysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of WorkloadIdentityPoolProviderKey</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPoolProviderKeys")]
+        public virtual System.Collections.Generic.IList<WorkloadIdentityPoolProviderKey> WorkloadIdentityPoolProviderKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7683,6 +8394,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for UndeleteWorkforcePoolProviderKey.</summary>
+    public class UndeleteWorkforcePoolProviderKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for UndeleteWorkforcePoolProvider.</summary>
     public class UndeleteWorkforcePoolProviderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7699,6 +8417,13 @@ namespace Google.Apis.Iam.v1.Data
 
     /// <summary>Request message for UndeleteWorkforcePoolSubject.</summary>
     public class UndeleteWorkforcePoolSubjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UndeleteWorkloadIdentityPoolProviderKey.</summary>
+    public class UndeleteWorkloadIdentityPoolProviderKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7876,6 +8601,40 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
+    /// Represents a public key configuration for a Workforce Pool Provider. The key can be configured in your identity
+    /// provider to encrypt SAML assertions. Google holds the corresponding private key, which it uses to decrypt
+    /// encrypted tokens.
+    /// </summary>
+    public class WorkforcePoolProviderKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time after which the key will be permanently deleted and cannot be recovered. Note that the
+        /// key may get purged before this time if the total limit of keys per provider is exceeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Immutable. Public half of the asymmetric key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
+        public virtual KeyData KeyData { get; set; }
+
+        /// <summary>Output only. The resource name of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Immutable. The purpose of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("use")]
+        public virtual string Use { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a collection of external workload identities. You can define IAM policies to grant these identities
     /// access to Google Cloud resources.
     /// </summary>
@@ -8000,6 +8759,40 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Output only. The state of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a public key configuration for your workload identity pool provider. The key can be configured in
+    /// your identity provider to encrypt the SAML assertions. Google holds the corresponding private key which it uses
+    /// to decrypt encrypted tokens.
+    /// </summary>
+    public class WorkloadIdentityPoolProviderKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Time after which the key will be permanently purged and cannot be recovered. Note that the key
+        /// may get purged before this timestamp if the total limit of keys per provider is crossed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Immutable. Public half of the asymmetric key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
+        public virtual KeyData KeyData { get; set; }
+
+        /// <summary>Output only. The resource name of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Immutable. The purpose of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("use")]
+        public virtual string Use { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

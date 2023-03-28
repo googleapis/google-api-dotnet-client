@@ -384,7 +384,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
             this.service = service;
             Anrrate = new AnrrateResource(service);
             Crashrate = new CrashrateResource(service);
+            Errors = new ErrorsResource(service);
             Excessivewakeuprate = new ExcessivewakeuprateResource(service);
+            Slowrenderingrate = new SlowrenderingrateResource(service);
+            Slowstartrate = new SlowstartrateResource(service);
             Stuckbackgroundwakelockrate = new StuckbackgroundwakelockrateResource(service);
         }
 
@@ -620,6 +623,977 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
             }
         }
 
+        /// <summary>Gets the Errors resource.</summary>
+        public virtual ErrorsResource Errors { get; }
+
+        /// <summary>The "errors" collection of methods.</summary>
+        public class ErrorsResource
+        {
+            private const string Resource = "errors";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ErrorsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Counts = new CountsResource(service);
+                Issues = new IssuesResource(service);
+                Reports = new ReportsResource(service);
+            }
+
+            /// <summary>Gets the Counts resource.</summary>
+            public virtual CountsResource Counts { get; }
+
+            /// <summary>The "counts" collection of methods.</summary>
+            public class CountsResource
+            {
+                private const string Resource = "counts";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CountsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Describes the properties of the metrics set.</summary>
+                /// <param name="name">
+                /// Required. Name of the errors metric set. Format: apps/{app}/errorCountMetricSet
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Describes the properties of the metrics set.</summary>
+                public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the errors metric set. Format: apps/{app}/errorCountMetricSet
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^apps/[^/]+/errorCountMetricSet$",
+                        });
+                    }
+                }
+
+                /// <summary>Queries the metrics in the metrics set.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name. Format: apps/{app}/errorCountMetricSet</param>
+                public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest body, string name)
+                {
+                    return new QueryRequest(service, body, name);
+                }
+
+                /// <summary>Queries the metrics in the metrics set.</summary>
+                public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse>
+                {
+                    /// <summary>Constructs a new Query request.</summary>
+                    public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name. Format: apps/{app}/errorCountMetricSet</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "query";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:query";
+
+                    /// <summary>Initializes Query parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^apps/[^/]+/errorCountMetricSet$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Issues resource.</summary>
+            public virtual IssuesResource Issues { get; }
+
+            /// <summary>The "issues" collection of methods.</summary>
+            public class IssuesResource
+            {
+                private const string Resource = "issues";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public IssuesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Searches all error issues in which reports have been grouped.</summary>
+                /// <param name="parent">
+                /// Required. Parent resource of the error issues, indicating the application for which they were
+                /// received. Format: apps/{app}
+                /// </param>
+                public virtual SearchRequest Search(string parent)
+                {
+                    return new SearchRequest(service, parent);
+                }
+
+                /// <summary>Searches all error issues in which reports have been grouped.</summary>
+                public class SearchRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource of the error issues, indicating the application for which they were
+                    /// received. Format: apps/{app}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A selection predicate to retrieve only a subset of the issues. Counts in the returned error
+                    /// issues will only reflect occurrences that matched the filter. For filtering basics, please check
+                    /// [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches error
+                    /// issues that occurred in the requested Android versions (specified as the numeric API level)
+                    /// only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error issues that
+                    /// occurred in the requested app version codes only. Example: `versionCode = 123 OR versionCode =
+                    /// 456`. * `deviceModel`: Matches error issues that occurred in the requested devices. Example:
+                    /// `deviceModel = "walleye" OR deviceModel = "marlin"`. * `deviceType`: Matches error issues that
+                    /// occurred in the requested device types. Example: `deviceType = "PHONE"`. * `errorIssueType`:
+                    /// Matches error issues of the requested types only. Valid candidates: `CRASH`, `ANR`. Example:
+                    /// `errorIssueType = CRASH OR errorIssueType = ANR`. * `appProcessState`: Matches error issues on
+                    /// the process state of an app, indicating whether an app runs in the foreground (user-visible) or
+                    /// background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState =
+                    /// FOREGROUND`. * `isUserPerceived`: Matches error issues that are user-perceived. It is not
+                    /// accompanied by any operators. Example: `isUserPerceived`. ** Supported operators:** * Comparison
+                    /// operators: The only supported comparison operator is equality. The filtered field must appear on
+                    /// the left hand side of the comparison. * Logical Operators: Logical operators `AND` and `OR` can
+                    /// be used to build complex filters following a conjunctive normal form (CNF), i.e., conjunctions
+                    /// of disjunctions. The `OR` operator takes precedence over `AND` so the use of parenthesis is not
+                    /// necessary when building CNF. The `OR` operator is only supported to build disjunctions that
+                    /// apply to the same field, e.g., `versionCode = 123 OR errorIssueType = ANR` is not a valid
+                    /// filter. ** Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType
+                    /// = ANR` * `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123
+                    /// AND (errorIssueType = OR errorIssueType = CRASH)`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeDay { get; set; }
+
+                    /// <summary>
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.hours", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeHours { get; set; }
+
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeMinutes { get; set; }
+
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeMonth { get; set; }
+
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeNanos { get; set; }
+
+                    /// <summary>
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeSeconds { get; set; }
+
+                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeTimeZoneId { get; set; }
+
+                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeTimeZoneVersion { get; set; }
+
+                    /// <summary>
+                    /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of
+                    /// -4:00 would be represented as { seconds: -14400 }.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.utcOffset", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalEndTimeUtcOffset { get; set; }
+
+                    /// <summary>
+                    /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeYear { get; set; }
+
+                    /// <summary>
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeDay { get; set; }
+
+                    /// <summary>
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.hours", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeHours { get; set; }
+
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeMinutes { get; set; }
+
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeMonth { get; set; }
+
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeNanos { get; set; }
+
+                    /// <summary>
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeSeconds { get; set; }
+
+                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeTimeZoneId { get; set; }
+
+                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeTimeZoneVersion { get; set; }
+
+                    /// <summary>
+                    /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of
+                    /// -4:00 would be represented as { seconds: -14400 }.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.utcOffset", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalStartTimeUtcOffset { get; set; }
+
+                    /// <summary>
+                    /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeYear { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of error issues to return. The service may return fewer than this value. If
+                    /// unspecified, at most 50 error issues will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+                    /// paginating, all other parameters provided to the request must match the call that provided the
+                    /// page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/errorIssues:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^apps/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.hours", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.hours",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.minutes", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.minutes",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.nanos", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.nanos",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.seconds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.seconds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.timeZone.id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.timeZone.id",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.timeZone.version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.timeZone.version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.utcOffset", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.utcOffset",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.hours", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.hours",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.minutes", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.minutes",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.nanos", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.nanos",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.seconds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.seconds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.timeZone.id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.timeZone.id",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.timeZone.version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.timeZone.version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.utcOffset", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.utcOffset",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Reports resource.</summary>
+            public virtual ReportsResource Reports { get; }
+
+            /// <summary>The "reports" collection of methods.</summary>
+            public class ReportsResource
+            {
+                private const string Resource = "reports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Searches all error reports received for an app.</summary>
+                /// <param name="parent">
+                /// Required. Parent resource of the reports, indicating the application for which they were received.
+                /// Format: apps/{app}
+                /// </param>
+                public virtual SearchRequest Search(string parent)
+                {
+                    return new SearchRequest(service, parent);
+                }
+
+                /// <summary>Searches all error reports received for an app.</summary>
+                public class SearchRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource of the reports, indicating the application for which they were
+                    /// received. Format: apps/{app}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A selection predicate to retrieve only a subset of the reports. For filtering basics, please
+                    /// check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches
+                    /// error reports that occurred in the requested Android versions (specified as the numeric API
+                    /// level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error reports
+                    /// that occurred in the requested app version codes only. Example: `versionCode = 123 OR
+                    /// versionCode = 456`. * `deviceModel`: Matches error reports that occurred in the requested
+                    /// devices. Example: `deviceModel = "walleye" OR deviceModel = "marlin"`. * `deviceType`: Matches
+                    /// error reports that occurred in the requested device types. Example: `deviceType = "PHONE"`. *
+                    /// `errorIssueType`: Matches error reports of the requested types only. Valid candidates:
+                    /// `JAVA_CRASH`, `NATIVE_CRASH`, `ANR`. Example: `errorIssueType = JAVA_CRASH OR errorIssueType =
+                    /// NATIVE_CRASH`. * `errorIssueId`: Matches error reports belonging to the requested error issue
+                    /// ids only. Example: `errorIssueId = 1234 OR errorIssueId = 4567`. * `appProcessState`: Matches
+                    /// error reports on the process state of an app, indicating whether an app runs in the foreground
+                    /// (user-visible) or background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example:
+                    /// `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error reports that are
+                    /// user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. ** Supported
+                    /// operators:** * Comparison operators: The only supported comparison operator is equality. The
+                    /// filtered field must appear on the left hand side of the comparison. * Logical Operators: Logical
+                    /// operators `AND` and `OR` can be used to build complex filters following a conjunctive normal
+                    /// form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so
+                    /// the use of parenthesis is not necessary when building CNF. The `OR` operator is only supported
+                    /// to build disjunctions that apply to the same field, e.g., `versionCode = 123 OR versionCode =
+                    /// ANR`. The filter expression `versionCode = 123 OR errorIssueType = ANR` is not valid. **
+                    /// Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` *
+                    /// `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND
+                    /// (errorIssueType = OR errorIssueType = CRASH)`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeDay { get; set; }
+
+                    /// <summary>
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.hours", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeHours { get; set; }
+
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeMinutes { get; set; }
+
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeMonth { get; set; }
+
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeNanos { get; set; }
+
+                    /// <summary>
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeSeconds { get; set; }
+
+                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeTimeZoneId { get; set; }
+
+                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeTimeZoneVersion { get; set; }
+
+                    /// <summary>
+                    /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of
+                    /// -4:00 would be represented as { seconds: -14400 }.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.utcOffset", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalEndTimeUtcOffset { get; set; }
+
+                    /// <summary>
+                    /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalEndTimeYear { get; set; }
+
+                    /// <summary>
+                    /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+                    /// specifying a datetime without a day.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeDay { get; set; }
+
+                    /// <summary>
+                    /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An
+                    /// API may choose to allow the value "24:00:00" for scenarios like business closing time.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.hours", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeHours { get; set; }
+
+                    /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.minutes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeMinutes { get; set; }
+
+                    /// <summary>
+                    /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeMonth { get; set; }
+
+                    /// <summary>
+                    /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.nanos", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeNanos { get; set; }
+
+                    /// <summary>
+                    /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API
+                    /// may allow the value 60 if it allows leap-seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeSeconds { get; set; }
+
+                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeTimeZoneId { get; set; }
+
+                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeTimeZoneVersion { get; set; }
+
+                    /// <summary>
+                    /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of
+                    /// -4:00 would be represented as { seconds: -14400 }.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.utcOffset", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalStartTimeUtcOffset { get; set; }
+
+                    /// <summary>
+                    /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> IntervalStartTimeYear { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of reports to return. The service may return fewer than this value. If
+                    /// unspecified, at most 50 reports will be returned. The maximum value is 1000; values above 1000
+                    /// will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `SearchErrorReports` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `SearchErrorReports` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/errorReports:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^apps/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.hours", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.hours",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.minutes", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.minutes",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.nanos", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.nanos",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.seconds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.seconds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.timeZone.id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.timeZone.id",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.timeZone.version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.timeZone.version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.utcOffset", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.utcOffset",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.hours", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.hours",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.minutes", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.minutes",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.nanos", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.nanos",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.seconds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.seconds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.timeZone.id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.timeZone.id",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.timeZone.version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.timeZone.version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.utcOffset", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.utcOffset",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+        }
+
         /// <summary>Gets the Excessivewakeuprate resource.</summary>
         public virtual ExcessivewakeuprateResource Excessivewakeuprate { get; }
 
@@ -731,6 +1705,238 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^apps/[^/]+/excessiveWakeupRateMetricSet$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Slowrenderingrate resource.</summary>
+        public virtual SlowrenderingrateResource Slowrenderingrate { get; }
+
+        /// <summary>The "slowrenderingrate" collection of methods.</summary>
+        public class SlowrenderingrateResource
+        {
+            private const string Resource = "slowrenderingrate";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SlowrenderingrateResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowRenderingRateMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest body, string name)
+            {
+                return new QueryRequest(service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowRenderingRateMetricSet$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Slowstartrate resource.</summary>
+        public virtual SlowstartrateResource Slowstartrate { get; }
+
+        /// <summary>The "slowstartrate" collection of methods.</summary>
+        public class SlowstartrateResource
+        {
+            private const string Resource = "slowstartrate";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SlowstartrateResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowStartRateMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest body, string name)
+            {
+                return new QueryRequest(service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowStartRateMetricSet$",
                     });
                 }
             }
@@ -1028,6 +2234,124 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueLabel")]
         public virtual string ValueLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the set of error report metrics. This metric set contains un-normalized error
+    /// report counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals.
+    /// The default and only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `errorReportCount`
+    /// (`google.type.Decimal`): Absolute count of individual error reports that have been received for an app. *
+    /// `distinctUsers` (`google.type.Decimal`): Count of distinct users for which reports have been received. Care must
+    /// be taken not to aggregate this count further, as it may result in users being counted multiple times. **Required
+    /// dimension:** This dimension must be always specified in all requests in the `dimensions` field in query
+    /// requests. * `reportType` (string): the type of error. The value should correspond to one of the possible values
+    /// in ErrorType. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the
+    /// user's device. * `versionCode` (int64): version of the app that was running on the user's device. *
+    /// `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): identifier of the
+    /// device's form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value should
+    /// correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB,
+    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
+    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
+    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
+    /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app. **Related metric sets:** * vitals.errors.counts contains normalized metrics about Crashes, another
+    /// stability metric. * vitals.errors.counts contains normalized metrics about ANRs, another stability metric.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>The resource name. Format: apps/{app}/errorCountMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A group of related ErrorReports received for an app. Similar error reports are grouped together into issues with
+    /// a likely identical root cause. **Please note:** this resource is currently in Alpha. There could be changes to
+    /// the issue grouping that would result in similar but more recent error reports being assigned to different
+    /// issues. This could also cause some issues disappearing entirely and being replaced by new ones. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1beta1ErrorIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cause of the issue. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the type of ANR
+        /// that occurred, e.g., 'Input dispatching timed out'. * CRASH: for Java unhandled exception errors, the type
+        /// of the innermost exception that was thrown, e.g., IllegalArgumentException. For signals in native code, the
+        /// signal that was raised, e.g. SIGSEGV.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual string Cause { get; set; }
+
+        /// <summary>
+        /// Location where the issue happened. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING:
+        /// the name of the activity or service that stopped responding. * CRASH: the likely method name that caused the
+        /// error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The resource name of the issue. Format: apps/{app}/errorIssues/{issue}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Type of the errors grouped in this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An error report received for an app. There reports are produced by the Android platform code when a (potentially
+    /// fatal) error condition is detected. Identical reports from many users will be deduplicated and coalesced into a
+    /// single ErrorReport. **Required permissions**: to access this resource, the calling user needs the _View app
+    /// information (read-only)_ permission for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1beta1ErrorReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The issue this report was associated with. **Please note:** this resource is currently in Alpha. There could
+        /// be changes to the issue grouping that would result in similar but more recent error reports being assigned
+        /// to a different issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual string Issue { get; set; }
+
+        /// <summary>The resource name of the report. Format: apps/{app}/errorReports/{report}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Textual representation of the error report. These textual reports are produced by the platform. The reports
+        /// are then sanitized and filtered to remove any potentially sensitive information. Although their format is
+        /// fairly stable, they are not entirely meant for machine consumption and we cannot guarantee that there won't
+        /// be subtle changes to the formatting that may break systems trying to parse information out of the reports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportText")]
+        public virtual string ReportText { get; set; }
+
+        /// <summary>Type of the error for which this report was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1384,6 +2708,87 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for QueryErrorCountMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
+        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
+        /// (string): identifier of the device's form factor, e.g., PHONE. * `reportType` (string): the type of error.
+        /// The value should correspond to one of the possible values in ErrorType. * `issueId` (string): the id an
+        /// error was assigned to. The value should correspond to the `{issue}` component of the issue name. *
+        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+        /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        /// Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g.,
+        /// "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string):
+        /// Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g.,
+        /// T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion`
+        /// (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the
+        /// device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
+        /// and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`google.type.Decimal`): Absolute count of
+        /// individual error reports that have been received for an app. * `distinctUsers` (`google.type.Decimal`):
+        /// Count of distinct users for which reports have been received. Care must be taken not to aggregate this count
+        /// further, as it may result in users being counted multiple times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
+        /// 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
+        /// all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
+        /// are aggregated in calendar date intervals. The default and only supported timezone is `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error counts query response.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for QueryExcessiveWakeupRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1470,6 +2875,209 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
 
     /// <summary>Response message for QueryExcessiveWakeupRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for QuerySlowRenderingRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
+        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
+        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
+        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
+        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+        /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        /// Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g.,
+        /// "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string):
+        /// Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g.,
+        /// T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion`
+        /// (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the
+        /// device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
+        /// and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage
+        /// of distinct users in the aggregation period that had a slow rendering. *
+        /// `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of distinct users
+        /// for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct users
+        /// for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the
+        /// aggregation period that had a slow rendering. * `slowRenderingRate30Fps7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily
+        /// values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 28 days. The daily
+        /// values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`):
+        /// Count of distinct users in the aggregation period that were used as normalization value for the
+        /// `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app was
+        /// launched in the device. Care must be taken not to aggregate this count further, as it may result in users
+        /// being counted multiple times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
+        /// 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
+        /// all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
+        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
+        /// `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta Android versions only, excluding data from
+        /// released Android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QuerySlowRenderingRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for QuerySlowStartRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
+        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
+        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
+        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
+        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+        /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        /// Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g.,
+        /// "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string):
+        /// Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g.,
+        /// T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion`
+        /// (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the
+        /// device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
+        /// and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of
+        /// distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 7 days. The daily values are
+        /// weighted by the count of distinct users for the day. * `slowStartRate28dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The daily values are
+        /// weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of
+        /// distinct users in the aggregation period that were used as normalization value for the `slowStartRate`
+        /// metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to
+        /// aggregate this count further, as it may result in users being counted multiple times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
+        /// 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
+        /// all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
+        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
+        /// `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta Android versions only, excluding data from
+        /// released Android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QuerySlowStartRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Continuation token to fetch the next page of data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -1578,6 +3186,137 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>Returned rows of data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response with a paginated list of issues that matched the request.</summary>
+    public class GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ErrorIssues that were found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorIssues")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1ErrorIssue> ErrorIssues { get; set; }
+
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response with a paginated list of error reports matching the search query.</summary>
+    public class GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error reports that were found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorReports")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1ErrorReport> ErrorReports { get; set; }
+
+        /// <summary>Page token to fetch the next page of reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the set of Slow Rendering metrics. This metric set contains low-level rendering
+    /// data captured by SurafeFlinger. Sessions are evaluated based on the present-to-present histogram of frames
+    /// handled by any SurfaceFlinger layer owned by the app. A slow session is a session where more than 25% of frames
+    /// for the session did not meet the metric's target frame rate (either 20fps, or 30fps). *NOTE:* This metric set is
+    /// only available for games. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date
+    /// intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported
+    /// metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation
+    /// period that had slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling
+    /// average value of `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of
+    /// distinct users for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average
+    /// value of `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct
+    /// users for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the
+    /// aggregation period that had slow rendering. * `slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`):
+    /// Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily values are weighted by the count
+    /// of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling
+    /// average value of `slowRenderingRate30Fps` in the last 28 days. The daily values are weighted by the count of
+    /// distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the
+    /// aggregation period that were used as normalization value for the
+    /// `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app rendered
+    /// any frames. Care must be taken not to aggregate this count further, as it may result in users being counted
+    /// multiple times. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on
+    /// the user's device. * `versionCode` (int64): version of the app that was running on the user's device. *
+    /// `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): the type (also
+    /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
+    /// Make of the device's primary system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
+    /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the set of Slow Start metrics. This metric set contains Activity start duration
+    /// data. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to
+    /// historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** *
+    /// `slowStartRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow
+    /// start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the
+    /// last 7 days. The daily values are weighted by the count of distinct users for the day. *
+    /// `slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28
+    /// days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers`
+    /// (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value
+    /// for the `slowStartRate` metric. A user is counted in this metric if their app was launched in the device. Care
+    /// must be taken not to aggregate this count further, as it may result in users being counted multiple times.
+    /// **Required dimension:** This dimension must be specified with each request for the request to be valid. *
+    /// `startType` (string): the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`. **Supported
+    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
+    /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
+    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
+    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
+    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
+    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
+    /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

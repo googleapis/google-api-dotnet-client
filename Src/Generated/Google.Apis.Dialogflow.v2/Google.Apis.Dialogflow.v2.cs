@@ -19809,7 +19809,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
         /// version of the specified model for the language does not exist, then the speech is recognized using the
         /// standard version of the specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
+        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
+        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
+        /// short utterances and commands)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -21858,7 +21861,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
         /// version of the specified model for the language does not exist, then the speech is recognized using the
         /// standard version of the specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
+        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
+        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
+        /// short utterances and commands)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -25545,7 +25551,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified
         /// model for the language does not exist, then the speech is recognized using the standard version of the
         /// specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
+        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
+        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
+        /// short utterances and commands)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }

@@ -291,6 +291,7 @@ namespace Google.Apis.Connectors.v1
             {
                 this.service = service;
                 Connections = new ConnectionsResource(service);
+                Global = new GlobalResource(service);
                 Operations = new OperationsResource(service);
                 Providers = new ProvidersResource(service);
             }
@@ -1287,6 +1288,73 @@ namespace Google.Apis.Connectors.v1
                 }
             }
 
+            /// <summary>Gets the Global resource.</summary>
+            public virtual GlobalResource Global { get; }
+
+            /// <summary>The "global" collection of methods.</summary>
+            public class GlobalResource
+            {
+                private const string Resource = "global";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GlobalResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// GetGlobalSettings gets settings of a project. GlobalSettings is a singleton resource.
+                /// </summary>
+                /// <param name="name">Required. The resource name of the Settings.</param>
+                public virtual GetSettingsRequest GetSettings(string name)
+                {
+                    return new GetSettingsRequest(service, name);
+                }
+
+                /// <summary>
+                /// GetGlobalSettings gets settings of a project. GlobalSettings is a singleton resource.
+                /// </summary>
+                public class GetSettingsRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Settings>
+                {
+                    /// <summary>Constructs a new GetSettings request.</summary>
+                    public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the Settings.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes GetSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/global/settings$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -1477,12 +1545,7 @@ namespace Google.Apis.Connectors.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -1492,12 +1555,7 @@ namespace Google.Apis.Connectors.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListOperationsResponse>
                 {
@@ -3938,6 +3996,27 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Global Settings details.</summary>
+    public class Settings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Resource name of the Connection. Format: projects/{project}/locations/global/settings}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Flag indicates if user is in PayG model</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payg")]
+        public virtual System.Nullable<bool> Payg { get; set; }
+
+        /// <summary>Optional. Flag indicates whether vpc-sc is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcsc")]
+        public virtual System.Nullable<bool> Vpcsc { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
