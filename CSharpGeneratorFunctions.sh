@@ -43,6 +43,6 @@ install_csharp_generator() {
 # - Enum storage file
 run_csharp_generator() {
   dotnet run --no-build -c Release \
-    -p $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest \
+    --project $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest \
     -- "$1" "$2" "$3" "$4"
 }
