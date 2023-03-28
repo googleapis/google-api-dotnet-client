@@ -114,8 +114,12 @@ if [ -z ${SKIPGENERATE+x} ]; then
   # Delete all generated code
   echo Deleting existing \'$CODE_GENERATION_DIR\' directory...
   rm -rf $CODE_GENERATION_DIR
-  # Generate API projects from discovery docs
-  for jsonfile in $DISCOVERY_DOC_DIR/*.json; do
+  # Only generate libraries for discovery docs that have changed or are new.
+  modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
+  added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^\?\?' | cut "-d " -f2)
+  needs_generation=(${modified[@]}, ${added[@]})
+  for jsonfile in ${needs_generation[@]}
+  do
     IFS='/'; names=($jsonfile); unset IFS
     name=$(echo ${names[-1]} | sed 's/.json//g')
     case $name in
