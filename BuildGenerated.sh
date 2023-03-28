@@ -17,6 +17,8 @@ DISCOVERY_DOC_DIR=$(pwd)/DiscoveryJson
 CODE_GENERATION_DIR=$(pwd)/Src/Generated
 # Directory containing tools used during the build.
 TOOLS_DIR=$(pwd)/Src/Tools
+# Only generate libraries for which the discovery has changed or are new.
+GENERATE_CHANGES_ONLY=TRUE
 
 # Forces sourcelink to work during the build.
 export CI=true
@@ -65,6 +67,9 @@ while [[ $# -gt 0 ]]; do
       SKIPGENERATE=TRUE
       SKIPBUILD=TRUE
       ;;
+    --forcegenerateall)
+      GENERATE_CHANGES_ONLY=FALSE
+      ;;
     *)
       echo ERROR: Invalid argument to BuildGenerated.sh: \'$key\'
       exit 1
@@ -110,14 +115,20 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
   fi
 fi
 
-if [ -z ${SKIPGENERATE+x} ]; then
+if [ -z ${SKIPGENERATE+x} ];
+then
+  if [[ $GENERATE_CHANGES_ONLY == "TRUE" ]]
+  then
+    # Only generate libraries for discovery docs that have changed or are new.
+    modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
+    added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^\?\?' | cut "-d " -f2)
+    needs_generation=(${modified[@]}, ${added[@]})
+  else
+    needs_generation=$(find $DISCOVERY_DOC_DIR -name '*.json')
+  fi
   # Delete all generated code
   echo Deleting existing \'$CODE_GENERATION_DIR\' directory...
   rm -rf $CODE_GENERATION_DIR
-  # Only generate libraries for discovery docs that have changed or are new.
-  modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
-  added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^\?\?' | cut "-d " -f2)
-  needs_generation=(${modified[@]}, ${added[@]})
   for jsonfile in ${needs_generation[@]}
   do
     IFS='/'; names=($jsonfile); unset IFS
