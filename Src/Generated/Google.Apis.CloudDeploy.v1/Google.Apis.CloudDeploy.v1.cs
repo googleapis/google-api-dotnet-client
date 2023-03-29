@@ -527,6 +527,128 @@ namespace Google.Apis.CloudDeploy.v1
                                     });
                                 }
                             }
+
+                            /// <summary>Terminates a Job Run in a given project and location.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Required. Name of the `JobRun`. Format must be
+                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                            /// releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.
+                            /// </param>
+                            public virtual TerminateRequest Terminate(Google.Apis.CloudDeploy.v1.Data.TerminateJobRunRequest body, string name)
+                            {
+                                return new TerminateRequest(service, body, name);
+                            }
+
+                            /// <summary>Terminates a Job Run in a given project and location.</summary>
+                            public class TerminateRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.TerminateJobRunResponse>
+                            {
+                                /// <summary>Constructs a new Terminate request.</summary>
+                                public TerminateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.TerminateJobRunRequest body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Name of the `JobRun`. Format must be
+                                /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                                /// releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.CloudDeploy.v1.Data.TerminateJobRunRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "terminate";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}:terminate";
+
+                                /// <summary>Initializes Terminate parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+/jobRuns/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Advances a Rollout in a given project and location.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. Name of the Rollout. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                        /// releases/{release}/rollouts/{rollout}.
+                        /// </param>
+                        public virtual AdvanceRequest Advance(Google.Apis.CloudDeploy.v1.Data.AdvanceRolloutRequest body, string name)
+                        {
+                            return new AdvanceRequest(service, body, name);
+                        }
+
+                        /// <summary>Advances a Rollout in a given project and location.</summary>
+                        public class AdvanceRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.AdvanceRolloutResponse>
+                        {
+                            /// <summary>Constructs a new Advance request.</summary>
+                            public AdvanceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.AdvanceRolloutRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the Rollout. Format is
+                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                            /// releases/{release}/rollouts/{rollout}.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudDeploy.v1.Data.AdvanceRolloutRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "advance";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:advance";
+
+                            /// <summary>Initializes Advance parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                });
+                            }
                         }
 
                         /// <summary>Approves a Rollout.</summary>
@@ -576,6 +698,67 @@ namespace Google.Apis.CloudDeploy.v1
                             public override string RestPath => "v1/{+name}:approve";
 
                             /// <summary>Initializes Approve parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Cancels a Rollout in a given project and location.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. Name of the Rollout. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                        /// releases/{release}/rollouts/{rollout}.
+                        /// </param>
+                        public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelRolloutRequest body, string name)
+                        {
+                            return new CancelRequest(service, body, name);
+                        }
+
+                        /// <summary>Cancels a Rollout in a given project and location.</summary>
+                        public class CancelRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.CancelRolloutResponse>
+                        {
+                            /// <summary>Constructs a new Cancel request.</summary>
+                            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.CancelRolloutRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the Rollout. Format is
+                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                            /// releases/{release}/rollouts/{rollout}.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudDeploy.v1.Data.CancelRolloutRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "cancel";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:cancel";
+
+                            /// <summary>Initializes Cancel parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -757,6 +940,67 @@ namespace Google.Apis.CloudDeploy.v1
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Ignores the specified Job in a Rollout.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="rollout">
+                        /// Required. Name of the Rollout. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                        /// releases/{release}/rollouts/{rollout}.
+                        /// </param>
+                        public virtual IgnoreJobRequest IgnoreJob(Google.Apis.CloudDeploy.v1.Data.IgnoreJobRequest body, string rollout)
+                        {
+                            return new IgnoreJobRequest(service, body, rollout);
+                        }
+
+                        /// <summary>Ignores the specified Job in a Rollout.</summary>
+                        public class IgnoreJobRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.IgnoreJobResponse>
+                        {
+                            /// <summary>Constructs a new IgnoreJob request.</summary>
+                            public IgnoreJobRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.IgnoreJobRequest body, string rollout) : base(service)
+                            {
+                                Rollout = rollout;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the Rollout. Format is
+                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                            /// releases/{release}/rollouts/{rollout}.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Rollout { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudDeploy.v1.Data.IgnoreJobRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "ignoreJob";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+rollout}:ignoreJob";
+
+                            /// <summary>Initializes IgnoreJob parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "rollout",
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
@@ -3258,6 +3502,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request object used by `AdvanceRollout`.</summary>
+    public class AdvanceRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The phase ID to advance the `Rollout` to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `AdvanceRollout`.</summary>
+    public class AdvanceRolloutResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specifying an Anthos Cluster.</summary>
     public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3412,8 +3674,65 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Canary represents the canary deployment strategy.</summary>
+    public class Canary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configures the progressive based deployment for a Target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canaryDeployment")]
+        public virtual CanaryDeployment CanaryDeployment { get; set; }
+
+        /// <summary>
+        /// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a
+        /// phase represents each of the percentage deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customCanaryDeployment")]
+        public virtual CustomCanaryDeployment CustomCanaryDeployment { get; set; }
+
+        /// <summary>
+        /// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to
+        /// determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfig")]
+        public virtual RuntimeConfig RuntimeConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CanaryDeployment represents the canary deployment configuration</summary>
+    public class CanaryDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in
+        /// ascending order and each integer n is 0 &amp;lt;= n &amp;lt; 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Percentages { get; set; }
+
+        /// <summary>Whether to run verify tests after each percentage deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verify")]
+        public virtual System.Nullable<bool> Verify { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request object used by `CancelRollout`.</summary>
+    public class CancelRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `CancelRollout`.</summary>
+    public class CancelRolloutResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3429,6 +3748,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. List of CreateChildRolloutJobs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRolloutJobs")]
         public virtual System.Collections.Generic.IList<Job> CreateRolloutJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloudRunConfig contains the Cloud Run runtime configuration.</summary>
+    public class CloudRunConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to
+        /// facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for
+        /// CustomCanaryDeployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticTrafficControl")]
+        public virtual System.Nullable<bool> AutomaticTrafficControl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3464,6 +3798,20 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The Cloud Run Service urls that are associated with a `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceUrls")]
         public virtual System.Collections.Generic.IList<string> ServiceUrls { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.</summary>
+    public class CloudRunRenderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the Cloud Run Service in the rendered manifest. Format is
+        /// projects/{project}/locations/{location}/services/{service}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3510,6 +3858,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The ID of the childRollout Phase initiated by this JobRun.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutPhaseId")]
         public virtual string RolloutPhaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomCanaryDeployment represents the custom canary deployment configuration.</summary>
+    public class CustomCanaryDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Configuration for each phase in the canary deployment in the order executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseConfigs")]
+        public virtual System.Collections.Generic.IList<PhaseConfig> PhaseConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3821,6 +4180,27 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the Kubernetes Gateway API service mesh configuration.</summary>
+    public class GatewayServiceMesh : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>Required. Name of the Gateway API HTTPRoute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRoute")]
+        public virtual string HttpRoute { get; set; }
+
+        /// <summary>Required. Name of the Kubernetes Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specifying a GKE Cluster.</summary>
     public class GkeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3841,6 +4221,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual System.Nullable<bool> InternalIp { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request object used by `IgnoreJob`.</summary>
+    public class IgnoreJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The job ID for the Job to ignore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>Required. The phase ID the Job to ignore belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `IgnoreJob`.</summary>
+    public class IgnoreJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3869,6 +4271,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobRun")]
         public virtual string JobRun { get; set; }
+
+        /// <summary>Output only. Additional information on why the Job was skipped, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipMessage")]
+        public virtual string SkipMessage { get; set; }
 
         /// <summary>Output only. The current state of the Job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3980,6 +4386,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>KubernetesConfig contains the Kubernetes runtime configuration.</summary>
+    public class KubernetesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Kubernetes Gateway API service mesh configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayServiceMesh")]
+        public virtual GatewayServiceMesh GatewayServiceMesh { get; set; }
+
+        /// <summary>Kubernetes Service networking configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceNetworking")]
+        public virtual ServiceNetworking ServiceNetworking { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4276,9 +4697,58 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>Output only. Additional information on why the Phase was skipped, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipMessage")]
+        public virtual string SkipMessage { get; set; }
+
         /// <summary>Output only. Current state of the Phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the paths to the artifacts, relative to the URI, for a phase.</summary>
+    public class PhaseArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. File path of the rendered manifest relative to the URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestPath")]
+        public virtual string ManifestPath { get; set; }
+
+        /// <summary>Output only. File path of the resolved Skaffold configuration relative to the URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skaffoldConfigPath")]
+        public virtual string SkaffoldConfigPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PhaseConfig represents the configuration for a phase in the custom canary deployment.</summary>
+    public class PhaseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Percentage deployment for the phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<int> Percentage { get; set; }
+
+        /// <summary>
+        /// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers,
+        /// and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters.
+        /// In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
+
+        /// <summary>
+        /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles
+        /// list specified in the `DeliveryPipeline` stage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
+        public virtual System.Collections.Generic.IList<string> Profiles { get; set; }
+
+        /// <summary>Whether to run verify tests after the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verify")]
+        public virtual System.Nullable<bool> Verify { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4604,6 +5074,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RenderMetadata includes information associated with a `Release` render.</summary>
+    public class RenderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metadata associated with rendering for Cloud Run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual CloudRunRenderMetadata CloudRun { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RetryJobRequest is the request object used by `RetryJob`.</summary>
     public class RetryJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4771,6 +5252,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RuntimeConfig contains the runtime specific configurations for a deployment strategy.</summary>
+    public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Run runtime configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual CloudRunConfig CloudRun { get; set; }
+
+        /// <summary>Kubernetes runtime configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
+        public virtual KubernetesConfig Kubernetes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.</summary>
     public class SerialPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4779,6 +5275,23 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the Kubernetes Service networking configuration.</summary>
+    public class ServiceNetworking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>Required. Name of the Kubernetes Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4921,6 +5434,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Strategy contains deployment strategy information.</summary>
     public class Strategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Canary deployment strategy provides progressive percentage based deployments to a Target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canary")]
+        public virtual Canary Canary { get; set; }
+
         /// <summary>
         /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
         /// </summary>
@@ -5032,6 +5549,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manifestPath")]
         public virtual string ManifestPath { get; set; }
 
+        /// <summary>Output only. Map from the phase ID to the phase artifacts for the `Target`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseArtifacts")]
+        public virtual System.Collections.Generic.IDictionary<string, PhaseArtifact> PhaseArtifacts { get; set; }
+
         /// <summary>Output only. File path of the resolved Skaffold configuration relative to the URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldConfigPath")]
         public virtual string SkaffoldConfigPath { get; set; }
@@ -5074,6 +5595,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Additional information about the render failure, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
+
+        /// <summary>Output only. Metadata related to the `Release` render for this Target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual RenderMetadata Metadata { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to render the manifest for
@@ -5132,6 +5657,20 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<bool> Status { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request object used by `TerminateJobRun`.</summary>
+    public class TerminateJobRunRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `TerminateJobRun`.</summary>
+    public class TerminateJobRunResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

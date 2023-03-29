@@ -8669,15 +8669,16 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the
-        /// main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set
-        /// for Java/Scala language type.
+        /// main_file_uri field must be set for Python.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainFileUri")]
         public virtual string MainFileUri { get; set; }
 
         /// <summary>
         /// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For
-        /// more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        /// more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure
+        /// option
+        /// list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }

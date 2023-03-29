@@ -3693,9 +3693,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// The schema to use when parsing the data from the source. Supported values for user event imports: *
         /// `user_event` (default): One UserEvent per row. Supported values for document imports: * `document`
         /// (default): One Document format per row. Each document must have a valid Document.id and one of
-        /// Document.json_data or Document.struct_data. * `custom_data`: One custom data per row in arbitrary format
-        /// that conforms the defined Schema of the data store. This can only be used by the Generic Data Store
-        /// vertical.
+        /// Document.json_data or Document.struct_data. * `custom`: One custom data per row in arbitrary format that
+        /// conforms the defined Schema of the data store. This can only be used by the GENERIC Data Store vertical.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -3861,8 +3860,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// The schema to use when parsing the data from the source. Supported values for document imports: * `document`
         /// (default): One JSON Document per line. Each document must have a valid Document.id. * `content`:
         /// Unstructured data (e.g. PDF, HTML). Each file matched by `input_uris` will become a document, with the ID
-        /// set to the first 128 bits of SHA256(URI) encoded as a hex string. Supported values for user even imports: *
-        /// `user_event` (default): One JSON UserEvent per line.
+        /// set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`: One custom data JSON per row
+        /// in arbitrary format that conforms the defined Schema of the data store. This can only be used by the GENERIC
+        /// Data Store vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent
+        /// per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }

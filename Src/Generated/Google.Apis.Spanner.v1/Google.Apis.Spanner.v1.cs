@@ -9098,7 +9098,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Collections.Generic.IList<string> Statements { get; set; }
 
         /// <summary>
-        /// Output only. When true, indicates that the operation is throttled e.g due to resource constraints. When
+        /// Output only. When true, indicates that the operation is throttled e.g. due to resource constraints. When
         /// resources become available the operation will resume and this field will be false again.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("throttled")]

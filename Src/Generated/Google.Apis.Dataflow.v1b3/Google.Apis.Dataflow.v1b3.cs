@@ -1689,6 +1689,15 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
+                /// <summary>
+                /// The list of fields to update relative to Job. If empty, only RequestedJobState will be considered
+                /// for update. If the FieldMask is not empty and RequestedJobState is none/empty, The fields specified
+                /// in the update mask will be the only ones considered for update. If both RequestedJobState and
+                /// update_mask are specified, we will first handle RequestedJobState and then the update_mask fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
 
@@ -1727,6 +1736,14 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
                     {
                         Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3574,6 +3591,16 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    /// <summary>
+                    /// The list of fields to update relative to Job. If empty, only RequestedJobState will be
+                    /// considered for update. If the FieldMask is not empty and RequestedJobState is none/empty, The
+                    /// fields specified in the update mask will be the only ones considered for update. If both
+                    /// RequestedJobState and update_mask are specified, we will first handle RequestedJobState and then
+                    /// the update_mask fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
 
@@ -3614,6 +3641,14 @@ namespace Google.Apis.Dataflow.v1b3
                             Name = "jobId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -6522,6 +6557,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spannerDetails")]
         public virtual System.Collections.Generic.IList<SpannerIODetails> SpannerDetails { get; set; }
 
+        /// <summary>List of display properties to help UI filter jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDisplayProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserDisplayProperties { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7194,6 +7233,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomMetadata { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered
+        /// exactly as specified in this field. Only considered when parent_name is NOT provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupName")]
+        public virtual string GroupName { get; set; }
+
         /// <summary>Required. The help text to display for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpText")]
         public virtual string HelpText { get; set; }
@@ -7213,6 +7259,22 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Optional. The type of the parameter. Used for selecting input picker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramType")]
         public virtual string ParamType { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to
+        /// make this parameter conditional (will only be rendered conditionally). Should be mappable to a
+        /// ParameterMetadata.name field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
+        public virtual string ParentName { get; set; }
+
+        /// <summary>
+        /// Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left
+        /// empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this
+        /// parameter is conditional (when 'parent_name' has been provided).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentTriggerValues")]
+        public virtual System.Collections.Generic.IList<string> ParentTriggerValues { get; set; }
 
         /// <summary>Optional. Regexes that the parameter must match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]

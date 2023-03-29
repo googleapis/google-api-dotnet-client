@@ -386,6 +386,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             Crashrate = new CrashrateResource(service);
             Errors = new ErrorsResource(service);
             Excessivewakeuprate = new ExcessivewakeuprateResource(service);
+            Slowrenderingrate = new SlowrenderingrateResource(service);
+            Slowstartrate = new SlowstartrateResource(service);
             Stuckbackgroundwakelockrate = new StuckbackgroundwakelockrateResource(service);
         }
 
@@ -1708,6 +1710,238 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             }
         }
 
+        /// <summary>Gets the Slowrenderingrate resource.</summary>
+        public virtual SlowrenderingrateResource Slowrenderingrate { get; }
+
+        /// <summary>The "slowrenderingrate" collection of methods.</summary>
+        public class SlowrenderingrateResource
+        {
+            private const string Resource = "slowrenderingrate";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SlowrenderingrateResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowRenderingRateMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest body, string name)
+            {
+                return new QueryRequest(service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowRenderingRateMetricSet$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Slowstartrate resource.</summary>
+        public virtual SlowstartrateResource Slowstartrate { get; }
+
+        /// <summary>The "slowstartrate" collection of methods.</summary>
+        public class SlowstartrateResource
+        {
+            private const string Resource = "slowstartrate";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SlowstartrateResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowStartRateMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest body, string name)
+            {
+                return new QueryRequest(service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/slowStartRateMetricSet$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the Stuckbackgroundwakelockrate resource.</summary>
         public virtual StuckbackgroundwakelockrateResource Stuckbackgroundwakelockrate { get; }
 
@@ -1977,6 +2211,21 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the confidence interval of a metric.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence interval's lower bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
+        public virtual GoogleTypeDecimal LowerBound { get; set; }
+
+        /// <summary>The confidence interval's upper bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
+        public virtual GoogleTypeDecimal UpperBound { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the value of a single dimension.</summary>
     public class GooglePlayDeveloperReportingV1alpha1DimensionValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2230,6 +2479,10 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>Actual value, represented as a decimal number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decimalValue")]
         public virtual GoogleTypeDecimal DecimalValue { get; set; }
+
+        /// <summary>Confidence interval of a value that is of type type.Decimal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decimalValueConfidenceInterval")]
+        public virtual GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval DecimalValueConfidenceInterval { get; set; }
 
         /// <summary>Name of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
@@ -2654,6 +2907,209 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for QuerySlowRenderingRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
+        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
+        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
+        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
+        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+        /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        /// Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g.,
+        /// "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string):
+        /// Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g.,
+        /// T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion`
+        /// (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the
+        /// device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
+        /// and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage
+        /// of distinct users in the aggregation period that had a slow rendering. *
+        /// `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of distinct users
+        /// for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct users
+        /// for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the
+        /// aggregation period that had a slow rendering. * `slowRenderingRate30Fps7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily
+        /// values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 28 days. The daily
+        /// values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`):
+        /// Count of distinct users in the aggregation period that were used as normalization value for the
+        /// `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app was
+        /// launched in the device. Care must be taken not to aggregate this count further, as it may result in users
+        /// being counted multiple times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
+        /// 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
+        /// all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
+        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
+        /// `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1alpha1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta Android versions only, excluding data from
+        /// released Android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QuerySlowRenderingRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for QuerySlowStartRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
+        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
+        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
+        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
+        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+        /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        /// Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g.,
+        /// "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string):
+        /// Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g.,
+        /// T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion`
+        /// (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the
+        /// device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
+        /// and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of
+        /// distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 7 days. The daily values are
+        /// weighted by the count of distinct users for the day. * `slowStartRate28dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The daily values are
+        /// weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of
+        /// distinct users in the aggregation period that were used as normalization value for the `slowStartRate`
+        /// metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to
+        /// aggregate this count further, as it may result in users being counted multiple times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
+        /// 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
+        /// all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
+        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
+        /// `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1alpha1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta Android versions only, excluding data from
+        /// released Android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QuerySlowStartRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for QueryStuckBackgroundWakelockRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2779,6 +3235,107 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>Page token to fetch the next page of reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the set of Slow Rendering metrics. This metric set contains low-level rendering
+    /// data captured by SurafeFlinger. Sessions are evaluated based on the present-to-present histogram of frames
+    /// handled by any SurfaceFlinger layer owned by the app. A slow session is a session where more than 25% of frames
+    /// for the session did not meet the metric's target frame rate (either 20fps, or 30fps). *NOTE:* This metric set is
+    /// only available for games. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date
+    /// intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported
+    /// metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation
+    /// period that had slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling
+    /// average value of `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of
+    /// distinct users for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average
+    /// value of `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct
+    /// users for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the
+    /// aggregation period that had slow rendering. * `slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`):
+    /// Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily values are weighted by the count
+    /// of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling
+    /// average value of `slowRenderingRate30Fps` in the last 28 days. The daily values are weighted by the count of
+    /// distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the
+    /// aggregation period that were used as normalization value for the
+    /// `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app rendered
+    /// any frames. Care must be taken not to aggregate this count further, as it may result in users being counted
+    /// multiple times. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on
+    /// the user's device. * `versionCode` (int64): version of the app that was running on the user's device. *
+    /// `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): the type (also
+    /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
+    /// Make of the device's primary system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
+    /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1alpha1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the set of Slow Start metrics. This metric set contains Activity start duration
+    /// data. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to
+    /// historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** *
+    /// `slowStartRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow
+    /// start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the
+    /// last 7 days. The daily values are weighted by the count of distinct users for the day. *
+    /// `slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28
+    /// days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers`
+    /// (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value
+    /// for the `slowStartRate` metric. A user is counted in this metric if their app was launched in the device. Care
+    /// must be taken not to aggregate this count further, as it may result in users being counted multiple times.
+    /// **Required dimension:** This dimension must be specified with each request for the request to be valid. *
+    /// `startType` (string): the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`. **Supported
+    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
+    /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
+    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
+    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
+    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
+    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
+    /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1alpha1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
