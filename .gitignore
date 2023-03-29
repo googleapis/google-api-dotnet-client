@@ -23,6 +23,9 @@ TestResult.xml
 # TODO: Move these to bin or obj.
 /Src/Support/**/*.xml
 /Src/Generated/**/*.xml
+# Ignore the temporary generation folder used to generate the subset of libaries
+# with actual changes.
+Src/TempGenerated
 
 # Ignore the testrunner directory.
 testrunner/*
