@@ -13,8 +13,10 @@ NUPKG_DIR=$(pwd)/NuPkgs/Generated
 BUILD_CONFIGURATION=Release
 # Directory in which to download discovery docs.
 DISCOVERY_DOC_DIR=$(pwd)/DiscoveryJson
-# Code generation directory
-CODE_GENERATION_DIR=$(pwd)/Src/Generated
+# Permanent code generation directory
+PERM_CODE_GENERATION_DIR=$(pwd)/Src/Generated
+# Temporary code generation directory
+TEMP_CODE_GENERATION_DIR=$(pwd)/Src/TempGenerated
 # Directory containing tools used during the build.
 TOOLS_DIR=$(pwd)/Src/Tools
 # Only generate libraries for which the discovery has changed or are new.
@@ -123,8 +125,12 @@ then
     modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
     added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^\?\?' | cut "-d " -f2)
     needs_generation=(${modified[@]} ${added[@]})
+    # If we generate only a subset of the existing discoveries, we do so in a temporary
+    # folder so as not to delete generated code for the unmodified discoveries.
+    CODE_GENERATION_DIR=$TEMP_CODE_GENERATION_DIR
   else
     needs_generation=$(find $DISCOVERY_DOC_DIR -name '*.json')
+    CODE_GENERATION_DIR=$PERM_CODE_GENERATION_DIR
   fi
   # Delete all generated code
   echo Deleting existing \'$CODE_GENERATION_DIR\' directory...
@@ -163,4 +169,24 @@ if [ -z ${SKIPPACK+x} ]; then
   echo Deleting existing \'$NUPKG_DIR\' directory...
   rm -rf $NUPKG_DIR
   dotnet pack Generated.sln --configuration $BUILD_CONFIGURATION --no-restore --no-build --output $NUPKG_DIR
+fi
+
+if [[ $GENERATE_CHANGES_ONLY == "TRUE" ]]
+then
+  # If we only generated libraries for changed discoveries only, we know
+  # we did so on TEMP_CODE_GENERATION_DIR, so we know have to move those changes
+  # to PERM_CODE_GENERATION_DIR
+  for generatedFolder in $(dir $TEMP_CODE_GENERATION_DIR)
+  do
+    # Remove the old generated code first
+    rm -rf $PERM_CODE_GENERATION_DIR/$generatedFolder
+    # Now we copy the new generated code
+    cp -R $TEMP_CODE_GENERATION_DIR/$generatedFolder $PERM_CODE_GENERATION_DIR
+  done
+  # Now we delete $TEMP_CODE_GENERATION_DIR
+  rm -rf $TEMP_CODE_GENERATION_DIR
+  # And now we regenerate the solution
+  rm -f Generated.sln
+  dotnet new sln --name Generated
+  echo $PERM_CODE_GENERATION_DIR/*/*.csproj | xargs dotnet sln Generated.sln add
 fi
