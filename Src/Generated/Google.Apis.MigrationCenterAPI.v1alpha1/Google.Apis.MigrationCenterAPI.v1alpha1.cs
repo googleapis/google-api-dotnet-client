@@ -4731,7 +4731,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Guest installed application information.</summary>
     public class GuestInstalledApplication : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Installed application name .</summary>
+        /// <summary>Installed application name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5976,6 +5976,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>A resource that contains a URI to which a data file can be uploaded.</summary>
     public class UploadFileInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The headers that were used to sign the URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
+
+        /// <summary>Output only. Upload URI for the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUri")]
+        public virtual string SignedUri { get; set; }
+
         /// <summary>Output only. Upload URI for the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }

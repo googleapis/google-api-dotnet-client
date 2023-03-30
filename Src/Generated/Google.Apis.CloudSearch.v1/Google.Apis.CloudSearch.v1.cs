@@ -5070,7 +5070,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new fields with potential PII, so they
-    /// get scrubbed when logging protos for errors. NEXT TAG: 31
+    /// get scrubbed when logging protos for errors. NEXT TAG: 32
     /// </summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5089,6 +5089,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chipRenderType")]
         public virtual string ChipRenderType { get; set; }
+
+        /// <summary>
+        /// Contains additional metadata that further enhances the annotation when it is returned as part of search
+        /// response. For example, this can be used to define how the annotation matches the search. Information can be
+        /// used to highlight in rendering search results. The following are the different annotation text fields that
+        /// can be highlighted by this field: 1. DriveMetadata.title 2. UploadMetadata.content_name 3.
+        /// GsuiteIntegrationMetadata.TasksMessageIntegrationRenderData.title 4.
+        /// GsuiteIntegrationMetadata.CalendarEventAnnotationData.title
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentSearchInfo")]
+        public virtual AppsDynamiteSharedMessageComponentSearchInfo ComponentSearchInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("consentedAppUnfurlMetadata")]
         public virtual ConsentedAppUnfurlMetadata ConsentedAppUnfurlMetadata { get; set; }
@@ -6027,6 +6038,27 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
+    /// Metadata used to describe search information in a specific component of a chat message, for example an
+    /// annotation or an attachment.
+    /// </summary>
+    public class AppsDynamiteSharedMessageComponentSearchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the whole component matched the search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedSearch")]
+        public virtual System.Nullable<bool> MatchedSearch { get; set; }
+
+        /// <summary>
+        /// Backend should always set TextWithDescription.text_body based on the title (or its snippet) of the
+        /// annotation or attachment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("titleTextWithDescription")]
+        public virtual AppsDynamiteSharedTextWithDescription TitleTextWithDescription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Information that references a Dynamite chat message. This is only used for Activity Feed messages.
     /// </summary>
     public class AppsDynamiteSharedMessageInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -6367,6 +6399,47 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class AppsDynamiteSharedTasksMessageIntegrationPayload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a segment in a text.</summary>
+    public class AppsDynamiteSharedTextSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Length of the segment in the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Start index (0-indexed and inclusive) of the segment in the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines text segments with description type associated.</summary>
+    public class AppsDynamiteSharedTextSegmentsWithDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptionType")]
+        public virtual string DescriptionType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("textSegment")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegment> TextSegment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a text with descriptive text segments associated.</summary>
+    public class AppsDynamiteSharedTextWithDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("textBody")]
+        public virtual string TextBody { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("textSegmentsWithDescription")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegmentsWithDescription> TextSegmentsWithDescription { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9638,6 +9711,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DlpAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>The custom error message defined by the customer administrator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsafeHtmlMessageBody")]
+        public virtual string UnsafeHtmlMessageBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A summary of a DLP scan event. This is a summary and should contain the minimum amount of data required to
     /// identify and process DLP scans. It is written to Starcast and encoded &amp;amp; returned to the client on
@@ -9645,6 +9731,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class DlpScanSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("dlpAction")]
+        public virtual DlpAction DlpAction { get; set; }
+
         /// <summary>
         /// The scan ID of the corresponding {@link DlpViolationScanRecord} in the {@link EphemeralDlpScans} Spanner
         /// table. This can be used to fetch additional details about the scan, e.g. for audit logging.
@@ -10001,6 +10090,9 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("lastReadTimestampSecs")]
         public virtual System.Nullable<long> LastReadTimestampSecs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memberCountScore")]
+        public virtual System.Nullable<double> MemberCountScore { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("memberMetadataCount")]
         public virtual System.Nullable<double> MemberMetadataCount { get; set; }
@@ -11521,7 +11613,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Annotation metadata for an GsuiteIntegration artifact.</summary>
+    /// <summary>Annotation metadata for a GsuiteIntegration artifact.</summary>
     public class GsuiteIntegrationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("activityFeedData")]
@@ -11789,7 +11881,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>
         /// The User account in which the DirEntry was originally created. If name_space==GAIA, then it's the gaia_id of
-        /// the user this id is referring to.
+        /// the user this id is referring to. This field should really be called the "bucket ID", not the creator ID. In
+        /// some circumstances, such as copying a Google Docs file, a user can create an item in a different user's
+        /// bucket, so it should not be relied upon for anything other than bucket location. To look up the requesting
+        /// user who initially created item, use the `creator_id` DirEntry field instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
         public virtual System.Nullable<ulong> CreatorUserId { get; set; }

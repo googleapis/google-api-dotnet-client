@@ -829,9 +829,9 @@ namespace Google.Apis.Speech.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this phrase set will be created. Format:
-                /// `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations:
-                /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
-                /// endpoint, use the `global` location. To specify a region, use a [regional
+                /// `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us`
+                /// (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use
+                /// the `global` location. To specify a region, use a [regional
                 /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
                 /// location value.
                 /// </param>
@@ -857,11 +857,11 @@ namespace Google.Apis.Speech.v1
 
                     /// <summary>
                     /// Required. The parent resource where this phrase set will be created. Format:
-                    /// `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations:
-                    /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
-                    /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
-                    /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us`
-                    /// or `eu` location value.
+                    /// `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`,
+                    /// `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
+                    /// endpoint, use the `global` location. To specify a region, use a [regional
+                    /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                    /// location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }

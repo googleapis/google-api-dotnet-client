@@ -1936,6 +1936,42 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
 
+        /// <summary>
+        /// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forcedNamespaceAliases")]
+        public virtual System.Collections.Generic.IList<string> ForcedNamespaceAliases { get; set; }
+
+        /// <summary>
+        /// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be
+        /// generated. Snippets *calling* these methods are still generated, however.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handwrittenSignatures")]
+        public virtual System.Collections.Generic.IList<string> HandwrittenSignatures { get; set; }
+
+        /// <summary>
+        /// List of full resource types to ignore during generation. This is typically used for API-specific Location
+        /// resources, which should be handled by the generator as if they were actually the common Location resources.
+        /// Example entry: "documentai.googleapis.com/Location"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredResources")]
+        public virtual System.Collections.Generic.IList<string> IgnoredResources { get; set; }
+
+        /// <summary>
+        /// Map from full resource types to the effective short name for the resource. This is used when otherwise
+        /// resource named from different services would cause naming collisions. Example entry:
+        /// "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renamedResources")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RenamedResources { get; set; }
+
+        /// <summary>
+        /// Map from original service names to renamed versions. This is used when the default generated types would
+        /// cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RenamedServices { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

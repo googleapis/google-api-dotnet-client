@@ -2728,6 +2728,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
+        /// <summary>Output only. A globally unique identifier (in UUID4 format) for this endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
         /// <summary>Output only. The timestamp when the endpoint was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -2931,6 +2935,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. A globally unique identifier (in UUID4 format) for this namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
         /// <summary>Output only. The timestamp when the namespace was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -3090,6 +3098,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. A globally unique identifier (in UUID4 format) for this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>
         /// Output only. The timestamp when the service was last updated. Note: endpoints being created/deleted/updated

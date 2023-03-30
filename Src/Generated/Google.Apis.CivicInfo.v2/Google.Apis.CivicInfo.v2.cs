@@ -1110,13 +1110,6 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual System.Collections.Generic.IList<string> PrimaryParties { get; set; }
 
         /// <summary>
-        /// [DEPRECATED] If this is a partisan election, the name of the party it is for. This field as deprecated in
-        /// favor of the array "primaryParties", as contests may contain more than one party.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryParty")]
-        public virtual string PrimaryParty { get; set; }
-
-        /// <summary>
         /// The set of ballot responses for the referendum. A ballot response represents a line on the ballot. Common
         /// examples might include "yes" or "no" for referenda. This field is only populated for contests of type
         /// 'Referendum'.

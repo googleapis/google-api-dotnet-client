@@ -8517,27 +8517,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A finding that is associated with this node in the exposure path.</summary>
-    public class AssociatedFinding : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Canonical name of the associated findings. Example: organizations/123/sources/456/findings/789
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFindingName")]
-        public virtual string CanonicalFindingName { get; set; }
-
-        /// <summary>The additional taxonomy group within findings from a given source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
-        public virtual string FindingCategory { get; set; }
-
-        /// <summary>Full resource name of the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -8959,21 +8938,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a connection between a source node and a destination node in this exposure path.</summary>
-    public class Edge : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>This is the resource name of the destination node.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; }
-
-        /// <summary>This is the resource name of the source node.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -9306,10 +9270,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
         public virtual string NextSteps { get; set; }
 
-        /// <summary>Contains information about the org policy constraints associated with the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraints")]
-        public virtual System.Collections.Generic.IList<OrgPolicyConstraint> OrgPolicyConstraints { get; set; }
-
         /// <summary>
         /// The relative resource name of the source the finding belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
@@ -9533,68 +9493,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that is exposed as a result of a finding.</summary>
-    public class GoogleCloudSecuritycenterV1ExposedResource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Human readable name of the resource that is exposed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The ways in which this resource is exposed. Examples: Read, Write</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
-        public virtual System.Collections.Generic.IList<string> Methods { get; set; }
-
-        /// <summary>
-        /// Exposed Resource Name e.g.: `organizations/123/attackExposureResults/456/exposedResources/789`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The name of the resource that is exposed. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; }
-
-        /// <summary>
-        /// The resource type of the exposed resource. See:
-        /// https://cloud.google.com/asset-inventory/docs/supported-asset-types
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
-
-        /// <summary>How valuable this resource is.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
-        public virtual string ResourceValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A path that an attacker could take to reach an exposed resource.</summary>
-    public class GoogleCloudSecuritycenterV1ExposurePath : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of the edges between nodes in this exposure path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("edges")]
-        public virtual System.Collections.Generic.IList<Edge> Edges { get; set; }
-
-        /// <summary>The leaf node of this exposure path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exposedResource")]
-        public virtual GoogleCloudSecuritycenterV1ExposedResource ExposedResource { get; set; }
-
-        /// <summary>Exposure Path Name e.g.: `organizations/123/attackExposureResults/456/exposurePaths/789`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>A list of nodes that exist in this exposure path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathNodes")]
-        public virtual System.Collections.Generic.IList<PathNode> PathNodes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Representation of third party SIEM/SOAR fields within SCC.</summary>
     public class GoogleCloudSecuritycenterV1ExternalSystem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9747,67 +9645,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The full resource type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A resource value config is a mapping configuration of user's tag values to resource values. Used by the attack
-    /// path simulation.
-    /// </summary>
-    public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Timestamp this resource value config was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Description of the resource value config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Name for the resource value config</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// List of resource labels to search for, evaluated with AND. E.g. "resource_labels_selector": {"key": "value",
-        /// "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
-        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
-        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
-
-        /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
-        /// other resources. E.g. "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value
-        /// only to "storage.googleapis.com/Bucket" resources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
-
-        /// <summary>Required. Resource value level this expression represents</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
-        public virtual string ResourceValue { get; set; }
-
-        /// <summary>
-        /// Project or folder to scope this config to. For example, "project/456" would apply this config only to
-        /// resources in "project/456" scope will be checked with "AND" of other resources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; }
-
-        /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
-        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
-        public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
-
-        /// <summary>Output only. Timestamp this resource value config was last updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10814,20 +10651,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Encapsulates data about a constraint associated with an organization policy.</summary>
-    public class OrgPolicyConstraint : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The resource name of the constraint. Example:
-        /// "organizations/{organization_id}/constraints/{constraint_name}"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>User specified settings that are attached to the Security Command Center organization.</summary>
     public class OrganizationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10850,34 +10673,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents one point that an attacker passes through in this exposure path.</summary>
-    public class PathNode : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The findings associated with this node in the exposure path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("associatedFindings")]
-        public virtual System.Collections.Generic.IList<AssociatedFinding> AssociatedFindings { get; set; }
-
-        /// <summary>Human readable name of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// The name of the resource at this point in the exposure path. The format of the name is:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; }
-
-        /// <summary>
-        /// The resource type of this resource. See: https://cloud.google.com/asset-inventory/docs/supported-asset-types
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

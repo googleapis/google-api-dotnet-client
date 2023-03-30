@@ -2061,7 +2061,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>
         /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true,
         /// this commitment is placed in the organization's secondary region which is designated for disaster recovery
-        /// purposes. If false, this commitment is placed in the organization's default region.
+        /// purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview
+        /// feature. Project must be allow-listed in order to set this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionAuxiliary")]
         public virtual System.Nullable<bool> MultiRegionAuxiliary { get; set; }
@@ -2235,7 +2236,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>
         /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to
         /// true, this reservation is placed in the organization's secondary region which is designated for disaster
-        /// recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is
+        /// a preview feature. Project must be allow-listed in order to set this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionAuxiliary")]
         public virtual System.Nullable<bool> MultiRegionAuxiliary { get; set; }

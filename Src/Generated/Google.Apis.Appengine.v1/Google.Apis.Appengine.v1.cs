@@ -3398,6 +3398,13 @@ namespace Google.Apis.Appengine.v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// The project and location in which the application should be created, specified in the format
+            /// projects/*/locations/*
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Appengine.v1.Data.Application Body { get; set; }
 
@@ -3417,6 +3424,14 @@ namespace Google.Apis.Appengine.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -3660,6 +3675,91 @@ namespace Google.Apis.Appengine.v1
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID
+                /// of the target Cloud Platform project. location - The region
+                /// (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application
+                /// located.For more information about App Engine applications, see Managing Projects, Applications, and
+                /// Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectsId">
+                /// Part of `parent`. The project and location in which the application should be created, specified in
+                /// the format projects/*/locations/*
+                /// </param>
+                /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                public virtual CreateRequest Create(Google.Apis.Appengine.v1.Data.Application body, string projectsId, string locationsId)
+                {
+                    return new CreateRequest(service, body, projectsId, locationsId);
+                }
+
+                /// <summary>
+                /// Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID
+                /// of the target Cloud Platform project. location - The region
+                /// (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application
+                /// located.For more information about App Engine applications, see Managing Projects, Applications, and
+                /// Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
+                /// </summary>
+                public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.Application body, string projectsId, string locationsId) : base(service)
+                    {
+                        ProjectsId = projectsId;
+                        LocationsId = locationsId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Part of `parent`. The project and location in which the application should be created, specified
+                    /// in the format projects/*/locations/*
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectsId { get; private set; }
+
+                    /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string LocationsId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Appengine.v1.Data.Application Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets information about an application.</summary>
                 /// <param name="projectsId">
                 /// Part of `name`. Name of the Application resource to get. Example: apps/myapp.
@@ -3791,8 +3891,9 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string AuthDomain { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket
-        /// is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        /// Output only. Google Cloud Storage bucket that can be used for storing files associated with this
+        /// application. This bucket is associated with the application and can be used by the gcloud deployment
+        /// commands.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeBucket")]
         public virtual string CodeBucket { get; set; }
@@ -3804,7 +3905,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string DatabaseType { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        /// Output only. Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBucket")]
         public virtual string DefaultBucket { get; set; }
@@ -3813,7 +3914,9 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCookieExpiration")]
         public virtual object DefaultCookieExpiration { get; set; }
 
-        /// <summary>Hostname used to reach this application, as resolved by App Engine.@OutputOnly</summary>
+        /// <summary>
+        /// Output only. Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHostname")]
         public virtual string DefaultHostname { get; set; }
 
@@ -3829,7 +3932,8 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual FeatureSettings FeatureSettings { get; set; }
 
         /// <summary>
-        /// The Google Container Registry domain used for storing managed build docker images for this application.
+        /// Output only. The Google Container Registry domain used for storing managed build docker images for this
+        /// application.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcrDomain")]
         public virtual string GcrDomain { get; set; }
@@ -3852,7 +3956,9 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
-        /// <summary>Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly</summary>
+        /// <summary>
+        /// Output only. Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4578,7 +4684,7 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
         public virtual string Oauth2ClientSecret { get; set; }
 
-        /// <summary>Hex-encoded SHA-256 hash of the client secret.@OutputOnly</summary>
+        /// <summary>Output only. Hex-encoded SHA-256 hash of the client secret.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
         public virtual string Oauth2ClientSecretSha256 { get; set; }
 

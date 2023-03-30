@@ -105,38 +105,6 @@
  },
  "protocol": "rest",
  "resources": {
-  "attachments": {
-   "methods": {
-    "create": {
-     "description": "Create a file attachment on a case or Cloud resource. The attachment object must have the following fields set: filename.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/attachments",
-     "httpMethod": "POST",
-     "id": "cloudsupport.attachments.create",
-     "parameterOrder": [
-      "parent"
-     ],
-     "parameters": {
-      "parent": {
-       "description": "Required. The resource name of the case (or case parent) to which the attachment should be attached.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+$",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+parent}/attachments",
-     "request": {
-      "$ref": "CreateAttachmentRequest"
-     },
-     "response": {
-      "$ref": "Attachment"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    }
-   }
-  },
   "caseClassifications": {
    "methods": {
     "search": {
@@ -175,190 +143,6 @@
   },
   "cases": {
    "methods": {
-    "close": {
-     "description": "Close the specified case.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:close",
-     "httpMethod": "POST",
-     "id": "cloudsupport.cases.close",
-     "parameterOrder": [
-      "name"
-     ],
-     "parameters": {
-      "name": {
-       "description": "Required. The fully qualified name of the case resource to be closed.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+name}:close",
-     "request": {
-      "$ref": "CloseCaseRequest"
-     },
-     "response": {
-      "$ref": "Case"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    },
-    "create": {
-     "description": "Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases",
-     "httpMethod": "POST",
-     "id": "cloudsupport.cases.create",
-     "parameterOrder": [
-      "parent"
-     ],
-     "parameters": {
-      "parent": {
-       "description": "Required. The name of the Cloud resource under which the case should be created.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+$",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+parent}/cases",
-     "request": {
-      "$ref": "Case"
-     },
-     "response": {
-      "$ref": "Case"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    },
-    "escalate": {
-     "description": "Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which tiers are able to perform escalations.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:escalate",
-     "httpMethod": "POST",
-     "id": "cloudsupport.cases.escalate",
-     "parameterOrder": [
-      "name"
-     ],
-     "parameters": {
-      "name": {
-       "description": "Required. The fully qualified name of the Case resource to be escalated.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+name}:escalate",
-     "request": {
-      "$ref": "EscalateCaseRequest"
-     },
-     "response": {
-      "$ref": "Case"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    },
-    "get": {
-     "description": "Retrieve the specified case.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}",
-     "httpMethod": "GET",
-     "id": "cloudsupport.cases.get",
-     "parameterOrder": [
-      "name"
-     ],
-     "parameters": {
-      "name": {
-       "description": "Required. The fully qualified name of a case to be retrieved.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+name}",
-     "response": {
-      "$ref": "Case"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    },
-    "list": {
-     "description": "Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the cases directly parented by that organization. To retrieve all cases under an organization, including cases parented by projects under that organization, use `cases.search`.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases",
-     "httpMethod": "GET",
-     "id": "cloudsupport.cases.list",
-     "parameterOrder": [
-      "parent"
-     ],
-     "parameters": {
-      "filter": {
-       "description": "An expression written in filter language. If non-empty, the query returns the cases that match the filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email=\"tester@example.com\"` - `state=OPEN AND (priority=P0 OR priority=P1)`",
-       "location": "query",
-       "type": "string"
-      },
-      "pageSize": {
-       "description": "The maximum number of cases fetched with each request. Defaults to 10.",
-       "format": "int32",
-       "location": "query",
-       "type": "integer"
-      },
-      "pageToken": {
-       "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
-       "location": "query",
-       "type": "string"
-      },
-      "parent": {
-       "description": "Required. The fully qualified name of parent resource to list cases under.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+$",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+parent}/cases",
-     "response": {
-      "$ref": "ListCasesResponse"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    },
-    "patch": {
-     "description": "Update the specified case. Only a subset of fields can be updated.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}",
-     "httpMethod": "PATCH",
-     "id": "cloudsupport.cases.patch",
-     "parameterOrder": [
-      "name"
-     ],
-     "parameters": {
-      "name": {
-       "description": "The resource name for the case.",
-       "location": "path",
-       "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-       "required": true,
-       "type": "string"
-      },
-      "updateMask": {
-       "description": "A list of attributes of the case object that should be updated as part of this request. Supported values are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some fields. For example, if you leave field mask empty and do not provide a value for subscriber_email_addresses, then subscriber_email_addresses is updated to empty.",
-       "format": "google-fieldmask",
-       "location": "query",
-       "type": "string"
-      }
-     },
-     "path": "v2beta/{+name}",
-     "request": {
-      "$ref": "Case"
-     },
-     "response": {
-      "$ref": "Case"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-     ]
-    },
     "search": {
      "description": "Search cases using the specified query.",
      "flatPath": "v2beta/cases:search",
@@ -391,123 +175,13 @@
       "https://www.googleapis.com/auth/cloud-platform"
      ]
     }
-   },
-   "resources": {
-    "attachments": {
-     "methods": {
-      "list": {
-       "description": "Retrieve all attachments associated with a support case.",
-       "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments",
-       "httpMethod": "GET",
-       "id": "cloudsupport.cases.attachments.list",
-       "parameterOrder": [
-        "parent"
-       ],
-       "parameters": {
-        "pageSize": {
-         "description": "The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100.",
-         "format": "int32",
-         "location": "query",
-         "type": "integer"
-        },
-        "pageToken": {
-         "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
-         "location": "query",
-         "type": "string"
-        },
-        "parent": {
-         "description": "Required. The resource name of Case object for which attachments should be listed.",
-         "location": "path",
-         "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-         "required": true,
-         "type": "string"
-        }
-       },
-       "path": "v2beta/{+parent}/attachments",
-       "response": {
-        "$ref": "ListAttachmentsResponse"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform"
-       ]
-      }
-     }
-    },
-    "comments": {
-     "methods": {
-      "create": {
-       "description": "Add a new comment to the specified Case. The comment object must have the following fields set: body.",
-       "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments",
-       "httpMethod": "POST",
-       "id": "cloudsupport.cases.comments.create",
-       "parameterOrder": [
-        "parent"
-       ],
-       "parameters": {
-        "parent": {
-         "description": "Required. The resource name of Case to which this comment should be added.",
-         "location": "path",
-         "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-         "required": true,
-         "type": "string"
-        }
-       },
-       "path": "v2beta/{+parent}/comments",
-       "request": {
-        "$ref": "Comment"
-       },
-       "response": {
-        "$ref": "Comment"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform"
-       ]
-      },
-      "list": {
-       "description": "Retrieve all Comments associated with the Case object.",
-       "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments",
-       "httpMethod": "GET",
-       "id": "cloudsupport.cases.comments.list",
-       "parameterOrder": [
-        "parent"
-       ],
-       "parameters": {
-        "pageSize": {
-         "description": "The maximum number of comments fetched with each request. Defaults to 10.",
-         "format": "int32",
-         "location": "query",
-         "type": "integer"
-        },
-        "pageToken": {
-         "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
-         "location": "query",
-         "type": "string"
-        },
-        "parent": {
-         "description": "Required. The resource name of Case object for which comments should be listed.",
-         "location": "path",
-         "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
-         "required": true,
-         "type": "string"
-        }
-       },
-       "path": "v2beta/{+parent}/comments",
-       "response": {
-        "$ref": "ListCommentsResponse"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform"
-       ]
-      }
-     }
-    }
    }
   },
   "media": {
    "methods": {
     "download": {
      "description": "Download a file attachment on a case. Note: HTTP requests must append \"?alt=media\" to the URL.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments/{attachmentsId}:download",
+     "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}/attachments/{attachmentsId}:download",
      "httpMethod": "GET",
      "id": "cloudsupport.media.download",
      "parameterOrder": [
@@ -517,7 +191,7 @@
       "name": {
        "description": "The resource name of the attachment to be downloaded.",
        "location": "path",
-       "pattern": "^[^/]+/[^/]+/cases/[^/]+/attachments/[^/]+$",
+       "pattern": "^organizations/[^/]+/cases/[^/]+/attachments/[^/]+$",
        "required": true,
        "type": "string"
       }
@@ -534,7 +208,7 @@
     },
     "upload": {
      "description": "Create a file attachment on a case or Cloud resource. The attachment object must have the following fields set: filename.",
-     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments",
+     "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}/attachments",
      "httpMethod": "POST",
      "id": "cloudsupport.media.upload",
      "mediaUpload": {
@@ -555,7 +229,7 @@
       "parent": {
        "description": "Required. The resource name of the case (or case parent) to which the attachment should be attached.",
        "location": "path",
-       "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
+       "pattern": "^organizations/[^/]+/cases/[^/]+$",
        "required": true,
        "type": "string"
       }
@@ -573,9 +247,617 @@
      "supportsMediaUpload": true
     }
    }
+  },
+  "organizations": {
+   "methods": {
+    "updateCases": {
+     "description": "Update the specified case. Only a subset of fields can be updated.",
+     "flatPath": "v2beta/organizations/{organizationsId}/cases",
+     "httpMethod": "PATCH",
+     "id": "cloudsupport.organizations.updateCases",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "The resource name for the case.",
+       "location": "path",
+       "pattern": "^organizations/[^/]+/cases$",
+       "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "A list of attributes of the case object that should be updated as part of this request. Supported values are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some fields. For example, if you leave field mask empty and do not provide a value for subscriber_email_addresses, then subscriber_email_addresses is updated to empty.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "v2beta/{+name}",
+     "request": {
+      "$ref": "Case"
+     },
+     "response": {
+      "$ref": "Case"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    }
+   },
+   "resources": {
+    "cases": {
+     "methods": {
+      "close": {
+       "description": "Close the specified case.",
+       "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}:close",
+       "httpMethod": "POST",
+       "id": "cloudsupport.organizations.cases.close",
+       "parameterOrder": [
+        "name"
+       ],
+       "parameters": {
+        "name": {
+         "description": "Required. The fully qualified name of the case resource to be closed.",
+         "location": "path",
+         "pattern": "^organizations/[^/]+/cases/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+name}:close",
+       "request": {
+        "$ref": "CloseCaseRequest"
+       },
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "create": {
+       "description": "Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.",
+       "flatPath": "v2beta/organizations/{organizationsId}/cases",
+       "httpMethod": "POST",
+       "id": "cloudsupport.organizations.cases.create",
+       "parameterOrder": [
+        "parent"
+       ],
+       "parameters": {
+        "parent": {
+         "description": "Required. The name of the Cloud resource under which the case should be created.",
+         "location": "path",
+         "pattern": "^organizations/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+parent}/cases",
+       "request": {
+        "$ref": "Case"
+       },
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "escalate": {
+       "description": "Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which tiers are able to perform escalations.",
+       "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}:escalate",
+       "httpMethod": "POST",
+       "id": "cloudsupport.organizations.cases.escalate",
+       "parameterOrder": [
+        "name"
+       ],
+       "parameters": {
+        "name": {
+         "description": "Required. The fully qualified name of the Case resource to be escalated.",
+         "location": "path",
+         "pattern": "^organizations/[^/]+/cases/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+name}:escalate",
+       "request": {
+        "$ref": "EscalateCaseRequest"
+       },
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "get": {
+       "description": "Retrieve the specified case.",
+       "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}",
+       "httpMethod": "GET",
+       "id": "cloudsupport.organizations.cases.get",
+       "parameterOrder": [
+        "name"
+       ],
+       "parameters": {
+        "name": {
+         "description": "Required. The fully qualified name of a case to be retrieved.",
+         "location": "path",
+         "pattern": "^organizations/[^/]+/cases/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+name}",
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "list": {
+       "description": "Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the cases directly parented by that organization. To retrieve all cases under an organization, including cases parented by projects under that organization, use `cases.search`.",
+       "flatPath": "v2beta/organizations/{organizationsId}/cases",
+       "httpMethod": "GET",
+       "id": "cloudsupport.organizations.cases.list",
+       "parameterOrder": [
+        "parent"
+       ],
+       "parameters": {
+        "filter": {
+         "description": "An expression written in filter language. If non-empty, the query returns the cases that match the filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email=\"tester@example.com\"` - `state=OPEN AND (priority=P0 OR priority=P1)`",
+         "location": "query",
+         "type": "string"
+        },
+        "pageSize": {
+         "description": "The maximum number of cases fetched with each request. Defaults to 10.",
+         "format": "int32",
+         "location": "query",
+         "type": "integer"
+        },
+        "pageToken": {
+         "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
+         "location": "query",
+         "type": "string"
+        },
+        "parent": {
+         "description": "Required. The fully qualified name of parent resource to list cases under.",
+         "location": "path",
+         "pattern": "^organizations/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+parent}/cases",
+       "response": {
+        "$ref": "ListCasesResponse"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      }
+     },
+     "resources": {
+      "attachments": {
+       "methods": {
+        "list": {
+         "description": "Retrieve all attachments associated with a support case.",
+         "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}/attachments",
+         "httpMethod": "GET",
+         "id": "cloudsupport.organizations.cases.attachments.list",
+         "parameterOrder": [
+          "parent"
+         ],
+         "parameters": {
+          "pageSize": {
+           "description": "The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100.",
+           "format": "int32",
+           "location": "query",
+           "type": "integer"
+          },
+          "pageToken": {
+           "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
+           "location": "query",
+           "type": "string"
+          },
+          "parent": {
+           "description": "Required. The resource name of Case object for which attachments should be listed.",
+           "location": "path",
+           "pattern": "^organizations/[^/]+/cases/[^/]+$",
+           "required": true,
+           "type": "string"
+          }
+         },
+         "path": "v2beta/{+parent}/attachments",
+         "response": {
+          "$ref": "ListAttachmentsResponse"
+         },
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
+      },
+      "comments": {
+       "methods": {
+        "create": {
+         "description": "Add a new comment to the specified Case. The comment object must have the following fields set: body.",
+         "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}/comments",
+         "httpMethod": "POST",
+         "id": "cloudsupport.organizations.cases.comments.create",
+         "parameterOrder": [
+          "parent"
+         ],
+         "parameters": {
+          "parent": {
+           "description": "Required. The resource name of Case to which this comment should be added.",
+           "location": "path",
+           "pattern": "^organizations/[^/]+/cases/[^/]+$",
+           "required": true,
+           "type": "string"
+          }
+         },
+         "path": "v2beta/{+parent}/comments",
+         "request": {
+          "$ref": "Comment"
+         },
+         "response": {
+          "$ref": "Comment"
+         },
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        },
+        "list": {
+         "description": "Retrieve all Comments associated with the Case object.",
+         "flatPath": "v2beta/organizations/{organizationsId}/cases/{casesId}/comments",
+         "httpMethod": "GET",
+         "id": "cloudsupport.organizations.cases.comments.list",
+         "parameterOrder": [
+          "parent"
+         ],
+         "parameters": {
+          "pageSize": {
+           "description": "The maximum number of comments fetched with each request. Defaults to 10.",
+           "format": "int32",
+           "location": "query",
+           "type": "integer"
+          },
+          "pageToken": {
+           "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
+           "location": "query",
+           "type": "string"
+          },
+          "parent": {
+           "description": "Required. The resource name of Case object for which comments should be listed.",
+           "location": "path",
+           "pattern": "^organizations/[^/]+/cases/[^/]+$",
+           "required": true,
+           "type": "string"
+          }
+         },
+         "path": "v2beta/{+parent}/comments",
+         "response": {
+          "$ref": "ListCommentsResponse"
+         },
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "projects": {
+   "methods": {
+    "updateCases": {
+     "description": "Update the specified case. Only a subset of fields can be updated.",
+     "flatPath": "v2beta/projects/{projectsId}/cases",
+     "httpMethod": "PATCH",
+     "id": "cloudsupport.projects.updateCases",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "The resource name for the case.",
+       "location": "path",
+       "pattern": "^projects/[^/]+/cases$",
+       "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "A list of attributes of the case object that should be updated as part of this request. Supported values are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some fields. For example, if you leave field mask empty and do not provide a value for subscriber_email_addresses, then subscriber_email_addresses is updated to empty.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "v2beta/{+name}",
+     "request": {
+      "$ref": "Case"
+     },
+     "response": {
+      "$ref": "Case"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    }
+   },
+   "resources": {
+    "cases": {
+     "methods": {
+      "close": {
+       "description": "Close the specified case.",
+       "flatPath": "v2beta/projects/{projectsId}/cases/{casesId}:close",
+       "httpMethod": "POST",
+       "id": "cloudsupport.projects.cases.close",
+       "parameterOrder": [
+        "name"
+       ],
+       "parameters": {
+        "name": {
+         "description": "Required. The fully qualified name of the case resource to be closed.",
+         "location": "path",
+         "pattern": "^projects/[^/]+/cases/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+name}:close",
+       "request": {
+        "$ref": "CloseCaseRequest"
+       },
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "create": {
+       "description": "Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.",
+       "flatPath": "v2beta/projects/{projectsId}/cases",
+       "httpMethod": "POST",
+       "id": "cloudsupport.projects.cases.create",
+       "parameterOrder": [
+        "parent"
+       ],
+       "parameters": {
+        "parent": {
+         "description": "Required. The name of the Cloud resource under which the case should be created.",
+         "location": "path",
+         "pattern": "^projects/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+parent}/cases",
+       "request": {
+        "$ref": "Case"
+       },
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "escalate": {
+       "description": "Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which tiers are able to perform escalations.",
+       "flatPath": "v2beta/projects/{projectsId}/cases/{casesId}:escalate",
+       "httpMethod": "POST",
+       "id": "cloudsupport.projects.cases.escalate",
+       "parameterOrder": [
+        "name"
+       ],
+       "parameters": {
+        "name": {
+         "description": "Required. The fully qualified name of the Case resource to be escalated.",
+         "location": "path",
+         "pattern": "^projects/[^/]+/cases/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+name}:escalate",
+       "request": {
+        "$ref": "EscalateCaseRequest"
+       },
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "get": {
+       "description": "Retrieve the specified case.",
+       "flatPath": "v2beta/projects/{projectsId}/cases/{casesId}",
+       "httpMethod": "GET",
+       "id": "cloudsupport.projects.cases.get",
+       "parameterOrder": [
+        "name"
+       ],
+       "parameters": {
+        "name": {
+         "description": "Required. The fully qualified name of a case to be retrieved.",
+         "location": "path",
+         "pattern": "^projects/[^/]+/cases/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+name}",
+       "response": {
+        "$ref": "Case"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "list": {
+       "description": "Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the cases directly parented by that organization. To retrieve all cases under an organization, including cases parented by projects under that organization, use `cases.search`.",
+       "flatPath": "v2beta/projects/{projectsId}/cases",
+       "httpMethod": "GET",
+       "id": "cloudsupport.projects.cases.list",
+       "parameterOrder": [
+        "parent"
+       ],
+       "parameters": {
+        "filter": {
+         "description": "An expression written in filter language. If non-empty, the query returns the cases that match the filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email=\"tester@example.com\"` - `state=OPEN AND (priority=P0 OR priority=P1)`",
+         "location": "query",
+         "type": "string"
+        },
+        "pageSize": {
+         "description": "The maximum number of cases fetched with each request. Defaults to 10.",
+         "format": "int32",
+         "location": "query",
+         "type": "integer"
+        },
+        "pageToken": {
+         "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
+         "location": "query",
+         "type": "string"
+        },
+        "parent": {
+         "description": "Required. The fully qualified name of parent resource to list cases under.",
+         "location": "path",
+         "pattern": "^projects/[^/]+$",
+         "required": true,
+         "type": "string"
+        }
+       },
+       "path": "v2beta/{+parent}/cases",
+       "response": {
+        "$ref": "ListCasesResponse"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      }
+     },
+     "resources": {
+      "attachments": {
+       "methods": {
+        "list": {
+         "description": "Retrieve all attachments associated with a support case.",
+         "flatPath": "v2beta/projects/{projectsId}/cases/{casesId}/attachments",
+         "httpMethod": "GET",
+         "id": "cloudsupport.projects.cases.attachments.list",
+         "parameterOrder": [
+          "parent"
+         ],
+         "parameters": {
+          "pageSize": {
+           "description": "The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100.",
+           "format": "int32",
+           "location": "query",
+           "type": "integer"
+          },
+          "pageToken": {
+           "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
+           "location": "query",
+           "type": "string"
+          },
+          "parent": {
+           "description": "Required. The resource name of Case object for which attachments should be listed.",
+           "location": "path",
+           "pattern": "^projects/[^/]+/cases/[^/]+$",
+           "required": true,
+           "type": "string"
+          }
+         },
+         "path": "v2beta/{+parent}/attachments",
+         "response": {
+          "$ref": "ListAttachmentsResponse"
+         },
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
+      },
+      "comments": {
+       "methods": {
+        "create": {
+         "description": "Add a new comment to the specified Case. The comment object must have the following fields set: body.",
+         "flatPath": "v2beta/projects/{projectsId}/cases/{casesId}/comments",
+         "httpMethod": "POST",
+         "id": "cloudsupport.projects.cases.comments.create",
+         "parameterOrder": [
+          "parent"
+         ],
+         "parameters": {
+          "parent": {
+           "description": "Required. The resource name of Case to which this comment should be added.",
+           "location": "path",
+           "pattern": "^projects/[^/]+/cases/[^/]+$",
+           "required": true,
+           "type": "string"
+          }
+         },
+         "path": "v2beta/{+parent}/comments",
+         "request": {
+          "$ref": "Comment"
+         },
+         "response": {
+          "$ref": "Comment"
+         },
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        },
+        "list": {
+         "description": "Retrieve all Comments associated with the Case object.",
+         "flatPath": "v2beta/projects/{projectsId}/cases/{casesId}/comments",
+         "httpMethod": "GET",
+         "id": "cloudsupport.projects.cases.comments.list",
+         "parameterOrder": [
+          "parent"
+         ],
+         "parameters": {
+          "pageSize": {
+           "description": "The maximum number of comments fetched with each request. Defaults to 10.",
+           "format": "int32",
+           "location": "query",
+           "type": "integer"
+          },
+          "pageToken": {
+           "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
+           "location": "query",
+           "type": "string"
+          },
+          "parent": {
+           "description": "Required. The resource name of Case object for which comments should be listed.",
+           "location": "path",
+           "pattern": "^projects/[^/]+/cases/[^/]+$",
+           "required": true,
+           "type": "string"
+          }
+         },
+         "path": "v2beta/{+parent}/comments",
+         "response": {
+          "$ref": "ListCommentsResponse"
+         },
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
   }
  },
- "revision": "20230110",
+ "revision": "20230329",
  "rootUrl": "https://cloudsupport.googleapis.com/",
  "schemas": {
   "Actor": {
@@ -815,7 +1097,7 @@
    "id": "Comment",
    "properties": {
     "body": {
-     "description": "The full comment body. Maximum of 120000 characters. This can contain rich text syntax.",
+     "description": "The full comment body. Maximum of 12800 characters. This can contain rich text syntax.",
      "type": "string"
     },
     "createTime": {

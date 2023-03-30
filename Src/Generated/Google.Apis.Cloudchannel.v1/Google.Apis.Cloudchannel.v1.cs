@@ -8112,6 +8112,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resizeUnitCount")]
         public virtual System.Nullable<bool> ResizeUnitCount { get; set; }
 
+        /// <summary>
+        /// Output only. The offer resource name that the entitlement will renew on at the end date. Takes the form:
+        /// accounts/{account_id}/offers/{offer_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledRenewalOffer")]
+        public virtual string ScheduledRenewalOffer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

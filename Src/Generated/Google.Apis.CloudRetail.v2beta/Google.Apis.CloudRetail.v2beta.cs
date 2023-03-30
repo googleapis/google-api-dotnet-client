@@ -4071,6 +4071,10 @@ namespace Google.Apis.CloudRetail.v2beta
                     [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Catalog { get; private set; }
 
+                    /// <summary>The banner context for completion suggestions.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("banner", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Banner { get; set; }
+
                     /// <summary>
                     /// Determines which dataset to use for fetching completion. "user-data" will use the imported
                     /// dataset through CompletionService.ImportCompletionData. "cloud-retail" will use the dataset
@@ -4148,6 +4152,14 @@ namespace Google.Apis.CloudRetail.v2beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                        RequestParameters.Add("banner", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "banner",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("dataset", new Google.Apis.Discovery.Parameter
                         {
@@ -5738,6 +5750,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Common metadata related to the progress of the operations.</summary>
+    public class GoogleCloudRetailV2alphaCreateMerchantCenterAccountLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2alphaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5946,6 +5973,95 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>Aggregated statistics of user event import status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importSummary")]
         public virtual GoogleCloudRetailV2alphaUserEventImportSummary ImportSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
+    /// linked merchant center account will be streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+    /// </summary>
+    public class GoogleCloudRetailV2alphaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The branch id (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
+        /// streamed to. When updating this field, an empty value will use the currently configured default branch.
+        /// However, changing the default branch later on won't change the linked branch here. A single branch id can
+        /// only have one linked merchant center account id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
+        public virtual string BranchId { get; set; }
+
+        /// <summary>
+        /// Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list
+        /// is empty. Otherwise the offers will be ingested from selected feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedFilters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter> FeedFilters { get; set; }
+
+        /// <summary>
+        /// The FeedLabel used to perform filtering. Note: this replaces
+        /// [region_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.feed_label).
+        /// Example value: `US`. Example value: `FeedLabel1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. MerchantCenterAccountLink identifier, which is the final component of name. This
+        /// field is auto generated and follows the convention: `BranchId_MerchantCenterAccountId`.
+        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/id_1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Language of the title/description and other string attributes. Use language tags defined by [BCP
+        /// 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO 639-1. This specifies the language of offers in
+        /// Merchant Center that will be accepted. If empty, no language filtering will be performed. Example value:
+        /// `en`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The linked [Merchant center account
+        /// id](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
+        /// account or a sub-account of a MCA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterAccountId")]
+        public virtual System.Nullable<long> MerchantCenterAccountId { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Full resource name of the Merchant Center Account Link, such as
+        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/merchant_center_account_link`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. GCP project ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Output only. Represents the state of the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Merchant Center Feed filter criterion.</summary>
+    public class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Merchant Center primary feed ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
+        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
+
+        /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
+        public virtual string PrimaryFeedName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7129,6 +7245,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Common metadata related to the progress of the operations.</summary>
+    public class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2betaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7761,6 +7892,95 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
+    /// linked merchant center account will be streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+    /// </summary>
+    public class GoogleCloudRetailV2betaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The branch id (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
+        /// streamed to. When updating this field, an empty value will use the currently configured default branch.
+        /// However, changing the default branch later on won't change the linked branch here. A single branch id can
+        /// only have one linked merchant center account id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
+        public virtual string BranchId { get; set; }
+
+        /// <summary>
+        /// Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list
+        /// is empty. Otherwise the offers will be ingested from selected feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedFilters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter> FeedFilters { get; set; }
+
+        /// <summary>
+        /// The FeedLabel used to perform filtering. Note: this replaces
+        /// [region_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.feed_label).
+        /// Example value: `US`. Example value: `FeedLabel1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. MerchantCenterAccountLink identifier, which is the final component of name. This
+        /// field is auto generated and follows the convention: `BranchId_MerchantCenterAccountId`.
+        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/id_1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Language of the title/description and other string attributes. Use language tags defined by [BCP
+        /// 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO 639-1. This specifies the language of offers in
+        /// Merchant Center that will be accepted. If empty, no language filtering will be performed. Example value:
+        /// `en`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The linked [Merchant center account
+        /// id](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
+        /// account or a sub-account of a MCA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterAccountId")]
+        public virtual System.Nullable<long> MerchantCenterAccountId { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Full resource name of the Merchant Center Account Link, such as
+        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/merchant_center_account_link`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. GCP project ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Output only. Represents the state of the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Merchant Center Feed filter criterion.</summary>
+    public class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Merchant Center primary feed ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
+        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
+
+        /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
+        public virtual string PrimaryFeedName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Merchant Center Feed filter criterion.</summary>
     public class GoogleCloudRetailV2betaMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8020,8 +8240,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// will never return items with storageStatus of "EXPIRED" or "DELETED" regardless of filter choices. If
         /// `filterSyntaxV2` is set to true under the `params` field, then attribute-based expressions are expected
         /// instead of the above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND NOT
-        /// (categories: ANY("Phones")) * (brands: ANY("Pixel")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
-        /// For more information, see [Filter recommendations](https://cloud.google.com/retail/docs/filter-recs).
+        /// (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories:
+        /// ANY("Phones")) For more information, see [Filter
+        /// recommendations](https://cloud.google.com/retail/docs/filter-recs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -9203,6 +9424,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Represents the banner in request, for projects that combine banners. For example: a retailer can sell
+        /// products under different banners like retailer-main, retailer-baby, retailer-meds, etc. under one project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("banner")]
+        public virtual string Banner { get; set; }
+
+        /// <summary>
         /// Boost specification to boost certain products. See more details at this [user
         /// guide](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids
         /// and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search
@@ -10180,6 +10408,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string AttributionToken { get; set; }
 
         /// <summary>
+        /// Represents the banner of the user event, for projects that combine banners. For example: retailer can have
+        /// events from multiple banners like retailer-main, retailer-baby, retailer-meds, etc. under one project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("banner")]
+        public virtual string Banner { get; set; }
+
+        /// <summary>
         /// The ID or name of the associated shopping cart. This ID is used to associate multiple items added or present
         /// in the cart before purchase. This can only be set for `add-to-cart`, `purchase-complete`, or
         /// `shopping-cart-page-view` events.
@@ -10193,13 +10428,6 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionDetail")]
         public virtual GoogleCloudRetailV2betaCompletionDetail CompletionDetail { get; set; }
-
-        /// <summary>
-        /// Represents the domain of the user event, for projects that combine domains. For example: retailer can have
-        /// events from multiple domains like retailer-main, retailer-baby, retailer-meds, etc. under one project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; }
 
         /// <summary>
         /// Only required for UserEventService.ImportUserEvents method. Timestamp of when the user event happened.

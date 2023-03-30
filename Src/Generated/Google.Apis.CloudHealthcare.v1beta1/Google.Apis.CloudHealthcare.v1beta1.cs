@@ -7367,6 +7367,149 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
+                        /// Gets all incoming references to a given target FHIR resource. Can also get all incoming
+                        /// references when the target resource does not exist, for example, if the target has been
+                        /// deleted. On success, the response body contains a Bundle with type `searchset`, where each
+                        /// entry in the Bundle contains the full content of the resource. If the operation fails, an
+                        /// `OperationOutcome` is returned describing the failure. If the request cannot be mapped to a
+                        /// valid API method on a FHIR store, a generic Google Cloud error might be returned instead.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The name of the FHIR store that holds the target resource.
+                        /// </param>
+                        public virtual ResourceIncomingReferencesRequest ResourceIncomingReferences(string parent)
+                        {
+                            return new ResourceIncomingReferencesRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// Gets all incoming references to a given target FHIR resource. Can also get all incoming
+                        /// references when the target resource does not exist, for example, if the target has been
+                        /// deleted. On success, the response body contains a Bundle with type `searchset`, where each
+                        /// entry in the Bundle contains the full content of the resource. If the operation fails, an
+                        /// `OperationOutcome` is returned describing the failure. If the request cannot be mapped to a
+                        /// valid API method on a FHIR store, a generic Google Cloud error might be returned instead.
+                        /// </summary>
+                        public class ResourceIncomingReferencesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new ResourceIncomingReferences request.</summary>
+                            public ResourceIncomingReferencesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the FHIR store that holds the target resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Maximum number of resources in a page. If not specified, 100 is used. May not be larger
+                            /// than 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> Count { get; set; }
+
+                            /// <summary>
+                            /// Used to retrieve the next page of results when using pagination. Set `_page_token` to
+                            /// the value of _page_token set in next page links' url. Next page are returned in the
+                            /// response bundle's links field, where `link.relation` is "next". Omit `_page_token` if no
+                            /// previous request has been made.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_page_token", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// Used to simplify the representation of the returned resources. `_summary=text` returns
+                            /// only the `text`, `id`, and `meta` top-level fields. `_summary=data` removes the `text`
+                            /// field and returns all other fields. `_summary=false` returns all parts of the
+                            /// resource(s). Either not providing this parameter or providing an empty value to this
+                            /// parameter also returns all parts of the resource(s).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_summary", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Summary { get; set; }
+
+                            /// <summary>
+                            /// String of comma-delimited FHIR resource types. If provided, only resources of the
+                            /// specified resource type(s) are returned. If not provided or an empty value is provided,
+                            /// no filter on the returned resource type(s) is applied.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_type", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Type { get; set; }
+
+                            /// <summary>
+                            /// Required. The target whose incoming references are requested. This param is required and
+                            /// must not be empty. It uses the format "ResourceType/ResourceID", for example,
+                            /// target=ResourceType/ResourceID.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Target { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Resource-incoming-references";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/fhir/$references";
+
+                            /// <summary>Initializes ResourceIncomingReferences parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                                RequestParameters.Add("_count", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_count",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_page_token", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_page_token",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_summary", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_summary",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_type", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_type",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "target",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Deletes all the historical versions of a resource (excluding the current version) from the
                         /// FHIR store. To remove all versions of a resource, first delete the current version and then
                         /// call this method. This is not a FHIR standard operation. For samples that show how to call
@@ -8617,8 +8760,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
                         /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -8666,8 +8810,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
                         /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -8752,8 +8897,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
                         /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -8808,8 +8954,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
                         /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -10175,7 +10322,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// transmits the message when a notification is received.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the dataset this message belongs to.</param>
+                        /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.CreateMessageRequest body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
@@ -10197,7 +10344,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the dataset this message belongs to.</summary>
+                            /// <summary>The name of the HL7v2 store this message belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -11610,12 +11757,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -11625,12 +11767,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListOperationsResponse>
                     {
@@ -14110,7 +14247,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Export to a Cloud Storage destination.</summary>
+        /// <summary>Exports to a Cloud Storage destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GcsDestination GcsDestination { get; set; }
 
