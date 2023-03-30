@@ -1987,6 +1987,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Assessment for Fraud Prevention.</summary>
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Assessment of this transaction for behavioral trust.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("behavioralTrustVerdict")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict BehavioralTrustVerdict { get; set; }
+
         /// <summary>Assessment of this transaction for risk of being part of a card testing attack.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardTestingVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict CardTestingVerdict { get; set; }
@@ -2001,6 +2005,19 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionRisk")]
         public virtual System.Nullable<float> TransactionRisk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about behavioral trust of the transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Probability (0-1) of this transaction attempt being executed in a behaviorally trustworthy way.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trust")]
+        public virtual System.Nullable<float> Trust { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

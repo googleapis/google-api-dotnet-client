@@ -6691,8 +6691,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search
                         /// result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -6740,8 +6741,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search
                         /// result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -6826,8 +6828,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search
                         /// result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -6882,8 +6885,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search
                         /// result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`,
                         /// `_summary=data`, and `_elements`. The maximum number of search results returned defaults to
-                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. If
-                        /// there are additional results, the returned `Bundle` contains a link of `relation` "next",
+                        /// 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The
+                        /// server might return fewer resources than requested to prevent excessively large responses.
+                        /// If there are additional results, the returned `Bundle` contains a link of `relation` "next",
                         /// which has a `_page_token` parameter for an opaque pagination token that can be used to
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
@@ -8054,7 +8058,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// transmits the message when a notification is received.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the dataset this message belongs to.</param>
+                        /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1.Data.CreateMessageRequest body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
@@ -8076,7 +8080,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the dataset this message belongs to.</summary>
+                            /// <summary>The name of the HL7v2 store this message belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -9483,12 +9487,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
@@ -9498,12 +9497,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     /// <summary>
                     /// Lists operations that match the specified filter in the request. If the server doesn't support
-                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
-                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
-                    /// to their service configuration. For backwards compatibility, the default name includes the
-                    /// operations collection id, however overriding users must ensure the name binding is the parent
-                    /// resource, without the operations collection id.
+                    /// this method, it returns `UNIMPLEMENTED`.
                     /// </summary>
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListOperationsResponse>
                     {

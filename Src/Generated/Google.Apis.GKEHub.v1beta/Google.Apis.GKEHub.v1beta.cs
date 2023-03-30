@@ -4824,11 +4824,13 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>BundleInstallSpec is the specification configuration for a single managed bundle.</summary>
     public class PolicyControllerBundleInstallSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the set of namespaces to be exempted from the bundle</summary>
+        /// <summary>the set of namespaces to be exempted from the bundle TODO (b/271878194): Decrement this</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedNamespaces")]
         public virtual System.Collections.Generic.IList<string> ExemptedNamespaces { get; set; }
 
-        /// <summary>Management specifies how the bundle will be managed by the controller.</summary>
+        /// <summary>
+        /// Management specifies how the bundle will be managed by the controller. TODO (b/271878194): Remove this
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual string Management { get; set; }
 
@@ -4895,7 +4897,9 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referentialRulesEnabled")]
         public virtual System.Nullable<bool> ReferentialRulesEnabled { get; set; }
 
-        /// <summary>Configures the library templates to install along with Policy Controller.</summary>
+        /// <summary>
+        /// Configures the library templates to install along with Policy Controller. TODO (b/271878194): Remove this
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryConfig")]
         public virtual PolicyControllerTemplateLibraryConfig TemplateLibraryConfig { get; set; }
 
@@ -4930,10 +4934,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ComponentStates { get; set; }
 
         /// <summary>
-        /// The state of the template library and any bundles included in the chosen version of the manifest
+        /// The state of the template library and any bundles included in the chosen version of the manifest TODO
+        /// (b/271878194): Remove this
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentStates")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ContentStates { get; set; }
+
+        /// <summary>
+        /// The overall content state observed by the Hub Feature controller. TODO (b/271878194): Decrement this
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyContentState")]
+        public virtual PolicyControllerPolicyContentState PolicyContentState { get; set; }
 
         /// <summary>The overall Policy Controller lifecycle state observed by the Hub Feature controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4985,6 +4996,25 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerBundleInstallSpec> Bundles { get; set; }
+
+        /// <summary>Configures the installation of the Template Library.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibrary")]
+        public virtual PolicyControllerTemplateLibraryConfig TemplateLibrary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of the policy controller policy content</summary>
+    public class PolicyControllerPolicyContentState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the any bundles included in the chosen version of the manifest</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleStates")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> BundleStates { get; set; }
+
+        /// <summary>The state of the template library</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryState")]
+        public virtual PolicyControllerOnClusterState TemplateLibraryState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5050,9 +5080,18 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>The config specifying which default library templates to install.</summary>
     public class PolicyControllerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the standard template library should be installed or not.</summary>
+        /// <summary>
+        /// Whether the standard template library should be installed or not. TODO (b/271878194): Remove this
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("included")]
         public virtual System.Nullable<bool> Included { get; set; }
+
+        /// <summary>
+        /// Configures the manner in which the template library is installed on the cluster. TODO (b/271878194):
+        /// Decrement this
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installation")]
+        public virtual string Installation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

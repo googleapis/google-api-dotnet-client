@@ -4432,6 +4432,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKey")]
         public virtual string SecretAccessKey { get; set; }
 
+        /// <summary>
+        /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating
+        /// the temporary credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionToken")]
+        public virtual string SessionToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

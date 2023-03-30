@@ -10089,8 +10089,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with
-        /// attribute bindings.
+        /// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a
+        /// table) along with attribute bindings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataAttributeBindingPath> Paths { get; set; }
@@ -10117,7 +10117,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual object UpdateTime { get; set; }
     }
 
-    /// <summary>Represents a subresource of a given resource, and associated bindings with it.</summary>
+    /// <summary>
+    /// Represents a subresource of the given resource, and associated bindings with it. Currently supported
+    /// subresources are column and partition schema fields within a table.
+    /// </summary>
     public class GoogleCloudDataplexV1DataAttributeBindingPath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10128,7 +10131,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<string> Attributes { get; set; }
 
         /// <summary>
-        /// Required. The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        /// Required. The name identifier of the path. Nested columns should be of the form: 'address.city'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -7738,7 +7738,12 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Config for Document OCR.</summary>
     public class GoogleCloudDocumentaiV1beta3OcrConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of advanced OCR options to further fine-tune OCR behavior.</summary>
+        /// <summary>
+        /// A list of advanced OCR options to further fine-tune OCR behavior. Current valid values are: -
+        /// "legacy_layout": a heuristics layout detection algorithm, which serves as an alternative to the current
+        /// ML-based layout detection algorithm. Customers can choose the best suitable layout algorithm based on their
+        /// situation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
         public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
 

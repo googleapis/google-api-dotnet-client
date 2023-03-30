@@ -34,10 +34,11 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="initializer">The service initializer.</param>
         public CloudSupportService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
-            Attachments = new AttachmentsResource(this);
             CaseClassifications = new CaseClassificationsResource(this);
             Cases = new CasesResource(this);
             Media = new MediaResource(this);
+            Organizations = new OrganizationsResource(this);
+            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -78,9 +79,6 @@ namespace Google.Apis.CloudSupport.v2beta
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Gets the Attachments resource.</summary>
-        public virtual AttachmentsResource Attachments { get; }
-
         /// <summary>Gets the CaseClassifications resource.</summary>
         public virtual CaseClassificationsResource CaseClassifications { get; }
 
@@ -89,6 +87,12 @@ namespace Google.Apis.CloudSupport.v2beta
 
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for CloudSupport requests.</summary>
@@ -272,84 +276,6 @@ namespace Google.Apis.CloudSupport.v2beta
         }
     }
 
-    /// <summary>The "attachments" collection of methods.</summary>
-    public class AttachmentsResource
-    {
-        private const string Resource = "attachments";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public AttachmentsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="parent">
-        /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
-        /// </param>
-        public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent)
-        {
-            return new CreateRequest(service, body, parent);
-        }
-
-        /// <summary>
-        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename.
-        /// </summary>
-        public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Attachment>
-        {
-            /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent) : base(service)
-            {
-                Parent = parent;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Parent { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "create";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+parent}/attachments";
-
-            /// <summary>Initializes Create parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "parent",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+$",
-                });
-            }
-        }
-    }
-
     /// <summary>The "caseClassifications" collection of methods.</summary>
     public class CaseClassificationsResource
     {
@@ -457,645 +383,6 @@ namespace Google.Apis.CloudSupport.v2beta
         public CasesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            Attachments = new AttachmentsResource(service);
-            Comments = new CommentsResource(service);
-        }
-
-        /// <summary>Gets the Attachments resource.</summary>
-        public virtual AttachmentsResource Attachments { get; }
-
-        /// <summary>The "attachments" collection of methods.</summary>
-        public class AttachmentsResource
-        {
-            private const string Resource = "attachments";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public AttachmentsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>Retrieve all attachments associated with a support case.</summary>
-            /// <param name="parent">
-            /// Required. The resource name of Case object for which attachments should be listed.
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Retrieve all attachments associated with a support case.</summary>
-            public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListAttachmentsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The resource name of Case object for which attachments should be listed.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// The maximum number of attachments fetched with each request. If not provided, the default is 10. The
-                /// maximum page size that will be returned is 100.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2beta/{+parent}/attachments";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the Comments resource.</summary>
-        public virtual CommentsResource Comments { get; }
-
-        /// <summary>The "comments" collection of methods.</summary>
-        public class CommentsResource
-        {
-            private const string Resource = "comments";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public CommentsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The resource name of Case to which this comment should be added.</param>
-            public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent)
-            {
-                return new CreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
-            /// </summary>
-            public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Comment>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The resource name of Case to which this comment should be added.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudSupport.v2beta.Data.Comment Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2beta/{+parent}/comments";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Retrieve all Comments associated with the Case object.</summary>
-            /// <param name="parent">
-            /// Required. The resource name of Case object for which comments should be listed.
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Retrieve all Comments associated with the Case object.</summary>
-            public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCommentsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The resource name of Case object for which comments should be listed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>The maximum number of comments fetched with each request. Defaults to 10.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2beta/{+parent}/comments";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-        }
-
-        /// <summary>Close the specified case.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The fully qualified name of the case resource to be closed.</param>
-        public virtual CloseRequest Close(Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name)
-        {
-            return new CloseRequest(service, body, name);
-        }
-
-        /// <summary>Close the specified case.</summary>
-        public class CloseRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
-        {
-            /// <summary>Constructs a new Close request.</summary>
-            public CloseRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The fully qualified name of the case resource to be closed.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "close";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+name}:close";
-
-            /// <summary>Initializes Close parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Create a new case and associate it with the given Cloud resource. The case object must have the following
-        /// fields set: display_name, description, classification, and severity.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="parent">
-        /// Required. The name of the Cloud resource under which the case should be created.
-        /// </param>
-        public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Case body, string parent)
-        {
-            return new CreateRequest(service, body, parent);
-        }
-
-        /// <summary>
-        /// Create a new case and associate it with the given Cloud resource. The case object must have the following
-        /// fields set: display_name, description, classification, and severity.
-        /// </summary>
-        public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
-        {
-            /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Case body, string parent) : base(service)
-            {
-                Parent = parent;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The name of the Cloud resource under which the case should be created.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Parent { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSupport.v2beta.Data.Case Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "create";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+parent}/cases";
-
-            /// <summary>Initializes Create parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "parent",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
-        /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look
-        /// for 'Technical support escalations' in the feature list to find out which tiers are able to perform
-        /// escalations.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The fully qualified name of the Case resource to be escalated.</param>
-        public virtual EscalateRequest Escalate(Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name)
-        {
-            return new EscalateRequest(service, body, name);
-        }
-
-        /// <summary>
-        /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
-        /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look
-        /// for 'Technical support escalations' in the feature list to find out which tiers are able to perform
-        /// escalations.
-        /// </summary>
-        public class EscalateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
-        {
-            /// <summary>Constructs a new Escalate request.</summary>
-            public EscalateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The fully qualified name of the Case resource to be escalated.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "escalate";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+name}:escalate";
-
-            /// <summary>Initializes Escalate parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Retrieve the specified case.</summary>
-        /// <param name="name">Required. The fully qualified name of a case to be retrieved.</param>
-        public virtual GetRequest Get(string name)
-        {
-            return new GetRequest(service, name);
-        }
-
-        /// <summary>Retrieve the specified case.</summary>
-        public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>Required. The fully qualified name of a case to be retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+name}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the
-        /// cases directly parented by that organization. To retrieve all cases under an organization, including cases
-        /// parented by projects under that organization, use `cases.search`.
-        /// </summary>
-        /// <param name="parent">Required. The fully qualified name of parent resource to list cases under.</param>
-        public virtual ListRequest List(string parent)
-        {
-            return new ListRequest(service, parent);
-        }
-
-        /// <summary>
-        /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the
-        /// cases directly parented by that organization. To retrieve all cases under an organization, including cases
-        /// parented by projects under that organization, use `cases.search`.
-        /// </summary>
-        public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCasesResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-            {
-                Parent = parent;
-                InitParameters();
-            }
-
-            /// <summary>Required. The fully qualified name of parent resource to list cases under.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Parent { get; private set; }
-
-            /// <summary>
-            /// An expression written in filter language. If non-empty, the query returns the cases that match the
-            /// filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the
-            /// operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`:
-            /// The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
-            /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The
-            /// accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case
-            /// creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` - `state=OPEN
-            /// AND (priority=P0 OR priority=P1)`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The maximum number of cases fetched with each request. Defaults to 10.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>
-            /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+parent}/cases";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "parent",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+$",
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageSize",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name for the case.</param>
-        public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2beta.Data.Case body, string name)
-        {
-            return new PatchRequest(service, body, name);
-        }
-
-        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
-        public class PatchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
-        {
-            /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Case body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>The resource name for the case.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>
-            /// A list of attributes of the case object that should be updated as part of this request. Supported values
-            /// are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported
-            /// fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some
-            /// fields. For example, if you leave field mask empty and do not provide a value for
-            /// subscriber_email_addresses, then subscriber_email_addresses is updated to empty.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSupport.v2beta.Data.Case Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "patch";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2beta/{+name}";
-
-            /// <summary>Initializes Patch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
         }
 
         /// <summary>Search cases using the specified query.</summary>
@@ -1244,7 +531,7 @@ namespace Google.Apis.CloudSupport.v2beta
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+/attachments/[^/]+$",
+                    Pattern = @"^organizations/[^/]+/cases/[^/]+/attachments/[^/]+$",
                 });
             }
 
@@ -1392,7 +679,7 @@ namespace Google.Apis.CloudSupport.v2beta
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
+                    Pattern = @"^organizations/[^/]+/cases/[^/]+$",
                 });
             }
         }
@@ -1540,6 +827,1364 @@ namespace Google.Apis.CloudSupport.v2beta
             {
                 Parent = parent;
                 Body = body;
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Cases = new CasesResource(service);
+        }
+
+        /// <summary>Gets the Cases resource.</summary>
+        public virtual CasesResource Cases { get; }
+
+        /// <summary>The "cases" collection of methods.</summary>
+        public class CasesResource
+        {
+            private const string Resource = "cases";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CasesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Attachments = new AttachmentsResource(service);
+                Comments = new CommentsResource(service);
+            }
+
+            /// <summary>Gets the Attachments resource.</summary>
+            public virtual AttachmentsResource Attachments { get; }
+
+            /// <summary>The "attachments" collection of methods.</summary>
+            public class AttachmentsResource
+            {
+                private const string Resource = "attachments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AttachmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieve all attachments associated with a support case.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of Case object for which attachments should be listed.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Retrieve all attachments associated with a support case.</summary>
+                public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListAttachmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of Case object for which attachments should be listed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of attachments fetched with each request. If not provided, the default is 10.
+                    /// The maximum page size that will be returned is 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+parent}/attachments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/cases/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Comments resource.</summary>
+            public virtual CommentsResource Comments { get; }
+
+            /// <summary>The "comments" collection of methods.</summary>
+            public class CommentsResource
+            {
+                private const string Resource = "comments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CommentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Add a new comment to the specified Case. The comment object must have the following fields set:
+                /// body.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of Case to which this comment should be added.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Add a new comment to the specified Case. The comment object must have the following fields set:
+                /// body.
+                /// </summary>
+                public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Comment>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of Case to which this comment should be added.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudSupport.v2beta.Data.Comment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+parent}/comments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/cases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve all Comments associated with the Case object.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of Case object for which comments should be listed.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Retrieve all Comments associated with the Case object.</summary>
+                public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCommentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of Case object for which comments should be listed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of comments fetched with each request. Defaults to 10.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+parent}/comments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/cases/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Close the specified case.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The fully qualified name of the case resource to be closed.</param>
+            public virtual CloseRequest Close(Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name)
+            {
+                return new CloseRequest(service, body, name);
+            }
+
+            /// <summary>Close the specified case.</summary>
+            public class CloseRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Close request.</summary>
+                public CloseRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of the case resource to be closed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "close";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}:close";
+
+                /// <summary>Initializes Close parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Create a new case and associate it with the given Cloud resource. The case object must have the
+            /// following fields set: display_name, description, classification, and severity.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the Cloud resource under which the case should be created.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Case body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Create a new case and associate it with the given Cloud resource. The case object must have the
+            /// following fields set: display_name, description, classification, and severity.
+            /// </summary>
+            public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Case body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the Cloud resource under which the case should be created.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSupport.v2beta.Data.Case Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+parent}/cases";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
+            /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
+            /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
+            /// escalations.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The fully qualified name of the Case resource to be escalated.</param>
+            public virtual EscalateRequest Escalate(Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name)
+            {
+                return new EscalateRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
+            /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
+            /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
+            /// escalations.
+            /// </summary>
+            public class EscalateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Escalate request.</summary>
+                public EscalateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of the Case resource to be escalated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "escalate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}:escalate";
+
+                /// <summary>Initializes Escalate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieve the specified case.</summary>
+            /// <param name="name">Required. The fully qualified name of a case to be retrieved.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieve the specified case.</summary>
+            public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of a case to be retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only
+            /// the cases directly parented by that organization. To retrieve all cases under an organization, including
+            /// cases parented by projects under that organization, use `cases.search`.
+            /// </summary>
+            /// <param name="parent">Required. The fully qualified name of parent resource to list cases under.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only
+            /// the cases directly parented by that organization. To retrieve all cases under an organization, including
+            /// cases parented by projects under that organization, use `cases.search`.
+            /// </summary>
+            public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCasesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of parent resource to list cases under.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// An expression written in filter language. If non-empty, the query returns the cases that match the
+                /// filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with
+                /// the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. -
+                /// `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values
+                /// for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED]
+                /// `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email
+                /// address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND
+                /// creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR priority=P1)`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The maximum number of cases fetched with each request. Defaults to 10.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+parent}/cases";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The resource name for the case.</param>
+        public virtual UpdateCasesRequest UpdateCases(Google.Apis.CloudSupport.v2beta.Data.Case body, string name)
+        {
+            return new UpdateCasesRequest(service, body, name);
+        }
+
+        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
+        public class UpdateCasesRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+        {
+            /// <summary>Constructs a new UpdateCases request.</summary>
+            public UpdateCasesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Case body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The resource name for the case.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// A list of attributes of the case object that should be updated as part of this request. Supported values
+            /// are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported
+            /// fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some
+            /// fields. For example, if you leave field mask empty and do not provide a value for
+            /// subscriber_email_addresses, then subscriber_email_addresses is updated to empty.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSupport.v2beta.Data.Case Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateCases";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}";
+
+            /// <summary>Initializes UpdateCases parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/cases$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Cases = new CasesResource(service);
+        }
+
+        /// <summary>Gets the Cases resource.</summary>
+        public virtual CasesResource Cases { get; }
+
+        /// <summary>The "cases" collection of methods.</summary>
+        public class CasesResource
+        {
+            private const string Resource = "cases";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CasesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Attachments = new AttachmentsResource(service);
+                Comments = new CommentsResource(service);
+            }
+
+            /// <summary>Gets the Attachments resource.</summary>
+            public virtual AttachmentsResource Attachments { get; }
+
+            /// <summary>The "attachments" collection of methods.</summary>
+            public class AttachmentsResource
+            {
+                private const string Resource = "attachments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AttachmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieve all attachments associated with a support case.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of Case object for which attachments should be listed.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Retrieve all attachments associated with a support case.</summary>
+                public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListAttachmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of Case object for which attachments should be listed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of attachments fetched with each request. If not provided, the default is 10.
+                    /// The maximum page size that will be returned is 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+parent}/attachments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/cases/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Comments resource.</summary>
+            public virtual CommentsResource Comments { get; }
+
+            /// <summary>The "comments" collection of methods.</summary>
+            public class CommentsResource
+            {
+                private const string Resource = "comments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CommentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Add a new comment to the specified Case. The comment object must have the following fields set:
+                /// body.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of Case to which this comment should be added.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Add a new comment to the specified Case. The comment object must have the following fields set:
+                /// body.
+                /// </summary>
+                public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Comment>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of Case to which this comment should be added.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudSupport.v2beta.Data.Comment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+parent}/comments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/cases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve all Comments associated with the Case object.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of Case object for which comments should be listed.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Retrieve all Comments associated with the Case object.</summary>
+                public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCommentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of Case object for which comments should be listed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of comments fetched with each request. Defaults to 10.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+parent}/comments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/cases/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Close the specified case.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The fully qualified name of the case resource to be closed.</param>
+            public virtual CloseRequest Close(Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name)
+            {
+                return new CloseRequest(service, body, name);
+            }
+
+            /// <summary>Close the specified case.</summary>
+            public class CloseRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Close request.</summary>
+                public CloseRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of the case resource to be closed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "close";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}:close";
+
+                /// <summary>Initializes Close parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Create a new case and associate it with the given Cloud resource. The case object must have the
+            /// following fields set: display_name, description, classification, and severity.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the Cloud resource under which the case should be created.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Case body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Create a new case and associate it with the given Cloud resource. The case object must have the
+            /// following fields set: display_name, description, classification, and severity.
+            /// </summary>
+            public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Case body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the Cloud resource under which the case should be created.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSupport.v2beta.Data.Case Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+parent}/cases";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
+            /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
+            /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
+            /// escalations.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The fully qualified name of the Case resource to be escalated.</param>
+            public virtual EscalateRequest Escalate(Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name)
+            {
+                return new EscalateRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
+            /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
+            /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
+            /// escalations.
+            /// </summary>
+            public class EscalateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Escalate request.</summary>
+                public EscalateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of the Case resource to be escalated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "escalate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}:escalate";
+
+                /// <summary>Initializes Escalate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieve the specified case.</summary>
+            /// <param name="name">Required. The fully qualified name of a case to be retrieved.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieve the specified case.</summary>
+            public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of a case to be retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only
+            /// the cases directly parented by that organization. To retrieve all cases under an organization, including
+            /// cases parented by projects under that organization, use `cases.search`.
+            /// </summary>
+            /// <param name="parent">Required. The fully qualified name of parent resource to list cases under.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only
+            /// the cases directly parented by that organization. To retrieve all cases under an organization, including
+            /// cases parented by projects under that organization, use `cases.search`.
+            /// </summary>
+            public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCasesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The fully qualified name of parent resource to list cases under.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// An expression written in filter language. If non-empty, the query returns the cases that match the
+                /// filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with
+                /// the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. -
+                /// `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values
+                /// for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED]
+                /// `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email
+                /// address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND
+                /// creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR priority=P1)`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The maximum number of cases fetched with each request. Defaults to 10.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+parent}/cases";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The resource name for the case.</param>
+        public virtual UpdateCasesRequest UpdateCases(Google.Apis.CloudSupport.v2beta.Data.Case body, string name)
+        {
+            return new UpdateCasesRequest(service, body, name);
+        }
+
+        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
+        public class UpdateCasesRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
+        {
+            /// <summary>Constructs a new UpdateCases request.</summary>
+            public UpdateCasesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.Case body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The resource name for the case.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// A list of attributes of the case object that should be updated as part of this request. Supported values
+            /// are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported
+            /// fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some
+            /// fields. For example, if you leave field mask empty and do not provide a value for
+            /// subscriber_email_addresses, then subscriber_email_addresses is updated to empty.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSupport.v2beta.Data.Case Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateCases";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}";
+
+            /// <summary>Initializes UpdateCases parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/cases$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -1745,7 +2390,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
     /// <summary>A comment associated with a support case.</summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full comment body. Maximum of 120000 characters. This can contain rich text syntax.</summary>
+        /// <summary>The full comment body. Maximum of 12800 characters. This can contain rich text syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; }
 

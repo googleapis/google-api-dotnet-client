@@ -3609,6 +3609,10 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual GoogleAppsDriveLabelsV2betaUserInfo Creator { get; set; }
 
+        /// <summary>Output only. The customer this label belongs to. For example: "customers/123abc789."</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>
         /// Output only. The time this label was disabled. This value has no meaning when the label is not disabled.
         /// </summary>

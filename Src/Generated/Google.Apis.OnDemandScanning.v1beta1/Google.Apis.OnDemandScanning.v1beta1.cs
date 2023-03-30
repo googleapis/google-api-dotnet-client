@@ -976,6 +976,18 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Binary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of a build occurrence.</summary>
     public class BuildOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2072,6 +2084,15 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>The architecture of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual string Architecture { get; set; }
+
+        /// <summary>
+        /// The binary package. This is significant when the source is different than the binary itself. Historically if
+        /// they've differed, we've stored the name of the source and its version in the package/version fields, but we
+        /// should also store the binary package info, as that's what's actually installed. See
+        /// https://b.corp.google.com/issues/175908657#comment15
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binary")]
+        public virtual Binary Binary { get; set; }
 
         /// <summary>
         /// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability may manifest.
