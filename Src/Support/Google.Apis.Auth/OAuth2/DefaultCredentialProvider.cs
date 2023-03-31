@@ -58,7 +58,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Help link to the application default credentials feature.</summary>
         private const string HelpPermalink =
-            "https://cloud.google.com/docs/authentication/provide-credentials-adc";
+            "https://cloud.google.com/docs/authentication/external/set-up-adc";
 
         /// <summary>GCloud configuration directory on Linux/Mac, relative to $HOME.</summary>
         private static readonly string CloudSDKConfigDirectoryUnix = Path.Combine(".config", "gcloud");
