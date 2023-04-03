@@ -2508,6 +2508,17 @@ namespace Google.Apis.Adsense.v2
                     OWNEDSITEID = 15,
 
                     /// <summary>
+                    /// URL of the page upon which the ad was served. This is a complete URL including scheme and query
+                    /// parameters. Note that the URL that appears in this dimension may be a canonicalized version of
+                    /// the one that was used in the original request, and so may not exactly match the URL that a user
+                    /// might have seen. Note that there are also some caveats to be aware of when using this dimension.
+                    /// For more information, see [Page URL
+                    /// breakdown](https://support.google.com/adsense/answer/11988478).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PAGE_URL")]
+                    PAGEURL = 47,
+
+                    /// <summary>
                     /// Name of a URL channel. The members of this dimension match the values from
                     /// UrlChannel.uri_pattern.
                     /// </summary>
@@ -3299,6 +3310,17 @@ namespace Google.Apis.Adsense.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OWNED_SITE_ID")]
                     OWNEDSITEID = 15,
+
+                    /// <summary>
+                    /// URL of the page upon which the ad was served. This is a complete URL including scheme and query
+                    /// parameters. Note that the URL that appears in this dimension may be a canonicalized version of
+                    /// the one that was used in the original request, and so may not exactly match the URL that a user
+                    /// might have seen. Note that there are also some caveats to be aware of when using this dimension.
+                    /// For more information, see [Page URL
+                    /// breakdown](https://support.google.com/adsense/answer/11988478).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PAGE_URL")]
+                    PAGEURL = 47,
 
                     /// <summary>
                     /// Name of a URL channel. The members of this dimension match the values from

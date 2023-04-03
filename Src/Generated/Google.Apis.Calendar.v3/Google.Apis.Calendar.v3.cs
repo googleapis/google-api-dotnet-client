@@ -2645,8 +2645,9 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. This is used by
-            /// the Working Location developer preview and only the default value is allowed for non-opted-in users.
+            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. Only the
+            /// default value is available, unless you're enrolled in the Working Locations developer preview. Developer
+            /// Preview.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -3600,8 +3601,9 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. This is used by
-            /// the Working Location developer preview and only the default value is allowed for non-opted-in users.
+            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. Only the
+            /// default value is available, unless you're enrolled in the Working Locations developer preview. Developer
+            /// Preview.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -4950,7 +4952,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>
         /// Specific type of the event. Read-only. Possible values are:   - "default" - A regular event or not further
         /// specified.  - "outOfOffice" - An out-of-office event.  - "focusTime" - A focus-time event.  -
-        /// "workingLocation" - A working location event.
+        /// "workingLocation" - A working location event. Developer Preview.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -5151,7 +5153,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 
-        /// <summary>Working Location event data. Read-only.</summary>
+        /// <summary>Developer Preview: Working Location event data. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingLocationProperties")]
         public virtual EventWorkingLocationProperties WorkingLocationProperties { get; set; }
 

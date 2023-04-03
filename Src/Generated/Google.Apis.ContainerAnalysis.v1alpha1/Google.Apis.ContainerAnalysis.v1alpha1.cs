@@ -1442,6 +1442,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     /// <summary>This represents a Vulnerability Assessment.</summary>
                     [Google.Apis.Util.StringValueAttribute("VULNERABILITY_ASSESSMENT")]
                     VULNERABILITYASSESSMENT = 15,
+
+                    /// <summary>This represents a reference to an SBOM.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SBOM_REFERENCE")]
+                    SBOMREFERENCE = 16,
                 }
 
                 /// <summary>
@@ -6017,6 +6021,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sbom")]
         public virtual DocumentNote Sbom { get; set; }
 
+        /// <summary>A note describing a reference to an SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbomReference")]
+        public virtual SBOMReferenceNote SbomReference { get; set; }
+
         /// <summary>A one sentence description of this `Note`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
         public virtual string ShortDescription { get; set; }
@@ -6136,6 +6144,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Describes a specific software bill of materials document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sbom")]
         public virtual DocumentOccurrence Sbom { get; set; }
+
+        /// <summary>This represents an SBOM reference occurrence</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbomReference")]
+        public virtual SBOMReferenceOccurrence SbomReference { get; set; }
 
         /// <summary>Describes a specific SPDX File.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spdxFile")]
@@ -6796,6 +6808,100 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The note representing an SBOM reference.</summary>
+    public class SBOMReferenceNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE
+    /// specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+    /// </summary>
+    public class SBOMReferenceOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actual payload that contains the SBOM reference data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual SbomReferenceIntotoPayload Payload { get; set; }
+
+        /// <summary>
+        /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is
+        /// expected to be 'application/vnd.in-toto+json'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        /// <summary>The signatures over the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<EnvelopeSignature> Signatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement
+    /// specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+    /// </summary>
+    public class SbomReferenceIntotoPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier for the schema of the Statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Additional parameters of the Predicate. Includes the actual data about the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicate")]
+        public virtual SbomReferenceIntotoPredicate Predicate { get; set; }
+
+        /// <summary>URI identifying the type of the Predicate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicateType")]
+        public virtual string PredicateType { get; set; }
+
+        /// <summary>
+        /// Set of software artifacts that the attestation applies to. Each element represents a single software
+        /// artifact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual System.Collections.Generic.IList<Subject> Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A predicate which describes the SBOM being referenced.</summary>
+    public class SbomReferenceIntotoPredicate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A map of algorithm to digest of the contents of the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        /// <summary>The location of the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The mime type of the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The person or system referring this predicate to the consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referrerId")]
+        public virtual string ReferrerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

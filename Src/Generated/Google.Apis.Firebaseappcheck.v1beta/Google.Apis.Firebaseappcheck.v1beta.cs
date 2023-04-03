@@ -3339,8 +3339,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                 /// <summary>
                 /// The maximum number of Services to return in the response. Only explicitly configured services are
-                /// returned. The server may return fewer than this at its own discretion. If no value is specified (or
-                /// too large a value is specified), the server will impose its own limit.
+                /// returned. The server may return fewer than this at its own discretion. If no value is specified or
+                /// set to zero (or too large a value is specified), the server will impose its own limit.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }

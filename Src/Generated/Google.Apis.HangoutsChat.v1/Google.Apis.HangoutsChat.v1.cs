@@ -2109,7 +2109,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the complete border style applied to items in a widget.</summary>
+    /// <summary>The style options for the border of a card or widget, including the border type and color.</summary>
     public class GoogleAppsCardV1BorderStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The corner radius for the border.</summary>

@@ -1324,6 +1324,12 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("valuePerConversionsByConversionDate")]
         public virtual System.Nullable<double> ValuePerConversionsByConversionDate { get; set; }
 
+        /// <summary>
+        /// Clicks that Search Ads 360 has successfully recorded and forwarded to an advertiser's landing page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visits")]
+        public virtual System.Nullable<double> Visits { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1360,6 +1366,37 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Whether the campaign is opted in to real-time bidding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optIn")]
         public virtual System.Nullable<bool> OptIn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Search Ads 360 text ad.</summary>
+    public class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracking id of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTrackId")]
+        public virtual System.Nullable<long> AdTrackId { get; set; }
+
+        /// <summary>The first line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
+        public virtual string Description1 { get; set; }
+
+        /// <summary>The second line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
+        public virtual string Description2 { get; set; }
+
+        /// <summary>The displayed mobile URL of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileUrl")]
+        public virtual string DisplayMobileUrl { get; set; }
+
+        /// <summary>The displayed URL of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
+        public virtual string DisplayUrl { get; set; }
+
+        /// <summary>The headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1502,6 +1539,27 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The list of per-targeting-dimension targeting settings.</summary>
+    public class GoogleAdsSearchads360V0CommonTargetRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether to restrict your ads to show only for the criteria you have selected for this
+        /// targeting_dimension, or to target all values for this targeting_dimension and show ads based on your
+        /// targeting in other TargetingDimensions. A value of `true` means that these criteria will only apply bid
+        /// modifiers, and not affect targeting. A value of `false` means that these criteria will restrict targeting as
+        /// well as applying bid modifiers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidOnly")]
+        public virtual System.Nullable<bool> BidOnly { get; set; }
+
+        /// <summary>The targeting dimension that these settings apply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingDimension")]
+        public virtual string TargetingDimension { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An automated bidding strategy that helps you maximize revenue while averaging a specific target return on ad
     /// spend (ROAS).
@@ -1553,6 +1611,51 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSpendMicros")]
         public virtual System.Nullable<long> TargetSpendMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Settings for the targeting-related features, at the campaign and ad group levels. For more details about the
+    /// targeting setting, visit https://support.google.com/google-ads/answer/7365594
+    /// </summary>
+    public class GoogleAdsSearchads360V0CommonTargetingSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The per-targeting-dimension setting to restrict the reach of your campaign or ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetRestrictions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonTargetRestriction> TargetRestrictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A type of label displaying text on a colored background.</summary>
+    public class GoogleAdsSearchads360V0CommonTextLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Background color of the label in RGB format. This string must match the regular expression
+        /// '^\#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'. Note: The background color may not be visible for manager accounts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual string BackgroundColor { get; set; }
+
+        /// <summary>A short description of the label. The length must be no more than 200 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A User List criterion. Represents a user list that is defined by the advertiser to be targeted.
+    /// </summary>
+    public class GoogleAdsSearchads360V0CommonUserListInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The User List resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userList")]
+        public virtual string UserList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1804,6 +1907,48 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An ad.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL that appears in the ad description for some ad formats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
+        public virtual string DisplayUrl { get; set; }
+
+        /// <summary>The list of possible final URLs after all cross-domain redirects for the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalUrls { get; set; }
+
+        /// <summary>Output only. The ID of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Immutable. The name of the ad. This is only used to be able to identify the ad. It does not need to be
+        /// unique and does not affect the served ad. The name field is currently only supported for DisplayUploadAd,
+        /// ImageAd, ShoppingComparisonListingAd and VideoAd.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad. Ad resource names have the form:
+        /// `customers/{customer_id}/ads/{ad_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Immutable. Details pertaining to a text ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAd")]
+        public virtual GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo TextAd { get; set; }
+
+        /// <summary>Output only. The type of ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An ad group.</summary>
     public class GoogleAdsSearchads360V0ResourcesAdGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1815,9 +1960,55 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpcBidMicros")]
         public virtual System.Nullable<long> CpcBidMicros { get; set; }
 
+        /// <summary>
+        /// Output only. The timestamp when this ad_group was created. The timestamp is in the customer's time zone and
+        /// in "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; }
+
+        /// <summary>
+        /// Output only. Date when the ad group ends serving ads. By default, the ad group ends on the ad group's end
+        /// date. If this field is set, then the ad group ends at the end of the specified date in the customer's time
+        /// zone. This field is only available for Microsoft Advertising and Facebook gateway accounts. Format:
+        /// YYYY-MM-DD Example: 2019-03-14
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the ad group in the external engine account. This field is for non-Google Ads account
+        /// only, for example, Yahoo Japan, Microsoft, Baidu etc. For Google Ads entity, use "ad_group.id" instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineId")]
+        public virtual string EngineId { get; set; }
+
+        /// <summary>Output only. The Engine Status for ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
+        public virtual string EngineStatus { get; set; }
+
         /// <summary>Output only. The ID of the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>Output only. The resource names of labels attached to this ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The language of the ads and keywords in an ad group. This field is only available for Microsoft
+        /// Advertising accounts. More details:
+        /// https://docs.microsoft.com/en-us/advertising/guides/ad-languages?view=bingads-13#adlanguage
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. The datetime when this ad group was last modified. The datetime is in the customer's time zone
+        /// and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual string LastModifiedTime { get; set; }
 
         /// <summary>
         /// The name of the ad group. This field is required and should not be empty when creating new ad groups. It
@@ -1834,13 +2025,119 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
+        /// <summary>
+        /// Output only. Date when this ad group starts serving ads. By default, the ad group starts now or the ad
+        /// group's start date, whichever is later. If this field is set, then the ad group starts at the beginning of
+        /// the specified date in the customer's time zone. This field is only available for Microsoft Advertising and
+        /// Facebook gateway accounts. Format: YYYY-MM-DD Example: 2019-03-14
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
         /// <summary>The status of the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
+        /// <summary>Setting for targeting related features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingSetting")]
+        public virtual GoogleAdsSearchads360V0CommonTargetingSetting TargetingSetting { get; set; }
+
         /// <summary>Immutable. The type of the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An ad group ad.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ad")]
+        public virtual GoogleAdsSearchads360V0ResourcesAd Ad { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when this ad_group_ad was created. The datetime is in the customer's time zone
+        /// and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the ad in the external engine account. This field is for SearchAds 360 account only, for
+        /// example, Yahoo Japan, Microsoft, Baidu etc. For non-SearchAds 360 entity, use "ad_group_ad.ad.id" instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineId")]
+        public virtual string EngineId { get; set; }
+
+        /// <summary>
+        /// Output only. Additional status of the ad in the external engine account. Possible statuses (depending on the
+        /// type of external account) include active, eligible, pending review, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
+        public virtual string EngineStatus { get; set; }
+
+        /// <summary>Output only. The resource names of labels attached to this ad group ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The datetime when this ad group ad was last modified. The datetime is in the customer's time
+        /// zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual string LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad. Ad group ad resource names have the form:
+        /// `customers/{customer_id}/adGroupAds/{ad_group_id}~{ad_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The status of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A relationship between an ad group ad and a label.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupAdLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group ad to which the label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAd")]
+        public virtual string AdGroupAd { get; set; }
+
+        /// <summary>Immutable. The label assigned to the ad group ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form:
+        /// `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An ad group audience view. Includes performance data from interests and remarketing lists for Display Network
+    /// and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated at the audience level.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupAudienceView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the ad group audience view. Ad group audience view resource names have the
+        /// form: `customers/{customer_id}/adGroupAudienceViews/{ad_group_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1855,6 +2152,10 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidModifier")]
         public virtual System.Nullable<double> BidModifier { get; set; }
+
+        /// <summary>Immutable. A device criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual GoogleAdsSearchads360V0CommonDeviceInfo Device { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the ad group bid modifier. Ad group bid modifier resource names have the
@@ -1889,6 +2190,13 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpcBidMicros")]
         public virtual System.Nullable<long> CpcBidMicros { get; set; }
 
+        /// <summary>
+        /// Output only. The timestamp when this ad group criterion was created. The timestamp is in the customer's time
+        /// zone and in "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; }
+
         /// <summary>Output only. The ID of the criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criterionId")]
         public virtual System.Nullable<long> CriterionId { get; set; }
@@ -1896,6 +2204,14 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. The effective CPC (cost-per-click) bid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveCpcBidMicros")]
         public virtual System.Nullable<long> EffectiveCpcBidMicros { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the ad group criterion in the external engine account. This field is for non-Google Ads
+        /// account only, for example, Yahoo Japan, Microsoft, Baidu etc. For Google Ads entity, use
+        /// "ad_group_criterion.criterion_id" instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineId")]
+        public virtual string EngineId { get; set; }
 
         /// <summary>Output only. The Engine Status for ad group criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
@@ -1917,6 +2233,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
         public virtual GoogleAdsSearchads360V0CommonKeywordInfo Keyword { get; set; }
 
+        /// <summary>Output only. The resource names of labels attached to this ad group criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
         /// <summary>
         /// Output only. The datetime when this ad group criterion was last modified. The datetime is in the customer's
         /// time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
@@ -1927,6 +2247,17 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Immutable. Listing group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listingGroup")]
         public virtual GoogleAdsSearchads360V0CommonListingGroupInfo ListingGroup { get; set; }
+
+        /// <summary>Immutable. Location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GoogleAdsSearchads360V0CommonLocationInfo Location { get; set; }
+
+        /// <summary>
+        /// Immutable. Whether to target (`false`) or exclude (`true`) the criterion. This field is immutable. To switch
+        /// a criterion from positive to negative, remove then re-add it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negative")]
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Output only. Information regarding the quality of the criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityInfo")]
@@ -1958,9 +2289,38 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
+        /// <summary>
+        /// Immutable. User List. The Similar Audiences sunset starts May 2023. Refer to
+        /// https://ads-developers.googleblog.com/2022/11/announcing-deprecation-and-sunset-of.html for other options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userList")]
+        public virtual GoogleAdsSearchads360V0CommonUserListInfo UserList { get; set; }
+
         /// <summary>Immutable. Webpage</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webpage")]
         public virtual GoogleAdsSearchads360V0CommonWebpageInfo Webpage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A relationship between an ad group criterion and a label.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group criterion to which the label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterion")]
+        public virtual string AdGroupCriterion { get; set; }
+
+        /// <summary>Immutable. The label assigned to the ad group criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group criterion label. Ad group criterion label resource names have
+        /// the form: `customers/{customer_id}/adGroupCriterionLabels/{ad_group_id}~{criterion_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1975,6 +2335,42 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<int> QualityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A relationship between an ad group and a label.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group to which the label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
+        public virtual string AdGroup { get; set; }
+
+        /// <summary>Immutable. The label assigned to the ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group label. Ad group label resource names have the form:
+        /// `customers/{customer_id}/adGroupLabels/{ad_group_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An age range view.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAgeRangeView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the age range view. Age range view resource names have the form:
+        /// `customers/{customer_id}/ageRangeViews/{ad_group_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2145,9 +2541,19 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignBudget")]
         public virtual string CampaignBudget { get; set; }
 
-        /// <summary>Output only. Timestamp of the campaign's creation time, formatted in ISO 8601.</summary>
+        /// <summary>
+        /// Output only. The timestamp when this campaign was created. The timestamp is in the customer's time zone and
+        /// in "yyyy-MM-dd HH:mm:ss" format. create_time will be deprecated in v1. Use creation_time instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when this campaign was created. The timestamp is in the customer's time zone and
+        /// in "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; }
 
         /// <summary>The setting for controlling Dynamic Search Ads (DSA).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSearchAdsSetting")]
@@ -2359,6 +2765,24 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A campaign audience view. Includes performance data from interests and remarketing lists for Display Network and
+    /// YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated by campaign and audience criterion.
+    /// This view only includes audiences attached at the campaign level.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesCampaignAudienceView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the campaign audience view. Campaign audience view resource names have the
+        /// form: `customers/{customer_id}/campaignAudienceViews/{campaign_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A campaign budget.</summary>
     public class GoogleAdsSearchads360V0ResourcesCampaignBudget : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2394,6 +2818,10 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>A campaign criterion.</summary>
     public class GoogleAdsSearchads360V0ResourcesCampaignCriterion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Immutable. Age range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
+        public virtual GoogleAdsSearchads360V0CommonAgeRangeInfo AgeRange { get; set; }
+
         /// <summary>
         /// The modifier for the bids when the criterion matches. The modifier must be in the range: 0.1 - 10.0. Most
         /// targetable criteria types support modifiers. Use 0 to opt out of a Device type.
@@ -2413,9 +2841,24 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Immutable. Gender.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gender")]
+        public virtual GoogleAdsSearchads360V0CommonGenderInfo Gender { get; set; }
+
+        /// <summary>Immutable. Keyword.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
+        public virtual GoogleAdsSearchads360V0CommonKeywordInfo Keyword { get; set; }
+
         /// <summary>Immutable. Language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual GoogleAdsSearchads360V0CommonLanguageInfo Language { get; set; }
+
+        /// <summary>
+        /// Output only. The datetime when this campaign criterion was last modified. The datetime is in the customer's
+        /// time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual string LastModifiedTime { get; set; }
 
         /// <summary>Immutable. Location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -2436,9 +2879,24 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
+        /// <summary>The status of the criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
         /// <summary>Output only. The type of the criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Immutable. User List. The Similar Audiences sunset starts May 2023. Refer to
+        /// https://ads-developers.googleblog.com/2022/11/announcing-deprecation-and-sunset-of.html for other options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userList")]
+        public virtual GoogleAdsSearchads360V0CommonUserListInfo UserList { get; set; }
+
+        /// <summary>Immutable. Webpage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webpage")]
+        public virtual GoogleAdsSearchads360V0CommonWebpageInfo Webpage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2476,6 +2934,28 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The setting used for positive geotargeting in this particular campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveGeoTargetType")]
         public virtual string PositiveGeoTargetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a relationship between a campaign and a label.</summary>
+    public class GoogleAdsSearchads360V0ResourcesCampaignLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The campaign to which the label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual string Campaign { get; set; }
+
+        /// <summary>Immutable. The label assigned to the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Immutable. Name of the resource. Campaign label resource names have the form:
+        /// `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2890,6 +3370,13 @@ namespace Google.Apis.SA360.v0.Data
         public virtual GoogleAdsSearchads360V0ResourcesConversionTrackingSetting ConversionTrackingSetting { get; set; }
 
         /// <summary>
+        /// Output only. The timestamp when this customer was created. The timestamp is in the customer's time zone and
+        /// in "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; }
+
+        /// <summary>
         /// Immutable. The currency in which the account operates. A subset of the currency codes from the ISO 4217
         /// standard is supported.
         /// </summary>
@@ -2908,7 +3395,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("engineId")]
         public virtual string EngineId { get; set; }
 
-        /// <summary>The URL template for appending params to the final URL</summary>
+        /// <summary>The URL template for appending params to the final URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
         public virtual string FinalUrlSuffix { get; set; }
 
@@ -3070,12 +3557,94 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A dynamic search ads search term view.</summary>
+    public class GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The dynamically selected landing page URL of the impression. This field is read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landingPage")]
+        public virtual string LandingPage { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the dynamic search ads search term view. Dynamic search ads search term
+        /// view resource names have the form:
+        /// `customers/{customer_id}/dynamicSearchAdsSearchTermViews/{ad_group_id}~{search_term_fingerprint}~{headline_fingerprint}~{landing_page_fingerprint}~{page_url_fingerprint}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A gender view.</summary>
+    public class GoogleAdsSearchads360V0ResourcesGenderView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the gender view. Gender view resource names have the form:
+        /// `customers/{customer_id}/genderViews/{ad_group_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A keyword view.</summary>
     public class GoogleAdsSearchads360V0ResourcesKeywordView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. The resource name of the keyword view. Keyword view resource names have the form:
         /// `customers/{customer_id}/keywordViews/{ad_group_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A label.</summary>
+    public class GoogleAdsSearchads360V0ResourcesLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. ID of the label. Read only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// The name of the label. This field is required and should not be empty when creating a new label. The length
+        /// of this string should be between 1 and 80, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. Name of the resource. Label resource names have the form:
+        /// `customers/{customer_id}/labels/{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Status of the label. Read only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>A type of label displaying text on a colored background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textLabel")]
+        public virtual GoogleAdsSearchads360V0CommonTextLabel TextLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A location view summarizes the performance of campaigns by Location criteria.</summary>
+    public class GoogleAdsSearchads360V0ResourcesLocationView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the location view. Location view resource names have the form:
+        /// `customers/{customer_id}/locationViews/{campaign_id}~{criterion_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3183,6 +3752,49 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A user list. This is a list of users a customer may target.</summary>
+    public class GoogleAdsSearchads360V0ResourcesUserList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Id of the user list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Name of this user list. Depending on its access_reason, the user list name may not be unique (for example,
+        /// if access_reason=SHARED)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the user list. User list resource names have the form:
+        /// `customers/{customer_id}/userLists/{user_list_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Type of this list. This field is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A webpage view.</summary>
+    public class GoogleAdsSearchads360V0ResourcesWebpageView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the webpage view. Webpage view resource names have the form:
+        /// `customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for custom column header.</summary>
     public class GoogleAdsSearchads360V0ServicesCustomColumnHeader : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3220,6 +3832,18 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroup AdGroup { get; set; }
 
+        /// <summary>The ad referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAd")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupAd AdGroupAd { get; set; }
+
+        /// <summary>The ad group ad label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupAdLabel AdGroupAdLabel { get; set; }
+
+        /// <summary>The ad group audience view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAudienceView")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupAudienceView AdGroupAudienceView { get; set; }
+
         /// <summary>The bid modifier referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupBidModifier")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupBidModifier AdGroupBidModifier { get; set; }
@@ -3227,6 +3851,18 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The criterion referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterion")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupCriterion AdGroupCriterion { get; set; }
+
+        /// <summary>The ad group criterion label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterionLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel AdGroupCriterionLabel { get; set; }
+
+        /// <summary>The ad group label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupLabel AdGroupLabel { get; set; }
+
+        /// <summary>The age range view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRangeView")]
+        public virtual GoogleAdsSearchads360V0ResourcesAgeRangeView AgeRangeView { get; set; }
 
         /// <summary>The bidding strategy referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategy")]
@@ -3236,6 +3872,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaign Campaign { get; set; }
 
+        /// <summary>The campaign audience view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignAudienceView")]
+        public virtual GoogleAdsSearchads360V0ResourcesCampaignAudienceView CampaignAudienceView { get; set; }
+
         /// <summary>The campaign budget referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignBudget")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaignBudget CampaignBudget { get; set; }
@@ -3243,6 +3883,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The campaign criterion referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignCriterion")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaignCriterion CampaignCriterion { get; set; }
+
+        /// <summary>The campaign label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesCampaignLabel CampaignLabel { get; set; }
 
         /// <summary>The conversion action referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
@@ -3264,9 +3908,25 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerManagerLink")]
         public virtual GoogleAdsSearchads360V0ResourcesCustomerManagerLink CustomerManagerLink { get; set; }
 
+        /// <summary>The dynamic search ads search term view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSearchAdsSearchTermView")]
+        public virtual GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView DynamicSearchAdsSearchTermView { get; set; }
+
+        /// <summary>The gender view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genderView")]
+        public virtual GoogleAdsSearchads360V0ResourcesGenderView GenderView { get; set; }
+
         /// <summary>The keyword view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordView")]
         public virtual GoogleAdsSearchads360V0ResourcesKeywordView KeywordView { get; set; }
+
+        /// <summary>The label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual GoogleAdsSearchads360V0ResourcesLabel Label { get; set; }
+
+        /// <summary>The location view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationView")]
+        public virtual GoogleAdsSearchads360V0ResourcesLocationView LocationView { get; set; }
 
         /// <summary>The metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
@@ -3279,6 +3939,14 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The segments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual GoogleAdsSearchads360V0CommonSegments Segments { get; set; }
+
+        /// <summary>The user list referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userList")]
+        public virtual GoogleAdsSearchads360V0ResourcesUserList UserList { get; set; }
+
+        /// <summary>The webpage view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webpageView")]
+        public virtual GoogleAdsSearchads360V0ResourcesWebpageView WebpageView { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
