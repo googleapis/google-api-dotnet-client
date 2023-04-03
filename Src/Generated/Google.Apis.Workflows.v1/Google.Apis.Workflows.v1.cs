@@ -1259,6 +1259,14 @@ namespace Google.Apis.Workflows.v1.Data
     /// <summary>Workflow program to be executed by Workflows.</summary>
     public class Workflow : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Describes the level of platform logging to apply to calls and call responses during executions of
+        /// this workflow. If both the workflow and the execution specify a logging level, the execution level takes
+        /// precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callLogLevel")]
+        public virtual string CallLogLevel { get; set; }
+
         /// <summary>Output only. The timestamp for when the workflow was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

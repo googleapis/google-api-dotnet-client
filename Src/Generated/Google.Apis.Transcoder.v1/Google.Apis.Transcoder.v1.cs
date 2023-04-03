@@ -1720,6 +1720,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>
         /// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         /// </summary>

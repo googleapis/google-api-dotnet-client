@@ -2730,7 +2730,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A runtime using a Compute Engine instance.</summary>
     public class GceInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Size of the boot disk in GB.</summary>
+        /// <summary>Size of the boot disk in GB. Defaults to 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
@@ -2751,9 +2751,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> PoolSize { get; set; }
 
         /// <summary>
-        /// Email address of the service account that will be used on VM instances used to support this config. This
-        /// service account must have permission to pull the specified container image. If not set, VMs will run without
-        /// a service account, in which case the image must be publicly accessible.
+        /// Email address of the service account that will be used on VM instances used to support this config. If not
+        /// set, VMs will run with a Google-managed service account. This service account must have permission to pull
+        /// the specified container image, otherwise the image must be publicly accessible.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -2773,13 +2773,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A PersistentDirectory backed by a Compute Engine regional persistent disk.</summary>
     public class GceRegionalPersistentDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of the disk to use.</summary>
+        /// <summary>Type of the disk to use. Defaults to pd-standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
         /// <summary>
         /// Type of file system that the disk should be formatted with. The workstation image must support this file
-        /// system type. Must be empty if source_snapshot is set.
+        /// system type. Must be empty if source_snapshot is set. Defaults to ext4.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fsType")]
         public virtual string FsType { get; set; }
@@ -2788,7 +2788,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reclaimPolicy")]
         public virtual string ReclaimPolicy { get; set; }
 
-        /// <summary>Size of the disk in GB. Must be empty if source_snapshot is set.</summary>
+        /// <summary>Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 

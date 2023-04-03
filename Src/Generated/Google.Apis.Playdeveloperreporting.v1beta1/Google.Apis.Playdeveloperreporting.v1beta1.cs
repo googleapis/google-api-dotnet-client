@@ -2123,15 +2123,17 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period
     /// that were used as normalization value for the `anrRate` and `userPerceivedAnrRate` metrics. A user is counted in
     /// this metric if they used the app in the foreground during the aggregation period. Care must be taken not to
-    /// aggregate this count further, as it may result in users being counted multiple times. **Supported dimensions:**
-    /// * `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
-    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
-    /// user's device model. * `deviceType` (string): the type (also known as form factor) of the user's device. *
-    /// `countryCode` (string): the country or region of the user's device based on their IP address, represented as a
-    /// 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
-    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
-    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// aggregate this count further, as it may result in users being counted multiple times. The value is rounded to
+    /// the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported
+    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
+    /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
+    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
+    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
+    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
+    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2177,15 +2179,16 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// used as normalization value for the `crashRate` and `userPerceivedCrashRate` metrics. A user is counted in this
     /// metric if they used the app actively during the aggregation period. An app is considered to be in active use if
     /// it is displaying any activity or executing any foreground service. Care must be taken not to aggregate this
-    /// count further, as it may result in users being counted multiple times. **Supported dimensions:** * `apiLevel`
-    /// (string): the API level of Android that was running on the user's device. * `versionCode` (int64): version of
-    /// the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device
-    /// model. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
-    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
-    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
-    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
-    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// count further, as it may result in users being counted multiple times. The value is rounded to the nearest
+    /// multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** *
+    /// `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
+    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
+    /// user's device model. * `deviceType` (string): the type (also known as form factor) of the user's device. *
+    /// `countryCode` (string): the country or region of the user's device based on their IP address, represented as a
+    /// 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
+    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
+    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2260,17 +2263,18 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// The default and only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `errorReportCount`
     /// (`google.type.Decimal`): Absolute count of individual error reports that have been received for an app. *
     /// `distinctUsers` (`google.type.Decimal`): Count of distinct users for which reports have been received. Care must
-    /// be taken not to aggregate this count further, as it may result in users being counted multiple times. **Required
-    /// dimension:** This dimension must be always specified in all requests in the `dimensions` field in query
-    /// requests. * `reportType` (string): the type of error. The value should correspond to one of the possible values
-    /// in ErrorType. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the
-    /// user's device. * `versionCode` (int64): version of the app that was running on the user's device. *
-    /// `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): identifier of the
-    /// device's form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value should
-    /// correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB,
-    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
-    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
-    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// be taken not to aggregate this count further, as it may result in users being counted multiple times. This value
+    /// is not rounded, however it may be an approximation. **Required dimension:** This dimension must be always
+    /// specified in all requests in the `dimensions` field in query requests. * `reportType` (string): the type of
+    /// error. The value should correspond to one of the possible values in ErrorType. **Supported dimensions:** *
+    /// `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
+    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
+    /// user's device model. * `deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `issueId`
+    /// (string): the id an error was assigned to. The value should correspond to the `{issue}` component of the issue
+    /// name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
+    /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2385,9 +2389,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used
     /// as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was
     /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
-    /// taken not to aggregate this count further, as it may result in users being counted multiple times. **Supported
-    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
-    /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
+    /// taken not to aggregate this count further, as it may result in users being counted multiple times. The value is
+    /// rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
+    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
+    /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
     /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
     /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
     /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
@@ -2562,7 +2567,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// the aggregation period that were used as normalization value for the `anrRate` and `userPerceivedAnrRate`
         /// metrics. A user is counted in this metric if they used the app in the foreground during the aggregation
         /// period. Care must be taken not to aggregate this count further, as it may result in users being counted
-        /// multiple times.
+        /// multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on
+        /// the magnitude of the value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2669,7 +2675,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// metrics. A user is counted in this metric if they used the app actively during the aggregation period. An
         /// app is considered to be in active use if it is displaying any activity or executing any foreground service.
         /// Care must be taken not to aggregate this count further, as it may result in users being counted multiple
-        /// times.
+        /// times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the
+        /// magnitude of the value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2763,7 +2770,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`google.type.Decimal`): Absolute count of
         /// individual error reports that have been received for an app. * `distinctUsers` (`google.type.Decimal`):
         /// Count of distinct users for which reports have been received. Care must be taken not to aggregate this count
-        /// further, as it may result in users being counted multiple times.
+        /// further, as it may result in users being counted multiple times. This value is not rounded, however it may
+        /// be an approximation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2849,7 +2857,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as
         /// normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was
         /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
-        /// taken not to aggregate this count further, as it may result in users being counted multiple times.
+        /// taken not to aggregate this count further, as it may result in users being counted multiple times. The value
+        /// is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -2954,7 +2963,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// Count of distinct users in the aggregation period that were used as normalization value for the
         /// `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app was
         /// launched in the device. Care must be taken not to aggregate this count further, as it may result in users
-        /// being counted multiple times.
+        /// being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000,
+        /// depending on the magnitude of the value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -3052,7 +3062,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of
         /// distinct users in the aggregation period that were used as normalization value for the `slowStartRate`
         /// metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to
-        /// aggregate this count further, as it may result in users being counted multiple times.
+        /// aggregate this count further, as it may result in users being counted multiple times. The value is rounded
+        /// to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -3152,7 +3163,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// were used as normalization value for the `stuckBgWakelockRate` metric. A user is counted in this metric if
         /// they app was doing any work on the device, i.e., not just active foreground usage but also background work.
         /// Care must be taken not to aggregate this count further, as it may result in users being counted multiple
-        /// times.
+        /// times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the
+        /// magnitude of the value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
@@ -3261,9 +3273,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// aggregation period that were used as normalization value for the
     /// `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app rendered
     /// any frames. Care must be taken not to aggregate this count further, as it may result in users being counted
-    /// multiple times. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on
-    /// the user's device. * `versionCode` (int64): version of the app that was running on the user's device. *
-    /// `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): the type (also
+    /// multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the
+    /// magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was
+    /// running on the user's device. * `versionCode` (int64): version of the app that was running on the user's device.
+    /// * `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): the type (also
     /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
     /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
     /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
@@ -3305,8 +3318,9 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers`
     /// (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value
     /// for the `slowStartRate` metric. A user is counted in this metric if their app was launched in the device. Care
-    /// must be taken not to aggregate this count further, as it may result in users being counted multiple times.
-    /// **Required dimension:** This dimension must be specified with each request for the request to be valid. *
+    /// must be taken not to aggregate this count further, as it may result in users being counted multiple times. The
+    /// value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the
+    /// value. **Required dimension:** This dimension must be specified with each request for the request to be valid. *
     /// `startType` (string): the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`. **Supported
     /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
     /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
@@ -3355,12 +3369,13 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// distinct users in the aggregation period that were used as normalization value for the `stuckBgWakelockRate`
     /// metric. A user is counted in this metric if their app was doing any work on the device, i.e., not just active
     /// foreground usage but also background work. Care must be taken not to aggregate this count further, as it may
-    /// result in users being counted multiple times. **Supported dimensions:** * `apiLevel` (string): the API level of
-    /// Android that was running on the user's device. * `versionCode` (int64): version of the app that was running on
-    /// the user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-    /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country or
-    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
-    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or
+    /// 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API
+    /// level of Android that was running on the user's device. * `versionCode` (int64): version of the app that was
+    /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
+    /// `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the
+    /// country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g.
+    /// US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
     /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".

@@ -295,6 +295,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 ImportJobs = new ImportJobsResource(service);
                 Operations = new OperationsResource(service);
                 PreferenceSets = new PreferenceSetsResource(service);
+                ReportConfigs = new ReportConfigsResource(service);
                 Sources = new SourcesResource(service);
             }
 
@@ -3003,6 +3004,738 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 }
             }
 
+            /// <summary>Gets the ReportConfigs resource.</summary>
+            public virtual ReportConfigsResource ReportConfigs { get; }
+
+            /// <summary>The "reportConfigs" collection of methods.</summary>
+            public class ReportConfigsResource
+            {
+                private const string Resource = "reportConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReportConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Reports = new ReportsResource(service);
+                }
+
+                /// <summary>Gets the Reports resource.</summary>
+                public virtual ReportsResource Reports { get; }
+
+                /// <summary>The "reports" collection of methods.</summary>
+                public class ReportsResource
+                {
+                    private const string Resource = "reports";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ReportsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a report.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Value for parent.</param>
+                    public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Report body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a report.</summary>
+                    public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.Report body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Value for parent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. User specified id for the report. It will become the last component of the report
+                        /// name. The id must be unique within the project, must conform with RFC-1034, is restricted to
+                        /// lower-cased letters, and has a maximum length of 63 characters. The id must match the
+                        /// regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("reportId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ReportId { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.MigrationCenterAPI.v1alpha1.Data.Report Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/reports";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "reportId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a Report.</summary>
+                    /// <param name="name">Required. Name of the resource.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a Report.</summary>
+                    public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes after the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Report.</summary>
+                    /// <param name="name">Required. Name of the resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single Report.</summary>
+                    public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Report>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Determines what information to retrieve for the Report.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Determines what information to retrieve for the Report.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// The report view is not specified. The API displays the basic view by default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_UNSPECIFIED")]
+                            REPORTVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// The report view includes only basic metadata of the Report. Useful for list views.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_BASIC")]
+                            REPORTVIEWBASIC = 1,
+
+                            /// <summary>
+                            /// The report view includes all the metadata of the Report. Useful for preview.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_FULL")]
+                            REPORTVIEWFULL = 2,
+
+                            /// <summary>
+                            /// The report view includes the standard metadata of an report. Useful for detail view.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_STANDARD")]
+                            REPORTVIEWSTANDARD = 3,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Reports in a given ReportConfig.</summary>
+                    /// <param name="parent">Required. Parent value for `ListReportsRequest`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Reports in a given ReportConfig.</summary>
+                    public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListReportsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Parent value for `ListReportsRequest`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Requested page size. The server may return fewer items than requested. If unspecified, the
+                        /// server will pick an appropriate default value.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A token identifying a page of results that the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Determines what information to retrieve for each Report.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Determines what information to retrieve for each Report.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// The report view is not specified. The API displays the basic view by default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_UNSPECIFIED")]
+                            REPORTVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// The report view includes only basic metadata of the Report. Useful for list views.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_BASIC")]
+                            REPORTVIEWBASIC = 1,
+
+                            /// <summary>
+                            /// The report view includes all the metadata of the Report. Useful for preview.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_FULL")]
+                            REPORTVIEWFULL = 2,
+
+                            /// <summary>
+                            /// The report view includes the standard metadata of an report. Useful for detail view.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("REPORT_VIEW_STANDARD")]
+                            REPORTVIEWSTANDARD = 3,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/reports";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a report configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a report configuration.</summary>
+                public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. User specified ID for the report config. It will become the last component of the
+                    /// report config name. The ID must be unique within the project, must conform with RFC-1034, is
+                    /// restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match
+                    /// the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("reportConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ReportConfigId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/reportConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("reportConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "reportConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a ReportConfig.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a ReportConfig.</summary>
+                public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to `true`, any child `Reports` of this entity will also be deleted. If set to
+                    /// `false`, the request only works if the resource has no children.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single ReportConfig.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single ReportConfig.</summary>
+                public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists ReportConfigs in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for `ListReportConfigsRequest`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists ReportConfigs in a given project and location.</summary>
+                public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListReportConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for `ListReportConfigsRequest`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field to sort by. See https://google.aip.dev/132#ordering for more details.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Requested page size. Server may return fewer items than requested. If unspecified, server will
+                    /// pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/reportConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Sources resource.</summary>
             public virtual SourcesResource Sources { get; }
 
@@ -5139,6 +5872,44 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing report configs.</summary>
+    public class ListReportConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of report configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportConfigs")]
+        public virtual System.Collections.Generic.IList<ReportConfig> ReportConfigs { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing Reports.</summary>
+    public class ListReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reports")]
+        public virtual System.Collections.Generic.IList<Report> Reports { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing sources.</summary>
     public class ListSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5253,6 +6024,32 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. A VMWare Engine target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineTarget")]
         public virtual VmwareEngineMigrationTarget VmwareEngineTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5694,9 +6491,385 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Report represents a point-in-time rendering of the ReportConfig results.</summary>
+    public class Report : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Free-text description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Name of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Report creation state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Summary view of the Report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual ReportSummary Summary { get; set; }
+
+        /// <summary>Report type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Last update timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response to a call to `ReportAssetFrame`.</summary>
     public class ReportAssetFramesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The groups and associated preference sets on which we can generate reports.</summary>
+    public class ReportConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Free-text description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Collection of combinations of groups and preference sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupPreferencesetAssignments")]
+        public virtual System.Collections.Generic.IList<ReportConfigGroupPreferenceSetAssignment> GroupPreferencesetAssignments { get; set; }
+
+        /// <summary>Output only. Name of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a combination of a group with a preference set.</summary>
+    public class ReportConfigGroupPreferenceSetAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Name of the Preference Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
+        public virtual string PreferenceSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes the Summary view of a Report, which contains aggregated values for all the groups and preference sets
+    /// included in this Report.
+    /// </summary>
+    public class ReportSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregate statistics for all the assets across all the groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allAssetsStats")]
+        public virtual ReportSummaryAssetAggregateStats AllAssetsStats { get; set; }
+
+        /// <summary>Findings for each Group included in this report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupFindings")]
+        public virtual System.Collections.Generic.IList<ReportSummaryGroupFinding> GroupFindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregate statistics for a collection of assets.</summary>
+    public class ReportSummaryAssetAggregateStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets grouped by age.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetAge")]
+        public virtual ReportSummaryChartData AssetAge { get; set; }
+
+        /// <summary>Histogram showing a distribution of CPU core counts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCountHistogram")]
+        public virtual ReportSummaryHistogramChartData CoreCountHistogram { get; set; }
+
+        /// <summary>Histogram showing a distribution of memory sizes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesHistogram")]
+        public virtual ReportSummaryHistogramChartData MemoryBytesHistogram { get; set; }
+
+        /// <summary>Total memory split into Used/Free buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUtilization")]
+        public virtual ReportSummaryChartData MemoryUtilization { get; set; }
+
+        /// <summary>Total memory split into Used/Free buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUtilizationChart")]
+        public virtual ReportSummaryUtilizationChartData MemoryUtilizationChart { get; set; }
+
+        /// <summary>Count of assets grouped by Operating System families.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
+        public virtual ReportSummaryChartData OperatingSystem { get; set; }
+
+        /// <summary>Histogram showing a distribution of memory sizes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageBytesHistogram")]
+        public virtual ReportSummaryHistogramChartData StorageBytesHistogram { get; set; }
+
+        /// <summary>Total storage split into Used/Free buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUtilization")]
+        public virtual ReportSummaryChartData StorageUtilization { get; set; }
+
+        /// <summary>Total memory split into Used/Free buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUtilizationChart")]
+        public virtual ReportSummaryUtilizationChartData StorageUtilizationChart { get; set; }
+
+        /// <summary>Count of the number of unique assets in this collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAssets")]
+        public virtual System.Nullable<long> TotalAssets { get; set; }
+
+        /// <summary>Sum of the CPU core count of all the assets in this collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCores")]
+        public virtual System.Nullable<long> TotalCores { get; set; }
+
+        /// <summary>Sum of the memory in bytes of all the assets in this collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalMemoryBytes")]
+        public virtual System.Nullable<long> TotalMemoryBytes { get; set; }
+
+        /// <summary>Sum of persistent storage in bytes of all the assets in this collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStorageBytes")]
+        public virtual System.Nullable<long> TotalStorageBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a collection of data points rendered as a Chart.</summary>
+    public class ReportSummaryChartData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Each data point in the chart is represented as a name-value pair with the name being the x-axis label, and
+        /// the value being the y-axis value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPoints")]
+        public virtual System.Collections.Generic.IList<ReportSummaryChartDataDataPoint> DataPoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a single data point in the Chart.</summary>
+    public class ReportSummaryChartDataDataPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The X-axis label for this data point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The Y-axis value for this data point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary Findings for a specific Group.</summary>
+    public class ReportSummaryGroupFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary statistics for all the assets in this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetAggregateStats")]
+        public virtual ReportSummaryAssetAggregateStats AssetAggregateStats { get; set; }
+
+        /// <summary>Description for the Group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display Name for the Group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Count of the number of assets in this group which are also included in another group within the same report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overlappingAssetCount")]
+        public virtual System.Nullable<long> OverlappingAssetCount { get; set; }
+
+        /// <summary>Findings for each of the PreferenceSets for this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferenceSetFindings")]
+        public virtual System.Collections.Generic.IList<ReportSummaryGroupPreferenceSetFinding> PreferenceSetFindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary Findings for a specific Group/PreferenceSet combination.</summary>
+    public class ReportSummaryGroupPreferenceSetFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description for the Preference Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display Name of the Preference Set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A set of findings that applies to all machines in the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineFinding")]
+        public virtual ReportSummaryMachineFinding MachineFinding { get; set; }
+
+        /// <summary>A set of preferences that applies to all machines in the context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
+        public virtual VirtualMachinePreferences MachinePreferences { get; set; }
+
+        /// <summary>Compute monthly cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostCompute")]
+        public virtual Money MonthlyCostCompute { get; set; }
+
+        /// <summary>Network Egress monthly cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostNetworkEgress")]
+        public virtual Money MonthlyCostNetworkEgress { get; set; }
+
+        /// <summary>Licensing monthly cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOsLicense")]
+        public virtual Money MonthlyCostOsLicense { get; set; }
+
+        /// <summary>Miscellaneous monthly cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOther")]
+        public virtual Money MonthlyCostOther { get; set; }
+
+        /// <summary>Storage monthly cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostStorage")]
+        public virtual Money MonthlyCostStorage { get; set; }
+
+        /// <summary>Total monthly cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostTotal")]
+        public virtual Money MonthlyCostTotal { get; set; }
+
+        /// <summary>Target region for this Preference Set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredRegion")]
+        public virtual string PreferredRegion { get; set; }
+
+        /// <summary>Text describing the pricing track specified for this Preference Set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricingTrack")]
+        public virtual string PricingTrack { get; set; }
+
+        /// <summary>Text describing the business priority specified for this Preference Set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topPriority")]
+        public virtual string TopPriority { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Histogram Chart shows a distribution of values into buckets, showing a count of values which fall into a
+    /// bucket.
+    /// </summary>
+    public class ReportSummaryHistogramChartData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Buckets in the histogram. There will be `n+1` buckets matching `n` lower bounds in the request. The first
+        /// bucket will be from -infinity to the first bound. Subsequent buckets will be between one bound and the next.
+        /// The final bucket will be from the final bound to infinity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
+        public virtual System.Collections.Generic.IList<ReportSummaryHistogramChartDataBucket> Buckets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds.
+    /// The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may
+    /// be infinity.
+    /// </summary>
+    public class ReportSummaryHistogramChartDataBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of items in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Lower bound - inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
+        public virtual System.Nullable<long> LowerBound { get; set; }
+
+        /// <summary>Upper bound - exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
+        public virtual System.Nullable<long> UpperBound { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of findings that applies to assets of type Virtual/Physical Machine.</summary>
+    public class ReportSummaryMachineFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets which were allocated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>Set of disk types allocated to assets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedDiskTypes")]
+        public virtual System.Collections.Generic.IList<string> AllocatedDiskTypes { get; set; }
+
+        /// <summary>Set of regions in which the assets were allocated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedRegions")]
+        public virtual System.Collections.Generic.IList<string> AllocatedRegions { get; set; }
+
+        /// <summary>Distribution of assets based on the Machine Series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineSeriesAllocations")]
+        public virtual System.Collections.Generic.IList<ReportSummaryMachineSeriesAllocation> MachineSeriesAllocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a data point tracking the count of assets allocated for a specific Machine Series.</summary>
+    public class ReportSummaryMachineSeriesAllocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets allocated to this machine series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>The Machine Series (e.g. "E2", "N2")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineSeries")]
+        public virtual MachineSeries MachineSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free"
+    /// buckets.
+    /// </summary>
+    public class ReportSummaryUtilizationChartData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregate value which falls into the "Free" bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("free")]
+        public virtual System.Nullable<long> Free { get; set; }
+
+        /// <summary>Aggregate value which falls into the "Used" bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("used")]
+        public virtual System.Nullable<long> Used { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

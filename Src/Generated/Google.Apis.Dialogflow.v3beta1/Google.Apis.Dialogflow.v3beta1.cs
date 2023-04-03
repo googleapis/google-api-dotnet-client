@@ -9501,7 +9501,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>
     /// An intent represents a user's intent to interact with a conversational agent. You can provide information for
     /// the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user
-    /// input) to your intent.
+    /// input) to your intent. Next ID: 15
     /// </summary>
     public class GoogleCloudDialogflowCxV3Intent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10528,6 +10528,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponseId")]
         public virtual string DetectIntentResponseId { get; set; }
+
+        /// <summary>If DTMF was provided as input, this field will contain the DTMF digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfDigits")]
+        public virtual string DtmfDigits { get; set; }
 
         /// <summary>Always present. Information about the fulfillment that triggered this webhook call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentInfo")]
@@ -12702,7 +12706,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents an example that the agent is trained on to identify the intent.</summary>
+    /// <summary>Represents an example that the agent is trained on to identify the intent. Next ID: 15</summary>
     public class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique identifier of the training phrase.</summary>
@@ -13589,7 +13593,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
-        /// <summary>If a DTMF was provided as input, this field will contain a copy of the DTMFInput.</summary>
+        /// <summary>If a DTMF was provided as input, this field will contain a copy of the DtmfInput.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dtmf")]
         public virtual GoogleCloudDialogflowCxV3beta1DtmfInput Dtmf { get; set; }
 
@@ -15078,6 +15082,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponseId")]
         public virtual string DetectIntentResponseId { get; set; }
+
+        /// <summary>If DTMF was provided as input, this field will contain the DTMF digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfDigits")]
+        public virtual string DtmfDigits { get; set; }
 
         /// <summary>Always present. Information about the fulfillment that triggered this webhook call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentInfo")]

@@ -1137,6 +1137,65 @@ namespace Google.Apis.Contactcenterinsights.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Create a longrunning conversation upload operation. This method differs from CreateConversation by
+                /// allowing audio transcription and optional DLP redaction.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource of the conversation.</param>
+                public virtual UploadRequest Upload(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1UploadConversationRequest body, string parent)
+                {
+                    return new UploadRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Create a longrunning conversation upload operation. This method differs from CreateConversation by
+                /// allowing audio transcription and optional DLP redaction.
+                /// </summary>
+                public class UploadRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Upload request.</summary>
+                    public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1UploadConversationRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the conversation.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1UploadConversationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upload";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/conversations:upload";
+
+                    /// <summary>Initializes Upload parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Insightsdata resource.</summary>
@@ -4569,6 +4628,27 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DLP resources used for redaction while ingesting conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1RedactionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified DLP deidentify template resource name. Format:
+        /// `projects/{project}/deidentifyTemplates/{template}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
+        public virtual string DeidentifyTemplate { get; set; }
+
+        /// <summary>
+        /// The fully-qualified DLP inspect template resource name. Format:
+        /// `projects/{project}/inspectTemplates/{template}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
+        public virtual string InspectTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An annotation that was generated during the customer and agent interaction.</summary>
     public class GoogleCloudContactcenterinsightsV1RuntimeAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4681,6 +4761,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubNotificationSettings")]
         public virtual System.Collections.Generic.IDictionary<string, string> PubsubNotificationSettings { get; set; }
+
+        /// <summary>Default DLP redaction resources to be applied while ingesting conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
 
         /// <summary>Output only. The time at which the settings were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -4822,6 +4906,62 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for an UploadConversation operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1UploadConversationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The operation name for a successfully created analysis operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisOperation")]
+        public virtual string AnalysisOperation { get; set; }
+
+        /// <summary>Output only. The redaction config applied to the uploaded conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedRedactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1RedactionConfig AppliedRedactionConfig { get; set; }
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1UploadConversationRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to upload a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1UploadConversationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The conversation resource to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual GoogleCloudContactcenterinsightsV1Conversation Conversation { get; set; }
+
+        /// <summary>
+        /// Optional. A unique ID for the new conversation. This ID will become the final component of the
+        /// conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should
+        /// be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>Required. The parent resource of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The View resource.</summary>
     public class GoogleCloudContactcenterinsightsV1View : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4846,6 +4986,109 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>String with specific view properties, must be non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The analysis resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1Analysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The result of the analysis, which is populated when the analysis finishes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnalysisResult AnalysisResult { get; set; }
+
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector AnnotatorSelector { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the analysis was created, which occurs when the long-running operation
+        /// completes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the analysis. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The time at which the analysis was requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual object RequestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of an analysis.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Call-specific metadata created by the analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callAnalysisMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata CallAnalysisMetadata { get; set; }
+
+        /// <summary>The time at which the analysis ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Call-specific metadata created during analysis.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of call annotations that apply to this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation> Annotations { get; set; }
+
+        /// <summary>All the entities in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1alpha1Entity> Entities { get; set; }
+
+        /// <summary>All the matched intents in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1alpha1Intent> Intents { get; set; }
+
+        /// <summary>Overall conversation-level issue modeling result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModelResult")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IssueModelResult IssueModelResult { get; set; }
+
+        /// <summary>All the matched phrase matchers in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData> PhraseMatchers { get; set; }
+
+        /// <summary>Overall conversation-level sentiment for each channel of the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment> Sentiments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A point in a conversation that marks the start or the end of an annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The index in the sequence of transcribed pieces of the conversation where the boundary is located. This
+        /// index starts at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptIndex")]
+        public virtual System.Nullable<int> TranscriptIndex { get; set; }
+
+        /// <summary>
+        /// The word index of this boundary with respect to the first word in the transcript piece. This index starts at
+        /// zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordIndex")]
+        public virtual System.Nullable<int> WordIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4901,6 +5144,68 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Whether to run the silence annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runSilenceAnnotator")]
         public virtual System.Nullable<bool> RunSilenceAnnotator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The feedback that the customer has about a certain answer in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether an answer or item was clicked by the human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clicked")]
+        public virtual System.Nullable<bool> Clicked { get; set; }
+
+        /// <summary>The correctness level of an answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctnessLevel")]
+        public virtual string CorrectnessLevel { get; set; }
+
+        /// <summary>
+        /// Indicates whether an answer or item was displayed to the human agent in the agent desktop UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayed")]
+        public virtual System.Nullable<bool> Displayed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist Article Suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The system's confidence score that this article is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>
+        /// Map that contains metadata about the Article Suggestion and the document that it originates from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>
+        /// The knowledge document that this answer was extracted from. Format:
+        /// projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Article title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Article URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4976,6 +5281,344 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Count of successful analyses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successfulAnalysisCount")]
         public virtual System.Nullable<int> SuccessfulAnalysisCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A piece of metadata that applies to a window of a call.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1CallAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The boundary in the conversation where the annotation ends, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationEndBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary AnnotationEndBoundary { get; set; }
+
+        /// <summary>The boundary in the conversation where the annotation starts, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStartBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary AnnotationStartBoundary { get; set; }
+
+        /// <summary>
+        /// The channel of the audio where the annotation occurs. For single-channel audio, this field is not populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
+        public virtual System.Nullable<int> ChannelTag { get; set; }
+
+        /// <summary>Data specifying an entity mention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMentionData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1EntityMentionData EntityMentionData { get; set; }
+
+        /// <summary>Data specifying a hold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holdData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1HoldData HoldData { get; set; }
+
+        /// <summary>Data specifying an intent match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IntentMatchData IntentMatchData { get; set; }
+
+        /// <summary>Data specifying an interruption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interruptionData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1InterruptionData InterruptionData { get; set; }
+
+        /// <summary>Data specifying an issue match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IssueMatchData IssueMatchData { get; set; }
+
+        /// <summary>Data specifying a phrase match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData PhraseMatchData { get; set; }
+
+        /// <summary>Data specifying sentiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SentimentData SentimentData { get; set; }
+
+        /// <summary>Data specifying silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silenceData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SilenceData SilenceData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1Conversation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An opaque, user-specified string representing the human agent who handled the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Call-specific metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata CallMetadata { get; set; }
+
+        /// <summary>Output only. The time at which the conversation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The source of the audio and transcription for the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource DataSource { get; set; }
+
+        /// <summary>
+        /// Output only. All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent,
+        /// format: projects/{project}/agent/{agent}/intents/{intent}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowIntents")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent> DialogflowIntents { get; set; }
+
+        /// <summary>Output only. The duration of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// The time at which this conversation should expire. After this time, the conversation data and any associated
+        /// analyses will be deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a
+        /// maximum of 256 characters per entry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>A user-specified language code for the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Output only. The conversation's latest analysis, if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestAnalysis")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1Analysis LatestAnalysis { get; set; }
+
+        /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the conversation. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Obfuscated user ID which the customer sent to us.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedUserId")]
+        public virtual string ObfuscatedUserId { get; set; }
+
+        /// <summary>
+        /// Output only. The annotations that were generated during the customer and agent interaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation> RuntimeAnnotations { get; set; }
+
+        /// <summary>The time at which the conversation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Output only. The conversation transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript Transcript { get; set; }
+
+        /// <summary>
+        /// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire
+        /// time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>Output only. The number of turns in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnCount")]
+        public virtual System.Nullable<int> TurnCount { get; set; }
+
+        /// <summary>Output only. The most recent time at which the conversation was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Call-specific metadata.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The audio channel that contains the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
+        public virtual System.Nullable<int> AgentChannel { get; set; }
+
+        /// <summary>The audio channel that contains the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
+        public virtual System.Nullable<int> CustomerChannel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation source, which is a combination of transcript and audio.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source when the conversation comes from Dialogflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowSource")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DialogflowSource DialogflowSource { get; set; }
+
+        /// <summary>A Cloud Storage location specification for the audio and transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1GcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One channel of conversation-level sentiment data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The channel of the audio that the data applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
+        public virtual System.Nullable<int> ChannelTag { get; set; }
+
+        /// <summary>Data specifying sentiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentData")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SentimentData SentimentData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The call participant speaking for a given utterance.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowParticipant")]
+        public virtual string DialogflowParticipant { get; set; }
+
+        /// <summary>
+        /// The name of the participant provided by Dialogflow. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowParticipantName")]
+        public virtual string DialogflowParticipantName { get; set; }
+
+        /// <summary>Obfuscated user ID from Dialogflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalUserId")]
+        public virtual string ObfuscatedExternalUserId { get; set; }
+
+        /// <summary>The role of the participant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>A user-specified ID representing the participant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing the transcript of a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of sequential transcript segments that comprise the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptSegments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment> TranscriptSegments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A segment of a full transcript.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For conversations derived from multi-channel audio, this is the channel number corresponding to the audio
+        /// from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of
+        /// 0 indicates that the audio is mono.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
+        public virtual System.Nullable<int> ChannelTag { get; set; }
+
+        /// <summary>
+        /// A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates
+        /// that the value is unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>CCAI metadata relating to the current transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowSegmentMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata DialogflowSegmentMetadata { get; set; }
+
+        /// <summary>
+        /// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+        /// Example: "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The time that the message occurred, if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageTime")]
+        public virtual object MessageTime { get; set; }
+
+        /// <summary>The participant of this segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentParticipant")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant SegmentParticipant { get; set; }
+
+        /// <summary>The sentiment for this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SentimentData Sentiment { get; set; }
+
+        /// <summary>The text of this segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>A list of the word-specific information for each word in the segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo> Words { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata from Dialogflow relating to the current transcript segment.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAllowlistCovered")]
+        public virtual System.Nullable<bool> SmartReplyAllowlistCovered { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Word-level info for words in a transcript.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates
+        /// that the value is unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>Time offset of the end of this word relative to the beginning of the total conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>
+        /// Time offset of the start of this word relative to the beginning of the total conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The word itself. Includes punctuation marks that surround the word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5105,6 +5748,118 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable name of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dialogflow interaction data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowIntentId")]
+        public virtual string DialogflowIntentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Dialogflow source of conversation data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DialogflowSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
+        public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the Dialogflow conversation that this conversation resource is derived from.
+        /// Format: projects/{project}/locations/{location}/conversations/{conversation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversation")]
+        public virtual string DialogflowConversation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a
+    /// person, an organization, or location.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1Entity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The representative name for the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL
+        /// (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with
+        /// other entity types, see the Type table below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity
+        /// provides information about the importance or centrality of that entity to the entire document text. Scores
+        /// closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salience")]
+        public virtual System.Nullable<float> Salience { get; set; }
+
+        /// <summary>The aggregate sentiment expressed for this entity in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SentimentData Sentiment { get; set; }
+
+        /// <summary>The entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1EntityMentionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is
+        /// attached to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityUniqueId")]
+        public virtual string EntityUniqueId { get; set; }
+
+        /// <summary>Sentiment expressed for this mention of the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SentimentData Sentiment { get; set; }
+
+        /// <summary>The type of the entity mention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for an export insights operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5193,6 +5948,69 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>Response for an export insights operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist frequently-asked-question answer data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The piece of text from the `source` knowledge base document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>
+        /// The system's confidence score that this answer is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>Map that contains metadata about the FAQ answer and the document that it originates from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>The corresponding FAQ question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>
+        /// The knowledge document that this answer was extracted from. Format:
+        /// projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Cloud Storage source of conversation data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
+        public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptUri")]
+        public virtual string TranscriptUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for a hold annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1HoldData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5321,6 +6139,79 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1Intent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable name of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The unique identifier of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an intent match. Represents an intent match for a text segment in the conversation. A text segment
+    /// can be part of a sentence, a complete sentence, or an utterance with multiple sentences.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IntentMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The id of the matched intent. Can be used to retrieve the corresponding intent information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentUniqueId")]
+        public virtual string IntentUniqueId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for an interruption annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1InterruptionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the issue.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IssueAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since
+        /// then.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Resource name of the assigned issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual string Issue { get; set; }
+
+        /// <summary>Score indicating the likelihood of the issue assignment. currently bounded on [0,1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for an issue match annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IssueMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the issue's assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueAssignment")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IssueAssignment IssueAssignment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The issue model resource.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IssueModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5425,6 +6316,197 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Issue Modeling result on a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1IssueModelResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Issue model that generates the result. Format:
+        /// projects/{project}/locations/{location}/issueModels/{issue_model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
+        public virtual string IssueModel { get; set; }
+
+        /// <summary>All the matched issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment> Issues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable name of the phrase matcher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The unique identifier (the resource name) of the phrase matcher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatcher")]
+        public virtual string PhraseMatcher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DLP resources used for redaction while ingesting conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1RedactionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified DLP deidentify template resource name. Format:
+        /// `projects/{project}/deidentifyTemplates/{template}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
+        public virtual string DeidentifyTemplate { get; set; }
+
+        /// <summary>
+        /// The fully-qualified DLP inspect template resource name. Format:
+        /// `projects/{project}/inspectTemplates/{template}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
+        public virtual string InspectTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An annotation that was generated during the customer and agent interaction.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique identifier of the annotation. Format:
+        /// projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationId")]
+        public virtual string AnnotationId { get; set; }
+
+        /// <summary>The feedback that the customer has about the answer in `data`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerFeedback")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback AnswerFeedback { get; set; }
+
+        /// <summary>Agent Assist Article Suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData ArticleSuggestion { get; set; }
+
+        /// <summary>The time at which this annotation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Dialogflow interaction data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteraction")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData DialogflowInteraction { get; set; }
+
+        /// <summary>The boundary in the conversation where the annotation ends, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary EndBoundary { get; set; }
+
+        /// <summary>Agent Assist FAQ answer data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faqAnswer")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData FaqAnswer { get; set; }
+
+        /// <summary>Agent Assist Smart Compose suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartComposeSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData SmartComposeSuggestion { get; set; }
+
+        /// <summary>Agent Assist Smart Reply data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReply")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SmartReplyData SmartReply { get; set; }
+
+        /// <summary>The boundary in the conversation where the annotation starts, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary StartBoundary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for a sentiment annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SentimentData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A non-negative number from 0 to infinity which represents the abolute magnitude of sentiment regardless of
+        /// score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
+        public virtual System.Nullable<float> Magnitude { get; set; }
+
+        /// <summary>The sentiment score between -1.0 (negative) and 1.0 (positive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for a silence annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SilenceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist Smart Compose suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<double> ConfidenceScore { get; set; }
+
+        /// <summary>
+        /// Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>The content of the suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist Smart Reply data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SmartReplyData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The system's confidence score that this reply is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<double> ConfidenceScore { get; set; }
+
+        /// <summary>
+        /// Map that contains metadata about the Smart Reply and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>The content of the reply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reply")]
+        public virtual string Reply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for undeploying an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5458,6 +6540,62 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The response to undeploy an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for an UploadConversation operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The operation name for a successfully created analysis operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisOperation")]
+        public virtual string AnalysisOperation { get; set; }
+
+        /// <summary>Output only. The redaction config applied to the uploaded conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedRedactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1RedactionConfig AppliedRedactionConfig { get; set; }
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to upload a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The conversation resource to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1Conversation Conversation { get; set; }
+
+        /// <summary>
+        /// Optional. A unique ID for the new conversation. This ID will become the final component of the
+        /// conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should
+        /// be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>Required. The parent resource of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1RedactionConfig RedactionConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

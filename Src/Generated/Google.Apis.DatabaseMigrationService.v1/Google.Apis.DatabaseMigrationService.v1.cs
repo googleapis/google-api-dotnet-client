@@ -4199,6 +4199,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Settings for creating an AlloyDB cluster.</summary>
     public class AlloyDbSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data
+        /// resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the
+        /// cluster will then use default encryption scheme to protect the user data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
         /// <summary>Required. Input only. Initial user to setup during cluster creation. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialUser")]
         public virtual UserPassword InitialUser { get; set; }
@@ -5052,6 +5060,23 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed
+    /// encryption key).
+    /// </summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following
+        /// format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

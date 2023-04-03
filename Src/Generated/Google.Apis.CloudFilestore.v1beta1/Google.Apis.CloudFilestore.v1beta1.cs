@@ -2955,7 +2955,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxCapacityGb")]
         public virtual System.Nullable<long> MaxCapacityGb { get; set; }
 
-        /// <summary>Output only. The max number of shares allowed.</summary>
+        /// <summary>The max number of shares allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxShareCount")]
         public virtual System.Nullable<long> MaxShareCount { get; set; }
 

@@ -2405,7 +2405,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. The resource instance type on which this policy applies. Format will be of the form : "/"
+        /// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/`
         /// Example: * `compute.googleapis.com/Instance`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]

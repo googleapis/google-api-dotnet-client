@@ -524,11 +524,11 @@ namespace Google.Apis.CloudProfiler.v2.Data
     /// </summary>
     public class CreateProfileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Deployment details.</summary>
+        /// <summary>Deployment details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual Deployment Deployment { get; set; }
 
-        /// <summary>Required. One or more profile types that the agent is capable of providing.</summary>
+        /// <summary>One or more profile types that the agent is capable of providing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
         public virtual System.Collections.Generic.IList<string> ProfileType { get; set; }
 

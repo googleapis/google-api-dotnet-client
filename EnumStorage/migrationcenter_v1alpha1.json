@@ -29,5 +29,17 @@
     "IMPORT_JOB_VIEW_UNSPECIFIED",
     "IMPORT_JOB_VIEW_BASIC",
     "IMPORT_JOB_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1alpha1.ProjectsResource+LocationsResource+ReportConfigsResource+ReportsResource+GetRequest.ViewEnum": [
+    "REPORT_VIEW_UNSPECIFIED",
+    "REPORT_VIEW_BASIC",
+    "REPORT_VIEW_FULL",
+    "REPORT_VIEW_STANDARD"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1alpha1.ProjectsResource+LocationsResource+ReportConfigsResource+ReportsResource+ListRequest.ViewEnum": [
+    "REPORT_VIEW_UNSPECIFIED",
+    "REPORT_VIEW_BASIC",
+    "REPORT_VIEW_FULL",
+    "REPORT_VIEW_STANDARD"
   ]
 }
