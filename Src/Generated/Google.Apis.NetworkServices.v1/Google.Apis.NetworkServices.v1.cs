@@ -4757,12 +4757,7 @@ namespace Google.Apis.NetworkServices.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -4772,12 +4767,7 @@ namespace Google.Apis.NetworkServices.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListOperationsResponse>
                 {
@@ -6478,6 +6468,21 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// </summary>
     public class Gateway : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is
+        /// provided, an IP from the subnetwork is allocated This field only applies to gateways of type
+        /// 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
+        public virtual System.Collections.Generic.IList<string> Addresses { get; set; }
+
+        /// <summary>
+        /// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on
+        /// SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateUrls")]
+        public virtual System.Collections.Generic.IList<string> CertificateUrls { get; set; }
+
         /// <summary>Output only. The timestamp when the resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -6485,6 +6490,15 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security
+        /// policy to inbound (VM to Proxy) initiated connections. For example:
+        /// `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type
+        /// 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewaySecurityPolicy")]
+        public virtual string GatewaySecurityPolicy { get; set; }
 
         /// <summary>Optional. Set of label tags associated with the Gateway resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -6495,6 +6509,14 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The relative resource name identifying the VPC network that is using this configuration. For
+        /// example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type
+        /// 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
 
         /// <summary>
         /// Required. One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to
@@ -6523,6 +6545,14 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverTlsPolicy")]
         public virtual string ServerTlsPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example:
+        /// `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type
+        /// 'SECURE_WEB_GATEWAY".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
 
         /// <summary>
         /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is

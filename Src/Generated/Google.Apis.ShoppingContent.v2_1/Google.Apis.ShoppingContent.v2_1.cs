@@ -59,6 +59,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Promotions = new PromotionsResource(this);
             Pubsubnotificationsettings = new PubsubnotificationsettingsResource(this);
             Quotas = new QuotasResource(this);
+            Recommendations = new RecommendationsResource(this);
             Regionalinventory = new RegionalinventoryResource(this);
             Regions = new RegionsResource(this);
             Reports = new ReportsResource(this);
@@ -178,6 +179,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Quotas resource.</summary>
         public virtual QuotasResource Quotas { get; }
+
+        /// <summary>Gets the Recommendations resource.</summary>
+        public virtual RecommendationsResource Recommendations { get; }
 
         /// <summary>Gets the Regionalinventory resource.</summary>
         public virtual RegionalinventoryResource Regionalinventory { get; }
@@ -10543,6 +10547,152 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
     }
 
+    /// <summary>The "recommendations" collection of methods.</summary>
+    public class RecommendationsResource
+    {
+        private const string Resource = "recommendations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RecommendationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Generates recommendations for a merchant.</summary>
+        /// <param name="merchantId">Required. The ID of the account to fetch recommendations for.</param>
+        public virtual GenerateRequest Generate(long merchantId)
+        {
+            return new GenerateRequest(service, merchantId);
+        }
+
+        /// <summary>Generates recommendations for a merchant.</summary>
+        public class GenerateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.GenerateRecommendationsResponse>
+        {
+            /// <summary>Constructs a new Generate request.</summary>
+            public GenerateRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account to fetch recommendations for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Optional. List of allowed tags. Tags are a set of predefined strings that describe the category that
+            /// individual recommendation types. User can specify zero or more tags in this field to indicate what group
+            /// of recommendations they want to receive. Current list of supported tags: - TREND
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("allowedTag", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AllowedTag { get; set; }
+
+            /// <summary>
+            /// Optional. Language code of the client. If not set, the result will be in default language (English).
+            /// This language code affects all fields prefixed with "localized". This should be set to ISO 639-1 country
+            /// code. List of currently verified supported language code: en, fr, cs, da, de, es, it, nl, no, pl, pt,
+            /// pt, fi, sv, vi, tr, th, ko, zh-CN, zh-TW, ja, id, hi
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/recommendations/generate";
+
+            /// <summary>Initializes Generate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allowedTag", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allowedTag",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Reports an interaction on a recommendation for a merchant.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account that wants to report an interaction.</param>
+        public virtual ReportInteractionRequest ReportInteraction(Google.Apis.ShoppingContent.v2_1.Data.ReportInteractionRequest body, long merchantId)
+        {
+            return new ReportInteractionRequest(service, body, merchantId);
+        }
+
+        /// <summary>Reports an interaction on a recommendation for a merchant.</summary>
+        public class ReportInteractionRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new ReportInteraction request.</summary>
+            public ReportInteractionRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReportInteractionRequest body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that wants to report an interaction.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ReportInteractionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "reportInteraction";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/recommendations/reportInteraction";
+
+            /// <summary>Initializes ReportInteraction parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "regionalinventory" collection of methods.</summary>
     public class RegionalinventoryResource
     {
@@ -16181,6 +16331,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cooldownTime")]
         public virtual object CooldownTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing generated recommendations.</summary>
+    public class GenerateRecommendationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Recommendations generated for a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendations")]
+        public virtual System.Collections.Generic.IList<Recommendation> Recommendations { get; set; }
+
+        /// <summary>
+        /// Output only. Response token is a string created for each `GenerateRecommendationsResponse`. This token
+        /// doesn't expire, and is globally unique. This token must be used when reporting interactions for
+        /// recommendations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseToken")]
+        public virtual string ResponseToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22649,6 +22818,147 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Recommendations are suggested ways to improve your merchant account's performance. For example, to engage with a
+    /// feature, or start using a new Google product.
+    /// </summary>
+    public class Recommendation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CTAs of this recommendation. Repeated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalCallToAction")]
+        public virtual System.Collections.Generic.IList<RecommendationCallToAction> AdditionalCallToAction { get; set; }
+
+        /// <summary>
+        /// Output only. List of additional localized descriptions for a recommendation. Localication uses the
+        /// `languageCode` field in `GenerateRecommendations` requests. Not all description types are guaranteed to be
+        /// present and we recommend to rely on default description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalDescriptions")]
+        public virtual System.Collections.Generic.IList<RecommendationDescription> AdditionalDescriptions { get; set; }
+
+        /// <summary>Output only. Any creatives attached to the recommendation. Repeated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creative")]
+        public virtual System.Collections.Generic.IList<RecommendationCreative> Creative { get; set; }
+
+        /// <summary>Optional. Default CTA of the recommendation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCallToAction")]
+        public virtual RecommendationCallToAction DefaultCallToAction { get; set; }
+
+        /// <summary>
+        /// Optional. Localized recommendation description. The localization the {@link
+        /// `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultDescription")]
+        public virtual string DefaultDescription { get; set; }
+
+        /// <summary>
+        /// Optional. A numerical score of the impact from the recommendation's description. For example, a
+        /// recommendation might suggest an upward trend in sales for a certain product. Higher number means larger
+        /// impact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericalImpact")]
+        public virtual System.Nullable<int> NumericalImpact { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether a user needs to pay when they complete the user journey suggested by the
+        /// recommendation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paid")]
+        public virtual System.Nullable<bool> Paid { get; set; }
+
+        /// <summary>
+        /// Optional. Localized recommendation name. The localization uses the {@link
+        /// `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationName")]
+        public virtual string RecommendationName { get; set; }
+
+        /// <summary>
+        /// Optional. Subtype of the recommendations. Only applicable when multiple recommendations can be generated per
+        /// type, and is used as an identifier of recommendation under the same recommendation type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subType")]
+        public virtual string SubType { get; set; }
+
+        /// <summary>
+        /// Optional. Localized Recommendation Title. Localization uses the {@link
+        /// `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>
+        /// Output only. Type of the recommendation. List of currently available recommendation types: -
+        /// OPPORTUNITY_CREATE_NEW_COLLECTION - OPPORTUNITY_CREATE_EMAIL_CAMPAIGN
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Call to action (CTA) that explains how a merchant can implement this recommendation</summary>
+    public class RecommendationCallToAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Intent of the action. This value describes the intent (for example,
+        /// `OPEN_CREATE_EMAIL_CAMPAIGN_FLOW`) and can vary from recommendation to recommendation. This value can change
+        /// over time for the same recommendation. Currently available intent values: - OPEN_CREATE_EMAIL_CAMPAIGN_FLOW:
+        /// Opens a user journey where they can create a marketing email campaign. (No default URL) -
+        /// OPEN_CREATE_COLLECTION_TAB: Opens a user journey where they can [create a
+        /// collection](https://support.google.com/merchants/answer/9703228) for their Merchant account. (No default
+        /// URL)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual string Intent { get; set; }
+
+        /// <summary>Output only. Localized text of the CTA. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedText")]
+        public virtual string LocalizedText { get; set; }
+
+        /// <summary>
+        /// Optional. URL of the CTA. This field will only be set for some recommendations where there is a suggested
+        /// landing URL. Otherwise it will be set to an empty string. We recommend developers to use their own custom
+        /// landing page according to the description of the intent field above when this uri field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Creative is a multimedia attachment to recommendation that can be used on the frontend.</summary>
+    public class RecommendationCreative : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>URL of the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google-provided description for the recommendation.</summary>
+    public class RecommendationDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Text of the description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Output only. Type of the description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RefundReason : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the reason.</summary>
@@ -22900,6 +23210,35 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Price and availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalInventory")]
         public virtual RegionalInventory RegionalInventory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to report interactions on a recommendation.</summary>
+    public class ReportInteractionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of the interaction that is reported, for example INTERACTION_CLICK.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
+        public virtual string InteractionType { get; set; }
+
+        /// <summary>Required. Token of the response when recommendation was returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseToken")]
+        public virtual string ResponseToken { get; set; }
+
+        /// <summary>
+        /// Optional. Subtype of the recommendations this interaction happened on. This field must be set only to the
+        /// value that is returned by {@link `RecommendationsService.GenerateRecommendations`} call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtype")]
+        public virtual string Subtype { get; set; }
+
+        /// <summary>
+        /// Required. Type of the recommendations on which this interaction happened. This field must be set only to the
+        /// value that is returned by {@link `GenerateRecommendationsResponse`} call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

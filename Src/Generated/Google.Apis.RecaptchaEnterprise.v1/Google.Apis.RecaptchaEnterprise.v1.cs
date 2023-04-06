@@ -2322,6 +2322,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Risk analysis result for an event.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Extended verdict reasons to be used for experimentation only. The set of possible reasons is subject to
+        /// change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedVerdictReasons")]
+        public virtual System.Collections.Generic.IList<string> ExtendedVerdictReasons { get; set; }
+
         /// <summary>Reasons contributing to the risk analysis verdict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }

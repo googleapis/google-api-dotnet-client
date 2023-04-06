@@ -1558,6 +1558,37 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
+        public virtual string ComplianceRegime { get; set; }
+
+        /// <summary>Optional. Time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. The display name of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The parent of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. Resource properties in the input that are used for creating/customizing workload resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings> ResourceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListViolations endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {

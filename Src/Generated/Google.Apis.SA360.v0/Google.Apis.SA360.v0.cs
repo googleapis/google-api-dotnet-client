@@ -1371,37 +1371,6 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Search Ads 360 text ad.</summary>
-    public class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The tracking id of the ad.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adTrackId")]
-        public virtual System.Nullable<long> AdTrackId { get; set; }
-
-        /// <summary>The first line of the ad's description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
-        public virtual string Description1 { get; set; }
-
-        /// <summary>The second line of the ad's description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
-        public virtual string Description2 { get; set; }
-
-        /// <summary>The displayed mobile URL of the ad.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileUrl")]
-        public virtual string DisplayMobileUrl { get; set; }
-
-        /// <summary>The displayed URL of the ad.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
-        public virtual string DisplayUrl { get; set; }
-
-        /// <summary>The headline of the ad.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
-        public virtual string Headline { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Segment only fields.</summary>
     public class GoogleAdsSearchads360V0CommonSegments : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1936,10 +1905,6 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
-
-        /// <summary>Immutable. Details pertaining to a text ad.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAd")]
-        public virtual GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo TextAd { get; set; }
 
         /// <summary>Output only. The type of ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

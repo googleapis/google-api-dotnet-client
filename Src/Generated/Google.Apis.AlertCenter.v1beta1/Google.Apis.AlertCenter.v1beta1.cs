@@ -1055,7 +1055,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A warning that the customer's account is about to be suspended.</summary>
+    /// <summary>LINT.IfChange A warning that the customer's account is about to be suspended.</summary>
     public class AccountSuspensionWarning : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

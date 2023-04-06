@@ -6197,6 +6197,16 @@ namespace Google.Apis.Container.v1.Data
     }
 
     /// <summary>
+    /// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate
+    /// message.
+    /// </summary>
+    public class AdditionalPodRangesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional
     /// functionality.
     /// </summary>
@@ -6989,6 +6999,13 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class ClusterUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate
+        /// pod IPs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalPodRangesConfig")]
+        public virtual AdditionalPodRangesConfig AdditionalPodRangesConfig { get; set; }
+
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; }
@@ -7197,6 +7214,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have
+        /// been specified earlier in the 'additional_pod_ranges_config' argument.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedAdditionalPodRangesConfig")]
+        public virtual AdditionalPodRangesConfig RemovedAdditionalPodRangesConfig { get; set; }
     }
 
     /// <summary>CompleteIPRotationRequest moves the cluster master back into single-IP mode.</summary>
@@ -7731,6 +7755,14 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Configuration for controlling how IPs are allocated in the cluster.</summary>
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. [Output only] The additional pod ranges that are added to the cluster. These pod ranges can be
+        /// used by new node pools to allocate pod IPs automatically. Once the range is removed it will not show up in
+        /// IPAllocationPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalPodRangesConfig")]
+        public virtual AdditionalPodRangesConfig AdditionalPodRangesConfig { get; set; }
+
         /// <summary>This field is deprecated, use cluster_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
         public virtual string ClusterIpv4Cidr { get; set; }
@@ -7779,6 +7811,16 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrBlock")]
         public virtual string NodeIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on
+        /// max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power
+        /// of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs
+        /// (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example:
+        /// max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podCidrOverprovisionConfig")]
+        public virtual PodCIDROverprovisionConfig PodCidrOverprovisionConfig { get; set; }
 
         /// <summary>This field is deprecated, use services_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
@@ -8778,6 +8820,16 @@ namespace Google.Apis.Container.v1.Data
         public virtual NetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
 
         /// <summary>
+        /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on
+        /// max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then
+        /// double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64
+        /// IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example:
+        /// max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podCidrOverprovisionConfig")]
+        public virtual PodCIDROverprovisionConfig PodCidrOverprovisionConfig { get; set; }
+
+        /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to
         /// blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with
         /// a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
@@ -9178,6 +9230,19 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The type of placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[PRIVATE FIELD] Config for pod CIDR size overprovisioning.</summary>
+    public class PodCIDROverprovisionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disable")]
+        public virtual System.Nullable<bool> Disable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

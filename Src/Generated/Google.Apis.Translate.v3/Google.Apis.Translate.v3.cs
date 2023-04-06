@@ -3988,6 +3988,10 @@ namespace Google.Apis.Translate.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentOutputConfig")]
         public virtual DocumentOutputConfig DocumentOutputConfig { get; set; }
 
+        /// <summary>Optional. If true, enable auto rotation correction in DVS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRotationCorrection")]
+        public virtual System.Nullable<bool> EnableRotationCorrection { get; set; }
+
         /// <summary>
         /// Optional. If true, use the text removal server to remove the shadow text on background image for native pdf
         /// translation. Shadow removal feature can only be enabled when is_translate_native_pdf_only: false

@@ -1308,7 +1308,7 @@ namespace Google.Apis.TPU.v2alpha1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+                    /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("queuedResourceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string QueuedResourceId { get; set; }
@@ -2632,6 +2632,13 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>The queueing policy of the QueuedRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queueingPolicy")]
         public virtual QueueingPolicy QueueingPolicy { get; set; }
+
+        /// <summary>
+        /// Name of the reservation in which the resource should be provisioned. Format:
+        /// projects/{project}/locations/{zone}/reservations/{reservation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationName")]
+        public virtual string ReservationName { get; set; }
 
         /// <summary>Output only. State of the QueuedResource request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

@@ -1561,6 +1561,13 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("classification")]
         public virtual CaseClassification Classification { get; set; }
 
+        /// <summary>
+        /// A user-supplied email address to send case update notifications for. This should only be used in BYOID
+        /// flows, where we cannot infer the user's email address directly from their EUCs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; }
+
         /// <summary>Output only. The time this case was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
