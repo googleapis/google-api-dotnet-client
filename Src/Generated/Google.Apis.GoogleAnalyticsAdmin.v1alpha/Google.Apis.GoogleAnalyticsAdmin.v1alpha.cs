@@ -2086,6 +2086,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             AccessBindings = new AccessBindingsResource(service);
             Audiences = new AudiencesResource(service);
             BigQueryLinks = new BigQueryLinksResource(service);
+            ChannelGroups = new ChannelGroupsResource(service);
             ConversionEvents = new ConversionEventsResource(service);
             CustomDimensions = new CustomDimensionsResource(service);
             CustomMetrics = new CustomMetricsResource(service);
@@ -3145,6 +3146,334 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the ChannelGroups resource.</summary>
+        public virtual ChannelGroupsResource ChannelGroups { get; }
+
+        /// <summary>The "channelGroups" collection of methods.</summary>
+        public class ChannelGroupsResource
+        {
+            private const string Resource = "channelGroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ChannelGroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a ChannelGroup.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The property for which to create a ChannelGroup. Example format: properties/1234
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a ChannelGroup.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The property for which to create a ChannelGroup. Example format: properties/1234
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/channelGroups";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a ChannelGroup on a property.</summary>
+            /// <param name="name">
+            /// Required. The ChannelGroup to delete. Example format: properties/1234/channelGroups/5678
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a ChannelGroup on a property.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ChannelGroup to delete. Example format: properties/1234/channelGroups/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/channelGroups/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup for a single ChannelGroup.</summary>
+            /// <param name="name">
+            /// Required. The ChannelGroup to get. Example format: properties/1234/channelGroups/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Lookup for a single ChannelGroup.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ChannelGroup to get. Example format: properties/1234/channelGroups/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/channelGroups/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists ChannelGroups on a property.</summary>
+            /// <param name="parent">
+            /// Required. The property for which to list ChannelGroups. Example format: properties/1234
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists ChannelGroups on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListChannelGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The property for which to list ChannelGroups. Example format: properties/1234
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListChannelGroups` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListChannelGroups` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/channelGroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a ChannelGroup.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. The resource name for this Channel Group resource. Format:
+            /// properties/{property}/channelGroups/{channel_group}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a ChannelGroup.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. The resource name for this Channel Group resource. Format:
+                /// properties/{property}/channelGroups/{channel_group}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/channelGroups/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9713,6 +10042,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryLink")]
         public virtual GoogleAnalyticsAdminV1alphaBigQueryLink BigqueryLink { get; set; }
 
+        /// <summary>A snapshot of a ChannelGroup resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroup ChannelGroup { get; set; }
+
         /// <summary>A snapshot of a ConversionEvent resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionEvent")]
         public virtual GoogleAnalyticsAdminV1alphaConversionEvent ConversionEvent { get; set; }
@@ -9816,6 +10149,128 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userActorEmail")]
         public virtual string UserActorEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource message representing a Channel Group.</summary>
+    public class GoogleAnalyticsAdminV1alphaChannelGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the Channel Group. Max length of 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The display name of the Channel Group. Max length of 80 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The grouping rules of channels. Maximum number of rules is 25.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupingRule")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaGroupingRule> GroupingRule { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for this Channel Group resource. Format:
+        /// properties/{property}/channelGroups/{channel_group}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Default Channel Group defined by Google, which cannot be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemDefined")]
+        public virtual System.Nullable<bool> SystemDefined { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific filter for a single dimension.</summary>
+    public class GoogleAnalyticsAdminV1alphaChannelGroupFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The dimension name to filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>A filter for a string dimension that matches a particular list of options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inListFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter InListFilter { get; set; }
+
+        /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter StringFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A logical expression of Channel Group dimension filters.</summary>
+    public class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of expressions to be AND’ed together. It can only contain ChannelGroupFilterExpressions with
+        /// or_group. This must be set for the top level ChannelGroupFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("andGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList AndGroup { get; set; }
+
+        /// <summary>
+        /// A filter on a single dimension. This cannot be set on the top level ChannelGroupFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilter Filter { get; set; }
+
+        /// <summary>
+        /// A filter expression to be NOT'ed (that is inverted, complemented). It can only include a
+        /// dimension_or_metric_filter. This cannot be set on the top level ChannelGroupFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression NotExpression { get; set; }
+
+        /// <summary>
+        /// A list of expressions to OR’ed together. It cannot contain ChannelGroupFilterExpressions with and_group or
+        /// or_group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList OrGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Channel Group filter expressions.</summary>
+    public class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of Channel Group filter expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpressions")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression> FilterExpressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A filter for a string dimension that matches a particular list of options. The match is case insensitive.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of possible string values to match against. Must be non-empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filter where the field value is a String. The match is case insensitive.</summary>
+    public class GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The match type for the string filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>Required. The string value to be matched against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10742,6 +11197,21 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The rules that govern how traffic is grouped into one channel.</summary>
+    public class GoogleAnalyticsAdminV1alphaGroupingRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Customer defined display name for the channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The Filter Expression that defines the Grouping Rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression Expression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status information for a link proposal.</summary>
     public class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10839,6 +11309,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>List of BigQueryLinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaBigQueryLink> BigqueryLinks { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListChannelGroups RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of ChannelGroup. These will be ordered stably, but in an arbitrary order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelGroups")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaChannelGroup> ChannelGroups { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no

@@ -56,7 +56,7 @@ namespace Google.Apis.Tasks.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Tasks API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Tasks API.</summary>
         public class Scope
         {
             /// <summary>Create, edit, organize, and delete all your tasks</summary>
@@ -66,7 +66,7 @@ namespace Google.Apis.Tasks.v1
             public static string TasksReadonly = "https://www.googleapis.com/auth/tasks.readonly";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Tasks API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Tasks API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Create, edit, organize, and delete all your tasks</summary>

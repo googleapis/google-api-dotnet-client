@@ -3207,6 +3207,59 @@ namespace Google.Apis.CloudResourceManager.v3
             }
         }
 
+        /// <summary>
+        /// Retrieves a TagKey by its namespaced name. This method will return `PERMISSION_DENIED` if the key does not
+        /// exist or the user does not have permission to view it.
+        /// </summary>
+        public virtual GetNamespacedRequest GetNamespaced()
+        {
+            return new GetNamespacedRequest(service);
+        }
+
+        /// <summary>
+        /// Retrieves a TagKey by its namespaced name. This method will return `PERMISSION_DENIED` if the key does not
+        /// exist or the user does not have permission to view it.
+        /// </summary>
+        public class GetNamespacedRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TagKey>
+        {
+            /// <summary>Constructs a new GetNamespaced request.</summary>
+            public GetNamespacedRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. A namespaced tag key name in the format `{parentId}/{tagKeyShort}`, such as `42/foo` for a key
+            /// with short name "foo" under the organization with ID 42 or `r2-d2/bar` for a key with short name "bar"
+            /// under the project `r2-d2`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getNamespaced";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/tagKeys/namespaced";
+
+            /// <summary>Initializes GetNamespaced parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Lists all TagKeys for a parent resource.</summary>
         public virtual ListRequest List()
         {
@@ -4036,6 +4089,60 @@ namespace Google.Apis.CloudResourceManager.v3
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^tagValues/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves a TagValue by its namespaced name. This method will return `PERMISSION_DENIED` if the value does
+        /// not exist or the user does not have permission to view it.
+        /// </summary>
+        public virtual GetNamespacedRequest GetNamespaced()
+        {
+            return new GetNamespacedRequest(service);
+        }
+
+        /// <summary>
+        /// Retrieves a TagValue by its namespaced name. This method will return `PERMISSION_DENIED` if the value does
+        /// not exist or the user does not have permission to view it.
+        /// </summary>
+        public class GetNamespacedRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TagValue>
+        {
+            /// <summary>Constructs a new GetNamespaced request.</summary>
+            public GetNamespacedRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. A namespaced tag value name in the following format:
+            /// `{parentId}/{tagKeyShort}/{tagValueShort}` Examples: - `42/foo/abc` for a value with short name "abc"
+            /// under the key with short name "foo" under the organization with ID 42 - `r2-d2/bar/xyz` for a value with
+            /// short name "xyz" under the key with short name "bar" under the project with ID "r2-d2"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getNamespaced";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/tagValues/namespaced";
+
+            /// <summary>Initializes GetNamespaced parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -5477,6 +5584,14 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// <summary>The TagValue of the TagBinding. Must be of the form `tagValues/456`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
         public virtual string TagValue { get; set; }
+
+        /// <summary>
+        /// The namespaced name for the TagValue of the TagBinding. Must be in the format
+        /// `{parent_id}/{tag_key_short_name}/{short_name}`. For methods that support TagValue namespaced name, only one
+        /// of tag_value_namespaced_name or tag_value may be filled. Requests with both fields will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValueNamespacedName")]
+        public virtual string TagValueNamespacedName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

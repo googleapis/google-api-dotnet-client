@@ -601,7 +601,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
 
         /// <summary>
         /// The [storage class](https://cloud.google.com/storage/docs/storage-classes#classes) of the data and
-        /// operation. For example: "standard" or "nearline".
+        /// operation. For example: "standard" and "nearline".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; }

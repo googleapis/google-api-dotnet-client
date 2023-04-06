@@ -639,6 +639,10 @@ namespace Google.Apis.Advisorynotifications.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Type of notification</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
+        public virtual string NotificationType { get; set; }
+
         /// <summary>The subject line of the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual GoogleCloudAdvisorynotificationsV1Subject Subject { get; set; }

@@ -2903,7 +2903,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Optional. Specify what action to take when the text input field provides suggestions to users who interact
         /// with it. If unspecified, the suggestions are set by `initialSuggestions` and are processed by the client. If
         /// specified, the app takes the action specified here, such as running a custom function. Supported by Google
-        /// Workspace Add-ons, but not Chat apps. Support by Chat apps coming soon.
+        /// Workspace Add-ons, but not Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
         public virtual GoogleAppsCardV1Action AutoCompleteAction { get; set; }

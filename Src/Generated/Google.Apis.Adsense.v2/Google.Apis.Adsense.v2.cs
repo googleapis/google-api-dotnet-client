@@ -2257,9 +2257,9 @@ namespace Google.Apis.Adsense.v2
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListPayments` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `ListPayments` must match the
-                    /// call that provided the page token.
+                    /// A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match
+                    /// the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4294,9 +4294,9 @@ namespace Google.Apis.Adsense.v2
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent
-            /// page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided
-            /// the page token.
+            /// A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent
+            /// page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that
+            /// provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }

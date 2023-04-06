@@ -945,7 +945,12 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY = 1,
 
-                    /// <summary>Request all information available for this job.</summary>
+                    /// <summary>
+                    /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the job
+                    /// has been created but is not yet running, and not all job information is available. For complete
+                    /// job information, wait until the job in is `JOB_STATE_RUNNING`. For more information, see
+                    /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL = 2,
 
@@ -1093,7 +1098,12 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY = 1,
 
-                    /// <summary>Request all information available for this job.</summary>
+                    /// <summary>
+                    /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the job
+                    /// has been created but is not yet running, and not all job information is available. For complete
+                    /// job information, wait until the job in is `JOB_STATE_RUNNING`. For more information, see
+                    /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL = 2,
 
@@ -1223,7 +1233,12 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY = 1,
 
-                    /// <summary>Request all information available for this job.</summary>
+                    /// <summary>
+                    /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the job
+                    /// has been created but is not yet running, and not all job information is available. For complete
+                    /// job information, wait until the job in is `JOB_STATE_RUNNING`. For more information, see
+                    /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL = 2,
 
@@ -1493,7 +1508,12 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY = 1,
 
-                    /// <summary>Request all information available for this job.</summary>
+                    /// <summary>
+                    /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the job
+                    /// has been created but is not yet running, and not all job information is available. For complete
+                    /// job information, wait until the job in is `JOB_STATE_RUNNING`. For more information, see
+                    /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL = 2,
 
@@ -2840,7 +2860,13 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                         JOBVIEWSUMMARY = 1,
 
-                        /// <summary>Request all information available for this job.</summary>
+                        /// <summary>
+                        /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the
+                        /// job has been created but is not yet running, and not all job information is available. For
+                        /// complete job information, wait until the job in is `JOB_STATE_RUNNING`. For more
+                        /// information, see
+                        /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                         JOBVIEWALL = 2,
 
@@ -2975,7 +3001,13 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                         JOBVIEWSUMMARY = 1,
 
-                        /// <summary>Request all information available for this job.</summary>
+                        /// <summary>
+                        /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the
+                        /// job has been created but is not yet running, and not all job information is available. For
+                        /// complete job information, wait until the job in is `JOB_STATE_RUNNING`. For more
+                        /// information, see
+                        /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                         JOBVIEWALL = 2,
 
@@ -3376,7 +3408,13 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                         JOBVIEWSUMMARY = 1,
 
-                        /// <summary>Request all information available for this job.</summary>
+                        /// <summary>
+                        /// Request all information available for this job. When the job is in `JOB_STATE_PENDING`, the
+                        /// job has been created but is not yet running, and not all job information is available. For
+                        /// complete job information, wait until the job in is `JOB_STATE_RUNNING`. For more
+                        /// information, see
+                        /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                         JOBVIEWALL = 2,
 

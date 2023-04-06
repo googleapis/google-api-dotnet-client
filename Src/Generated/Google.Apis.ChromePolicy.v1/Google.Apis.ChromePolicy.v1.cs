@@ -1685,9 +1685,13 @@ namespace Google.Apis.ChromePolicy.v1.Data
     /// <summary>Request message for listing the group priority ordering of an app.</summary>
     public class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The namespace of the policy type for the request.</summary>
+        /// <summary>The namespace of the policy type for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
         public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>The schema name of the policy for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
 
         /// <summary>
         /// Required. The key of the target for which we want to retrieve the group priority ordering. The target
@@ -1710,6 +1714,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. The namespace of the policy type of the group IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
         public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>Output only. The schema name of the policy for the group IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
 
         /// <summary>
         /// Output only. The target resource for which the group priority ordering has been retrieved.
@@ -2266,9 +2274,13 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
         public virtual System.Collections.Generic.IList<string> GroupIds { get; set; }
 
-        /// <summary>Required. The namespace of the policy type for the request.</summary>
+        /// <summary>The namespace of the policy type for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyNamespace")]
         public virtual string PolicyNamespace { get; set; }
+
+        /// <summary>The schema name of the policy for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySchema")]
+        public virtual string PolicySchema { get; set; }
 
         /// <summary>
         /// Required. The key of the target for which we want to update the group priority ordering. The target resource
