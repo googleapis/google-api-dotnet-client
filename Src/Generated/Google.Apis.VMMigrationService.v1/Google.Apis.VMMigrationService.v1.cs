@@ -4989,6 +4989,17 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CutoverForecast holds information about future CutoverJobs of a MigratingVm.</summary>
+    public class CutoverForecast : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Estimation of the CutoverJob duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedCutoverJobDuration")]
+        public virtual object EstimatedCutoverJobDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the
     /// VM, creating a snapshot and clonning the VM using the replicated snapshot.
@@ -5592,6 +5603,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Output only. Details of the current running replication cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSyncInfo")]
         public virtual ReplicationCycle CurrentSyncInfo { get; set; }
+
+        /// <summary>
+        /// Output only. Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is
+        /// unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoverForecast")]
+        public virtual CutoverForecast CutoverForecast { get; set; }
 
         /// <summary>The description attached to the migrating VM by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]

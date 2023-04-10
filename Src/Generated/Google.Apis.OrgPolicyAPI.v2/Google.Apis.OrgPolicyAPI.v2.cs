@@ -2552,10 +2552,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Nullable<bool> Reset { get; set; }
 
         /// <summary>
-        /// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: -
-        /// There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions
-        /// must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation,
-        /// policy rules with conditions that are true for a target resource take precedence.
+        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one
+        /// policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the
+        /// opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions
+        /// that are true for a target resource take precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> Rules { get; set; }

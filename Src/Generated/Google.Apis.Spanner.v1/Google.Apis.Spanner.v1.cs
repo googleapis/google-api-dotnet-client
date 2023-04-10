@@ -4447,6 +4447,108 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
+                /// Updates a Cloud Spanner database. The returned long-running operation can be used to track the
+                /// progress of updating the database. If the named database does not exist, returns `NOT_FOUND`. While
+                /// the operation is pending: * The database's reconciling field is set to true. * Cancelling the
+                /// operation is best-effort. If the cancellation succeeds, the operation metadata's cancel_time is set,
+                /// the updates are reverted, and the operation terminates with a `CANCELLED` status. * New
+                /// UpdateDatabase requests will return a `FAILED_PRECONDITION` error until the pending operation is
+                /// done (returns successfully or with error). * Reading the database via the API continues to give the
+                /// pre-request values. Upon completion of the returned operation: * The new values are in effect and
+                /// readable via the API. * The database's reconciling field becomes false. The returned long-running
+                /// operation will have a name of the format `projects//instances//databases//operations/` and can be
+                /// used to track the database modification. The metadata field type is UpdateDatabaseMetadata. The
+                /// response field type is Database, if successful.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the database. Values are of the form `projects//instances//databases/`, where
+                /// `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods
+                /// to identify the database.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.Database body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a Cloud Spanner database. The returned long-running operation can be used to track the
+                /// progress of updating the database. If the named database does not exist, returns `NOT_FOUND`. While
+                /// the operation is pending: * The database's reconciling field is set to true. * Cancelling the
+                /// operation is best-effort. If the cancellation succeeds, the operation metadata's cancel_time is set,
+                /// the updates are reverted, and the operation terminates with a `CANCELLED` status. * New
+                /// UpdateDatabase requests will return a `FAILED_PRECONDITION` error until the pending operation is
+                /// done (returns successfully or with error). * Reading the database via the API continues to give the
+                /// pre-request values. Upon completion of the returned operation: * The new values are in effect and
+                /// readable via the API. * The database's reconciling field becomes false. The returned long-running
+                /// operation will have a name of the format `projects//instances//databases//operations/` and can be
+                /// used to track the database modification. The metadata field type is UpdateDatabaseMetadata. The
+                /// response field type is Database, if successful.
+                /// </summary>
+                public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.Database body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the database. Values are of the form `projects//instances//databases/`,
+                    /// where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other
+                    /// API methods to identify the database.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to update. Currently, only `enable_drop_protection` field can be
+                    /// updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.Database Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Create a new database by restoring from a completed backup. The new database must be in the same
                 /// project and in an instance with the same instance configuration as the instance containing the
                 /// backup. The returned database long-running operation has a name of the format
@@ -6432,6 +6534,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("earliestVersionTime")]
         public virtual object EarliestVersionTime { get; set; }
 
+        /// <summary>Whether drop protection is enabled for this database. Defaults to false, if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDropProtection")]
+        public virtual System.Nullable<bool> EnableDropProtection { get; set; }
+
         /// <summary>
         /// Output only. For databases that are using customer managed encryption, this field contains the encryption
         /// configuration for the database. For databases that are using Google default or other types of encryption,
@@ -6457,6 +6563,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. If true, the database is being updated. If false, there are no ongoing update operations for
+        /// the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
         /// Output only. Applicable only for restored databases. Contains information about the restore source.
@@ -9147,6 +9260,48 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. DDL statements to be applied to the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
         public virtual System.Collections.Generic.IList<string> Statements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the operation returned by UpdateDatabase.</summary>
+    public class UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time at which this operation was cancelled. If set, this operation is in the process of undoing itself
+        /// (which is best-effort).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; }
+
+        /// <summary>The progress of the UpdateDatabase operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
+
+        /// <summary>The request for UpdateDatabase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual UpdateDatabaseRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for UpdateDatabase.</summary>
+    public class UpdateDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The database to update. The `name` field of the database is of the form
+        /// `projects//instances//databases/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual Database Database { get; set; }
+
+        /// <summary>
+        /// Required. The list of fields to update. Currently, only `enable_drop_protection` field can be updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

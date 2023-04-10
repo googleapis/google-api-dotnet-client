@@ -6940,12 +6940,12 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
         /// `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`:
         /// Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`:
-        /// Service. * `run.googleapis.com/network-interfaces`: Revision, Execution. *
-        /// `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision,
-        /// Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`:
-        /// Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`:
-        /// Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info:
-        /// https://kubernetes.io/docs/user-guide/annotations
+        /// Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`:
+        /// Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. *
+        /// `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
+        /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
+        /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`:
+        /// Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }

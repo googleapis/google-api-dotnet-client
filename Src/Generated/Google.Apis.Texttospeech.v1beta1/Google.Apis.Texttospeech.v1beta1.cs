@@ -459,9 +459,7 @@ namespace Google.Apis.Texttospeech.v1beta1
 
             /// <summary>Synthesizes long form text asynchronously.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// The resource states of the request in the form of `projects/*/locations/*/voices/*`.
-            /// </param>
+            /// <param name="parent">The resource states of the request in the form of `projects/*/locations/*`.</param>
             public virtual SynthesizeLongAudioRequest SynthesizeLongAudio(Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest body, string parent)
             {
                 return new SynthesizeLongAudioRequest(service, body, parent);
@@ -478,9 +476,7 @@ namespace Google.Apis.Texttospeech.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// The resource states of the request in the form of `projects/*/locations/*/voices/*`.
-                /// </summary>
+                /// <summary>The resource states of the request in the form of `projects/*/locations/*`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 

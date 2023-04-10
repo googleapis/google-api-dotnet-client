@@ -2606,6 +2606,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authType")]
         public virtual string AuthType { get; set; }
 
+        /// <summary>Oauth2AuthCodeFlow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2AuthCodeFlow")]
+        public virtual Oauth2AuthCodeFlow Oauth2AuthCodeFlow { get; set; }
+
         /// <summary>Oauth2ClientCredentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientCredentials")]
         public virtual Oauth2ClientCredentials Oauth2ClientCredentials { get; set; }
@@ -2875,6 +2879,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lockConfig")]
         public virtual LockConfig LockConfig { get; set; }
 
+        /// <summary>Optional. Log configuration for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual ConnectorsLogConfig LogConfig { get; set; }
+
         /// <summary>
         /// Output only. Resource name of the Connection. Format:
         /// projects/{project}/locations/{location}/connections/{connection}
@@ -3043,6 +3051,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. List of destination configs needed to create a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigTemplates")]
+        public virtual System.Collections.Generic.IList<DestinationConfigTemplate> DestinationConfigTemplates { get; set; }
+
         /// <summary>Output only. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -3100,6 +3112,17 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Log configuration for the connection.</summary>
+    public class ConnectorsLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enabled represents whether logging is enabled or not for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>For publicly routable host.</summary>
@@ -3128,6 +3151,49 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>The key is the destination identifier that is supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DestinationConfigTemplate defines required destinations supported by the Connector.</summary>
+    public class DestinationConfigTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The default port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPort")]
+        public virtual System.Nullable<int> DefaultPort { get; set; }
+
+        /// <summary>Description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Whether the current destination tempalate is part of Advanced settings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAdvanced")]
+        public virtual System.Nullable<bool> IsAdvanced { get; set; }
+
+        /// <summary>Key of the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The maximum number of destinations supported for this key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<int> Max { get; set; }
+
+        /// <summary>The minimum number of destinations supported for this key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<int> Min { get; set; }
+
+        /// <summary>Whether port number should be provided by customers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portFieldType")]
+        public virtual string PortFieldType { get; set; }
+
+        /// <summary>Regex pattern for host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexPattern")]
+        public virtual string RegexPattern { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3545,6 +3611,44 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Minimum number of nodes in the runtime nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See
+    /// https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+    /// </summary>
+    public class Oauth2AuthCodeFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authorization code to be exchanged for access and refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>Client ID for user-provided OAuth app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Client secret for user-provided OAuth app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual Secret ClientSecret { get; set; }
+
+        /// <summary>Whether to enable PKCE when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
+        public virtual System.Nullable<bool> EnablePkce { get; set; }
+
+        /// <summary>PKCE verifier to be used during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkceVerifier")]
+        public virtual string PkceVerifier { get; set; }
+
+        /// <summary>Redirect URI to be provided during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>Scopes the connection will request when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

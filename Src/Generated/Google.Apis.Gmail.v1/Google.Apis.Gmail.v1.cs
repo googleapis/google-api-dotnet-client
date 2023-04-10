@@ -2905,7 +2905,12 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("includeSpamTrash", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeSpamTrash { get; set; }
 
-                /// <summary>Only return messages with labels that match all of the specified label IDs.</summary>
+                /// <summary>
+                /// Only return messages with labels that match all of the specified label IDs. Messages in a thread
+                /// might have labels that other messages in the same thread don't have. To learn more, see [Manage
+                /// labels on messages and
+                /// threads](https://developers.google.com/gmail/api/guides/labels#manage_labels_on_messages_threads).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> LabelIds { get; set; }
 

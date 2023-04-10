@@ -2845,8 +2845,8 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data.
-        /// It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must
+        /// match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
@@ -3695,7 +3695,7 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the
-        /// CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        /// CloudEvent data field. This is set to `application/json` if the value is not defined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDataContentType")]
         public virtual string EventDataContentType { get; set; }

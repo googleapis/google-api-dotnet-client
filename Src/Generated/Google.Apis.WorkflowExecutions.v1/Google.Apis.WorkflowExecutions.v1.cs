@@ -858,6 +858,13 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Output only. Error regarding the state of the Execution resource. For example, this field will have error
+        /// details if the Execution data is unavailable due to revoked KMS key permissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateError")]
+        public virtual StateError StateError { get; set; }
+
         /// <summary>Output only. Status tracks the current steps and progress data of this execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
@@ -986,6 +993,21 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// <summary>The step the error occurred at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("step")]
         public virtual string Step { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes an error related to the current state of the Execution resource.</summary>
+    public class StateError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Provides specifics about the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The type of this state error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

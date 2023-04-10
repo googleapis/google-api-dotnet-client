@@ -1412,6 +1412,10 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
         public virtual string Task { get; set; }
 
+        /// <summary>TaskSource represents the source of the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskSource")]
+        public virtual string TaskSource { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

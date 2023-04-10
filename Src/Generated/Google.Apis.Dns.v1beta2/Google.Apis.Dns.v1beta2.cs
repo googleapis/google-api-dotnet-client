@@ -5307,7 +5307,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class RRSetRoutingPolicyLoadBalancerTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The frontend IP address of the</summary>
+        /// <summary>The frontend IP address of the Load Balancer to health check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
@@ -5317,26 +5317,29 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>
+        /// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer
+        /// located at the LoadBalancerTarget's IP address/port and region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
         public virtual string LoadBalancerType { get; set; }
 
-        /// <summary>The fully qualified url of the network on which the ILB is</summary>
+        /// <summary>
+        /// The fully qualified url of the network on which the ILB is present. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
 
-        /// <summary>Load Balancer to health check. The configured port of the Load Balancer.</summary>
+        /// <summary>The configured port of the Load Balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual string Port { get; set; }
 
-        /// <summary>
-        /// present. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which
-        /// the ILB exists.
-        /// </summary>
+        /// <summary>The project ID in which the ILB exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The region for regional ILBs.</summary>
+        /// <summary>The region in which the ILB exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
