@@ -5789,13 +5789,15 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     public class GoogleCloudDatacatalogV1TaggedEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Tags that should be deleted from the Data Catalog. Caller should populate template name and column only.
+        /// Optional. Tags that should be deleted from the Data Catalog. Caller should populate template name and column
+        /// only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("absentTags")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> AbsentTags { get; set; }
 
         /// <summary>
-        /// Tags that should be ingested into the Data Catalog. Caller should populate template name, column and fields.
+        /// Optional. Tags that should be ingested into the Data Catalog. Caller should populate template name, column
+        /// and fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentTags")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Tag> PresentTags { get; set; }

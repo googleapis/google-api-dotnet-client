@@ -1016,6 +1016,14 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         public virtual System.Nullable<bool> IgnoreActiveCertificates { get; set; }
 
                         /// <summary>
+                        /// Optional. This field allows this ca to be deleted even if it's being depended on by another
+                        /// resource. However, doing so may result in unintended and unrecoverable effects on any
+                        /// dependent resource(s) since the CA will no longer be able to issue certificates.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ignoreDependentResources", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> IgnoreDependentResources { get; set; }
+
+                        /// <summary>
                         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry
                         /// your request, the server will know to ignore the request if it has already been completed.
                         /// The server will guarantee that for at least 60 minutes since the first request. For example,
@@ -1061,6 +1069,14 @@ namespace Google.Apis.CertificateAuthorityService.v1
                             RequestParameters.Add("ignoreActiveCertificates", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "ignoreActiveCertificates",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("ignoreDependentResources", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ignoreDependentResources",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2161,6 +2177,14 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. This field allows this pool to be deleted even if it's being depended on by another
+                    /// resource. However, doing so may result in unintended and unrecoverable effects on any dependent
+                    /// resource(s) since the pool will no longer be able to issue certificates.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreDependentResources", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreDependentResources { get; set; }
+
+                    /// <summary>
                     /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
                     /// request, the server will know to ignore the request if it has already been completed. The server
                     /// will guarantee that for at least 60 minutes since the first request. For example, consider a
@@ -2193,6 +2217,14 @@ namespace Google.Apis.CertificateAuthorityService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/caPools/[^/]+$",
+                        });
+                        RequestParameters.Add("ignoreDependentResources", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ignoreDependentResources",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -4497,6 +4529,14 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     /// <summary>Request message for CertificateAuthorityService.DisableCertificateAuthority.</summary>
     public class DisableCertificateAuthorityRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. This field allows this CA to be disabled even if it's being depended on by another resource.
+        /// However, doing so may result in unintended and unrecoverable effects on any dependent resource(s) since the
+        /// CA will no longer be able to issue certificates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreDependentResources")]
+        public virtual System.Nullable<bool> IgnoreDependentResources { get; set; }
+
         /// <summary>
         /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request,
         /// the server will know to ignore the request if it has already been completed. The server will guarantee that

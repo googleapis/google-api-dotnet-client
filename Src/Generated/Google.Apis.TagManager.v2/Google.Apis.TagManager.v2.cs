@@ -8487,6 +8487,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numTags")]
         public virtual string NumTags { get; set; }
 
+        /// <summary>Number of transformations in the container version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTransformations")]
+        public virtual string NumTransformations { get; set; }
+
         /// <summary>Number of triggers in the container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTriggers")]
         public virtual string NumTriggers { get; set; }

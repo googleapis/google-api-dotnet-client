@@ -1227,6 +1227,21 @@ namespace Google.Apis.Workflows.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes an error related to the current state of the workflow.</summary>
+    public class StateError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Provides specifics about the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The type of this state error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1270,6 +1285,15 @@ namespace Google.Apis.Workflows.v1.Data
         /// <summary>Output only. The timestamp for when the workflow was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the
+        /// workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using
+        /// `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account.
+        /// If not provided, data associated with the workflow will not be CMEK-encrypted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
 
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -1322,6 +1346,13 @@ namespace Google.Apis.Workflows.v1.Data
         /// <summary>Output only. State of the workflow deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Error regarding the state of the workflow. For example, this field will have error details if
+        /// the execution data is unavailable due to revoked KMS key permissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateError")]
+        public virtual StateError StateError { get; set; }
 
         /// <summary>Output only. The timestamp for when the workflow was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]

@@ -4506,7 +4506,7 @@ namespace Google.Apis.Appengine.v1beta.Data
 
     /// <summary>
     /// A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via
-    /// Webmaster Central (https://www.google.com/webmasters/verification/home).
+    /// Search Console (https://search.google.com/search-console/welcome).
     /// </summary>
     public class AuthorizedDomain : Google.Apis.Requests.IDirectResponseSchema
     {

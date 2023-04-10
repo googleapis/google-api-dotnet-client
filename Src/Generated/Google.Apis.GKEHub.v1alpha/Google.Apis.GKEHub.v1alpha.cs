@@ -7247,7 +7247,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**Service Mesh**: Spec for a single Membership for the servicemesh feature</summary>
     public class ServiceMeshMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enables automatic control plane management.</summary>
+        /// <summary>Deprecated: use `management` instead Enables automatic control plane management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
         public virtual string ControlPlane { get; set; }
 

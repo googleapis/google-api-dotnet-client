@@ -36,6 +36,7 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             Applications = new ApplicationsResource(this);
             Edits = new EditsResource(this);
+            Externaltransactions = new ExternaltransactionsResource(this);
             Generatedapks = new GeneratedapksResource(this);
             Grants = new GrantsResource(this);
             Inappproducts = new InappproductsResource(this);
@@ -85,6 +86,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
+
+        /// <summary>Gets the Externaltransactions resource.</summary>
+        public virtual ExternaltransactionsResource Externaltransactions { get; }
 
         /// <summary>Gets the Generatedapks resource.</summary>
         public virtual GeneratedapksResource Generatedapks { get; }
@@ -4652,6 +4656,205 @@ namespace Google.Apis.AndroidPublisher.v3
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "externaltransactions" collection of methods.</summary>
+    public class ExternaltransactionsResource
+    {
+        private const string Resource = "externaltransactions";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ExternaltransactionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a new external transaction.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The parent resource where this external transaction will be created. Format:
+        /// applications/{package_name}
+        /// </param>
+        public virtual CreateexternaltransactionRequest Createexternaltransaction(Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction body, string parent)
+        {
+            return new CreateexternaltransactionRequest(service, body, parent);
+        }
+
+        /// <summary>Creates a new external transaction.</summary>
+        public class CreateexternaltransactionRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction>
+        {
+            /// <summary>Constructs a new Createexternaltransaction request.</summary>
+            public CreateexternaltransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent resource where this external transaction will be created. Format:
+            /// applications/{package_name}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Required. The id to use for the external transaction. Must be unique across all other transactions for
+            /// the app. This value should be 1-63 characters and valid characters are /a-z0-9_-/.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalTransactionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExternalTransactionId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createexternaltransaction";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+parent}/externalTransactions";
+
+            /// <summary>Initializes Createexternaltransaction parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^applications/[^/]+$",
+                });
+                RequestParameters.Add("externalTransactionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalTransactionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Gets an existing external transaction.</summary>
+        /// <param name="name">
+        /// Required. The name of the external transaction to retrieve. Format:
+        /// applications/{package_name}/externalTransactions/{external_transaction}
+        /// </param>
+        public virtual GetexternaltransactionRequest Getexternaltransaction(string name)
+        {
+            return new GetexternaltransactionRequest(service, name);
+        }
+
+        /// <summary>Gets an existing external transaction.</summary>
+        public class GetexternaltransactionRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction>
+        {
+            /// <summary>Constructs a new Getexternaltransaction request.</summary>
+            public GetexternaltransactionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the external transaction to retrieve. Format:
+            /// applications/{package_name}/externalTransactions/{external_transaction}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getexternaltransaction";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+name}";
+
+            /// <summary>Initializes Getexternaltransaction parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^applications/[^/]+/externalTransactions/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Refunds or partially refunds an existing external transaction.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the external transaction that will be refunded. Format:
+        /// applications/{package_name}/externalTransactions/{external_transaction}
+        /// </param>
+        public virtual RefundexternaltransactionRequest Refundexternaltransaction(Google.Apis.AndroidPublisher.v3.Data.RefundExternalTransactionRequest body, string name)
+        {
+            return new RefundexternaltransactionRequest(service, body, name);
+        }
+
+        /// <summary>Refunds or partially refunds an existing external transaction.</summary>
+        public class RefundexternaltransactionRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction>
+        {
+            /// <summary>Constructs a new Refundexternaltransaction request.</summary>
+            public RefundexternaltransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.RefundExternalTransactionRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the external transaction that will be refunded. Format:
+            /// applications/{package_name}/externalTransactions/{external_transaction}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.RefundExternalTransactionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "refundexternaltransaction";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+name}:refund";
+
+            /// <summary>Initializes Refundexternaltransaction parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^applications/[^/]+/externalTransactions/[^/]+$",
                 });
             }
         }
@@ -10617,6 +10820,119 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of an external subscription.</summary>
+    public class ExternalSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of the external subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionType")]
+        public virtual string SubscriptionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of an external transaction.</summary>
+    public class ExternalTransaction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time when this transaction was created. This is the time when Google was notified of the
+        /// transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The current transaction amount before tax. This represents the current pre-tax amount including
+        /// any refunds that may have been applied to this transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentPreTaxAmount")]
+        public virtual Price CurrentPreTaxAmount { get; set; }
+
+        /// <summary>
+        /// Output only. The current tax amount. This represents the current tax amount including any refunds that may
+        /// have been applied to this transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentTaxAmount")]
+        public virtual Price CurrentTaxAmount { get; set; }
+
+        /// <summary>
+        /// Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set
+        /// when creating the external transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTransactionId")]
+        public virtual string ExternalTransactionId { get; set; }
+
+        /// <summary>This is a one-time transaction and not part of a subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeTransaction")]
+        public virtual OneTimeExternalTransaction OneTimeTransaction { get; set; }
+
+        /// <summary>
+        /// Required. The original transaction amount before taxes. This represents the pre-tax amount originally
+        /// notified to Google before any refunds were applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalPreTaxAmount")]
+        public virtual Price OriginalPreTaxAmount { get; set; }
+
+        /// <summary>
+        /// Required. The original tax amount. This represents the tax amount originally notified to Google before any
+        /// refunds were applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalTaxAmount")]
+        public virtual Price OriginalTaxAmount { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the external transaction. The package name of the application the inapp
+        /// products were sold (for example, 'com.some.app').
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>This transaction is part of a recurring series of transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurringTransaction")]
+        public virtual RecurringExternalTransaction RecurringTransaction { get; set; }
+
+        /// <summary>
+        /// Output only. If set, this transaction was a test purchase. Google will not charge for a test transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testPurchase")]
+        public virtual ExternalTransactionTestPurchase TestPurchase { get; set; }
+
+        /// <summary>Output only. The current state of the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionState")]
+        public virtual string TransactionState { get; set; }
+
+        /// <summary>Required. The time when the transaction was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionTime")]
+        public virtual object TransactionTime { get; set; }
+
+        /// <summary>Required. User address for tax computation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTaxAddress")]
+        public virtual ExternalTransactionAddress UserTaxAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User's address for the external transaction.</summary>
+    public class ExternalTransactionAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a transaction performed using a test account. These transactions will not be charged by Google.
+    /// </summary>
+    public class ExternalTransactionTestPurchase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This
     /// function is only available to organizations using Managed Play whose application is configured to restrict
@@ -10687,6 +11003,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
         public virtual string VersionName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A full refund of the remaining amount of a transaction.</summary>
+    public class FullRefund : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11324,6 +11647,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a one-time transaction.</summary>
+    public class OneTimeExternalTransaction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow
+        /// is launched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTransactionToken")]
+        public virtual string ExternalTransactionToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Pricing information for any new locations Play may launch in.</summary>
     public class OtherRegionsBasePlanConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11432,6 +11769,27 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
         public virtual System.Nullable<int> TotalResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A partial refund of a transaction.</summary>
+    public class PartialRefund : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A unique id distinguishing this partial refund. If the refund is successful, subsequent refunds
+        /// with the same id will fail. Must be unique across refunds for one individual transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundId")]
+        public virtual string RefundId { get; set; }
+
+        /// <summary>
+        /// Required. The pre-tax amount of the partial refund. Should be less than the remaining pre-tax amount of the
+        /// transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundPreTaxAmount")]
+        public virtual Price RefundPreTaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11593,6 +11951,54 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a transaction that is part of a recurring series of payments. This can be a subscription or a
+    /// one-time product with multiple payments (such as preorder).
+    /// </summary>
+    public class RecurringExternalTransaction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of an external subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSubscription")]
+        public virtual ExternalSubscription ExternalSubscription { get; set; }
+
+        /// <summary>
+        /// Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow
+        /// is launched. Required only for the initial purchase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTransactionToken")]
+        public virtual string ExternalTransactionToken { get; set; }
+
+        /// <summary>
+        /// The external transaction id of the first transaction of this recurring series of transactions. For example,
+        /// for a subscription this would be the transaction id of the first payment. Required when creating recurring
+        /// external transactions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialExternalTransactionId")]
+        public virtual string InitialExternalTransactionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to refund an existing external transaction.</summary>
+    public class RefundExternalTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A full-amount refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
+        public virtual FullRefund FullRefund { get; set; }
+
+        /// <summary>A partial refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialRefund")]
+        public virtual PartialRefund PartialRefund { get; set; }
+
+        /// <summary>Required. The time that the transaction was refunded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundTime")]
+        public virtual object RefundTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

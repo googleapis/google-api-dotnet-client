@@ -4219,7 +4219,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class StatusProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The canonical error code (see codes.proto) that most closely corresponds to this status. May be missing.
+        /// The canonical error code (see codes.proto) that most closely corresponds to this status. This may be
+        /// missing, and in the common case of the generic space, it definitely will be.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
         public virtual System.Nullable<int> CanonicalCode { get; set; }

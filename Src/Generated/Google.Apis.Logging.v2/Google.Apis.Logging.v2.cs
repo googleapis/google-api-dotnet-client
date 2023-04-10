@@ -771,8 +771,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -788,8 +788,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
                     {
@@ -1099,7 +1099,7 @@ namespace Google.Apis.Logging.v2
                         /// entries are listed.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                        /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                         /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -1121,7 +1121,7 @@ namespace Google.Apis.Logging.v2
                             }
 
                             /// <summary>
-                            /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                            /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                             /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1144,13 +1144,14 @@ namespace Google.Apis.Logging.v2
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// Optional. The resource name that owns the logs:
+                            /// Optional. List of resource names to list logs for:
                             /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To
                             /// support legacy queries, it could also be: projects/[PROJECT_ID]
-                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID]
+                            /// folders/[FOLDER_ID]The resource name in the parent field is added to this list.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -2654,7 +2655,7 @@ namespace Google.Apis.Logging.v2
             /// listed.
             /// </summary>
             /// <param name="parent">
-            /// Required. The resource name that owns the logs: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+            /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
             /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string parent)
@@ -2676,8 +2677,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
-                /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2699,13 +2700,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// Optional. The resource name that owns the logs:
+                /// Optional. List of resource names to list logs for:
                 /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy
                 /// queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
-                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is
+                /// added to this list.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -4424,8 +4426,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -4441,8 +4443,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
                     {
@@ -4752,7 +4754,7 @@ namespace Google.Apis.Logging.v2
                         /// entries are listed.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                        /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                         /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -4774,7 +4776,7 @@ namespace Google.Apis.Logging.v2
                             }
 
                             /// <summary>
-                            /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                            /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                             /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4797,13 +4799,14 @@ namespace Google.Apis.Logging.v2
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// Optional. The resource name that owns the logs:
+                            /// Optional. List of resource names to list logs for:
                             /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To
                             /// support legacy queries, it could also be: projects/[PROJECT_ID]
-                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID]
+                            /// folders/[FOLDER_ID]The resource name in the parent field is added to this list.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -6307,7 +6310,7 @@ namespace Google.Apis.Logging.v2
             /// listed.
             /// </summary>
             /// <param name="parent">
-            /// Required. The resource name that owns the logs: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+            /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
             /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string parent)
@@ -6329,8 +6332,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
-                /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6352,13 +6355,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// Optional. The resource name that owns the logs:
+                /// Optional. List of resource names to list logs for:
                 /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy
                 /// queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
-                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is
+                /// added to this list.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -7227,8 +7231,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to read
-                /// the logs stored in the bucket. A bucket may currently only contain one link.
+                /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read
+                /// the logs stored in the log bucket. A log bucket may currently only contain one link.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -7244,8 +7248,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to read
-                /// the logs stored in the bucket. A bucket may currently only contain one link.
+                /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read
+                /// the logs stored in the log bucket. A log bucket may currently only contain one link.
                 /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
                 {
@@ -8964,7 +8968,7 @@ namespace Google.Apis.Logging.v2
         /// listed.
         /// </summary>
         /// <param name="parent">
-        /// Required. The resource name that owns the logs: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+        /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
         /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
         /// </param>
         public virtual ListRequest List(string parent)
@@ -8986,7 +8990,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Required. The resource name that owns the logs: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+            /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
             /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -9008,13 +9012,14 @@ namespace Google.Apis.Logging.v2
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Optional. The resource name that owns the logs:
+            /// Optional. List of resource names to list logs for:
             /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
             /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
             /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
             /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy
             /// queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
-            /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+            /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added
+            /// to this list.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -9588,8 +9593,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -9605,8 +9610,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
                     {
@@ -9916,7 +9921,7 @@ namespace Google.Apis.Logging.v2
                         /// entries are listed.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                        /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                         /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -9938,7 +9943,7 @@ namespace Google.Apis.Logging.v2
                             }
 
                             /// <summary>
-                            /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                            /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                             /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -9961,13 +9966,14 @@ namespace Google.Apis.Logging.v2
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// Optional. The resource name that owns the logs:
+                            /// Optional. List of resource names to list logs for:
                             /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To
                             /// support legacy queries, it could also be: projects/[PROJECT_ID]
-                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID]
+                            /// folders/[FOLDER_ID]The resource name in the parent field is added to this list.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -11471,7 +11477,7 @@ namespace Google.Apis.Logging.v2
             /// listed.
             /// </summary>
             /// <param name="parent">
-            /// Required. The resource name that owns the logs: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+            /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
             /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string parent)
@@ -11493,8 +11499,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
-                /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -11516,13 +11522,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// Optional. The resource name that owns the logs:
+                /// Optional. List of resource names to list logs for:
                 /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy
                 /// queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
-                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is
+                /// added to this list.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -12877,8 +12884,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -12894,8 +12901,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to
-                    /// read the logs stored in the bucket. A bucket may currently only contain one link.
+                    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to
+                    /// read the logs stored in the log bucket. A log bucket may currently only contain one link.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
                     {
@@ -13205,7 +13212,7 @@ namespace Google.Apis.Logging.v2
                         /// entries are listed.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                        /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                         /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -13227,7 +13234,7 @@ namespace Google.Apis.Logging.v2
                             }
 
                             /// <summary>
-                            /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
+                            /// Required. The resource name to list logs for: projects/[PROJECT_ID]
                             /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -13250,13 +13257,14 @@ namespace Google.Apis.Logging.v2
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// Optional. The resource name that owns the logs:
+                            /// Optional. List of resource names to list logs for:
                             /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                             /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To
                             /// support legacy queries, it could also be: projects/[PROJECT_ID]
-                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                            /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID]
+                            /// folders/[FOLDER_ID]The resource name in the parent field is added to this list.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -14760,7 +14768,7 @@ namespace Google.Apis.Logging.v2
             /// listed.
             /// </summary>
             /// <param name="parent">
-            /// Required. The resource name that owns the logs: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+            /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
             /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string parent)
@@ -14782,8 +14790,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Required. The resource name that owns the logs: projects/[PROJECT_ID]
-                /// organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -14805,13 +14813,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// Optional. The resource name that owns the logs:
+                /// Optional. List of resource names to list logs for:
                 /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
                 /// folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy
                 /// queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID]
-                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+                /// billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is
+                /// added to this list.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
@@ -16941,7 +16950,7 @@ namespace Google.Apis.Logging.v2.Data
     /// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower
     /// bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &amp;lt;= i &amp;lt;
-    /// N-1): scale * (growth_factor ^ i). Lower bound (1 &amp;lt;= i &amp;lt; N): scale * (growth_factor ^ (i - 1)).
+    /// N-1): scale * (growth_factor ^ i).Lower bound (1 &amp;lt;= i &amp;lt; N): scale * (growth_factor ^ (i - 1)).
     /// </summary>
     public class Exponential : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17109,7 +17118,7 @@ namespace Google.Apis.Logging.v2.Data
     /// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket
     /// represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2
     /// (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &amp;lt;= i &amp;lt; N-1): offset + (width *
-    /// i). Lower bound (1 &amp;lt;= i &amp;lt; N): offset + (width * (i - 1)).
+    /// i).Lower bound (1 &amp;lt;= i &amp;lt; N): offset + (width * (i - 1)).
     /// </summary>
     public class Linear : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1983,7 +1983,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
 
-        /// <summary>A Boolean value to indicate whether payload is wanted. Optional.</summary>
+        /// <summary>
+        /// A Boolean value to indicate whether payload is wanted. A payload is data that is sent in the body of an HTTP
+        /// POST, PUT, or PATCH message and contains important information about the request. Optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Nullable<bool> Payload { get; set; }
 

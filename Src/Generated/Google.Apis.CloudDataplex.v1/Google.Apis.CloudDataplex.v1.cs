@@ -1478,7 +1478,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Optional. Maximum number of dataScans to return. The service may return fewer than this value.
-                    /// If unspecified, at most 10 scans will be returned. The maximum value is 1000; values above 1000
+                    /// If unspecified, at most 500 scans will be returned. The maximum value is 1000; values above 1000
                     /// will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -10192,8 +10192,11 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo Profile { get; set; }
 
         /// <summary>
-        /// The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN
-        /// BINARY TIMESTAMP DATE TIME NULL RECORD
+        /// The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is
+        /// the BigQuery Table Schema
+        /// (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity,
+        /// it is the Entity Schema
+        /// (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -11171,7 +11174,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Required. A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying
         /// a new ID in an update entity request will override the existing value. The ID must contain only letters
-        /// (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+        /// (a-z, A-Z), numbers (0-9), and underscores, and consist of 256 or fewer characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
