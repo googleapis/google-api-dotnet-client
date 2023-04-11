@@ -122,8 +122,8 @@ then
   if [[ $GENERATE_CHANGES_ONLY == "TRUE" ]]
   then
     # Only generate libraries for discovery docs that have changed or are new.
-    modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^ M' | cut "-d " -f3)
-    added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '^\?\?' | cut "-d " -f2)
+    modified=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '\.json$' | grep -E '^ M' | cut "-d " -f3)
+    added=$(git status -s -- $DISCOVERY_DOC_DIR | grep -E '\.json$' | grep -E '^\?\?' | cut "-d " -f2)
     needs_generation=(${modified[@]} ${added[@]})
     # If we generate only a subset of the existing discoveries, we do so in a temporary
     # folder so as not to delete generated code for the unmodified discoveries.
