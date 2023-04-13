@@ -10457,7 +10457,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class Aliases : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
-        public virtual System.Collections.Generic.IList<object> AliasesValue { get; set; }
+        public virtual System.Collections.Generic.IList<Alias> AliasesValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -13166,7 +13166,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     {
         /// <summary>The list of the user's addresses. The maximum allowed data size for this field is 10KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
-        public virtual object Addresses { get; set; }
+        public virtual System.Collections.Generic.IList<UserAddress> Addresses { get; set; }
 
         /// <summary>
         /// Output only. This property is `true` if the user has completed an initial login and accepted the Terms of
@@ -13233,7 +13233,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The list of the user's email addresses. The maximum allowed data size for this field is 10KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
-        public virtual object Emails { get; set; }
+        public virtual System.Collections.Generic.IList<UserEmail> Emails { get; set; }
 
         /// <summary>Output only. ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -13244,7 +13244,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// this field is 2KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
-        public virtual object ExternalIds { get; set; }
+        public virtual System.Collections.Generic.IList<UserExternalId> ExternalIds { get; set; }
 
         /// <summary>The user's gender. The maximum allowed data size for this field is 1KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
@@ -13270,7 +13270,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// field is 2KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ims")]
-        public virtual object Ims { get; set; }
+        public virtual System.Collections.Generic.IList<UserIm> Ims { get; set; }
 
         /// <summary>
         /// Indicates if the user's profile is visible in the Google Workspace global address list when the contact
@@ -13384,7 +13384,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The list of organizations the user belongs to. The maximum allowed data size for this field is 10KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
-        public virtual object Organizations { get; set; }
+        public virtual System.Collections.Generic.IList<UserOrganization> Organizations { get; set; }
 
         /// <summary>User's password</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
@@ -13394,7 +13394,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The list of the user's phone numbers. The maximum allowed data size for this field is 1KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phones")]
-        public virtual object Phones { get; set; }
+        public virtual System.Collections.Generic.IList<UserPhone> Phones { get; set; }
 
         /// <summary>
         /// The list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html) account information for the
@@ -13425,7 +13425,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The list of the user's relationships to other users. The maximum allowed data size for this field is 2KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
-        public virtual object Relations { get; set; }
+        public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; }
 
         /// <summary>A list of SSH public keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
@@ -13452,7 +13452,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>The user's websites. The maximum allowed data size for this field is 2KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websites")]
-        public virtual object Websites { get; set; }
+        public virtual System.Collections.Generic.IList<UserWebsite> Websites { get; set; }
     }
 
     /// <summary>JSON template for About (notes) of a user in Directory API.</summary>

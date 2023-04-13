@@ -4549,7 +4549,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>A message representing a rule in the phrase matcher.</summary>
     public class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of phase match rules that are included in this group.</summary>
+        /// <summary>A list of phrase match rules that are included in this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchRules")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1PhraseMatchRule> PhraseMatchRules { get; set; }
 

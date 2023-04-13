@@ -2645,9 +2645,13 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. Only the
-            /// default value is available, unless you're enrolled in the Working Locations developer preview. Developer
-            /// Preview.
+            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"This
+            /// parameter can be repeated multiple times to return events of different types. Currently, this is the
+            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value will be the
+            /// default.  If you're enrolled in the Working Location developer preview program, in addition to the
+            /// default value above you can also set the "workingLocation" event type:  - ["default", "focusTime",
+            /// "outOfOffice", "workingLocation"]  - ["workingLocation"] Additional combinations of these 4 event types
+            /// will be made available in later releases. Developer Preview.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -3601,9 +3605,13 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. The default is ["default", "outOfOffice", "focusTime"]. Only the
-            /// default value is available, unless you're enrolled in the Working Locations developer preview. Developer
-            /// Preview.
+            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"This
+            /// parameter can be repeated multiple times to return events of different types. Currently, this is the
+            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value will be the
+            /// default.  If you're enrolled in the Working Location developer preview program, in addition to the
+            /// default value above you can also set the "workingLocation" event type:  - ["default", "focusTime",
+            /// "outOfOffice", "workingLocation"]  - ["workingLocation"] Additional combinations of these 4 event types
+            /// will be made available in later releases. Developer Preview.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }

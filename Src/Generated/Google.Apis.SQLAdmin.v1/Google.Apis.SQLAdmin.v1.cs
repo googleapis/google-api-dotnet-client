@@ -4214,6 +4214,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies options for controlling advanced machine features.</summary>
+    public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of threads per physical core.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadsPerCore")]
+        public virtual System.Nullable<int> ThreadsPerCore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An Admin API warning message.</summary>
     public class ApiWarning : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4611,7 +4622,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>A Cloud SQL instance resource.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List all maintenance versions applicable on the instance</summary>
+        /// <summary>Output only. List all maintenance versions applicable on the instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableMaintenanceVersions")]
         public virtual System.Collections.Generic.IList<string> AvailableMaintenanceVersions { get; set; }
 
@@ -6152,6 +6163,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Active Directory configuration, relevant only for Cloud SQL for SQL Server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeDirectoryConfig")]
         public virtual SqlActiveDirectoryConfig ActiveDirectoryConfig { get; set; }
+
+        /// <summary>Specifies advance machine configuration for the instance relevant only for SQL Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedMachineFeatures")]
+        public virtual AdvancedMachineFeatures AdvancedMachineFeatures { get; set; }
 
         /// <summary>
         /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances

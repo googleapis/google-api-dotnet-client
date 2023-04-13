@@ -7039,6 +7039,37 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Location of the source in any accessible Git repository.</summary>
+    public class GitSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
+        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud
+        /// Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string
+        /// you provide for `revision` is parsable by the command. For information on string values accepted by `git
+        /// fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see
+        /// https://git-scm.com/docs/git-fetch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Location of the Git repo to build. This will be used as a `git remote`, see
+        /// https://git-scm.com/docs/git-remote.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Container message for hash values.</summary>
     public class Hash : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7826,6 +7857,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Location of the source in a supported storage service.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If provided, get the source from this Git repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
+        public virtual GitSource GitSource { get; set; }
+
         /// <summary>If provided, get the source from this location in a Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
         public virtual RepoSource RepoSource { get; set; }

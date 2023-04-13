@@ -1558,37 +1558,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; }
-
-        /// <summary>Optional. Time when the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Optional. The display name of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Optional. The parent of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>
-        /// Optional. Resource properties in the input that are used for creating/customizing workload resources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings> ResourceSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response of ListViolations endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1645,8 +1614,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual System.Nullable<bool> Acknowledged { get; set; }
 
         /// <summary>
-        /// Optional. Timestamp when this violation was acknowledged last. This will be absent when acknowledged field
-        /// is marked as false.
+        /// Optional. Timestamp when this violation was acknowledged first. Check exception_contexts to find the last
+        /// time the violation was acknowledged when there are more than one violations. This field will be absent when
+        /// acknowledged field is marked as false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
         public virtual object AcknowledgementTime { get; set; }
@@ -1967,8 +1937,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string EkmProvisioningErrorDomain { get; set; }
 
         /// <summary>Detailed error message if Ekm provisioning fails</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMessage")]
-        public virtual string EkmProvisioningErrorMessage { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMapping")]
+        public virtual string EkmProvisioningErrorMapping { get; set; }
 
         /// <summary>Indicates Ekm enrollment Provisioning of a given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningState")]
