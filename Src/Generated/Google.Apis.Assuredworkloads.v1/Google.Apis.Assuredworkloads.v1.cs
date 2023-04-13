@@ -802,9 +802,7 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>
                 /// Deletes the workload. Make sure that workload's direct children are already in a deleted state,
-                /// otherwise the request will fail with a FAILED_PRECONDITION error. In addition to
-                /// assuredworkloads.workload.delete permission, the user should also have orgpolicy.policy.set
-                /// permission on the deleted folder to remove Assured Workloads OrgPolicies.
+                /// otherwise the request will fail with a FAILED_PRECONDITION error.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The `name` field is used to identify the workload. Format:
@@ -817,9 +815,7 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>
                 /// Deletes the workload. Make sure that workload's direct children are already in a deleted state,
-                /// otherwise the request will fail with a FAILED_PRECONDITION error. In addition to
-                /// assuredworkloads.workload.delete permission, the user should also have orgpolicy.policy.set
-                /// permission on the deleted folder to remove Assured Workloads OrgPolicies.
+                /// otherwise the request will fail with a FAILED_PRECONDITION error.
                 /// </summary>
                 public class DeleteRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleProtobufEmpty>
                 {
@@ -877,7 +873,7 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
                 /// <param name="name">
-                /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in the
+                /// Required. The resource name of the Workload to fetch. This is the workload's relative path in the
                 /// API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
                 /// For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
                 /// </param>
@@ -897,7 +893,7 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in
+                    /// Required. The resource name of the Workload to fetch. This is the workload's relative path in
                     /// the API, formatted as
                     /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example,
                     /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
@@ -1324,7 +1320,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for updating permission settings for a partner workload.</summary>
+    /// <summary>Request of updating permission settings for a partner workload.</summary>
     public class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The etag of the workload. If this is provided, it must match the server's etag.</summary>
@@ -1369,8 +1365,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual System.Nullable<bool> Acknowledged { get; set; }
 
         /// <summary>
-        /// Optional. Timestamp when this violation was acknowledged last. This will be absent when acknowledged field
-        /// is marked as false.
+        /// Optional. Timestamp when this violation was acknowledged first. Check exception_contexts to find the last
+        /// time the violation was acknowledged when there are more than one violations. This field will be absent when
+        /// acknowledged field is marked as false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
         public virtual object AcknowledgementTime { get; set; }
@@ -1664,8 +1661,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string EkmProvisioningErrorDomain { get; set; }
 
         /// <summary>Detailed error message if Ekm provisioning fails</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMessage")]
-        public virtual string EkmProvisioningErrorMessage { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMapping")]
+        public virtual string EkmProvisioningErrorMapping { get; set; }
 
         /// <summary>Indicates Ekm enrollment Provisioning of a given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningState")]
@@ -1675,7 +1672,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings specific to the Key Management Service.</summary>
+    /// <summary>
+    /// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring,
+    /// callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+    /// </summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1749,8 +1749,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ResourceId { get; set; }
 
         /// <summary>
-        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
-        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        /// Indicates the type of resource. This field should be specified to correspond the id to the right resource
+        /// type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }

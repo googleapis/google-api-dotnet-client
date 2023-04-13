@@ -8163,6 +8163,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskAttemptNum")]
         public virtual System.Nullable<int> TaskAttemptNum { get; set; }
 
+        /// <summary>the task label associated with this snapshot. Could be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskLabel")]
+        public virtual string TaskLabel { get; set; }
+
         /// <summary>the task name associated with this snapshot. Could be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskName")]
         public virtual string TaskName { get; set; }
@@ -10580,6 +10584,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authType")]
         public virtual string AuthType { get; set; }
 
+        /// <summary>Oauth2AuthCodeFlow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2AuthCodeFlow")]
+        public virtual GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow Oauth2AuthCodeFlow { get; set; }
+
         /// <summary>Oauth2ClientCredentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientCredentials")]
         public virtual GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials Oauth2ClientCredentials { get; set; }
@@ -10595,6 +10603,44 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>UserPassword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPassword")]
         public virtual GoogleCloudConnectorsV1AuthConfigUserPassword UserPassword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See
+    /// https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+    /// </summary>
+    public class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authorization code to be exchanged for access and refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>Client ID for user-provided OAuth app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Client secret for user-provided OAuth app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual GoogleCloudConnectorsV1Secret ClientSecret { get; set; }
+
+        /// <summary>Whether to enable PKCE when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
+        public virtual System.Nullable<bool> EnablePkce { get; set; }
+
+        /// <summary>PKCE verifier to be used during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkceVerifier")]
+        public virtual string PkceVerifier { get; set; }
+
+        /// <summary>Redirect URI to be provided during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>Scopes the connection will request when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10783,6 +10829,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lockConfig")]
         public virtual GoogleCloudConnectorsV1LockConfig LockConfig { get; set; }
 
+        /// <summary>Optional. Log configuration for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual GoogleCloudConnectorsV1LogConfig LogConfig { get; set; }
+
         /// <summary>
         /// Output only. Resource name of the Connection. Format:
         /// projects/{project}/locations/{location}/connections/{connection}
@@ -10888,6 +10938,17 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Describes why a connection is locked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Log configuration for the connection.</summary>
+    public class GoogleCloudConnectorsV1LogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enabled represents whether logging is enabled or not for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11681,6 +11742,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>the task attempt number this snapshot belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskAttempt")]
         public virtual System.Nullable<int> TaskAttempt { get; set; }
+
+        /// <summary>the task label associated with this snapshot. Could be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskLabel")]
+        public virtual string TaskLabel { get; set; }
 
         /// <summary>The task number associated with this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskNumber")]

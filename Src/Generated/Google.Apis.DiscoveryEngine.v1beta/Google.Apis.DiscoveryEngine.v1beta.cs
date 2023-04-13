@@ -3467,6 +3467,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>
+        /// The API request payload, represented as a protocol buffer. Most API request types are supported—for example:
+        /// * `type.googleapis.com/google.cloud.discoveryengine.v1alpha.DocumentService.CreateDocumentRequest` *
+        /// `type.googleapis.com/google.cloud.discoveryengine.v1alpha.UserEventService.WriteUserEventRequest`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> RequestPayload { get; set; }
+
+        /// <summary>
+        /// The API response payload, represented as a protocol buffer. This is used to log some "soft errors", where
+        /// the response is valid but we consider there are some quality issues like unjoined events. The following API
+        /// responses are supported, and no PII is included: *
+        /// `google.cloud.discoveryengine.v1alpha.RecommendationService.Recommend` *
+        /// `google.cloud.discoveryengine.v1alpha.UserEventService.WriteUserEvent` *
+        /// `google.cloud.discoveryengine.v1alpha.UserEventService.CollectUserEvent`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ResponsePayload { get; set; }
+
         /// <summary>The service context in which this error has occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
         public virtual GoogleCloudDiscoveryengineLoggingServiceContext ServiceContext { get; set; }

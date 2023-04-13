@@ -293,6 +293,7 @@ namespace Google.Apis.WorkloadManager.v1
                 Evaluations = new EvaluationsResource(service);
                 Insights = new InsightsResource(service);
                 Operations = new OperationsResource(service);
+                Rules = new RulesResource(service);
             }
 
             /// <summary>Gets the Evaluations resource.</summary>
@@ -310,6 +311,469 @@ namespace Google.Apis.WorkloadManager.v1
                 public EvaluationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Executions = new ExecutionsResource(service);
+                }
+
+                /// <summary>Gets the Executions resource.</summary>
+                public virtual ExecutionsResource Executions { get; }
+
+                /// <summary>The "executions" collection of methods.</summary>
+                public class ExecutionsResource
+                {
+                    private const string Resource = "executions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ExecutionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Results = new ResultsResource(service);
+                        ScannedResources = new ScannedResourcesResource(service);
+                    }
+
+                    /// <summary>Gets the Results resource.</summary>
+                    public virtual ResultsResource Results { get; }
+
+                    /// <summary>The "results" collection of methods.</summary>
+                    public class ResultsResource
+                    {
+                        private const string Resource = "results";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ResultsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>List the running result of a single Execution.</summary>
+                        /// <param name="parent">
+                        /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>List the running result of a single Execution.</summary>
+                        public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListExecutionResultsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Filtering results</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Requested page size. Server may return fewer items than requested. If unspecified,
+                            /// server will pick an appropriate default.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>A token identifying a page of results the server should return.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/results";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the ScannedResources resource.</summary>
+                    public virtual ScannedResourcesResource ScannedResources { get; }
+
+                    /// <summary>The "scannedResources" collection of methods.</summary>
+                    public class ScannedResourcesResource
+                    {
+                        private const string Resource = "scannedResources";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ScannedResourcesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>List all scanned resources for a single Execution.</summary>
+                        /// <param name="parent">Required. parent for ListScannedResourcesRequest</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>List all scanned resources for a single Execution.</summary>
+                        public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListScannedResourcesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. parent for ListScannedResourcesRequest</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Filtering results</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Requested page size. Server may return fewer items than requested. If unspecified,
+                            /// server will pick an appropriate default.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>A token identifying a page of results the server should return.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>rule name</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("rule", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Rule { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/scannedResources";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("rule", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "rule",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Execution.</summary>
+                    /// <param name="name">Required. Name of the resource</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single Execution.</summary>
+                    public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Execution>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+/executions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Executions in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource prefix of the Execution using the form:
+                    /// 'projects/{project}/locations/{location}/evaluations/{evaluation}'
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Executions in a given project and location.</summary>
+                    public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListExecutionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource prefix of the Execution using the form:
+                        /// 'projects/{project}/locations/{location}/evaluations/{evaluation}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filtering results</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Requested page size. Server may return fewer items than requested. If unspecified, server
+                        /// will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/executions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates a new Execution in a given project and location.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the Execution using the form:
+                    /// 'projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}'
+                    /// </param>
+                    public virtual RunRequest Run(Google.Apis.WorkloadManager.v1.Data.RunEvaluationRequest body, string name)
+                    {
+                        return new RunRequest(service, body, name);
+                    }
+
+                    /// <summary>Creates a new Execution in a given project and location.</summary>
+                    public class RunRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Run request.</summary>
+                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkloadManager.v1.Data.RunEvaluationRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Execution using the form:
+                        /// 'projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.WorkloadManager.v1.Data.RunEvaluationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "run";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/executions:run";
+
+                        /// <summary>Initializes Run parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Evaluation in a given project and location.</summary>
@@ -897,6 +1361,116 @@ namespace Google.Apis.WorkloadManager.v1
                 }
             }
 
+            /// <summary>Gets the Rules resource.</summary>
+            public virtual RulesResource Rules { get; }
+
+            /// <summary>The "rules" collection of methods.</summary>
+            public class RulesResource
+            {
+                private const string Resource = "rules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists rules in a given project.</summary>
+                /// <param name="parent">
+                /// Required. The [project] on which to execute the request. The format is:
+                /// projects/{project_id}/locations/{location} Currently, the pre-defined rules are global available to
+                /// all projects and all regions
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists rules in a given project.</summary>
+                public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListRulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The [project] on which to execute the request. The format is:
+                    /// projects/{project_id}/locations/{location} Currently, the pre-defined rules are global available
+                    /// to all projects and all regions
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter based on primary_category, secondary_category</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Requested page size. Server may return fewer items than requested. If unspecified, server will
+                    /// pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/rules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -1091,9 +1665,89 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ruleVersions")]
         public virtual System.Collections.Generic.IList<string> RuleVersions { get; set; }
 
+        /// <summary>crontab format schedule for scheduled evaluation, example: 0 */3 * * *</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual string Schedule { get; set; }
+
         /// <summary>Output only. [Output only] Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing Execution object</summary>
+    public class Execution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output only] End time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. [Output only] Evaluation ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationId")]
+        public virtual string EvaluationId { get; set; }
+
+        /// <summary>Output only. [Output only] Inventory time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryTime")]
+        public virtual object InventoryTime { get; set; }
+
+        /// <summary>Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// The name of execution resource. The format is
+        /// projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// type represent whether the execution executed directly by user or scheduled according evaluation.schedule
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runType")]
+        public virtual string RunType { get; set; }
+
+        /// <summary>Output only. [Output only] Start time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Output only. [Output only] State</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the result of an execution</summary>
+    public class ExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>the document url of the rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
+        public virtual string DocumentationUrl { get; set; }
+
+        /// <summary>the violate resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual Resource Resource { get; set; }
+
+        /// <summary>the rule which violate in execution</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual string Rule { get; set; }
+
+        /// <summary>severity of violation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>the details of violation in result</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationDetails")]
+        public virtual ViolationDetails ViolationDetails { get; set; }
+
+        /// <summary>the violation message of an execution</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationMessage")]
+        public virtual string ViolationMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1151,6 +1805,43 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response of list execution results</summary>
+    public class ListExecutionResultsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The versions from the specified publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionResults")]
+        public virtual System.Collections.Generic.IList<ExecutionResult> ExecutionResults { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing Executions</summary>
+    public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Execution</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executions")]
+        public virtual System.Collections.Generic.IList<Execution> Executions { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1176,6 +1867,39 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mesesage of response of list rules</summary>
+    public class ListRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>all rules in response</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to list scanned resources</summary>
+    public class ListScannedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>All scanned resources in response</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scannedResources")]
+        public virtual System.Collections.Generic.IList<ScannedResource> ScannedResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1295,6 +2019,25 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message represent resource in execution result</summary>
+    public class Resource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>the name of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>the service account accosiate with resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>the type of reresource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing resource filters</summary>
     public class ResourceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1328,6 +2071,83 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>State of the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message represent a rule</summary>
+    public class Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>descrite rule in plain language</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>the name display in UI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>the message template for rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>rule name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>the primary category</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryCategory")]
+        public virtual string PrimaryCategory { get; set; }
+
+        /// <summary>the remediation for the rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
+        public virtual string Remediation { get; set; }
+
+        /// <summary>Output only. the version of the rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>the secondary category</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryCategory")]
+        public virtual string SecondaryCategory { get; set; }
+
+        /// <summary>the severity of the rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>the docuement url for the rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for creating a Execution</summary>
+    public class RunEvaluationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource being created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("execution")]
+        public virtual Execution Execution { get; set; }
+
+        /// <summary>
+        /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and execution_id
+        /// from the method_signature of Create RPC
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1426,6 +2246,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
         public virtual string ResourceKind { get; set; }
 
+        /// <summary>Indicates whether this is a new, updated, or missing resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceState")]
+        public virtual string ResourceState { get; set; }
+
         /// <summary>The type of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -1468,6 +2292,17 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message of scanned resource</summary>
+    public class ScannedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>resource name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1492,6 +2327,25 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the violdation in execution result</summary>
+    public class ViolationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>the name of asset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>observed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observed")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Observed { get; set; }
+
+        /// <summary>the service account associate with resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6097,7 +6097,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             /// <summary>Lookup for a single ExpandedDataSet.</summary>
             /// <param name="name">
-            /// Required. The name of the Audience to get. Example format: properties/1234/expandedDataSets/5678
+            /// Required. The name of the ExpandedDataSet to get. Example format: properties/1234/expandedDataSets/5678
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -6115,7 +6115,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Required. The name of the Audience to get. Example format: properties/1234/expandedDataSets/5678
+                /// Required. The name of the ExpandedDataSet to get. Example format:
+                /// properties/1234/expandedDataSets/5678
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -10431,7 +10432,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>
         /// Required. Immutable. Tagging parameter name for this custom dimension. If this is a user-scoped dimension,
         /// then this is the user property name. If this is an event-scoped dimension, then this is the event parameter
-        /// name. May only contain alphanumeric and underscore characters, starting with a letter. Max length of 24
+        /// name. If this is an item-scoped dimension, then this is the parameter name found in the eCommerce items
+        /// array. May only contain alphanumeric and underscore characters, starting with a letter. Max length of 24
         /// characters for user-scoped dimensions, 40 characters for event-scoped dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]

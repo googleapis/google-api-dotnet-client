@@ -7415,7 +7415,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Immutable. The specifications for the key.</summary>
+        /// <summary>Required. The specifications for the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keySpec")]
         public virtual string KeySpec { get; set; }
 
@@ -8626,7 +8626,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Immutable. The purpose of the key.</summary>
+        /// <summary>Required. The purpose of the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
 
@@ -8790,7 +8790,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Immutable. The purpose of the key.</summary>
+        /// <summary>Required. The purpose of the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
 

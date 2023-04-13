@@ -285,6 +285,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             Findings = new FindingsResource(service);
             MuteConfigs = new MuteConfigsResource(service);
             NotificationConfigs = new NotificationConfigsResource(service);
+            SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             Sources = new SourcesResource(service);
         }
 
@@ -1840,6 +1841,661 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
         }
 
+        /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
+        public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
+
+        /// <summary>The "securityHealthAnalyticsSettings" collection of methods.</summary>
+        public class SecurityHealthAnalyticsSettingsResource
+        {
+            private const string Resource = "securityHealthAnalyticsSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SecurityHealthAnalyticsSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                CustomModules = new CustomModulesResource(service);
+                EffectiveCustomModules = new EffectiveCustomModulesResource(service);
+            }
+
+            /// <summary>Gets the CustomModules resource.</summary>
+            public virtual CustomModulesResource CustomModules { get; }
+
+            /// <summary>The "customModules" collection of methods.</summary>
+            public class CustomModulesResource
+            {
+                private const string Resource = "customModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and
+                /// also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+                /// parent. These modules are enabled by default.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Resource name of the new custom module's parent. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and
+                /// also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+                /// parent. These modules are enabled by default.
+                /// </summary>
+                public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the new custom module's parent. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM
+                /// hierarchy. This method is only supported for resident custom modules.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to delete. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM
+                /// hierarchy. This method is only supported for resident custom modules.
+                /// </summary>
+                public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to delete. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to get. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to get. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes
+                /// resident modules defined at the scope of the parent, and inherited modules, inherited from CRM
+                /// ancestors.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes
+                /// resident modules defined at the scope of the parent, and inherited modules, inherited from CRM
+                /// ancestors.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and
+                /// all of the parent’s CRM descendants.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list descendant custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListDescendantRequest ListDescendant(string parent)
+                {
+                    return new ListDescendantRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and
+                /// all of the parent’s CRM descendants.
+                /// </summary>
+                public class ListDescendantRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListDescendantSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new ListDescendant request.</summary>
+                    public ListDescendantRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list descendant custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listDescendant";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules:listDescendant";
+
+                    /// <summary>Initializes ListDescendant parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask.
+                /// Updating the enablement state is supported on both resident and inherited modules (though resident
+                /// modules cannot have an enablement state of “inherited”). Updating the display name and custom config
+                /// of a module is supported on resident modules only.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the custom module. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id
+                /// {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20
+                /// digits.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask.
+                /// Updating the enablement state is supported on both resident and inherited modules (though resident
+                /// modules cannot have an enablement state of “inherited”). Updating the display name and custom config
+                /// of a module is supported on resident modules only.
+                /// </summary>
+                public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the custom module. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id
+                    /// {customModule} is server-generated and is not user settable. It will be a numeric id containing
+                    /// 1-20 digits.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the EffectiveCustomModules resource.</summary>
+            public virtual EffectiveCustomModulesResource EffectiveCustomModules { get; }
+
+            /// <summary>The "effectiveCustomModules" collection of methods.</summary>
+            public class EffectiveCustomModulesResource
+            {
+                private const string Resource = "effectiveCustomModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EffectiveCustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
+                /// <param name="name">
+                /// Required. Name of the effective custom module to get. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the effective custom module to get. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings/effectiveCustomModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This
+                /// includes resident modules defined at the scope of the parent, and inherited modules, inherited from
+                /// CRM ancestors.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list effective custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This
+                /// includes resident modules defined at the scope of the parent, and inherited modules, inherited from
+                /// CRM ancestors.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListEffectiveSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list effective custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/effectiveCustomModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+        }
+
         /// <summary>Gets the Sources resource.</summary>
         public virtual SourcesResource Sources { get; }
 
@@ -2664,6 +3320,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             MuteConfigs = new MuteConfigsResource(service);
             NotificationConfigs = new NotificationConfigsResource(service);
             Operations = new OperationsResource(service);
+            SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             Sources = new SourcesResource(service);
         }
 
@@ -4554,6 +5211,661 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
         }
 
+        /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
+        public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
+
+        /// <summary>The "securityHealthAnalyticsSettings" collection of methods.</summary>
+        public class SecurityHealthAnalyticsSettingsResource
+        {
+            private const string Resource = "securityHealthAnalyticsSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SecurityHealthAnalyticsSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                CustomModules = new CustomModulesResource(service);
+                EffectiveCustomModules = new EffectiveCustomModulesResource(service);
+            }
+
+            /// <summary>Gets the CustomModules resource.</summary>
+            public virtual CustomModulesResource CustomModules { get; }
+
+            /// <summary>The "customModules" collection of methods.</summary>
+            public class CustomModulesResource
+            {
+                private const string Resource = "customModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and
+                /// also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+                /// parent. These modules are enabled by default.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Resource name of the new custom module's parent. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and
+                /// also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+                /// parent. These modules are enabled by default.
+                /// </summary>
+                public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the new custom module's parent. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM
+                /// hierarchy. This method is only supported for resident custom modules.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to delete. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM
+                /// hierarchy. This method is only supported for resident custom modules.
+                /// </summary>
+                public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to delete. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to get. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to get. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes
+                /// resident modules defined at the scope of the parent, and inherited modules, inherited from CRM
+                /// ancestors.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes
+                /// resident modules defined at the scope of the parent, and inherited modules, inherited from CRM
+                /// ancestors.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and
+                /// all of the parent’s CRM descendants.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list descendant custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListDescendantRequest ListDescendant(string parent)
+                {
+                    return new ListDescendantRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and
+                /// all of the parent’s CRM descendants.
+                /// </summary>
+                public class ListDescendantRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListDescendantSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new ListDescendant request.</summary>
+                    public ListDescendantRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list descendant custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listDescendant";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules:listDescendant";
+
+                    /// <summary>Initializes ListDescendant parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask.
+                /// Updating the enablement state is supported on both resident and inherited modules (though resident
+                /// modules cannot have an enablement state of “inherited”). Updating the display name and custom config
+                /// of a module is supported on resident modules only.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the custom module. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id
+                /// {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20
+                /// digits.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask.
+                /// Updating the enablement state is supported on both resident and inherited modules (though resident
+                /// modules cannot have an enablement state of “inherited”). Updating the display name and custom config
+                /// of a module is supported on resident modules only.
+                /// </summary>
+                public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the custom module. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id
+                    /// {customModule} is server-generated and is not user settable. It will be a numeric id containing
+                    /// 1-20 digits.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the EffectiveCustomModules resource.</summary>
+            public virtual EffectiveCustomModulesResource EffectiveCustomModules { get; }
+
+            /// <summary>The "effectiveCustomModules" collection of methods.</summary>
+            public class EffectiveCustomModulesResource
+            {
+                private const string Resource = "effectiveCustomModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EffectiveCustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
+                /// <param name="name">
+                /// Required. Name of the effective custom module to get. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the effective custom module to get. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings/effectiveCustomModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This
+                /// includes resident modules defined at the scope of the parent, and inherited modules, inherited from
+                /// CRM ancestors.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list effective custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This
+                /// includes resident modules defined at the scope of the parent, and inherited modules, inherited from
+                /// CRM ancestors.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListEffectiveSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list effective custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/effectiveCustomModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+        }
+
         /// <summary>Gets the Sources resource.</summary>
         public virtual SourcesResource Sources { get; }
 
@@ -5946,6 +7258,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             Findings = new FindingsResource(service);
             MuteConfigs = new MuteConfigsResource(service);
             NotificationConfigs = new NotificationConfigsResource(service);
+            SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             Sources = new SourcesResource(service);
         }
 
@@ -7497,6 +8810,661 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                }
+            }
+        }
+
+        /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
+        public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
+
+        /// <summary>The "securityHealthAnalyticsSettings" collection of methods.</summary>
+        public class SecurityHealthAnalyticsSettingsResource
+        {
+            private const string Resource = "securityHealthAnalyticsSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SecurityHealthAnalyticsSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                CustomModules = new CustomModulesResource(service);
+                EffectiveCustomModules = new EffectiveCustomModulesResource(service);
+            }
+
+            /// <summary>Gets the CustomModules resource.</summary>
+            public virtual CustomModulesResource CustomModules { get; }
+
+            /// <summary>The "customModules" collection of methods.</summary>
+            public class CustomModulesResource
+            {
+                private const string Resource = "customModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and
+                /// also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+                /// parent. These modules are enabled by default.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Resource name of the new custom module's parent. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and
+                /// also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+                /// parent. These modules are enabled by default.
+                /// </summary>
+                public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the new custom module's parent. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM
+                /// hierarchy. This method is only supported for resident custom modules.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to delete. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM
+                /// hierarchy. This method is only supported for resident custom modules.
+                /// </summary>
+                public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to delete. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to get. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to get. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes
+                /// resident modules defined at the scope of the parent, and inherited modules, inherited from CRM
+                /// ancestors.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes
+                /// resident modules defined at the scope of the parent, and inherited modules, inherited from CRM
+                /// ancestors.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and
+                /// all of the parent’s CRM descendants.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list descendant custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListDescendantRequest ListDescendant(string parent)
+                {
+                    return new ListDescendantRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and
+                /// all of the parent’s CRM descendants.
+                /// </summary>
+                public class ListDescendantRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListDescendantSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new ListDescendant request.</summary>
+                    public ListDescendantRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list descendant custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listDescendant";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules:listDescendant";
+
+                    /// <summary>Initializes ListDescendant parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask.
+                /// Updating the enablement state is supported on both resident and inherited modules (though resident
+                /// modules cannot have an enablement state of “inherited”). Updating the display name and custom config
+                /// of a module is supported on resident modules only.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the custom module. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id
+                /// {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20
+                /// digits.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask.
+                /// Updating the enablement state is supported on both resident and inherited modules (though resident
+                /// modules cannot have an enablement state of “inherited”). Updating the display name and custom config
+                /// of a module is supported on resident modules only.
+                /// </summary>
+                public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the custom module. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id
+                    /// {customModule} is server-generated and is not user settable. It will be a numeric id containing
+                    /// 1-20 digits.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings/customModules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the EffectiveCustomModules resource.</summary>
+            public virtual EffectiveCustomModulesResource EffectiveCustomModules { get; }
+
+            /// <summary>The "effectiveCustomModules" collection of methods.</summary>
+            public class EffectiveCustomModulesResource
+            {
+                private const string Resource = "effectiveCustomModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EffectiveCustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
+                /// <param name="name">
+                /// Required. Name of the effective custom module to get. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+                /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+                /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the effective custom module to get. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings/effectiveCustomModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This
+                /// includes resident modules defined at the scope of the parent, and inherited modules, inherited from
+                /// CRM ancestors.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list effective custom modules. Its format is
+                /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This
+                /// includes resident modules defined at the scope of the parent, and inherited modules, inherited from
+                /// CRM ancestors.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListEffectiveSecurityHealthAnalyticsCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list effective custom modules. Its format is
+                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
+                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
+                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last call indicating a continuation</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/effectiveCustomModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
                 }
             }
         }
@@ -9493,6 +11461,110 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Defines the properties in a custom module configuration for Security Health Analytics. Use the custom module
+    /// configuration to create custom detectors that generate custom findings for resources that you specify.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1CustomConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom output properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customOutput")]
+        public virtual GoogleCloudSecuritycenterV1CustomOutputSpec CustomOutput { get; set; }
+
+        /// <summary>
+        /// Text that describes the vulnerability or misconfiguration that the custom module detects. This explanation
+        /// is returned with each finding instance to help investigators understand the detected issue. The text must be
+        /// enclosed in quotation marks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The CEL expression to evaluate to produce findings. When the expression evaluates to true against a
+        /// resource, a finding is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicate")]
+        public virtual Expr Predicate { get; set; }
+
+        /// <summary>
+        /// An explanation of the recommended steps that security teams can take to resolve the detected issue. This
+        /// explanation is returned with each finding generated by this module in the `nextSteps` property of the
+        /// finding JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
+        public virtual string Recommendation { get; set; }
+
+        /// <summary>
+        /// The resource types that the custom module operates on. Each custom module can specify up to 5 resource
+        /// types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSelector")]
+        public virtual GoogleCloudSecuritycenterV1ResourceSelector ResourceSelector { get; set; }
+
+        /// <summary>The severity to assign to findings generated by the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of optional name-value pairs that define custom source properties to return with each finding that is
+    /// generated by the custom module. The custom source properties that are defined here are included in the finding
+    /// JSON under `sourceProperties`.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1CustomOutputSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of custom output properties to add to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1Property> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An EffectiveSecurityHealthAnalyticsCustomModule is the representation of a Security Health Analytics custom
+    /// module at a specified level of the resource hierarchy: organization, folder, or project. If a custom module is
+    /// inherited from a parent organization or folder, the value of the `enablementState` property in
+    /// EffectiveSecurityHealthAnalyticsCustomModule is set to the value that is effective in the parent, instead of
+    /// `INHERITED`. For example, if the module is enabled in a parent organization or folder, the effective
+    /// enablement_state for the module in all child folders or projects is also `enabled`.
+    /// EffectiveSecurityHealthAnalyticsCustomModule is read-only.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The user-specified configuration for the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConfig")]
+        public virtual GoogleCloudSecuritycenterV1CustomConfig CustomConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The display name for the custom module. The name must be between 1 and 128 characters, start
+        /// with a lowercase letter, and contain alphanumeric characters or underscores only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The effective state of enablement for the module at the given level of the hierarchy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementState")]
+        public virtual string EnablementState { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the custom module. Its format is
+        /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+        /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
+        /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Representation of third party SIEM/SOAR fields within SCC.</summary>
     public class GoogleCloudSecuritycenterV1ExternalSystem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9605,6 +11677,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An individual name-value pair that defines a custom source property.</summary>
+    public class GoogleCloudSecuritycenterV1Property : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the property for the custom output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The CEL expression for the custom output. A resource property can be specified to return the value of the
+        /// property or a text string enclosed in quotation marks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueExpression")]
+        public virtual Expr ValueExpression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9650,6 +11740,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Resource for selecting resource type.</summary>
+    public class GoogleCloudSecuritycenterV1ResourceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource types to run the detector on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of asset discovery run</summary>
     public class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9660,6 +11761,60 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The state of an asset discovery run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an instance of a Security Health Analytics custom module, including its full module name, display
+    /// name, enablement state, and last updated time. You can create a custom module at the organization, folder, or
+    /// project level. Custom modules that you create at the organization or folder level are inherited by the child
+    /// folders and projects.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If empty, indicates that the custom module was created in the organization, folder, or project
+        /// in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or
+        /// folder from which the custom module is inherited.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestorModule")]
+        public virtual string AncestorModule { get; set; }
+
+        /// <summary>The user specified custom configuration for the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConfig")]
+        public virtual GoogleCloudSecuritycenterV1CustomConfig CustomConfig { get; set; }
+
+        /// <summary>
+        /// The display name of the Security Health Analytics custom module. This display name becomes the finding
+        /// category for all findings that are returned by this custom module. The display name must be between 1 and
+        /// 128 characters, start with a lowercase letter, and contain alphanumeric characters or underscores only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The enablement state of the custom module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementState")]
+        public virtual string EnablementState { get; set; }
+
+        /// <summary>Output only. The editor that last updated the custom module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEditor")]
+        public virtual string LastEditor { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the custom module. Its format is
+        /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+        /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
+        /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is
+        /// server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The time at which the custom module was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10384,6 +12539,36 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing descendant security health analytics custom modules.</summary>
+    public class ListDescendantSecurityHealthAnalyticsCustomModulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If not empty, indicates that there may be more custom modules to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Custom modules belonging to the requested parent and its descendants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityHealthAnalyticsCustomModules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule> SecurityHealthAnalyticsCustomModules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing effective security health analytics custom modules.</summary>
+    public class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Effective custom modules belonging to the requested parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSecurityHealthAnalyticsCustomModules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule> EffectiveSecurityHealthAnalyticsCustomModules { get; set; }
+
+        /// <summary>If not empty, indicates that there may be more effective custom modules to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing findings.</summary>
     public class ListFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10469,6 +12654,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing security health analytics custom modules.</summary>
+    public class ListSecurityHealthAnalyticsCustomModulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If not empty, indicates that there may be more custom modules to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Custom modules belonging to the requested parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityHealthAnalyticsCustomModules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule> SecurityHealthAnalyticsCustomModules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

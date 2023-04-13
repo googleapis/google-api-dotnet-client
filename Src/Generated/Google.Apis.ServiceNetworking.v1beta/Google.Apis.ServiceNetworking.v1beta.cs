@@ -3045,7 +3045,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual System.Collections.Generic.IList<MethodSettings> MethodSettings { get; set; }
 
         /// <summary>
-        /// Link to a place that API users can report issues. Example:
+        /// Link to a *public* URI where users can report issues. Example:
         /// https://issuetracker.google.com/issues/new?component=190865&amp;amp;template=1161103
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newIssueUri")]

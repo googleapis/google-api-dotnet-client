@@ -1072,7 +1072,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a message. For example usage, see [Update a
+            /// Updates a message. There's a difference between `patch` and `update` methods. The `patch` method uses a
+            /// `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method.
+            /// For example usage, see [Update a
             /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
@@ -1093,7 +1095,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a message. For example usage, see [Update a
+            /// Updates a message. There's a difference between `patch` and `update` methods. The `patch` method uses a
+            /// `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method.
+            /// For example usage, see [Update a
             /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
@@ -1184,7 +1188,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a message. For example usage, see [Update a
+            /// Updates a message. There's a difference between `patch` and `update` methods. The `patch` method uses a
+            /// `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method.
+            /// For example usage, see [Update a
             /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
@@ -1205,7 +1211,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a message. For example usage, see [Update a
+            /// Updates a message. There's a difference between `patch` and `update` methods. The `patch` method uses a
+            /// `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method.
+            /// For example usage, see [Update a
             /// message](https://developers.google.com/chat/api/guides/crudl/messages#update_a_message). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth/). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user

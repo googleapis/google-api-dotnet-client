@@ -4011,10 +4011,6 @@ namespace Google.Apis.CloudRetail.v2
                     [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Catalog { get; private set; }
 
-                    /// <summary>The banner context for completion suggestions.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("banner", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Banner { get; set; }
-
                     /// <summary>
                     /// Determines which dataset to use for fetching completion. "user-data" will use the imported
                     /// dataset through CompletionService.ImportCompletionData. "cloud-retail" will use the dataset
@@ -4035,6 +4031,14 @@ namespace Google.Apis.CloudRetail.v2
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DeviceType { get; set; }
+
+                    /// <summary>
+                    /// The entity for customers that may run multiple different entities, domains, sites or regions,
+                    /// for example, "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is
+                    /// set, it should be exactly matched with UserEvent.entity to get per-entity autocomplete results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Entity { get; set; }
 
                     /// <summary>
                     /// Note that this field applies for `user-data` dataset only. For requests with `cloud-retail`
@@ -4093,14 +4097,6 @@ namespace Google.Apis.CloudRetail.v2
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
                         });
-                        RequestParameters.Add("banner", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "banner",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                         RequestParameters.Add("dataset", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dataset",
@@ -4112,6 +4108,14 @@ namespace Google.Apis.CloudRetail.v2
                         RequestParameters.Add("deviceType", new Google.Apis.Discovery.Parameter
                         {
                             Name = "deviceType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "entity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7764,13 +7768,6 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Represents the banner in request, for projects that combine banners. For example: a retailer can sell
-        /// products under different banners like retailer-main, retailer-baby, retailer-meds, etc. under one project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("banner")]
-        public virtual string Banner { get; set; }
-
-        /// <summary>
         /// Boost specification to boost certain products. See more details at this [user
         /// guide](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids
         /// and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search
@@ -7806,7 +7803,15 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual GoogleCloudRetailV2SearchRequestDynamicFacetSpec DynamicFacetSpec { get; set; }
 
         /// <summary>
-        /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are
+        /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
+        /// "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should be exactly
+        /// matched with UserEvent.entity to get search results boosted by entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
+
+        /// <summary>
+        /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 200 values are
         /// allowed. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetSpecs")]
@@ -8748,13 +8753,6 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string AttributionToken { get; set; }
 
         /// <summary>
-        /// Represents the banner of the user event, for projects that combine banners. For example: retailer can have
-        /// events from multiple banners like retailer-main, retailer-baby, retailer-meds, etc. under one project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("banner")]
-        public virtual string Banner { get; set; }
-
-        /// <summary>
         /// The ID or name of the associated shopping cart. This ID is used to associate multiple items added or present
         /// in the cart before purchase. This can only be set for `add-to-cart`, `purchase-complete`, or
         /// `shopping-cart-page-view` events.
@@ -8768,6 +8766,14 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionDetail")]
         public virtual GoogleCloudRetailV2CompletionDetail CompletionDetail { get; set; }
+
+        /// <summary>
+        /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
+        /// "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. It is recommended to set this field to
+        /// get better per-entity search, completion and prediction results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
 
         /// <summary>
         /// Only required for UserEventService.ImportUserEvents method. Timestamp of when the user event happened.

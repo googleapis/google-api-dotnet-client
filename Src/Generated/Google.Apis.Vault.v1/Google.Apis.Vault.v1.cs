@@ -3364,6 +3364,13 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Additional options for Gmail search</summary>
     public class MailOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Specifies whether the results should include encrypted content, unencrypted content, or both. Defaults to
+        /// including both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSideEncryptedOption")]
+        public virtual string ClientSideEncryptedOption { get; set; }
+
         /// <summary>Set to **true** to exclude drafts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDrafts")]
         public virtual System.Nullable<bool> ExcludeDrafts { get; set; }

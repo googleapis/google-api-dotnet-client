@@ -2902,6 +2902,40 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Consumer Policy is a set of rules that define what services or service groups can be used for a cloud resource
+    /// hierarchy.
+    /// </summary>
+    public class ConsumerPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a policy that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. [AIP-128](https://google.aip.dev/128#annotations)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Enable rules define usable services and service groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRules")]
+        public virtual System.Collections.Generic.IList<EnableRule> EnableRules { get; set; }
+
+        /// <summary>An opaque tag indicating the current version of the policy, used for concurrency control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the policy. For example, `projects/12345/consumerPolicy`,
+        /// `folders/12345/consumerPolicy`, `organizations/12345/consumerPolicy`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+    }
+
     /// <summary>Consumer quota settings for a quota limit.</summary>
     public class ConsumerQuotaLimit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3340,6 +3374,38 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>The service id of a service that could not be enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
         public virtual string ServiceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The consumer policy rule that defines usable services and service groups.</summary>
+    public class EnableRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Client and resource project enable type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableType")]
+        public virtual string EnableType { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Please use field `values`. Service group should have prefix `groups/`. The names of the service
+        /// groups that are enabled (Not Implemented). go/predefined-service-groups. Example: `groups/googleServices`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<string> Groups { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Please use field `values`. Service should have prefix `services/`. The names of the services
+        /// that are enabled. Example: `storage.googleapis.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>
+        /// The names of the services or service groups that are enabled. Example: `services/storage.googleapis.com`,
+        /// groups/googleServices`, groups/allServices`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5566,6 +5632,13 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// GetOperation call of LRO returned by UpdateAdminQuotaPolicy.
     /// </summary>
     public class UpdateAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `UpdateConsumerPolicyLRO` method.</summary>
+    public class UpdateConsumerPolicyLROMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
