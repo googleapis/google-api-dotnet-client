@@ -1078,6 +1078,61 @@ namespace Google.Apis.CloudKMS.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Verifies that Cloud KMS can successfully connect to the external key manager specified by an
+                /// EkmConnection. If there is an error connecting to the EKM, this method returns a FAILED_PRECONDITION
+                /// status containing structured information as described at
+                /// https://cloud.google.com/kms/docs/reference/ekm_errors.
+                /// </summary>
+                /// <param name="name">Required. The name of the EkmConnection to verify.</param>
+                public virtual VerifyConnectivityRequest VerifyConnectivity(string name)
+                {
+                    return new VerifyConnectivityRequest(service, name);
+                }
+
+                /// <summary>
+                /// Verifies that Cloud KMS can successfully connect to the external key manager specified by an
+                /// EkmConnection. If there is an error connecting to the EKM, this method returns a FAILED_PRECONDITION
+                /// status containing structured information as described at
+                /// https://cloud.google.com/kms/docs/reference/ekm_errors.
+                /// </summary>
+                public class VerifyConnectivityRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.VerifyConnectivityResponse>
+                {
+                    /// <summary>Constructs a new VerifyConnectivity request.</summary>
+                    public VerifyConnectivityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the EkmConnection to verify.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "verifyConnectivity";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:verifyConnectivity";
+
+                    /// <summary>Initializes VerifyConnectivity parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/ekmConnections/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the KeyRings resource.</summary>
@@ -5616,6 +5671,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersionId")]
         public virtual string CryptoKeyVersionId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for EkmService.VerifyConnectivity.</summary>
+    public class VerifyConnectivityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

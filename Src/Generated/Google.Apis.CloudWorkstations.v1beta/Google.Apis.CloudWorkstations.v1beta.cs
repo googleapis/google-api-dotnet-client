@@ -2653,15 +2653,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the Google Cloud KMS encryption key. For example,
+        /// Immutable. The name of the Google Cloud KMS encryption key. For example,
         /// `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// The service account to use with the specified KMS key. We recommend that you use a separate service account
-        /// and follow KMS best practices. For more information, see [Separation of
+        /// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate
+        /// service account and follow KMS best practices. For more information, see [Separation of
         /// duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding`
         /// [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         /// </summary>
@@ -3325,6 +3325,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Environment variables passed to the workstation container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
+
         /// <summary>
         /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an
         /// up-to-date value before proceeding.
@@ -3380,6 +3384,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Output only. Status conditions describing the current resource state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Status> Conditions { get; set; }
+
+        /// <summary>
+        /// Output only. The private IP address of the control plane for this cluster. Workstation VMs need access to
+        /// this IP address to work with the service, so please ensure your firewall rules allow egress from the
+        /// Workstation VMs to this address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneIp")]
+        public virtual string ControlPlaneIp { get; set; }
 
         /// <summary>Output only. Time when this resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -3491,14 +3503,22 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified,
-        /// the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption
-        /// key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption
-        /// keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation
-        /// instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be
-        /// sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the
-        /// persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically
-        /// be stopped within 7 hours.
+        /// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be
+        /// specified that has logging.buckets.write permission on the project. Operating system audit logging is
+        /// distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAuditAgent")]
+        public virtual System.Nullable<bool> EnableAuditAgent { get; set; }
+
+        /// <summary>
+        /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If
+        /// specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this
+        /// encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed
+        /// encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the
+        /// workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of
+        /// the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data
+        /// on the persistent disk will be lost. If the encryption key is revoked, the workstation session will
+        /// automatically be stopped within 7 hours. Immutable after workstation config is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual CustomerEncryptionKey EncryptionKey { get; set; }

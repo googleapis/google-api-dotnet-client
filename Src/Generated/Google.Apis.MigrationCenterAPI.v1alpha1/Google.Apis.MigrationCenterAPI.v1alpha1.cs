@@ -4718,7 +4718,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Lists the asset IDs of all assets.</summary>
     public class AssetList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of asset IDs</summary>
+        /// <summary>Required. A list of asset IDs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetIds")]
         public virtual System.Collections.Generic.IList<string> AssetIds { get; set; }
 
@@ -5590,7 +5590,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The payload format.</summary>
+        /// <summary>Required. The payload format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
@@ -6552,7 +6552,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Collection of combinations of groups and preference sets.</summary>
+        /// <summary>Required. Collection of combinations of groups and preference sets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupPreferencesetAssignments")]
         public virtual System.Collections.Generic.IList<ReportConfigGroupPreferenceSetAssignment> GroupPreferencesetAssignments { get; set; }
 
@@ -6571,11 +6571,11 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Represents a combination of a group with a preference set.</summary>
     public class ReportConfigGroupPreferenceSetAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the group.</summary>
+        /// <summary>Required. Name of the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
 
-        /// <summary>Name of the Preference Set.</summary>
+        /// <summary>Required. Name of the Preference Set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
         public virtual string PreferenceSet { get; set; }
 

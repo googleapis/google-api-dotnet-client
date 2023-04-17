@@ -3888,6 +3888,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>State of delete protection for the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteProtectionState")]
+        public virtual string DeleteProtectionState { get; set; }
+
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
         /// delete requests to ensure the client has an up-to-date value before proceeding.

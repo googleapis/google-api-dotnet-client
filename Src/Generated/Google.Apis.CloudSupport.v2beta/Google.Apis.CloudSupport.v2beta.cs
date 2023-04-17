@@ -1609,7 +1609,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
 
-        /// <summary>The severity of this case. Deprecated. Use priority instead.</summary>
+        /// <summary>REMOVED. The severity of this case. Use priority instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
@@ -1687,7 +1687,8 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. An automatically generated plain text version of body with all rich text syntax stripped.
+        /// Output only. DEPRECATED. An automatically generated plain text version of body with all rich text syntax
+        /// stripped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plainTextBody")]
         public virtual string PlainTextBody { get; set; }

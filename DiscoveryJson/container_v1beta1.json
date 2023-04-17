@@ -2512,7 +2512,7 @@
    }
   }
  },
- "revision": "20230326",
+ "revision": "20230322",
  "rootUrl": "https://container.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -2547,15 +2547,7 @@
   "AdditionalPodRangesConfig": {
    "description": "AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.",
    "id": "AdditionalPodRangesConfig",
-   "properties": {
-    "podRangeNames": {
-     "description": "Name for pod secondary ipv4 range which has the actual range defined ahead.",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    }
-   },
+   "properties": {},
    "type": "object"
   },
   "AddonsConfig": {

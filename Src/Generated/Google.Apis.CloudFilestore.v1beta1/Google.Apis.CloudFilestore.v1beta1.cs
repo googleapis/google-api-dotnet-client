@@ -3469,6 +3469,14 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class Share : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format
+        /// of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from
+        /// scratch and not restored from a backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>
         /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
