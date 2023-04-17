@@ -292,8 +292,11 @@ namespace Google.Apis.NetworkSecurity.v1
                 this.service = service;
                 AuthorizationPolicies = new AuthorizationPoliciesResource(service);
                 ClientTlsPolicies = new ClientTlsPoliciesResource(service);
+                GatewaySecurityPolicies = new GatewaySecurityPoliciesResource(service);
                 Operations = new OperationsResource(service);
                 ServerTlsPolicies = new ServerTlsPoliciesResource(service);
+                TlsInspectionPolicies = new TlsInspectionPoliciesResource(service);
+                UrlLists = new UrlListsResource(service);
             }
 
             /// <summary>Gets the AuthorizationPolicies resource.</summary>
@@ -1432,6 +1435,712 @@ namespace Google.Apis.NetworkSecurity.v1
                 }
             }
 
+            /// <summary>Gets the GatewaySecurityPolicies resource.</summary>
+            public virtual GatewaySecurityPoliciesResource GatewaySecurityPolicies { get; }
+
+            /// <summary>The "gatewaySecurityPolicies" collection of methods.</summary>
+            public class GatewaySecurityPoliciesResource
+            {
+                private const string Resource = "gatewaySecurityPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GatewaySecurityPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Rules = new RulesResource(service);
+                }
+
+                /// <summary>Gets the Rules resource.</summary>
+                public virtual RulesResource Rules { get; }
+
+                /// <summary>The "rules" collection of methods.</summary>
+                public class RulesResource
+                {
+                    private const string Resource = "rules";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RulesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new GatewaySecurityPolicy in a given project and location.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent where this rule will be created. Format :
+                    /// projects/{project}/location/{location}/gatewaySecurityPolicies/*
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new GatewaySecurityPolicy in a given project and location.</summary>
+                    public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent where this rule will be created. Format :
+                        /// projects/{project}/location/{location}/gatewaySecurityPolicies/*
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The ID to use for the rule, which will become the final component of the rule's resource
+                        /// name. This value should be 4-63 characters, and valid characters are /a-z-/.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewaySecurityPolicyRuleId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GatewaySecurityPolicyRuleId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/rules";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("gatewaySecurityPolicyRuleId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "gatewaySecurityPolicyRuleId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single GatewaySecurityPolicyRule.</summary>
+                    /// <param name="name">
+                    /// Required. A name of the GatewaySecurityPolicyRule to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}/rules/*`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a single GatewaySecurityPolicyRule.</summary>
+                    public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. A name of the GatewaySecurityPolicyRule to delete. Must be in the format
+                        /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}/rules/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+/rules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single GatewaySecurityPolicyRule.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the GatewaySecurityPolicyRule to retrieve. Format:
+                    /// projects/{project}/location/{location}/gatewaySecurityPolicies/*/rules/*
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single GatewaySecurityPolicyRule.</summary>
+                    public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the GatewaySecurityPolicyRule to retrieve. Format:
+                        /// projects/{project}/location/{location}/gatewaySecurityPolicies/*/rules/*
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+/rules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists GatewaySecurityPolicyRules in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The project, location and GatewaySecurityPolicy from which the
+                    /// GatewaySecurityPolicyRules should be listed, specified in the format
+                    /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists GatewaySecurityPolicyRules in a given project and location.</summary>
+                    public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListGatewaySecurityPolicyRulesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The project, location and GatewaySecurityPolicy from which the
+                        /// GatewaySecurityPolicyRules should be listed, specified in the format
+                        /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Maximum number of GatewaySecurityPolicyRules to return per call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last 'ListGatewaySecurityPolicyRulesResponse' Indicates that this
+                        /// is a continuation of a prior 'ListGatewaySecurityPolicyRules' call, and that the system
+                        /// should return the next page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/rules";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a single GatewaySecurityPolicyRule.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Immutable. Name of the resource. ame is the full resource name so
+                    /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
+                    /// rule should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a single GatewaySecurityPolicyRule.</summary>
+                    public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Immutable. Name of the resource. ame is the full resource name so
+                        /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
+                        /// rule should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Field mask is used to specify the fields to be overwritten in the
+                        /// GatewaySecurityPolicy resource by the update. The fields specified in the update_mask are
+                        /// relative to the resource, not the full request. A field will be overwritten if it is in the
+                        /// mask. If the user does not provide a mask then all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+/rules/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new GatewaySecurityPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the GatewaySecurityPolicy. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new GatewaySecurityPolicy in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the GatewaySecurityPolicy. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the GatewaySecurityPolicy resource to be created. This value should be
+                    /// 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not
+                    /// start with a number. E.g. "gateway_security_policy1".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gatewaySecurityPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GatewaySecurityPolicyId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/gatewaySecurityPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("gatewaySecurityPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gatewaySecurityPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single GatewaySecurityPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the GatewaySecurityPolicy to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single GatewaySecurityPolicy.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the GatewaySecurityPolicy to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single GatewaySecurityPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the GatewaySecurityPolicy to get. Must be in the format
+                /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single GatewaySecurityPolicy.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the GatewaySecurityPolicy to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GatewaySecurityPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the GatewaySecurityPolicies should be listed,
+                /// specified in the format `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists GatewaySecurityPolicies in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListGatewaySecurityPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the GatewaySecurityPolicies should be listed,
+                    /// specified in the format `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of GatewaySecurityPolicies to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last 'ListGatewaySecurityPoliciesResponse' Indicates that this is a
+                    /// continuation of a prior 'ListGatewaySecurityPolicies' call, and that the system should return
+                    /// the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/gatewaySecurityPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single GatewaySecurityPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the resource. Name is of the form
+                /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}
+                /// gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single GatewaySecurityPolicy.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource. Name is of the form
+                    /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}
+                    /// gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the
+                    /// GatewaySecurityPolicy resource by the update. The fields specified in the update_mask are
+                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gatewaySecurityPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -2276,6 +2985,724 @@ namespace Google.Apis.NetworkSecurity.v1
                 }
             }
 
+            /// <summary>Gets the TlsInspectionPolicies resource.</summary>
+            public virtual TlsInspectionPoliciesResource TlsInspectionPolicies { get; }
+
+            /// <summary>The "tlsInspectionPolicies" collection of methods.</summary>
+            public class TlsInspectionPoliciesResource
+            {
+                private const string Resource = "tlsInspectionPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TlsInspectionPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new TlsInspectionPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the TlsInspectionPolicy. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new TlsInspectionPolicy in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the TlsInspectionPolicy. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the TlsInspectionPolicy resource to be created. This value should be
+                    /// 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not
+                    /// start with a number. E.g. "tls_inspection_policy1".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tlsInspectionPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TlsInspectionPolicyId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tlsInspectionPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("tlsInspectionPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tlsInspectionPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single TlsInspectionPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the TlsInspectionPolicy to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single TlsInspectionPolicy.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TlsInspectionPolicy to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// If set to true, any rules for this TlsInspectionPolicy will also be deleted. (Otherwise, the
+                    /// request will only work if the TlsInspectionPolicy has no rules.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tlsInspectionPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single TlsInspectionPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the TlsInspectionPolicy to get. Must be in the format
+                /// `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single TlsInspectionPolicy.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TlsInspectionPolicy to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tlsInspectionPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TlsInspectionPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the TlsInspectionPolicies should be listed, specified
+                /// in the format `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists TlsInspectionPolicies in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListTlsInspectionPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the TlsInspectionPolicies should be listed,
+                    /// specified in the format `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of TlsInspectionPolicies to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last 'ListTlsInspectionPoliciesResponse' Indicates that this is a
+                    /// continuation of a prior 'ListTlsInspectionPolicies' call, and that the system should return the
+                    /// next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tlsInspectionPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single TlsInspectionPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the resource. Name is of the form
+                /// projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}
+                /// tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single TlsInspectionPolicy.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource. Name is of the form
+                    /// projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}
+                    /// tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the TlsInspectionPolicy
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tlsInspectionPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the UrlLists resource.</summary>
+            public virtual UrlListsResource UrlLists { get; }
+
+            /// <summary>The "urlLists" collection of methods.</summary>
+            public class UrlListsResource
+            {
+                private const string Resource = "urlLists";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public UrlListsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new UrlList in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the UrlList. Must be in the format
+                /// `projects/*/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.UrlList body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new UrlList in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.UrlList body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the UrlList. Must be in the format
+                    /// `projects/*/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the UrlList resource to be created. This value should be 1-63 characters
+                    /// long, containing only letters, numbers, hyphens, and underscores, and should not start with a
+                    /// number. E.g. "url_list".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("urlListId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UrlListId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.UrlList Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/urlLists";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("urlListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "urlListId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single UrlList.</summary>
+                /// <param name="name">
+                /// Required. A name of the UrlList to delete. Must be in the format
+                /// `projects/*/locations/{location}/urlLists/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single UrlList.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the UrlList to delete. Must be in the format
+                    /// `projects/*/locations/{location}/urlLists/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/urlLists/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single UrlList.</summary>
+                /// <param name="name">
+                /// Required. A name of the UrlList to get. Must be in the format
+                /// `projects/*/locations/{location}/urlLists/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single UrlList.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.UrlList>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the UrlList to get. Must be in the format
+                    /// `projects/*/locations/{location}/urlLists/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/urlLists/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists UrlLists in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the UrlLists should be listed, specified in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists UrlLists in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListUrlListsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the UrlLists should be listed, specified in the
+                    /// format `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of UrlLists to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListUrlListsResponse` Indicates that this is a continuation of a
+                    /// prior `ListUrlLists` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/urlLists";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single UrlList.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the resource provided by the user. Name is of the form
+                /// projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the
+                /// pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.UrlList body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single UrlList.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.UrlList body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource provided by the user. Name is of the form
+                    /// projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the
+                    /// pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the UrlList resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.UrlList Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/urlLists/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2632,6 +4059,99 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     }
 
     /// <summary>
+    /// The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata.
+    /// </summary>
+    public class GatewaySecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Free-text description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Name of the resource. Name is of the form
+        /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}
+        /// gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Name of a TLS Inspection Policy resource that defines how TLS inspection will be performed for any
+        /// rule(s) which enables it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsInspectionPolicy")]
+        public virtual string TlsInspectionPolicy { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents a
+    /// traffic matching condition and associated action to perform.
+    /// </summary>
+    public class GatewaySecurityPolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CEL expression for matching on L7/application level criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationMatcher")]
+        public virtual string ApplicationMatcher { get; set; }
+
+        /// <summary>Required. Profile which tells what the primitive action should be.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basicProfile")]
+        public virtual string BasicProfile { get; set; }
+
+        /// <summary>Output only. Time when the rule was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Free-text description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Whether the rule is enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Name of the resource. ame is the full resource name so
+        /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule} rule
+        /// should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Priority of the rule. Lower number corresponds to higher precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>Required. CEL expression for matching on session criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionMatcher")]
+        public virtual string SessionMatcher { get; set; }
+
+        /// <summary>
+        /// Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent
+        /// GatewaySecurityPolicy references a TLSInspectionConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsInspectionEnabled")]
+        public virtual System.Nullable<bool> TlsInspectionEnabled { get; set; }
+
+        /// <summary>Output only. Time when the rule was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer
     /// to peer authentication.
     /// </summary>
@@ -2946,6 +4466,50 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListGatewaySecurityPolicies method.</summary>
+    public class ListGatewaySecurityPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of GatewaySecurityPolicies resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewaySecurityPolicies")]
+        public virtual System.Collections.Generic.IList<GatewaySecurityPolicy> GatewaySecurityPolicies { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then 'next_page_token' is included. To
+        /// get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListGatewaySecurityPolicyRules method.</summary>
+    public class ListGatewaySecurityPolicyRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of GatewaySecurityPolicyRule resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewaySecurityPolicyRules")]
+        public virtual System.Collections.Generic.IList<GatewaySecurityPolicyRule> GatewaySecurityPolicyRules { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then 'next_page_token' is included. To
+        /// get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2994,6 +4558,50 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListTlsInspectionPolicies method.</summary>
+    public class ListTlsInspectionPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then 'next_page_token' is included. To
+        /// get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of TlsInspectionPolicies resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsInspectionPolicies")]
+        public virtual System.Collections.Generic.IList<TlsInspectionPolicy> TlsInspectionPolicies { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListUrlLists method.</summary>
+    public class ListUrlListsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>List of UrlList resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlLists")]
+        public virtual System.Collections.Generic.IList<UrlList> UrlLists { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3030,10 +4638,27 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     public class MTLSPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        ///  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        /// Required if the policy is to be used with Traffic Director. For External HTTPS LB it must be empty. Defines
+        /// the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientValidationCa")]
         public virtual System.Collections.Generic.IList<ValidationCA> ClientValidationCa { get; set; }
+
+        /// <summary>
+        /// Specifies whether client connections proceed when a client presents an invalid certificate or no
+        /// certificate. Required if the policy is to be used with the External HTTPS LB. For Traffic Director it must
+        /// be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientValidationMode")]
+        public virtual string ClientValidationMode { get; set; }
+
+        /// <summary>
+        /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain
+        /// validation will be performed against certificates configured in the given TrustConfig. Allowed only if the
+        /// policy is to be used with External HTTPS LB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientValidationTrustConfig")]
+        public virtual string ClientValidationTrustConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3147,16 +4772,20 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     /// <summary>
     /// ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource
     /// itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector
-    /// resource.
+    /// resource. ServerTlsPolicy in the form accepted by External HTTPS Load Balancer can be attached only to
+    /// TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED` load balancing scheme. Traffic Director compatible
+    /// ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy with Traffic Director
+    /// `INTERNAL_SELF_MANAGED` load balancing scheme.
     /// </summary>
     public class ServerTlsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By
-        /// default, it is set to false. This setting is not exclusive of other encryption modes. For example, if
-        /// `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See
-        /// documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade
-        /// in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+        /// Can be enabled only for Traffic Director policies, must be false for External HTTPS LB policies. Determines
+        /// if server allows plaintext connections. If set to true, server allows plain text connections. By default, it
+        /// is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and
+        /// `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other
+        /// encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment
+        /// to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOpen")]
         public virtual System.Nullable<bool> AllowOpen { get; set; }
@@ -3174,7 +4803,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS -
+        /// Required if policy is to be used with the External HTTPS LB, for Traffic Director allowed to be empty.
+        /// Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS -
         /// mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not
         /// mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
@@ -3189,8 +4819,9 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with
-        /// `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+        /// Optional if policy is to be used with Traffic Director, for External HTTPS LB must be empty. Defines a
+        /// mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a
+        /// permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCertificate")]
         public virtual GoogleCloudNetworksecurityV1CertificateProvider ServerCertificate { get; set; }
@@ -3251,6 +4882,77 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated
+    /// metadata.
+    /// </summary>
+    public class TlsInspectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A CA pool resource used to issue interception certificates. The CA pool string has a relative
+        /// resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caPool")]
+        public virtual string CaPool { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Free-text description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Name of the resource. Name is of the form
+        /// projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy
+        /// should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL
+    /// patterns.
+    /// </summary>
+    public class UrlList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time when the security policy was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Free-text description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Name of the resource provided by the user. Name is of the form
+        /// projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the
+        /// pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Time when the security policy was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>Required. FQDNs and URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

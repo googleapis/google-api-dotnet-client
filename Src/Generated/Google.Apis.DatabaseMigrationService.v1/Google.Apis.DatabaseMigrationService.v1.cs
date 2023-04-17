@@ -5091,6 +5091,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("draftEntity")]
         public virtual string DraftEntity { get; set; }
 
+        /// <summary>Type of draft entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftType")]
+        public virtual string DraftType { get; set; }
+
         /// <summary>
         /// Entity mapping log entries. Multiple rules can be effective and contribute changes to a converted entity,
         /// such as a rule can handle the entity name, another rule can handle an entity type. In addition, rules which
@@ -5105,6 +5109,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceEntity")]
         public virtual string SourceEntity { get; set; }
+
+        /// <summary>Type of source entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

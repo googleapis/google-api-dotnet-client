@@ -1533,59 +1533,6 @@ namespace Google.Apis.TPU.v2alpha1
                         });
                     }
                 }
-
-                /// <summary>Resets a QueuedResource TPU instance</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The name of the queued resource.</param>
-                public virtual ResetRequest Reset(Google.Apis.TPU.v2alpha1.Data.ResetQueuedResourceRequest body, string name)
-                {
-                    return new ResetRequest(service, body, name);
-                }
-
-                /// <summary>Resets a QueuedResource TPU instance</summary>
-                public class ResetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Reset request.</summary>
-                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2alpha1.Data.ResetQueuedResourceRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The name of the queued resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TPU.v2alpha1.Data.ResetQueuedResourceRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "reset";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2alpha1/{+name}:reset";
-
-                    /// <summary>Initializes Reset parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the RuntimeVersions resource.</summary>
@@ -2724,13 +2671,6 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validUntilTime")]
         public virtual object ValidUntilTime { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for ResetQueuedResource.</summary>
-    public class ResetQueuedResourceRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

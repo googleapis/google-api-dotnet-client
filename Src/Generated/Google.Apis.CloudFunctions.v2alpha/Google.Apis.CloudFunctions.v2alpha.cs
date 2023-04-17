@@ -1502,15 +1502,11 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
 
-        /// <summary>Specifies one of the Google provided buildpack stacks.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buildpackStack")]
-        public virtual string BuildpackStack { get; set; }
-
         /// <summary>
-        /// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen
-        /// functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this
-        /// field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to
-        /// `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd
+        /// Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be
+        /// automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`.
+        /// This field may be overridden by the backend for eligible deployments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockerRegistry")]
         public virtual string DockerRegistry { get; set; }
@@ -1925,6 +1921,17 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Extra GCF specific location information.</summary>
+    public class GoogleCloudFunctionsV2alphaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Function environments this location supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudFunctionsV2alphaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1954,7 +1961,7 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
 
         /// <summary>Mechanism for reporting in-progress stages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStage> Stages { get; set; }
+        public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
 
         /// <summary>Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
@@ -1967,37 +1974,6 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// <summary>Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Each Stage of the deployment process</summary>
-    public class GoogleCloudFunctionsV2alphaStage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Message describing the Stage</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; }
-
-        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Resource of the Stage</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; }
-
-        /// <summary>Link to the current Stage resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; }
-
-        /// <summary>Current state of the Stage</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>State messages from the current Stage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStateMessage> StateMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2017,6 +1993,17 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// <summary>One-word CamelCase type of the state message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extra GCF specific location information.</summary>
+    public class GoogleCloudFunctionsV2betaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Function environments this location supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2211,6 +2198,17 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extra GCF specific location information.</summary>
+    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Function environments this location supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2547,9 +2545,7 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
-    /// </summary>
+    /// <summary>Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).</summary>
     public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2561,8 +2557,8 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         public virtual System.Nullable<bool> AllTrafficOnLatestRevision { get; set; }
 
         /// <summary>
-        /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
-        /// Supports the same values as Cloud Run, see
+        /// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available
+        /// memory. Supports the same values as Cloud Run, see
         /// https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1
         /// vCPU
         /// </summary>
@@ -2597,7 +2593,7 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         public virtual System.Nullable<int> MaxInstanceCount { get; set; }
 
         /// <summary>
-        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
@@ -2721,6 +2717,37 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// <summary>A copy of the build's `source.storage_source`, if exists, with any generations resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
         public virtual StorageSource ResolvedStorageSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each Stage of the deployment process</summary>
+    public class Stage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Message describing the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Link to the current Stage resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>Current state of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>State messages from the current Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStateMessage> StateMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5923,6 +5923,27 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Per container override specification.</summary>
+    public class ContainerOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Arguments to the entrypoint. Will replace existing args for override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// List of environment variables to set in the container. Will be merged with existing env for override.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
+
+        /// <summary>The name of the container specified as a DNS_LABEL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ContainerPort represents a network port in a single container.</summary>
     public class ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6936,13 +6957,14 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
         /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All
         /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
-        /// `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. *
-        /// `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
-        /// `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`:
-        /// Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`:
-        /// Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`:
-        /// Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. *
-        /// `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
+        /// `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. *
+        /// `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. *
+        /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`:
+        /// Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. *
+        /// `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. *
+        /// `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision,
+        /// Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`:
+        /// Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
         /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
         /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`:
         /// Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
@@ -7033,6 +7055,30 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RunJob Overrides that contains Execution fields to be overridden on the go.</summary>
+    public class Overrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Per container override specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerOverrides")]
+        public virtual System.Collections.Generic.IList<ContainerOverride> ContainerOverrides { get; set; }
+
+        /// <summary>
+        /// The desired number of tasks the execution should run. Will replace existing task_count value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
+        public virtual System.Nullable<int> TaskCount { get; set; }
+
+        /// <summary>
+        /// Duration in seconds the task may be active before the system will actively try to mark it failed and kill
+        /// associated containers. Will replace existing timeout_seconds value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
+        public virtual System.Nullable<int> TimeoutSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7498,6 +7544,13 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Request message for creating a new execution of a job.</summary>
     public class RunJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Overrides specification for a given execution of a job. If provided, overrides will be applied to
+        /// update the execution or task spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual Overrides Overrides { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -295,6 +295,7 @@ namespace Google.Apis.CertificateManager.v1
                 Certificates = new CertificatesResource(service);
                 DnsAuthorizations = new DnsAuthorizationsResource(service);
                 Operations = new OperationsResource(service);
+                TrustConfigs = new TrustConfigsResource(service);
             }
 
             /// <summary>Gets the CertificateIssuanceConfigs resource.</summary>
@@ -2368,6 +2369,390 @@ namespace Google.Apis.CertificateManager.v1
                 }
             }
 
+            /// <summary>Gets the TrustConfigs resource.</summary>
+            public virtual TrustConfigsResource TrustConfigs { get; }
+
+            /// <summary>The "trustConfigs" collection of methods.</summary>
+            public class TrustConfigsResource
+            {
+                private const string Resource = "trustConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TrustConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new TrustConfig in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the TrustConfig. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CertificateManager.v1.Data.TrustConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new TrustConfig in a given project and location.</summary>
+                public class CreateRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CertificateManager.v1.Data.TrustConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the TrustConfig. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. A user-provided name of the TrustConfig.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("trustConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TrustConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CertificateManager.v1.Data.TrustConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/trustConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("trustConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "trustConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single TrustConfig.</summary>
+                /// <param name="name">
+                /// Required. A name of the TrustConfig to delete. Must be in the format
+                /// `projects/*/locations/*/trustConfigs/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single TrustConfig.</summary>
+                public class DeleteRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TrustConfig to delete. Must be in the format
+                    /// `projects/*/locations/*/trustConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The current etag of the TrustConfig. If an etag is provided and does not match the current etag
+                    /// of the resource, deletion will be blocked and an ABORTED error will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/trustConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single TrustConfig.</summary>
+                /// <param name="name">
+                /// Required. A name of the TrustConfig to describe. Must be in the format
+                /// `projects/*/locations/*/trustConfigs/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single TrustConfig.</summary>
+                public class GetRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.TrustConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TrustConfig to describe. Must be in the format
+                    /// `projects/*/locations/*/trustConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/trustConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TrustConfigs in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the TrustConfigs should be listed, specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists TrustConfigs in a given project and location.</summary>
+                public class ListRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.ListTrustConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the TrustConfigs should be listed, specified in
+                    /// the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter expression to restrict the TrustConfigs returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// A list of TrustConfig field names used to specify the order of the returned results. The default
+                    /// sorting order is ascending. To specify descending order for a field, add a suffix " desc".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Maximum number of TrustConfigs to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListTrustConfigsResponse`. Indicates that this is a continuation
+                    /// of a prior `ListTrustConfigs` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/trustConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a TrustConfig.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern
+                /// `projects/*/locations/*/trustConfigs/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.TrustConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a TrustConfig.</summary>
+                public class PatchRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CertificateManager.v1.Data.TrustConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// A user-defined name of the trust config. TrustConfig names must be unique globally and match
+                    /// pattern `projects/*/locations/*/trustConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CertificateManager.v1.Data.TrustConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/trustConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2871,6 +3256,20 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines an intermediate CA.</summary>
+    public class IntermediateCA : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM
+        /// format may occupy up to 5kB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines IP configuration where this Certificate Map is serving.</summary>
     public class IpConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3021,6 +3420,28 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ListTrustConfigs` method.</summary>
+    public class ListTrustConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of TrustConfigs for the parent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustConfigs")]
+        public virtual System.Collections.Generic.IList<TrustConfig> TrustConfigs { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3248,6 +3669,80 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a trust anchor.</summary>
+    public class TrustAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up
+        /// to 5kB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a trust config.</summary>
+    public class TrustConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The creation timestamp of a TrustConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>One or more paragraphs of text description of a TrustConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Set of labels associated with a TrustConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern
+        /// `projects/*/locations/*/trustConfigs/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured
+        /// with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore
+        /// specified is currently allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStores")]
+        public virtual System.Collections.Generic.IList<TrustStore> TrustStores { get; set; }
+
+        /// <summary>Output only. The last update timestamp of a TrustConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+    }
+
+    /// <summary>Defines a trust store.</summary>
+    public class TrustStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Set of intermediate CA certificates used for the path building phase of chain validation. The field is
+        /// currently not supported if TrustConfig is used for the workload certificate feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intermediateCas")]
+        public virtual System.Collections.Generic.IList<IntermediateCA> IntermediateCas { get; set; }
+
+        /// <summary>List of Trust Anchors to be used while performing validation against a given TrustStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustAnchors")]
+        public virtual System.Collections.Generic.IList<TrustAnchor> TrustAnchors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

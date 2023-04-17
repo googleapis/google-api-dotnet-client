@@ -6494,6 +6494,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6511,6 +6515,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6578,6 +6586,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tlsInspectionPolicies")]
         public virtual System.Collections.Generic.IList<TlsInspectionPolicy> TlsInspectionPolicies { get; set; }
 
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6640,10 +6652,27 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class MTLSPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        ///  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        /// Required if the policy is to be used with Traffic Director. For External HTTPS LB it must be empty. Defines
+        /// the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientValidationCa")]
         public virtual System.Collections.Generic.IList<ValidationCA> ClientValidationCa { get; set; }
+
+        /// <summary>
+        /// Specifies whether client connections proceed when a client presents an invalid certificate or no
+        /// certificate. Required if the policy is to be used with the External HTTPS LB. For Traffic Director it must
+        /// be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientValidationMode")]
+        public virtual string ClientValidationMode { get; set; }
+
+        /// <summary>
+        /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain
+        /// validation will be performed against certificates configured in the given TrustConfig. Allowed only if the
+        /// policy is to be used with External HTTPS LB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientValidationTrustConfig")]
+        public virtual string ClientValidationTrustConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6780,16 +6809,20 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>
     /// ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource
     /// itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector
-    /// resource.
+    /// resource. ServerTlsPolicy in the form accepted by External HTTPS Load Balancer can be attached only to
+    /// TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED` load balancing scheme. Traffic Director compatible
+    /// ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy with Traffic Director
+    /// `INTERNAL_SELF_MANAGED` load balancing scheme.
     /// </summary>
     public class ServerTlsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By
-        /// default, it is set to false. This setting is not exclusive of other encryption modes. For example, if
-        /// `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See
-        /// documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade
-        /// in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+        /// Can be enabled only for Traffic Director policies, must be false for External HTTPS LB policies. Determines
+        /// if server allows plaintext connections. If set to true, server allows plain text connections. By default, it
+        /// is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and
+        /// `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other
+        /// encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment
+        /// to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOpen")]
         public virtual System.Nullable<bool> AllowOpen { get; set; }
@@ -6807,7 +6840,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS -
+        /// Required if policy is to be used with the External HTTPS LB, for Traffic Director allowed to be empty.
+        /// Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS -
         /// mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not
         /// mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
@@ -6822,8 +6856,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with
-        /// `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+        /// Optional if policy is to be used with Traffic Director, for External HTTPS LB must be empty. Defines a
+        /// mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a
+        /// permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCertificate")]
         public virtual GoogleCloudNetworksecurityV1beta1CertificateProvider ServerCertificate { get; set; }
