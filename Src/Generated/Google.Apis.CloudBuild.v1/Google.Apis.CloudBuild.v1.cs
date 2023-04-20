@@ -5425,6 +5425,14 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual System.Collections.Generic.IList<MavenArtifact> MavenArtifacts { get; set; }
 
         /// <summary>
+        /// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the
+        /// builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmPackages")]
+        public virtual System.Collections.Generic.IList<NpmPackage> NpmPackages { get; set; }
+
+        /// <summary>
         /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in
         /// the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using
         /// the builder service account's credentials. The location and generation of the uploaded objects will be
@@ -7344,6 +7352,25 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Npm package to upload to Artifact Registry upon successful completion of all build steps.</summary>
+    public class NpmPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to the package.json. e.g. workspace/path/to/package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packagePath")]
+        public virtual string PackagePath { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in
+        /// the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a
+        /// prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7726,6 +7753,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Maven artifacts uploaded to Artifact Registry at the end of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
         public virtual System.Collections.Generic.IList<UploadedMavenArtifact> MavenArtifacts { get; set; }
+
+        /// <summary>Npm packages uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmPackages")]
+        public virtual System.Collections.Generic.IList<UploadedNpmPackage> NpmPackages { get; set; }
 
         /// <summary>
         /// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to
@@ -8116,6 +8147,25 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual TimeSpan PushTiming { get; set; }
 
         /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An npm package uploaded to Artifact Registry using the NpmPackage directive.</summary>
+    public class UploadedNpmPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the npm package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded npm package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 

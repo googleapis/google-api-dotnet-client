@@ -2810,6 +2810,10 @@ namespace Google.Apis.Drive.v2
                 InitParameters();
             }
 
+            /// <summary>If set, empties the trash of the provided shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DriveId { get; set; }
+
             /// <summary>
             /// Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is
             /// not, the item will be placed under its owner's root.
@@ -2830,6 +2834,14 @@ namespace Google.Apis.Drive.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "enforceSingleParent",

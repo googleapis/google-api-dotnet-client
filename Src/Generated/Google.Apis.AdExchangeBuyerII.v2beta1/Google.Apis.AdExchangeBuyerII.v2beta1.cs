@@ -6465,7 +6465,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bidsInAuction")]
         public virtual MetricValue BidsInAuction { get; set; }
 
-        /// <summary>The number of bids for which the buyer was billed.</summary>
+        /// <summary>
+        /// The number of bids for which the buyer was billed. Also called valid impressions as invalid impressions are
+        /// not billed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billedImpressions")]
         public virtual MetricValue BilledImpressions { get; set; }
 

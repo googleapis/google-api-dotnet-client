@@ -347,7 +347,7 @@ namespace Google.Apis.IDS.v1
                     /// An optional request ID to identify requests. Specify a unique request ID so that if you must
                     /// retry your request, the server will know to ignore the request if it has already been completed.
                     /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and t he request times out. If you make
+                    /// consider a situation where you make an initial request and the request times out. If you make
                     /// the request again with the same request ID, the server can check if original operation with the
                     /// same request ID was received, and if so, will ignore the second request. This prevents clients
                     /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -427,7 +427,7 @@ namespace Google.Apis.IDS.v1
                     /// An optional request ID to identify requests. Specify a unique request ID so that if you must
                     /// retry your request, the server will know to ignore the request if it has already been completed.
                     /// The server will guarantee that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and t he request times out. If you make
+                    /// consider a situation where you make an initial request and the request times out. If you make
                     /// the request again with the same request ID, the server can check if original operation with the
                     /// same request ID was received, and if so, will ignore the second request. This prevents clients
                     /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -731,7 +731,7 @@ namespace Google.Apis.IDS.v1
                     /// An optional request ID to identify requests. Specify a unique request ID so that if you must
                     /// retry your request, the server will know to ignore the request if it has already been completed.
                     /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and t he request times out. If you make
+                    /// consider a situation where you make an initial request and the request times out. If you make
                     /// the request again with the same request ID, the server can check if original operation with the
                     /// same request ID was received, and if so, will ignore the second request. This prevents clients
                     /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
@@ -1124,12 +1124,7 @@ namespace Google.Apis.IDS.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
@@ -1139,12 +1134,7 @@ namespace Google.Apis.IDS.v1
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
-                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
-                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
-                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
-                /// configuration. For backwards compatibility, the default name includes the operations collection id,
-                /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.
+                /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
                 public class ListRequest : IDSBaseServiceRequest<Google.Apis.IDS.v1.Data.ListOperationsResponse>
                 {
@@ -1434,10 +1424,11 @@ namespace Google.Apis.IDS.v1.Data
         /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
         /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An
-        /// email address (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -1445,8 +1436,7 @@ namespace Google.Apis.IDS.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
-        /// domain. For example, `google.com` or `example.com`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }

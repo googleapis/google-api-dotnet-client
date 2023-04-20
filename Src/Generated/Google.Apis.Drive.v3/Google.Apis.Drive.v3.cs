@@ -2345,6 +2345,10 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
+            /// <summary>If set, empties the trash of the provided shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DriveId { get; set; }
+
             /// <summary>
             /// Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is
             /// not, the item will be placed under its owner's root.
@@ -2365,6 +2369,14 @@ namespace Google.Apis.Drive.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "enforceSingleParent",
@@ -3523,10 +3535,7 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>
-        /// Subscribes to changes to a file. While you can establish a channel for changes to a file on a shared drive,
-        /// a change to a shared drive file won't create a notification.
-        /// </summary>
+        /// <summary>Subscribes to changes to a file.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v3.Data.Channel body, string fileId)
@@ -3534,10 +3543,7 @@ namespace Google.Apis.Drive.v3
             return new WatchRequest(service, body, fileId);
         }
 
-        /// <summary>
-        /// Subscribes to changes to a file. While you can establish a channel for changes to a file on a shared drive,
-        /// a change to a shared drive file won't create a notification.
-        /// </summary>
+        /// <summary>Subscribes to changes to a file.</summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
@@ -6255,9 +6261,9 @@ namespace Google.Apis.Drive.v3.Data
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A collection of arbitrary key-value pairs which are private to the requesting app. Entries with null values
+        /// A collection of arbitrary key-value pairs that are private to the requesting app. Entries with null values
         /// are cleared in update and copy requests. These properties can only be retrieved using an authenticated
-        /// request. An authenticated request uses an access token obtained with a OAuth 2 client ID. You cannot use an
+        /// request. An authenticated request uses an access token obtained with an OAuth 2 client ID. You cannot use an
         /// API key to retrieve private properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appProperties")]
@@ -6265,7 +6271,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Capabilities the current user has on this file. Each capability corresponds to a fine-grained action that a
-        /// user may take.
+        /// user can take.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual CapabilitiesData Capabilities { get; set; }
@@ -6334,9 +6340,9 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string FolderColorRgb { get; set; }
 
         /// <summary>
-        /// The full file extension extracted from the name field. May contain multiple concatenated extensions, such as
+        /// The full file extension extracted from the name field. Can contain multiple concatenated extensions, such as
         /// "tar.gz". This is only available for files with binary content in Google Drive. This is automatically
-        /// updated when the name field changes, however it isn't cleared if the new name does not contain a valid
+        /// updated when the name field changes, however it's not cleared if the new name does not contain a valid
         /// extension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
@@ -6357,8 +6363,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> HasThumbnail { get; set; }
 
         /// <summary>
-        /// The ID of the file's head revision. This is currently only available for files with binary content in Google
-        /// Drive.
+        /// The ID of the file's head revision. This is only available for files with binary content in Google Drive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRevisionId")]
         public virtual string HeadRevisionId { get; set; }
@@ -6375,7 +6380,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageMediaMetadata")]
         public virtual ImageMediaMetadataData ImageMediaMetadata { get; set; }
 
-        /// <summary>Whether the file was created or opened by the requesting app.</summary>
+        /// <summary>Whether the requesting app created or opened the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
         public virtual System.Nullable<bool> IsAppAuthorized { get; set; }
 
@@ -6411,11 +6416,11 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>Whether the file has been modified by this user.</summary>
+        /// <summary>Whether this user has modified the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMe")]
         public virtual System.Nullable<bool> ModifiedByMe { get; set; }
 
-        /// <summary>The last time the file was modified by the user (RFC 3339 date-time).</summary>
+        /// <summary>The last time the user modified the file (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMeTime")]
         public virtual string ModifiedByMeTimeRaw { get; set; }
 
@@ -6428,8 +6433,8 @@ namespace Google.Apis.Drive.v3.Data
         }
 
         /// <summary>
-        /// The last time the file was modified by anyone (RFC 3339 date-time). Note that setting modifiedTime will also
-        /// update modifiedByMeTime for the user.
+        /// The last time anyone modified the file (RFC 3339 date-time). Note that setting modifiedTime will also update
+        /// modifiedByMeTime for the user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTime")]
         public virtual string ModifiedTimeRaw { get; set; }
@@ -6443,8 +6448,8 @@ namespace Google.Apis.Drive.v3.Data
         }
 
         /// <summary>
-        /// The name of the file. This is not necessarily unique within a folder. Note that for immutable items such as
-        /// the top level folders of shared drives, My Drive root folder, and Application Data folder the name is
+        /// The name of the file. This isn't necessarily unique within a folder. Note that for immutable items such as
+        /// the top-level folders of shared drives, My Drive root folder, and Application Data folder the name is
         /// constant.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6462,14 +6467,14 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> OwnedByMe { get; set; }
 
         /// <summary>
-        /// The owner of this file. Only certain legacy files may have more than one owner. This field isn't populated
+        /// The owner of this file. Only certain legacy files might have more than one owner. This field isn't populated
         /// for items in shared drives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<User> Owners { get; set; }
 
         /// <summary>
-        /// The IDs of the parent folders which contain the file. If not specified as part of a create request, the file
+        /// The IDs of the parent folders that contain the file. If not specified as part of a create request, the file
         /// will be placed directly in the user's My Drive folder. If not specified as part of a copy request, the file
         /// will inherit any discoverable parents of the source file. Update requests must use the addParents and
         /// removeParents parameters to modify the parents list.
@@ -6489,8 +6494,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; }
 
         /// <summary>
-        /// A collection of arbitrary key-value pairs which are visible to all apps. Entries with null values are
-        /// cleared in update and copy requests.
+        /// A collection of arbitrary key-value pairs that are visible to all apps. Entries with null values are cleared
+        /// in update and copy requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
@@ -6508,14 +6513,14 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The SHA1 checksum associated with this file, if available. This field is only populated for files with
-        /// content stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
+        /// content stored in Google Drive; it's not populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
         public virtual string Sha1Checksum { get; set; }
 
         /// <summary>
         /// The SHA256 checksum associated with this file, if available. This field is only populated for files with
-        /// content stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
+        /// content stored in Google Drive; it's not populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Checksum")]
         public virtual string Sha256Checksum { get; set; }
@@ -6549,13 +6554,13 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The size of the file's content in bytes. This field is populated for files with binary content stored in
-        /// Google Drive and for Docs Editors files; it is not populated for shortcuts or folders.
+        /// Google Drive and for Docs Editors files; it's not populated for shortcuts or folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>
-        /// The list of spaces which contain the file. The currently supported values are 'drive', 'appDataFolder' and
+        /// The list of spaces that contain the file. The currently supported values are 'drive', 'appDataFolder' and
         /// 'photos'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
@@ -6582,7 +6587,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<long> ThumbnailVersion { get; set; }
 
         /// <summary>
-        /// Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may
+        /// Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner can
         /// trash a file. The trashed item is excluded from all files.list responses returned for any user who does not
         /// own the file. However, all users with access to the file can see the trashed item metadata in an API
         /// response. All users with access can copy, download, export, and share the file.
@@ -6617,15 +6622,17 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
 
-        /// <summary>Additional metadata about video media. This may not be available immediately upon upload.</summary>
+        /// <summary>
+        /// Additional metadata about video media. This might not be available immediately upon upload.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMediaMetadata")]
         public virtual VideoMediaMetadataData VideoMediaMetadata { get; set; }
 
-        /// <summary>Whether the file has been viewed by this user.</summary>
+        /// <summary>Whether this user has viewed the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewedByMe")]
         public virtual System.Nullable<bool> ViewedByMe { get; set; }
 
-        /// <summary>The last time the file was viewed by the user (RFC 3339 date-time).</summary>
+        /// <summary>The last time the user viewed the file (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewedByMeTime")]
         public virtual string ViewedByMeTimeRaw { get; set; }
 
@@ -6664,7 +6671,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Capabilities the current user has on this file. Each capability corresponds to a fine-grained action that a
-        /// user may take.
+        /// user can take.
         /// </summary>
         public class CapabilitiesData
         {
@@ -6675,7 +6682,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanAcceptOwnership { get; set; }
 
             /// <summary>
-            /// Whether the current user can add children to this folder. This is always false when the item is not a
+            /// Whether the current user can add children to this folder. This is always false when the item isn't a
             /// folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
@@ -6683,7 +6690,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Whether the current user can add a folder from another drive (different shared drive or My Drive) to
-            /// this folder. This is false when the item is not a folder. Only populated for items in shared drives.
+            /// this folder. This is false when the item isn't a folder. Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddFolderFromAnotherDrive")]
             public virtual System.Nullable<bool> CanAddFolderFromAnotherDrive { get; set; }
@@ -6717,7 +6724,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Whether the current user can copy this file. For an item in a shared drive, whether the current user can
-            /// copy non-folder descendants of this item, or this item itself if it is not a folder.
+            /// copy non-folder descendants of this item, or this item itself if it's not a folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; }
@@ -6727,8 +6734,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanDelete { get; set; }
 
             /// <summary>
-            /// Whether the current user can delete children of this folder. This is false when the item is not a
-            /// folder. Only populated for items in shared drives.
+            /// Whether the current user can delete children of this folder. This is false when the item isn't a folder.
+            /// Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
             public virtual System.Nullable<bool> CanDeleteChildren { get; set; }
@@ -6738,14 +6745,14 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanDownload { get; set; }
 
             /// <summary>
-            /// Whether the current user can edit this file. Other factors may limit the type of changes a user can make
-            /// to a file. For example, see canChangeCopyRequiresWriterPermission or canModifyContent.
+            /// Whether the current user can edit this file. Other factors might limit the type of changes a user can
+            /// make to a file. For example, see canChangeCopyRequiresWriterPermission or canModifyContent.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
             public virtual System.Nullable<bool> CanEdit { get; set; }
 
             /// <summary>
-            /// Whether the current user can list the children of this folder. This is always false when the item is not
+            /// Whether the current user can list the children of this folder. This is always false when the item isn't
             /// a folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
@@ -6765,7 +6772,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Whether the current user can move children of this folder outside of the shared drive. This is false
-            /// when the item is not a folder. Only populated for items in shared drives.
+            /// when the item isn't a folder. Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenOutOfDrive { get; set; }
@@ -6775,9 +6782,9 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; }
 
             /// <summary>
-            /// Whether the current user can move children of this folder within this drive. This is false when the item
-            /// is not a folder. Note that a request to move the child may still fail depending on the current user's
-            /// access to the child and to the destination folder.
+            /// Whether the current user can move children of this folder within this shared drive or My Drive. This is
+            /// false when the item isn't a folder. Note that a request to move the child might still fail depending on
+            /// the current user's access to the child and to the destination folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenWithinDrive { get; set; }
@@ -6791,8 +6798,9 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; }
 
             /// <summary>
-            /// Whether the current user can move this item outside of this drive by changing its parent. Note that a
-            /// request to change the parent of the item may still fail depending on the new parent that is being added.
+            /// Whether the current user can move this item outside of this shared drive or My Drive by changing its
+            /// parent. Note that a request to change the parent of the item might still fail depending on the new
+            /// parent that's being added.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfDrive")]
             public virtual System.Nullable<bool> CanMoveItemOutOfDrive { get; set; }
@@ -6802,9 +6810,9 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanMoveItemOutOfTeamDrive { get; set; }
 
             /// <summary>
-            /// Whether the current user can move this item within this drive. Note that a request to change the parent
-            /// of the item may still fail depending on the new parent that is being added and the parent that is being
-            /// removed.
+            /// Whether the current user can move this item within this shared drive or My Drive. Note that a request to
+            /// change the parent of the item might still fail depending on the new parent that's being added and the
+            /// parent that's being removed.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinDrive")]
             public virtual System.Nullable<bool> CanMoveItemWithinDrive { get; set; }
@@ -6830,7 +6838,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Whether the current user can read the revisions resource of this file. For a shared drive item, whether
-            /// revisions of non-folder descendants of this item, or this item itself if it isn't a folder, can be read.
+            /// revisions of non-folder descendants of this item, or this item itself if it's not a folder, can be read.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; }
@@ -6840,7 +6848,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanReadTeamDrive { get; set; }
 
             /// <summary>
-            /// Whether the current user can remove children from this folder. This is always false when the item is not
+            /// Whether the current user can remove children from this folder. This is always false when the item isn't
             /// a folder. For a folder in a shared drive, use canDeleteChildren or canTrashChildren instead.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
@@ -6866,7 +6874,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanTrash { get; set; }
 
             /// <summary>
-            /// Whether the current user can trash children of this folder. This is false when the item is not a folder.
+            /// Whether the current user can trash children of this folder. This is false when the item isn't a folder.
             /// Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
@@ -6883,8 +6891,8 @@ namespace Google.Apis.Drive.v3.Data
         public class ContentHintsData
         {
             /// <summary>
-            /// Text to be indexed for the file to improve fullText queries. This is limited to 128 KB in length and may
-            /// contain HTML elements. For more information, see Manage file metadata.
+            /// Text to be indexed for the file to improve fullText queries. This is limited to 128 KB in length and
+            /// might contain HTML elements. For more information, see Manage file metadata.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
             public virtual string IndexableText { get; set; }
@@ -6976,7 +6984,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual string MeteringMode { get; set; }
 
             /// <summary>
-            /// The number of clockwise 90 degree rotations applied from the image's original orientation.
+            /// The number of clockwise 90-degree rotations applied from the image's original orientation.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rotation")]
             public virtual System.Nullable<int> Rotation { get; set; }
@@ -7063,7 +7071,9 @@ namespace Google.Apis.Drive.v3.Data
             public virtual string TargetResourceKey { get; set; }
         }
 
-        /// <summary>Additional metadata about video media. This may not be available immediately upon upload.</summary>
+        /// <summary>
+        /// Additional metadata about video media. This might not be available immediately upon upload.
+        /// </summary>
         public class VideoMediaMetadataData
         {
             /// <summary>The duration of the video in milliseconds.</summary>

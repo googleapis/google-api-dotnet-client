@@ -8013,6 +8013,59 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>
+        /// Given a specified UA property, looks up the GA4 property connected to it. Note: this cannot be used with GA4
+        /// properties.
+        /// </summary>
+        public virtual FetchConnectedGa4PropertyRequest FetchConnectedGa4Property()
+        {
+            return new FetchConnectedGa4PropertyRequest(service);
+        }
+
+        /// <summary>
+        /// Given a specified UA property, looks up the GA4 property connected to it. Note: this cannot be used with GA4
+        /// properties.
+        /// </summary>
+        public class FetchConnectedGa4PropertyRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse>
+        {
+            /// <summary>Constructs a new FetchConnectedGa4Property request.</summary>
+            public FetchConnectedGa4PropertyRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The UA property for which to look up the connected GA4 property. Note this request uses the
+            /// internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
+            /// properties/{internal_web_property_id} Example: properties/1234
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Property { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchConnectedGa4Property";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:fetchConnectedGa4Property";
+
+            /// <summary>Initializes FetchConnectedGa4Property parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Lookup for a single "GA4" Property.</summary>
         /// <param name="name">
         /// Required. The name of the property to lookup. Format: properties/{property_id} Example: "properties/1000"
@@ -11078,6 +11131,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>The opt out status for the UA property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optOut")]
         public virtual System.Nullable<bool> OptOut { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for looking up GA4 property connected to a UA property.</summary>
+    public class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The GA4 property connected to the UA property. An empty string is returned when there is no connected GA4
+        /// property. Format: properties/{property_id} Example: properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

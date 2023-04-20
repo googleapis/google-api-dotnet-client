@@ -5016,9 +5016,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<string> AndroidDevicePolicyTracks { get; set; }
 
         /// <summary>
-        /// Deprecated. Use autoUpdateMode instead.When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or
-        /// AUTO_UPDATE_HIGH_PRIORITY, this field has no effect.The app auto update policy, which controls when
-        /// automatic app updates can be applied.
+        /// Recommended alternative: autoUpdateMode which is set per app, provides greater flexibility around update
+        /// frequency.When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has
+        /// no effect.The app auto update policy, which controls when automatic app updates can be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoUpdatePolicy")]
         public virtual string AppAutoUpdatePolicy { get; set; }

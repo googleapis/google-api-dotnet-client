@@ -5028,8 +5028,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string MethodName { get; set; }
 
         /// <summary>
-        /// Associated email, such as "foo@google.com". The email address of the authenticated user (or service account
-        /// on behalf of third party principal) making the request. For third party identity callers, the
+        /// Associated email, such as "foo@google.com". The email address of the authenticated user or a service account
+        /// acting on behalf of a third party principal making the request. For third party identity callers, the
         /// `principal_subject` field is populated instead of this field. For privacy reasons, the principal email
         /// address is sometimes redacted. For more information, see [Caller identities in audit
         /// logs](https://cloud.google.com/logging/docs/audit#user-id).
@@ -5038,28 +5038,28 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string PrincipalEmail { get; set; }
 
         /// <summary>
-        /// A string representing the principal_subject associated with the identity. As compared to `principal_email`,
-        /// supports principals that aren't associated with email addresses, such as third party principals. For most
-        /// identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subjects/{subject}`
-        /// except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
-        /// format `serviceAccount:{identity pool name}[{subject}]`
+        /// A string that represents the principal_subject that is associated with the identity. Unlike
+        /// `principal_email`, `principal_subject` supports principals that aren't associated with email addresses, such
+        /// as third party principals. For most identities, the format is `principal://iam.googleapis.com/{identity pool
+        /// name}/subject/{subject}`. Some GKE identities, such as GKE_WORKLOAD, FREEFORM, and GKE_HUB_WORKLOAD, still
+        /// use the legacy format `serviceAccount:{identity pool name}[{subject}]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
         public virtual string PrincipalSubject { get; set; }
 
         /// <summary>
-        /// Identity delegation history of an authenticated service account that makes the request. It contains
-        /// information on the real authorities that try to access GCP resources by delegating on a service account.
-        /// When multiple authorities are present, they are guaranteed to be sorted based on the original ordering of
-        /// the identity delegation events.
+        /// The identity delegation history of an authenticated service account that made the request. The
+        /// `serviceAccountDelegationInfo[]` object contains information about the real authorities that try to access
+        /// Google Cloud resources by delegating on a service account. When multiple authorities are present, they are
+        /// guaranteed to be sorted based on the original ordering of the identity delegation events.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountDelegationInfo")]
         public virtual System.Collections.Generic.IList<ServiceAccountDelegationInfo> ServiceAccountDelegationInfo { get; set; }
 
         /// <summary>
-        /// The name of the service account key used to create or exchange credentials for authenticating the service
-        /// account making the request. This is a scheme-less URI full resource name. For example:
-        /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"
+        /// The name of the service account key that was used to create or exchange credentials when authenticating the
+        /// service account that made the request. This is a scheme-less URI full resource name. For example:
+        /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyName")]
         public virtual string ServiceAccountKeyName { get; set; }
@@ -5071,18 +5071,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ServiceName { get; set; }
 
         /// <summary>
-        /// What kind of user agent is associated, for example operating system shells, embedded or stand-alone
-        /// applications, etc.
+        /// Type of user agent associated with the finding. For example, an operating system shell or an embedded or
+        /// standalone application.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgentFamily")]
         public virtual string UserAgentFamily { get; set; }
 
         /// <summary>
-        /// A string that represents the username of a user, user account, or other entity involved in the access event.
-        /// What the entity is and what its role in the access event is depends on the finding that this field appears
-        /// in. The entity is likely not an IAM principal, but could be a user that is logged into an operating system,
-        /// if the finding is VM-related, or a user that is logged into some type of application that is involved in the
-        /// access event.
+        /// A string that represents a username. The username provided depends on the type of the finding and is likely
+        /// not an IAM principal. For example, this can be a system username if the finding is related to a virtual
+        /// machine, or it can be an application login username.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }
@@ -5686,8 +5684,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Access details associated to the Finding, such as more information on the caller, which method was accessed,
-        /// from where, etc.
+        /// Access details associated with the finding, such as more information on the caller, which method was
+        /// accessed, and from where.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual Access Access { get; set; }
@@ -5709,11 +5707,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>Cloud DLP data profile associated with the finding.</summary>
+        /// <summary>Cloud DLP data profile that is associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpDataProfile")]
         public virtual CloudDlpDataProfile CloudDlpDataProfile { get; set; }
 
-        /// <summary>Cloud DLP inspection associated with the finding.</summary>
+        /// <summary>
+        /// Cloud Data Loss Prevention (Cloud DLP) inspection results that are associated with the finding.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpInspection")]
         public virtual CloudDlpInspection CloudDlpInspection { get; set; }
 
@@ -5735,7 +5735,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual System.Collections.Generic.IDictionary<string, ContactDetails> Contacts { get; set; }
 
         /// <summary>
-        /// Containers associated with the finding. containers provides information for both Kubernetes and
+        /// Containers associated with the finding. This field provides information for both Kubernetes and
         /// non-Kubernetes containers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
@@ -5749,7 +5749,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual Database Database { get; set; }
 
-        /// <summary>Contains more detail about the finding.</summary>
+        /// <summary>Contains more details about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -5763,7 +5763,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 
-        /// <summary>Represents exfiltration associated with the Finding.</summary>
+        /// <summary>Represents exfiltrations associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exfiltration")]
         public virtual Exfiltration Exfiltration { get; set; }
 
@@ -5790,19 +5790,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }
 
-        /// <summary>Represents IAM bindings associated with the Finding.</summary>
+        /// <summary>Represents IAM bindings associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
         public virtual System.Collections.Generic.IList<IamBinding> IamBindings { get; set; }
 
         /// <summary>
-        /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an
+        /// Represents what's commonly known as an *indicator of compromise* (IoC) in computer forensics. This is an
         /// artifact observed on a network or in an operating system that, with high confidence, indicates a computer
-        /// intrusion. Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+        /// intrusion. For more information, see [Indicator of
+        /// compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
 
-        /// <summary>Kernel Rootkit signature.</summary>
+        /// <summary>Signature of the kernel rootkit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernelRootkit")]
         public virtual KernelRootkit KernelRootkit { get; set; }
 
@@ -5831,9 +5832,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string Mute { get; set; }
 
         /// <summary>
-        /// First known as mute_annotation. Records additional information about the mute operation e.g. mute config
-        /// that muted the finding, user who muted the finding, etc. Unlike other attributes of a finding, a finding
-        /// provider shouldn't set the value of mute.
+        /// Records additional information about the mute operation, for example, the [mute
+        /// configuration](/security-command-center/docs/how-to-mute-findings) that muted the finding and the user who
+        /// muted the finding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("muteInitiator")]
         public virtual string MuteInitiator { get; set; }
@@ -5843,14 +5844,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual object MuteUpdateTime { get; set; }
 
         /// <summary>
-        /// The relative resource name of this finding. See:
-        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+        /// The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of
+        /// the finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+        /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+        /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Next steps associate to the finding.</summary>
+        /// <summary>Steps to address the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
         public virtual string NextSteps { get; set; }
 

@@ -2665,24 +2665,13 @@ namespace Google.Apis.CloudRun.v2.Data
     /// </summary>
     public class GoogleCloudRunV2Container : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references
-        /// $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference
-        /// in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-        /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
-        /// More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        /// </summary>
+        /// <summary>Arguments to the entrypoint. The docker image's CMD is used if this is not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>
         /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable
-        /// cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be
-        /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
-        /// the variable exists or not. More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
@@ -2693,16 +2682,12 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry.
-        /// If the host is not provided, Dockerhub is assumed. More info:
-        /// https://kubernetes.io/docs/concepts/containers/images
+        /// If the host is not provided, Dockerhub is assumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
-        /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        /// </summary>
+        /// <summary>Periodic probe of container liveness. Container will be restarted if the probe fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual GoogleCloudRunV2Probe LivenessProbe { get; set; }
 
@@ -2718,17 +2703,13 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerPort> Ports { get; set; }
 
-        /// <summary>
-        /// Compute Resource requirements by this container. More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-        /// </summary>
+        /// <summary>Compute Resource requirements by this container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual GoogleCloudRunV2ResourceRequirements Resources { get; set; }
 
         /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is
-        /// provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
         public virtual GoogleCloudRunV2Probe StartupProbe { get; set; }
@@ -2913,8 +2894,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Output only. Specifies the maximum desired number of tasks the execution should run at any given time. Must
         /// be &amp;lt;= task_count. The actual number of tasks running in steady state will be less than this number
         /// when ((.spec.task_count - .status.successful) &amp;lt; .spec.parallelism), i.e. when the work left to do is
-        /// less than max parallelism. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// less than max parallelism.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelism")]
         public virtual System.Nullable<int> Parallelism { get; set; }
@@ -2951,8 +2931,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Output only. Specifies the desired number of tasks the execution should run. Setting to 1 means that
-        /// parallelism is limited to 1 and the success of that task signals the success of the execution. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// parallelism is limited to 1 and the success of that task signals the success of the execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<int> TaskCount { get; set; }
@@ -3108,9 +3087,9 @@ namespace Google.Apis.CloudRun.v2.Data
         /// KRM-style annotations for the resource. Unstructured key value map that may be set by external tools to
         /// store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud
         /// Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`,
-        /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system
-        /// annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes annotations'
-        /// namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+        /// All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
+        /// annotations' namespacing, limits, and rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3369,8 +3348,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds.
-        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More
-        /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
@@ -3392,8 +3370,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value
-        /// is 3600. Must be smaller than period_seconds. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// is 3600. Must be smaller than period_seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; }
@@ -3410,13 +3387,20 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<bool> CpuIdle { get; set; }
 
         /// <summary>
-        /// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'.
-        /// Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s
-        /// type:
-        /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        /// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and
+        /// '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to
+        /// https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to
+        /// https://cloud.google.com/run/docs/configuring/memory-limits
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
+
+        /// <summary>
+        /// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU
+        /// threshold, this can help reduce cold-start latency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupCpuBoost")]
+        public virtual System.Nullable<bool> StartupCpuBoost { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3765,9 +3749,9 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not
         /// queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with
         /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
-        /// namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2
-        /// Service. This field follows Kubernetes annotations' namespacing, limits, and rules. More info:
-        /// https://kubernetes.io/docs/user-guide/annotations
+        /// namespaces, and they will be rejected in new resources. All system annotations in v1 now have a
+        /// corresponding field in v2 Service. This field follows Kubernetes annotations' namespacing, limits, and
+        /// rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -4320,10 +4304,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Secret represents a secret that should populate this volume. More info:
-        /// https://kubernetes.io/docs/concepts/storage/volumes#secret
-        /// </summary>
+        /// <summary>Secret represents a secret that should populate this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
         public virtual GoogleCloudRunV2SecretVolumeSource Secret { get; set; }
 

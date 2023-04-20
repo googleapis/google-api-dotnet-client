@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudRun.v2 Client Library</Title>
-    <Version>1.60.0.2992</Version>
+    <Version>1.60.0.3027</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
