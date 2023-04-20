@@ -1323,19 +1323,20 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// The explanation message associated with ApnsCertificationExpiring and ApnsCertificationExpired alerts.
+    /// The explanation message associated with "APNS certificate is expiring soon" and "APNS certificate has expired"
+    /// alerts.
     /// </summary>
     public class ApnsCertificateExpirationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Apple ID used for the certificate may be blank if admins didn't enter it.</summary>
+        /// <summary>The Apple ID used to create the certificate. It may be blank if admins didn't enter it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appleId")]
         public virtual string AppleId { get; set; }
 
-        /// <summary>The expiration date of the APNS Certificate.</summary>
+        /// <summary>The expiration date of the APNS certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual object ExpirationTime { get; set; }
 
-        /// <summary>The UID for the certificate.</summary>
+        /// <summary>The UID of the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 

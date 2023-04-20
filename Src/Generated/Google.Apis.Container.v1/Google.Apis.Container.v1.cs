@@ -6202,6 +6202,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class AdditionalPodRangesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Name for pod secondary ipv4 range which has the actual range defined ahead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podRangeNames")]
+        public virtual System.Collections.Generic.IList<string> PodRangeNames { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

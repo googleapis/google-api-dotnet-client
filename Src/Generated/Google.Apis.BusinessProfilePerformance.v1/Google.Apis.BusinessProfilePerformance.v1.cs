@@ -855,11 +855,11 @@ namespace Google.Apis.BusinessProfilePerformance.v1
             [Google.Apis.Util.RequestParameterAttribute("dailyRange.startDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> DailyRangeStartDateYear { get; set; }
 
-            /// <summary>Represents the day of the week. Eg: MONDAY.</summary>
+            /// <summary>Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE.</summary>
             [Google.Apis.Util.RequestParameterAttribute("dailySubEntityType.dayOfWeek", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DailySubEntityTypeDayOfWeekEnum> DailySubEntityTypeDayOfWeek { get; set; }
 
-            /// <summary>Represents the day of the week. Eg: MONDAY.</summary>
+            /// <summary>Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE.</summary>
             public enum DailySubEntityTypeDayOfWeekEnum
             {
                 /// <summary>The day of the week is unspecified.</summary>
@@ -1066,11 +1066,13 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
     /// <summary>Represents all possible subentity types that are associated with DailyMetrics.</summary>
     public class DailySubEntityType : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Represents the day of the week. Eg: MONDAY.</summary>
+        /// <summary>Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
         public virtual string DayOfWeek { get; set; }
 
-        /// <summary>Represents the time of the day in 24 hour format. Eg: 13:34:20</summary>
+        /// <summary>
+        /// Represents the time of the day in 24 hour format. Eg: 13:34:20 Currently supported DailyMetrics = NONE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOfDay")]
         public virtual TimeOfDay TimeOfDay { get; set; }
 
@@ -1116,7 +1118,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
 
-        /// <summary>The value of the datapoint.</summary>
+        /// <summary>The value of the datapoint. This will not be present when the value is zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<long> Value { get; set; }
 

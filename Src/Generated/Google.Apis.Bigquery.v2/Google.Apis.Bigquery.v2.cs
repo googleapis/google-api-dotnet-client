@@ -9489,9 +9489,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoArima")]
         public virtual System.Nullable<bool> AutoArima { get; set; }
 
-        /// <summary>The max value of non-seasonal p and q.</summary>
+        /// <summary>The max value of the sum of non-seasonal p and q.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoArimaMaxOrder")]
         public virtual System.Nullable<long> AutoArimaMaxOrder { get; set; }
+
+        /// <summary>The min value of the sum of non-seasonal p and q.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoArimaMinOrder")]
+        public virtual System.Nullable<long> AutoArimaMinOrder { get; set; }
 
         /// <summary>Batch size for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]

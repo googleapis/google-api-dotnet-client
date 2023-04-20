@@ -1090,8 +1090,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                             /// true, the subsequent variant products will be deleted. When set to false, if the primary
                             /// product has active variant products, an error will be returned.
                             /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("cascadeDelete", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<bool> CascadeDelete { get; set; }
+                            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Force { get; set; }
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
@@ -1114,9 +1114,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
                                 });
-                                RequestParameters.Add("cascadeDelete", new Google.Apis.Discovery.Parameter
+                                RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "cascadeDelete",
+                                    Name = "force",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4506,7 +4506,7 @@ namespace Google.Apis.CloudRetail.v2alpha
 
                     /// <summary>
                     /// The entity for customers that may run multiple different entities, domains, sites or regions,
-                    /// for example, "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is
+                    /// for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is
                     /// set, it should be exactly matched with UserEvent.entity to get per-entity autocomplete results.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Query)]
@@ -6639,8 +6639,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Facet information for the suggestion term. Gives the number of items resulting from a search with this
-        /// suggestion term for each facet. This is an experimental feature for limited customers. Please reach out to
-        /// the support team if you would like to receive this information.
+        /// suggestion term for each facet. This is an experimental feature for limited customers. If you want to
+        /// receive this facet information, reach out to the Retail support team.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facets")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaSearchResponseFacet> Facets { get; set; }
@@ -6651,7 +6651,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Total number of products associated with a search with this suggestion. This is an experimental feature for
-        /// limited customers. Please reach out to the support team if you would like to receive this information.
+        /// limited customers. If you want to receive this product count information, reach out to the Retail support
+        /// team.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalProductCount")]
         public virtual System.Nullable<int> TotalProductCount { get; set; }
@@ -6987,8 +6988,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// active experiment exist. For example:
         /// `projects/*/locations/global/catalogs/default_catalog/experiments/experiment_id`
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experimentName")]
-        public virtual string ExperimentName { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual string Experiment { get; set; }
 
         /// <summary>A/B test between existing Cloud Retail Search ServingConfigs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigExperiment")]
@@ -7585,7 +7586,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+    /// linked merchant center account will be streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2alphaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7645,7 +7646,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. GCP project ID.</summary>
+        /// <summary>Output only. Google Cloud project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -9302,7 +9303,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
-        /// "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should be exactly
+        /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is set, it should be exactly
         /// matched with UserEvent.entity to get search results boosted by entity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
@@ -9356,7 +9357,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// The categories associated with a category page. Required for category navigation queries to achieve good
+        /// The categories associated with a category page. Must be set for category navigation queries to achieve good
         /// search quality. The format should be the same as UserEvent.page_categories; To represent full path of
         /// category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the category name,
         /// replace it with other character(s). Category pages include special pages such as sales or promotions. For
@@ -9603,11 +9604,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual System.Collections.Generic.IList<string> Contains { get; set; }
 
         /// <summary>
-        /// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10,
-        /// 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a
-        /// numerical facet key and its intervals are not specified in the search request, these percentiles will become
-        /// the bounds for its intervals and will be returned in the response. If the facet key intervals are specified
-        /// in the request, then the specified intervals will be returned instead.
+        /// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must
+        /// not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that
+        /// appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed
+        /// from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals
+        /// are not specified in the search request, these percentiles will become the bounds for its intervals and will
+        /// be returned in the response. If the facet key intervals are specified in the request, then the specified
+        /// intervals will be returned instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervals")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaInterval> Intervals { get; set; }
@@ -10293,7 +10296,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
-        /// "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. It is recommended to set this field to
+        /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. It is recommended to set this field to
         /// get better per-entity search, completion and prediction results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
@@ -10819,7 +10822,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+    /// linked merchant center account will be streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2betaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10879,7 +10882,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. GCP project ID.</summary>
+        /// <summary>Output only. Google Cloud project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 

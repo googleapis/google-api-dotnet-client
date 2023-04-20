@@ -374,7 +374,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Fully qualified name (FQN) of the resource. FQNs take two forms: * For non-regionalized resources:
+            /// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the
+            /// resource. FQNs take two forms: * For non-regionalized resources:
             /// `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources:
             /// `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table:
             /// `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
@@ -5770,12 +5771,9 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual GoogleCloudDatacatalogV1FilesetSpec FilesetSpec { get; set; }
 
         /// <summary>
-        /// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced
-        /// systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the
-        /// entries. FQNs take two forms: * For non-regionalized resources:
-        /// `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources:
-        /// `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table:
-        /// `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
+        /// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the
+        /// resource. Set automatically for entries representing resources from synced systems. Settable only during
+        /// creation, and read-only later. Can be used for search and lookup of the entries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedName")]
         public virtual string FullyQualifiedName { get; set; }
@@ -6701,6 +6699,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1SearchCatalogResult> Results { get; set; }
+
+        /// <summary>The approximate total number of entries matched by the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>
         /// Unreachable locations. Search results don't include data from those locations. To get additional information

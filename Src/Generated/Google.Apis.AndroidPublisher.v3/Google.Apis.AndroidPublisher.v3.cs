@@ -5309,7 +5309,7 @@ namespace Google.Apis.AndroidPublisher.v3
             this.service = service;
         }
 
-        /// <summary>Deletes an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Deletes an in-app product (i.e. a managed product or a subscription).</summary>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual DeleteRequest Delete(string packageName, string sku)
@@ -5317,7 +5317,7 @@ namespace Google.Apis.AndroidPublisher.v3
             return new DeleteRequest(service, packageName, sku);
         }
 
-        /// <summary>Deletes an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Deletes an in-app product (i.e. a managed product or a subscription).</summary>
         public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -5427,7 +5427,7 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Creates an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Creates an in-app product (i.e. a managed product or a subscription).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName)
@@ -5435,7 +5435,7 @@ namespace Google.Apis.AndroidPublisher.v3
             return new InsertRequest(service, body, packageName);
         }
 
-        /// <summary>Creates an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Creates an in-app product (i.e. a managed product or a subscription).</summary>
         public class InsertRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -5531,7 +5531,7 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Deprecated and ignored. Set the `token` parameter to rertieve the next page.</summary>
+            /// <summary>Deprecated and ignored. Set the `token` parameter to retrieve the next page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> StartIndex { get; set; }
 
@@ -5587,7 +5587,7 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Patches an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Patches an in-app product (i.e. a managed product or a subscription).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
@@ -5596,7 +5596,7 @@ namespace Google.Apis.AndroidPublisher.v3
             return new PatchRequest(service, body, packageName, sku);
         }
 
-        /// <summary>Patches an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Patches an in-app product (i.e. a managed product or a subscription).</summary>
         public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5670,7 +5670,7 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Updates an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Updates an in-app product (i.e. a managed product or a subscription).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
@@ -5679,7 +5679,7 @@ namespace Google.Apis.AndroidPublisher.v3
             return new UpdateRequest(service, body, packageName, sku);
         }
 
-        /// <summary>Updates an in-app product (i.e. a managed product or a subscriptions).</summary>
+        /// <summary>Updates an in-app product (i.e. a managed product or a subscription).</summary>
         public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Update request.</summary>

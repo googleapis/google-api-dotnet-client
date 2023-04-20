@@ -4034,7 +4034,7 @@ namespace Google.Apis.CloudRetail.v2
 
                     /// <summary>
                     /// The entity for customers that may run multiple different entities, domains, sites or regions,
-                    /// for example, "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is
+                    /// for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is
                     /// set, it should be exactly matched with UserEvent.entity to get per-entity autocomplete results.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Query)]
@@ -5952,8 +5952,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// active experiment exist. For example:
         /// `projects/*/locations/global/catalogs/default_catalog/experiments/experiment_id`
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experimentName")]
-        public virtual string ExperimentName { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual string Experiment { get; set; }
 
         /// <summary>A/B test between existing Cloud Retail Search ServingConfigs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigExperiment")]
@@ -7804,7 +7804,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
-        /// "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should be exactly
+        /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is set, it should be exactly
         /// matched with UserEvent.entity to get search results boosted by entity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
@@ -7858,7 +7858,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// The categories associated with a category page. Required for category navigation queries to achieve good
+        /// The categories associated with a category page. Must be set for category navigation queries to achieve good
         /// search quality. The format should be the same as UserEvent.page_categories; To represent full path of
         /// category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the category name,
         /// replace it with other character(s). Category pages include special pages such as sales or promotions. For
@@ -8097,11 +8097,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual System.Collections.Generic.IList<string> Contains { get; set; }
 
         /// <summary>
-        /// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10,
-        /// 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a
-        /// numerical facet key and its intervals are not specified in the search request, these percentiles will become
-        /// the bounds for its intervals and will be returned in the response. If the facet key intervals are specified
-        /// in the request, then the specified intervals will be returned instead.
+        /// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must
+        /// not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that
+        /// appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed
+        /// from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals
+        /// are not specified in the search request, these percentiles will become the bounds for its intervals and will
+        /// be returned in the response. If the facet key intervals are specified in the request, then the specified
+        /// intervals will be returned instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervals")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2Interval> Intervals { get; set; }
@@ -8769,7 +8771,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
-        /// "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. It is recommended to set this field to
+        /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. It is recommended to set this field to
         /// get better per-entity search, completion and prediction results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
@@ -9299,7 +9301,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
     /// <summary>
     /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+    /// linked merchant center account will be streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2alphaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9359,7 +9361,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. GCP project ID.</summary>
+        /// <summary>Output only. Google Cloud project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -10092,7 +10094,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
     /// <summary>
     /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+    /// linked merchant center account will be streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2betaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10152,7 +10154,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. GCP project ID.</summary>
+        /// <summary>Output only. Google Cloud project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 

@@ -1404,6 +1404,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exceptionAuditLogLink")]
         public virtual string ExceptionAuditLogLink { get; set; }
 
+        /// <summary>Output only. List of all the exception detail added for the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptionContexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1ViolationExceptionContext> ExceptionContexts { get; set; }
+
         /// <summary>
         /// Output only. Immutable. Name of the Violation. Format:
         /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
@@ -1443,6 +1447,25 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Output only. The last time when the Violation record was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Violation exception detail. Next Id: 5</summary>
+    public class GoogleCloudAssuredworkloadsV1ViolationExceptionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp when the violation was acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
+        public virtual object AcknowledgementTime { get; set; }
+
+        /// <summary>Business justification provided towards the acknowledgement of the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Email address of the user (or service account) who acknowledged the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1636,6 +1659,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saaEnrollmentResponse")]
         public virtual GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value
+        /// will be by default True, and if not present will be considered as true. This should only be updated via
+        /// updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationNotificationsEnabled")]
+        public virtual System.Nullable<bool> ViolationNotificationsEnabled { get; set; }
     }
 
     /// <summary>Represents the Compliance Status of this workload</summary>
