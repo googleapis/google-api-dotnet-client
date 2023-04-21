@@ -39,6 +39,14 @@ namespace Google.Apis.Auth.OAuth2
         public const string ServiceAccountCredentialType = "service_account";
 
         /// <summary>
+        /// ImpersonatedCredential is created by the GCloud SDK tool when the user runs
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login">GCloud Auth ADC Login</a>
+        /// using the <a href="https://cloud.google.com/sdk/gcloud/reference#--impersonate-service-account">--impersonate-service-account</a>
+        /// flag.
+        /// </summary>
+        public const string ImpersonatedServiceAccountCredentialType = "impersonated_service_account";
+
+        /// <summary>
         /// See https://cloud.google.com/iam/docs/workload-identity-federation on how
         /// to create external account credentials.
         /// </summary>
@@ -106,6 +114,29 @@ namespace Google.Apis.Auth.OAuth2
         public string RefreshToken { get; set; }
 
         /// <summary>
+        /// This is the URL for the service account impersonation request
+        /// associated with a source credential or with an external account credential.
+        /// If this credential is an external account credential and this is not set,
+        /// the STS returned access token should be directly used without impersonation.
+        /// If this credential is not an external account credential and this is set,
+        /// then a credential source needs to be specified.
+        /// </summary>
+        [JsonProperty("service_account_impersonation_url")]
+        public string ServiceAccountImpersonationUrl { get; set; }
+
+        /// <summary>
+        /// Delegates chain associated to the impersonated credential.
+        /// </summary>
+        [JsonProperty("delegates")]
+        public string[] Delegates { get; set; }
+
+        /// <summary>
+        /// The source credential associated to the impersonated credential.
+        /// </summary>
+        [JsonProperty("source_credentials")]
+        public JsonCredentialParameters SourceCredential { get; set; }
+
+        /// <summary>
         /// The STS audience associated with an external account credential.
         /// </summary>
         [JsonProperty("audience")]
@@ -122,15 +153,6 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         [JsonProperty("token_url")]
         public string TokenUrl { get; set; }
-
-        /// <summary>
-        /// This is the URL for the service account impersonation request
-        /// associated with an external account credential.
-        /// If this is not set, the STS returned access token
-        /// should be directly used without impersonation.
-        /// </summary>
-        [JsonProperty("service_account_impersonation_url")]
-        public string ServiceAccountImpersonationUrl { get; set; }
 
         /// <summary>
         /// The GCP project number to be used for Workforce Pools

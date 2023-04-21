@@ -292,9 +292,34 @@ namespace Google.Apis.Auth.OAuth2
         {
             if (HasCustomTokenUrl)
             {
-                // We never expose an ImpersonatedCredential with a custom token URL, users will never see this.
+                // If the impersonated credential has a custom access token URL we don't know how the OIDC token and blob signing
+                // tokens may look like, so we cannot support those operations.
+                // For TPC, regional endpoints, etc. we only need to change the definition of custom, which at the moment is
+                // everything different of GoogleAuthConsts.IamAccessTokenEndpointFormatString.
                 throw new InvalidOperationException("Operation not supported when a custom access token URL has been specified.");
             }
+        }
+
+        /// <summary>
+        /// Attempts to extract the target principal ID from the impersonation URL which is possible if the URL looks like
+        /// https://host/segment-1/.../segment-n/target-principal-ID:generateAccessToken.
+        /// It's OK if we can't though as for fetching the impersonated access token we have the impersonation URL as a whole.
+        /// It's just a nice to have, as the user may be able to execute extra operations with the impersonated credential, like
+        /// signing a blob of fetching its OIDC token.
+        /// </summary>
+        internal static string ExtractTargetPrincipal(string url)
+        {
+            int start = url.LastIndexOf("/") + 1;
+            if (start == 0 || start >= url.Length)
+            {
+                return null;
+            }
+            int afterEnd = url.IndexOf($":{GoogleAuthConsts.IamAccessTokenVerb}");
+            if (afterEnd == -1 || afterEnd <= start)
+            {
+                return null;
+            }
+            return url.Substring(start, afterEnd - start);
         }
     }
 }

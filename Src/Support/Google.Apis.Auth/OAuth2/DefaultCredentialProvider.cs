@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -214,6 +215,7 @@ namespace Google.Apis.Auth.OAuth2
                 JsonCredentialParameters.AuthorizedUserCredentialType => new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters)),
                 JsonCredentialParameters.ServiceAccountCredentialType => GoogleCredential.FromServiceAccountCredential(CreateServiceAccountCredentialFromParameters(credentialParameters)),
                 JsonCredentialParameters.ExternalAccountCredentialType => new GoogleCredential(CreateExternalCredentialFromParameters(credentialParameters)),
+                JsonCredentialParameters.ImpersonatedServiceAccountCredentialType => new GoogleCredential(CreateImpersonatedServiceAccountCredentialFromParameters(credentialParameters)),
                 _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}."),
             };
 
@@ -337,6 +339,28 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new InvalidOperationException("Unrecognized external credential configuration");
             }
+        }
+
+        private ImpersonatedCredential CreateImpersonatedServiceAccountCredentialFromParameters(JsonCredentialParameters parameters)
+        {
+            if (parameters.Type != JsonCredentialParameters.ImpersonatedServiceAccountCredentialType
+                || parameters.SourceCredential is null
+                || string.IsNullOrEmpty(parameters.ServiceAccountImpersonationUrl))
+            {
+                throw new InvalidOperationException("JSON data does not represent a valid impersonated service account credential.");
+            }
+
+            // If source credential is of a credential type that does not support impersonation, attemting to create the
+            // impersonated credential will fail a few lines later.
+            var sourceCredential = CreateDefaultCredentialFromParameters(parameters.SourceCredential);
+            var maybeTargetPrincipal = ImpersonatedCredential.ExtractTargetPrincipal(parameters.ServiceAccountImpersonationUrl);
+            var initializer = new ImpersonatedCredential.Initializer(parameters.ServiceAccountImpersonationUrl, maybeTargetPrincipal)
+            {
+                DelegateAccounts = parameters.Delegates?.Length > 0 ? parameters.Delegates.ToList() : null,
+                QuotaProject = parameters.QuotaProject,
+            };
+
+            return ImpersonatedCredential.Create(sourceCredential, initializer);
         }
 
         /// <summary> 
