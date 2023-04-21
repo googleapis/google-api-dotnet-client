@@ -125,7 +125,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public void Create_InvalidSourceCredential() =>
             Assert.Throws<InvalidOperationException>(() => ImpersonatedCredential.Create(
-                GoogleCredential.FromComputeCredential(),
+                GoogleCredential.FromAccessToken("fake_access_token"),
                 new ImpersonatedCredential.Initializer("principal")));
 
         [Fact]

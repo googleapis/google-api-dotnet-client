@@ -171,13 +171,18 @@ namespace Google.Apis.Auth.OAuth2
             }
             if (!(sourceCredential.UnderlyingCredential is ServiceAccountCredential 
                 || sourceCredential.UnderlyingCredential is UserCredential
-                || sourceCredential.UnderlyingCredential is ExternalAccountCredential))
+                || sourceCredential.UnderlyingCredential is ExternalAccountCredential
+                || sourceCredential.UnderlyingCredential is ComputeCredential))
             {
-                throw new InvalidOperationException($"Only {nameof(ServiceAccountCredential)}, {nameof(UserCredential)} and {nameof(ExternalAccountCredential)} support impersonation.");
+                throw new InvalidOperationException(
+                    $"Only {nameof(ServiceAccountCredential)}," +
+                    $"{nameof(UserCredential)}, " +
+                    $"{nameof(ExternalAccountCredential)} " +
+                    $"and {nameof(ComputeCredential)} support impersonation.");
             }
             if (sourceCredential.UnderlyingCredential is ExternalAccountCredential externalCred && externalCred.ServiceAccountImpersonationUrl is string)
             {
-                throw new InvalidOperationException($"Only {nameof(ExternalAccountCredential)}s that have no impersonation conigured via service_account_impersonation_url support explicit impersonation.");
+                throw new InvalidOperationException($"Only {nameof(ExternalAccountCredential)}s that have no impersonation configured via service_account_impersonation_url support explicit impersonation.");
             }
 
             // We ourselves modify the client supplied initializer, so let's make a copy first.
