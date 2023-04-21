@@ -212,6 +212,32 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
     ""regional_cred_verification_url"": ""https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15"",
     ""imdsv2_session_token_url"": ""http://169.254.169.254/latest/api/token""
   }}";
+        private const string DummyImpersonatedServiceAccountCredential = @"{
+""service_account_impersonation_url"": ""https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/service-account-email:generateAccessToken"",
+""delegates"": [
+  ""delegate-email-1"",
+  ""delegate-email-2""
+],
+""source_credentials"": {
+  ""client_id"": ""CLIENT_ID"",
+  ""client_secret"": ""CLIENT_SECRET"",
+  ""refresh_token"": ""REFRESH_TOKEN"",
+  ""type"": ""authorized_user""
+},
+""type"": ""impersonated_service_account""}";
+        private const string RecursiveImpersonatedServiceAccountCredential = @"{
+""service_account_impersonation_url"": ""https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/service-account-email-1:generateAccessToken"",
+""source_credentials"": {
+  ""service_account_impersonation_url"": ""https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/service-account-email-2:generateAccessToken"",
+  ""source_credentials"": {
+    ""client_id"": ""CLIENT_ID"",
+    ""client_secret"": ""CLIENT_SECRET"",
+    ""refresh_token"": ""REFRESH_TOKEN"",
+    ""type"": ""authorized_user""
+  },
+  ""type"": ""impersonated_service_account""
+},
+""type"": ""impersonated_service_account""}";
 
         public DefaultCredentialProviderTests()
         {
@@ -385,6 +411,42 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             var workforceCredential = (ExternalAccountCredential)credential.UnderlyingCredential;
             Assert.Equal("user_project", workforceCredential.WorkforcePoolUserProject);
+        }
+
+        #endregion
+
+        #region ImpersonatedCredential
+
+        [Fact]
+        public async Task GetDefaultCredential_ImpersonatedCredential_FromEnvironmentVariable()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, DummyImpersonatedServiceAccountCredential);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
+            Assert.Equal("service-account-email", impersonatedCredential.TargetPrincipal);
+            Assert.False(impersonatedCredential.HasCustomTokenUrl);
+            Assert.Collection(impersonatedCredential.DelegateAccounts,
+                account => Assert.Equal("delegate-email-1", account),
+                account => Assert.Equal("delegate-email-2", account));
+
+            var userCredential = Assert.IsType<UserCredential>(impersonatedCredential.SourceCredential.UnderlyingCredential);
+            Assert.Equal("REFRESH_TOKEN", userCredential.Token.RefreshToken);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_RecursiveImpersonatedCredential_FromEnvironmentVariable()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, RecursiveImpersonatedServiceAccountCredential);
+
+            await Assert.ThrowsAsync<InvalidOperationException>(() => credentialProvider.GetDefaultCredentialAsync());
         }
 
         #endregion

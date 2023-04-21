@@ -235,7 +235,7 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             var initializer = new ImpersonatedCredential.Initializer(
-                ServiceAccountImpersonationUrl, ExtractTargetPrincipal(ServiceAccountImpersonationUrl))
+                ServiceAccountImpersonationUrl, ImpersonatedCredential.ExtractTargetPrincipal(ServiceAccountImpersonationUrl))
             {
                 // We copy this credential settings to the impersonated one.
                 AccessMethod = AccessMethod,
@@ -252,26 +252,6 @@ namespace Google.Apis.Auth.OAuth2
 
 
             return ImpersonatedCredential.Create(WithoutImpersonationConfiguration.Value, initializer);
-
-            // Tries to extract the target principal ID from the impersonation URL which is possible if the URL looks like
-            // https://host/segment-1/.../segment-n/target-principal-ID:generateAccessToken.
-            // It's OK if we can't though as for fetching the impersonated access token we have the impersonation URL as a whole.
-            // It's just a nice to have, as we may get extra operations, that we don't use now, but might use in the future.
-            // Regardless we don't expose the resulting impersonated credential so users won't be affected by any of this.
-            static string ExtractTargetPrincipal(string url)
-            {
-                int start = url.LastIndexOf("/") + 1;
-                if (start == 0 || start >= url.Length)
-                {
-                    return null;
-                }
-                int afterEnd = url.IndexOf($":{GoogleAuthConsts.IamAccessTokenVerb}");
-                if (afterEnd == -1 || afterEnd <= start)
-                {
-                    return null;
-                }
-                return url.Substring(start, afterEnd - start);
-            }
         }
 
         /// <summary>
