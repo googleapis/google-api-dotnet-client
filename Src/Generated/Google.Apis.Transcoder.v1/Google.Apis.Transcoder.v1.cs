@@ -1630,7 +1630,7 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Overlaid jpeg image.</summary>
+    /// <summary>Overlaid image.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1649,8 +1649,8 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual NormalizedCoordinate Resolution { get; set; }
 
         /// <summary>
-        /// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the
-        /// only supported image type.
+        /// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG
+        /// images are supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }

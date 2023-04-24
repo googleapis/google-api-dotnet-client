@@ -2485,7 +2485,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("decimalValue")]
         public virtual GoogleTypeDecimal DecimalValue { get; set; }
 
-        /// <summary>Confidence interval of a value that is of type type.Decimal.</summary>
+        /// <summary>Confidence interval of a value that is of type `type.Decimal`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decimalValueConfidenceInterval")]
         public virtual GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval DecimalValueConfidenceInterval { get; set; }
 

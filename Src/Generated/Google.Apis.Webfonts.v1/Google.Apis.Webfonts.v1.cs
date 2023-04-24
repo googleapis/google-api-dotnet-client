@@ -269,6 +269,44 @@ namespace Google.Apis.Webfonts.v1
                 InitParameters();
             }
 
+            /// <summary>Controls the font urls in `Webfont.files`, by default, static ttf fonts are sent.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="CapabilityList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("capability", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<CapabilityEnum> Capability { get; set; }
+
+            /// <summary>Controls the font urls in `Webfont.files`, by default, static ttf fonts are sent.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Capability"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("capability", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<CapabilityEnum> CapabilityList { get; set; }
+
+            /// <summary>Controls the font urls in `Webfont.files`, by default, static ttf fonts are sent.</summary>
+            public enum CapabilityEnum
+            {
+                /// <summary>Default means static ttf fonts.</summary>
+                [Google.Apis.Util.StringValueAttribute("CAPABILITY_UNSPECIFIED")]
+                CAPABILITYUNSPECIFIED = 0,
+
+                /// <summary>Use WOFF2(Compressed)instead of ttf.</summary>
+                [Google.Apis.Util.StringValueAttribute("WOFF2")]
+                WOFF2 = 1,
+
+                /// <summary>
+                /// Prefer variable font files instead of static fonts instantiated at standard weights.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("VF")]
+                VF = 2,
+            }
+
+            /// <summary>Filters by Webfont.family, using literal match. If not set, returns all families</summary>
+            [Google.Apis.Util.RequestParameterAttribute("family", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Family { get; set; }
+
             /// <summary>Enables sorting of the list.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortEnum> Sort { get; set; }
@@ -301,6 +339,12 @@ namespace Google.Apis.Webfonts.v1
                 TRENDING = 5,
             }
 
+            /// <summary>
+            /// Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("subset", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Subset { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -314,9 +358,33 @@ namespace Google.Apis.Webfonts.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("capability", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "capability",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("family", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "family",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
                 {
                     Name = "sort",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subset",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -328,9 +396,32 @@ namespace Google.Apis.Webfonts.v1
 }
 namespace Google.Apis.Webfonts.v1.Data
 {
+    /// <summary>Metadata for a variable font axis.</summary>
+    public class Axis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>maximum value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<float> End { get; set; }
+
+        /// <summary>minimum value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<float> Start { get; set; }
+
+        /// <summary>tag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata describing a family of fonts.</summary>
     public class Webfont : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Axis for variable fonts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("axes")]
+        public virtual System.Collections.Generic.IList<Axis> Axes { get; set; }
+
         /// <summary>The category of the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
@@ -352,6 +443,10 @@ namespace Google.Apis.Webfonts.v1.Data
         /// <summary>The date (format "yyyy-MM-dd") the font was modified for the last time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
         public virtual string LastModified { get; set; }
+
+        /// <summary>Font URL for menu subset, a subset of the font that is enough to display the font name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menu")]
+        public virtual string Menu { get; set; }
 
         /// <summary>The scripts supported by the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subsets")]

@@ -8,6 +8,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.Webfonts.v1.WebfontsResource+ListRequest.CapabilityEnum": [
+    "CAPABILITY_UNSPECIFIED",
+    "WOFF2",
+    "VF"
+  ],
   "Google.Apis.Webfonts.v1.WebfontsResource+ListRequest.SortEnum": [
     "SORT_UNDEFINED",
     "ALPHA",

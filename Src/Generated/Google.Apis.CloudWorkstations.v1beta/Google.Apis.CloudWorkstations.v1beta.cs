@@ -965,14 +965,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             }
                         }
 
-                        /// <summary>Returns all Workstations using the specified config.</summary>
+                        /// <summary>Returns all Workstations using the specified workstation configuration.</summary>
                         /// <param name="parent">Required. Parent resource name.</param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Returns all Workstations using the specified config.</summary>
+                        /// <summary>Returns all Workstations using the specified workstation configuration.</summary>
                         public class ListRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.ListWorkstationsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1035,8 +1035,8 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
 
                         /// <summary>
-                        /// Returns all Workstations using the specified config on which the caller has the
-                        /// "workstations.workstations.use" permission.
+                        /// Returns all workstations using the specified workstation configuration on which the caller
+                        /// has the "workstations.workstations.use" permission.
                         /// </summary>
                         /// <param name="parent">Required. Parent resource name.</param>
                         public virtual ListUsableRequest ListUsable(string parent)
@@ -1045,8 +1045,8 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
 
                         /// <summary>
-                        /// Returns all Workstations using the specified config on which the caller has the
-                        /// "workstations.workstations.use" permission.
+                        /// Returns all workstations using the specified workstation configuration on which the caller
+                        /// has the "workstations.workstations.use" permission.
                         /// </summary>
                         public class ListUsableRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.ListUsableWorkstationsResponse>
                         {
@@ -1133,14 +1133,15 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// If set, and the config is not found, a new config will be created. In this situation,
-                            /// update_mask is ignored.
+                            /// If set and the workstation configuration is not found, a new workstation configuration
+                            /// is created. In this situation, update_mask is ignored.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                             /// <summary>
-                            /// Required. Mask specifying which fields in the config should be updated.
+                            /// Required. Mask specifying which fields in the workstation configuration should be
+                            /// updated.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -1479,7 +1480,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
-                        /// <summary>Required. ID to use for the config.</summary>
+                        /// <summary>Required. ID to use for the workstation configuration.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("workstationConfigId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string WorkstationConfigId { get; set; }
 
@@ -1530,7 +1531,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     }
 
                     /// <summary>Deletes the specified workstation configuration.</summary>
-                    /// <param name="name">Required. Name of the config to delete.</param>
+                    /// <param name="name">Required. Name of the workstation configuration to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -1546,20 +1547,20 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             InitParameters();
                         }
 
-                        /// <summary>Required. Name of the config to delete.</summary>
+                        /// <summary>Required. Name of the workstation configuration to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If set, the request will be rejected if the latest version of the config on the server does
-                        /// not have this etag.
+                        /// If set, the request is rejected if the latest version of the workstation configuration on
+                        /// the server does not have this etag.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// If set, any Workstations in the config will also be deleted. Otherwise, the request will
-                        /// work only if the config has no workstations.
+                        /// If set, any workstations in the workstation configuration are also deleted. Otherwise, the
+                        /// request works only if the workstation configuration has no workstations.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -1912,13 +1913,15 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If set, and the config is not found, a new config will be created. In this situation,
-                        /// update_mask is ignored.
+                        /// If set and the workstation configuration is not found, a new workstation configuration will
+                        /// be created. In this situation, update_mask is ignored.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
-                        /// <summary>Required. Mask specifying which fields in the config should be updated.</summary>
+                        /// <summary>
+                        /// Required. Mask specifying which fields in the workstation configuration should be updated.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2630,7 +2633,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the config's service account.
+        /// Docker image defining the container. This image must be accessible by the service account specified in the
+        /// workstation configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -2751,9 +2755,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> PoolSize { get; set; }
 
         /// <summary>
-        /// Email address of the service account that will be used on VM instances used to support this config. If not
-        /// set, VMs will run with a Google-managed service account. This service account must have permission to pull
-        /// the specified container image, otherwise the image must be publicly accessible.
+        /// Email address of the service account used on VM instances used to support this configuration. If not set,
+        /// VMs run with a Google-managed service account. This service account must have permission to pull the
+        /// specified container image; otherwise, the image must be publicly accessible.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -3330,8 +3334,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an
-        /// up-to-date value before proceeding.
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has
+        /// an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3387,8 +3391,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Output only. The private IP address of the control plane for this cluster. Workstation VMs need access to
-        /// this IP address to work with the service, so please ensure your firewall rules allow egress from the
-        /// Workstation VMs to this address.
+        /// this IP address to work with the service, so make sure that your firewall rules allow egress from the
+        /// workstation VMs to this address.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneIp")]
         public virtual string ControlPlaneIp { get; set; }
@@ -3413,8 +3417,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an
-        /// up-to-date value before proceeding.
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has
+        /// an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3518,14 +3522,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of
         /// the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data
         /// on the persistent disk will be lost. If the encryption key is revoked, the workstation session will
-        /// automatically be stopped within 7 hours. Immutable after workstation config is created.
+        /// automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual CustomerEncryptionKey EncryptionKey { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an
-        /// up-to-date value before proceeding.
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has
+        /// an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }

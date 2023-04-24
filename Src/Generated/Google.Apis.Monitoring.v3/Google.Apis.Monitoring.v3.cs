@@ -4275,7 +4275,10 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>Lists the notification channels that have been created for the project.</summary>
+            /// <summary>
+            /// Lists the notification channels that have been created for the project. To list the types of
+            /// notification channels that are supported, use the ListNotificationChannelDescriptors method.
+            /// </summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
             /// request. The format is: projects/[PROJECT_ID_OR_NUMBER] This names the container in which to look for
@@ -4287,7 +4290,10 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists the notification channels that have been created for the project.</summary>
+            /// <summary>
+            /// Lists the notification channels that have been created for the project. To list the types of
+            /// notification channels that are supported, use the ListNotificationChannelDescriptors method.
+            /// </summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListNotificationChannelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

@@ -1352,6 +1352,22 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<ClassItem> Items { get; set; }
 
+        /// <summary>
+        /// Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the
+        /// content of the ClassItem is encrypted. The expected format is
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)
+        /// with which content of the ClassItem is encrypted. The expected format is
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
+
         /// <summary>The resource name of the custom class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1628,6 +1644,22 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>
+        /// Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the
+        /// content of the PhraseSet is encrypted. The expected format is
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)
+        /// with which content of the PhraseSet is encrypted. The expected format is
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
 
         /// <summary>The resource name of the phrase set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
