@@ -3884,7 +3884,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
         public virtual string ConcurrencyMode { get; set; }
 
-        /// <summary>Output only. The timestamp at which this database was created.</summary>
+        /// <summary>
+        /// Output only. The timestamp at which this database was created. Databases created before 2016 do not populate
+        /// create_time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 

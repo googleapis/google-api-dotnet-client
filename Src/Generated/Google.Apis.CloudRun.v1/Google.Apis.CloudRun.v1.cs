@@ -600,9 +600,9 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Create a new domain mapping.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace
-            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-            /// namespaces/PROJECT_ID
+            /// Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed),
+            /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+            /// example: namespaces/PROJECT_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
             {
@@ -621,9 +621,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace
-                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-                /// namespaces/PROJECT_ID
+                /// Required. The namespace in which the domain mapping should be created. For Cloud Run (fully
+                /// managed), replace {namespace} with the project ID or number. It takes the form
+                /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -675,8 +675,9 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete a domain mapping.</summary>
             /// <param name="name">
-            /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the
-            /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace}
+            /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -694,8 +695,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with
-                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
                 /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -782,8 +783,9 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a domain mapping.</summary>
             /// <param name="name">
-            /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with the
-            /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace}
+            /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -801,8 +803,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with
-                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// Required. The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
                 /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -834,9 +836,9 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>List all domain mappings.</summary>
             /// <param name="parent">
-            /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace
-            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-            /// namespaces/PROJECT_ID
+            /// Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
+            /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+            /// example: namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -854,9 +856,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
-                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                /// example: namespaces/PROJECT_ID
+                /// Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully
+                /// managed), replace {namespace} with the project ID or number. It takes the form
+                /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1093,9 +1095,7 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Kind { get; set; }
 
                 /// <summary>
-                /// Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
-                /// deletes in the background. Please see
-                /// https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more information.
+                /// Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PropagationPolicy { get; set; }
@@ -1882,8 +1882,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in
-                /// the background. Please see https://kubernetes.io/docs/concepts/architecture/garbage-collection/ for
-                /// more information.
+                /// the background.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PropagationPolicy { get; set; }
@@ -3514,9 +3513,9 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Create a new domain mapping.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace
-                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-                /// namespaces/PROJECT_ID
+                /// Required. The namespace in which the domain mapping should be created. For Cloud Run (fully
+                /// managed), replace {namespace} with the project ID or number. It takes the form
+                /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
                 {
@@ -3535,9 +3534,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed),
-                    /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                    /// example: namespaces/PROJECT_ID
+                    /// Required. The namespace in which the domain mapping should be created. For Cloud Run (fully
+                    /// managed), replace {namespace} with the project ID or number. It takes the form
+                    /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3589,8 +3588,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Delete a domain mapping.</summary>
                 /// <param name="name">
-                /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with
-                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
                 /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -3609,9 +3608,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace}
-                    /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
-                    /// namespaces/PROJECT_ID
+                    /// Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3697,8 +3696,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Get information about a domain mapping.</summary>
                 /// <param name="name">
-                /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with
-                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// Required. The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
                 /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -3717,9 +3716,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace}
-                    /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
-                    /// namespaces/PROJECT_ID
+                    /// Required. The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3750,9 +3749,9 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>List all domain mappings.</summary>
                 /// <param name="parent">
-                /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
-                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                /// example: namespaces/PROJECT_ID
+                /// Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully
+                /// managed), replace {namespace} with the project ID or number. It takes the form
+                /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3770,9 +3769,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
-                    /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                    /// example: namespaces/PROJECT_ID
+                    /// Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully
+                    /// managed), replace {namespace} with the project ID or number. It takes the form
+                    /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4190,8 +4189,7 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
-                    /// deletes in the background. Please see
-                    /// https://kubernetes.io/docs/concepts/architecture/garbage-collection/ for more information.
+                    /// deletes in the background.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PropagationPolicy { get; set; }
@@ -5711,8 +5709,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>
     /// Configuration represents the "floating HEAD" of a linear history of Revisions, and optionally how the containers
     /// those revisions reference are built. Users create new Revisions by updating the Configuration's spec. The
-    /// "latest created" revision's name is available under status, as is the "latest ready" revision's name. See also:
-    /// https://github.com/knative/specs/blob/main/specs/serving/overview.md#configuration
+    /// "latest created" revision's name is available under status, as is the "latest ready" revision's name.
     /// </summary>
     public class Configuration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5827,30 +5824,23 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry.
-        /// If the host is not provided, Dockerhub is assumed. More info:
-        /// https://kubernetes.io/docs/concepts/containers/images
+        /// If the host is not provided, Dockerhub is assumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
         /// <summary>
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or
-        /// IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// IfNotPresent otherwise.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imagePullPolicy")]
         public virtual string ImagePullPolicy { get; set; }
 
-        /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        /// </summary>
+        /// <summary>Periodic probe of container liveness. Container will be restarted if the probe fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual Probe LivenessProbe { get; set; }
 
-        /// <summary>
-        /// Name of the container specified as a DNS_LABEL (RFC 1123). More info:
-        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
-        /// </summary>
+        /// <summary>Name of the container specified as a DNS_LABEL (RFC 1123).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5866,10 +5856,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readinessProbe")]
         public virtual Probe ReadinessProbe { get; set; }
 
-        /// <summary>
-        /// Compute Resources required by this container. More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-        /// </summary>
+        /// <summary>Compute Resources required by this container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual ResourceRequirements Resources { get; set; }
 
@@ -5880,8 +5867,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is
         /// provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a
-        /// default startup probe with TCP socket action is used. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// default startup probe with TCP socket action is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
         public virtual Probe StartupProbe { get; set; }
@@ -6139,38 +6125,27 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should
-        /// convert recognized schemas to the latest internal value, and may reject unrecognized values. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        /// convert recognized schemas to the latest internal value, and may reject unrecognized values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
         /// <summary>
         /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer
-        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>
-        /// Optional. Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        /// </summary>
+        /// <summary>Optional. Standard object's metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; }
 
-        /// <summary>
-        /// Optional. Specification of the desired behavior of an execution. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Optional. Specification of the desired behavior of an execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual ExecutionSpec Spec { get; set; }
 
-        /// <summary>
-        /// Output only. Current status of an execution. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Output only. Current status of an execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ExecutionStatus Status { get; set; }
 
@@ -6289,8 +6264,7 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based
-    /// on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+    /// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job.
     /// </summary>
     public class ExecutionTemplateSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6365,9 +6339,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>
-        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
-        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
-        /// behavior is defined by gRPC.
+        /// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the
+        /// default behavior is defined by gRPC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -6412,9 +6385,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Status { get; set; }
 
         /// <summary>
-        /// type is used to communicate the status of the reconciliation process. See also:
-        /// https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common
-        /// to all resources include: * "Ready" or "Completed": True when the Resource is ready.
+        /// type is used to communicate the status of the reconciliation process. Types common to all resources include:
+        /// * "Ready" or "Completed": True when the Resource is ready.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -6501,38 +6473,27 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should
-        /// convert recognized schemas to the latest internal value, and may reject unrecognized values. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        /// convert recognized schemas to the latest internal value, and may reject unrecognized values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
         /// <summary>
         /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer
-        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>
-        /// Optional. Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        /// </summary>
+        /// <summary>Optional. Standard object's metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; }
 
-        /// <summary>
-        /// Optional. Specification of the desired behavior of a job. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Optional. Specification of the desired behavior of a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual JobSpec Spec { get; set; }
 
-        /// <summary>
-        /// Output only. Current status of a job. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Output only. Current status of a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual JobStatus Status { get; set; }
 
@@ -6769,7 +6730,6 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Opaque string that identifies the server's internal version of this object. It can be used by clients to
         /// determine when objects have changed. If the message is passed back to the server, it must be left
         /// unmodified.
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; }
@@ -6899,10 +6859,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// </summary>
     public class LocalObjectReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Name of the referent. More info:
-        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        /// </summary>
+        /// <summary>Name of the referent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6967,7 +6924,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
         /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
         /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`:
-        /// Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// Revision, Execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -6976,10 +6933,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
 
-        /// <summary>
-        /// UTC timestamp representing the server time when this object was created. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-        /// </summary>
+        /// <summary>UTC timestamp representing the server time when this object was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual object CreationTimestamp { get; set; }
 
@@ -7010,16 +6964,14 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May
-        /// match selectors of replication controllers and routes. More info:
-        /// https://kubernetes.io/docs/user-guide/labels
+        /// match selectors of replication controllers and routes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. The name of the resource. In Cloud Run, name is required when creating top-level resources
-        /// (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More
-        /// info: https://kubernetes.io/docs/user-guide/identifiers#names
+        /// Required. The name of the resource. Name is required when creating top-level resources (Service, Job), must
+        /// be unique within a Cloud Run project/region, and cannot be changed once created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7039,8 +6991,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Opaque, system-generated value that represents the internal version of this object that can be used by
         /// clients to determine when objects have changed. May be used for optimistic concurrency, change detection,
         /// and the watch operation on a resource or set of resources. Clients must treat these values as opaque and
-        /// passed unmodified back to the server or omit the value to disable conflict-detection. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        /// passed unmodified back to the server or omit the value to disable conflict-detection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; }
@@ -7049,10 +7000,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>
-        /// Unique, system-generated identifier for this resource. More info:
-        /// https://kubernetes.io/docs/user-guide/identifiers#uids
-        /// </summary>
+        /// <summary>Unique, system-generated identifier for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
@@ -7211,8 +7159,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds.
-        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More
-        /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
@@ -7238,8 +7185,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value
-        /// is 3600. Must be smaller than period_seconds. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// is 3600. Must be smaller than period_seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; }
@@ -7276,18 +7222,19 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The
-        /// values of the map is string form of the 'quantity' k8s type:
-        /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        /// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are
+        /// supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For
+        /// supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
 
         /// <summary>
-        /// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If
-        /// Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an
-        /// implementation-defined value. The values of the map is string form of the 'quantity' k8s type:
-        /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        /// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported.
+        /// If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to
+        /// an implementation-defined value. * For supported 'cpu' values, go to
+        /// https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to
+        /// https://cloud.google.com/run/docs/configuring/memory-limits
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IDictionary<string, string> Requests { get; set; }
@@ -7342,8 +7289,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// Containers holds the single container that defines the unit of execution for this Revision. In the context
         /// of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud
-        /// Run, only a single container may be provided. The runtime contract is documented here:
-        /// https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+        /// Run, only a single container may be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
@@ -7422,10 +7368,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on:
-    /// https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
-    /// </summary>
+    /// <summary>RevisionTemplateSpec describes the data a revision should have when created from a template.</summary>
     public class RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7454,9 +7397,8 @@ namespace Google.Apis.CloudRun.v1.Data
     /// Route is responsible for configuring ingress over a collection of Revisions. Some of the Revisions a Route
     /// distributes traffic over may be specified by referencing the Configuration responsible for creating them; in
     /// these cases the Route is additionally responsible for monitoring the Configuration for "latest ready" revision
-    /// changes, and smoothly rolling out latest revisions. See also:
-    /// https://github.com/knative/specs/blob/main/specs/serving/overview.md#route Cloud Run currently supports
-    /// referencing a single Configuration to automatically deploy the "latest ready" Revision from that Configuration.
+    /// changes, and smoothly rolling out latest revisions. Cloud Run currently supports referencing a single
+    /// Configuration to automatically deploy the "latest ready" Revision from that Configuration.
     /// </summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7689,8 +7631,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// which encapsulates software lifecycle decisions such as rollout policy and team resource ownership. Service acts
     /// only as an orchestrator of the underlying Routes and Configurations (much as a kubernetes Deployment
     /// orchestrates ReplicaSets). The Service's controller will track the statuses of its owned Configuration and
-    /// Route, reflecting their statuses and conditions as its own. See also:
-    /// https://github.com/knative/serving/blob/main/docs/spec/overview.md#service
+    /// Route, reflecting their statuses and conditions as its own.
     /// </summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7850,10 +7791,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>
-        /// Standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        /// </summary>
+        /// <summary>Standard list metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ListMeta Metadata { get; set; }
 
@@ -7864,10 +7802,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        /// <summary>
-        /// Status of the operation. One of: "Success" or "Failure". More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Status of the operation. One of: "Success" or "Failure".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string StatusValue { get; set; }
 
@@ -7928,8 +7863,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// The kind attribute of the resource associated with the status StatusReason. On some operations may differ
-        /// from the requested resource Kind. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        /// from the requested resource Kind.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -7949,10 +7883,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryAfterSeconds")]
         public virtual System.Nullable<int> RetryAfterSeconds { get; set; }
 
-        /// <summary>
-        /// UID of the resource. (when there is a single resource which can be described). More info:
-        /// https://kubernetes.io/docs/user-guide/identifiers#uids
-        /// </summary>
+        /// <summary>UID of the resource. (when there is a single resource which can be described).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
@@ -7980,38 +7911,27 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should
-        /// convert recognized schemas to the latest internal value, and may reject unrecognized values. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        /// convert recognized schemas to the latest internal value, and may reject unrecognized values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
         /// <summary>
         /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer
-        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>
-        /// Optional. Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        /// </summary>
+        /// <summary>Optional. Standard object's metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; }
 
-        /// <summary>
-        /// Optional. Specification of the desired behavior of a task. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Optional. Specification of the desired behavior of a task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual TaskSpec Spec { get; set; }
 
-        /// <summary>
-        /// Output only. Current status of a task. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Output only. Current status of a task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual TaskStatus Status { get; set; }
 
@@ -8071,10 +7991,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<long> TimeoutSeconds { get; set; }
 
-        /// <summary>
-        /// Optional. List of volumes that can be mounted by containers belonging to the task. More info:
-        /// https://kubernetes.io/docs/concepts/storage/volumes
-        /// </summary>
+        /// <summary>Optional. List of volumes that can be mounted by containers belonging to the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
@@ -8138,10 +8055,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>TaskTemplateSpec describes the data a task should have when created from a template.</summary>
     public class TaskTemplateSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Specification of the desired behavior of the task. More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-        /// </summary>
+        /// <summary>Optional. Specification of the desired behavior of the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual TaskSpec Spec { get; set; }
 

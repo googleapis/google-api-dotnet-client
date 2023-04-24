@@ -2679,6 +2679,14 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsMavenArtifact> MavenArtifacts { get; set; }
 
         /// <summary>
+        /// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the
+        /// builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmPackages")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage> NpmPackages { get; set; }
+
+        /// <summary>
         /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in
         /// the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using
         /// the builder service account's credentials. The location and generation of the uploaded objects will be
@@ -2755,6 +2763,25 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// <summary>Maven `version` value used when uploading the artifact to Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Npm package to upload to Artifact Registry upon successful completion of all build steps.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to the package.json. e.g. workspace/path/to/package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packagePath")]
+        public virtual string PackagePath { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in
+        /// the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a
+        /// prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3277,6 +3304,37 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Location of the source in any accessible Git repository.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
+        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud
+        /// Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string
+        /// you provide for `revision` is parsable by the command. For information on string values accepted by `git
+        /// fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see
+        /// https://git-scm.com/docs/git-fetch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Location of the Git repo to build. This will be used as a `git remote`, see
+        /// https://git-scm.com/docs/git-remote.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Container message for hash values.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1Hash : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3402,6 +3460,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
         public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact> MavenArtifacts { get; set; }
 
+        /// <summary>Npm packages uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmPackages")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage> NpmPackages { get; set; }
+
         /// <summary>
         /// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to
         /// Cloud Storage.
@@ -3476,6 +3538,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     /// <summary>Location of the source in a supported storage service.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1Source : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If provided, get the source from this Git repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource GitSource { get; set; }
+
         /// <summary>If provided, get the source from this location in a Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource RepoSource { get; set; }
@@ -3614,6 +3680,25 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
 
         /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An npm package uploaded to Artifact Registry using the NpmPackage directive.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the npm package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded npm package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 

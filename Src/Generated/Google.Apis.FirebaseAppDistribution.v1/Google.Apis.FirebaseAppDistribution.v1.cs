@@ -1896,8 +1896,8 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                 /// <summary>
                 /// Optional. The maximum number of groups to return. The service may return fewer than this value. The
-                /// valid range is [1-100]; If unspecified (0), at most 25 groups are returned. Values above 100 are
-                /// coerced to 100.
+                /// valid range is [1-1000]; If unspecified (0), at most 25 groups are returned. Values above 1000 are
+                /// coerced to 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }

@@ -1493,6 +1493,10 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkPolicy Network { get; set; }
 
+        /// <summary>The placement policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placement")]
+        public virtual PlacementPolicy Placement { get; set; }
+
         /// <summary>Service account that VMs will run as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
@@ -2247,6 +2251,31 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+    /// </summary>
+    public class PlacementPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to
+        /// each other for low network latency between the VMs. No placement policy will be generated when collocation
+        /// is UNSPECIFIED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collocation")]
+        public virtual string Collocation { get; set; }
+
+        /// <summary>
+        /// When specified, causes the job to fail if more than max_distance logical switches are required between VMs.
+        /// Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit
+        /// max_distance makes that level of compactness a strict requirement. Not yet implemented
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDistance")]
+        public virtual System.Nullable<long> MaxDistance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to report agent's state. The Request itself implies the agent is healthy.</summary>
     public class ReportAgentStateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2327,6 +2356,10 @@ namespace Google.Apis.Batch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreExitStatus")]
         public virtual System.Nullable<bool> IgnoreExitStatus { get; set; }
+
+        /// <summary>Labels for this Runnable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Script runnable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]

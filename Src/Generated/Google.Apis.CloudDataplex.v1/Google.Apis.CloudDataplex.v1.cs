@@ -10598,6 +10598,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual string MinValue { get; set; }
 
+        /// <summary>The aggregate metric to evaluate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistic")]
         public virtual string Statistic { get; set; }
 

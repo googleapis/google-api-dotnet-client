@@ -1838,13 +1838,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
-        /// <summary>The timezone ID and offset from Coordinated Universal Time (UTC).</summary>
+        /// <summary>
+        /// The timezone ID and offset from Coordinated Universal Time (UTC). Only supported for the event types
+        /// [`CARD_CLICKED`](https://developers.google.com/chat/api/reference/rest/v1/EventType#ENUM_VALUES.CARD_CLICKED)
+        /// and
+        /// [`SUBMIT_DIALOG`](https://developers.google.com/chat/api/reference/rest/v1/DialogEventType#ENUM_VALUES.SUBMIT_DIALOG).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual TimeZone TimeZone { get; set; }
 
         /// <summary>
         /// The full `locale.displayName` in the format of [ISO 639 language code]-[ISO 3166 country/region code] such
-        /// as "en-US". Not supported by Chat apps.
+        /// as "en-US".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLocale")]
         public virtual string UserLocale { get; set; }
@@ -1853,7 +1858,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Date input values. Not supported by Chat apps.</summary>
+    /// <summary>Date input values.</summary>
     public class DateInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Time since epoch time, in milliseconds.</summary>
@@ -1864,7 +1869,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Date and time input values. Not supported by Chat apps.</summary>
+    /// <summary>Date and time input values.</summary>
     public class DateTimeInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the `datetime` input includes a calendar date.</summary>
@@ -2138,9 +2143,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A text, icon, or text + icon button that users can click. To make an image a clickable button, specify an Image
-    /// (not an ImageComponent) and set an `onClick` action. Currently supported in Chat apps (including [dialogs]
-    /// (https://developers.google.com/chat/how-tos/dialogs) and [card messages]
-    /// (https://developers.google.com/chat/api/guides/message-formats/cards)) and Google Workspace Add-ons.
+    /// (not an ImageComponent) and set an `onClick` action.
     /// </summary>
     public class GoogleAppsCardV1Button : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2244,9 +2247,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The fixed footer shown at the bottom of this card. Setting `fixedFooter` without specifying a
-        /// `primaryButton` or a `secondaryButton` causes an error. Chat apps support `fixedFooter` in
-        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in [card
-        /// messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+        /// `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace Add-ons and Chat apps.
+        /// For Chat apps, you can use fixed footers in [dialogs](https://developers.google.com/chat/how-tos/dialogs),
+        /// but not [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedFooter")]
         public virtual GoogleAppsCardV1CardFixedFooter FixedFooter { get; set; }
@@ -2303,8 +2306,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A persistent (sticky) footer that that appears at the bottom of the card. Setting `fixedFooter` without
-    /// specifying a `primaryButton` or a `secondaryButton` causes an error. Chat apps support `fixedFooter` in
-    /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not in [card
+    /// specifying a `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace Add-ons and
+    /// Chat apps. For Chat apps, you can use fixed footers in
+    /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not [card
     /// messages](https://developers.google.com/chat/api/guides/message-formats/cards).
     /// </summary>
     public class GoogleAppsCardV1CardFixedFooter : Google.Apis.Requests.IDirectResponseSchema
@@ -2447,7 +2451,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1SwitchControl SwitchControl { get; set; }
 
         /// <summary>
-        /// Required. The primary text. Supports simple formatting. See Text formatting for formatting details.
+        /// Required. The primary text. Supports simple formatting. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -2727,8 +2732,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> Collapsible { get; set; }
 
         /// <summary>
-        /// Text that appears at the top of a section. Supports [simple HTML formatted
-        /// text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        /// Text that appears at the top of a section. Supports simple HTML formatted text. For more information about
+        /// formatting text, see Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
@@ -2751,16 +2756,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A widget that creates a UI item with options for users to select. For example, a dropdown menu or check list.
-    /// Chat apps receive and can process the value of entered text during form input events. For details about working
-    /// with form inputs, see [Receive form
-    /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you need to
-    /// collect data from users that matches options you set, use a selection input. To collect abstract data from
-    /// users, use the text input widget instead.
+    /// A widget that creates one or more UI items that users can select. For example, a dropdown menu or checkboxes.
+    /// You can use this widget to collect data that can be predicted or enumerated. Chat apps can process the value of
+    /// items that users select or input. For details about working with form inputs, see [Receive form
+    /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). To collect undefined
+    /// or abstract data from users, use the TextInput widget.
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array of the selected items. For example, all the selected check boxes.</summary>
+        /// <summary>
+        /// An array of selectable items. For example, an array of radio buttons or checkboxes. Supports up to 100
+        /// items.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1SelectionItem> Items { get; set; }
 
@@ -2773,8 +2780,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Label { get; set; }
 
         /// <summary>
-        /// The name by which the selection input is identified in a form input event. For details about working with
-        /// form inputs, see [Receive form
+        /// The name that identifies the selection input in a form input event. For details about working with form
+        /// inputs, see [Receive form
         /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2789,10 +2796,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
         /// <summary>
-        /// The way that an option appears to users. Different options support different types of interactions. For
-        /// example, users can enable multiple check boxes, but can only select one value from a dropdown menu. Each
-        /// selection input supports one type of selection. Mixing check boxes and switches, for example, is not
-        /// supported.
+        /// The type of items that are displayed to users in a `SelectionInput` widget. Selection types support
+        /// different types of interactions. For example, users can select one or more checkboxes, but they can only
+        /// select one value from a dropdown menu.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -2801,7 +2807,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A selectable item in a selection input, such as a check box or a switch.</summary>
+    /// <summary>An item that users can select in a selection input, such as a checkbox or switch.</summary>
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2811,7 +2817,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
 
-        /// <summary>The text displayed to users.</summary>
+        /// <summary>The text that identifies or describes the item to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -2902,8 +2908,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// A field in which users can enter text. Supports suggestions and on-change actions. Chat apps receive and can
     /// process the value of entered text during form input events. For details about working with form inputs, see
     /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you
-    /// need to collect abstract data from users, use a text input. To collect defined data from users, use the
-    /// selection input widget instead.
+    /// need to collect undefined or abstract data from users, use a text input. To collect defined or enumerated data
+    /// from users, use the SelectionInput widget.
     /// </summary>
     public class GoogleAppsCardV1TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2980,8 +2986,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A paragraph of text that supports formatting. See [Text
-    /// formatting](https://developers.google.com/workspace/add-ons/concepts/widgets#text_formatting) for details.
+    /// A paragraph of text that supports formatting. For more information about formatting text, see Formatting text in
+    /// Google Chat apps and Formatting text in Google Workspace Add-ons.
     /// </summary>
     public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3056,7 +3062,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1Image Image { get; set; }
 
         /// <summary>
-        /// Displays a selection control that lets users select items. Selection controls can be check boxes, radio
+        /// Displays a selection control that lets users select items. Selection controls can be checkboxes, radio
         /// buttons, switches, or dropdown menus. For example, the following JSON creates a dropdown menu that lets
         /// users choose a size: ``` "selectionInput": { "name": "size", "label": "Size" "type": "DROPDOWN", "items": [
         /// { "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true },
@@ -3077,8 +3083,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
 
         /// <summary>
-        /// Displays a text paragraph. Supports [simple HTML formatted
-        /// text](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example, the
+        /// Displays a text paragraph. Supports simple HTML formatted text. For more information about formatting text,
+        /// see Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons. For example, the
         /// following JSON creates a bolded text: ``` "textParagraph": { "text": " *bold text*" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
@@ -3140,11 +3146,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Types of data inputs for widgets. Users enter data with these inputs.</summary>
     public class Inputs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Date input values. Not supported by Chat apps.</summary>
+        /// <summary>Date input values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateInput")]
         public virtual DateInput DateInput { get; set; }
 
-        /// <summary>Date and time input values. Not supported by Chat apps.</summary>
+        /// <summary>Date and time input values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeInput")]
         public virtual DateTimeInput DateTimeInput { get; set; }
 
@@ -3155,7 +3161,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringInputs")]
         public virtual StringInputs StringInputs { get; set; }
 
-        /// <summary>Time input values. Not supported by Chat apps.</summary>
+        /// <summary>Time input values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInput")]
         public virtual TimeInput TimeInput { get; set; }
 
@@ -3169,7 +3175,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class KeyValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text of the bottom label. Formatted text supported.</summary>
+        /// <summary>
+        /// The text of the bottom label. Formatted text supported. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
         public virtual string BottomLabel { get; set; }
 
@@ -3177,7 +3186,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("button")]
         public virtual Button Button { get; set; }
 
-        /// <summary>The text of the content. Formatted text supported and always required.</summary>
+        /// <summary>
+        /// The text of the content. Formatted text supported and always required. For more information about formatting
+        /// text, see Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
@@ -3197,7 +3209,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual OnClick OnClick { get; set; }
 
-        /// <summary>The text of the top label. Formatted text supported.</summary>
+        /// <summary>
+        /// The text of the top label. Formatted text supported. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
 
@@ -3459,7 +3474,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Section : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The header of the section, text formatted supported.</summary>
+        /// <summary>
+        /// The header of the section. Formatted text is supported. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
 
@@ -3643,7 +3661,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A paragraph of text. Formatted text supported.</summary>
+    /// <summary>
+    /// A paragraph of text. Formatted text supported. For more information about formatting text, see Formatting text
+    /// in Google Chat apps and Formatting text in Google Workspace Add-ons.
+    /// </summary>
     public class TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -3673,7 +3694,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Time input values. Not supported by Chat apps.</summary>
+    /// <summary>Time input values.</summary>
     public class TimeInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The hour on a 24-hour clock.</summary>
@@ -3688,7 +3709,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The timezone ID and offset from Coordinated Universal Time (UTC). Not supported by Chat apps.</summary>
+    /// <summary>
+    /// The timezone ID and offset from Coordinated Universal Time (UTC). Only supported for the event types
+    /// [`CARD_CLICKED`](https://developers.google.com/chat/api/reference/rest/v1/EventType#ENUM_VALUES.CARD_CLICKED)
+    /// and
+    /// [`SUBMIT_DIALOG`](https://developers.google.com/chat/api/reference/rest/v1/DialogEventType#ENUM_VALUES.SUBMIT_DIALOG).
+    /// </summary>
     public class TimeZone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3758,7 +3784,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
     public class WidgetMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of buttons. Buttons is also oneof data and only one of these fields should be set.</summary>
+        /// <summary>
+        /// A list of buttons. Buttons is also `oneof data` and only one of these fields should be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
         public virtual System.Collections.Generic.IList<Button> Buttons { get; set; }
 

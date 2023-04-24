@@ -27007,7 +27007,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// config is only applicable when eligible audience list targeting is assigned to the line item. Beginning
         /// **March 25, 2023**, these settings may represent the [optimized targeting
         /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature
-        /// will be rolled out to all partners by mid-April 2023.
+        /// will be rolled out to all partners by early May 2023.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
         public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
@@ -29251,7 +29251,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// reach a larger audience based on the original audience list and the targeting expansion level. Beginning **March
     /// 25, 2023**, these settings may represent the [optimized targeting
     /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature will
-    /// be rolled out to all partners by mid-April 2023.
+    /// be rolled out to all partners by early May 2023.
     /// </summary>
     public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29264,7 +29264,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// this field will be set to `false`. If this field is set to `true` when deprecated, all positive first-party
         /// audience targeting assigned to this line item will be replaced with negative targeting of the same
         /// first-party audiences to ensure the continued exclusion of those audiences. This field will be deprecated
-        /// for all partners by mid-April 2023.
+        /// for all partners by early May 2023.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFirstPartyAudience")]
         public virtual System.Nullable<bool> ExcludeFirstPartyAudience { get; set; }
@@ -29277,7 +29277,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// turned off and a `LEAST_EXPANSION` value representing optimized targeting turned on. * `NO_EXPANSION` will
         /// be the default value for the field and will be automatically assigned if you do not set the field. * If you
         /// set the field to any value other than `NO_EXPANSION`, it will automatically be set to `LEAST_EXPANSION`.
-        /// This behavior will be rolled out to all partners by mid-April 2023.
+        /// This behavior will be rolled out to all partners by early May 2023.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansionLevel")]
         public virtual string TargetingExpansionLevel { get; set; }
